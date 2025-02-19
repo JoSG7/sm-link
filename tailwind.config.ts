@@ -6,6 +6,12 @@ export default {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  safelist: [
+
+    'outline-green-400',
+    'outline-red-400'
+
+  ],
   theme: {
     extend: {
       colors: {
