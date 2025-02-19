@@ -11,21 +11,17 @@ export async function POST(request: Request | NextRequest){
 
   try {
     
-    // await prisma.link.create({
+    await prisma.link.create({
 
-    //   data: {
+      data: {
 
-    //     original: originalLink,
-    //     short: shortLink,
-    //     guess_id: guessID
+        original: originalLink,
+        short: shortLink,
+        guess_id: guessID
 
-    //   }
+      }
 
-    // })
-
-    const data = await prisma.link.findMany()
-
-    return NextResponse.json(data)
+    })
 
   } catch (error) {
 
@@ -33,6 +29,6 @@ export async function POST(request: Request | NextRequest){
     
   }
 
-  
+  return NextResponse.json(shortLink)
 
 }

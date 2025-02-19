@@ -13,7 +13,7 @@ export default function Home() {
 
     const shortLink: string = await createShortLink()
 
-    console.log(shortLink)
+    setShortURL(shortLink)
 
   }
 
@@ -29,7 +29,7 @@ export default function Home() {
 
         <div className="p-3 bg-green-700 w-96">
 
-          <p>LINKCOrto:{shortURL}</p>
+          <p>https://sm-link.vercel.app/:{shortURL}</p>
 
         </div>
 
