@@ -29,7 +29,7 @@ export default function Home() {
 
         <div className="p-3 bg-green-700 w-96">
 
-          <p>https://sm-link.vercel.app/{shortURL}</p>
+          <p>{shortURL}</p>
 
         </div>
 
