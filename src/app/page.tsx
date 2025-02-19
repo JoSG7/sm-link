@@ -13,7 +13,7 @@ export default function Home() {
 
     const shortLink: string = await createShortLink()
 
-    setShortURL(shortLink)
+    console.log(shortLink)
 
   }
 

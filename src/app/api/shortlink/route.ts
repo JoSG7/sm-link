@@ -23,14 +23,12 @@ export async function POST(request: Request | NextRequest){
 
     // })
 
-    const data = await prisma.link.findMany()
-
-    return NextResponse.json(data)
-
   } catch (error) {
 
     return NextResponse.json(error)
     
   }
+
+  return NextResponse.json(shortLink)
 
 }
