@@ -29,7 +29,7 @@ export default function Home() {
 
         <div className="p-3 bg-green-700 w-96">
 
-          <p>LINK:{shortURL}</p>
+          <p>LINKCOrto:{shortURL}</p>
 
         </div>
 
