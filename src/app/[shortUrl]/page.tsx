@@ -1,9 +1,15 @@
 import { PrismaClient } from "@prisma/client"
 import { redirect } from "next/navigation"
 
-async function ShortURL ({ params }) {
+interface Params {
 
-  const { shortUrl } = await params
+  shortUrl: string
+
+}
+
+async function ShortURL ({ params }: {params: Params}) {
+
+  const { shortUrl } = params
 
   const prisma = new PrismaClient
 
