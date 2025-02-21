@@ -11,9 +11,17 @@ export default function Home() {
 
     e.preventDefault()
 
-    const shortLink: string = await createShortLink()
+    const response: string | object = await createShortLink()
 
-    setShortURL(shortLink)
+    if(typeof(response) == "object"){
+
+      console.log(response)
+
+    }else{
+
+      setShortURL(response)
+
+    }
 
   }
 
@@ -29,7 +37,7 @@ export default function Home() {
 
         <div className="p-3 bg-green-700 w-96">
 
-          <p>https://sm-link.vercel.app/:{shortURL}</p>
+          <p>https://sm-link.vercel.app/{shortURL}</p>
 
         </div>
 

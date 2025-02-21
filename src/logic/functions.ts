@@ -1,3 +1,4 @@
+import { error } from "console"
 import isURL from "validator/lib/isURL"
 
 // VALIDACION
@@ -28,7 +29,7 @@ export async function createShortLink () {
 
   if(!verifieURL(originalLink)){
 
-    console.log("incalid")
+    return { error: "Ingrese link válido" }
 
   }else{
 
