@@ -1,4 +1,3 @@
-import { error } from "console"
 import isURL from "validator/lib/isURL"
 
 // VALIDACION
