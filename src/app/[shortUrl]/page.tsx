@@ -7,33 +7,27 @@ interface Props {
 
 }
 
-
 async function ShortURL ({ params }: Props) {
 
   const { shortUrl } = await params
 
-  console.log(shortUrl)
-  
+  const prisma = new PrismaClient
 
+  const data = await prisma.link.findUnique({
 
+    where: { short: shortUrl }
 
-  // const prisma = new PrismaClient
+  })
 
-  // const data = await prisma.link.findUnique({
+  if(!data){
 
-  //   where: { short: shortUrl }
+    return <p>NO encontrado</p>
 
-  // })
+  }else{
 
-  // if(!data){
+    redirect(data.original)
 
-  //   return <p>NO encontrado</p>
-
-  // }else{
-
-  //   redirect(data.original)
-
-  // }
+  }
 
 }
 
