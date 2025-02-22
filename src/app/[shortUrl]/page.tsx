@@ -3,30 +3,37 @@ import { redirect } from "next/navigation"
 
 interface Props {
 
-  params: { shortUrl: string };
+  params: Promise<{ shortUrl: string }>;
+
 }
+
 
 async function ShortURL ({ params }: Props) {
 
-  const shortUrl = params.shortUrl
+  const { shortUrl } = await params
 
-  const prisma = new PrismaClient
+  console.log(shortUrl)
+  
 
-  const data = await prisma.link.findUnique({
 
-    where: { short: shortUrl }
 
-  })
+  // const prisma = new PrismaClient
 
-  if(!data){
+  // const data = await prisma.link.findUnique({
 
-    return <p>NO encontrado</p>
+  //   where: { short: shortUrl }
 
-  }else{
+  // })
 
-    redirect(data.original)
+  // if(!data){
 
-  }
+  //   return <p>NO encontrado</p>
+
+  // }else{
+
+  //   redirect(data.original)
+
+  // }
 
 }
 
