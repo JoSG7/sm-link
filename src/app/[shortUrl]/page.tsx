@@ -1,5 +1,6 @@
-import { PrismaClient } from "@prisma/client";
+import { prisma } from "@/lib/prisma";
 import { redirect } from "next/navigation";
+import { NextResponse } from "next/server";
 
 interface Props {
 
@@ -11,23 +12,13 @@ async function ShortURL( { params }: Props) {
 
   const { shortUrl } = await params
 
-  const prisma = new PrismaClient()
-
   const link = await prisma.link.findUnique({
 
-    where: {short: shortUrl}
+    where: { short: shortUrl }
 
   })
 
-  if(!link){
-
-    return <p>NO hay</p>
-
-  }else{
-
-    return <p>SISI</p>
-
-  }
+  return NextResponse.json(link)
 
 }
 
