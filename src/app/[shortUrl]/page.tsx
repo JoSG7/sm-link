@@ -1,5 +1,5 @@
-import { PrismaClient } from "@prisma/client"
-import { redirect } from "next/navigation"
+import { PrismaClient } from "@prisma/client";
+import { redirect } from "next/navigation";
 
 interface Props {
 
@@ -7,33 +7,31 @@ interface Props {
 
 }
 
-async function ShortURL ({ params }: Props) {
+const prisma = new PrismaClient()
+
+async function ShortURL( { params }: Props) {
 
   const { shortUrl } = await params
 
-  const prisma = new PrismaClient
-
-  const data = await prisma.link.findUnique({
+  const link = await prisma.link.findUnique({
 
     where: { short: shortUrl }
 
   })
 
-  if(!data){
+  if(!link){
 
-    return <p>NO encontrado</p>
+    return <p>NO hay</p>
 
   }else{
 
-    redirect(data.original)
+    redirect(`/api/${shortUrl}`)
 
   }
 
 }
 
 export default ShortURL
-
-
 
 
 

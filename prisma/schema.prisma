@@ -201,7 +201,7 @@ model users {
   mfa_factors                 mfa_factors[]
   one_time_tokens             one_time_tokens[]
   sessions                    sessions[]
-  link                        link[]
+  users                       public_users?
 
   @@index([instance_id])
   @@index([is_anonymous])
@@ -209,13 +209,13 @@ model users {
 }
 
 model link {
-  id         String    @id(map: "links_pkey") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  id         String        @id(map: "links_pkey") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   original   String
-  short      String    @unique
-  created_at DateTime  @default(now()) @db.Timestamptz(6)
-  user_id    String?   @db.Uuid
-  guess_id   String?   @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  users      users?    @relation(fields: [user_id], references: [id], onUpdate: NoAction)
+  short      String        @unique
+  created_at DateTime      @default(now()) @db.Timestamptz(6)
+  user_id    String?       @db.Uuid
+  guess_id   String?       @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  users      public_users? @relation(fields: [user_id], references: [id], map: "link_user_id_fkey1")
   metrics    metrics[]
 
   @@schema("public")
@@ -228,6 +228,19 @@ model metrics {
   link_id   String   @db.Uuid
   link      link     @relation(fields: [link_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
 
+  @@schema("public")
+}
+
+model public_users {
+  id         String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name       String
+  user_name  String
+  avatar_url String
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  link       link[]
+  users      users    @relation(fields: [id], references: [id], onDelete: Cascade)
+
+  @@map("users")
   @@schema("public")
 }
 
@@ -271,10 +284,3 @@ enum one_time_token_type {
 
   @@schema("auth")
 }
-
-
-
-
-
-/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
-/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.

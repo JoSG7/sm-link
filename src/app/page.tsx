@@ -1,48 +1,17 @@
-'use client'
+import AuthButtonServer from "@/components/auth-button-server"
+import { ShortLinkForm } from "@/components/utilities"
 
-import { createShortLink } from "@/logic/functions"
-import { FormEvent, useState } from "react"
 
 export default function Home() {
-
-  const [shortURL, setShortURL] = useState("")
-
-  const handleSubmit = async (e: FormEvent) => {
-
-    e.preventDefault()
-
-    const response: string | object = await createShortLink()
-
-    if(typeof(response) == "object"){
-
-      console.log(response)
-
-    }else{
-
-      setShortURL(response)
-
-    }
-
-  }
 
   return (
 
     <div className="p-3">
 
-      <form onSubmit={handleSubmit}>
+      <ShortLinkForm />
 
-        <input type="url" className="text-black px-3 outline-none w-96" required id="txtUrl" />
-        
-        <button className="px-3 bg-sky-600" >Cortar Link</button>
-
-        <div className="p-3 bg-green-700 w-96">
-
-          <p>https://sm-link.vercel.app/{shortURL}</p>
-
-        </div>
-
-      </form>
-
+      <AuthButtonServer />
+      
     </div>
     
   )
