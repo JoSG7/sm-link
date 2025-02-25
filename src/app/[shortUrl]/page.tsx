@@ -11,7 +11,7 @@ async function ShortURL( { params }: Props) {
 
   const { shortUrl } = await params
 
-  const link = await prisma.link.findUnique({
+  const link = await prisma.link.findFirst({
 
     where: { short: shortUrl }
 
