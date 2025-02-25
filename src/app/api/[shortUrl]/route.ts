@@ -14,9 +14,13 @@ export async function GET(request: NextRequest, { params }: Props) {
 
   const { shortUrl } = await params
 
-  const referer = request.headers
+  const referer = request.headers.get("referer")
 
-  return NextResponse.json(referer)
+  console.log(referer)
+
+  return NextResponse.json(shortUrl)
+
+
 
 }
 
