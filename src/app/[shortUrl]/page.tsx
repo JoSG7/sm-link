@@ -10,7 +10,7 @@ async function ShortURL( { params }: Props) {
 
   const { shortUrl } = await params
 
-  return NextResponse.json(shortUrl)
+  return <p>{shortUrl}</p>
 
 }
 
