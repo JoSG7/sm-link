@@ -8,8 +8,6 @@ interface Props {
 
 }
 
-const prisma = new PrismaClient()
-
 export async function GET(request: NextRequest, { params }: Props) {
 
   const { shortUrl } = await params
