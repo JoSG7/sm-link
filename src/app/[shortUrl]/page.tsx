@@ -15,7 +15,7 @@ async function ShortURL( { params }: Props) {
 
   const link = await prisma.link.findUnique({
 
-    where: { short: shortUrl }
+    where: {short: shortUrl}
 
   })
 
@@ -25,7 +25,7 @@ async function ShortURL( { params }: Props) {
 
   }else{
 
-    redirect(`/api/${shortUrl}`)
+    return <p>SISI</p>
 
   }
 
