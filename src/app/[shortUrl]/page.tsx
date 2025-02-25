@@ -7,11 +7,11 @@ interface Props {
 
 }
 
-const prisma = new PrismaClient()
-
 async function ShortURL( { params }: Props) {
 
   const { shortUrl } = await params
+
+  const prisma = new PrismaClient()
 
   const link = await prisma.link.findUnique({
 
