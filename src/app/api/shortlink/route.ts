@@ -1,9 +1,7 @@
-import { PrismaClient } from "@prisma/client"
+import { prisma } from "@/lib/prisma"
 import { NextRequest, NextResponse } from "next/server"
 
 export async function POST(request: Request | NextRequest){
-
-  const prisma = new PrismaClient()
 
   const shortLink = Math.random().toString(36).substring(2, 9)
 
