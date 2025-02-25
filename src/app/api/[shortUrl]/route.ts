@@ -1,5 +1,3 @@
-import { PrismaClient } from "@prisma/client"
-import { redirect } from "next/navigation"
 import { NextRequest, NextResponse } from "next/server";
 
 interface Props {

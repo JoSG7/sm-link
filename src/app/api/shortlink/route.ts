@@ -3,47 +3,47 @@ import { NextRequest, NextResponse } from "next/server"
 
 export async function POST(request: Request | NextRequest){
 
-  const shortLink = Math.random().toString(36).substring(2, 9)
+  // const shortLink = Math.random().toString(36).substring(2, 9)
 
-  const { guessID, originalLink }: {guessID: string, originalLink: string} = await request.json()
+  // const { guessID, originalLink }: {guessID: string, originalLink: string} = await request.json()
 
-  try {
+  // try {
 
-    const alredyExist = await prisma.link.findFirst({
-      where: {
-        AND: [
-          { guess_id: guessID },
-          { original: originalLink }
-        ]
-      }
-    })
+  //   const alredyExist = await prisma.link.findFirst({
+  //     where: {
+  //       AND: [
+  //         { guess_id: guessID },
+  //         { original: originalLink }
+  //       ]
+  //     }
+  //   })
 
-    if(alredyExist){
+  //   if(alredyExist){
 
-      return NextResponse.json({ error: "Ya tienes una version corta de este link!" })
+  //     return NextResponse.json({ error: "Ya tienes una version corta de este link!" })
 
-    }else{
+  //   }else{
 
-      await prisma.link.create({
+  //     await prisma.link.create({
 
-        data: {
+  //       data: {
   
-          original: originalLink,
-          short: shortLink,
-          guess_id: guessID
+  //         original: originalLink,
+  //         short: shortLink,
+  //         guess_id: guessID
   
-        }
+  //       }
   
-      })
+  //     })
 
-      return NextResponse.json(shortLink)
+  //     return NextResponse.json(shortLink)
 
-    }
+  //   }
 
-  } catch (error) {
+  // } catch (error) {
 
-    return NextResponse.json(error)
+  //   return NextResponse.json(error)
     
-  }
+  // }
 
 }
