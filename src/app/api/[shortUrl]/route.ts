@@ -14,7 +14,7 @@ export async function GET(request: NextRequest, { params }: Props) {
 
   const { shortUrl } = await params
 
-  const referer = request.headers.get("referer")
+  const referer = request.headers.get("referer") || "Desconocido";
 
   console.log(referer)
 
