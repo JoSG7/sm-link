@@ -12,9 +12,17 @@ async function ShortURL( { params }: Props) {
 
   const { shortUrl } = await params
 
-  const data = supabase.from("link").select("*")
+  const { data, error } = await supabase.from("link").select("*")
 
-  console.log(data)
+  if(error){
+
+    console.log(error)
+
+  }else{
+
+    console.log(data)
+
+  }
 
   return <p>{shortUrl}</p>
 
