@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { supabase } from "@/lib/supabase";
+import { isEmpty } from "validator";
 
 
 interface Props {
@@ -12,19 +13,41 @@ async function ShortURL( { params }: Props) {
 
   const { shortUrl } = await params
 
-  const { data, error } = await supabase.from("link").select("*")
+  const { data: link, error } = await supabase.from("link").select("*").eq('short', shortUrl)
+
+  // si hay error se imprime por consola
 
   if(error){
 
     console.log(error)
 
+  }
+
+  if(link?.length == 0){
+
+    return <p>No hay</p>
+
   }else{
 
-    console.log(data)
+    return <p>Si hay</p>
 
   }
 
-  return <p>{shortUrl}</p>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
 
 }
 
