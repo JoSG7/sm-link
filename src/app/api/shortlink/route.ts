@@ -9,7 +9,7 @@ export async function POST(request: Request | NextRequest){
 
   try {
 
-    const { data: alredyExist, error } = await supabase.from("link").select("*")
+    const { data: alredyExist } = await supabase.from("link").select("*")
     .eq("guess_id", guessID)
     .eq("original", originalLink)
 
@@ -18,8 +18,6 @@ export async function POST(request: Request | NextRequest){
       return NextResponse.json({ error: "Ya tienes una version corta de este link!" })
 
     }else{
-
-      // HACER QUE SE PUEDA INSERTAR
 
       const { error } = await supabase.from("link").insert({
 
