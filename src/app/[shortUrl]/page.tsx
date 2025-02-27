@@ -1,7 +1,5 @@
-import { NextResponse } from "next/server";
 import { supabase } from "@/lib/supabase";
-import { isEmpty } from "validator";
-
+import { redirect } from "next/navigation";
 
 interface Props {
 
@@ -29,25 +27,9 @@ async function ShortURL( { params }: Props) {
 
   }else{
 
-    return <p>Si hay</p>
+    redirect(`/api/${shortUrl}`)
 
   }
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
 
 }
 
