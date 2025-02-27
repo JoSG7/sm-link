@@ -13,27 +13,33 @@ export async function POST(request: Request | NextRequest){
     .eq("guess_id", guessID)
     .eq("original", originalLink)
 
-    // if(alredyExist){
+    if(alredyExist?.length != 0){
 
-    //   return NextResponse.json({ error: "Ya tienes una version corta de este link!" })
+      return NextResponse.json({ error: "Ya tienes una version corta de este link!" })
 
-    // }else{
+    }else{
 
-    //   await prisma.link.create({
+      // HACER QUE SE PUEDA INSERTAR
 
-    //     data: {
-  
-    //       original: originalLink,
-    //       short: shortLink,
-    //       guess_id: guessID
-  
-    //     }
-  
-    //   })
+      const { error } = await supabase.from("link").insert({
 
-    //   return NextResponse.json(shortLink)
+        original: originalLink,
+        short: shortLink,
+        guess_id: guessID
 
-    // }
+      })
+
+      if(error){
+
+        return NextResponse.json(error)
+
+      }else{
+
+        return NextResponse.json(shortLink)
+
+      }
+
+    }
 
   } catch (error) {
 
