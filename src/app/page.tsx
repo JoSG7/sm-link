@@ -12,7 +12,7 @@ const HomeTitle = () => {
 
       <div className="relative z-10 text-center py-4">
 
-        <h1 className="text-5xl font-bold bg-gradient-to-r from-amber-300 to-emerald-400 bg-clip-text tracking-tight"
+        <h1 className="text-5xl font-bold bg-gradient-to-r from-amber-300 to-emerald-400 tracking-tight"
         style={{WebkitTextFillColor: "transparent", WebkitBackgroundClip: "text"}}
         >
           Link's Shortener
@@ -21,6 +21,8 @@ const HomeTitle = () => {
         <p className="text-gray-300 mt-2">
           Smaller Links, bigger impact
         </p>
+
+        <div className="w-[380px] h-3 bg-red-300"></div>
 
 
       </div>
