@@ -15,7 +15,7 @@ const HomeTitle = () => {
         <h1 className="text-5xl font-bold bg-gradient-to-r from-amber-300 to-emerald-400 tracking-tight"
         style={{WebkitTextFillColor: "transparent", WebkitBackgroundClip: "text"}}
         >
-          Link's Shortener
+          Link's <br /> Shortener
         </h1>
 
         <p className="text-gray-300 mt-2">
