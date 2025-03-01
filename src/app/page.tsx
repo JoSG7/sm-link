@@ -22,7 +22,7 @@ const HomeTitle = () => {
           Smaller Links, bigger impact
         </p>
 
-        <div className="w-[360px] h-3 bg-red-300"></div>
+        <div className="w-[365px] h-3 bg-red-300"></div>
 
 
       </div>
