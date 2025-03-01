@@ -10,7 +10,7 @@ const HomeTitle = () => {
 
       <div className="absolute inset-0 bg-gradient-to-b from-[#09090b] via-emerald-800/30 to-[#09090b]"></div>
 
-      <div className="relative z-10 text-center text-white">
+      <div className="relative z-10 text-center py-4">
 
         <h1 className="text-5xl font-bold bg-gradient-to-r from-amber-300 to-emerald-400 bg-clip-text text-transparent tracking-tight">
           Link's Shortener
@@ -33,7 +33,7 @@ export default function Home() {
 
   return (
 
-    <main className="w-full h-screen flex flex-col bg-[#09090b]">
+    <main className="w-full h-screen flex flex-col bg-[#09090b] text-white">
 
       <NavBar></NavBar>
 
