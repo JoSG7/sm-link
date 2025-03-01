@@ -13,7 +13,7 @@ const HomeTitle = () => {
       <div className="relative z-10 text-center py-4">
 
         <h1 className="text-5xl font-bold bg-gradient-to-r from-amber-300 to-emerald-400 bg-clip-text tracking-tight"
-        style={{WebkitTextFillColor: "transparent"}}
+        style={{WebkitTextFillColor: "transparent", WebkitBackgroundClip: "text"}}
         >
           Link's Shortener
         </h1>
