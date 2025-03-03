@@ -1,6 +1,5 @@
 import { NavBar } from "@/components/client/home/menu-nav-bar";
-
-
+import { LinkForm } from "@/components/client/home/new-link-form";
 
 const HomeTitle = () => {
 
@@ -12,7 +11,7 @@ const HomeTitle = () => {
 
       <div className="relative z-10 text-center py-4">
 
-        <h1 className="text-5xl font-bold bg-gradient-to-r from-amber-300 to-emerald-400 tracking-tight"
+        <h1 className="text-6xl font-bold bg-gradient-to-r from-amber-300 to-emerald-400 tracking-tight"
         style={{WebkitTextFillColor: "transparent", WebkitBackgroundClip: "text"}}
         >
           Link's <br /> Shortener
@@ -21,9 +20,6 @@ const HomeTitle = () => {
         <p className="text-gray-300 mt-2">
           Smaller Links, bigger impact
         </p>
-
-        
-
 
       </div>
 
@@ -37,13 +33,15 @@ export default function Home() {
 
   return (
 
-    <main className="w-full h-screen flex flex-col bg-[#09090b] text-white">
+    <main className="w-full h-screen flex flex-col bg-[#09090b] text-white overflow-y-auto">
 
       <NavBar></NavBar>
 
       <main className="flex flex-col">
 
         <HomeTitle></HomeTitle>
+
+        <LinkForm></LinkForm>
 
       </main>
       
