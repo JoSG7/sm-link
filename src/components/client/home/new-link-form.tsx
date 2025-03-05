@@ -1,15 +1,38 @@
 "use client"
 
-import { IconScissors } from "@tabler/icons-react"
-import { IconWand } from "@tabler/icons-react"
+import { IconScissors, IconWand } from "@tabler/icons-react"
+import { createShortLink } from "@/logic/functions"
+import { useState, type FormEvent } from "react"
 
 export function LinkForm () {
+
+  const [shortURL, setShortURL] = useState("")
+    
+  const handleSubmit = async (e: FormEvent) => {
+    
+    e.preventDefault()
+    
+    const response: string | object = await createShortLink()
+    
+    if(typeof(response) == "object"){
+    
+      console.log(response)
+    
+    }else{
+    
+      setShortURL(response)
+    
+    }
+    
+  }
+
+  // MAIN RETURN
 
   return(
 
     <section className="p-4">
 
-      <form className="rounded-lg border border-neutral-900 px-3 py-4 bg-neutral-950">
+      <form onSubmit={handleSubmit} className="rounded-lg border border-neutral-900 px-3 py-4 bg-neutral-950">
 
         <label htmlFor="txtUrl" className="flex mb-3 items-center gap-2">
 
@@ -29,7 +52,7 @@ export function LinkForm () {
 
         <div className="w-full p-2 bg-neutral-950 rounded-md border border-zinc-900 text-neutral-400 mb-5">
 
-          <p>sm-link.vercel.app/</p>
+          <p>sm-link.vercel.app/{shortURL}</p>
 
         </div>
 

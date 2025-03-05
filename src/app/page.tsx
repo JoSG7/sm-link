@@ -62,11 +62,11 @@ export default function Home() {
 
   return (
 
-    <main className="w-full h-screen flex flex-col bg-[#09090b] text-white overflow-y-auto">
+    <main className="w-full h-screen flex flex-col bg-[#09090b] text-white">
 
       <NavBar></NavBar>
 
-      <main className="flex flex-col">
+      <main className="flex flex-col overflow-y-auto">
 
         <HomeTitle></HomeTitle>
 
