@@ -1,5 +1,5 @@
 import React from "react"
-import { IconBrandGithubFilled } from "@tabler/icons-react"
+import { IconBrandGithubFilled, IconBrandGoogleFilled } from "@tabler/icons-react"
 
 const DetailCard = ({title, children}: {title: string, children: React.ReactNode}) => {
 
@@ -40,13 +40,20 @@ export function LoginDetails () {
         Inicia Sesion para poder crear muchos mas links (limite de 10 links sin inicio de sesion)
       </DetailCard>
 
-      <div>
+      <div className="grid grid-cols-2 gap-4">
 
-        <button type="button" className="py-2 px-4 flex gap-2 items-center rounded-lg bg-black 
-        border border-neutral-900">
+        <button type="button" className="py-2 px-4 flex gap-2 items-center rounded-lg bg-[#1a1d1f] 
+        border border-neutral-800">
 
           <IconBrandGithubFilled size={20}></IconBrandGithubFilled>
-          Log In Git Hub
+          Git Hub
+
+        </button>
+
+        <button type="button" className="py-2 px-4 flex gap-2 items-center rounded-lg bg-red-700 border border-red-800">
+
+          <IconBrandGoogleFilled size={20}></IconBrandGoogleFilled>
+          Gmail
 
         </button>
 
