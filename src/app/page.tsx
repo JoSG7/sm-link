@@ -66,6 +66,8 @@ export default function Home() {
     <main className="w-full h-screen flex flex-col bg-[#09090b] text-white">
 
       <NavBar></NavBar>
+      
+      <OptionsMenu></OptionsMenu>
 
       <main className="flex flex-col overflow-y-auto">
 
@@ -76,8 +78,6 @@ export default function Home() {
         <LoginTitle></LoginTitle>
 
         <LoginDetails></LoginDetails>
-
-        <OptionsMenu></OptionsMenu>
 
       </main>
       
