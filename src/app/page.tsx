@@ -7,7 +7,7 @@ const HomeTitle = () => {
 
   return (
 
-    <section className="py-10 relative">
+    <section className="py-10 relative z-0">
 
       <div className="absolute inset-0 bg-gradient-to-b from-[#09090b] via-emerald-800/30 to-[#09090b]"></div>
 
@@ -35,7 +35,7 @@ const LoginTitle = () => {
 
   return(
 
-    <section className="py-10 relative">
+    <section className="py-10 relative z-0">
 
       {/* <div className="absolute inset-0 bg-gradient-to-b from-[#09090b] via-emerald-800/30 to-[#09090b]"></div> */}
 
@@ -66,7 +66,7 @@ export default function Home() {
     <main className="w-full h-screen flex flex-col bg-[#09090b] text-white">
 
       <NavBar></NavBar>
-      
+
       <OptionsMenu></OptionsMenu>
 
       <main className="flex flex-col overflow-y-auto">
