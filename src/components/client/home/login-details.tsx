@@ -1,3 +1,5 @@
+"use client"
+
 import React from "react"
 import { IconBrandGithubFilled, IconBrandGoogleFilled } from "@tabler/icons-react"
 
@@ -43,14 +45,14 @@ export function LoginDetails () {
       <div className="grid grid-cols-2 gap-4">
 
         <button type="button" className="py-2 px-4 flex gap-2 items-center rounded-lg bg-[#1a1d1f] 
-        border border-neutral-800">
+        border border-neutral-800" onClick={() => { alert("coming soon") }}>
 
           <IconBrandGithubFilled size={20}></IconBrandGithubFilled>
           Git Hub
 
         </button>
 
-        <button type="button" className="py-2 px-4 flex gap-2 items-center rounded-lg bg-red-700 border border-red-800">
+        <button type="button" className="py-2 px-4 flex gap-2 items-center rounded-lg bg-red-700 border border-red-800" onClick={() => { alert("coming soon") }}>
 
           <IconBrandGoogleFilled size={20}></IconBrandGoogleFilled>
           Gmail

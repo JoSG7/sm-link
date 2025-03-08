@@ -1,5 +1,6 @@
 import { LoginDetails } from "@/components/client/home/login-details";
-import { NavBar } from "@/components/client/home/menu-nav-bar";
+import { NavBar } from "@/components/client/home/menu-navbar";
+import { OptionsMenu } from "@/components/client/home/menu-options";
 import { LinkForm } from "@/components/client/home/new-link-form";
 
 const HomeTitle = () => {
@@ -75,6 +76,8 @@ export default function Home() {
         <LoginTitle></LoginTitle>
 
         <LoginDetails></LoginDetails>
+
+        <OptionsMenu></OptionsMenu>
 
       </main>
       

@@ -1,4 +1,6 @@
-import { headers } from "next/headers";
+"use client"
+
+import { showOptionsMenu } from "@/logic/functions";
 import { IconMenu2 } from "@tabler/icons-react";
 import { IconUnlink } from "@tabler/icons-react";
 
@@ -15,11 +17,11 @@ export function NavBar () {
 
       </div>
 
-      <div className="flex justify-center items-center">
+      <button type="button" className="flex justify-center items-center" onClick={showOptionsMenu}>
 
         <IconMenu2 size={30} ></IconMenu2>
 
-      </div>
+      </button>
 
     </header>
 

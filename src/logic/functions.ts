@@ -1,5 +1,26 @@
 import isURL from "validator/lib/isURL"
 
+export function showOptionsMenu () {
+
+  const background = document.querySelector("#optionsMenu")
+  const menu = document.querySelector("#optionsMenu nav")
+
+  background?.classList.remove("hidden")
+  background?.classList.add("grid")
+
+  
+
+}
+
+export function closeOptionsMenu () {
+
+  const background = document.querySelector("#optionsMenu")
+  const menu = document.querySelector("#optionsMenu nav")
+
+  background?.classList.add("hidden")
+
+}
+
 // VALIDACION
 
 const verifieURL = (url: string | undefined) => {
@@ -21,6 +42,8 @@ const verifieURL = (url: string | undefined) => {
   }
   
 }
+
+//Crear un Link Corto
 
 export async function createShortLink () {
 
