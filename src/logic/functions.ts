@@ -2,23 +2,41 @@ import isURL from "validator/lib/isURL"
 
 export function showOptionsMenu () {
 
-  const background = document.querySelector("#optionsMenu")
-  const menu = document.querySelector("#optionsMenu nav")
+  const background = document.querySelector("#bgMenu")
+  const menu = document.querySelector("#menu")
 
   background?.classList.remove("hidden")
   background?.classList.add("grid")
 
-  
-  
+  menu?.addEventListener("click", (event: Event) => {
+
+    event.stopPropagation()
+
+  })
+
+  setTimeout(() => {
+
+    menu?.classList.remove("h-0")
+    menu?.classList.add("h-96")
+
+  }, 50)
 
 }
 
 export function closeOptionsMenu () {
 
-  const background = document.querySelector("#optionsMenu")
-  const menu = document.querySelector("#optionsMenu nav")
+  const background = document.querySelector("#bgMenu")
+  const menu = document.querySelector("#menu")
 
-  background?.classList.add("hidden")
+  menu?.classList.remove("h-96")
+  menu?.classList.add("h-0")
+
+  setTimeout(() => {
+
+    background?.classList.remove("grid")
+    background?.classList.add("hidden")
+
+  }, 200)
 
 }
 
