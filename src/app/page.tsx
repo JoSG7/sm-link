@@ -69,26 +69,17 @@ export default function Home() {
 
       <NavBar></NavBar>
 
-      <main className="overflow-y-auto">
+      <div className="overflow-y-auto">
 
-        {/* <HomeTitle></HomeTitle>
+        <HomeTitle></HomeTitle>
 
         <LinkForm></LinkForm>
 
         <LoginTitle></LoginTitle>
 
-        <LoginDetails></LoginDetails> */}
+        <LoginDetails></LoginDetails>
 
-        <div className="w-96 h-96 mb-2 bg-red-600"></div>
-        <div className="w-96 h-96 mb-2 bg-red-600"></div>
-        <div className="w-96 h-96 mb-2 bg-red-600"></div>
-        <div className="w-96 h-96 mb-2 bg-red-600"></div>
-        <div className="w-96 h-96 mb-2 bg-red-600"></div>
-        <div className="w-96 h-96 mb-2 bg-red-600"></div>
-        <div className="w-96 h-96 mb-2 bg-red-600"></div>
-        <div className="w-96 h-96 mb-2 bg-red-600"></div>
-
-      </main>
+      </div>
       
     </main>
     
