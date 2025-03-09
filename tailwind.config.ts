@@ -9,7 +9,8 @@ export default {
   safelist: [
 
     'outline-green-400',
-    'outline-red-400'
+    'outline-red-400',
+    'h-96',
 
   ],
   theme: {

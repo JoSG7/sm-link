@@ -1,5 +1,7 @@
 import isURL from "validator/lib/isURL"
 
+// Show and Hide Menu Navigation
+
 export function showOptionsMenu () {
 
   const background = document.querySelector("#bgMenu")
@@ -9,16 +11,12 @@ export function showOptionsMenu () {
   background?.classList.add("grid")
 
   menu?.addEventListener("click", (event: Event) => {
-
     event.stopPropagation()
-
   })
 
   setTimeout(() => {
-
     menu?.classList.remove("h-0")
     menu?.classList.add("h-96")
-
   }, 50)
 
 }
@@ -32,10 +30,8 @@ export function closeOptionsMenu () {
   menu?.classList.add("h-0")
 
   setTimeout(() => {
-
     background?.classList.remove("grid")
     background?.classList.add("hidden")
-
   }, 200)
 
 }
