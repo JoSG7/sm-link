@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { OptionsMenu } from "@/components/client/home/menu-options";
 
 export const metadata: Metadata = {
   title: "Sm Link",
@@ -8,12 +9,18 @@ export const metadata: Metadata = {
 
 export default function RootLayout({children}: Readonly<{children: React.ReactNode;}>) {
   return (
+
     <html lang="en">
-      <body
-        className={`antialiased`}
-      >
+
+      <body className={`antialiased`}>
+        
         {children}
+
+        <OptionsMenu></OptionsMenu>
+
       </body>
+
     </html>
+
   );
 }
