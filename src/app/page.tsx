@@ -63,7 +63,7 @@ export default function Home() {
 
   return (
 
-    <main className="w-full h-screen flex flex-col bg-[#09090b] text-white">
+    <main className="w-full h-screen flex flex-col bg-[#09090b] text-white relative">
 
       <OptionsMenu></OptionsMenu>
 
