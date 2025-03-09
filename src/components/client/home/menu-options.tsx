@@ -6,7 +6,7 @@ export function OptionsMenu () {
 
   return(
 
-    <section className="w-full h-screen absolute hidden bottom-0 left-0 bg-modal z-10" id="optionsMenu"
+    <section className="w-full h-full absolute hidden bottom-0 left-0 bg-blue-600 z-10" id="optionsMenu"
     onClick={closeOptionsMenu}>
 
       

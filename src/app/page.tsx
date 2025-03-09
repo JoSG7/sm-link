@@ -35,7 +35,7 @@ const LoginTitle = () => {
 
   return(
 
-    <section className="py-10 relative">
+    <section className="py-10 relative z-0">
 
       {/* <div className="absolute inset-0 bg-gradient-to-b from-[#09090b] via-emerald-800/30 to-[#09090b]"></div> */}
 
@@ -65,17 +65,28 @@ export default function Home() {
 
     <main className="w-full h-screen flex flex-col bg-[#09090b] text-white">
 
+      <OptionsMenu></OptionsMenu>
+
       <NavBar></NavBar>
 
-      <main className="flex flex-col overflow-y-auto">
+      <main className="overflow-y-auto">
 
-        <HomeTitle></HomeTitle>
+        {/* <HomeTitle></HomeTitle>
 
         <LinkForm></LinkForm>
 
         <LoginTitle></LoginTitle>
 
-        <LoginDetails></LoginDetails>
+        <LoginDetails></LoginDetails> */}
+
+        <div className="w-96 h-96 mb-2 bg-red-600"></div>
+        <div className="w-96 h-96 mb-2 bg-red-600"></div>
+        <div className="w-96 h-96 mb-2 bg-red-600"></div>
+        <div className="w-96 h-96 mb-2 bg-red-600"></div>
+        <div className="w-96 h-96 mb-2 bg-red-600"></div>
+        <div className="w-96 h-96 mb-2 bg-red-600"></div>
+        <div className="w-96 h-96 mb-2 bg-red-600"></div>
+        <div className="w-96 h-96 mb-2 bg-red-600"></div>
 
       </main>
       

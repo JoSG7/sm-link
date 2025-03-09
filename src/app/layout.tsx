@@ -16,7 +16,6 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
         
         {children}
 
-        <OptionsMenu></OptionsMenu>
 
       </body>
 
