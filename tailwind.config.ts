@@ -10,7 +10,7 @@ export default {
 
     'outline-green-400',
     'outline-red-400',
-    'h-96',
+    'h-5/6',
 
   ],
   theme: {
