@@ -91,7 +91,7 @@ export async function createShortLink () {
 
     // Se envia datos a la API
 
-    const res = await fetch("/api/shortlink", {
+    const res = await fetch("/api/short-link", {
 
       method:"POST",
       body: JSON.stringify({guessID, originalLink}),

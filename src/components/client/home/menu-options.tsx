@@ -53,8 +53,6 @@ export function OptionsMenu () {
         <ul className="max-h-[324px] p-4 flex flex-col gap-3 overflow-y-auto">
 
           <LinkCard short="sm-link.vercel.app/sdfgg" original="hhtpd://sdghsghdfd.com" />
-          <LinkCard short="dsjfhkd" original="sjdjg" />
-          <LinkCard short="dsjfhkd" original="sjdjg" />
 
         </ul>
 
