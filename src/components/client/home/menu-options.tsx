@@ -1,21 +1,28 @@
 "use client"
 
-import { closeOptionsMenu } from "@/logic/functions"
+import { closeOptionsMenu, getGuessShortLink } from "@/logic/functions"
 import { IconExternalLink, IconCopy } from "@tabler/icons-react"
+import Link from "next/link"
 import { useState } from "react"
+
+interface GuessResponse{
+  id:string
+  short: string,
+  original: string
+}
+type GuessLinks = GuessResponse[]
 
 export function OptionsMenu () {
 
-  const [originalLink, setOriginalLink] = useState("")
-  const [shortLink, setShortLink] = useState("")
+  const [data, setData] = useState<GuessLinks | null>(null)
 
-  const LinkCard = ({original, short}: {original: String, short: String}) => {
+  const LinkCard = ({original, short}: {original: string, short: string}) => {
 
     return(
 
       <article className="p-4 rounded-md border border-gray-800">
 
-        <p className="font-semibold">{short}</p>
+        <p className="font-semibold">sm-link.vercel.app/{short}</p>
 
         <p className="max-w-[295px] text-sm text-gray-400 pt-1 pb-3 break-words">
           {original}
@@ -41,20 +48,48 @@ export function OptionsMenu () {
 
   }
 
+  const handleFunction = async () => {
+
+    const resData: GuessLinks = await getGuessShortLink()
+
+    if(resData){
+
+      setData(resData)
+
+    }
+
+  }
+
   return(
 
     <section className="w-full h-full absolute hidden bottom-0 left-0 bg-modal z-10 backdrop-blur-sm" id="bgMenu" onClick={closeOptionsMenu}>
 
       <nav className="w-full h-0 bg-neutral-900 rounded-t-lg border-t border-gray-800 self-end 
-      duration-200" id="menu">
+      duration-200" id="menu" onClick={(e) => { e.stopPropagation() }}>
 
-        <h1 className="px-5 py-4 text-xl text-lime-200 font-semibold border-b border-gray-800">Your Recent Sm Links</h1>
+        <li className="px-5 py-4 text-xl text-lime-200 font-semibold border-b border-gray-800"
+        onClick={handleFunction}>Your Recent Sm Links</li>
 
-        <ul className="max-h-[324px] p-4 flex flex-col gap-3 overflow-y-auto">
+        <ul className="h-0 max-h-[320px] px-4 flex flex-col gap-3 overflow-y-auto duration-200">
 
-          <LinkCard short="sm-link.vercel.app/sdfgg" original="hhtpd://sdghsghdfd.com" />
+          {
+
+            data != null ?
+
+            data.map((element) => (
+
+              <LinkCard key={element.id} short={element.short} original={element.original} />
+
+            ))
+            :
+            <h1>No hay</h1>
+
+          }
 
         </ul>
+
+        <li className="px-5 py-4 text-xl text-lime-200 font-semibold border-y border-gray-800"
+        >Recurses</li>
 
       </nav>
 

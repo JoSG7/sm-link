@@ -14,10 +14,6 @@ export function showOptionsMenu () {
   background?.classList.remove("hidden")
   background?.classList.add("grid")
 
-  menu?.addEventListener("click", (event: Event) => {
-    event.stopPropagation()
-  })
-
   setTimeout(() => {
     menu?.classList.remove("h-0")
     menu?.classList.add("h-5/6")
@@ -45,9 +41,31 @@ export function closeOptionsMenu () {
 
 export async function getGuessShortLink () {
 
+  const option = document.querySelector("#menu ul")
+
+  option?.classList.toggle("h-0")
+  option?.classList.toggle("h-80")
+  option?.classList.toggle("py-4")
+
   const guessID = localStorage.getItem("guessID")
 
+  // If the links are hidden, use the api
 
+  if(option?.classList.contains("h-80")){
+
+    const res = await fetch("api/get-guess-short-link", {
+
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({guessID})
+
+    })
+
+    const data = await res.json()
+
+    return data
+
+  }
 
 }
 
