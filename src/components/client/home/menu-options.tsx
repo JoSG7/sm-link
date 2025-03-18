@@ -62,6 +62,7 @@ export function OptionsMenu () {
     if(resData && resData.length == 0){
 
       setData("null")
+      setLoading(false)
 
     }
 
