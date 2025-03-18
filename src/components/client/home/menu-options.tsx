@@ -14,7 +14,8 @@ type GuessLinks = GuessResponse[]
 
 export function OptionsMenu () {
 
-  const [data, setData] = useState<GuessLinks | null>(null)
+  const [data, setData] = useState<GuessLinks | string>("")
+  const [loading, setLoading] = useState(true)
 
   const LinkCard = ({original, short}: {original: string, short: string}) => {
 
@@ -30,9 +31,9 @@ export function OptionsMenu () {
 
         <div className="flex gap-2">
 
-          <button className="flex justify-center items-center rounded-md py-2 px-3 bg-sky-600">
+          <Link href={original} target="_blank" className="flex justify-center items-center rounded-md py-2 px-3 bg-sky-600">
             <IconExternalLink size={21}></IconExternalLink>
-          </button>
+          </Link>
 
           <button className="flex justify-center text-sm items-center rounded-md py-1 px-3 bg-lime-600 opacity-75">Rename</button>
 
@@ -52,9 +53,15 @@ export function OptionsMenu () {
 
     const resData: GuessLinks = await getGuessShortLink()
 
-    if(resData){
+    if(resData && resData.length > 0){
 
       setData(resData)
+      setLoading(false)
+
+    }
+    if(resData && resData.length == 0){
+
+      setData("null")
 
     }
 
@@ -73,17 +80,21 @@ export function OptionsMenu () {
         <ul className="h-0 max-h-[320px] px-4 flex flex-col gap-3 overflow-y-auto duration-200">
 
           {
-
-            data != null ?
+            typeof data != "string" &&
 
             data.map((element) => (
-
               <LinkCard key={element.id} short={element.short} original={element.original} />
-
             ))
-            :
-            <h1>No hay</h1>
+          }
 
+          {
+            loading == true &&
+            <h1>Cargando</h1>
+          }
+
+          {
+            data == "null" &&
+            <h1>No hay</h1>
           }
 
         </ul>
