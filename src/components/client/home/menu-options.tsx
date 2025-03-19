@@ -1,5 +1,6 @@
 "use client"
 
+import { LinkSkeleton } from "@/components/utils/skeleton"
 import { closeOptionsMenu, getGuessShortLink } from "@/logic/functions"
 import { IconExternalLink, IconCopy } from "@tabler/icons-react"
 import Link from "next/link"
@@ -90,7 +91,10 @@ export function OptionsMenu () {
 
           {
             loading == true &&
-            <h1>Cargando</h1>
+            <div className="flex flex-col gap-4">
+              <LinkSkeleton />
+              <LinkSkeleton />
+            </div>
           }
 
           {

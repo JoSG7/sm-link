@@ -1,9 +1,5 @@
 import isURL from "validator/lib/isURL"
 
-
-
-
-
 // Show and Hide Menu Navigation
 
 export function showOptionsMenu () {
@@ -36,7 +32,6 @@ export function closeOptionsMenu () {
 
 }
 
-
 // Get Links from a guess
 
 export async function getGuessShortLink () {
@@ -68,6 +63,8 @@ export async function getGuessShortLink () {
   }
 
 }
+
+
 
 
 
