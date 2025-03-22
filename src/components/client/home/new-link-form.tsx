@@ -3,6 +3,7 @@
 import { IconScissors, IconWand } from "@tabler/icons-react"
 import { createShortLink } from "@/logic/functions"
 import { useState, type FormEvent } from "react"
+import { toast } from "sonner"
 
 export function LinkForm () {
 
@@ -16,10 +17,11 @@ export function LinkForm () {
     
     if(typeof(response) == "object"){
     
-      console.log(response)
+      
     
     }else{
-    
+      
+      toast.success("Se genero correctamente")
       setShortURL(response)
     
     }

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
+import { Toaster } from "sonner";
 import "./globals.css";
-import { OptionsMenu } from "@/components/client/home/menu-options";
 
 export const metadata: Metadata = {
   title: "Sm Link",
@@ -13,6 +13,8 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
     <html lang="en">
 
       <body className={`antialiased`}>
+
+        <Toaster richColors />
         
         {children}
 

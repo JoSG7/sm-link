@@ -1,3 +1,4 @@
+import { toast } from "sonner"
 import isURL from "validator/lib/isURL"
 
 // Show and Hide Menu Navigation
@@ -68,6 +69,7 @@ export async function getGuessShortLink () {
 
 
 
+
 // VALIDACION
 
 const verifieURL = (url: string | undefined) => {
@@ -76,14 +78,16 @@ const verifieURL = (url: string | undefined) => {
 
   if(isURL(`${url}`)){
 
-    inputLink?.classList.add("outline-green-400")
-    inputLink?.classList.remove("outline-red-400")
+    inputLink?.classList.remove("border-zinc-900")
+    inputLink?.classList.add("border-green-400")
+    inputLink?.classList.remove("border-red-400")
     return true
 
   }else{
 
-    inputLink?.classList.add("outline-red-400")
-    inputLink?.classList.remove("outline-green-400")
+    inputLink?.classList.remove("border-zinc-900")
+    inputLink?.classList.add("border-red-400")
+    inputLink?.classList.remove("border-green-400")
     return false
 
   }
@@ -98,8 +102,9 @@ export async function createShortLink () {
 
   if(!verifieURL(originalLink)){
 
+    toast.error("Ingrese un link válido")
     return { error: "Ingrese link válido" }
-
+    
   }else{
 
     // si no existe guessid en localstorage, se crea y se almacena
@@ -107,10 +112,8 @@ export async function createShortLink () {
     let guessID = localStorage.getItem("guessID")
 
     if(!guessID){
-
       guessID = crypto.randomUUID()
       localStorage.setItem("guessID", guessID)
-
     }
 
     // Se envia datos a la API

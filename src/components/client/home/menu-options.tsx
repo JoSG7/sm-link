@@ -5,6 +5,7 @@ import { closeOptionsMenu, getGuessShortLink } from "@/logic/functions"
 import { IconExternalLink, IconCopy } from "@tabler/icons-react"
 import Link from "next/link"
 import { useState } from "react"
+import { toast } from "sonner"
 
 interface GuessResponse{
   id:string
@@ -26,7 +27,7 @@ export function OptionsMenu () {
 
         <p className="font-semibold">sm-link.vercel.app/{short}</p>
 
-        <p className="max-w-[295px] text-sm text-gray-400 pt-1 pb-3 break-words">
+        <p className="w-full text-sm text-gray-400 pt-1 pb-3">
           {original}
         </p>
 
@@ -38,7 +39,13 @@ export function OptionsMenu () {
 
           <button className="flex justify-center text-sm items-center rounded-md py-1 px-3 bg-lime-600 opacity-75">Rename</button>
 
-          <button className="flex justify-center items-center rounded-md py-2 px-3 bg-lime-600">
+          <button className="flex justify-center items-center rounded-md py-2 px-3 bg-lime-600"
+          onClick={() => {
+            navigator.clipboard.writeText(`sm-link.vercel.app/${short}`).then(() => {
+              toast.success("Copiado Correctamente")
+            })
+          }}
+          >
             <IconCopy size={21}></IconCopy>
           </button>
 

@@ -8,8 +8,8 @@ export default {
   ],
   safelist: [
 
-    'outline-green-400',
-    'outline-red-400',
+    'border-green-400',
+    'border-red-400',
     'h-5/6',
 
   ],
