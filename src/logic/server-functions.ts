@@ -1,48 +1,10 @@
 import { toast } from "sonner"
 import isURL from "validator/lib/isURL"
+import { toggleOption } from "./client-functions"
 
-// Show and Hide Menu Navigation
+export async function getGuessLinks () {
 
-export function showOptionsMenu () {
-
-  const background = document.querySelector("#bgMenu")
-  const menu = document.querySelector("#menu")
-
-  background?.classList.remove("hidden")
-  background?.classList.add("grid")
-
-  setTimeout(() => {
-    menu?.classList.remove("h-0")
-    menu?.classList.add("h-5/6")
-  }, 50)
-
-}
-
-export function closeOptionsMenu () {
-
-  const background = document.querySelector("#bgMenu")
-  const menu = document.querySelector("#menu")
-
-  menu?.classList.remove("h-5/6")
-  menu?.classList.add("h-0")
-
-  setTimeout(() => {
-    background?.classList.remove("grid")
-    background?.classList.add("hidden")
-  }, 200)
-
-}
-
-// Get Links from a guess
-
-export async function getGuessShortLink () {
-
-  const option = document.querySelector("#menu ul")
-
-  option?.classList.toggle("h-0")
-  option?.classList.toggle("h-80")
-  option?.classList.toggle("py-4")
-
+  const option = toggleOption()
   const guessID = localStorage.getItem("guessID")
 
   // If the links are hidden, use the api
@@ -64,11 +26,6 @@ export async function getGuessShortLink () {
   }
 
 }
-
-
-
-
-
 
 // VALIDACION
 
@@ -135,3 +92,4 @@ export async function createShortLink () {
   }
 
 }
+

@@ -5,16 +5,16 @@ import Image from "next/image"
 
 export function AuthButtonClient ({ session }: { session: User | null }) {
 
-  const supabase = createClientComponentClient()
+  const clientAuthSupabase = createClientComponentClient()
 
   const handleSignIn = async () => {
 
-    await supabase.auth.signInWithOAuth({
+    await clientAuthSupabase.auth.signInWithOAuth({
 
       provider: 'github',
       options: {
 
-        redirectTo: "http://localhost:3000/auth/callback"
+        redirectTo: "https://sm-link.vercel.app/auth/callback"
 
       }
 

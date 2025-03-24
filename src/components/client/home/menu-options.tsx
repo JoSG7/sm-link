@@ -1,8 +1,9 @@
 "use client"
 
 import { LinkSkeleton } from "@/components/utils/skeleton"
-import { closeOptionsMenu, getGuessShortLink } from "@/logic/functions"
-import { IconExternalLink, IconCopy } from "@tabler/icons-react"
+import { closeMainMenu } from "@/logic/client-functions"
+import { getGuessLinks } from "@/logic/server-functions"
+import { IconExternalLink, IconCopy, IconBrandGithubFilled, IconBrandGoogleFilled } from "@tabler/icons-react"
 import Link from "next/link"
 import { useState } from "react"
 import { toast } from "sonner"
@@ -59,7 +60,7 @@ export function OptionsMenu () {
 
   const handleFunction = async () => {
 
-    const resData: GuessLinks = await getGuessShortLink()
+    const resData: GuessLinks = await getGuessLinks()
 
     if(resData && resData.length > 0){
 
@@ -79,38 +80,64 @@ export function OptionsMenu () {
   return(
 
     <section className="w-full h-full absolute hidden bottom-0 left-0 bg-modal z-10 backdrop-blur-sm" id="bgMenu" 
-    onClick={closeOptionsMenu}>
+    onClick={closeMainMenu}>
 
-      <nav className="w-full h-0 bg-neutral-900 border-gray-800 self-end
+      <nav className="w-full h-0 bg-neutral-900 border-gray-800 self-end flex flex-col justify-between
       duration-200" id="menu" onClick={(e) => { e.stopPropagation() }}>
 
-        <li className="px-5 py-4 text-xl text-lime-200 font-semibold border-b border-gray-800"
-        onClick={handleFunction}>Your Recent Sm Links</li>
+        <ul className="option-list">
 
-        <ul className="h-0 max-h-[320px] px-4 flex flex-col gap-3 overflow-y-auto duration-200">
+          <li className="px-5 py-4 text-xl text-lime-200 font-semibold border-b border-gray-800"
+          onClick={handleFunction}>Your Recent Sm Links</li>
 
-          {
-            typeof data != "string" &&
+          <div className="h-0 max-h-[320px] px-4 flex flex-col gap-3 overflow-y-auto duration-200">
 
-            data.map((element) => (
-              <LinkCard key={element.id} short={element.short} original={element.original} />
-            ))
-          }
+            {
+              typeof data != "string" &&
 
-          {
-            loading == true &&
-            <div className="flex flex-col gap-4">
-              <LinkSkeleton />
-              <LinkSkeleton />
-            </div>
-          }
+              data.map((element) => (
+                <LinkCard key={element.id} short={element.short} original={element.original} />
+              ))
+            }
 
-          {
-            data == "null" &&
-            <h1>No hay</h1>
-          }
+            {
+              loading == true &&
+              <div className="flex flex-col gap-4">
+                <LinkSkeleton />
+                <LinkSkeleton />
+              </div>
+            }
+
+            {
+              data == "null" &&
+              <h1>No hay</h1>
+            }
+
+          </div>
 
         </ul>
+
+        <div className="p-4 border-t border-gray-800">
+
+          <h1 className="text-xl font-semibold pb-3 text-center">Inicia sesion con tu cuenta de</h1>
+
+          <div className="grid grid-cols-2 gap-4">
+
+            <button type="button" className="py-2 px-4 flex gap-2 items-center rounded-lg bg-[#1a1d1f] 
+            border border-neutral-800" onClick={() => { alert("coming soon") }}>
+              <IconBrandGithubFilled size={20}></IconBrandGithubFilled>
+              Git Hub
+            </button>
+
+            <button type="button" className="py-2 px-4 flex gap-2 items-center rounded-lg bg-red-700 
+            border border-red-800" onClick={() => { alert("coming soon") }}>
+              <IconBrandGoogleFilled size={20}></IconBrandGoogleFilled>
+              Gmail
+            </button>
+
+          </div>
+
+        </div>
 
       </nav>
 

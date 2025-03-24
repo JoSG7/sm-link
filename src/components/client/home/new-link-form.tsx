@@ -1,7 +1,7 @@
 "use client"
 
 import { IconScissors, IconWand } from "@tabler/icons-react"
-import { createShortLink } from "@/logic/functions"
+import { createShortLink } from "@/logic/server-functions"
 import { useState, type FormEvent } from "react"
 import { toast } from "sonner"
 

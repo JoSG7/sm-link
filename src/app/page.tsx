@@ -1,5 +1,5 @@
 import { LoginDetails } from "@/components/client/home/login-details";
-import { NavBar } from "@/components/client/home/menu-navbar";
+import { NavBar } from "@/components/client/home/header-navbar";
 import { OptionsMenu } from "@/components/client/home/menu-options";
 import { LinkForm } from "@/components/client/home/new-link-form";
 

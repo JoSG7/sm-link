@@ -1,6 +1,6 @@
 "use client"
 
-import { showOptionsMenu } from "@/logic/functions";
+import { showMainMenu } from "@/logic/client-functions";
 import { IconMenu2 } from "@tabler/icons-react";
 import { IconUnlink } from "@tabler/icons-react";
 
@@ -17,7 +17,7 @@ export function NavBar () {
 
       </div>
 
-      <button type="button" className="flex justify-center items-center" onClick={showOptionsMenu}>
+      <button type="button" className="flex justify-center items-center" onClick={showMainMenu}>
 
         <IconMenu2 size={30} ></IconMenu2>
 
