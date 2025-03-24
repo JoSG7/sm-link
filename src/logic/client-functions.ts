@@ -1,5 +1,6 @@
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
+import { clientAuthSupabase } from "@/lib/supabase-client"
 import type { Provider } from "@supabase/supabase-js"
+import { redirect } from "next/navigation"
 
 // Show and hide mainMenu
 
@@ -47,11 +48,9 @@ export function toggleOption () {
 
 }
 
-// Auth on client Component
+// Auth and SignOut on client Component
 
 export async function signInWithOAuth (provider : Provider) {
-
-  const clientAuthSupabase = createClientComponentClient()
 
   await clientAuthSupabase.auth.signInWithOAuth({
 
@@ -61,5 +60,13 @@ export async function signInWithOAuth (provider : Provider) {
     }
 
   })
+
+}
+
+export async function signOut () {
+
+  await clientAuthSupabase.auth.signOut()
+
+  redirect("/")
 
 }

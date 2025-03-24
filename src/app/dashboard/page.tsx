@@ -1,12 +1,21 @@
+import { SignOutButton } from "@/components/client/dashboard/sign-out-button"
+import { serverAuthSupabase } from "@/lib/supabase-server"
 
+async function Home () {
 
+  const { data: { user } } = await serverAuthSupabase.auth.getUser()
 
-
-function Home () {
+  console.log(user)
 
   return(
 
-    <h1>HOme</h1>
+    <main>
+
+      <h1>Welcome {user?.user_metadata?.user_name}</h1>
+
+      <SignOutButton />
+
+    </main>
 
   )
 

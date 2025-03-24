@@ -1,3 +1,4 @@
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { createClient } from "@supabase/supabase-js"
 
 const supabaseURL = process.env.NEXT_PUBLIC_SUPABASE_URL
@@ -9,3 +10,7 @@ if (!supabaseURL || !supabaseKEY) {
 }
 
 export const supabase = createClient(supabaseURL, supabaseKEY)
+
+export const clientAuthSupabase = createClientComponentClient()
+
+

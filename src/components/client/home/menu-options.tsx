@@ -3,11 +3,11 @@
 import { LinkSkeleton } from "@/components/utils/skeleton"
 import { closeMainMenu } from "@/logic/client-functions"
 import { getGuessLinks } from "@/logic/server-functions"
-import { IconExternalLink, IconCopy, IconBrandGoogleFilled } from "@tabler/icons-react"
+import { IconExternalLink, IconCopy } from "@tabler/icons-react"
 import Link from "next/link"
 import { useState } from "react"
 import { toast } from "sonner"
-import { GitHubAuthButton } from "./auth-button-client"
+import { GitHubAuthButton, GoogleAuthButton } from "./auth-button-client"
 
 interface GuessResponse{
   id:string
@@ -126,11 +126,7 @@ export function OptionsMenu () {
 
             <GitHubAuthButton />
 
-            <button type="button" className="py-2 px-4 flex gap-2 items-center rounded-lg bg-red-700 
-            border border-red-800" onClick={() => { alert("coming soon") }}>
-              <IconBrandGoogleFilled size={20}></IconBrandGoogleFilled>
-              Gmail
-            </button>
+            <GoogleAuthButton />
 
           </div>
 

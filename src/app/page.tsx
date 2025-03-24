@@ -2,6 +2,8 @@ import { LoginDetails } from "@/components/client/home/login-details";
 import { NavBar } from "@/components/client/home/header-navbar";
 import { OptionsMenu } from "@/components/client/home/menu-options";
 import { LinkForm } from "@/components/client/home/new-link-form";
+import { serverAuthSupabase } from "@/lib/supabase-server";
+import { redirect } from "next/navigation";
 
 const HomeTitle = () => {
 
@@ -59,30 +61,36 @@ const LoginTitle = () => {
 
 }
 
-export default function Home() {
+export default async function Home() {
 
-  return (
+  const { data: { user } } = await serverAuthSupabase.auth.getUser()
 
-    <main className="w-full h-screen flex flex-col bg-[#09090b] text-white relative">
+  if(user){
 
-      <OptionsMenu></OptionsMenu>
+    redirect("/dashboard")
 
-      <NavBar></NavBar>
+  }else{
 
-      <div className="overflow-y-auto">
+    return (
 
-        <HomeTitle></HomeTitle>
-
-        <LinkForm></LinkForm>
-
-        <LoginTitle></LoginTitle>
-
-        <LoginDetails></LoginDetails>
-
-      </div>
-      
-    </main>
+      <main className="w-full h-screen flex flex-col bg-[#09090b] text-white relative">
     
-  )
+        <OptionsMenu />
+        <NavBar />
+    
+        <div className="overflow-y-auto">
+    
+          <HomeTitle />
+          <LinkForm />
+          <LoginTitle />
+          <LoginDetails />
+  
+        </div>
+          
+      </main>
+      
+    )
 
+  }
+  
 }
