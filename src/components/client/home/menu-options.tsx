@@ -27,7 +27,7 @@ export function OptionsMenu () {
 
         <p className="font-semibold">sm-link.vercel.app/{short}</p>
 
-        <p className="w-full text-sm text-gray-400 pt-1 pb-3 break-words">
+        <p className="w-full max-w-[295px] text-sm text-gray-400 pt-1 pb-3 break-words">
           {original}
         </p>
 
