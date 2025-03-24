@@ -24,7 +24,7 @@ export function AuthButtonClient ({ session }: { session: User | null }) {
 
   const handleSignOut = async () => {
 
-    await supabase.auth.signOut()
+    await clientAuthSupabase.auth.signOut()
 
   }
 
