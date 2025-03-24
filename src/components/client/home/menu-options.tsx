@@ -111,9 +111,6 @@ export function OptionsMenu () {
 
         </ul>
 
-        <li className="px-5 py-4 text-xl text-lime-200 font-semibold border-y border-gray-800"
-        >Recurses</li>
-
       </nav>
 
     </section>

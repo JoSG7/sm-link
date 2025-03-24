@@ -42,7 +42,7 @@ export function LoginDetails () {
         Inicia Sesion para poder crear muchos mas links (limite de 10 links sin inicio de sesion)
       </DetailCard>
 
-      <div className="grid grid-cols-2 gap-4">
+      {/* <div className="grid grid-cols-2 gap-4">
 
         <button type="button" className="py-2 px-4 flex gap-2 items-center rounded-lg bg-[#1a1d1f] 
         border border-neutral-800" onClick={() => { alert("coming soon") }}>
@@ -59,7 +59,7 @@ export function LoginDetails () {
 
         </button>
 
-      </div>
+      </div> */}
         
     </section>
 
