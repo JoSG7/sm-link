@@ -64,13 +64,13 @@ export function OptionsMenu () {
     if(resData && resData.length > 0){
 
       setData(resData)
-      // setLoading(false)
+      setLoading(false)
 
     }
     if(resData && resData.length == 0){
 
       setData("null")
-      // setLoading(false)
+      setLoading(false)
 
     }
 
