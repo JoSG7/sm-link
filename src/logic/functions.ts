@@ -49,7 +49,7 @@ export async function getGuessShortLink () {
 
   if(option?.classList.contains("h-80")){
 
-    const res = await fetch("api/get-guess-short-link", {
+    const res = await fetch("api/get-guess-link", {
 
       method: "POST",
       headers: {"Content-Type": "application/json"},

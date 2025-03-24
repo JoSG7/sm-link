@@ -5,6 +5,10 @@ import { createShortLink } from "@/logic/functions"
 import { useState, type FormEvent } from "react"
 import { toast } from "sonner"
 
+interface apiError {
+  error: string
+}
+
 export function LinkForm () {
 
   const [shortURL, setShortURL] = useState("")
@@ -13,11 +17,11 @@ export function LinkForm () {
     
     e.preventDefault()
     
-    const response: string | object = await createShortLink()
+    const response: string | apiError = await createShortLink()
     
     if(typeof(response) == "object"){
     
-      
+      toast.error(response.error)
     
     }else{
       
