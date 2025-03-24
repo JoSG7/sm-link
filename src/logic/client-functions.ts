@@ -1,3 +1,5 @@
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
+import type { Provider } from "@supabase/supabase-js"
 
 // Show and hide mainMenu
 
@@ -45,8 +47,19 @@ export function toggleOption () {
 
 }
 
-
-
-
 // Auth on client Component
 
+export async function signInWithOAuth (provider : Provider) {
+
+  const clientAuthSupabase = createClientComponentClient()
+
+  await clientAuthSupabase.auth.signInWithOAuth({
+
+    provider,
+    options: {
+      redirectTo: "https://sm-link.vercel.app/auth/callback"
+    }
+
+  })
+
+}
