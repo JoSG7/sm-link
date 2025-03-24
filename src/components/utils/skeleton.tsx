@@ -10,7 +10,7 @@ export function LinkSkeleton () {
 
       <Skeleton variant="rounded" sx={{bgcolor: 'gray'}} height={50} />
 
-      <div className="flex gap-4">
+      <div className="flex justify-between">
 
         <Skeleton variant="text" sx={{bgcolor: 'gray'}} width={100} height={30}/>
         <Skeleton variant="text" sx={{bgcolor: 'gray'}} width={100} height={30}/>

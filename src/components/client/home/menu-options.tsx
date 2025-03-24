@@ -64,13 +64,13 @@ export function OptionsMenu () {
     if(resData && resData.length > 0){
 
       setData(resData)
-      setLoading(false)
+      // setLoading(false)
 
     }
     if(resData && resData.length == 0){
 
       setData("null")
-      setLoading(false)
+      // setLoading(false)
 
     }
 
@@ -78,9 +78,10 @@ export function OptionsMenu () {
 
   return(
 
-    <section className="w-full h-full absolute hidden bottom-0 left-0 bg-modal z-10 backdrop-blur-sm" id="bgMenu" onClick={closeOptionsMenu}>
+    <section className="w-full h-full absolute hidden bottom-0 left-0 bg-modal z-10 backdrop-blur-sm" id="bgMenu" 
+    onClick={closeOptionsMenu}>
 
-      <nav className="w-full h-0 bg-neutral-900 rounded-t-lg border-t border-gray-800 self-end 
+      <nav className="w-full h-0 bg-neutral-900 border-gray-800 self-end
       duration-200" id="menu" onClick={(e) => { e.stopPropagation() }}>
 
         <li className="px-5 py-4 text-xl text-lime-200 font-semibold border-b border-gray-800"
