@@ -1,24 +1,32 @@
 import { SignOutButton } from "@/components/client/dashboard/sign-out-button"
 import { serverAuthSupabase } from "@/lib/supabase-server"
+import { redirect } from "next/navigation"
 
-async function Home () {
+async function Dashboard () {
 
   const { data: { user } } = await serverAuthSupabase.auth.getUser()
 
-  console.log(user)
+  if(!user){
 
-  return(
+    redirect("/")
 
-    <main>
+  }else{
 
-      <h1>Welcome {user?.user_metadata?.user_name}</h1>
+    return(
+  
+      <main>
+  
+        <h1>Welcome {user?.user_metadata?.user_name}</h1>
+  
+        <SignOutButton />
+        
+  
+      </main>
+  
+    )
 
-      <SignOutButton />
-
-    </main>
-
-  )
+  }
 
 }
 
-export default Home
+export default Dashboard
