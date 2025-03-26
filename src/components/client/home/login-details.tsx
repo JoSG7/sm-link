@@ -1,7 +1,6 @@
 "use client"
 
 import React from "react"
-import { IconBrandGithubFilled, IconBrandGoogleFilled } from "@tabler/icons-react"
 
 const DetailCard = ({title, children}: {title: string, children: React.ReactNode}) => {
 
@@ -28,7 +27,7 @@ export function LoginDetails () {
 
   return(
 
-    <section className="p-4 flex flex-col gap-4">
+    <section className="px-4 pt-4 pb-10 flex flex-col gap-4">
 
       <DetailCard title="Personaliza tus links">
         Cambia tus links cortos para darle un enfoque más único y personalizalos a tu gusto
@@ -41,25 +40,6 @@ export function LoginDetails () {
       <DetailCard title="Crea hasta 50 links cortos">
         Inicia Sesion para poder crear muchos mas links (limite de 10 links sin inicio de sesion)
       </DetailCard>
-
-      {/* <div className="grid grid-cols-2 gap-4">
-
-        <button type="button" className="py-2 px-4 flex gap-2 items-center rounded-lg bg-[#1a1d1f] 
-        border border-neutral-800" onClick={() => { alert("coming soon") }}>
-
-          <IconBrandGithubFilled size={20}></IconBrandGithubFilled>
-          Git Hub
-
-        </button>
-
-        <button type="button" className="py-2 px-4 flex gap-2 items-center rounded-lg bg-red-700 border border-red-800" onClick={() => { alert("coming soon") }}>
-
-          <IconBrandGoogleFilled size={20}></IconBrandGoogleFilled>
-          Gmail
-
-        </button>
-
-      </div> */}
         
     </section>
 

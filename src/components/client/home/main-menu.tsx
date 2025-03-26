@@ -3,7 +3,7 @@
 import { LinkSkeleton } from "@/components/utils/skeleton"
 import { closeMainMenu } from "@/logic/client-functions"
 import { getGuessLinks } from "@/logic/server-functions"
-import { IconExternalLink, IconCopy } from "@tabler/icons-react"
+import { IconExternalLink, IconCopy, IconClockCheck } from "@tabler/icons-react"
 import Link from "next/link"
 import { useState } from "react"
 import { toast } from "sonner"
@@ -83,15 +83,18 @@ export function OptionsMenu () {
     <section className="w-full h-full absolute hidden bottom-0 left-0 bg-modal z-10 backdrop-blur-sm" id="bgMenu" 
     onClick={closeMainMenu}>
 
-      <nav className="w-full h-0 bg-neutral-900 border-gray-800 self-end flex flex-col justify-between
+      <nav className="w-full h-0 bg-[#0e0e0e] border-gray-800 self-end flex flex-col justify-between
       duration-200" id="menu" onClick={(e) => { e.stopPropagation() }}>
 
         <ul className="option-list">
 
-          <li className="px-5 py-4 text-xl text-lime-200 font-semibold border-b border-gray-800"
-          onClick={handleFunction}>Your Recent Sm Links</li>
+          <li className="px-5 py-4 text-xl font-semibold border-b border-gray-800 flex gap-2 items-center"
+          onClick={handleFunction}>
+            <IconClockCheck size={24} />
+            Your Recent Sm Links
+          </li>
 
-          <div className="h-0 max-h-[320px] px-4 flex flex-col gap-3 overflow-y-auto duration-200">
+          <div className="h-0 max-h-[320px] px-4 flex flex-col gap-4 overflow-y-auto duration-200">
 
             {
               typeof data != "string" &&
@@ -120,7 +123,7 @@ export function OptionsMenu () {
 
         <div className="p-4 border-t border-gray-800">
 
-          <h1 className="text-xl font-semibold pb-3 text-center">Inicia sesion con tu cuenta de</h1>
+          <h1 className="text-xl font-semibold pb-3">Inicia sesion con tu cuenta</h1>
 
           <div className="grid grid-cols-2 gap-4">
 
@@ -139,3 +142,5 @@ export function OptionsMenu () {
   )
 
 }
+
+// #e3c45e
