@@ -74,12 +74,12 @@ export default async function Home() {
 
     return (
 
-      <main className="w-full h-screen flex flex-col bg-[#0e0e0e] text-white relative">
+      <main className="w-full h-screen flex flex-col bg-neutral-900 text-white relative overflow-y-auto">
     
         <OptionsMenu />
         <NavBar />
     
-        <div className="overflow-y-auto">
+        <div>
 
           <div className="bg-[#09090b] rounded-b-[50%_20px]">
     
@@ -88,7 +88,7 @@ export default async function Home() {
           
           </div>
 
-          <div className="">
+          <div>
             <LoginTitle />
             <LoginDetails />
           </div>

@@ -8,7 +8,8 @@ export function NavBar () {
 
   return (
 
-    <header className="w-full flex py-4 px-5 border-b border-gray-800 justify-between h-20 backdrop-blur-sm">
+    <header className="w-full flex py-4 px-5 border-b border-gray-800 sticky top-0 left-0 right-0 justify-between backdrop-blur-sm z-20
+    bg-[rgba(14,14,14,0.9)]">
 
       <div className="flex items-center gap-2">
 

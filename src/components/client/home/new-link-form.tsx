@@ -62,7 +62,7 @@ export function LinkForm () {
 
         </div>
 
-        <button className="w-full text-center py-2 rounded-lg bg-gradient-to-r from-amber-500 to-emerald-500">
+        <button className="w-full text-center py-2 rounded-lg bg-gradient-to-r from-green-600 to-[#055232]">
           Shorten Link
         </button>
 
@@ -73,3 +73,7 @@ export function LinkForm () {
   )
 
 }
+
+// #0a7246
+
+// #006239
