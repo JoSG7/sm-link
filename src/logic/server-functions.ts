@@ -59,7 +59,6 @@ export async function createShortLink () {
 
   if(!verifieURL(originalLink)){
 
-    toast.error("Ingrese un link válido")
     return { error: "Ingrese link válido" }
     
   }else{

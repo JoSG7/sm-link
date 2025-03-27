@@ -38,7 +38,7 @@ const LoginTitle = () => {
 
   return(
 
-    <section className="py-10 relative z-0">
+    <section className="py-10 z-0">
 
       {/* <div className="absolute inset-0 bg-gradient-to-b from-[#09090b] via-emerald-800/30 to-[#09090b]"></div> */}
 
@@ -74,17 +74,25 @@ export default async function Home() {
 
     return (
 
-      <main className="w-full h-screen flex flex-col bg-[#09090b] text-white relative">
+      <main className="w-full h-screen flex flex-col bg-[#0e0e0e] text-white relative">
     
         <OptionsMenu />
         <NavBar />
     
         <div className="overflow-y-auto">
+
+          <div className="bg-[#09090b] rounded-b-[50%_20px]">
     
-          <HomeTitle />
-          <LinkForm />
-          <LoginTitle />
-          <LoginDetails />
+            <HomeTitle />
+            <LinkForm />
+          
+          </div>
+
+          <div className="">
+            <LoginTitle />
+            <LoginDetails />
+          </div>
+
           <Footer />
   
         </div>

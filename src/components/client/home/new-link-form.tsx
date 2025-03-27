@@ -36,7 +36,7 @@ export function LinkForm () {
 
   return(
 
-    <section className="p-4">
+    <section className="px-4 pt-4 pb-14">
 
       <form onSubmit={handleSubmit} className="rounded-lg border border-neutral-900 px-3 py-4 bg-neutral-950">
 
