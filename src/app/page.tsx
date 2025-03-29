@@ -87,33 +87,16 @@ export default async function Home() {
 
           </div>
 
-        </div>
-
-        <div>
-
-          <LoginTitle />
-          <LoginDetails />
-
-        </div>
-    
-        {/* <NavBar />
-        <OptionsMenu />
-    
-        <div className="overflow-y-auto">
-
-          <div className="bg-[#09090b] rounded-b-[50%_20px]">
-    
-            <HomeTitle />
-            <LinkForm />
-          
-          </div>
-
           <div>
+
+            <LoginTitle />
+            <LoginDetails />
+
           </div>
 
           <Footer />
-  
-        </div> */}
+
+        </div>
           
       </main>
       
