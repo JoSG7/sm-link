@@ -10,7 +10,7 @@ const HomeTitle = () => {
 
   return (
 
-    <section className="pb-10 pt-[107px] relative z-0">
+    <section className="py-10 relative z-0">
 
       <div className="absolute inset-0 bg-gradient-to-b from-[#09090b] via-emerald-800/30 to-[#09090b]"></div>
 
@@ -78,16 +78,23 @@ export default async function Home() {
 
         <NavBar />
 
-        <div className="w-40 h-40 mb-2 bg-red-500"></div>
-    <div className="w-40 h-40 mb-2 bg-red-500"></div>
-    <div className="w-40 h-40 mb-2 bg-red-500"></div>
-    <div className="w-40 h-40 mb-2 bg-red-500"></div>
-    <div className="w-40 h-40 mb-2 bg-red-500"></div>
-    <div className="w-40 h-40 mb-2 bg-red-500"></div>
-    <div className="w-40 h-40 mb-2 bg-red-500"></div>
-    <div className="w-40 h-40 mb-2 bg-red-500"></div>
-    <div className="w-40 h-40 mb-2 bg-red-500"></div>
-    <div className="w-40 h-40 bg-red-500"></div>
+        <div>
+
+          <div className="bg-[#09090b] rounded-b-[50%_20px]">
+
+            <HomeTitle />
+            <LinkForm />
+
+          </div>
+
+        </div>
+
+        <div>
+
+          <LoginTitle />
+          <LoginDetails />
+
+        </div>
     
         {/* <NavBar />
         <OptionsMenu />
@@ -102,8 +109,6 @@ export default async function Home() {
           </div>
 
           <div>
-            <LoginTitle />
-            <LoginDetails />
           </div>
 
           <Footer />
