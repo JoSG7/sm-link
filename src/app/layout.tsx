@@ -16,7 +16,7 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
 
     <html lang="en">
 
-      <body className={`antialiased ${lexend.className}`}>
+      <body className={`antialiased ${lexend.className} overflow-y-auto min-h-screen relative`}>
 
         <Toaster richColors />
         

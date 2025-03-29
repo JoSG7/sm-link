@@ -74,9 +74,22 @@ export default async function Home() {
 
     return (
 
-      <main className="w-full h-screen flex flex-col bg-neutral-900 text-white relative">
-    
+      <main className="flex flex-col bg-neutral-900 text-white">
+
         <NavBar />
+
+        <div className="w-40 h-40 mb-2 bg-red-500"></div>
+    <div className="w-40 h-40 mb-2 bg-red-500"></div>
+    <div className="w-40 h-40 mb-2 bg-red-500"></div>
+    <div className="w-40 h-40 mb-2 bg-red-500"></div>
+    <div className="w-40 h-40 mb-2 bg-red-500"></div>
+    <div className="w-40 h-40 mb-2 bg-red-500"></div>
+    <div className="w-40 h-40 mb-2 bg-red-500"></div>
+    <div className="w-40 h-40 mb-2 bg-red-500"></div>
+    <div className="w-40 h-40 mb-2 bg-red-500"></div>
+    <div className="w-40 h-40 bg-red-500"></div>
+    
+        {/* <NavBar />
         <OptionsMenu />
     
         <div className="overflow-y-auto">
@@ -95,7 +108,7 @@ export default async function Home() {
 
           <Footer />
   
-        </div>
+        </div> */}
           
       </main>
       
