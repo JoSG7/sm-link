@@ -10,7 +10,7 @@ const HomeTitle = () => {
 
   return (
 
-    <section className="py-10 relative z-0">
+    <section className="pb-10 pt-[107px] relative z-0">
 
       <div className="absolute inset-0 bg-gradient-to-b from-[#09090b] via-emerald-800/30 to-[#09090b]"></div>
 
@@ -74,12 +74,12 @@ export default async function Home() {
 
     return (
 
-      <main className="w-full h-screen flex flex-col bg-neutral-900 text-white relative overflow-y-auto">
+      <main className="w-full h-screen flex flex-col bg-neutral-900 text-white relative">
     
-        <OptionsMenu />
         <NavBar />
+        <OptionsMenu />
     
-        <div>
+        <div className="overflow-y-auto">
 
           <div className="bg-[#09090b] rounded-b-[50%_20px]">
     
