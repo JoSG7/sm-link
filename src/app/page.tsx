@@ -1,6 +1,5 @@
 import { LoginDetails } from "@/components/client/home/login-details";
 import { NavBar } from "@/components/client/home/header-navbar";
-import { OptionsMenu } from "@/components/client/home/main-menu";
 import { LinkForm } from "@/components/client/home/new-link-form";
 import { serverAuthSupabase } from "@/lib/supabase-server";
 import { redirect } from "next/navigation";

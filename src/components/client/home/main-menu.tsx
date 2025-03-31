@@ -80,7 +80,7 @@ export function MainMenu () {
 
   return(
 
-    <section className="w-full h-screen fixed hidden top-0 bottom-0 bg-modal z-30 backdrop-blur-sm" id="bgMenu" 
+    <section className="w-full h-screen fixed hidden bottom-0 bg-modal z-30 backdrop-blur-sm" id="bgMenu" 
     onClick={closeMainMenu}>
 
       <nav className="w-full h-0 bg-[#0e0e0e] border-gray-800 self-end flex flex-col justify-between
