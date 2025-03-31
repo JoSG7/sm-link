@@ -16,7 +16,7 @@ interface GuessResponse{
 }
 type GuessLinks = GuessResponse[]
 
-export function OptionsMenu () {
+export function MainMenu () {
 
   const [data, setData] = useState<GuessLinks | string>("")
   const [loading, setLoading] = useState(true)
@@ -80,7 +80,7 @@ export function OptionsMenu () {
 
   return(
 
-    <section className="w-full h-screen absolute hidden bottom-0 left-0 bg-modal z-30 backdrop-blur-sm" id="bgMenu" 
+    <section className="w-full h-screen fixed hidden top-0 bottom-0 bg-modal z-30 backdrop-blur-sm" id="bgMenu" 
     onClick={closeMainMenu}>
 
       <nav className="w-full h-0 bg-[#0e0e0e] border-gray-800 self-end flex flex-col justify-between

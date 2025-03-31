@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Lexend } from "next/font/google"
 import { Toaster } from "sonner";
 import "./globals.css";
+import { MainMenu } from "@/components/client/home/main-menu";
 
 export const metadata: Metadata = {
   title: "Sm Link",
@@ -17,6 +18,8 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
     <html lang="en">
 
       <body className={`antialiased ${lexend.className} overflow-y-auto min-h-screen relative`}>
+
+        <MainMenu />
 
         <Toaster richColors />
         
