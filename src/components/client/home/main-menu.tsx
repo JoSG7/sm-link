@@ -5,7 +5,7 @@ import { NoFound } from "@/components/utils/no-found"
 import { closeMainMenu } from "@/logic/client-functions"
 import { getGuessLinks } from "@/logic/server-functions"
 import { GitHubAuthButton, GoogleAuthButton } from "./auth-button-client"
-import { IconExternalLink, IconCopy, IconClockCheck } from "@tabler/icons-react"
+import { IconExternalLink, IconCopy, IconClockCheck, IconCode } from "@tabler/icons-react"
 import { toast } from "sonner"
 import { useState } from "react"
 import Link from "next/link"
@@ -119,6 +119,11 @@ export function MainMenu () {
             }
 
           </div>
+
+          <li className="px-5 py-4 text-xl font-semibold border-y border-gray-800 flex gap-2 items-center">
+            <IconCode size={24} />
+            Coming soon
+          </li>
 
         </ul>
 

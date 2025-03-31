@@ -10,7 +10,7 @@ export default {
 
     'border-green-400',
     'border-red-400',
-    'h-5/6',
+    'h-[556px]',
 
   ],
   theme: {
