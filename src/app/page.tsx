@@ -1,4 +1,4 @@
-import { LoginDetails } from "@/components/client/home/login-details";
+import { LoginBenefits } from "@/components/client/home/login-benefits";
 import { NavBar } from "@/components/client/home/header-navbar";
 import { LinkForm } from "@/components/client/home/new-link-form";
 import { serverAuthSupabase } from "@/lib/supabase-server";
@@ -37,7 +37,7 @@ const LoginTitle = () => {
 
   return(
 
-    <section className="py-10 z-0">
+    <section className="py-14 z-0">
 
       {/* <div className="absolute inset-0 bg-gradient-to-b from-[#09090b] via-emerald-800/30 to-[#09090b]"></div> */}
 
@@ -73,7 +73,7 @@ export default async function Home() {
 
     return (
 
-      <main className="flex flex-col bg-neutral-900 text-white">
+      <main className="flex flex-col bg-[#001413] text-white">
 
         <NavBar />
 
@@ -89,7 +89,7 @@ export default async function Home() {
           <div>
 
             <LoginTitle />
-            <LoginDetails />
+            <LoginBenefits />
 
           </div>
 
@@ -104,3 +104,11 @@ export default async function Home() {
   }
   
 }
+
+
+// Fondos
+
+// 001413 verdoso
+// 060B0F oscuro
+// 040c10 otro oscuro
+
