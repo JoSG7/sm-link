@@ -1,13 +1,14 @@
 "use client"
 
 import { LinkSkeleton } from "@/components/utils/skeleton"
+import { NoFound } from "@/components/utils/no-found"
 import { closeMainMenu } from "@/logic/client-functions"
 import { getGuessLinks } from "@/logic/server-functions"
-import { IconExternalLink, IconCopy, IconClockCheck } from "@tabler/icons-react"
-import Link from "next/link"
-import { useState } from "react"
-import { toast } from "sonner"
 import { GitHubAuthButton, GoogleAuthButton } from "./auth-button-client"
+import { IconExternalLink, IconCopy, IconClockCheck } from "@tabler/icons-react"
+import { toast } from "sonner"
+import { useState } from "react"
+import Link from "next/link"
 
 interface GuessResponse{
   id:string
@@ -114,7 +115,7 @@ export function MainMenu () {
 
             {
               data == "null" &&
-              <h1>No hay</h1>
+              <NoFound />
             }
 
           </div>

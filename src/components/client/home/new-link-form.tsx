@@ -16,16 +16,18 @@ export function LinkForm () {
   const handleSubmit = async (e: FormEvent) => {
     
     e.preventDefault()
+
+    const loadingToast = toast.loading("Creating short link...")
     
     const response: string | apiError = await createShortLink()
     
     if(typeof(response) == "object"){
     
-      toast.error(response.error)
+      toast.error(response.error, { id: loadingToast })
     
     }else{
       
-      toast.success("Se genero correctamente")
+      toast.success("Se genero correctamente", { id: loadingToast })
       setShortURL(response)
     
     }
@@ -47,7 +49,7 @@ export function LinkForm () {
 
         </label>
 
-        <input type="url" id="txtUrl" className="w-full p-2 text-neutral-400 bg-neutral-950 outline-none rounded-md border border-zinc-900 placeholder:text-neutral-800" placeholder="Enter a long Link to short" required/>
+        <input type="url" id="txtUrl" autoComplete="off" className="w-full p-2 text-neutral-400 bg-neutral-950 outline-none rounded-md border border-zinc-900 placeholder:text-neutral-800" placeholder="Enter a long Link to short" required/>
 
         <div className="flex items-center gap-2 py-3">
 
@@ -62,7 +64,7 @@ export function LinkForm () {
 
         </div>
 
-        <button className="w-full text-center py-2 rounded-lg bg-gradient-to-r from-green-600 to-[#055232]">
+        <button className="w-full text-center py-2 rounded-lg bg-gradient-to-r from-[#55a346] to-[#2e7e1d]">
           Shorten Link
         </button>
 

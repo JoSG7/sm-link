@@ -17,7 +17,7 @@ export function showMainMenu () {
     menu?.classList.add("h-5/6")
   }, 50)
   
-}
+} 
 
 export function closeMainMenu () {
 
