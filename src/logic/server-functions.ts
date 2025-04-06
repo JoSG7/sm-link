@@ -9,7 +9,7 @@ export async function getGuessLinks () {
 
   // If the links are hidden, use the api
 
-  if(option?.classList.contains("h-80")){
+  if(option?.contains("h-[310px]")){
 
     const res = await fetch("api/get-guess-link", {
 

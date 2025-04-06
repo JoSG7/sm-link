@@ -10,7 +10,10 @@ export default {
 
     'border-green-400',
     'border-red-400',
+    'h-[310px]',
     'h-[556px]',
+    'animate-pulse',
+    'duration-500'
 
   ],
   theme: {

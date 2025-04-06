@@ -38,11 +38,10 @@ export function closeMainMenu () {
 
 export function toggleOption () {
 
-  const option = document.querySelector("#menu .option-list div")
+  const option = document.querySelector("#recent-links")?.classList
 
-  option?.classList.toggle("h-0")
-  option?.classList.toggle("h-80")
-  option?.classList.toggle("py-4")
+  option?.toggle("h-0")
+  option?.toggle("h-[310px]")
 
   return option
 

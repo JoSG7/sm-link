@@ -84,39 +84,51 @@ export function MainMenu () {
     <section className="w-full h-screen fixed hidden bottom-0 bg-modal z-30 backdrop-blur-sm" id="bgMenu" 
     onClick={closeMainMenu}>
 
-      <nav className="w-full h-0 bg-[#0e0e0e] border-gray-800 self-end flex flex-col justify-between
+      <nav className="w-full h-0 bg-[#0e0e0e] border-gray-800 self-end overflow-y-auto
       duration-200" id="menu" onClick={(e) => { e.stopPropagation() }}>
 
-        <ul className="option-list">
+        <ul className="option-list flex flex-col">
 
-          <li className="px-5 py-4 text-xl font-semibold border-b border-gray-800 flex gap-2 items-center"
+          <li className="px-4 py-5 border-t border-gray-800">
+
+            <h1 className="text-xl font-semibold pb-3">Inicia sesion con tu cuenta</h1>
+            <div className="grid grid-cols-2 gap-4">
+              <GitHubAuthButton />
+              <GoogleAuthButton />
+            </div>
+
+          </li>
+
+          <li className="p-4 text-xl font-semibold border-y border-gray-800 flex gap-2 items-center"
           onClick={handleFunction}>
             <IconClockCheck size={24} />
             Your Recent Sm Links
           </li>
 
-          <div className="h-0 max-h-[320px] px-4 flex flex-col gap-4 overflow-y-auto duration-200">
+          <div className="h-0 duration-300 overflow-y-auto" id="recent-links">
 
-            {
-              typeof data != "string" &&
+            <div className="p-4 flex flex-col gap-4">
 
-              data.map((element) => (
-                <LinkCard key={element.id} short={element.short} original={element.original} />
-              ))
-            }
+              {
+                typeof data != "string" &&
 
-            {
-              loading == true &&
-              <div className="flex flex-col gap-4">
-                <LinkSkeleton />
-                <LinkSkeleton />
-              </div>
-            }
+                data.map((element) => (
+                  <LinkCard key={element.id} short={element.short} original={element.original} />
+                ))
+              }
+              {
+                loading == true &&
+                <div className="flex flex-col gap-4">
+                  <LinkSkeleton />
+                  <LinkSkeleton />
+                </div>
+              }
+              {
+                data == "null" &&
+                <NoFound />
+              }
 
-            {
-              data == "null" &&
-              <NoFound />
-            }
+            </div>
 
           </div>
 
@@ -126,20 +138,6 @@ export function MainMenu () {
           </li>
 
         </ul>
-
-        <div className="p-4 border-t border-gray-800">
-
-          <h1 className="text-xl font-semibold pb-3">Inicia sesion con tu cuenta</h1>
-
-          <div className="grid grid-cols-2 gap-4">
-
-            <GitHubAuthButton />
-
-            <GoogleAuthButton />
-
-          </div>
-
-        </div>
 
       </nav>
 

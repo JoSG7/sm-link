@@ -20,7 +20,7 @@ export function NavBar () {
 
       <button type="button" className="flex justify-center items-center" onClick={showMainMenu}>
 
-        <IconMenu2 size={30} ></IconMenu2>
+        <IconMenu2 size={30} id="menu-icon"></IconMenu2>
 
       </button>
 
