@@ -14,7 +14,7 @@ const DetailCard = ({title, children, icon}: {title: string, children: React.Rea
       </div>
 
       <div>
-        <h3 className="text-xl font-semibold text-gray-200">{title}</h3>
+        <h3 className="text-lg font-semibold text-gray-200">{title}</h3>
         <p className="text-base text-wrap text-[#C4CAd4] pt-1">
         {children}
         </p>

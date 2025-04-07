@@ -40,7 +40,7 @@ export function LinkForm () {
 
     <section className="px-4 pt-4 pb-14">
 
-      <form onSubmit={handleSubmit} className="rounded-lg border border-neutral-900 px-3 py-4 bg-neutral-950">
+      <form onSubmit={handleSubmit} className="rounded-lg border border-neutral-900 p-4 bg-neutral-950">
 
         <label htmlFor="txtUrl" className="flex mb-3 items-center gap-2">
 
