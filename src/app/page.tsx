@@ -7,13 +7,9 @@ import { Footer } from "@/components/utils/footer";
 
 const HomeTitle = () => {
 
-  
-
   return (
 
     <section className="py-14 relative z-0">
-
-
 
       <div className="absolute inset-0 bg-gradient-to-b from-[#09090b] via-emerald-800/30 to-[#09090b]
       md:via-purple-800/30"></div>
@@ -53,18 +49,21 @@ const LoginTitle = () => {
 
       {/* <div className="absolute inset-0 bg-gradient-to-b from-[#09090b] via-emerald-800/30 to-[#09090b]"></div> */}
 
-      <div className="relative z-10 text-center">
+      <div className="relative z-10 text-center flex gap-7 justify-center">
 
-        <h1 className="text-6xl font-bold bg-gradient-to-r from-amber-300 to-emerald-400 tracking-tight
-        sm:text-7xl"
-        style={{WebkitTextFillColor: "transparent", WebkitBackgroundClip: "text"}}
-        >
-          Log in <br /> to start
-        </h1>
+        <div className="flex justify-center items-center">
 
-        {/* <p className="text-gray-300 mt-2">
-          Customizing and manage your links!
-        </p> */}
+          <div>
+            <h1 className="text-6xl font-bold bg-gradient-to-r from-amber-300 to-emerald-400 tracking-tight
+            sm:text-7xl md:from-purple-400 md:to-purple-900"
+            style={{WebkitTextFillColor: "transparent", WebkitBackgroundClip: "text"}}>
+              Log in <br /> to start
+            </h1>
+          </div>
+
+        </div>
+
+        <img src="svg/login.svg" alt="rocket" width={280} height={280} className="hidden md:block"/>
 
       </div>
 
@@ -86,11 +85,11 @@ export default async function Home() {
 
     return (
 
-      <main className="flex flex-col bg-[#001413] text-white">
+      <main className="flex flex-col bg-[#001413] text-white md:bg-[#0e051a]">
         <NavBar />
         <div>
 
-          <div className="bg-[#09090b] rounded-b-[50%_20px]">
+          <div className="bg-[#09090b] rounded-b-[50%_20px] md:rounded-b-[50%_30px]">
             <HomeTitle />
             <LinkForm />
           </div>

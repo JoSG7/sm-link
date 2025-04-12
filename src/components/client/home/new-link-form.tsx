@@ -35,7 +35,7 @@ export function LinkForm () {
   return(
 
     <section className="pt-4 pb-14 duration-300 flex justify-center
-    sm:pb-20 md:gap-5">
+    sm:pb-20 md:gap-5 md:pb-28">
 
       <div className="w-[90%] md:w-[94%] md:flex md:gap-5">
 
@@ -48,7 +48,7 @@ export function LinkForm () {
               <IconScissors size={20} className="sm:size-7"></IconScissors>
               <span className="sm:text-xl">Short a long link</span>
             </label>
-            <IconInfoCircle className="size-7" color="#a3a3a3" />
+            <IconInfoCircle className="size-7 hidden md:block" color="#a3a3a3" />
           </div>
 
           <input type="url" id="txtUrl" autoComplete="off" className="w-full p-2 my-3 text-neutral-400 bg-neutral-950 outline-none 
@@ -110,7 +110,7 @@ export function LinkForm () {
         </div>
 
       </div>
-      
+
     </section>
 
   )
