@@ -36,22 +36,25 @@ body {
 }
 
 
+@media (min-width: 900px) {
+  
+  ::-webkit-scrollbar {
+    width: 12px;
+    cursor: pointer;
+    
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent; 
+  }
+  ::-webkit-scrollbar-thumb {
+    
+    transition: 2s ease-in;
+    
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255,255,255,0.4);
+  }
+
+}
 
 
-
-/* ::-webkit-scrollbar {
-  width: 12px;
-  cursor: pointer;
-  
-}
-::-webkit-scrollbar-track {
-  background: transparent; 
-}
-::-webkit-scrollbar-thumb {
-  
-  transition: 2s ease-in;
-  
-}
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(255,255,255,0.4);
-} */
