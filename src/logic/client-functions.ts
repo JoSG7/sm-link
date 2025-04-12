@@ -14,7 +14,7 @@ export function showMainMenu () {
   
   setTimeout(() => {
     menu?.classList.remove("h-0")
-    menu?.classList.add("h-[556px]")
+    menu?.classList.add("h-[560px]")
   }, 50)
   
 } 
@@ -24,7 +24,7 @@ export function closeMainMenu () {
   const background = document.querySelector("#bgMenu")
   const menu = document.querySelector("#menu")
 
-  menu?.classList.remove("h-[556px]")
+  menu?.classList.remove("h-[560px]")
   menu?.classList.add("h-0")
 
   setTimeout(() => {

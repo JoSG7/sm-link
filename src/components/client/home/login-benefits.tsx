@@ -50,22 +50,22 @@ export function LoginBenefits () {
       md:w-[94%] md:grid md:grid-cols-2 md:gap-5">
 
         <DetailCard title="Administra tus smLinks" 
-        icon = { <IconPencilStar size={40} className="sm:size-14 md:size-9 sm:text-[#4BA838] md:text-purple-800" /> }  >
+        icon = { <IconPencilStar size={40} className="sm:size-14 md:size-9 text-[#4BA838] md:text-purple-800" /> }  >
         Crea, edita y elimina. Todo esto al alcance de tus manos ahora!
         </DetailCard>
 
         <DetailCard title="Conoce las metricas" 
-        icon = { <IconChartHistogram size={40} className="sm:size-14 md:size-9 sm:text-[#4BA838] md:text-purple-800" /> } >
+        icon = { <IconChartHistogram size={40} className="sm:size-14 md:size-9 text-[#4BA838] md:text-purple-800" /> } >
         Obten un informe detallado de todas las metricas disponibles!
         </DetailCard>
 
         <DetailCard title="Usa contraseñas seguras" 
-        icon = { <IconShieldLock size={40} className="sm:size-14 md:size-9 sm:text-[#4BA838] md:text-purple-800" /> } >
+        icon = { <IconShieldLock size={40} className="sm:size-14 md:size-9 text-[#4BA838] md:text-purple-800" /> } >
         Protege todos tus smLinks con una contraseña y compartelos solo con personas autorizadas
         </DetailCard>
 
         <DetailCard title="Establece Expiraciones" 
-        icon = { <IconClockX size={40} className="sm:size-14 md:size-9 sm:text-[#4BA838] md:text-purple-800" /> } >
+        icon = { <IconClockX size={40} className="sm:size-14 md:size-9 text-[#4BA838] md:text-purple-800" /> } >
         Establece un limite de visitas y bloquea el smLink de forma automatica
         </DetailCard>
 
