@@ -36,25 +36,12 @@ body {
 }
 
 
-@media (min-width: 900px) {
+@media (max-width: 1400px) {
   
   ::-webkit-scrollbar {
-    width: 12px;
-    cursor: pointer;
+    width: 0px;
     
-  }
-  ::-webkit-scrollbar-track {
-    background: transparent; 
-  }
-  ::-webkit-scrollbar-thumb {
-    
-    transition: 2s ease-in;
-    
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: rgba(255,255,255,0.4);
   }
 
 }
-
 

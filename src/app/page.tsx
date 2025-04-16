@@ -1,9 +1,9 @@
-import { LoginBenefits } from "@/components/client/home/login-benefits";
-import { NavBar } from "@/components/client/home/header-navbar";
-import { LinkForm } from "@/components/client/home/new-link-form";
-import { serverAuthSupabase } from "@/lib/supabase-server";
+import { LoginBenefits } from "@/components/home/login-benefits";
+import { NavBar } from "@/components/home/header-navbar";
+import { LinkForm } from "@/components/home/new-link-form";
+import { serverAuthSupabase } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
-import { Footer } from "@/components/utils/footer";
+import { Footer } from "@/components/layout/footer";
 
 const HomeTitle = () => {
 
@@ -16,14 +16,14 @@ const HomeTitle = () => {
 
       <div className="relative z-10 flex gap-3 text-center justify-center">
 
-        <img src="svg/rocket.svg" alt="rocket" width={280} height={280} className="hidden md:block"/>
+        <img src="svg/rocket.svg" alt="rocket" className="size-[280px] duration-500 hidden md:block lg:size-[380px]"/>
 
         <div className="flex justify-center items-center">
           
-          <div className="text-gray-300 sm:text-xl">
+          <div className="text-gray-300 sm:text-xl lg:text-2xl">
 
-            <h1 className="text-6xl font-bold bg-gradient-to-r from-amber-300 to-emerald-400 tracking-tight pb-2
-            sm:text-7xl md:from-purple-400 md:to-purple-900"
+            <h1 className="text-6xl font-bold bg-gradient-to-r from-amber-300 to-emerald-400 tracking-tight pb-2 duration-300
+            sm:text-7xl md:from-purple-400 md:to-purple-900 lg:text-8xl"
             style={{WebkitTextFillColor: "transparent", WebkitBackgroundClip: "text"}}>
               Link's <br /> Shortener
             </h1>
@@ -55,7 +55,7 @@ const LoginTitle = () => {
 
           <div>
             <h1 className="text-6xl font-bold bg-gradient-to-r from-amber-300 to-emerald-400 tracking-tight
-            sm:text-7xl md:from-purple-400 md:to-purple-900"
+            sm:text-7xl md:from-purple-400 md:to-purple-900 lg:text-8xl"
             style={{WebkitTextFillColor: "transparent", WebkitBackgroundClip: "text"}}>
               Log in <br /> to start
             </h1>
@@ -63,7 +63,7 @@ const LoginTitle = () => {
 
         </div>
 
-        <img src="svg/login.svg" alt="rocket" width={280} height={280} className="hidden md:block"/>
+        <img src="svg/login.svg" alt="rocket" className="size-[280px] hidden md:block lg:size-[380px]"/>
 
       </div>
 

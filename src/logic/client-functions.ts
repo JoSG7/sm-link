@@ -1,4 +1,4 @@
-import { clientAuthSupabase } from "@/lib/supabase-client"
+import { clientAuthSupabase } from "@/lib/supabase/client"
 import type { Provider } from "@supabase/supabase-js"
 import { redirect } from "next/navigation"
 

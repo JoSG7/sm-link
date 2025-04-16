@@ -1,5 +1,5 @@
-import { SignOutButton } from "@/components/client/dashboard/sign-out-button"
-import { serverAuthSupabase } from "@/lib/supabase-server"
+import { SignOutButton } from "@/components/dashboard/sign-out-button"
+import { serverAuthSupabase } from "@/lib/supabase/server"
 import { redirect } from "next/navigation"
 
 async function Dashboard () {

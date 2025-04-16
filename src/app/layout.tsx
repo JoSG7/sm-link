@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Lexend } from "next/font/google"
 import { Toaster } from "sonner";
 import "./globals.css";
-import { MainMenu } from "@/components/client/home/main-menu";
+import { MainMenu } from "@/components/home/main-menu";
 
 export const metadata: Metadata = {
   title: "Sm Link",

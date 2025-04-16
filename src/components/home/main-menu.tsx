@@ -1,7 +1,7 @@
 "use client"
 
-import { LinkSkeleton } from "@/components/utils/skeleton"
-import { NoFound } from "@/components/utils/no-found"
+import { LinkSkeleton } from "@/components/common/skeleton"
+import { NoFound } from "@/components/common/no-found"
 import { closeMainMenu } from "@/logic/client-functions"
 import { getGuessLinks } from "@/logic/server-functions"
 import { GitHubAuthButton, GoogleAuthButton } from "./auth-button-client"

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { supabase } from "@/lib/supabase-client";
+import { supabase } from "@/lib/supabase/client";
 
 interface Props {
 
@@ -7,7 +7,7 @@ interface Props {
 
 }
 
-export async function GET(request: NextRequest, { params }: Props) {
+export async function GET({ params }: Props) {
 
   const { shortUrl } = await params
   const { data: link, error } = await supabase.from("link").select("*").eq('short', shortUrl)

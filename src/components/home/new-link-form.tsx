@@ -37,32 +37,32 @@ export function LinkForm () {
     <section className="pt-4 pb-14 duration-300 flex justify-center
     sm:pb-20 md:gap-5 md:pb-28">
 
-      <div className="w-[90%] md:w-[94%] md:flex md:gap-5">
+      <div className="w-[90%] max-w-[1080px] md:w-[94%] md:flex md:gap-5 lg:gap-6">
 
         <form onSubmit={handleSubmit} className="rounded-lg border border-neutral-800 p-4 bg-neutral-950
-        sm:p-7 md:p-5 md:w-7/12
+        sm:p-7 md:p-5 md:w-7/12 lg:p-6
         ">
 
           <div className="flex justify-between">
             <label htmlFor="txtUrl" className="flex items-center gap-2">
-              <IconScissors size={20} className="sm:size-7"></IconScissors>
-              <span className="sm:text-xl">Short a long link</span>
+              <IconScissors size={20} className="sm:size-7 lg:size-9"></IconScissors>
+              <span className="sm:text-xl lg:text-2xl text-[#E5E7EB] font-semibold">Short a long link</span>
             </label>
-            <IconInfoCircle className="size-7 hidden md:block" color="#a3a3a3" />
+            <IconInfoCircle className="size-7 hidden md:block lg:size-9" color="#a3a3a3" />
           </div>
 
           <input type="url" id="txtUrl" autoComplete="off" className="w-full p-2 my-3 text-neutral-400 bg-neutral-950 outline-none 
           rounded-md border border-zinc-900 placeholder:text-neutral-800
-          sm:text-xl sm:my-5"
+          sm:text-xl sm:my-5 lg:text-xl lg:p-3"
           placeholder="Enter a long Link to short" required/>
 
           <div className="flex items-center gap-2">
-            <IconWand size={20} className="sm:size-7"></IconWand>
-            <span className="sm:text-xl">Your new short Link here!</span>
+            <IconWand size={20} className="sm:size-7 lg:size-9"></IconWand>
+            <span className="sm:text-xl lg:text-2xl text-[#E5E7EB] font-semibold">Your new short Link here!</span>
           </div>
 
           <div className="w-full p-2 mt-3 bg-neutral-950 rounded-md border border-zinc-900 text-neutral-400 mb-5
-          sm:mt-5">
+          sm:mt-5 lg:p-3">
             <p className="sm:text-xl">sm-link.vercel.app/{shortURL}</p>
           </div>
 
@@ -93,17 +93,17 @@ export function LinkForm () {
 
         {/* Show since 768px */}
 
-        <div className="w-5/12 hidden flex-col gap-5 max-w-[340px] md:flex">
+        <div className="w-5/12 hidden flex-col gap-5 md:flex m lg:gap-6">
           
           <article className="rounded-lg border border-neutral-800 p-4 bg-neutral-950">
-            <h1 className="text-xl pb-2">Para qué sirve?</h1>
-            <p className="text-[#C4CAd4]">Usalos para compartir archivos de negocios o en redes sociales  </p>
+            <h1 className="text-xl pb-2 lg:text-2xl text-[#E5E7EB] font-semibold">Para qué sirve?</h1>
+            <p className="text-[#C4CAd4] lg:text-lg">Usalos para compartir archivos de negocios o en redes sociales  </p>
           </article>
 
           <article className="rounded-lg border border-neutral-800 p-4 bg-neutral-950">
-            <h1 className="text-xl pb-2">Puedo cortar el link que quiera?</h1>
-            <p className="text-[#C4CAd4] pb-1">
-              Sí, sin embargo debes revisar nuestra politica de uso primero para tener mas conocimiento
+            <h1 className="text-xl pb-2 lg:text-2xl text-[#E5E7EB] font-semibold">Puedo cortar el link que quiera?</h1>
+            <p className="text-[#C4CAd4] pb-1 lg:text-lg lg:pb-3">
+              Sí, sin embargo debes revisar nuestra política de uso primero para tener más conocimiento
             </p>
           </article>
 

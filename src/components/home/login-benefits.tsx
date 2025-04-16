@@ -23,8 +23,8 @@ const DetailCard = ({title, children, icon}: {title: string, children: React.Rea
       </section>
       {/* Card for 768px to 1024px */}
       <section className="p-4 hidden rounded-lg border border-purple-950 flex-col gap-2 md:flex">
-        <div className="w-full hidden justify-between md:flex">
-          <p className="text-xl font-semibold text-gray-200">{title}</p>
+        <div className="w-full hidden justify-between items-center md:flex">
+          <p className="text-xl font-semibold text-gray-200 lg:text-2xl">{title}</p>
           <div>
           {icon}
           </div>
@@ -46,26 +46,26 @@ export function LoginBenefits () {
 
     <section className="pt-4 pb-10 flex justify-center sm:pb-16 md:pt-0 md:pb-20">
 
-      <div className="w-[90%] flex flex-col gap-7 duration-300 
-      md:w-[94%] md:grid md:grid-cols-2 md:gap-5">
+      <div className="w-[90%] max-w-[1080px] flex flex-col gap-7 duration-300 
+      md:w-[94%] md:grid md:grid-cols-2 md:gap-5 lg:gap-6">
 
         <DetailCard title="Administra tus smLinks" 
-        icon = { <IconPencilStar size={40} className="sm:size-14 md:size-9 text-[#4BA838] md:text-purple-800" /> }  >
+        icon = { <IconPencilStar size={40} className="sm:size-14 md:size-9 lg:size-12 text-[#4BA838] md:text-purple-800" /> }  >
         Crea, edita y elimina. Todo esto al alcance de tus manos ahora!
         </DetailCard>
 
         <DetailCard title="Conoce las metricas" 
-        icon = { <IconChartHistogram size={40} className="sm:size-14 md:size-9 text-[#4BA838] md:text-purple-800" /> } >
+        icon = { <IconChartHistogram size={40} className="sm:size-14 md:size-9 lg:size-12 text-[#4BA838] md:text-purple-800" /> } >
         Obten un informe detallado de todas las metricas disponibles!
         </DetailCard>
 
         <DetailCard title="Usa contraseñas seguras" 
-        icon = { <IconShieldLock size={40} className="sm:size-14 md:size-9 text-[#4BA838] md:text-purple-800" /> } >
+        icon = { <IconShieldLock size={40} className="sm:size-14 md:size-9 lg:size-12 text-[#4BA838] md:text-purple-800" /> } >
         Protege todos tus smLinks con una contraseña y compartelos solo con personas autorizadas
         </DetailCard>
 
         <DetailCard title="Establece Expiraciones" 
-        icon = { <IconClockX size={40} className="sm:size-14 md:size-9 text-[#4BA838] md:text-purple-800" /> } >
+        icon = { <IconClockX size={40} className="sm:size-14 md:size-9 lg:size-12 text-[#4BA838] md:text-purple-800" /> } >
         Establece un limite de visitas y bloquea el smLink de forma automatica
         </DetailCard>
 
