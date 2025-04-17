@@ -7,7 +7,7 @@ interface Props {
 
 }
 
-export async function GET({ params }: Props) {
+export async function GET(request: NextRequest, { params }:Props) {
 
   const { shortUrl } = await params
   const { data: link, error } = await supabase.from("link").select("*").eq('short', shortUrl)
