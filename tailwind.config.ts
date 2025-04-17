@@ -18,6 +18,9 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        "lg-2": "1272px"
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",

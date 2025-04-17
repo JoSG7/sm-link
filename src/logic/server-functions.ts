@@ -1,10 +1,10 @@
+import { toggleMenuOption } from "@/utils/ui/menu-functions"
 import { toast } from "sonner"
 import isURL from "validator/lib/isURL"
-import { toggleOption } from "./client-functions"
 
 export async function getGuessLinks () {
 
-  const option = toggleOption()
+  const option = toggleMenuOption()
   const guessID = localStorage.getItem("guessID")
 
   // If the links are hidden, use the api

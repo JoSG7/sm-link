@@ -35,13 +35,12 @@ export function LinkForm () {
   return(
 
     <section className="pt-4 pb-14 duration-300 flex justify-center
-    sm:pb-20 md:gap-5 md:pb-28">
+    sm:pb-20 md:gap-5 md:pb-28 lg-2:pb-40">
 
       <div className="w-[90%] max-w-[1080px] md:w-[94%] md:flex md:gap-5 lg:gap-6">
 
-        <form onSubmit={handleSubmit} className="rounded-lg border border-neutral-800 p-4 bg-neutral-950
-        sm:p-7 md:p-5 md:w-7/12 lg:p-6
-        ">
+        <form onSubmit={handleSubmit} className="rounded-lg border border-neutral-900 p-4 bg-neutral-950 md:border-neutral-[#181818]
+        sm:p-7 md:p-5 md:w-7/12 lg:p-6">
 
           <div className="flex justify-between">
             <label htmlFor="txtUrl" className="flex items-center gap-2">
@@ -67,7 +66,7 @@ export function LinkForm () {
           </div>
 
           <button className="w-full text-center py-2 rounded-lg bg-gradient-to-r from-[#55a346] to-[#2e7e1d] 
-          sm:text-lg md:from-purple-500 md:to-purple-900">
+          sm:text-lg md:from-purple-500 md:to-purple-900 lg-2:from-sky-500 lg-2:to-blue-900">
             Shorten Link
           </button>
 
@@ -95,16 +94,18 @@ export function LinkForm () {
 
         <div className="w-5/12 hidden flex-col gap-5 md:flex m lg:gap-6">
           
-          <article className="rounded-lg border border-neutral-800 p-4 bg-neutral-950">
+          <article className="rounded-lg p-4 border border-neutral-900 md:border-[#181818] bg-neutral-950">
             <h1 className="text-xl pb-2 lg:text-2xl text-[#E5E7EB] font-semibold">Para qué sirve?</h1>
-            <p className="text-[#C4CAd4] lg:text-lg">Usalos para compartir archivos de negocios o en redes sociales  </p>
+            <p className="text-[#C4CAd4] lg:text-lg lg-2:hidden">Usalos para compartir archivos de negocios o en redes sociales</p>
+            <p className="hidden text-[#C4CAd4] text-lg lg-2:block pb-1">Úsalos para compartir reportes solo con gente autorizada, para compartir productos de tu tienda favorita o incluso tus redes sociales</p>
           </article>
 
-          <article className="rounded-lg border border-neutral-800 p-4 bg-neutral-950">
+          <article className="rounded-lg p-4 border border-neutral-900 md:border-[#181818] bg-neutral-950">
             <h1 className="text-xl pb-2 lg:text-2xl text-[#E5E7EB] font-semibold">Puedo cortar el link que quiera?</h1>
-            <p className="text-[#C4CAd4] pb-1 lg:text-lg lg:pb-3">
+            <p className="text-[#C4CAd4] pb-1 lg:text-lg lg:pb-3 lg-2:hidden">
               Sí, sin embargo debes revisar nuestra política de uso primero para tener más conocimiento
             </p>
+            <p className="hidden text-[#C4CAd4] text-lg pb-2 lg-2:block">Puedes cortar el link que desees, pero antes de ello debes revisar nuestros términos de uso y nuestra política de privacidad primero</p>
           </article>
 
         </div>

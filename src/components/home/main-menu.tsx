@@ -1,9 +1,9 @@
 "use client"
 
+import { closeMainMenu } from "@/utils/ui/menu-functions"
+import { getGuessLinks } from "@/logic/server-functions"
 import { LinkSkeleton } from "@/components/common/skeleton"
 import { NoFound } from "@/components/common/no-found"
-import { closeMainMenu } from "@/logic/client-functions"
-import { getGuessLinks } from "@/logic/server-functions"
 import { GitHubAuthButton, GoogleAuthButton } from "./auth-button-client"
 import { IconExternalLink, IconCopy, IconClockCheck, IconCode } from "@tabler/icons-react"
 import { toast } from "sonner"
