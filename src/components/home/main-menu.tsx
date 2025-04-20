@@ -1,11 +1,11 @@
 "use client"
 
-import { closeMainMenu } from "@/utils/ui/menu-functions"
+import { GitHubAuthButton, GoogleAuthButton } from "./auth-button-client"
+import { IconExternalLink, IconCopy, IconClockCheck, IconCode } from "@tabler/icons-react"
+import { closeMainMenu } from "@/utils/ui/home/menu-functions"
 import { getGuessLinks } from "@/logic/server-functions"
 import { LinkSkeleton } from "@/components/common/skeleton"
 import { NoFound } from "@/components/common/no-found"
-import { GitHubAuthButton, GoogleAuthButton } from "./auth-button-client"
-import { IconExternalLink, IconCopy, IconClockCheck, IconCode } from "@tabler/icons-react"
 import { toast } from "sonner"
 import { useState } from "react"
 import Link from "next/link"
@@ -26,27 +26,20 @@ export function MainMenu () {
 
     return(
 
-      <article className="p-4 rounded-md border border-gray-800">
-
+      <article className="p-4 rounded-md border border-gray-800 whitespace-normal">
         <p className="font-semibold">sm-link.vercel.app/{short}</p>
-
-        <p className="w-full max-w-[295px] text-sm text-gray-400 pt-1 pb-3 break-words">
+        <p className="w-full max-w-full text-sm text-gray-400 pt-1 pb-3 break-words">
           {original}
         </p>
 
         <div className="flex gap-2">
-
           <Link href={original} target="_blank" className="flex justify-center items-center rounded-md py-2 px-3 bg-sky-600">
             <IconExternalLink size={21}></IconExternalLink>
           </Link>
-
           <button className="flex justify-center text-sm items-center rounded-md py-1 px-3 bg-lime-600 opacity-75">Rename</button>
-
           <button className="flex justify-center items-center rounded-md py-2 px-3 bg-lime-600"
           onClick={() => {
-            navigator.clipboard.writeText(`sm-link.vercel.app/${short}`).then(() => {
-              toast.success("Copiado Correctamente")
-            })
+            navigator.clipboard.writeText(`sm-link.vercel.app/${short}`).then(() => {toast.success("Copiado Correctamente")})
           }}
           >
             <IconCopy size={21}></IconCopy>
@@ -81,34 +74,31 @@ export function MainMenu () {
 
   return(
 
-    <section className="w-full h-screen fixed hidden bottom-0 bg-modal z-30 backdrop-blur-sm" id="bgMenu" 
+    <section className="w-full h-screen fixed hidden bottom-0 bg-modal z-30 backdrop-blur-sm text-[#E5E7EB]" id="bgMenu" 
     onClick={closeMainMenu}>
 
-      <nav className="w-full h-0 bg-[#0e0e0e] border-gray-800 self-end overflow-y-auto
-      duration-200" id="menu" onClick={(e) => { e.stopPropagation() }}>
+      <nav className="w-full h-0 bg-[#0e0e0e] border-[#2e2e2e] self-end overflow-y-auto duration-100 whitespace-nowrap
+      sm:w-0 sm:fixed sm:right-0 sm:h-full sm:border-l sm:overflow-x-hidden"
+      id="menu" onClick={(e) => { e.stopPropagation() }}>
 
-        <ul className="option-list flex flex-col">
+        <ul className="option-list flex flex-col ">
 
-          <li className="px-4 py-5 border-t border-gray-800">
-
+          <li className="px-4 py-5 border-t border-[#2e2e2e] ">
             <h1 className="text-xl font-semibold pb-3">Inicia sesion con tu cuenta</h1>
             <div className="grid grid-cols-2 gap-4">
               <GitHubAuthButton />
               <GoogleAuthButton />
             </div>
-
           </li>
 
-          <li className="p-4 text-xl font-semibold border-y border-gray-800 flex gap-2 items-center"
+          <li className="p-4 text-xl font-semibold border-t border-[#2e2e2e] flex gap-2 items-center"
           onClick={handleFunction}>
             <IconClockCheck size={24} />
             Your Recent Sm Links
           </li>
 
           <div className="h-0 duration-300 overflow-y-auto" id="recent-links">
-
-            <div className="p-4 flex flex-col gap-4">
-
+            <div className="px-4 pb-4 flex flex-col gap-4">
               {
                 typeof data != "string" &&
 
@@ -127,12 +117,10 @@ export function MainMenu () {
                 data == "null" &&
                 <NoFound />
               }
-
             </div>
-
           </div>
 
-          <li className="px-5 py-4 text-xl font-semibold border-y border-gray-800 flex gap-2 items-center">
+          <li className="px-5 py-4 text-xl font-semibold border-y border-[#2e2e2e] flex gap-2 items-center">
             <IconCode size={24} />
             Coming soon
           </li>

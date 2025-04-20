@@ -1,6 +1,6 @@
 'use client'
 
-import { signInWithOAuth } from "@/logic/client-functions"
+import { signInWithOAuth } from "@/utils/auth/client-auth"
 import { IconBrandGithubFilled, IconBrandGoogleFilled } from "@tabler/icons-react"
 
 // Auth with GitHub

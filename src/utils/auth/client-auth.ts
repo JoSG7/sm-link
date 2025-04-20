@@ -1,18 +1,14 @@
-import { clientAuthSupabase } from "@/lib/supabase/client"
-import type { Provider } from "@supabase/supabase-js"
-import { redirect } from "next/navigation"
-
-// Auth and SignOut on client Component
+import { clientAuthSupabase } from "@/lib/supabase/client";
+import { Provider } from "@supabase/supabase-js";
+import { redirect } from "next/navigation";
 
 export async function signInWithOAuth (provider : Provider) {
 
   await clientAuthSupabase.auth.signInWithOAuth({
-
     provider,
     options: {
       redirectTo: "https://sm-link.vercel.app/auth/callback"
     }
-
   })
 
 }

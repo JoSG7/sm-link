@@ -1,6 +1,7 @@
 "use client"
 
-import { IconInfoCircle, IconScissors, IconWand } from "@tabler/icons-react"
+import { IconInfoCircle, IconScissors, IconWand, IconX } from "@tabler/icons-react"
+import { closeFormInfo, showFormInfo } from "@/utils/ui/home/form-functions"
 import { createShortLink } from "@/logic/server-functions"
 import { useState, type FormEvent } from "react"
 import { toast } from "sonner"
@@ -39,7 +40,8 @@ export function LinkForm () {
 
       <div className="w-[90%] max-w-[1080px] md:w-[94%] md:flex md:gap-5 lg:gap-6">
 
-        <form onSubmit={handleSubmit} className="rounded-lg border border-neutral-900 p-4 bg-neutral-950 md:border-neutral-[#181818]
+        <form onSubmit={handleSubmit} className="relative rounded-lg border border-neutral-900 p-4 bg-neutral-950 
+        md:border-neutral-[#181818]
         sm:p-7 md:p-5 md:w-7/12 lg:p-6">
 
           <div className="flex justify-between">
@@ -47,7 +49,7 @@ export function LinkForm () {
               <IconScissors size={20} className="sm:size-7 lg:size-9"></IconScissors>
               <span className="sm:text-xl lg:text-2xl text-[#E5E7EB] font-semibold">Short a long link</span>
             </label>
-            <IconInfoCircle className="size-7 hidden md:block lg:size-9" color="#a3a3a3" />
+            <IconInfoCircle className="size-7 hidden md:block lg:size-9" color="#a3a3a3" onClick={showFormInfo}/>
           </div>
 
           <input type="url" id="txtUrl" autoComplete="off" className="w-full p-2 my-3 text-neutral-400 bg-neutral-950 outline-none 
@@ -72,21 +74,23 @@ export function LinkForm () {
 
           {/* Show with the info button */}
 
-          {/* <article className="p-5 rounded-lg border border-neutral-800 max-w-[330px]">
+          <article className="absolute left-[104%] top-0 w-0 opacity-0 h-full rounded-lg bg-neutral-950 border overflow-x-hidden
+          border-[#181818] z-10 duration-200 max-w-[440px]" id="form-info">
 
-            <h1 className="text-xl pb-2">How it works?</h1>
-
-            <div className="flex gap-3">
-
-              <div className="size-10 mt-1.5 bg-blue-500"></div>
-
-              <div className="">
-                <p className="text-[#C4CAd4]">Usa el formulario para cortar tu link</p>
+            <div className="p-5">
+              <header className="flex justify-between items-center pb-2">
+                <h1 className="text-xl">How it works?</h1>
+                <IconX className="size-5 cursor-pointer" onClick={closeFormInfo}/>
+              </header>
+              <div className="flex gap-3">
+                <div className="size-10 mt-1.5 bg-blue-500"></div>
+                <div className="">
+                  <p className="text-[#C4CAd4]">Usa el formulario para cortar tu link</p>
+                </div>
               </div>
-
             </div>
 
-          </article> */}
+          </article>
 
         </form>
 

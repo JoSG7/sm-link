@@ -1,6 +1,8 @@
 "use client"
 
-import { signOut } from "@/logic/client-functions";
+import { signOut } from "@/utils/auth/client-auth"
+
+
 
 export function SignOutButton () {
 

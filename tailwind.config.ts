@@ -13,7 +13,13 @@ export default {
     'h-[310px]',
     'h-[560px]',
     'animate-pulse',
-    'duration-500'
+    'duration-500',
+    'w-[73%]',
+    'opacity-0',
+    'w-4/6',
+    '',
+    '',
+    ''
 
   ],
   theme: {

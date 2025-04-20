@@ -1,6 +1,6 @@
 "use client"
 
-import { showMainMenu } from "@/utils/ui/menu-functions";
+import { showMainMenu } from "@/utils/ui/home/menu-functions";
 import { IconMenu2 } from "@tabler/icons-react";
 import { IconUnlink } from "@tabler/icons-react";
 

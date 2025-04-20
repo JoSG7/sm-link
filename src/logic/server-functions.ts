@@ -1,5 +1,4 @@
-import { toggleMenuOption } from "@/utils/ui/menu-functions"
-import { toast } from "sonner"
+import { toggleMenuOption } from "@/utils/ui/home/menu-functions"
 import isURL from "validator/lib/isURL"
 
 export async function getGuessLinks () {
@@ -75,13 +74,11 @@ export async function createShortLink () {
     // Se envia datos a la API
 
     const res = await fetch("/api/short-link", {
-
       method:"POST",
       body: JSON.stringify({guessID, originalLink}),
       headers: {
         "Content-Type": "application/json",
       }
-      
     })
 
     const shortLink = await res.json()
