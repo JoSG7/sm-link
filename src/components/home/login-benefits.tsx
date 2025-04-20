@@ -22,7 +22,7 @@ const DetailCard = ({title, children, icon}: {title: string, children: React.Rea
         </div>
       </section>
       {/* Card for 768px to 1024px */}
-      <section className="p-4 hidden rounded-lg border border-purple-950 flex-col gap-2 md:flex lg-2:hidden">
+      <section className="p-4 hidden rounded-lg border border-blue-950 flex-col gap-2 md:flex lg-2:hidden">
         <div className="w-full hidden justify-between items-center md:flex">
           <p className="text-xl font-semibold text-gray-200 lg:text-2xl">{title}</p>
           <div>
@@ -34,7 +34,7 @@ const DetailCard = ({title, children, icon}: {title: string, children: React.Rea
         </p>
       </section>
       {/* Card for 1272px */}
-      <section className="p-4 hidden rounded-lg border border-blue-950 gap-2 lg-2:flex">
+      <section className="p-4 hidden rounded-lg border border-purple-950 gap-2 lg-2:flex">
         <div className="w-full hidden flex-col md:flex gap-2">
           <p className="text-2xl font-semibold text-gray-200">{title}</p>
           <p className="text-lg text-wrap text-[#C4CAd4]">{children}</p>
@@ -60,26 +60,26 @@ export function LoginBenefits () {
       md:w-[94%] md:grid md:grid-cols-2 md:gap-5 lg:gap-6">
 
         <DetailCard title="Administra tus smLinks" 
-        icon = { <IconPencilStar size={40} className="sm:size-14 md:size-9 lg:size-12 text-[#4BA838] md:text-purple-800 
-        lg-2:text-sky-700 lg-2:size-16" /> } >
+        icon = { <IconPencilStar size={40} className="sm:size-14 md:size-9 lg:size-12 text-[#4BA838] lg-2:text-purple-800 
+        md:text-sky-700 lg-2:size-16" /> } >
         Crea, edita y elimina. Todo esto al alcance de tus manos ahora!
         </DetailCard>
 
         <DetailCard title="Conoce las metricas" 
-        icon = { <IconChartHistogram size={40} className="sm:size-14 md:size-9 lg:size-12 text-[#4BA838] md:text-purple-800 
-        lg-2:text-sky-700 lg-2:size-16" /> } >
+        icon = { <IconChartHistogram size={40} className="sm:size-14 md:size-9 lg:size-12 text-[#4BA838] lg-2:text-purple-800 
+        md:text-sky-700 lg-2:size-16" /> } >
         Obten un informe detallado de todas las metricas disponibles!
         </DetailCard>
 
         <DetailCard title="Usa contraseñas seguras" 
-        icon = { <IconShieldLock size={40} className="sm:size-14 md:size-9 lg:size-12 text-[#4BA838] md:text-purple-800 
-        lg-2:text-sky-700 lg-2:size-16" /> } >
+        icon = { <IconShieldLock size={40} className="sm:size-14 md:size-9 lg:size-12 text-[#4BA838] lg-2:text-purple-800 
+        md:text-sky-700 lg-2:size-16" /> } >
         Protege todos tus smLinks con una contraseña y compartelos solo con personas autorizadas
         </DetailCard>
 
         <DetailCard title="Establece Expiraciones" 
-        icon = { <IconClockX size={40} className="sm:size-14 md:size-9 lg:size-12 text-[#4BA838] md:text-purple-800 
-        lg-2:text-sky-700 lg-2:size-16" /> } >
+        icon = { <IconClockX size={40} className="sm:size-14 md:size-9 lg:size-12 text-[#4BA838] lg-2:text-purple-800 
+        md:text-sky-700 lg-2:size-16" /> } >
         Establece un limite de visitas y bloquea el smLink de forma automatica
         </DetailCard>
 

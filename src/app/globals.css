@@ -38,10 +38,10 @@ body {
 
 @media (max-width: 1200px) {
   
-  ::-webkit-scrollbar {
-    width: 0px;
-    
-  }
-
+  
 }
 
+::-webkit-scrollbar {
+  width: 0px;
+  
+}
