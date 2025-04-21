@@ -12,9 +12,10 @@ export function NavBar () {
     bg-[rgba(14,14,14,0.9)] backdrop-blur-sm">
 
       <div className="w-[90%] md:w-[94%] max-w-[1195px] flex justify-between">
-        <div className="flex items-center gap-2 sm:gap-3">
-          <IconUnlink size={30}></IconUnlink>
-          <span className="text-xl">SmLink</span>
+        <div className="flex items-center gap-1 sm:gap-1">
+          {/* <img src="imgs/Logo6.png" alt="Logo1" className="w-32 md:w-40"/> */}
+          <img src="imgs/Icono1.png" alt="Icono" className="w-10"/>
+          <img src="imgs/Logo7.png" alt="Logo" className="w-20"/>
         </div>
 
         <button type="button" className="flex justify-center items-center" onClick={showMainMenu}>

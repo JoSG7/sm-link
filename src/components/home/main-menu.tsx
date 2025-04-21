@@ -6,10 +6,7 @@ import { closeMainMenu } from "@/utils/ui/home/menu-functions"
 import { getGuessLinks } from "@/logic/server-functions"
 import { LinkSkeleton } from "@/components/common/skeleton"
 import { NoFound } from "@/components/common/no-found"
-import { toast } from "sonner"
 import { useState } from "react"
-import Link from "next/link"
-import { months } from "@/utils/constants"
 import { LinkCard } from "../common/link-card"
 
 interface GuessResponse{
