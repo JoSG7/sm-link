@@ -1,7 +1,7 @@
 "use client"
 
 import { GitHubAuthButton, GoogleAuthButton } from "./auth-button-client"
-import { IconExternalLink, IconCopy, IconClockCheck, IconCode } from "@tabler/icons-react"
+import { IconExternalLink, IconCopy, IconClockCheck, IconCode, IconTrash } from "@tabler/icons-react"
 import { closeMainMenu } from "@/utils/ui/home/menu-functions"
 import { getGuessLinks } from "@/logic/server-functions"
 import { LinkSkeleton } from "@/components/common/skeleton"
@@ -24,28 +24,40 @@ export function MainMenu () {
 
   const LinkCard = ({original, short}: {original: string, short: string}) => {
 
+    const url = new URL(original)
+    const domain = url.hostname
+
     return(
 
       <article className="p-4 rounded-md border border-gray-800 whitespace-normal">
-        <p className="font-semibold">sm-link.vercel.app/{short}</p>
-        <p className="w-full max-w-full text-sm text-gray-400 pt-1 pb-3 break-words">
-          {original}
-        </p>
 
-        <div className="flex gap-2">
-          <Link href={original} target="_blank" className="flex justify-center items-center rounded-md py-2 px-3 bg-sky-600">
-            <IconExternalLink size={21}></IconExternalLink>
-          </Link>
-          <button className="flex justify-center text-sm items-center rounded-md py-1 px-3 bg-lime-600 opacity-75">Rename</button>
-          <button className="flex justify-center items-center rounded-md py-2 px-3 bg-lime-600"
-          onClick={() => {
-            navigator.clipboard.writeText(`sm-link.vercel.app/${short}`).then(() => {toast.success("Copiado Correctamente")})
-          }}
-          >
-            <IconCopy size={21}></IconCopy>
+        <div className="flex justify-between items-center pb-4">
+          <div className="flex flex-col max-w-[240px]">
+            <p className="font-semibold">sm-link.vercel.app/{short}</p>
+            <p className="w-full max-w-full text-sm text-gray-400 pt-1 break-words">{original}</p>
+          </div>
+          <img src={`https://www.google.com/s2/favicons?domain=${domain}&sz=64`} alt="logo" className="w-12 h-12 bg-blue-500 rounded-full"/>
+        </div>
+
+        <div className="flex justify-end gap-3">
+
+          <button className="py-1 px-3 rounded-xl bg-red-700 flex gap-1 items-center text-sm" onClick={() => alert("comming soon")}>
+            Borrar
+            <IconTrash size={18} />
           </button>
 
-        </div>  
+          <Link href={original} target="_blank" className="py-1 px-3 rounded-xl bg-[#055333] flex gap-1 items-center text-sm">Visitar
+            <IconExternalLink size={18}></IconExternalLink>
+          </Link>
+
+          <button className="py-1 px-3 rounded-xl bg-[#118729] flex gap-1 items-center text-sm" 
+          onClick={() => {
+            navigator.clipboard.writeText(`sm-link.vercel.app/${short}`).then(() => {toast.success("Copiado Correctamente")})
+          }}>
+            Copiar
+            <IconCopy size={18}></IconCopy>
+          </button>
+        </div>
 
       </article>
 
@@ -57,17 +69,15 @@ export function MainMenu () {
 
     const resData: GuessLinks = await getGuessLinks()
 
-    if(resData && resData.length > 0){
+    console.log()
 
+    if(resData && resData.length > 0){
       setData(resData)
       setLoading(false)
-
     }
     if(resData && resData.length == 0){
-
       setData("null")
       setLoading(false)
-
     }
 
   }

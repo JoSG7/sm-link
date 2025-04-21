@@ -1,9 +1,10 @@
 import { supabase } from "@/lib/supabase/client"
+import { createBase64Code } from "@/logic/server-functions"
 import { NextRequest, NextResponse } from "next/server"
 
 export async function POST(request: Request | NextRequest){
-
-  const shortLink = Math.random().toString(36).substring(2, 9)
+  
+  const shortLink = createBase64Code()
 
   const { guessID, originalLink }: {guessID: string, originalLink: string} = await request.json()
 

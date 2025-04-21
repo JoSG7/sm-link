@@ -7,16 +7,12 @@ export async function POST (request: NextRequest | Request) {
   const { guessID } : { guessID: string } = await request.json()
 
   const { data: guessLinks, error } = await supabase.from("link").select("*")
-  .eq("guess_id", guessID)
+  .eq("guess_id", guessID).order("created_at", { ascending: false })
 
   if(error){
-
     return NextResponse.json(error.message)
-
   }else{
-
     return NextResponse.json(guessLinks)
-
   }
 
 }

@@ -89,3 +89,14 @@ export async function createShortLink () {
 
 }
 
+
+export function createBase64Code () {
+
+  const array = new Uint8Array(Math.ceil(7 * 0.75));
+  crypto.getRandomValues(array);
+  
+  const base64 = btoa(String.fromCharCode(...array)).replace(/[^a-zA-Z0-9]/g, '');
+  return base64.slice(0, 7);
+
+}
+
