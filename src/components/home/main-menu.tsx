@@ -46,7 +46,7 @@ export function MainMenu () {
             <IconTrash size={18} />
           </button>
 
-          <Link href={original} target="_blank" className="py-1 px-3 rounded-xl bg-[#055333] flex gap-1 items-center text-sm">Visitar
+          <Link href={`https://sm-link.vercel.app/${short}`} target="_blank" className="py-1 px-3 rounded-xl bg-[#055333] flex gap-1 items-center text-sm">Visitar
             <IconExternalLink size={18}></IconExternalLink>
           </Link>
 
