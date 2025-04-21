@@ -55,3 +55,4 @@ export function toggleMenuOption () {
   return option
 
 }
+
