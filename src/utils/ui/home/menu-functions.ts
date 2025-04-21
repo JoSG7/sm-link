@@ -7,21 +7,24 @@ export function showMainMenu () {
   
   // For movil design
   if(window.innerWidth < 640){
-
     menu?.add("w-full")
     setTimeout(() => {
       menu?.remove("h-0")
       menu?.add("h-[560px]")
     }, 50)
-
-  }else{
-
+  }
+  if(window.innerWidth >= 640 && window.innerWidth < 768){
     setTimeout(() => {
       menu?.remove("w-full")
       menu?.remove("sm:w-0")
       menu?.add("w-4/6")
     }, 50)
-
+  }else if(window.innerWidth >= 768){
+    setTimeout(() => {
+      menu?.remove("w-full")
+      menu?.remove("sm:w-0")
+      menu?.add("w-1/2")
+    }, 50)
   }
 
 }
