@@ -3,7 +3,6 @@ import { NavBar } from "@/components/home/NavbarHeader";
 import { LinkForm } from "@/components/home/NewLinkForm";
 import { serverAuthSupabase } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
-import { Footer } from "@/components/layout/Footer";
 import { HomeTitle, LoginTitle } from "@/components/home/Title";
 
 export default async function Home() {
