@@ -5,9 +5,9 @@ import { IconBrandGithubFilled, IconBrandGoogleFilled } from "@tabler/icons-reac
 
 // Auth with GitHub
 
-export function GitHubAuthButton () {
+export function GitHubAuthButton() {
 
-  return(
+  return (
     <button type="button" className="py-2 px-4 flex gap-2 items-center rounded-lg bg-[#1a1d1f] 
     border border-neutral-800" onClick={() => { signInWithOAuth("github") }}>
       <IconBrandGithubFilled size={20}></IconBrandGithubFilled>
@@ -17,9 +17,9 @@ export function GitHubAuthButton () {
 
 }
 
-export function GoogleAuthButton () {
+export function GoogleAuthButton() {
 
-  return(
+  return (
     <button type="button" className="py-2 px-4 flex gap-2 items-center rounded-lg bg-red-700 
     border border-red-800" onClick={() => { alert("comingsoon") }}>
       <IconBrandGoogleFilled size={20}></IconBrandGoogleFilled>

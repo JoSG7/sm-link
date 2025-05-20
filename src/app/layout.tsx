@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Lexend } from "next/font/google"
 import { Toaster } from "sonner";
 import "./globals.css";
-import { MainMenu } from "@/components/home/main-menu";
+import { MainMenu } from "@/components/home/MainMenu";
 
 export const metadata: Metadata = {
   title: "Sm Link",
@@ -11,22 +11,16 @@ export const metadata: Metadata = {
 
 const lexend = Lexend({ subsets: ["latin"] })
 
-export default function RootLayout({children}: Readonly<{children: React.ReactNode;}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
 
   return (
 
     <html lang="en">
-
       <body className={`antialiased ${lexend.className} overflow-y-auto min-h-screen relative`}>
-
         <MainMenu />
-
         <Toaster richColors />
-        
         {children}
-
       </body>
-
     </html>
 
   );

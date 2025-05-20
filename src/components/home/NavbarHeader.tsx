@@ -8,14 +8,14 @@ export function NavBar () {
 
   return (
 
-    <header className="flex py-4 border-b border-gray-800 sticky top-0 left-0 right-0 justify-center z-20
-    bg-[rgba(14,14,14,0.9)] backdrop-blur-sm">
+    <header className="flex py-5 border-b border-[#1c1d1d] sticky top-0 left-0 right-0 justify-center z-20
+    bg-[rgba(0,0,0,0.9)] backdrop-blur-sm">
 
-      <div className="w-[90%] md:w-[94%] max-w-[1195px] flex justify-between">
-        <div className="flex items-center gap-1 sm:gap-1">
+      <div className="w-[90%] md:w-[94%] max-w-5xl  flex justify-between">
+        <div className="flex items-center gap-1 sm:gap-1 lg-2:gap-2">
           {/* <img src="imgs/Logo6.png" alt="Logo1" className="w-32 md:w-40"/> */}
-          <img src="imgs/Icono1.png" alt="Icono" className="w-10"/>
-          <img src="imgs/Logo7.png" alt="Logo" className="w-20"/>
+          <img src="imgs/Espada1.png" alt="Icono" className="w-9"/>
+          <img src="imgs/Titulo.png" alt="Logo" className="w-16"/>
         </div>
 
         <button type="button" className="flex justify-center items-center" onClick={showMainMenu}>

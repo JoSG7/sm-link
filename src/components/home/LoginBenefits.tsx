@@ -1,11 +1,12 @@
 "use client"
 
 import React from "react"
-import { IconChartHistogram, IconClockX, IconPencilStar, IconShieldLock } from "@tabler/icons-react"
+import { IconChartHistogram, IconClockExclamation, IconFolderCog, IconListSearch, IconPencilStar, IconShieldLock } from "@tabler/icons-react"
+import { LoginTitle } from "./Title"
 
-const DetailCard = ({title, children, icon}: {title: string, children: React.ReactNode, icon: React.ReactNode}) => {
+const DetailCard = ({ title, children, icon }: { title: string, children: React.ReactNode, icon: React.ReactNode }) => {
 
-  return(
+  return (
 
     <article className="w-full">
 
@@ -17,7 +18,7 @@ const DetailCard = ({title, children, icon}: {title: string, children: React.Rea
         <div>
           <h3 className="text-lg font-semibold text-gray-200 sm:text-2xl">{title}</h3>
           <p className="text-base text-wrap text-[#C4CAd4] pt-1 sm:text-xl">
-          {children}
+            {children}
           </p>
         </div>
       </section>
@@ -26,7 +27,7 @@ const DetailCard = ({title, children, icon}: {title: string, children: React.Rea
         <div className="w-full hidden justify-between items-center md:flex">
           <p className="text-xl font-semibold text-gray-200 lg:text-2xl">{title}</p>
           <div>
-          {icon}
+            {icon}
           </div>
         </div>
         <p className="text-lg text-wrap text-[#C4CAd4]">
@@ -34,9 +35,9 @@ const DetailCard = ({title, children, icon}: {title: string, children: React.Rea
         </p>
       </section>
       {/* Card for 1272px */}
-      <section className="p-4 hidden rounded-lg border border-purple-950 gap-2 lg-2:flex">
+      <section className="max-w-[565px] p-4 hidden rounded-2xl border border-[#1c1d1d] gap-2 lg-2:flex">
         <div className="w-full hidden flex-col md:flex gap-2">
-          <p className="text-2xl font-semibold text-gray-200">{title}</p>
+          <p className="text-xl font-semibold text-gray-200">{title}</p>
           <p className="text-lg text-wrap text-[#C4CAd4]">{children}</p>
         </div>
         <div className="flex items-center justify-center">
@@ -50,11 +51,66 @@ const DetailCard = ({title, children, icon}: {title: string, children: React.Rea
 
 }
 
-export function LoginBenefits () {
+export function LoginBenefits() {
 
-  return(
+  return (
 
-    <section className="pt-4 pb-10 flex justify-center sm:pb-16 md:pt-0 md:pb-20">
+    <section className="duration-300 flex justify-center
+    sm:pb-20 md:gap-5 lg-2:pb-0">
+
+      <div className="w-[90%] max-w-5xl md:w-[94%] md:flex md:gap-5 lg:gap-6 lg-2:pt-36 lg-2:justify-between lg-2:pb-20">
+        <div className="flex flex-col">
+          <LoginTitle />
+
+          <div className="flex gap-5">
+            <article className="p-2 rounded-xl border border-[#1c1d1d]">
+              <IconChartHistogram className="lg-2:size-10 text-neutral-300 hover:text-amber-200" />
+            </article>
+
+            <article className="p-2 rounded-xl border border-[#1c1d1d]">
+              <IconShieldLock className="lg-2:size-10 text-neutral-300 hover:text-amber-200" />
+            </article>
+
+            <article className="p-2 rounded-xl border border-[#1c1d1d]">
+              <IconClockExclamation className="lg-2:size-10 text-neutral-300 hover:text-amber-200" />
+            </article>
+
+            <article className="p-2 rounded-xl border border-[#1c1d1d]">
+              <IconPencilStar className="lg-2:size-10 text-neutral-300 hover:text-amber-200" />
+            </article>
+
+            <article className="p-2 rounded-xl border border-[#1c1d1d]">
+              <IconListSearch className="lg-2:size-10 text-neutral-300 hover:text-amber-200" />
+            </article>
+
+            <article className="p-2 rounded-xl border border-[#1c1d1d]">
+              <IconFolderCog className="lg-2:size-10 text-neutral-300 hover:text-amber-200" />
+            </article>
+          </div>
+
+
+        </div>
+
+        <div className="w-[400px] flex items-center">
+          <img src="imgs/login5.jpg" alt="logo" className="login-img"/>
+        </div>
+      </div>
+
+    </section>
+
+  )
+
+}
+
+
+
+
+// Protección con contraseña – Opción para proteger enlaces con contraseña y compartirlos solo con personas autorizadas.
+
+// Expiración de enlaces – Configura enlaces para que expiren después de un tiempo o un número específico de clics.
+
+
+{/* <section className="pt-4 pb-10 flex justify-center sm:pb-16 md:pt-0 md:pb-20">
 
       <div className="w-[90%] max-w-[1080px] flex flex-col gap-7 duration-300 
       md:w-[94%] md:grid md:grid-cols-2 md:gap-5 lg:gap-6">
@@ -85,15 +141,4 @@ export function LoginBenefits () {
 
       </div>
         
-    </section>
-
-  )
-
-}
-
-
-
-
-// Protección con contraseña – Opción para proteger enlaces con contraseña y compartirlos solo con personas autorizadas.
-
-// Expiración de enlaces – Configura enlaces para que expiren después de un tiempo o un número específico de clics.
+    </section> */}

@@ -1,8 +1,8 @@
 
 
-export function NoFound () {
+export function NoFound() {
 
-  return(
+  return (
 
     <section className="">
 

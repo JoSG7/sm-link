@@ -1,50 +1,49 @@
 "use client"
 
-import { GitHubAuthButton, GoogleAuthButton } from "./auth-button-client"
+import { GitHubAuthButton, GoogleAuthButton } from "./AuthButtonClient"
 import { IconClockCheck, IconCode } from "@tabler/icons-react"
 import { closeMainMenu } from "@/utils/ui/home/menu-functions"
 import { getGuessLinks } from "@/logic/server-functions"
-import { LinkSkeleton } from "@/components/common/skeleton"
-import { NoFound } from "@/components/common/no-found"
+import { LinkSkeleton } from "@/components/shared/skeleton"
+import { NoFound } from "@/components/shared/no-found"
 import { useState } from "react"
-import { LinkCard } from "../common/link-card"
+import { LinkCard } from "../shared/link-card"
 
-interface GuessResponse{
-  id:string
+interface GuessLinks {
+  id: string
   short: string,
   original: string,
   created_at: string
 }
-type GuessLinks = GuessResponse[]
 
-export function MainMenu () {
+export function MainMenu() {
 
-  const [data, setData] = useState<GuessLinks | string>("")
+  const [data, setData] = useState<GuessLinks[] | string>("")
   const [loading, setLoading] = useState(true)
 
   const handleFunction = async () => {
 
-    const resData: GuessLinks = await getGuessLinks()
+    const resData: GuessLinks[] = await getGuessLinks()
 
-    if(resData && resData.length > 0){
+    if (resData && resData.length > 0) {
       setData(resData)
       setLoading(false)
     }
-    if(resData && resData.length == 0){
+    if (resData && resData.length == 0) {
       setData("null")
       setLoading(false)
     }
 
   }
 
-  return(
+  return (
 
-    <section className="w-full h-screen fixed hidden bottom-0 bg-modal z-30 backdrop-blur-sm text-[#E5E7EB]" id="bgMenu" 
-    onClick={closeMainMenu}>
+    <section className="w-full h-screen fixed hidden bottom-0 bg-modal z-30 backdrop-blur-sm text-[#E5E7EB]" id="bgMenu"
+      onClick={closeMainMenu}>
 
       <nav className="w-full h-0 bg-[#0e0e0e] border-[#2e2e2e] self-end overflow-y-auto duration-100 whitespace-nowrap
       sm:w-0 sm:fixed sm:right-0 sm:h-full sm:border-l sm:overflow-x-hidden"
-      id="menu" onClick={(e) => { e.stopPropagation() }}>
+        id="menu" onClick={(e) => { e.stopPropagation() }}>
 
         <ul className="option-list flex flex-col ">
 
@@ -57,7 +56,7 @@ export function MainMenu () {
           </li>
 
           <li className="p-4 text-xl font-semibold border-t border-[#2e2e2e] flex gap-2 items-center"
-          onClick={handleFunction}>
+            onClick={handleFunction}>
             <IconClockCheck size={24} />
             Your Recent Sm Links
           </li>
@@ -68,7 +67,7 @@ export function MainMenu () {
                 typeof data != "string" &&
 
                 data.map((element) => (
-                  <LinkCard key={element.id} short={element.short} original={element.original} created_at={element.created_at}/>
+                  <LinkCard key={element.id} short={element.short} original={element.original} created_at={element.created_at} />
                 ))
               }
               {

@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
+* {
 
   box-sizing: border-box;
   margin: 0;
@@ -11,9 +11,58 @@
 
 }
 
-.bg-modal{
+.img-home {
+  width: 430px;
+  height: 525px;
+}
 
-  background-color: rgba(0,0,0,0.7);
+.login-img {
+  -webkit-mask-image:
+    linear-gradient(to top, rgba(0, 0, 0, 1) 80%, transparent),
+    linear-gradient(to bottom, rgba(0, 0, 0, 1) 80%, transparent),
+    linear-gradient(to left, rgba(0, 0, 0, 1) 80%, transparent),
+    linear-gradient(to right, rgba(0, 0, 0, 1) 80%, transparent);
+  mask-image:
+    linear-gradient(to top, rgba(0, 0, 0, 1) 90%, transparent),
+    linear-gradient(to bottom, rgba(0, 0, 0, 1) 90%, transparent),
+    linear-gradient(to left, rgba(0, 0, 0, 1) 80%, transparent),
+    linear-gradient(to right, rgba(0, 0, 0, 1) 80%, transparent);
+  mask-composite: intersect;
+}
+
+.bg-modal {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.img-mask-full {
+  -webkit-mask-image:
+    linear-gradient(to top, rgba(0, 0, 0, 1) 80%, transparent),
+    linear-gradient(to bottom, rgba(0, 0, 0, 1) 80%, transparent),
+    linear-gradient(to left, rgba(0, 0, 0, 1) 80%, transparent),
+    linear-gradient(to right, rgba(0, 0, 0, 1) 80%, transparent);
+  mask-image:
+    linear-gradient(to top, rgba(0, 0, 0, 1) 80%, transparent),
+    linear-gradient(to bottom, rgba(0, 0, 0, 1) 80%, transparent),
+    linear-gradient(to left, rgba(0, 0, 0, 1) 80%, transparent),
+    linear-gradient(to right, rgba(0, 0, 0, 1) 80%, transparent);
+  mask-composite: intersect;
+}
+
+.img-mask-t {
+  mask-image: linear-gradient(to top, rgba(0, 0, 0, 1) 80%, transparent);
+}
+
+.img-mask-b {
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 80%, transparent);
+}
+
+.img-mask-l {
+  mask-image: linear-gradient(to left, rgba(0, 0, 0, 1) 80%, transparent);
+}
+
+.img-mask-r {
+
+  mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 80%, transparent);
 
 }
 
@@ -36,12 +85,9 @@ body {
 }
 
 
-@media (max-width: 1200px) {
-  
-  
-}
+@media (max-width: 1200px) {}
 
 ::-webkit-scrollbar {
   width: 0px;
-  
+
 }
