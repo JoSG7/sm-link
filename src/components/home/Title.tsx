@@ -2,40 +2,23 @@
 
 import { IconDeviceAnalytics, IconGlobe, IconLock } from "@tabler/icons-react"
 import { AnimatedTitle } from "../motion/MotionTitle"
-
-const Pill = (
-  { title, titleClass, icon, iconContainerClass }:
-    { title: string, titleClass?: string, icon: React.ReactNode, iconContainerClass?: string }
-) => {
-
-  return (
-    <article className="rounded-full border border-[#1c1d1d] py-1 px-3 flex gap-3 items-center">
-      <div>
-        <span className={`text-xs ${titleClass}`}>{title}</span>
-      </div>
-      <div className={`p-1 rounded-full ${iconContainerClass}`}>
-        {icon}
-      </div>
-    </article>
-  )
-
-}
+import { Pill } from "../shared/Pill"
 
 export function HomeTitle() {
 
   return (
 
     <section className="flex justify-center">
-      <div className="pt-16 w-full h-[525px] max-w-5xl relative">
-        <div className="lg-2:max-w-[585px] lg-2:">
+      <div className="w-full lg-2:pt-16 h-[525px] lg-2:max-w-5xl relative">
+        <div className="lg-2:max-w-[585px]">
           <AnimatedTitle title="The smartest way to share your links" />
-          <p className="pt-7 font-medium text-neutral-400 text-xl">
+          <p className="text-neutral-400 lg-2:pt-7 lg-2:font-medium lg-2:text-xl">
             Tired of messy URLs? Make them clean, fast, and smart
           </p>
-          <p className="pb-5 font-medium text-neutral-400 text-xl">
+          <p className="text-neutral-400 lg-2:pb-5 lg-2:font-medium lg-2:text-xl">
             Shorten links in seconds and track how they perform
           </p>
-          <div className="flex gap-2 pb-7">
+          <div className="flex lg-2:gap-2 lg-2:pb-7">
             <Pill title="Global Reach"
               icon={<IconGlobe className="text-green-700 size-4" />} iconContainerClass="bg-emerald-200" />
 
@@ -54,7 +37,7 @@ export function HomeTitle() {
           </div>
         </div>
         <div className="absolute top-0 right-0 flex items-center img-home">
-          <img src="imgs/mano3.png" className="img-mask-full h-[500px] object-cover" />
+          <img src="imgs/mano4.png" className="img-mask-full h-[500px] object-cover" />
         </div>
       </div>
     </section>

@@ -4,10 +4,11 @@ import { GitHubAuthButton, GoogleAuthButton } from "./AuthButtonClient"
 import { IconClockCheck, IconCode } from "@tabler/icons-react"
 import { closeMainMenu } from "@/utils/ui/home/menu-functions"
 import { getGuessLinks } from "@/logic/server-functions"
-import { LinkSkeleton } from "@/components/shared/skeleton"
-import { NoFound } from "@/components/shared/no-found"
+
+import { NoFound } from "@/components/shared/NoFound"
 import { useState } from "react"
-import { LinkCard } from "../shared/link-card"
+import { LinkCard } from "../shared/LinkCard"
+import { LinkSkeleton } from "../shared/skeleton"
 
 interface GuessLinks {
   id: string

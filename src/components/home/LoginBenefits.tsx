@@ -3,6 +3,7 @@
 import React from "react"
 import { IconChartHistogram, IconClockExclamation, IconFolderCog, IconListSearch, IconPencilStar, IconShieldLock } from "@tabler/icons-react"
 import { LoginTitle } from "./Title"
+import { GitHubAuthButton, GoogleAuthButton } from "./AuthButtonClient"
 
 const DetailCard = ({ title, children, icon }: { title: string, children: React.ReactNode, icon: React.ReactNode }) => {
 
@@ -35,7 +36,7 @@ const DetailCard = ({ title, children, icon }: { title: string, children: React.
         </p>
       </section>
       {/* Card for 1272px */}
-      <section className="max-w-[565px] p-4 hidden rounded-2xl border border-[#1c1d1d] gap-2 lg-2:flex">
+      <section className="max-w-[565px] p-4 hidden rounde border-gradient-rd-2xl border-[1.5px] border-transparent gap-2 lg-2:flex">
         <div className="w-full hidden flex-col md:flex gap-2">
           <p className="text-xl font-semibold text-gray-200">{title}</p>
           <p className="text-lg text-wrap text-[#C4CAd4]">{children}</p>
@@ -59,40 +60,44 @@ export function LoginBenefits() {
     sm:pb-20 md:gap-5 lg-2:pb-0">
 
       <div className="w-[90%] max-w-5xl md:w-[94%] md:flex md:gap-5 lg:gap-6 lg-2:pt-36 lg-2:justify-between lg-2:pb-20">
-        <div className="flex flex-col">
-          <LoginTitle />
+        <div className="">
+          <div className="flex flex-col pt-14">
+            <LoginTitle />
 
-          <div className="flex gap-5">
-            <article className="p-2 rounded-xl border border-[#1c1d1d]">
-              <IconChartHistogram className="lg-2:size-10 text-neutral-300 hover:text-amber-200" />
-            </article>
+            <div className="flex gap-5 pb-5">
+              <article className="p-2 rounded-xl border border-[#1c1d1d] hover:border-transparent">
+                <IconChartHistogram className="lg-2:size-10 text-neutral-300 hover:text-amber-200" />
+              </article>
 
-            <article className="p-2 rounded-xl border border-[#1c1d1d]">
-              <IconShieldLock className="lg-2:size-10 text-neutral-300 hover:text-amber-200" />
-            </article>
+              <article className="p-2 rounded-xl border border-[#1c1d1d] hover:border-transparent">
+                <IconShieldLock className="lg-2:size-10 text-neutral-300 hover:text-amber-200" />
+              </article>
 
-            <article className="p-2 rounded-xl border border-[#1c1d1d]">
-              <IconClockExclamation className="lg-2:size-10 text-neutral-300 hover:text-amber-200" />
-            </article>
+              <article className="p-2 rounded-xl border border-[#1c1d1d] hover:border-transparent">
+                <IconClockExclamation className="lg-2:size-10 text-neutral-300 hover:text-amber-200" />
+              </article>
 
-            <article className="p-2 rounded-xl border border-[#1c1d1d]">
-              <IconPencilStar className="lg-2:size-10 text-neutral-300 hover:text-amber-200" />
-            </article>
+              <article className="p-2 rounded-xl border border-[#1c1d1d] hover:border-transparent">
+                <IconPencilStar className="lg-2:size-10 text-neutral-300 hover:text-amber-200" />
+              </article>
 
-            <article className="p-2 rounded-xl border border-[#1c1d1d]">
-              <IconListSearch className="lg-2:size-10 text-neutral-300 hover:text-amber-200" />
-            </article>
+              <article className="p-2 rounded-xl border border-[#1c1d1d] hover:border-transparent">
+                <IconListSearch className="lg-2:size-10 text-neutral-300 hover:text-amber-200" />
+              </article>
 
-            <article className="p-2 rounded-xl border border-[#1c1d1d]">
-              <IconFolderCog className="lg-2:size-10 text-neutral-300 hover:text-amber-200" />
-            </article>
+              <article className="p-2 rounded-xl border border-[#1c1d1d] hover:border-transparent">
+                <IconFolderCog className="lg-2:size-10 text-neutral-300 hover:text-amber-200" />
+              </article>
+            </div>
+
+            <div className="flex gap-5">
+              <GitHubAuthButton />
+              <GoogleAuthButton />
+            </div>
           </div>
-
-
         </div>
-
         <div className="w-[400px] flex items-center">
-          <img src="imgs/login5.jpg" alt="logo" className="login-img"/>
+          <img src="imgs/login6.png" alt="logo" className="w-full fade lg-2:max-h-[500px]" />
         </div>
       </div>
 
@@ -142,3 +147,10 @@ export function LoginBenefits() {
       </div>
         
     </section> */}
+
+
+
+    // linear-gradient(var(--bg-color),var(--bg-color)) padding-box,linear-gradient(107.65deg,#17C969 17.53%,#005DBB 94.64%) border-box
+
+
+// linear-gradient(var(--bg-color),var(--bg-color)) padding-box,linear-gradient(120.55deg,#FF4040 18.56%,#A20BD8 98.01%) border-box

@@ -1,15 +1,14 @@
 "use client"
 
-import { IconInfoCircle, IconScissors, IconSquareNumber1Filled, IconSquareNumber2Filled, IconSquareNumber3Filled, IconSquareNumber4Filled, IconWand, IconX } from "@tabler/icons-react"
-import { closeFormInfo, showFormInfo } from "@/utils/ui/home/form-functions"
+import { IconScissors, IconWand } from "@tabler/icons-react"
+// import { closeFormInfo, showFormInfo } from "@/utils/ui/home/form-functions"
 import { createShortLink } from "@/logic/server-functions"
 import { useState, type FormEvent } from "react"
 import { toast } from "sonner"
 import { LinkFormTitle } from "./Title"
+import { Pill } from "../shared/Pill"
 
-interface apiError {
-  error: string
-}
+
 
 export function LinkForm() {
 
@@ -20,7 +19,7 @@ export function LinkForm() {
     e.preventDefault()
 
     const loadingToast = toast.loading("Creating short link...")
-    const response: string | apiError = await createShortLink()
+    const response: string | { error: string } = await createShortLink()
 
     if (typeof (response) == "object") {
       toast.error(response.error, { id: loadingToast })
@@ -43,37 +42,52 @@ export function LinkForm() {
 
         <LinkFormTitle />
 
-        <div className="w-[450px]">
+        <div className="lg-2:w-[470px]">
 
-          <form onSubmit={handleSubmit} className="rounded-3xl border border-neutral-800 p-4
-          md:border-neutral-[#181818] sm:p-7 lg:p-6">
+          <form onSubmit={handleSubmit} className="relative rounded-3xl border p-4 bg-form
+          md:border-[#181818] sm:p-7 lg:p-6 lg-2:p-8" >
 
             <div className="flex justify-between">
-              <label htmlFor="txtUrl" className="flex items-center gap-2">
-                <IconScissors size={20} className="sm:size-7"></IconScissors>
-                <span className="sm:text-xl text-[#E5E7EB] font-semibold">Short a long link</span>
+              <label htmlFor="txtUrl" className="flex items-center gap-3">
+                <div className="p-1.5 rounded-full bg-emerald-900">
+                  <IconScissors className="sm:size-4 lg-2:size-5 lg-2:text-emerald-400"></IconScissors>
+                </div>
+                <span className="sm:text-xl text-[#E5E7EB] font-semibold">Paste a long link</span>
               </label>
             </div>
 
             <input type="url" id="txtUrl" autoComplete="off" className="w-full p-2 my-3 text-neutral-400 bg-neutral-950 outline-none 
             rounded-md border border-zinc-900 placeholder:text-neutral-800
-            sm:text-md sm:my-5 lg:p-3"
-              placeholder="Enter a long Link to short" required />
+            sm:text-md sm:my-5 lg:p-3 lg-2:rounded-full lg-2:py-3 lg-2:px-4 "
+            placeholder="Enter a long Link to short" required />
 
-            <div className="flex items-center gap-2">
-              <IconWand size={20} className="sm:size-7 lg:size-9"></IconWand>
+            <div className="flex items-center gap-3">
+              <div className="p-1.5 rounded-full bg-[#150b00]">
+                <IconWand className="sm:size-4 lg-2:size-5 lg-2:text-[#FFD700]"></IconWand>
+              </div>
               <span className="sm:text-xl text-[#E5E7EB] font-semibold">Your new short Link here!</span>
             </div>
 
             <div className="w-full p-2 mt-3 bg-neutral-950 rounded-md border border-zinc-900 text-neutral-400 mb-5
-            sm:mt-5 lg:p-3">
+            sm:mt-5 lg:p-3 lg-2:rounded-full lg-2:py-3 lg-2:px-4">
               <p className="sm:text-md">sm-link.vercel.app/{shortURL}</p>
             </div>
 
-            <button className="w-full text-center py-2 rounded-lg bg-gradient-to-r from-[#55a346] to-[#2e7e1d] 
-            sm:text-lg lg-2:from-purple-500 lg-2:to-purple-900 md:from-sky-500 md:to-blue-900">
+            <div className="flex gap-2">
+              <Pill title="Easy"/>
+              <Pill title="Fast" />
+              <Pill title="Clean" />
+            </div>
+
+            <button className="w-full text-center text-black py-2 my-5 rounded-lg bg-gradient-to-r from-[#55a346] to-[#2e7e1d] 
+            sm:text-lg lg-2:from-neutral-100 lg-2:to-neutral-400 md:from-sky-500 md:to-blue-900">
               Shorten Link
             </button>
+
+            <p className="text-xs text-neutral-400 text-center">
+              By proceeding, you agree to our <span className="text-blue-500">Terms of Service</span> and
+              <span className="text-blue-500"> Privacy Policy</span>.
+            </p>
 
           </form>
 
@@ -174,6 +188,8 @@ export function LinkForm() {
             </p>
             <p className="hidden text-[#C4CAd4] text-lg pb-2 lg-2:block">Puedes cortar el link que desees, pero antes de ello debes revisar nuestros términos de uso y nuestra política de privacidad primero</p>
           </article>
+
+          background:radial-gradient(70% 80% at center 0%, rgba(255,255,255,0.06) 3%, rgba(98, 255, 179, 0) 70%, rgba(98, 255, 179, 0) 100%)
 
         </div> */}
 
