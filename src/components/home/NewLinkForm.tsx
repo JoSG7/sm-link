@@ -73,13 +73,7 @@ export function LinkForm() {
               <p className="sm:text-md">sm-link.vercel.app/{shortURL}</p>
             </div>
 
-            <div className="flex gap-2">
-              <Pill title="Easy"/>
-              <Pill title="Fast" />
-              <Pill title="Clean" />
-            </div>
-
-            <button className="w-full text-center text-black py-2 my-5 rounded-lg bg-gradient-to-r from-[#55a346] to-[#2e7e1d] 
+            <button className="w-full text-center text-black py-2 mt-2 mb-5 rounded-lg bg-gradient-to-r from-[#55a346] to-[#2e7e1d] 
             sm:text-lg lg-2:from-neutral-100 lg-2:to-neutral-400 md:from-sky-500 md:to-blue-900">
               Shorten Link
             </button>

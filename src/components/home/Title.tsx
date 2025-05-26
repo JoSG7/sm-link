@@ -1,6 +1,6 @@
 "use client"
 
-import { IconDeviceAnalytics, IconGlobe, IconLock } from "@tabler/icons-react"
+import { Icon123, IconBrandFacebookFilled, IconBrandInstagram, IconBrandOffice, IconBrandYoutubeFilled, IconChartPie2Filled, IconDeviceAnalytics, IconFileExcel, IconFileTextShield, IconGlobe, IconLock } from "@tabler/icons-react"
 import { AnimatedTitle } from "../motion/MotionTitle"
 import { Pill } from "../shared/Pill"
 
@@ -30,8 +30,7 @@ export function HomeTitle() {
           </div>
 
           <div className="flex gap-7 items-center">
-            <button className="py-2 px-4 rounded-lg bg-gradient-to-r from-neutral-100 to-neutral-400 text-neutral-800 transition-transform duration-200 
-            hover:scale-105">Let's Start</button>
+            <button className="py-2 px-4 rounded-lg bg-gradient-to-r from-neutral-100 to-neutral-400 text-neutral-800 transition-transform duration-200 hover:scale-105">Let's Start</button>
 
             <p className="text-sm text-[#E2E2EB]">⭐ Trusted by 10,000+ users</p>
           </div>
@@ -49,18 +48,41 @@ export function LinkFormTitle() {
 
   return (
 
-    <section>
+    <section className="flex items-center">
 
       <div className="lg-2:max-w-[500px]">
 
         <AnimatedTitle title="Turn any long link into a short URL" />
 
-        <p className="pt-5 pb-5 font-medium text-neutral-400 text-xl">
+        <p className="py-5 font-medium text-neutral-400 lg-2:text-xl">
           Shorten links and track clicks. Great for social media, marketing, and more.
         </p>
 
+        <div className="lg-2:flex gap-3 lg-2:pb-3">
+          <Pill title="Facebook" icon={<IconBrandFacebookFilled stroke={1.25} className="size-4" />}
+            iconContainerClass="bg-gradient-to-tr from-blue-600 via-blue-500 to-blue-700" />
 
+          <Pill title="Instagram" icon={<IconBrandInstagram className="size-4" />}
+            iconContainerClass="bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600" />
 
+          <Pill title="Youtube" icon={<IconBrandYoutubeFilled className="size-4" />}
+            iconContainerClass="bg-gradient-to-tr from-red-600 via-red-500 to-red-700" />
+
+          <Pill title="Office" icon={<IconBrandOffice className="size-4" />}
+            iconContainerClass="bg-gradient-to-tr from-blue-500 via-green-600 to-violet-900" />
+        </div>
+
+        <div className="flex gap-3">
+          <Pill title="Protected information" icon={<IconFileTextShield className="size-4" />}
+            iconContainerClass="bg-gradient-to-tr from-amber-400 to-yellow-700" />
+
+          <Pill title="Documents" icon={<IconFileExcel className="size-4" />}
+            iconContainerClass="bg-gradient-to-tr from-lime-500 to-green-800" />
+
+          <Pill title="Stadistics" icon={<IconChartPie2Filled className="size-4" />}
+            iconContainerClass="bg-gradient-to-tr from-orange-500 via-red-500 to-red-700" />
+
+        </div>
 
       </div>
 
