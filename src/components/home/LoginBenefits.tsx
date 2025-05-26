@@ -1,7 +1,7 @@
 "use client"
 
-import React from "react"
 import { IconChartHistogram, IconClockExclamation, IconFolderCog, IconListSearch, IconPencilStar, IconShieldLock } from "@tabler/icons-react"
+import React from "react"
 import { LoginTitle } from "./Title"
 import { GitHubAuthButton, GoogleAuthButton } from "./AuthButtonClient"
 
@@ -65,28 +65,53 @@ export function LoginBenefits() {
             <LoginTitle />
 
             <div className="flex gap-5 pb-5">
-              <article className="p-2 rounded-xl border border-[#1c1d1d] hover:border-transparent">
+              <article className="relative group p-2 rounded-xl border border-[#1c1d1d]">
                 <IconChartHistogram className="lg-2:size-10 text-neutral-300 hover:text-amber-200" />
+                
+                <p className="absolute -top-11 opacity-0 group-hover:opacity-100 duration-300 bg-black text-sm py-1 px-3 rounded-full 
+                border border-[#1c1d1d] pointer-events-none">
+                  Metrics
+                </p>
               </article>
 
-              <article className="p-2 rounded-xl border border-[#1c1d1d] hover:border-transparent">
+              <article className="relative group p-2 rounded-xl border border-[#1c1d1d]">
                 <IconShieldLock className="lg-2:size-10 text-neutral-300 hover:text-amber-200" />
+
+                <p className="text-nowrap absolute -top-11 left-0 opacity-0 group-hover:opacity-100 duration-300 bg-black text-sm py-1 px-3 rounded-full border border-[#1c1d1d] pointer-events-none">
+                  Protected Links
+                </p>
               </article>
 
-              <article className="p-2 rounded-xl border border-[#1c1d1d] hover:border-transparent">
+              <article className="relative group p-2 rounded-xl border border-[#1c1d1d]">
                 <IconClockExclamation className="lg-2:size-10 text-neutral-300 hover:text-amber-200" />
+
+                <p className="text-nowrap absolute -top-11 left-0 opacity-0 group-hover:opacity-100 duration-300 bg-black text-sm py-1 px-3 rounded-full border border-[#1c1d1d] pointer-events-none">
+                  Expirations
+                </p>
               </article>
 
-              <article className="p-2 rounded-xl border border-[#1c1d1d] hover:border-transparent">
+              <article className="relative group p-2 rounded-xl border border-[#1c1d1d]">
                 <IconPencilStar className="lg-2:size-10 text-neutral-300 hover:text-amber-200" />
+
+                <p className="text-nowrap absolute -top-11 left-0 opacity-0 group-hover:opacity-100 duration-300 bg-black text-sm py-1 px-3 rounded-full border border-[#1c1d1d] pointer-events-none">
+                  Customizing
+                </p>
               </article>
 
-              <article className="p-2 rounded-xl border border-[#1c1d1d] hover:border-transparent">
+              <article className="relative group p-2 rounded-xl border border-[#1c1d1d]">
                 <IconListSearch className="lg-2:size-10 text-neutral-300 hover:text-amber-200" />
+
+                <p className="text-nowrap absolute -top-11 left-0 opacity-0 group-hover:opacity-100 duration-300 bg-black text-sm py-1 px-3 rounded-full border border-[#1c1d1d] pointer-events-none">
+                  Audit
+                </p>
               </article>
 
-              <article className="p-2 rounded-xl border border-[#1c1d1d] hover:border-transparent">
+              <article className="relative group p-2 rounded-xl border border-[#1c1d1d]">
                 <IconFolderCog className="lg-2:size-10 text-neutral-300 hover:text-amber-200" />
+                
+                <p className="text-nowrap absolute -top-11 left-0 opacity-0 group-hover:opacity-100 duration-300 bg-black text-sm py-1 px-3 rounded-full border border-[#1c1d1d] pointer-events-none">
+                  Management
+                </p>
               </article>
             </div>
 
@@ -96,6 +121,7 @@ export function LoginBenefits() {
             </div>
           </div>
         </div>
+
         <div className="w-[400px] flex items-center">
           <img src="imgs/login6.png" alt="logo" className="w-full fade lg-2:max-h-[500px]" />
         </div>

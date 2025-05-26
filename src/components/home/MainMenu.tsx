@@ -8,7 +8,7 @@ import { getGuessLinks } from "@/logic/server-functions"
 import { NoFound } from "@/components/shared/NoFound"
 import { useState } from "react"
 import { LinkCard } from "../shared/LinkCard"
-import { LinkSkeleton } from "../shared/skeleton"
+import { LinkSkeleton } from "../shared/Skeleton"
 
 interface GuessLinks {
   id: string

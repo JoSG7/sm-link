@@ -1,6 +1,6 @@
 "use client"
 
-import { Icon123, IconBrandFacebookFilled, IconBrandInstagram, IconBrandOffice, IconBrandYoutubeFilled, IconChartPie2Filled, IconDeviceAnalytics, IconFileExcel, IconFileTextShield, IconGlobe, IconLock } from "@tabler/icons-react"
+import { IconBrandFacebookFilled, IconBrandInstagram, IconBrandOffice, IconBrandYoutubeFilled, IconChartPie2Filled, IconDeviceAnalytics, IconFileExcel, IconFileTextShield, IconGlobe, IconLock, IconStarFilled } from "@tabler/icons-react"
 import { AnimatedTitle } from "../motion/MotionTitle"
 import { Pill } from "../shared/Pill"
 
@@ -9,35 +9,42 @@ export function HomeTitle() {
   return (
 
     <section className="flex justify-center">
-      <div className="w-full lg-2:pt-16 h-[525px] lg-2:max-w-5xl relative">
-        <div className="lg-2:max-w-[585px]">
-          <AnimatedTitle title="The smartest way to share your links" />
-          <p className="text-neutral-400 lg-2:pt-7 lg-2:font-medium lg-2:text-xl">
-            Tired of messy URLs? Make them clean, fast, and smart
-          </p>
-          <p className="text-neutral-400 lg-2:pb-5 lg-2:font-medium lg-2:text-xl">
-            Shorten links in seconds and track how they perform
-          </p>
-          <div className="flex lg-2:gap-2 lg-2:pb-7">
-            <Pill title="Global Reach"
-              icon={<IconGlobe className="text-green-700 size-4" />} iconContainerClass="bg-emerald-200" />
+      <div className="w-full lg-2:py-9 lg-2:max-w-5xl lg-2:flex lg-2:flex-row-reverse lg-2:justify-between">
+        <img src="imgs/mano5.png" className="img-home" />
 
-            <Pill title="Real-Time Analytics"
-              icon={<IconDeviceAnalytics className="text-blue-700 size-4" />} iconContainerClass="bg-sky-300" />
+        <article className="lg-2:max-w-[580px]">
+          <div className="py-12">
+            <AnimatedTitle title="The smartest way to share your links" />
 
-            <Pill title="100% Secure"
-              icon={<IconLock className="text-purple-700 size-4" />} iconContainerClass="bg-violet-400" />
+            <p className="text-neutral-400 lg-2:pt-7 lg-2:font-medium lg-2:text-xl">
+              Tired of messy URLs? Make them clean, fast, and smart
+            </p>
+
+            <p className="text-neutral-400 lg-2:pb-5 lg-2:font-medium lg-2:text-xl">
+              Shorten links in seconds and track how they perform
+            </p>
+
+            <div className="flex lg-2:gap-2 lg-2:pb-7">
+              <Pill title="Global Reach"
+                icon={<IconGlobe className="text-green-700 size-4" />} iconContainerClass="bg-emerald-200" />
+
+              <Pill title="Real-Time Analytics"
+                icon={<IconDeviceAnalytics className="text-blue-700 size-4" />} iconContainerClass="bg-sky-300" />
+
+              <Pill title="100% Secure"
+                icon={<IconLock className="text-purple-700 size-4" />} iconContainerClass="bg-violet-400" />
+            </div>
+
+            <div className="flex gap-7 items-center">
+              <button className="py-2 px-4 rounded-lg bg-gradient-to-r from-neutral-100 to-neutral-400 text-neutral-800 transition-transform duration-200 hover:scale-105">Let's Start</button>
+
+              <p className="text-sm text-[#E2E2EB] flex items-center gap-1 text-">
+                <IconStarFilled className="size-4 text-amber-300" />
+                Trusted by 10,000+ users
+              </p>
+            </div>
           </div>
-
-          <div className="flex gap-7 items-center">
-            <button className="py-2 px-4 rounded-lg bg-gradient-to-r from-neutral-100 to-neutral-400 text-neutral-800 transition-transform duration-200 hover:scale-105">Let's Start</button>
-
-            <p className="text-sm text-[#E2E2EB]">⭐ Trusted by 10,000+ users</p>
-          </div>
-        </div>
-        <div className="absolute top-0 right-0 flex items-center img-home">
-          <img src="imgs/mano4.png" className="img-mask-full h-[500px] object-cover" />
-        </div>
+        </article>
       </div>
     </section>
   )
@@ -81,7 +88,6 @@ export function LinkFormTitle() {
 
           <Pill title="Stadistics" icon={<IconChartPie2Filled className="size-4" />}
             iconContainerClass="bg-gradient-to-tr from-orange-500 via-red-500 to-red-700" />
-
         </div>
 
       </div>
@@ -109,6 +115,40 @@ export function LoginTitle() {
 
 }
 
+
+
+
+
+{/* <AnimatedTitle title="The smartest way to share your links" />
+          <p className="text-neutral-400 lg-2:pt-7 lg-2:font-medium lg-2:text-xl">
+            Tired of messy URLs? Make them clean, fast, and smart
+          </p>
+          <p className="text-neutral-400 lg-2:pb-5 lg-2:font-medium lg-2:text-xl">
+            Shorten links in seconds and track how they perform
+          </p>
+          <div className="flex lg-2:gap-2 lg-2:pb-7">
+            <Pill title="Global Reach"
+              icon={<IconGlobe className="text-green-700 size-4" />} iconContainerClass="bg-emerald-200" />
+
+            <Pill title="Real-Time Analytics"
+              icon={<IconDeviceAnalytics className="text-blue-700 size-4" />} iconContainerClass="bg-sky-300" />
+
+            <Pill title="100% Secure"
+              icon={<IconLock className="text-purple-700 size-4" />} iconContainerClass="bg-violet-400" />
+          </div>
+
+          <div className="flex gap-7 items-center">
+            <button className="py-2 px-4 rounded-lg bg-gradient-to-r from-neutral-100 to-neutral-400 text-neutral-800 transition-transform duration-200 hover:scale-105">Let's Start</button>
+
+            <p className="text-sm text-[#E2E2EB] flex items-center gap-1 text-">
+              <IconStarFilled className="size-4"/>
+              Trusted by 10,000+ users
+            </p>
+          </div>
+        </div>
+        <div className="absolute top-0 right-0 flex items-center img-home">
+          <img src="imgs/mano5.png" className="img-mask-full h-[450px]" />
+        </div> */}
 
 
 
