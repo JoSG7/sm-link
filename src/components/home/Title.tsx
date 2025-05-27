@@ -10,7 +10,7 @@ export function HomeTitle() {
 
     <section className="flex justify-center">
       <div className="w-full lg-2:py-9 lg-2:max-w-5xl lg-2:flex lg-2:flex-row-reverse lg-2:justify-between">
-        <img src="imgs/mano5.png" className="img-home" />
+        <img src="imgs/mano5.png" className="hidden lg-2:block img-home" />
 
         <article className="lg-2:max-w-[580px]">
           <div className="py-12">
