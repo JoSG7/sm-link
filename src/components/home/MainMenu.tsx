@@ -8,6 +8,7 @@ import { getGuessLinks } from "@/logic/server-functions"
 import { NoFound } from "@/components/shared/NoFound"
 import { useState } from "react"
 import { LinkCard } from "../shared/LinkCard"
+import { LinkCardSkeleton } from "../shared/Skeleton"
 
 
 interface GuessLinks {
@@ -19,7 +20,7 @@ interface GuessLinks {
 
 export function MainMenu() {
 
-  const [data, setData] = useState<GuessLinks[] | string>("")
+  const [data, setData] = useState<GuessLinks[] | []>([])
   const [loading, setLoading] = useState(true)
 
   const handleFunction = async () => {
@@ -31,7 +32,7 @@ export function MainMenu() {
       setLoading(false)
     }
     if (resData && resData.length == 0) {
-      setData("null")
+      setData([])
       setLoading(false)
     }
 
@@ -65,21 +66,18 @@ export function MainMenu() {
           <div className="h-0 duration-300 overflow-y-auto" id="recent-links">
             <div className="px-4 pb-4 flex flex-col gap-4">
               {
-                typeof data != "string" &&
-
-                data.map((element) => (
-                  <LinkCard key={element.id} short={element.short} original={element.original} created_at={element.created_at} />
-                ))
-              }
-              {
-                loading == true &&
-                <div className="flex flex-col gap-4">
-                  
-                </div>
-              }
-              {
-                data == "null" &&
-                <NoFound />
+                loading ?
+                  <div className="flex flex-col gap-4">
+                    <LinkCardSkeleton />
+                    <LinkCardSkeleton />
+                  </div>
+                  :
+                  data.length > 0 ?
+                    data.map((element) => (
+                      <LinkCard key={element.id} short={element.short} original={element.original} created_at={element.created_at} />
+                    ))
+                    :
+                    <NoFound />
               }
             </div>
           </div>

@@ -12,7 +12,7 @@ export function LinkCard({ original, short, created_at }: { original: string, sh
 
   return (
 
-    <article className="p-4 rounded-md border border-gray-800 whitespace-normal">
+    <article className="p-4 rounded-lg border border-gray-800 whitespace-normal">
 
       <div className="flex justify-between items-center pb-4 gap-1">
         <div className="flex flex-col max-w-[240px] sm:max-w-[285px] lg-2:max-w-[400px]">

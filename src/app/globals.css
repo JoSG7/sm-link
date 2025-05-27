@@ -2,12 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  list-style: none;
+@layer utilities {
+
+  .border-gradient-green {
+
+    background: linear-gradient(black, black) padding-box,
+      linear-gradient(107.65deg, #17C969 17.53%, #005DBB 94.64%) border-box;
+
+  }
+
 }
+
+
 
 .img-home {
   width: 430px;
@@ -53,35 +59,35 @@
   mask-composite: intersect;
 }
 
-.border-gradient-g {
+.border-gradient-green {
 
   background: linear-gradient(black, black) padding-box,
     linear-gradient(107.65deg, #17C969 17.53%, #005DBB 94.64%) border-box;
 
 }
 
-.border-gradient-r {
+.border-gradient-red {
 
   background: linear-gradient(black, black) padding-box,
     linear-gradient(107.65deg, #FF4040 17.53%, #A20BD8 94.64%) border-box;
 
 }
 
-.border-gradient-y {
+.border-gradient-yellow {
 
   background: linear-gradient(black, black) padding-box,
     linear-gradient(107.65deg, #F9D423 7.64%, #FF4E50 97.11%) border-box;
 
 }
 
-.border-gradient-b {
+.border-gradient-blue {
 
   background: linear-gradient(black, black) padding-box,
     linear-gradient(107.65deg, #0148BA 1.35%, #01A5FF 104.47%) border-box;
 
 }
 
-.border-gradient-p {
+.border-gradient-purple {
 
   background: linear-gradient(black, black) padding-box,
     linear-gradient(107.65deg, #AD00FF 0.31%, #330371 104.9%) border-box;
@@ -107,6 +113,12 @@
 
 
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
 
 :root {
   --background: #ffffff;
