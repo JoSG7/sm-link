@@ -9,22 +9,36 @@ export function HomeTitle() {
   return (
 
     <section className="flex justify-center">
-      <div className="w-full lg-2:py-9 lg-2:max-w-5xl lg-2:flex lg-2:flex-row-reverse lg-2:justify-between">
+      <div className="w-[87vw] lg-2:w-full lg-2:py-9 lg-2:max-w-5xl lg-2:flex lg-2:flex-row-reverse lg-2:justify-between">
+
         <img src="imgs/mano5.png" className="hidden lg-2:block img-home" />
 
         <article className="lg-2:max-w-[580px]">
           <div className="py-12">
             <AnimatedTitle title="The smartest way to share your links" />
 
-            <p className="text-neutral-400 lg-2:pt-7 lg-2:font-medium lg-2:text-xl">
-              Tired of messy URLs? Make them clean, fast, and smart
+            <p className="text-neutral-400 text-sm pt-4 lg-2:pt-7 lg-2:font-medium lg-2:text-xl">
+              Tired of messy URLs? Make them clean & fast<span className="hidden lg-2:inline-block">, and smart</span> 
             </p>
 
-            <p className="text-neutral-400 lg-2:pb-5 lg-2:font-medium lg-2:text-xl">
+            <p className="text-neutral-400 text-sm pb-4 lg-2:pb-5 lg-2:font-medium lg-2:text-xl">
               Shorten links in seconds and track how they perform
             </p>
 
-            <div className="flex lg-2:gap-2 lg-2:pb-7">
+            {/* Since 360px */}
+            <div className="flex gap-3 pb-4 lg-2:hidden lg-2:gap-2 lg-2:pb-7">
+              {/* <Pill title="Global"
+                icon={<IconGlobe className="text-green-700 size-4" />} iconContainerClass="bg-emerald-200" /> */}
+
+              <Pill title="Real-Time Analytics"
+                icon={<IconDeviceAnalytics className="text-blue-700 size-4" />} iconContainerClass="bg-sky-300" />
+
+              <Pill title="Secure"
+                icon={<IconLock className="text-purple-700 size-4" />} iconContainerClass="bg-violet-400" />
+            </div>
+
+            {/* Since 1024 */}
+            <div className="hidden lg-2:flex lg-2:gap-2 lg-2:pb-7">
               <Pill title="Global Reach"
                 icon={<IconGlobe className="text-green-700 size-4" />} iconContainerClass="bg-emerald-200" />
 
@@ -35,10 +49,10 @@ export function HomeTitle() {
                 icon={<IconLock className="text-purple-700 size-4" />} iconContainerClass="bg-violet-400" />
             </div>
 
-            <div className="flex gap-7 items-center">
-              <button className="py-2 px-4 rounded-lg bg-gradient-to-r from-neutral-100 to-neutral-400 text-neutral-800 transition-transform duration-200 hover:scale-105">Let's Start</button>
+            <div className="flex items-center gap-4 lg-2:gap-7">
+              <button className="py-1 px-3 lg-2:py-2 lg-2:px-4 rounded-lg bg-gradient-to-r from-neutral-100 to-neutral-400 text-neutral-800 transition-transform duration-200 hover:scale-105">Let's Start</button>
 
-              <p className="text-sm text-[#E2E2EB] flex items-center gap-1 text-">
+              <p className="text-[#E2E2EB] flex items-center gap-1 text-xs lg-2:text-sm">
                 <IconStarFilled className="size-4 text-amber-300" />
                 Trusted by 10,000+ users
               </p>

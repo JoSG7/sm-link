@@ -20,11 +20,11 @@ export default async function Home() {
         <div>
           <div className="bg-black">
             <HomeTitle />
-            <LinkForm />
+            {/* <LinkForm /> */}
           </div>
 
           <div>
-            <LoginBenefits />
+            {/* <LoginBenefits /> */}
           </div>
           {/* <Footer /> */}
         </div>

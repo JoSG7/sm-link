@@ -33,7 +33,8 @@ export function AnimatedTitle({ title }: { title: string }) {
   }
 
   return (
-    <motion.div variants={container} initial="hidden" animate="visible" className="break-words tracking-tight
+    <motion.div variants={container} initial="hidden" animate="visible" 
+    className="break-words tracking-tight text-4xl
     lg-2:font-normal lg-2:text-6xl">
       {letters.map((letter, index) => (
         <motion.span key={index} variants={child}>
