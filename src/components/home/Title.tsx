@@ -17,11 +17,11 @@ export function HomeTitle() {
           <div className="py-12">
             <AnimatedTitle title="The smartest way to share your links" />
 
-            <p className="text-neutral-400 text-sm pt-4 lg-2:pt-7 lg-2:font-medium lg-2:text-xl">
+            <p className="text-neutral-400 pt-4 lg-2:pt-7 lg-2:font-medium lg-2:text-xl">
               Tired of messy URLs? Make them clean & fast<span className="hidden lg-2:inline-block">, and smart</span> 
             </p>
 
-            <p className="text-neutral-400 text-sm pb-4 lg-2:pb-5 lg-2:font-medium lg-2:text-xl">
+            <p className="text-neutral-400 pb-4 lg-2:pb-5 lg-2:font-medium lg-2:text-xl">
               Shorten links in seconds and track how they perform
             </p>
 
@@ -71,7 +71,7 @@ export function LinkFormTitle() {
 
     <section className="flex items-center">
 
-      <div className="w-[87vw] pb-2 lg-2:max-w-[500px] lg-2:py-0">
+      <div className="w-[87vw] pb-5 lg-2:max-w-[500px] lg-2:py-0">
 
         <AnimatedTitle title="Turn any long link into a short URL" />
 

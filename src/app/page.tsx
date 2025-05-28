@@ -24,7 +24,7 @@ export default async function Home() {
           </div>
 
           <div>
-            {/* <LoginBenefits /> */}
+            <LoginBenefits />
           </div>
           {/* <Footer /> */}
         </div>

@@ -34,8 +34,8 @@ export function AnimatedTitle({ title }: { title: string }) {
 
   return (
     <motion.div variants={container} initial="hidden" animate="visible" 
-    className="break-words tracking-tight text-4xl
-    lg-2:font-normal lg-2:text-6xl">
+    className="break-words tracking-tight text-4xl max-w-[300px]
+    lg-2:font-normal lg-2:text-6xl lg-2:max-w-max">
       {letters.map((letter, index) => (
         <motion.span key={index} variants={child}>
           {letter === " " ? "\u00A0" : letter}

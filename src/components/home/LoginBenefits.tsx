@@ -59,12 +59,12 @@ export function LoginBenefits() {
     <section className="duration-300 flex justify-center
     sm:pb-20 md:gap-5 lg-2:pb-0">
 
-      <div className="w-[90%] max-w-5xl md:w-[94%] md:flex md:gap-5 lg:gap-6 lg-2:pt-36 lg-2:justify-between lg-2:pb-20">
+      <div className="w-[87vw] max-w-5xl py-12 md:w-[94vw] lg-2:flex lg-2:pt-36 lg-2:justify-between lg-2:pb-20">
         <div className="">
-          <div className="flex flex-col pt-14">
+          <div className="flex flex-col lg-2:pt-14">
             <LoginTitle />
 
-            <div className="flex gap-5 pb-5">
+            <div className="grid grid-cols-5 gap-5 pb-5 lg-2:flex">
               <article className="relative group p-2 rounded-xl border border-[#1c1d1d]">
                 <IconChartHistogram className="lg-2:size-10 text-neutral-300 hover:text-amber-200" />
                 
@@ -123,7 +123,7 @@ export function LoginBenefits() {
         </div>
 
         <div className="w-[400px] flex items-center">
-          <img src="imgs/login6.png" alt="logo" className="w-full fade lg-2:max-h-[500px]" />
+          <img src="imgs/login6.png" alt="logo" className="hidden w-full fade lg-2:block lg-2:max-h-[500px]" />
         </div>
       </div>
 
