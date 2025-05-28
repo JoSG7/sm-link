@@ -3,17 +3,11 @@
 @tailwind utilities;
 
 @layer utilities {
-
   .border-gradient-green {
-
     background: linear-gradient(black, black) padding-box,
       linear-gradient(107.65deg, #17C969 17.53%, #005DBB 94.64%) border-box;
-
   }
-
 }
-
-
 
 .img-home {
   width: 430px;
@@ -34,11 +28,28 @@
 
 .fade {
   mask-image:
-    linear-gradient(to bottom, black 70%, transparent 100%),
-    linear-gradient(to left, black 70%, transparent 100%),
-    linear-gradient(to right, black 70%, transparent 100%),
-    linear-gradient(to top, black 70%, transparent 100%);
+    linear-gradient(to bottom, black 80%, transparent 100%),
+    linear-gradient(to left, black 80%, transparent 100%),
+    linear-gradient(to right, black 80%, transparent 100%),
+    linear-gradient(to top, black 80%, transparent 100%);
   mask-composite: intersect;
+}
+
+.fade-x {
+  mask-image:
+    linear-gradient(to left, black 80%, transparent 100%),
+    linear-gradient(to right, black 80%, transparent 100%);
+  mask-composite: intersect;
+}
+
+.fade-l {
+  mask-image:
+    linear-gradient(to left, black 80%, transparent 100%);
+}
+
+.fade-r {
+  mask-image:
+    linear-gradient(to right, black 80%, transparent 100%);
 }
 
 .bg-modal {
@@ -118,6 +129,7 @@
   margin: 0;
   padding: 0;
   list-style: none;
+  outline: none;
 }
 
 :root {

@@ -36,45 +36,45 @@ export function LinkForm() {
   return (
 
     <section className="duration-300 flex justify-center
-    sm:pb-20 md:gap-5 lg-2:pb-0">
+    ">
 
-      <div className="w-[90%] max-w-5xl md:w-[94%] md:flex md:gap-5 lg:gap-6 lg-2:pt-16 lg-2:flex-row-reverse lg-2:justify-between">
+      <div className="w-[87vw] py-12
+      md:w-[94%] md:flex md:gap-5 lg:gap-6 lg-2:max-w-5xl lg-2:py-9 lg-2:flex-row-reverse lg-2:justify-between">
 
         <LinkFormTitle />
 
         <div className="lg-2:w-[470px]">
 
-          <form onSubmit={handleSubmit} className="relative rounded-3xl border p-4 bg-form
-          md:border-[#181818] sm:p-7 lg:p-6 lg-2:p-8" >
+          <form onSubmit={handleSubmit} className="relative rounded-3xl border p-4 bg-form border-[#1c1d1d]
+          sm:p-7 lg:p-6 lg-2:p-8" >
 
             <div className="flex justify-between">
               <label htmlFor="txtUrl" className="flex items-center gap-3">
                 <div className="p-1.5 rounded-full bg-emerald-900">
-                  <IconScissors className="sm:size-4 lg-2:size-5 lg-2:text-emerald-400"></IconScissors>
+                  <IconScissors className="size-4 lg-2:size-5 text-emerald-400"></IconScissors>
                 </div>
-                <span className="sm:text-xl text-[#E5E7EB] font-semibold">Paste a long link</span>
+                <span className="text-lg sm:text-xl text-[#E5E7EB] font-semibold">Paste a long link</span>
               </label>
             </div>
 
-            <input type="url" id="txtUrl" autoComplete="off" className="w-full p-2 my-3 text-neutral-400 bg-neutral-950 outline-none 
-            rounded-md border border-zinc-900 placeholder:text-neutral-800
-            sm:text-md sm:my-5 lg:p-3 lg-2:rounded-full lg-2:py-3 lg-2:px-4 "
+            <input type="url" id="txtUrl" autoComplete="off" 
+            className="w-full py-2 px-4 my-4 border border-zinc-900 text-neutral-400 bg-neutral-950 placeholder:text-neutral-700 rounded-full sm:text-md sm:my-5 lg:p-3 lg-2:rounded-full lg-2:py-3"
             placeholder="Enter a long Link to short" required />
 
             <div className="flex items-center gap-3">
               <div className="p-1.5 rounded-full bg-[#150b00]">
-                <IconWand className="sm:size-4 lg-2:size-5 lg-2:text-[#FFD700]"></IconWand>
+                <IconWand className="size-4 lg-2:size-5 text-[#FFD700]"></IconWand>
               </div>
-              <span className="sm:text-xl text-[#E5E7EB] font-semibold">Your new short Link here!</span>
+              <span className="text-lg sm:text-xl text-[#E5E7EB] font-semibold">Here the new link</span>
             </div>
 
-            <div className="w-full p-2 mt-3 bg-neutral-950 rounded-md border border-zinc-900 text-neutral-400 mb-5
-            sm:mt-5 lg:p-3 lg-2:rounded-full lg-2:py-3 lg-2:px-4">
+            <div className="w-full py-2 px-4 my-4 bg-neutral-950 rounded-full border border-zinc-900 text-neutral-400
+            sm:mt-5 lg:p-3 lg-2:rounded-full lg-2:py-3">
               <p className="sm:text-md">sm-link.vercel.app/{shortURL}</p>
             </div>
 
-            <button className="w-full text-center text-black py-2 mt-2 mb-5 rounded-lg bg-gradient-to-r from-[#55a346] to-[#2e7e1d] 
-            sm:text-lg lg-2:from-neutral-100 lg-2:to-neutral-400 md:from-sky-500 md:to-blue-900">
+            <button className="w-full text-center text-black py-2 mt-2 mb-5 rounded-lg bg-gradient-to-r
+            sm:text-lg from-neutral-100 to-neutral-400">
               Shorten Link
             </button>
 

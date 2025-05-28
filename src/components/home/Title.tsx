@@ -71,7 +71,7 @@ export function LinkFormTitle() {
 
     <section className="flex items-center">
 
-      <div className="lg-2:max-w-[500px]">
+      <div className="w-[87vw] pb-2 lg-2:max-w-[500px] lg-2:py-0">
 
         <AnimatedTitle title="Turn any long link into a short URL" />
 
@@ -79,7 +79,8 @@ export function LinkFormTitle() {
           Shorten links and track clicks. Great for social media, marketing, and more.
         </p>
 
-        <div className="lg-2:flex gap-3 lg-2:pb-3">
+        {/* Since 360px */}
+        <div className="overflow-x-auto fade-x flex gap-3 lg-2:flex lg-2:pb-3">
           <Pill title="Facebook" icon={<IconBrandFacebookFilled stroke={1.25} className="size-4" />}
             iconContainerClass="bg-gradient-to-tr from-blue-600 via-blue-500 to-blue-700" />
 
@@ -93,7 +94,8 @@ export function LinkFormTitle() {
             iconContainerClass="bg-gradient-to-tr from-blue-500 via-green-600 to-violet-900" />
         </div>
 
-        <div className="flex gap-3">
+        {/* Since 1272px */}
+        <div className="hidden lg-2:flex gap-3">
           <Pill title="Protected information" icon={<IconFileTextShield className="size-4" />}
             iconContainerClass="bg-gradient-to-tr from-amber-400 to-yellow-700" />
 
