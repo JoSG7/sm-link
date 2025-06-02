@@ -10,23 +10,29 @@ export function HomeTitle() {
 
     <section className="flex justify-center">
       <div className="w-[87vw] lg-2:w-full lg-2:py-9 lg-2:max-w-5xl lg-2:flex lg-2:flex-row-reverse lg-2:justify-between">
-
+        
+        {/* Img for 1272px */}
         <img src="imgs/mano5.png" className="hidden lg-2:block img-home" />
 
         <article className="lg-2:max-w-[580px]">
-          <div className="py-12">
-            <AnimatedTitle title="The smartest way to share your links" />
+          <div className="pt-5 pb-12 lg-2:py-12">
 
-            <p className="text-neutral-400 pt-4 lg-2:pt-7 lg-2:font-medium lg-2:text-xl">
-              Tired of messy URLs? Make them clean & fast<span className="hidden lg-2:inline-block">, and smart</span> 
+            {/* Img for 360px */}
+            <div className="flex justify-center">
+              <img src="imgs/mano5.png" alt="logo" className="size-60 fade object-cover lg-2:hidden" />
+            </div>
+
+            <h1 className="text-4xl tracking-tight lg-2:text-6xl pt-2">The smartest way to share your links</h1>
+
+            <p className="text-neutral-400 pt-5 lg-2:pt-7 lg-2:font-medium lg-2:text-xl">
+              Tired of messy URLs? Make them clean <span className="hidden lg-2:inline-block">& fast, and smart</span> 
             </p>
-
-            <p className="text-neutral-400 pb-4 lg-2:pb-5 lg-2:font-medium lg-2:text-xl">
+            <p className="text-neutral-400 pb-5 lg-2:pb-5 lg-2:font-medium lg-2:text-xl">
               Shorten links in seconds and track how they perform
             </p>
 
             {/* Since 360px */}
-            <div className="flex gap-3 pb-4 lg-2:hidden lg-2:gap-2 lg-2:pb-7">
+            <div className="flex gap-3 pb-5 lg-2:hidden lg-2:gap-2 lg-2:pb-7">
               {/* <Pill title="Global"
                 icon={<IconGlobe className="text-green-700 size-4" />} iconContainerClass="bg-emerald-200" /> */}
 
@@ -50,7 +56,7 @@ export function HomeTitle() {
             </div>
 
             <div className="flex items-center gap-4 lg-2:gap-7">
-              <button className="py-1 px-3 lg-2:py-2 lg-2:px-4 rounded-lg bg-gradient-to-r from-neutral-100 to-neutral-400 text-neutral-800 transition-transform duration-200 hover:scale-105">Let's Start</button>
+              <button className="py-2 px-4 text-sm lg-2:py-2 lg-2:px-4 rounded-full bg-gradient-to-r from-neutral-100 to-neutral-400 text-neutral-950 transition-transform duration-200 hover:scale-105">Let's Start</button>
 
               <p className="text-[#E2E2EB] flex items-center gap-1 text-xs lg-2:text-sm">
                 <IconStarFilled className="size-4 text-amber-300" />
