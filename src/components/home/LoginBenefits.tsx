@@ -77,7 +77,7 @@ export function LoginBenefits() {
         </div>
 
         <div className="w-[400px] flex items-center">
-          <Image src="imgs/login6.png" alt="logo" width={400} className="hidden w-full fade lg-2:block lg-2:max-h-[500px]" />
+          <Image src="/imgs/login6.png" alt="logo" width={200} height={200} className="hidden w-full fade lg-2:block lg-2:max-h-[500px]" />
         </div>
       </div>
 

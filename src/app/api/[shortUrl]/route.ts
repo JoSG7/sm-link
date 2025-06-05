@@ -14,7 +14,7 @@ export async function GET(request: NextRequest, { params }: Props) {
   const month = new Date().getMonth()
   const link = data as ShortLink | null
 
-  error && console.log(error)
+  if (error) console.log(error)
 
   if (!link) {
     // Si no se encuentra, se muestra pantallazo
@@ -32,7 +32,7 @@ export async function GET(request: NextRequest, { params }: Props) {
       .single()
     const metric = data as Metric | null
 
-    error && console.log(error)
+    if (error) console.log(error)
     // si ya tiene, solo se aumenta las vistas + 1
     if (metric) {
       await supabase.from("monthly_metric").update({ views: metric.views + 1 })
@@ -46,8 +46,7 @@ export async function GET(request: NextRequest, { params }: Props) {
         views: 1,
         link_id: link.id
       })
-
-      error && console.log(error)
+      if (error) console.log(error)
     }
 
     return NextResponse.redirect(link.original)
