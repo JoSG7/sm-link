@@ -1,14 +1,10 @@
 "use client"
 
 import { IconScissors, IconWand } from "@tabler/icons-react"
-// import { closeFormInfo, showFormInfo } from "@/utils/ui/home/form-functions"
 import { createShortLink } from "@/logic/server-functions"
 import { useState, type FormEvent } from "react"
 import { toast } from "sonner"
 import { LinkFormTitle } from "./Title"
-import { Pill } from "../shared/Pill"
-
-
 
 export function LinkForm() {
 

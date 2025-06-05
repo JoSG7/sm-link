@@ -2,6 +2,7 @@ import { IconCalendar, IconCopy, IconExternalLink, IconTrash } from "@tabler/ico
 import { months } from "@/utils/constants"
 import { toast } from "sonner"
 import Link from "next/link"
+import Image from "next/image"
 
 export function LinkCard({ original, short, created_at }: { original: string, short: string, created_at: string }) {
   const url = new URL(original)
@@ -22,8 +23,8 @@ export function LinkCard({ original, short, created_at }: { original: string, sh
             <IconCalendar size={20} />
             {day} de {month}</p>
         </div>
-        <img src={`https://www.google.com/s2/favicons?domain=${domain}&sz=64`} alt="logo"
-          className="w-12 h-12 rounded-full sm:size-14" />
+        <Image src={`https://www.google.com/s2/favicons?domain=${domain}&sz=64`} alt="logo" width={60} height={60}
+        className="w-12 h-12 rounded-full sm:size-14" />
       </div>
 
       {/* Buttons section */}

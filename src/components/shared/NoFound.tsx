@@ -1,3 +1,4 @@
+import Image from "next/image";
 
 
 export function NoFound() {
@@ -7,7 +8,7 @@ export function NoFound() {
     <section className="">
 
       <div className="flex justify-center">
-        <img src="svg/a.svg" alt="asd" width={230} height={230} />
+        <Image src="/svg/a.svg" alt="No found image" width={230} height={230} />
       </div>
 
       <p className="text-center break-words">Aun no has creado ningun smLink</p>
