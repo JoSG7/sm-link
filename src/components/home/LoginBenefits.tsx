@@ -4,53 +4,7 @@ import { IconChartHistogram, IconClockExclamation, IconFolderCog, IconListSearch
 import React from "react"
 import { LoginTitle } from "./Title"
 import { GitHubAuthButton, GoogleAuthButton } from "./AuthButtonClient"
-
-const DetailCard = ({ title, children, icon }: { title: string, children: React.ReactNode, icon: React.ReactNode }) => {
-
-  return (
-
-    <article className="w-full">
-
-      {/* Card for 360px to 768px */}
-      <section className="md:hidden flex gap-4">
-        <div className="p-1 rounded-lg bg-[#69C757] max-h-12 sm:max-h-16">
-          {icon}
-        </div>
-        <div>
-          <h3 className="text-lg font-semibold text-gray-200 sm:text-2xl">{title}</h3>
-          <p className="text-base text-wrap text-[#C4CAd4] pt-1 sm:text-xl">
-            {children}
-          </p>
-        </div>
-      </section>
-      {/* Card for 768px to 1024px */}
-      <section className="p-4 hidden rounded-lg border border-blue-950 flex-col gap-2 md:flex lg-2:hidden">
-        <div className="w-full hidden justify-between items-center md:flex">
-          <p className="text-xl font-semibold text-gray-200 lg:text-2xl">{title}</p>
-          <div>
-            {icon}
-          </div>
-        </div>
-        <p className="text-lg text-wrap text-[#C4CAd4]">
-          {children}
-        </p>
-      </section>
-      {/* Card for 1272px */}
-      <section className="max-w-[565px] p-4 hidden rounde border-gradient-rd-2xl border-[1.5px] border-transparent gap-2 lg-2:flex">
-        <div className="w-full hidden flex-col md:flex gap-2">
-          <p className="text-xl font-semibold text-gray-200">{title}</p>
-          <p className="text-lg text-wrap text-[#C4CAd4]">{children}</p>
-        </div>
-        <div className="flex items-center justify-center">
-          {icon}
-        </div>
-      </section>
-
-    </article>
-
-  )
-
-}
+import Image from "next/image"
 
 export function LoginBenefits() {
 
@@ -123,7 +77,7 @@ export function LoginBenefits() {
         </div>
 
         <div className="w-[400px] flex items-center">
-          <img src="imgs/login6.png" alt="logo" className="hidden w-full fade lg-2:block lg-2:max-h-[500px]" />
+          <Image src="imgs/login6.png" alt="logo" width={400} className="hidden w-full fade lg-2:block lg-2:max-h-[500px]" />
         </div>
       </div>
 

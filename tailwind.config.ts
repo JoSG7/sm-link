@@ -12,6 +12,7 @@ export default {
     'border-red-400',
     'h-[310px]',
     'h-[560px]',
+    'max-h-[310px]',
     'animate-pulse',
     'duration-500',
     'w-[73%]',

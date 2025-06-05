@@ -1,35 +1,16 @@
 import { supabase } from "@/lib/supabase/client";
 import { redirect } from "next/navigation";
 
-interface Props {
-
-  params: Promise<{ shortUrl: string }>;
-
-}
-
-async function ShortURL( { params }: Props) {
+async function ShortURL({ params }: { params: Promise<{ shortUrl: string }> }) {
 
   const { shortUrl } = await params
+  const { data: link, error } = await supabase.from("link").select("*").eq('short', shortUrl).single()
 
-  const { data: link, error } = await supabase.from("link").select("*").eq('short', shortUrl)
-
-  // si hay error se imprime por consola
-
-  if(error){
-
-    console.log(error)
-
-  }
-
-  if(link?.length == 0){
-
-    return <p>No hay</p>
-
-  }else{
-
-    redirect(`/api/${shortUrl}`)
-
-  }
+  error ? console.log(error)
+    :
+    link ? redirect(`/api/${shortUrl}`)
+      :
+      <p>No hay</p>
 
 }
 

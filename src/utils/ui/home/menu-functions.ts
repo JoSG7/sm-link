@@ -48,14 +48,10 @@ export function closeMainMenu () {
   }, 100)
 }
 
-export function toggleMenuOption () {
+export function toggleMenuOption (option: HTMLElement | null) {
 
-  const option = document.querySelector("#recent-links")?.classList
-
-  option?.toggle("h-0")
-  option?.toggle("h-[310px]")
-
-  return option
+  option?.classList.toggle("h-0")
+  option?.classList.toggle("h-[310px]")
 
 }
 
