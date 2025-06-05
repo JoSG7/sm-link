@@ -8,6 +8,9 @@ module.exports = {
   // eslint: {
   //   ignoreDuringBuilds: true,
   // },
+  images: {
+    domains: ['www.google.com'],
+  }
 };
 
 export default nextConfig;
