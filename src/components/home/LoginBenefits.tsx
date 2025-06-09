@@ -3,7 +3,7 @@
 import { IconChartHistogram, IconClockExclamation, IconFolderCog, IconListSearch, IconPencilStar, IconShieldLock } from "@tabler/icons-react"
 import React from "react"
 import { LoginTitle } from "./Title"
-import { GitHubAuthButton, GoogleAuthButton } from "./AuthButtonClient"
+import { GitHubAuthButton, GoogleAuthButton } from "./auth/AuthButtonClient"
 import Image from "next/image"
 
 export function LoginBenefits() {

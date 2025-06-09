@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
+import { MainMenu } from "@/components/home/menu/MainMenu";
 import { Lexend } from "next/font/google"
 import { Toaster } from "sonner";
+import type { Metadata } from "next";
 import "./globals.css";
-import { MainMenu } from "@/components/home/MainMenu";
 
 export const metadata: Metadata = {
   title: "Sm Link",

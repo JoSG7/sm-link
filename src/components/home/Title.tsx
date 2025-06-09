@@ -57,9 +57,9 @@ export function HomeTitle() {
             </div>
 
             <div className="flex items-center gap-4 lg-2:gap-7">
-              <button className="py-2 px-4 text-sm lg-2:py-2 lg-2:px-4 rounded-full bg-gradient-to-r from-neutral-100 to-neutral-400 text-neutral-950 transition-transform duration-200 hover:scale-105">{`Let's startsajs`}</button>
+              <button className="py-2 px-4 text-sm lg-2:py-2 lg-2:px-4 rounded-full bg-gradient-to-r from-neutral-100 to-neutral-400 text-neutral-950 transition-transform duration-200 hover:scale-105">{`Let's start now!`}</button>
 
-              <p className="text-[#E2E2EB] flex items-center gap-1 text-xs lg-2:text-sm">
+              <p className="hidden text-[#E2E2EB] items-center gap-1 text-xs lg-2:text-sm lg-2:flex">
                 <IconStarFilled className="size-4 text-amber-300" />
                 Trusted by 10,000+ users
               </p>

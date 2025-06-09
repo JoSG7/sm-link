@@ -1,30 +1,41 @@
 "use client"
 
 import { IconScissors, IconWand } from "@tabler/icons-react"
-import { createShortLink } from "@/logic/server-functions"
-import { useState, type FormEvent } from "react"
+import { useRef, useState, type FormEvent } from "react"
 import { toast } from "sonner"
 import { LinkFormTitle } from "./Title"
+import { createShortLink } from "@/utils/links/api"
+import isURL from "validator/lib/isURL"
 
 export function LinkForm() {
 
   const [shortURL, setShortURL] = useState("")
+  const urlRef = useRef<HTMLInputElement>(null)
 
   const handleSubmit = async (e: FormEvent) => {
 
     e.preventDefault()
+    const urlInput = urlRef.current
 
-    const loadingToast = toast.loading("Creating short link...")
-    const response: string | { error: string } = await createShortLink()
+    if (urlInput) {
 
-    if (typeof (response) == "object") {
-      toast.error(response.error, { id: loadingToast })
-    } else {
+      const loadingToast = toast.loading("Creating short link...")
+      const original = urlInput.value
 
-      toast.success("Se genero correctamente", { id: loadingToast })
-      setShortURL(response)
+      if (!isURL(original)) {
+        toast.error("Ingrese un link válido", { id: loadingToast })
+      } else {
+
+        await createShortLink(original).then(res => {
+          if(res.error){
+            toast.error(res.error, { id: loadingToast })
+          } else {
+            toast.success("Se genero correctamente", { id: loadingToast })
+            setShortURL(res.response)
+          }
+        })
+      }
     }
-
   }
 
   // MAIN RETURN
@@ -53,9 +64,9 @@ export function LinkForm() {
               </label>
             </div>
 
-            <input type="url" id="txtUrl" autoComplete="off" 
-            className="w-full py-2 px-4 my-4 border border-zinc-900 text-neutral-400 bg-neutral-950 placeholder:text-neutral-700 rounded-full sm:text-md sm:my-5 lg:p-3 lg-2:rounded-full lg-2:py-3"
-            placeholder="Enter a long Link to short" required />
+            <input type="url" autoComplete="off" ref={urlRef}
+              className="w-full py-2 px-4 my-4 border border-zinc-900 text-neutral-400 bg-neutral-950 placeholder:text-neutral-700 rounded-full sm:text-md sm:my-5 lg:p-3 lg-2:rounded-full lg-2:py-3"
+              placeholder="Enter a long Link to short" required />
 
             <div className="flex items-center gap-3">
               <div className="p-1.5 rounded-full bg-[#150b00]">

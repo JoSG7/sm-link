@@ -1,15 +1,15 @@
 import { supabase } from "@/lib/supabase/client"
-import { createBase64Code } from "@/logic/server-functions"
+import { createBase64Code } from "@/utils/links/id-utils"
 import { NextRequest, NextResponse } from "next/server"
 
 export async function POST(request: Request | NextRequest) {
 
   const shortLink = createBase64Code()
-  const { guessID, originalLink }: { guessID: string, originalLink: string } = await request.json()
+  const { guessID, original }: { guessID: string, original: string } = await request.json()
 
   const { data: exist, error } = await supabase.from("link").select("*").match({
     guess_id: guessID,
-    original: originalLink
+    original: original
   })
 
   if(error) { 
@@ -21,7 +21,7 @@ export async function POST(request: Request | NextRequest) {
     return NextResponse.json({ error: "Ya tienes una version corta de este link" })
   } else {
     const { error } = await supabase.from("link").insert({
-      original: originalLink,
+      original: original,
       short: shortLink,
       guess_id: guessID
     })
@@ -30,7 +30,7 @@ export async function POST(request: Request | NextRequest) {
       console.log(error)
       return NextResponse.json({ error: "Error al crear" })
     } else {
-      return NextResponse.json(shortLink)
+      return NextResponse.json({ response: shortLink })
     }
   }
 }
