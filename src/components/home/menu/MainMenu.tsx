@@ -14,6 +14,7 @@ export function MainMenu() {
 
   const [recentLinks, setRecentLinks] = useState<GuessLinks[] | []>([])
   const [loading, setLoading] = useState(false)
+  // const bgMenuRef = useRef<HTMLDivElement>(null)
 
   const fetchRecentLinks = async () => {
     // Si esta vacio, trae los datos
@@ -26,17 +27,17 @@ export function MainMenu() {
           setRecentLinks([])
         }
       })
-      .finally(() => setLoading(false))
+        .finally(() => setLoading(false))
     }
   }
 
   return (
 
-    <section className="w-full h-screen fixed hidden bottom-0 bg-modal z-30 backdrop-blur-sm text-[#E5E7EB]" id="bgMenu"
-      onClick={closeMainMenu}>
+    <section className="w-full h-screen fixed hidden bottom-0 bg-modal z-20 backdrop-blur-sm text-[#E5E7EB]" id="bgMenu"
+    onClick={closeMainMenu}>
       <nav className="w-full h-0 bg-[rgb(7,7,7)] border-[#1c1c1d] self-end overflow-y-auto duration-100 whitespace-nowrap
       sm:w-0 sm:fixed sm:right-0 sm:h-full sm:border-l sm:overflow-x-hidden"
-        id="menu" onClick={(e) => { e.stopPropagation() }}>
+      id="menu" onClick={(e) => { e.stopPropagation() }}>
         <ul className="option-list flex flex-col ">
 
           <Accordion items={[
@@ -79,9 +80,7 @@ export function MainMenu() {
         </ul>
       </nav>
     </section>
-
   )
-
 }
 
 // #e3c45e

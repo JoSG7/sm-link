@@ -9,6 +9,15 @@ export async function getGuessLinks() {
   return data
 }
 
+export async function deleteGuessLink() {
+  const guessID = getGuessID()
+  const res = await fetch(`api/guess-link/${guessID}`, {
+    method: "DELETE"
+  })
+  const data: { error: string, response: string } = await res.json()
+  return data
+}
+
 export async function createShortLink(original: string) {
 
   const guessID = getGuessID()
@@ -20,3 +29,4 @@ export async function createShortLink(original: string) {
   const data: { response: string, error: string } = await res.json()
   return data
 }
+

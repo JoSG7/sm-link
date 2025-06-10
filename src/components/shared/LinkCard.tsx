@@ -3,6 +3,7 @@ import { months } from "@/utils/constants"
 import { toast } from "sonner"
 import Link from "next/link"
 import Image from "next/image"
+import { deleteGuessLink } from "@/utils/links/api"
 
 export function LinkCard({ original, short, created_at }: { original: string, short: string, created_at: string }) {
   const url = new URL(original)
@@ -10,6 +11,19 @@ export function LinkCard({ original, short, created_at }: { original: string, sh
   const date = new Date(created_at)
   const day = date.getDate()
   const month = months[date.getMonth()]
+
+  const deleteLink = async () => {
+
+    await deleteGuessLink().then(res => {
+      console.log(res)
+      // if(res.error){
+      //   toast.error(res.error)
+      // } else {
+      //   toast.success(res.response)
+      // }
+    })
+
+  }
 
   return (
 
@@ -38,7 +52,7 @@ export function LinkCard({ original, short, created_at }: { original: string, sh
       <div className="flex justify-end gap-3">
 
         <button className="py-2 px-2.5 rounded-xl bg-red-200 text-red-500 flex gap-1 items-center text-sm"
-          onClick={() => alert("comming soon")}>Borrar
+          onClick={deleteLink}>Borrar
           <IconTrash className="size-5 "/>
         </button>
 

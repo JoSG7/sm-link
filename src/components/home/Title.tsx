@@ -1,6 +1,6 @@
 "use client"
 
-import { IconBrandFacebookFilled, IconBrandInstagram, IconBrandOffice, IconBrandYoutubeFilled, IconChartPie2Filled, IconDeviceAnalytics, IconFileExcel, IconFileTextShield, IconGlobe, IconLock, IconStarFilled } from "@tabler/icons-react"
+import { IconAlarmFilled, IconBrandFacebookFilled, IconBrandInstagram, IconBrandOffice, IconBrandYoutubeFilled, IconChartPie2Filled, IconDeviceAnalytics, IconFileExcel, IconFileTextShield, IconGlobe, IconLock, IconSettingsFilled, IconShieldCheckFilled, IconStarFilled } from "@tabler/icons-react"
 import { AnimatedTitle } from "../motion/MotionTitle"
 import { Pill } from "../shared/Pill"
 import Image from "next/image"
@@ -10,38 +10,60 @@ export function HomeTitle() {
   return (
 
     <section className="flex justify-center">
-      <div className="w-[87vw] lg-2:w-full lg-2:py-9 lg-2:max-w-5xl lg-2:flex lg-2:flex-row-reverse lg-2:justify-between">
+      <div className="w-[90vw] lg-2:w-full lg-2:py-9 lg-2:max-w-5xl lg-2:flex lg-2:flex-row-reverse lg-2:justify-between">
 
         {/* Img for 1272px */}
-        <Image src="/imgs/mano5.png" alt="Home Imge for 1272px" width={500} height={500}  className="hidden img-home lg-2:block "/>
-        
+        <Image src="/imgs/mano5.png" alt="Home Imge for 1272px" width={500} height={500} className="hidden img-home lg-2:block " />
+
         <article className="lg-2:max-w-[580px]">
-          <div className="pt-5 pb-12 lg-2:py-12">
+          <div className="py-6 lg-2:py-12">
 
             {/* Img for 360px */}
             <div className="flex justify-center">
               <Image src="/imgs/mano5.png" alt="logo" width={500} height={500} className="size-60 fade object-cover lg-2:hidden" />
             </div>
 
-            <h1 className="text-4xl tracking-tight lg-2:text-6xl pt-2">The smartest way to share your links</h1>
+            <h1 className="text-4xl tracking-tight text-center lg-2:text-start lg-2:text-6xl pt-2">The smartest way to share your links</h1>
 
-            <p className="text-neutral-400 pt-5 lg-2:pt-7 lg-2:font-medium lg-2:text-xl">
+            <p className="text-neutral-400 text-center pt-5 lg-2:text-start lg-2:pt-7 lg-2:font-medium lg-2:text-xl">
               Tired of messy URLs? Make them clean <span className="hidden lg-2:inline-block">& fast, and smart</span>
             </p>
-            <p className="text-neutral-400 pb-5 lg-2:pb-5 lg-2:font-medium lg-2:text-xl">
-              Shorten links in seconds and track how they perform
+            <p className="text-neutral-400 text-center pb-5 lg-2:text-start lg-2:pb-5 lg-2:font-medium lg-2:text-xl">
+              Shorten links in seconds and track their performance
+              <span className="lg-2:hidden"> anytime - 24 hours a day</span>
             </p>
 
             {/* Since 360px */}
-            <div className="flex gap-3 pb-5 lg-2:hidden lg-2:gap-2 lg-2:pb-7">
+            <div className="flex gap-3 pb-5 lg-2:hidden">
+              <article className="rounded-xl border border-[#1c1d1d] p-2 fade-b-lg">
+                <div className="flex justify-center pb-2">
+                  <IconShieldCheckFilled className="text-neutral-300" />
+                </div>
+                <p className="text-xs">Protected links</p>
+              </article>
+
+              <article className="rounded-xl border border-[#1c1d1d] p-2 fade-b-lg">
+                <div className="flex justify-center pb-2">
+                  <IconAlarmFilled className="text-neutral-300" />
+                </div>
+                <p className="text-xs">Set expirations</p>
+              </article>
+
+              <article className="rounded-xl border border-[#1c1d1d] p-2 fade-b-lg">
+                <div className="flex justify-center pb-2">
+                  <IconSettingsFilled className="text-neutral-300" />
+                </div>
+                <p className="text-xs">Controll now</p>
+              </article>
+
               {/* <Pill title="Global"
                 icon={<IconGlobe className="text-green-700 size-4" />} iconContainerClass="bg-emerald-200" /> */}
 
-              <Pill title="Real-Time Analytics"
+              {/* <Pill title="Real-Time Analytics"
                 icon={<IconDeviceAnalytics className="text-blue-700 size-4" />} iconContainerClass="bg-sky-300" />
 
               <Pill title="Secure"
-                icon={<IconLock className="text-purple-700 size-4" />} iconContainerClass="bg-violet-400" />
+                icon={<IconLock className="text-purple-700 size-4" />} iconContainerClass="bg-violet-400" /> */}
             </div>
 
             {/* Since 1024 */}
@@ -56,8 +78,8 @@ export function HomeTitle() {
                 icon={<IconLock className="text-purple-700 size-4" />} iconContainerClass="bg-violet-400" />
             </div>
 
-            <div className="flex items-center gap-4 lg-2:gap-7">
-              <button className="py-2 px-4 text-sm lg-2:py-2 lg-2:px-4 rounded-full bg-gradient-to-r from-neutral-100 to-neutral-400 text-neutral-950 transition-transform duration-200 hover:scale-105">{`Let's start now!`}</button>
+            <div className="flex items-center gap-4 justify-center lg-2:gap-7 lg-2:justify-start">
+              <button className="py-2 px-5 text-base lg-2:py-2 lg-2:px-4 rounded-full bg-gradient-to-r from-neutral-100 to-neutral-400 text-neutral-950 transition-transform duration-200 hover:scale-105">{`Let's start now!`}</button>
 
               <p className="hidden text-[#E2E2EB] items-center gap-1 text-xs lg-2:text-sm lg-2:flex">
                 <IconStarFilled className="size-4 text-amber-300" />

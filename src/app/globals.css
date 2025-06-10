@@ -52,68 +52,52 @@
     linear-gradient(to right, black 80%, transparent 100%);
 }
 
+.fade-b {
+  mask-image:
+    linear-gradient(to bottom, black 80%, transparent 100%);
+}
+
+.fade-b-lg {
+  mask-image:
+    linear-gradient(to bottom, black 65%, transparent 100%);
+}
+
+
 .bg-modal {
   background-color: rgba(0, 0, 0, 0.7);
 }
 
-.img-mask-full {
-  -webkit-mask-image:
-    linear-gradient(to top, black 80%, transparent),
-    linear-gradient(to bottom, black 80%, transparent),
-    linear-gradient(to left, black 80%, transparent),
-    linear-gradient(to right, black 80%, transparent);
-  mask-image:
-    linear-gradient(to top, black 80%, transparent),
-    linear-gradient(to bottom, black 80%, transparent),
-    linear-gradient(to left, black 80%, transparent),
-    linear-gradient(to right, black 80%, transparent);
-  mask-composite: intersect;
-}
-
 .border-gradient-green {
-
   background: linear-gradient(black, black) padding-box,
     linear-gradient(107.65deg, #17C969 17.53%, #005DBB 94.64%) border-box;
-
 }
 
 .border-gradient-red {
-
   background: linear-gradient(black, black) padding-box,
     linear-gradient(107.65deg, #FF4040 17.53%, #A20BD8 94.64%) border-box;
-
 }
 
 .border-gradient-yellow {
-
   background: linear-gradient(black, black) padding-box,
     linear-gradient(107.65deg, #F9D423 7.64%, #FF4E50 97.11%) border-box;
-
 }
 
 .border-gradient-blue {
-
   background: linear-gradient(black, black) padding-box,
     linear-gradient(107.65deg, #0148BA 1.35%, #01A5FF 104.47%) border-box;
-
 }
 
 .border-gradient-purple {
-
   background: linear-gradient(black, black) padding-box,
     linear-gradient(107.65deg, #AD00FF 0.31%, #330371 104.9%) border-box;
-
 }
 
 .border-gradient-black {
-
   background: linear-gradient(black, black) padding-box,
     linear-gradient(to bottom, #5d5d5d 1%, #1c1d1d 20%) border-box;
-
 }
 
 .bg-form {
-
   background: radial-gradient(70% 80% at center 0%, rgba(255, 255, 255, 0.06) 3%, rgba(98, 255, 179, 0) 70%, rgba(98, 255, 179, 0) 100%)
 }
 
