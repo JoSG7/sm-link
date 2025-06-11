@@ -3,37 +3,32 @@ import { NavBar } from "@/components/home/NavbarHeader";
 import { LinkForm } from "@/components/home/NewLinkForm";
 import { serverAuthSupabase } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
- import { HomeTitle } from "@/components/home/Title";
+import { HomeTitle } from "@/components/home/Title";
 
 export default async function Home() {
 
   const { data: { user } } = await serverAuthSupabase.auth.getUser()
 
-  if(user){
+  if (user) {
     redirect("/dashboard")
-  }else{
+  } else {
 
     return (
 
       <main className="flex flex-col text-white bg-black">
         <NavBar />
-        <div>
-          <div className="bg-black">
-            <HomeTitle />
-            <LinkForm />
-          </div>
-
-          <div>
-            <LoginBenefits />
-          </div>
+        <div className="flex flex-col gap-28">
+          <HomeTitle />
+          <LinkForm />
+          <LoginBenefits />
           {/* <Footer /> */}
         </div>
       </main>
-      
+
     )
 
   }
-  
+
 }
 
 

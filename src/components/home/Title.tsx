@@ -1,6 +1,6 @@
 "use client"
 
-import { IconAlarmFilled, IconBrandFacebookFilled, IconBrandInstagram, IconBrandOffice, IconBrandYoutubeFilled, IconChartPie2Filled, IconDeviceAnalytics, IconFileExcel, IconFileTextShield, IconGlobe, IconLock, IconSettingsFilled, IconShieldCheckFilled, IconStarFilled } from "@tabler/icons-react"
+import { IconAlarmFilled, IconBasketDiscount, IconBrandFacebookFilled, IconBrandInstagram, IconBrandOffice, IconBrandYoutubeFilled, IconChartPie2Filled, IconDeviceAnalytics, IconFileExcel, IconFileTextShield, IconGlobe, IconLock, IconSettingsFilled, IconShieldCheckFilled, IconSpeakerphone, IconStarFilled } from "@tabler/icons-react"
 import { AnimatedTitle } from "../motion/MotionTitle"
 import { Pill } from "../shared/Pill"
 import Image from "next/image"
@@ -34,7 +34,7 @@ export function HomeTitle() {
             </p>
 
             {/* Since 360px */}
-            <div className="flex gap-3 pb-5 lg-2:hidden">
+            <div className="flex justify-between pb-5 lg-2:hidden">
               <article className="rounded-xl border border-[#1c1d1d] p-2 fade-b-lg">
                 <div className="flex justify-center pb-2">
                   <IconShieldCheckFilled className="text-neutral-300" />
@@ -55,15 +55,6 @@ export function HomeTitle() {
                 </div>
                 <p className="text-xs">Controll now</p>
               </article>
-
-              {/* <Pill title="Global"
-                icon={<IconGlobe className="text-green-700 size-4" />} iconContainerClass="bg-emerald-200" /> */}
-
-              {/* <Pill title="Real-Time Analytics"
-                icon={<IconDeviceAnalytics className="text-blue-700 size-4" />} iconContainerClass="bg-sky-300" />
-
-              <Pill title="Secure"
-                icon={<IconLock className="text-purple-700 size-4" />} iconContainerClass="bg-violet-400" /> */}
             </div>
 
             {/* Since 1024 */}
@@ -99,18 +90,45 @@ export function LinkFormTitle() {
   return (
 
     <section className="flex items-center">
-
       <div className="w-[87vw] pb-5 lg-2:max-w-[500px] lg-2:py-0">
+        <h1 className="text-4xl tracking-tight text-balance lg-2:text-start lg-2:text-6xl">Turn any long link into a short URL</h1>
 
-        <AnimatedTitle title="Turn any long link into a short URL" />
-
-        <p className="py-5 font-medium text-neutral-400 lg-2:text-xl">
+        <p className="py-5 font-medium text-neutral-400 lg-2:text-start lg-2:text-xl">
           Shorten links and track clicks. Great for social media, marketing, and more.
         </p>
 
         {/* Since 360px */}
-        <div className="overflow-x-auto fade-x flex gap-3 lg-2:flex lg-2:pb-3">
-          <Pill title="Facebook" icon={<IconBrandFacebookFilled stroke={1.25} className="size-4" />}
+        <div className="overflow-x-auto flex justify-between lg-2:hidden">
+          <article className="rounded-xl border border-[#1c1d1d] p-2">
+            <div className="flex justify-center pb-2">
+              <div className="p-1 rounded-full bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600">
+                <IconBrandInstagram className="text-neutral-300" />
+              </div>
+            </div>
+            <p className="text-xs text-neutral-300">Social Media</p>
+          </article>
+
+          <article className="rounded-xl border border-[#1c1d1d] p-2">
+            <div className="flex justify-center pb-2">
+              <div className="p-1 rounded-full bg-gradient-to-tr from-red-600 via-red-500 to-red-700">
+                <IconBasketDiscount className="text-neutral-300" />
+              </div>
+            </div>
+            <p className="text-xs text-neutral-300">Exclusive Offers</p>
+          </article>
+
+          <article className="rounded-xl border border-[#1c1d1d] p-2">
+            <div className="flex justify-center pb-2">
+              <div className="p-1 rounded-full bg-gradient-to-tr from-blue-500 via-green-600 to-violet-900">
+                <IconBrandOffice className="text-neutral-300" />
+              </div>
+            </div>
+            <p className="text-xs text-neutral-300">Documents</p>
+          </article>
+
+
+
+          {/* <Pill title="Facebook" icon={<IconBrandFacebookFilled stroke={1.25} className="size-4" />}
             iconContainerClass="bg-gradient-to-tr from-blue-600 via-blue-500 to-blue-700" />
 
           <Pill title="Instagram" icon={<IconBrandInstagram className="size-4" />}
@@ -120,7 +138,7 @@ export function LinkFormTitle() {
             iconContainerClass="bg-gradient-to-tr from-red-600 via-red-500 to-red-700" />
 
           <Pill title="Office" icon={<IconBrandOffice className="size-4" />}
-            iconContainerClass="bg-gradient-to-tr from-blue-500 via-green-600 to-violet-900" />
+            iconContainerClass="bg-gradient-to-tr from-blue-500 via-green-600 to-violet-900" /> */}
         </div>
 
         {/* Since 1272px */}
@@ -134,13 +152,9 @@ export function LinkFormTitle() {
           <Pill title="Stadistics" icon={<IconChartPie2Filled className="size-4" />}
             iconContainerClass="bg-gradient-to-tr from-orange-500 via-red-500 to-red-700" />
         </div>
-
       </div>
-
     </section>
-
   )
-
 }
 
 export function LoginTitle() {

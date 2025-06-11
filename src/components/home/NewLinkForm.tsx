@@ -45,20 +45,20 @@ export function LinkForm() {
     <section className="duration-300 flex justify-center
     ">
 
-      <div className="w-[87vw] py-12
+      <div className="w-[87vw] py-7
       md:w-[94%] md:flex md:gap-5 lg:gap-6 lg-2:max-w-5xl lg-2:py-9 lg-2:flex-row-reverse lg-2:justify-between">
 
         <LinkFormTitle />
 
         <div className="lg-2:w-[470px]">
 
-          <form onSubmit={handleSubmit} className="relative rounded-3xl border p-4 bg-form border-[#1c1d1d]
+          <form onSubmit={handleSubmit} className="relative rounded-3xl border p-4 bg-form border-[#1c1d1d] fade-b
           sm:p-7 lg:p-6 lg-2:p-8" >
 
             <div className="flex justify-between">
               <label htmlFor="txtUrl" className="flex items-center gap-3">
-                <div className="p-1.5 rounded-full bg-emerald-900">
-                  <IconScissors className="size-4 lg-2:size-5 text-emerald-400"></IconScissors>
+                <div className="p-1.5 rounded-full bg-violet-400">
+                  <IconScissors className="size-4 lg-2:size-5 text-purple-700"></IconScissors>
                 </div>
                 <span className="text-lg sm:text-xl text-[#E5E7EB] font-semibold">Paste a long link</span>
               </label>
@@ -69,8 +69,8 @@ export function LinkForm() {
               placeholder="Enter a long Link to short" required />
 
             <div className="flex items-center gap-3">
-              <div className="p-1.5 rounded-full bg-[#150b00]">
-                <IconWand className="size-4 lg-2:size-5 text-[#FFD700]"></IconWand>
+              <div className="p-1.5 rounded-full bg-emerald-200">
+                <IconWand className="size-4 lg-2:size-5 text-green-700"></IconWand>
               </div>
               <span className="text-lg sm:text-xl text-[#E5E7EB] font-semibold">Here the new link</span>
             </div>
