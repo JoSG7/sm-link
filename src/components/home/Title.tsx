@@ -1,6 +1,6 @@
 "use client"
 
-import { IconAlarmFilled, IconBasketDiscount, IconBrandFacebookFilled, IconBrandInstagram, IconBrandOffice, IconBrandYoutubeFilled, IconChartPie2Filled, IconDeviceAnalytics, IconFileExcel, IconFileTextShield, IconGlobe, IconLock, IconSettingsFilled, IconShieldCheckFilled, IconSpeakerphone, IconStarFilled } from "@tabler/icons-react"
+import { IconAlarmFilled, IconBasketDiscount, IconBrandInstagram, IconBrandOffice, IconChartPie2Filled, IconDeviceAnalytics, IconFileExcel, IconFileTextShield, IconGlobe, IconLock, IconSettingsFilled, IconShieldCheckFilled, IconStarFilled } from "@tabler/icons-react"
 import { AnimatedTitle } from "../motion/MotionTitle"
 import { Pill } from "../shared/Pill"
 import Image from "next/image"
