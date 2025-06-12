@@ -1,7 +1,6 @@
 "use client"
 
 import { IconAlarmFilled, IconBasketDiscount, IconBrandInstagram, IconBrandOffice, IconChartPie2Filled, IconDeviceAnalytics, IconFileExcel, IconFileTextShield, IconGlobe, IconLock, IconSettingsFilled, IconShieldCheckFilled, IconStarFilled } from "@tabler/icons-react"
-import { AnimatedTitle } from "../motion/MotionTitle"
 import { Pill } from "../shared/Pill"
 import Image from "next/image"
 
@@ -91,10 +90,10 @@ export function LinkFormTitle() {
 
     <section className="flex items-center">
       <div className="w-[87vw] pb-5 lg-2:max-w-[500px] lg-2:py-0">
-        <h1 className="text-4xl tracking-tight text-balance lg-2:text-start lg-2:text-6xl">Turn any long link into a short URL</h1>
+        <h1 className="text-4xl tracking-tight text-center lg-2:text-start lg-2:text-6xl">Turn any long link into a short URL</h1>
 
-        <p className="py-5 font-medium text-neutral-400 lg-2:text-start lg-2:text-xl">
-          Shorten links and track clicks. Great for social media, marketing, and more.
+        <p className="py-5 font-medium text-center text-neutral-400 lg-2:text-start lg-2:text-xl">
+          Quick to share and easy to manage perfect for social media, newsletters, team collaboration, and more
         </p>
 
         {/* Since 360px */}
@@ -125,20 +124,6 @@ export function LinkFormTitle() {
             </div>
             <p className="text-xs text-neutral-300">Documents</p>
           </article>
-
-
-
-          {/* <Pill title="Facebook" icon={<IconBrandFacebookFilled stroke={1.25} className="size-4" />}
-            iconContainerClass="bg-gradient-to-tr from-blue-600 via-blue-500 to-blue-700" />
-
-          <Pill title="Instagram" icon={<IconBrandInstagram className="size-4" />}
-            iconContainerClass="bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600" />
-
-          <Pill title="Youtube" icon={<IconBrandYoutubeFilled className="size-4" />}
-            iconContainerClass="bg-gradient-to-tr from-red-600 via-red-500 to-red-700" />
-
-          <Pill title="Office" icon={<IconBrandOffice className="size-4" />}
-            iconContainerClass="bg-gradient-to-tr from-blue-500 via-green-600 to-violet-900" /> */}
         </div>
 
         {/* Since 1272px */}
@@ -152,6 +137,22 @@ export function LinkFormTitle() {
           <Pill title="Stadistics" icon={<IconChartPie2Filled className="size-4" />}
             iconContainerClass="bg-gradient-to-tr from-orange-500 via-red-500 to-red-700" />
         </div>
+
+        {/* <div>
+          <Accordion items={[
+            {
+              title: "How it works?",
+              content: 
+                <div className="p-3 rounded-b-xl border border-[#1c1d1d] ">
+                  <div className="flex gap-3">
+                    <IconNumber1 className="size-4" />
+                    <p className="text-sm">sajdkdh</p>
+                  </div>
+                </div>
+            }
+          ]} buttonClass="rounded-xl border border-[#1c1d1d] py-1 mt-4 text-neutral-300"/>
+        </div> */}
+
       </div>
     </section>
   )
@@ -163,9 +164,10 @@ export function LoginTitle() {
 
     <section>
       <div className="lg-2:max-w-[565px]">
-        <AnimatedTitle title="Sign in to control all your links" />
-        <p className="pt-5 pb-5 font-medium text-neutral-400 text-xl">
-          Access your dashboard, set passwords, expiration dates, and monitor performance anytime. Stay in control of all your shared content.
+        <h1 className="text-4xl tracking-tight text-center lg-2:text-start lg-2:text-6xl">Sign in to control all your links</h1>
+        <p className="pt-5 pb-5 font-medium text-neutral-400 text-center lg-2:text-xl lg-2:text-start">
+          Access your dashboard to take full control—track performance, edit details, and easily set security options
+          <span className="hidden lg-2:inline"></span>
         </p>
       </div>
     </section>

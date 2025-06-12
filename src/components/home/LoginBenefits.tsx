@@ -1,6 +1,6 @@
 "use client"
 
-import { IconChartHistogram, IconClockExclamation, IconFolderCog, IconListSearch, IconPencilStar, IconShieldLock } from "@tabler/icons-react"
+import { IconChartHistogram, IconClockExclamation, IconClockPlus, IconFolderCog, IconListSearch, IconPencilStar, IconShieldLock, IconShieldPlus } from "@tabler/icons-react"
 import React from "react"
 import { LoginTitle } from "./Title"
 import { GitHubAuthButton, GoogleAuthButton } from "./auth/AuthButtonClient"
@@ -18,10 +18,51 @@ export function LoginBenefits() {
           <div className="flex flex-col lg-2:pt-14">
             <LoginTitle />
 
-            <div className="grid grid-cols-5 gap-5 pb-5 lg-2:flex">
+            {/* Since 360px */}
+            <div className="flex justify-between pb-3 lg-2:hidden">
+              <article className="rounded-xl border border-[#1c1d1d] p-2 fade-b-lg">
+                <div className="flex justify-center pb-2">
+                  <IconChartHistogram className="text-neutral-300" />
+                </div>
+                <p className="text-xs">All Metrics</p>
+              </article>
+
+              <article className="rounded-xl border border-[#1c1d1d] p-2 fade-b-lg">
+                <div className="flex justify-center pb-2">
+                  <IconClockPlus className="text-neutral-300" />
+                </div>
+                <p className="text-xs">More Expirations</p>
+              </article>
+
+              <article className="rounded-xl border border-[#1c1d1d] p-2 fade-b-lg">
+                <div className="flex justify-center pb-2">
+                  <IconPencilStar className="text-neutral-300" />
+                </div>
+                <p className="text-xs">Customizing</p>
+              </article>
+            </div>
+
+            <div className="flex justify-center gap-3 pb-5 lg-2:hidden">
+              <article className="rounded-xl border border-[#1c1d1d] p-2 fade-b-lg">
+                <div className="flex justify-center pb-2">
+                  <IconShieldPlus className="text-neutral-300" />
+                </div>
+                <p className="text-xs">More Protected Links</p>
+              </article>
+
+              <article className="rounded-xl border border-[#1c1d1d] p-2 fade-b-lg">
+                <div className="flex justify-center pb-2">
+                  <IconFolderCog className="text-neutral-300" />
+                </div>
+                <p className="text-xs">Management</p>
+              </article>
+            </div>
+
+            {/* Since 1272px */}
+            <div className="hidden gap-5 pb-5 lg-2:flex">
               <article className="relative group p-2 rounded-xl border border-[#1c1d1d]">
                 <IconChartHistogram className="lg-2:size-10 text-neutral-300 hover:text-amber-200" />
-                
+
                 <p className="absolute -top-11 opacity-0 group-hover:opacity-100 duration-300 bg-black text-sm py-1 px-3 rounded-full 
                 border border-[#1c1d1d] pointer-events-none">
                   Metrics
@@ -62,14 +103,14 @@ export function LoginBenefits() {
 
               <article className="relative group p-2 rounded-xl border border-[#1c1d1d]">
                 <IconFolderCog className="lg-2:size-10 text-neutral-300 hover:text-amber-200" />
-                
+
                 <p className="text-nowrap absolute -top-11 left-0 opacity-0 group-hover:opacity-100 duration-300 bg-black text-sm py-1 px-3 rounded-full border border-[#1c1d1d] pointer-events-none">
                   Management
                 </p>
               </article>
             </div>
 
-            <div className="flex gap-5">
+            <div className="flex justify-center gap-5">
               <GitHubAuthButton />
               <GoogleAuthButton />
             </div>
@@ -80,11 +121,8 @@ export function LoginBenefits() {
           <Image src="/imgs/login6.png" alt="logo" width={200} height={200} className="hidden w-full fade lg-2:block lg-2:max-h-[500px]" />
         </div>
       </div>
-
     </section>
-
   )
-
 }
 
 
@@ -130,7 +168,7 @@ export function LoginBenefits() {
 
 
 
-    // linear-gradient(var(--bg-color),var(--bg-color)) padding-box,linear-gradient(107.65deg,#17C969 17.53%,#005DBB 94.64%) border-box
+// linear-gradient(var(--bg-color),var(--bg-color)) padding-box,linear-gradient(107.65deg,#17C969 17.53%,#005DBB 94.64%) border-box
 
 
 // linear-gradient(var(--bg-color),var(--bg-color)) padding-box,linear-gradient(120.55deg,#FF4040 18.56%,#A20BD8 98.01%) border-box

@@ -57,7 +57,7 @@ export function LinkForm() {
 
             <div className="flex justify-between">
               <label htmlFor="txtUrl" className="flex items-center gap-3">
-                <div className="p-1.5 rounded-full bg-violet-400">
+                <div className="hidden p-1.5 rounded-full bg-violet-400 lg-2:block">
                   <IconScissors className="size-4 lg-2:size-5 text-purple-700"></IconScissors>
                 </div>
                 <span className="text-lg sm:text-xl text-[#E5E7EB] font-semibold">Paste a long link</span>
@@ -69,7 +69,7 @@ export function LinkForm() {
               placeholder="Enter a long Link to short" required />
 
             <div className="flex items-center gap-3">
-              <div className="p-1.5 rounded-full bg-emerald-200">
+              <div className="hidden p-1.5 rounded-full bg-emerald-200 lg-2:block">
                 <IconWand className="size-4 lg-2:size-5 text-green-700"></IconWand>
               </div>
               <span className="text-lg sm:text-xl text-[#E5E7EB] font-semibold">Here the new link</span>
