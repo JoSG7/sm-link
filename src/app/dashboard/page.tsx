@@ -1,9 +1,10 @@
 import { SignOutButton } from "@/components/dashboard/sign-out-button"
-import { supabaseServer } from "@/lib/supabase/server"
+import { createSupabaseServer } from "@/lib/supabase/server"
 import { redirect } from "next/navigation"
 
 async function Dashboard () {
 
+  const supabaseServer = await createSupabaseServer()
   const { data: { user } } = await supabaseServer.auth.getUser()
 
   if(!user){

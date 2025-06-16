@@ -3,10 +3,11 @@ import { NavBar } from "@/components/home/NavbarHeader";
 import { LinkForm } from "@/components/home/NewLinkForm";
 import { redirect } from "next/navigation";
 import { HomeTitle } from "@/components/home/Title";
-import { supabaseServer } from "@/lib/supabase/server";
+import { createSupabaseServer } from "@/lib/supabase/server";
 
 export default async function Home() {
 
+  const supabaseServer = await createSupabaseServer()
   const { data: { user } } = await supabaseServer.auth.getUser()
 
   if (user) {
