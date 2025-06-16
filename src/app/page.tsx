@@ -1,7 +1,6 @@
 import { LoginBenefits } from "@/components/home/LoginBenefits";
 import { NavBar } from "@/components/home/NavbarHeader";
 import { LinkForm } from "@/components/home/NewLinkForm";
-// import { serverAuthSupabase } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 import { HomeTitle } from "@/components/home/Title";
 import { supabaseServer } from "@/lib/supabase/server";
