@@ -9,23 +9,6 @@
   }
 }
 
-.img-home {
-  width: 430px;
-  height: 454px;
-  -webkit-mask-image:
-    linear-gradient(to top, black 80%, transparent),
-    linear-gradient(to bottom, black 80%, transparent),
-    linear-gradient(to left, black 80%, transparent),
-    linear-gradient(to right, black 80%, transparent);
-  mask-image:
-    linear-gradient(to top, black 80%, transparent),
-    linear-gradient(to bottom, black 80%, transparent),
-    linear-gradient(to left, black 80%, transparent),
-    linear-gradient(to right, black 80%, transparent);
-  mask-composite: intersect;
-  object-fit: cover;
-}
-
 .fade {
   mask-image:
     linear-gradient(to bottom, black 80%, transparent 100%),

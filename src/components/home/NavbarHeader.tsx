@@ -4,7 +4,7 @@ import { showMainMenu } from "@/utils/ui/home/menu-functions";
 import { IconMenu2 } from "@tabler/icons-react";
 import Image from "next/image";
 
-export function NavBar () {
+export function NavBar() {
 
   return (
 
@@ -13,9 +13,14 @@ export function NavBar () {
 
       <div className="w-[90vw] md:w-[94vw] max-w-5xl  flex justify-between">
         <div className="flex items-center gap-1 sm:gap-1 lg-2:gap-2">
-          {/* <img src="imgs/Logo6.png" alt="Logo1" className="w-32 md:w-40"/> */}
-          <Image src="/imgs/Espada1.png" alt="Icono" width={36} height={36} className="w-9"/>
-          <Image src="/imgs/Titulo.png" alt="Logo" width={36} height={36} className="w-16"/>
+          {/* <div className="relative w-12 h-7 ">
+            <Image src="/imgs/Espada1.png" alt="Icono" fill className="object-contain"/>
+          </div> */}
+          <Image src="/imgs/Espada1.png" alt="Icono" width={40} height={28} className="w-10 h-7"/>
+          <Image src="/imgs/Titulo.png" alt="Logo" width={64} height={16} className="w-16 h-4" />
+          {/* <div className="relative w-16 h-7">
+            <Image src="/imgs/Titulo.png" alt="Logo" fill className="object-contain" />
+          </div> */}
         </div>
 
         <button type="button" className="flex justify-center items-center" onClick={showMainMenu}>

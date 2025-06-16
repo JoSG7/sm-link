@@ -11,7 +11,6 @@ export async function GET(request: NextRequest) {
   if(code){
     const supabaseServer = await createSupabaseServer()
     await supabaseServer.auth.exchangeCodeForSession(code)
-    console.log("se intercambio code exito")
   }
 
   return NextResponse.redirect(requestURL.origin)

@@ -12,7 +12,7 @@ export function HomeTitle() {
       <div className="w-[90vw] lg-2:w-full lg-2:py-9 lg-2:max-w-5xl lg-2:flex lg-2:flex-row-reverse lg-2:justify-between">
 
         {/* Img for 1272px */}
-        <Image src="/imgs/mano5.png" alt="Home Imge for 1272px" width={500} height={500} className="hidden img-home lg-2:block " />
+        <Image src="/imgs/mano5.png" alt="Home Imge for 1272px" width={430} height={454} className="hidden fade object-cover lg-2:block " />
 
         <article className="lg-2:max-w-[580px]">
           <div className="py-6 lg-2:py-12">
