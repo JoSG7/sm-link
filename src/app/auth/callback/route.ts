@@ -10,7 +10,7 @@ export async function GET(request: NextRequest) {
 
   if(code){
     const supabaseServer = await createSupabaseServer()
-    supabaseServer.auth.exchangeCodeForSession(code)
+    await supabaseServer.auth.exchangeCodeForSession(code)
     console.log("se intercambio code exito")
   }
 

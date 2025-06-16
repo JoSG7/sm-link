@@ -9,26 +9,16 @@ async function Dashboard () {
   console.log(user)
 
   if(!user){
-
-    console.log(`no se encontro usuario ${user}`)
     redirect("/")
-
   }else{
 
     return(
-  
       <main>
-  
         <h1>Welcome {user?.user_metadata?.user_name}</h1>
-  
         <SignOutButton />
-        
       </main>
-  
     )
-
   }
-
 }
 
 export default Dashboard
