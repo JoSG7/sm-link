@@ -3,8 +3,8 @@
 import { IconChartHistogram, IconClockExclamation, IconClockPlus, IconFolderCog, IconListSearch, IconPencilStar, IconShieldLock, IconShieldPlus } from "@tabler/icons-react"
 import React from "react"
 import { LoginTitle } from "./Title"
-// import { GitHubAuthButton, GoogleAuthButton } from "./auth/AuthButtonClient"
 import Image from "next/image"
+import { GitHubAuthButton, GoogleAuthButton } from "./auth/AuthButtonClient"
 
 export function LoginBenefits() {
 
@@ -110,10 +110,10 @@ export function LoginBenefits() {
               </article>
             </div>
 
-            {/* <div className="flex justify-center gap-5 lg-2:justify-start">
+            <div className="flex justify-center gap-5 lg-2:justify-start">
               <GitHubAuthButton />
               <GoogleAuthButton />
-            </div> */}
+            </div>
           </div>
         </div>
 
