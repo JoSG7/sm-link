@@ -9,6 +9,7 @@ async function Dashboard () {
 
   if(!user){
 
+    console.log(`no se encontro usuario ${user}`)
     redirect("/")
 
   }else{

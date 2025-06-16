@@ -11,6 +11,7 @@ export default async function Home() {
   const { data: { user } } = await supabaseServer.auth.getUser()
 
   if (user) {
+    console.log("redireccionando al dashboard")
     redirect("/dashboard")
   } else {
 

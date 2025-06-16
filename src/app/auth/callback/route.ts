@@ -13,6 +13,8 @@ export async function GET(request: NextRequest) {
     supabaseServer.auth.exchangeCodeForSession(code)
     // const supabase = createRouteHandlerClient({ cookies })
     // await supabase.auth.exchangeCodeForSession(code)
+  } else {
+    console.log(`no hay usuario`)
   }
 
   return NextResponse.redirect(requestURL.origin)
