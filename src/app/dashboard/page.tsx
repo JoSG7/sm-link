@@ -6,6 +6,7 @@ async function Dashboard () {
 
   const supabaseServer = await createSupabaseServer()
   const { data: { user } } = await supabaseServer.auth.getUser()
+  console.log(user)
 
   if(!user){
 

@@ -11,10 +11,9 @@ export async function GET(request: NextRequest) {
   if(code){
     const supabaseServer = await createSupabaseServer()
     supabaseServer.auth.exchangeCodeForSession(code)
+    console.log("se intercambio code exito")
     // const supabase = createRouteHandlerClient({ cookies })
     // await supabase.auth.exchangeCodeForSession(code)
-  } else {
-    console.log(`no hay usuario`)
   }
 
   return NextResponse.redirect(requestURL.origin)
