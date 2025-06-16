@@ -5,6 +5,8 @@ import { redirect } from "next/navigation";
 import { HomeTitle } from "@/components/home/Title";
 import { createSupabaseServer } from "@/lib/supabase/server";
 
+export const dynamic = 'force-dynamic'
+
 export default async function Home() {
 
   const supabaseServer = await createSupabaseServer()
@@ -12,7 +14,6 @@ export default async function Home() {
   console.log(user)
 
   if (user) {
-    console.log("redireccionando al dashboard")
     redirect("/dashboard")
   } else {
 

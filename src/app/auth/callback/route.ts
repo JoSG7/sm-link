@@ -12,8 +12,6 @@ export async function GET(request: NextRequest) {
     const supabaseServer = await createSupabaseServer()
     supabaseServer.auth.exchangeCodeForSession(code)
     console.log("se intercambio code exito")
-    // const supabase = createRouteHandlerClient({ cookies })
-    // await supabase.auth.exchangeCodeForSession(code)
   }
 
   return NextResponse.redirect(requestURL.origin)
