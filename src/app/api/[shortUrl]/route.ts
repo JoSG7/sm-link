@@ -9,7 +9,7 @@ interface Props {
 export async function GET(request: NextRequest, { params }: Props) {
 
   const { shortUrl } = await params
-  const { data, error } = await supabase.from("link").select("*").eq('short', shortUrl).single()
+  const { data, error } = await supabase.rpc("get_link_by_short", { short_url: shortUrl })
   const year = new Date().getFullYear()
   const month = new Date().getMonth()
   const link = data as ShortLink | null

@@ -110,7 +110,7 @@ export function LoginBenefits() {
               </article>
             </div>
 
-            <div className="flex justify-center gap-5">
+            <div className="flex justify-center gap-5 lg-2:justify-start">
               <GitHubAuthButton />
               <GoogleAuthButton />
             </div>

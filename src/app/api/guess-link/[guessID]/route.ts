@@ -9,8 +9,7 @@ export async function GET(request: NextRequest, { params }: Props) {
 
   const { guessID } = await params
 
-  const { data: guessLinks, error } = await supabase.from("link").select("*")
-    .eq("guess_id", guessID).order("created_at", { ascending: false })
+  const { data: guessLinks, error } = await supabase.rpc("get_links_by_guess_id", { guess_id_input: guessID })
 
   return error ? NextResponse.json({ error: "Error" }) : NextResponse.json(guessLinks)
 

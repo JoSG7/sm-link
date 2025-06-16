@@ -7,17 +7,14 @@ export async function POST(request: Request | NextRequest) {
   const shortLink = createBase64Code()
   const { guessID, original }: { guessID: string, original: string } = await request.json()
 
-  const { data: exist, error } = await supabase.from("link").select("*").match({
-    guess_id: guessID,
-    original: original
-  })
+  const { data: exist, error } = await supabase.rpc("check_existing_link", { p_guess_id: guessID, p_original: original })
 
   if(error) { 
     console.log(error)
     return NextResponse.json({ error: "Error, intentelo nuevamente" })
   }
 
-  if (exist && exist?.length > 0) {
+  if (exist) {
     return NextResponse.json({ error: "Ya tienes una version corta de este link" })
   } else {
     const { error } = await supabase.from("link").insert({
