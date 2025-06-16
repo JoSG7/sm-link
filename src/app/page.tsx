@@ -1,13 +1,14 @@
 import { LoginBenefits } from "@/components/home/LoginBenefits";
 import { NavBar } from "@/components/home/NavbarHeader";
 import { LinkForm } from "@/components/home/NewLinkForm";
-import { serverAuthSupabase } from "@/lib/supabase/server";
+// import { serverAuthSupabase } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 import { HomeTitle } from "@/components/home/Title";
+import { supabaseServer } from "@/lib/supabase/server";
 
 export default async function Home() {
 
-  const { data: { user } } = await serverAuthSupabase.auth.getUser()
+  const { data: { user } } = await supabaseServer.auth.getUser()
 
   if (user) {
     redirect("/dashboard")
