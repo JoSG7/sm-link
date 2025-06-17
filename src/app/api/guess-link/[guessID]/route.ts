@@ -10,7 +10,7 @@ export async function GET(request: NextRequest, { params }: Props) {
   const { guessID } = await params
   const supabase = createSupabase(guessID)
 
-  const { data: guessLinks, error } = await supabase.rpc("get_links_by_header")
+  const { data: guessLinks, error } = await supabase.rpc("get_links_by_guess_id")
 
   return error ? NextResponse.json({ error: error }) : NextResponse.json(guessLinks)
 
