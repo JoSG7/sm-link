@@ -6,6 +6,7 @@ export async function getGuessLinks() {
   const guessID = getGuessID()
   const res = await fetch(`api/guess-link/${guessID}`)
   const data: GuessLinks[] = await res.json()
+  console.log(data)
   return data
 }
 

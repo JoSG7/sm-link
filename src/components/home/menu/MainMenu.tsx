@@ -21,6 +21,7 @@ export function MainMenu() {
     if (recentLinks.length == 0) {
       setLoading(true)
       getGuessLinks().then(res => {
+        // console.log(res)
         if (res.length > 0) {
           setRecentLinks(res)
         } else {

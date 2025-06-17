@@ -1,10 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
-import { supabase } from "@/lib/supabase/client";
+import { createSupabase } from "@/lib/supabase/client";
 import { Metric, ShortLink } from "@/types/global";
 
 interface Props {
   params: Promise<{ shortUrl: string }>;
 }
+
+const supabase = createSupabase()
 
 export async function GET(request: NextRequest, { params }: Props) {
 

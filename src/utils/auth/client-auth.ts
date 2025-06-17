@@ -1,9 +1,10 @@
-import { supabase } from "@/lib/supabase/client";
+import { createSupabase } from "@/lib/supabase/client";
 import { Provider } from "@supabase/supabase-js";
 import { redirect } from "next/navigation";
 
 export async function signInWithOAuth (provider : Provider) {
 
+  const supabase = createSupabase()
   await supabase.auth.signInWithOAuth({
     provider,
     options: {
@@ -14,6 +15,7 @@ export async function signInWithOAuth (provider : Provider) {
 }
 
 export async function signOut () {
+  const supabase = createSupabase()
   await supabase.auth.signOut()
   redirect("/")
 }

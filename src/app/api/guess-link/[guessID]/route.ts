@@ -1,4 +1,4 @@
-import { supabase } from "@/lib/supabase/client";
+import { createSupabase } from "@/lib/supabase/client";
 import { NextRequest, NextResponse } from "next/server";
 
 interface Props {
@@ -8,16 +8,18 @@ interface Props {
 export async function GET(request: NextRequest, { params }: Props) {
 
   const { guessID } = await params
+  const supabase = createSupabase(guessID)
 
-  const { data: guessLinks, error } = await supabase.rpc("get_links_by_guess_id", { guess_id_input: guessID })
+  const { data: guessLinks, error } = await supabase.rpc("get_links_by_header")
 
-  return error ? NextResponse.json({ error: "Error" }) : NextResponse.json(guessLinks)
+  return error ? NextResponse.json({ error: error }) : NextResponse.json(guessLinks)
 
 }
 
 export async function DELETE(request: NextRequest, { params }: Props) {
 
   const { guessID } = await params
+  const supabase = createSupabase(guessID)
 
   const { error } = await supabase.from("link").delete().eq("guess_id", guessID)
 
@@ -25,7 +27,7 @@ export async function DELETE(request: NextRequest, { params }: Props) {
 
   if (error) {
     console.log(error)
-    return NextResponse.json(error) 
+    return NextResponse.json(error)
   } else {
     return NextResponse.json({ response: "Eliminado correctamente" })
   }

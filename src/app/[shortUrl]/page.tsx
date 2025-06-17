@@ -1,10 +1,11 @@
-import { supabase } from "@/lib/supabase/client";
+import { createSupabase } from "@/lib/supabase/client";
 import { redirect } from "next/navigation";
 
 async function ShortURL({ params }: { params: Promise<{ shortUrl: string }> }) {
 
   const { shortUrl } = await params
-  const { data: link, error } = await supabase.from("link").select("*").eq('short', shortUrl).single()
+  const supabase = createSupabase()
+  const { data: link, error } = await supabase.rpc("get_link_by_short", { short_url: shortUrl })
 
   if (error) {
     console.log(error)
