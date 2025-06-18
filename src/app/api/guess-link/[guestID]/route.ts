@@ -2,26 +2,27 @@ import { createSupabase } from "@/lib/supabase/client";
 import { NextRequest, NextResponse } from "next/server";
 
 interface Props {
-  params: Promise<{ guessID: string }>
+  params: Promise<{ short: string, guestID: string }>
 }
 
 export async function GET(request: NextRequest, { params }: Props) {
 
-  const { guessID } = await params
-  const supabase = createSupabase(guessID)
+  const { guestID } = await params
+  const supabase = createSupabase(guestID)
 
-  const { data: guessLinks, error } = await supabase.rpc("get_links_by_guess_id")
+  const { data: guestLinks, error } = await supabase.rpc("get_links_by_guest_id")
 
-  return error ? NextResponse.json({ error: error }) : NextResponse.json(guessLinks)
+  return error ? NextResponse.json({ error: error }) : NextResponse.json(guestLinks)
 
 }
 
 export async function DELETE(request: NextRequest, { params }: Props) {
 
-  const { guessID } = await params
-  const supabase = createSupabase(guessID)
+  const { guestID } = await params
+  const { short } = await request.json()
+  const supabase = createSupabase(guestID)
 
-  const { error } = await supabase.from("link").delete().eq("guess_id", guessID)
+  const { error } = await supabase.rpc("delete_link_by_short_url", { short_input: short })
 
   // return error ? NextResponse.json({ error: "Error al eliminar" }) : NextResponse.json({ response: "Eliminado correctamente" })
 

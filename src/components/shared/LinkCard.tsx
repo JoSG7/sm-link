@@ -14,7 +14,7 @@ export function LinkCard({ original, short, created_at }: { original: string, sh
 
   const deleteLink = async () => {
 
-    await deleteGuessLink().then(res => {
+    await deleteGuessLink(short).then(res => {
       console.log(res)
       // if(res.error){
       //   toast.error(res.error)

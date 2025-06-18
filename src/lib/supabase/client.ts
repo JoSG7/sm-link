@@ -1,6 +1,6 @@
 import { createBrowserClient } from '@supabase/ssr'
 
-export function createSupabase(guessID?: string) {
+export function createSupabase(guestID?: string) {
   
   return createBrowserClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -8,7 +8,7 @@ export function createSupabase(guessID?: string) {
     {
       global: {
         headers: {
-          'x-guess-id': guessID ? guessID : "",
+          'x-guest-id': guestID ? guestID : "",
         },
       },
     }

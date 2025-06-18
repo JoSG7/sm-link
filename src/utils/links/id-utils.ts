@@ -1,4 +1,4 @@
-export function getGuessID(): string {
+export function getGuestID(): string {
   let guessID = localStorage.getItem("guessID")
   if (!guessID) {
     guessID = crypto.randomUUID()

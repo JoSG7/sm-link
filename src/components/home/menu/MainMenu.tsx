@@ -7,7 +7,7 @@ import { useState } from "react"
 import { GuessLinks } from "@/types/global"
 import { Accordion } from "@/components/shared/Accordion"
 import { RecentLinks } from "./RecentLinks"
-import { getGuessLinks } from "@/utils/links/api"
+import { getGuestLinks } from "@/utils/links/api"
 
 
 export function MainMenu() {
@@ -20,7 +20,7 @@ export function MainMenu() {
     // Si esta vacio, trae los datos
     if (recentLinks.length == 0) {
       setLoading(true)
-      getGuessLinks().then(res => {
+      getGuestLinks().then(res => {
         // console.log(res)
         if (res.length > 0) {
           setRecentLinks(res)
