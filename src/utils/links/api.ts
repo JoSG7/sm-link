@@ -3,17 +3,17 @@ import { getGuestID } from "./id-utils"
 
 export async function getGuestLinks() {
   const guestID = getGuestID()
-  const res = await fetch(`api/guess-link/${guestID}`)
+  const res = await fetch(`api/guest-links/${guestID}`)
   const data: GuessLinks[] = await res.json()
   return data
 }
 
 export async function deleteGuessLink(short: string) {
   const guestID = getGuestID()
-  const res = await fetch(`api/guess-link/${guestID}`, {
+  const res = await fetch(`api/guest-links/`, {
     method: "DELETE",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ short })
+    body: JSON.stringify({ short, guestID })
   })
   const data: { error: string, response: string } = await res.json()
   return data
@@ -21,7 +21,7 @@ export async function deleteGuessLink(short: string) {
 
 export async function createShortLink(original: string) {
   const guestID = getGuestID()
-  const res = await fetch("/api/short-link", {
+  const res = await fetch("/api/guest-links", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ guestID, original })

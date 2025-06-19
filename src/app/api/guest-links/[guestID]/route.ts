@@ -28,7 +28,7 @@ export async function DELETE(request: NextRequest, { params }: Props) {
 
   if (error) {
     console.log(error)
-    return NextResponse.json(error)
+    return NextResponse.json({ error: "Error al eliminar" })
   } else {
     return NextResponse.json({ response: "Eliminado correctamente" })
   }
