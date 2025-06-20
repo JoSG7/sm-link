@@ -1,4 +1,5 @@
 import { createSupabase } from "@/lib/supabase/client";
+import { getGuestID } from "@/utils/auth/cookies";
 import { NextRequest, NextResponse } from "next/server";
 
 interface Props {
@@ -7,7 +8,8 @@ interface Props {
 
 export async function DELETE (request: NextRequest, { params }: Props) {
 
-  const { guestID, shortUrl } = await params
+  const { shortUrl } = await params
+  const guestID = await getGuestID()
   const supabase = createSupabase(guestID)
 
   const { error } = await supabase.rpc("delete_link_by_short_url", { short_input: shortUrl })

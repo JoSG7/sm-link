@@ -1,30 +1,33 @@
-import { createSupabase } from "@/lib/supabase/client";
-import { createBase64Code } from "@/utils/links/id-utils";
-import { NextRequest, NextResponse } from "next/server";
+import { createSupabase } from "@/lib/supabase/client"
+import { getGuestID } from "@/utils/auth/cookies"
+import { createBase64Code } from "@/utils/links/id-utils"
+import { NextRequest, NextResponse } from "next/server"
 
-interface Props {
-  params: Promise<{ short: string, guestID: string }>
-}
+export async function GET() {
 
-export async function GET(request: NextRequest, { params }: Props) {
-
-  const { guestID } = await params
+  const guestID = await getGuestID()
   const supabase = createSupabase(guestID)
 
   const { data: guestLinks, error } = await supabase.rpc("get_links_by_guest_id")
-
-  return error ? NextResponse.json({ error: error }) : NextResponse.json(guestLinks)
+  return error ? NextResponse.json({ error: "Error al obtener los links" }) : NextResponse.json(guestLinks)
 }
 
 
 
-export async function POST(request: NextRequest, { params }: Props) {
+export async function POST(request: NextRequest) {
 
   const { original }: { original: string } = await request.json()
-  const { guestID } = await params
   const shortLink = createBase64Code()
-  const supabase = createSupabase(guestID)
 
+  let guestID = await getGuestID()
+  let newGuest = false
+
+  if (!guestID) {
+    guestID = crypto.randomUUID()
+    newGuest = true
+  }
+
+  const supabase = createSupabase(guestID)
   const { data: exist, error } = await supabase.rpc("check_existing_link", { x_original: original })
 
   if (error) {
@@ -44,13 +47,21 @@ export async function POST(request: NextRequest, { params }: Props) {
     if (error) {
       console.log(error)
       if (error.code == '42501') { return NextResponse.json({ error: "You have reached the limit of links" }) }
-
       return NextResponse.json({ error: "Error al crear" })
-    } else {
-      return NextResponse.json({ response: shortLink })
     }
+
+    const response = NextResponse.json({ response: shortLink })
+
+    if (newGuest) {
+      response.cookies.set("guestID", guestID, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "lax",
+        path: "/",
+        maxAge: 60 * 60 * 24 * 30
+      })
+    }
+
+    return response
   }
 }
-
-
-
