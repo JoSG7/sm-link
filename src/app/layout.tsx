@@ -1,4 +1,3 @@
-import { MainMenu } from "@/components/home/menu/MainMenu";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Lexend } from "next/font/google"
 import { Toaster } from "sonner";
@@ -19,7 +18,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en">
       <body className={`antialiased ${lexend.className} overflow-y-auto min-h-screen relative`}>
         <SpeedInsights />
-        <MainMenu />
         <Toaster richColors />
         {children}
       </body>

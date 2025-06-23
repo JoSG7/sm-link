@@ -4,6 +4,8 @@ import { LinkForm } from "@/components/home/NewLinkForm";
 import { redirect } from "next/navigation";
 import { HomeTitle } from "@/components/home/Title";
 import { createSupabaseServer } from "@/lib/supabase/server";
+import { HomeModals } from "@/components/modals/home/Provider";
+import { MainMenu } from "@/components/home/menu/Menu";
 
 // export const dynamic = "force-dynamic"
 
@@ -18,15 +20,18 @@ export default async function Home() {
 
     return (
 
-      <main className="flex flex-col text-white bg-black">
-        <NavBar />
-        <div className="flex flex-col gap-28">
-          <HomeTitle />
-          <LinkForm />
-          <LoginBenefits />
-          {/* <Footer /> */}
-        </div>
-      </main>
+      <HomeModals>
+        <main className="flex flex-col text-white bg-black">
+          <NavBar />
+          <MainMenu />
+          <div className="flex flex-col gap-28">
+            <HomeTitle />
+            <LinkForm />
+            <LoginBenefits />
+            {/* <Footer /> */}
+          </div>
+        </main>
+      </HomeModals>
 
     )
 

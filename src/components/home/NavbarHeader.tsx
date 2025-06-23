@@ -1,10 +1,12 @@
 "use client"
 
-import { showMainMenu } from "@/utils/ui/home/menu-functions";
 import { IconMenu2 } from "@tabler/icons-react";
 import Image from "next/image";
+import { useMenuDrawer } from "../modals/hooks/useModal";
 
 export function NavBar() {
+
+  const { toggleMenu } = useMenuDrawer()
 
   return (
 
@@ -23,7 +25,7 @@ export function NavBar() {
           </div> */}
         </div>
 
-        <button type="button" className="flex justify-center items-center" onClick={showMainMenu}>
+        <button type="button" className="flex justify-center items-center" onClick={toggleMenu}>
           <IconMenu2 size={30} className="sm:size-7" id="menu-icon"></IconMenu2>
         </button>
       </div>

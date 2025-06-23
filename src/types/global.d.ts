@@ -1,4 +1,4 @@
-export interface GuessLinks {
+export interface GuestLinks {
   id: string
   short: string
   original: string
