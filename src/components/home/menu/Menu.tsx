@@ -2,13 +2,14 @@
 
 import { IconClockCheck, IconLock } from "@tabler/icons-react"
 import { motion } from 'framer-motion'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { GuestLinks } from "@/types/global"
 import { Accordion } from "@/components/shared/Accordion"
 import { RecentLinks } from "./RecentLinks"
 import { getGuestLinks } from "@/utils/links/api"
-import { useMenuDrawer } from "@/components/modals/hooks/useModal"
+import { useLinkChanges, useMenuDrawer } from "@/hooks/useModal"
 import { useScreenSize } from "@/hooks/useScreenSize"
+// import { DeleteLinkModal } from "@/components/modals/home/DeleteLinkModal"
 
 
 export function MainMenu() {
@@ -16,8 +17,8 @@ export function MainMenu() {
   const [recentLinks, setRecentLinks] = useState<GuestLinks[] | []>([])
   const [loading, setLoading] = useState(false)
   const { menu, toggleMenu } = useMenuDrawer()
+  const { linkChanges } = useLinkChanges()
   const width = useScreenSize()
-
   const isMobile = width < 640
   const isTablet = width > 640 && width < 768
 
@@ -37,12 +38,11 @@ export function MainMenu() {
   const navWidth = isMobile ? "w-full h-[560px]" :
     isTablet ? "w-4/6 h-full" : "w-1/2 h-full"
 
-  const fetchRecentLinks = async () => {
-    // Si esta vacio, trae los datos
-    if (recentLinks.length == 0) {
+
+  useEffect(() => {
+    const fetchRecentLinks = async () => {
       setLoading(true)
       getGuestLinks().then(res => {
-        // console.log(res)
         if (res.length > 0) {
           setRecentLinks(res)
         } else {
@@ -51,7 +51,9 @@ export function MainMenu() {
       })
         .finally(() => setLoading(false))
     }
-  }
+    fetchRecentLinks()
+  }, [linkChanges])
+
 
   return (
 
@@ -64,7 +66,7 @@ export function MainMenu() {
           <Accordion items={[
             {
               title:
-                <li className="border-t border-[#1c1d1d] p-4 text-xl font-semibold flex gap-2 items-center cursor-pointer lg-2:border-none" onClick={fetchRecentLinks}>
+                <li className="border-t border-[#1c1d1d] p-4 text-xl font-semibold flex gap-2 items-center cursor-pointer lg-2:border-none">
                   <IconClockCheck size={24} />
                   Recent Sm Links
                 </li>,
@@ -73,7 +75,7 @@ export function MainMenu() {
             {
               title:
                 <li className="border-t border-[#1c1d1d] p-4 text-xl font-semibold flex gap-2 items-center cursor-pointer"
-                onClick={() => { toggleMenu() }}>
+                  onClick={() => { toggleMenu() }}>
                   <IconLock size={24} />
                   Protected Links
                 </li>,

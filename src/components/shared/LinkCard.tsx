@@ -1,9 +1,12 @@
+"use client"
+
 import { IconCalendar, IconCopy, IconExternalLink, IconTrash } from "@tabler/icons-react"
+import { useDeleteLinkModal } from "@/hooks/useModal"
 import { months } from "@/utils/constants"
 import { toast } from "sonner"
-import Link from "next/link"
 import Image from "next/image"
-import { deleteGuessLink } from "@/utils/links/api"
+import Link from "next/link"
+import { DeleteLinkModal } from "../modals/home/DeleteLinkModal"
 
 export function LinkCard({ original, short, created_at }: { original: string, short: string, created_at: string }) {
   const url = new URL(original)
@@ -11,24 +14,12 @@ export function LinkCard({ original, short, created_at }: { original: string, sh
   const date = new Date(created_at)
   const day = date.getDate()
   const month = months[date.getMonth()]
-
-  const deleteLink = async () => {
-
-    await deleteGuessLink(short).then(res => {
-      console.log(res)
-      // if(res.error){
-      //   toast.error(res.error)
-      // } else {
-      //   toast.success(res.response)
-      // }
-    })
-
-  }
+  const { toggleDeleteModal } = useDeleteLinkModal()
 
   return (
 
     <article className="p-4 rounded-lg border border-[#1c1d1d] whitespace-normal">
-
+      <DeleteLinkModal />
       <div className="flex justify-between items-center pb-4 gap-1">
         <div className="flex flex-col max-w-[240px] sm:max-w-[285px] lg-2:max-w-[400px]">
           <p className="font-semibold">sm-link.vercel.app/{short}</p>
@@ -44,7 +35,7 @@ export function LinkCard({ original, short, created_at }: { original: string, sh
           </p>
         </div>
         <Image src={`https://www.google.com/s2/favicons?domain=${domain}&sz=64`} alt="logo" width={60} height={60}
-        className="size-12 rounded-full sm:size-14" />
+          className="size-12 rounded-full sm:size-14" />
       </div>
 
       {/* Buttons section */}
@@ -52,12 +43,13 @@ export function LinkCard({ original, short, created_at }: { original: string, sh
       <div className="flex justify-end gap-3">
 
         <button className="py-2 px-2.5 rounded-xl bg-red-200 text-red-500 flex gap-1 items-center text-sm"
-          onClick={deleteLink}>Borrar
-          <IconTrash className="size-5 "/>
+          onClick={() => { toggleDeleteModal(short) }}>
+          Borrar
+          <IconTrash className="size-5 " />
         </button>
 
-        <Link href={`https://sm-link.vercel.app/${short}`} target="_blank" 
-        className="py-2 px-2.5 rounded-xl bg-emerald-200 text-green-500 flex gap-1 items-center text-sm">
+        <Link href={`https://sm-link.vercel.app/${short}`} target="_blank"
+          className="py-2 px-2.5 rounded-xl bg-emerald-200 text-green-500 flex gap-1 items-center text-sm">
           Visitar
           <IconExternalLink className="size-5 "></IconExternalLink>
         </Link>
@@ -69,11 +61,7 @@ export function LinkCard({ original, short, created_at }: { original: string, sh
           Copiar
           <IconCopy className="size-5 "></IconCopy>
         </button>
-
       </div>
-
     </article>
-
   )
-
 }

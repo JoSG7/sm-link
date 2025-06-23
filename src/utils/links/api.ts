@@ -1,9 +1,9 @@
-import { GuessLinks } from "@/types/global"
+import { GuestLinks } from "@/types/global"
 // Get the guest links 
 
 export async function getGuestLinks() {
   const res = await fetch(`api/guest-links`)
-  const data: GuessLinks[] = await res.json()
+  const data: GuestLinks[] = await res.json()
   return data
 }
 
@@ -21,7 +21,7 @@ export async function createShortLink(original: string) {
 
 // Delete a guest link
 
-export async function deleteGuessLink(short: string) {
+export async function deleteGuestLink(short: string) {
   const res = await fetch(`api/guest-links/${short}`, {
     method: "DELETE",
   })

@@ -2,7 +2,7 @@
 
 import { IconMenu2 } from "@tabler/icons-react";
 import Image from "next/image";
-import { useMenuDrawer } from "../modals/hooks/useModal";
+import { useMenuDrawer } from "../../hooks/useModal";
 
 export function NavBar() {
 

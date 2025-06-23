@@ -3,9 +3,9 @@
 import { LinkCard } from "@/components/shared/LinkCard"
 import { LinkCardSkeleton } from "@/components/shared/LoadingSkeleton"
 import { NoFound } from "@/components/shared/NoFound"
-import { GuessLinks } from "@/types/global"
+import { GuestLinks } from "@/types/global"
 
-export function RecentLinks({loading, data} : { loading: boolean, data: GuessLinks[] | []}) {
+export function RecentLinks({loading, data} : { loading: boolean, data: GuestLinks[] | []}) {
 
   return (
     <>

@@ -6,11 +6,13 @@ import { toast } from "sonner"
 import { LinkFormTitle } from "./Title"
 import { createShortLink } from "@/utils/links/api"
 import isURL from "validator/lib/isURL"
+import { useLinkChanges } from "@/hooks/useModal"
 
 export function LinkForm() {
 
   const [shortURL, setShortURL] = useState("")
   const urlRef = useRef<HTMLInputElement>(null)
+  const { recordLinkChanges } = useLinkChanges()
 
   const handleSubmit = async (e: FormEvent) => {
 
@@ -32,6 +34,8 @@ export function LinkForm() {
           } else {
             toast.success("Se genero correctamente", { id: loadingToast })
             setShortURL(res.response)
+            recordLinkChanges()
+            urlInput.value = ""
           }
         })
       }
