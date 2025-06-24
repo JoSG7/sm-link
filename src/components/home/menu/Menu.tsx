@@ -68,7 +68,7 @@ export function MainMenu() {
               title:
                 <li className="border-t border-[#1c1d1d] p-4 text-xl font-semibold flex gap-2 items-center cursor-pointer lg-2:border-none">
                   <IconClockCheck size={24} />
-                  Recent Sm Links
+                  Recent SmLinks
                 </li>,
               content: <RecentLinks data={recentLinks} loading={loading} />
             },

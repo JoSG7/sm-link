@@ -29,4 +29,16 @@ export async function deleteGuestLink(short: string) {
   return data
 }
 
+// Create Protected Link
+
+export async function createProtectedLink (short: string, password: string) {
+  const res = await fetch("api/guest-links/protected-links", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ short, password })
+  })
+  const data: { error: string, response: string } = await res.json()
+  return data
+}
+
 

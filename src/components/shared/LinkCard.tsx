@@ -1,12 +1,13 @@
 "use client"
 
-import { IconCalendar, IconCopy, IconExternalLink, IconTrash } from "@tabler/icons-react"
-import { useDeleteLinkModal } from "@/hooks/useModal"
+import { IconCalendar, IconClockCheck, IconCopy, IconExternalLink, IconShieldLockFilled, IconTrashFilled } from "@tabler/icons-react"
+import { useDeleteLinkModal, usePwdLinkModal } from "@/hooks/useModal"
 import { months } from "@/utils/constants"
 import { toast } from "sonner"
 import Image from "next/image"
 import Link from "next/link"
-import { DeleteLinkModal } from "../modals/home/DeleteLinkModal"
+import { DeleteLinkModal } from "../modals/home/DeleteLink"
+import { CreatePwdLinkModal } from "../modals/home/ProtectedLink"
 
 export function LinkCard({ original, short, created_at }: { original: string, short: string, created_at: string }) {
   const url = new URL(original)
@@ -15,11 +16,13 @@ export function LinkCard({ original, short, created_at }: { original: string, sh
   const day = date.getDate()
   const month = months[date.getMonth()]
   const { toggleDeleteModal } = useDeleteLinkModal()
+  const { togglePwdLinkModal } = usePwdLinkModal()
 
   return (
 
     <article className="p-4 rounded-lg border border-[#1c1d1d] whitespace-normal">
       <DeleteLinkModal />
+      <CreatePwdLinkModal />
       <div className="flex justify-between items-center pb-4 gap-1">
         <div className="flex flex-col max-w-[240px] sm:max-w-[285px] lg-2:max-w-[400px]">
           <p className="font-semibold">sm-link.vercel.app/{short}</p>
@@ -42,7 +45,41 @@ export function LinkCard({ original, short, created_at }: { original: string, sh
 
       <div className="flex justify-end gap-3">
 
-        <button className="py-2 px-2.5 rounded-xl bg-red-200 text-red-500 flex gap-1 items-center text-sm"
+        <button className="p-2 rounded-xl bg-neutral-900 flex gap-1 items-center text-sm"
+          onClick={() => { toggleDeleteModal(short) }}>
+          
+          <IconTrashFilled className="size-5 " />
+        </button>
+
+        <button className="p-2 rounded-xl bg-neutral-900">
+          <IconClockCheck className="size-5"/>
+        </button>
+
+        <button className="p-2 rounded-xl bg-neutral-900"
+        onClick={() => { togglePwdLinkModal(short) }}>
+          <IconShieldLockFilled className="size-5"/>
+        </button>
+
+        <Link href={`https://sm-link.vercel.app/${short}`} target="_blank"
+          className="p-2 rounded-xl bg-neutral-900 flex gap-1 items-center text-sm">
+          
+          <IconExternalLink className="size-5 "></IconExternalLink>
+        </Link>
+
+        <button className="p-2 rounded-xl bg-neutral-900 flex gap-1 items-center text-sm"
+          onClick={() => {
+            navigator.clipboard.writeText(`sm-link.vercel.app/${short}`).then(() => { toast.success("Copiado Correctamente") })
+          }}>
+          
+          <IconCopy className="size-5 "></IconCopy>
+        </button>
+      </div>
+    </article>
+  )
+}
+
+
+{/* <button className="py-2 px-2.5 rounded-xl bg-red-200 text-red-500 flex gap-1 items-center text-sm"
           onClick={() => { toggleDeleteModal(short) }}>
           Borrar
           <IconTrash className="size-5 " />
@@ -60,8 +97,4 @@ export function LinkCard({ original, short, created_at }: { original: string, sh
           }}>
           Copiar
           <IconCopy className="size-5 "></IconCopy>
-        </button>
-      </div>
-    </article>
-  )
-}
+        </button> */}

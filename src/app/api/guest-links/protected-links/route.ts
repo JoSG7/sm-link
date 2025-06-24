@@ -30,7 +30,7 @@ export async function POST(request: NextRequest) {
       console.log(error)
     }
 
-    const { error: e } = await supabase.rpc("insert_protected_link", { x_password: hashedPassword, link_id: link.id })
+    const { error: e } = await supabase.rpc("insert_protected_link", { x_password: hashedPassword, x_link_id: link.id })
     
     if(e){
       console.log(e)
@@ -40,3 +40,4 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ response: "Protecting Succes" })
   }
 }
+

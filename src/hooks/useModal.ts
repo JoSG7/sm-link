@@ -1,7 +1,7 @@
 "use client"
 
 import { useContext } from "react";
-import { DeleteLinkModal, LinkChanges, MenuDrawer } from "../contexts/ModalContext";
+import { DeleteLinkModal, LinkChanges, MenuDrawer, ProtectedLinkModal } from "../contexts/ModalContext";
 
 export function useMenuDrawer() {
   const context = useContext(MenuDrawer)
@@ -14,6 +14,13 @@ export function useDeleteLinkModal () {
   if (!context) throw new Error("useMenuDrawer must be used within a DeleteLinkProvider")
   return context
 }
+
+export function usePwdLinkModal () {
+  const context = useContext(ProtectedLinkModal)
+  if (!context) throw new Error("useMenuDrawer must be used within a ProtectedProvider")
+  return context
+}
+
 
 export function useLinkChanges () {
   const context = useContext(LinkChanges)
