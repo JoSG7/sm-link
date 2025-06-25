@@ -3,10 +3,10 @@
 import { IconClockCheck, IconLock } from "@tabler/icons-react"
 import { motion } from 'framer-motion'
 import { useEffect, useState } from "react"
-import { GuestLinks } from "@/types/global"
+import { LinkDetails } from "@/types/global"
 import { Accordion } from "@/components/shared/Accordion"
 import { RecentLinks } from "./RecentLinks"
-import { getGuestLinks } from "@/utils/links/api"
+import { getLinkDetails } from "@/utils/links/api"
 import { useLinkChanges, useMenuDrawer } from "@/hooks/useModal"
 import { useScreenSize } from "@/hooks/useScreenSize"
 // import { DeleteLinkModal } from "@/components/modals/home/DeleteLinkModal"
@@ -14,7 +14,7 @@ import { useScreenSize } from "@/hooks/useScreenSize"
 
 export function MainMenu() {
 
-  const [recentLinks, setRecentLinks] = useState<GuestLinks[] | []>([])
+  const [linkDetails, setLinkDetails] = useState<LinkDetails[] | []>([])
   const [loading, setLoading] = useState(false)
   const { menu, toggleMenu } = useMenuDrawer()
   const { linkChanges } = useLinkChanges()
@@ -38,15 +38,15 @@ export function MainMenu() {
   const navWidth = isMobile ? "w-full h-[560px]" :
     isTablet ? "w-4/6 h-full" : "w-1/2 h-full"
 
-
   useEffect(() => {
     const fetchRecentLinks = async () => {
       setLoading(true)
-      getGuestLinks().then(res => {
+      getLinkDetails().then(res => {
         if (res.length > 0) {
-          setRecentLinks(res)
+          // console.log(res)
+          setLinkDetails(res)
         } else {
-          setRecentLinks([])
+          setLinkDetails([])
         }
       })
         .finally(() => setLoading(false))
@@ -70,12 +70,12 @@ export function MainMenu() {
                   <IconClockCheck size={24} />
                   Recent SmLinks
                 </li>,
-              content: <RecentLinks data={recentLinks} loading={loading} />
+              content: <RecentLinks data={linkDetails} loading={loading} />
             },
             {
               title:
                 <li className="border-t border-[#1c1d1d] p-4 text-xl font-semibold flex gap-2 items-center cursor-pointer"
-                  onClick={() => { toggleMenu() }}>
+                >
                   <IconLock size={24} />
                   Protected Links
                 </li>,
@@ -85,36 +85,6 @@ export function MainMenu() {
         </ul>
       </motion.nav >
     </motion.section >
-
-    // <section className="w-full h-screen fixed hidden bottom-0 bg-modal z-20 backdrop-blur-sm text-[#E5E7EB]" id="bgMenu"
-    // onClick={closeMainMenu}>
-    //   <nav className="w-full h-0 bg-[rgb(7,7,7)] border-[#1c1c1d] self-end overflow-y-auto duration-100 whitespace-nowrap
-    //   sm:w-0 sm:fixed sm:right-0 sm:h-full sm:border-l sm:overflow-x-hidden"
-    //   id="menu" onClick={(e) => { e.stopPropagation() }}>
-    //     <ul className="option-list flex flex-col ">
-
-    //       <Accordion items={[
-    //         {
-    //           title:
-    //             <li className="border-t border-[#1c1d1d] p-4 text-xl font-semibold flex gap-2 items-center cursor-pointer lg-2:border-none" onClick={fetchRecentLinks}>
-    //               <IconClockCheck size={24} />
-    //               Recent Sm Links
-    //             </li>,
-    //           content: <RecentLinks data={recentLinks} loading={loading} />
-    //         },
-    //         {
-    //           title:
-    //             <li className="border-t border-[#1c1d1d] p-4 text-xl font-semibold flex gap-2 items-center cursor-pointer"
-    //             onClick={() => { toggleMenu() }}>
-    //               <IconLock size={24} />
-    //               Protected Links
-    //             </li>,
-    //           content: "SISISI"
-    //         }
-    //       ]} />
-    //     </ul>
-    //   </nav>
-    // </section>
   )
 }
 

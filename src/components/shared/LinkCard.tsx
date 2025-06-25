@@ -8,11 +8,12 @@ import Image from "next/image"
 import Link from "next/link"
 import { DeleteLinkModal } from "../modals/home/DeleteLink"
 import { CreatePwdLinkModal } from "../modals/home/ProtectedLink"
+import { LinkDetails } from "@/types/global"
 
-export function LinkCard({ original, short, created_at }: { original: string, short: string, created_at: string }) {
-  const url = new URL(original)
+export function LinkCard({ data }: { data: LinkDetails }) {
+  const url = new URL(data.original)
   const domain = url.hostname
-  const date = new Date(created_at)
+  const date = new Date(data.created_at)
   const day = date.getDate()
   const month = months[date.getMonth()]
   const { toggleDeleteModal } = useDeleteLinkModal()
@@ -25,11 +26,11 @@ export function LinkCard({ original, short, created_at }: { original: string, sh
       <CreatePwdLinkModal />
       <div className="flex justify-between items-center pb-4 gap-1">
         <div className="flex flex-col max-w-[240px] sm:max-w-[285px] lg-2:max-w-[400px]">
-          <p className="font-semibold">sm-link.vercel.app/{short}</p>
+          <p className="font-semibold">sm-link.vercel.app/{data.short}</p>
 
           <p className="w-full max-w-[210px] text-sm text-gray-400 mt-1 mb-2 break-words max-h-11 overflow-y-auto
           lg-2:max-w-[400px]">
-            {original}
+            {data.original}
           </p>
 
           <p className="text-sm text-neutral-300 flex gap-1">
@@ -46,7 +47,7 @@ export function LinkCard({ original, short, created_at }: { original: string, sh
       <div className="flex justify-end gap-3">
 
         <button className="p-2 rounded-xl bg-neutral-900 flex gap-1 items-center text-sm"
-          onClick={() => { toggleDeleteModal(short) }}>
+          onClick={() => { toggleDeleteModal(data.short) }}>
           
           <IconTrashFilled className="size-5 " />
         </button>
@@ -55,12 +56,12 @@ export function LinkCard({ original, short, created_at }: { original: string, sh
           <IconClockCheck className="size-5"/>
         </button>
 
-        <button className="p-2 rounded-xl bg-neutral-900"
-        onClick={() => { togglePwdLinkModal(short) }}>
+        <button className="p-2 rounded-xl bg-neutral-900 disabled:opacity-50"
+        onClick={() => { togglePwdLinkModal(data.short) }} disabled={data.has_password}>
           <IconShieldLockFilled className="size-5"/>
         </button>
 
-        <Link href={`https://sm-link.vercel.app/${short}`} target="_blank"
+        <Link href={`https://sm-link.vercel.app/${data.short}`} target="_blank"
           className="p-2 rounded-xl bg-neutral-900 flex gap-1 items-center text-sm">
           
           <IconExternalLink className="size-5 "></IconExternalLink>
@@ -68,7 +69,7 @@ export function LinkCard({ original, short, created_at }: { original: string, sh
 
         <button className="p-2 rounded-xl bg-neutral-900 flex gap-1 items-center text-sm"
           onClick={() => {
-            navigator.clipboard.writeText(`sm-link.vercel.app/${short}`).then(() => { toast.success("Copiado Correctamente") })
+            navigator.clipboard.writeText(`sm-link.vercel.app/${data.short}`).then(() => { toast.success("Copiado Correctamente") })
           }}>
           
           <IconCopy className="size-5 "></IconCopy>

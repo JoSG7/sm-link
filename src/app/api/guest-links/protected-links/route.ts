@@ -30,7 +30,10 @@ export async function POST(request: NextRequest) {
       console.log(error)
     }
 
-    const { error: e } = await supabase.rpc("insert_protected_link", { x_password: hashedPassword, x_link_id: link.id })
+    const { error: e } = await supabase.from("protected_link").insert({
+      password: hashedPassword,
+      link_id: link.id
+    })
     
     if(e){
       console.log(e)

@@ -1,9 +1,15 @@
-import { GuestLinks } from "@/types/global"
+import { GuestLinks, LinkDetails } from "@/types/global"
 // Get the guest links 
 
 export async function getGuestLinks() {
   const res = await fetch(`api/guest-links`)
   const data: GuestLinks[] = await res.json()
+  return data
+}
+
+export async function getLinkDetails() {
+  const res = await fetch(`api/guest-links`)
+  const data: LinkDetails[] = await res.json()
   return data
 }
 

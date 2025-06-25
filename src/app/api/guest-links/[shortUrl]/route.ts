@@ -12,7 +12,7 @@ export async function DELETE (request: NextRequest, { params }: Props) {
   const guestID = await getGuestID()
   const supabase = createSupabase(guestID)
 
-  const { error } = await supabase.rpc("delete_link_by_short_url", { short_input: shortUrl })
+  const { error } = await supabase.from("link").delete().eq("short", shortUrl)
   if (error) {
     console.log(error)
     return NextResponse.json({ error: "Error al eliminar" })

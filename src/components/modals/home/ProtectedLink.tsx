@@ -1,4 +1,4 @@
-import { usePwdLinkModal } from "@/hooks/useModal";
+import { useLinkChanges, usePwdLinkModal } from "@/hooks/useModal";
 import { createProtectedLink } from "@/utils/links/api";
 import { IconCheck, IconLoader2, IconLock, IconLockCheck, IconX } from "@tabler/icons-react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -9,6 +9,7 @@ export function CreatePwdLinkModal() {
 
   const [submiting, setSubmiting] = useState(false)
   const { pwdLinkModal, short, togglePwdLinkModal } = usePwdLinkModal()
+  const { recordLinkChanges } = useLinkChanges()
   const pass = useRef<HTMLInputElement | null>(null)
   const confirmPass = useRef<HTMLInputElement | null>(null)
 
@@ -29,10 +30,14 @@ export function CreatePwdLinkModal() {
           if(res.error){
             toast.error(res.error)
           } else {
+            recordLinkChanges()
             toast.success(res.response)
           }
         })
-        .finally(() => setSubmiting(false))
+        .finally(() => {
+          setSubmiting(false)
+          togglePwdLinkModal()
+        })
       }
     }
   }

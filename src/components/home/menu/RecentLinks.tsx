@@ -3,9 +3,9 @@
 import { LinkCard } from "@/components/shared/LinkCard"
 import { LinkCardSkeleton } from "@/components/shared/LoadingSkeleton"
 import { NoFound } from "@/components/shared/NoFound"
-import { GuestLinks } from "@/types/global"
+import { LinkDetails } from "@/types/global"
 
-export function RecentLinks({loading, data} : { loading: boolean, data: GuestLinks[] | []}) {
+export function RecentLinks({loading, data} : { loading: boolean, data: LinkDetails[] | []}) {
 
   return (
     <>
@@ -19,7 +19,7 @@ export function RecentLinks({loading, data} : { loading: boolean, data: GuestLin
             :
             data.length > 0 ?
               data.map((element) => (
-                <LinkCard key={element.id} short={element.short} original={element.original} created_at={element.created_at} />
+                <LinkCard key={element.id} data={element} />
               ))
               :
               <NoFound />

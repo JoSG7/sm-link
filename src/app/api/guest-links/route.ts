@@ -8,8 +8,12 @@ export async function GET() {
   const guestID = await getGuestID()
   const supabase = createSupabase(guestID)
 
-  const { data: guestLinks, error } = await supabase.rpc("get_links_by_guest_id")
-  return error ? NextResponse.json({ error: "Error al obtener los links" }) : NextResponse.json(guestLinks)
+  if (!guestID) {
+    return NextResponse.json({ error: "Unauthorized" })
+  } else {
+    const { data: guestLinks, error } = await supabase.rpc("get_links_details")
+    return error ? NextResponse.json({ error: "Error, try again" }) : NextResponse.json(guestLinks)
+  }
 }
 
 
@@ -28,15 +32,15 @@ export async function POST(request: NextRequest) {
   }
 
   const supabase = createSupabase(guestID)
-  const { data: exist, error } = await supabase.rpc("check_existing_link", { x_original: original })
+  const { data: exist, error } = await supabase.from("link").select("*").eq("original", original)
 
   if (error) {
     console.log(error)
-    return NextResponse.json({ error: "Error, intentelo nuevamente" })
+    return NextResponse.json({ error: "Error, try again" })
   }
 
-  if (exist) {
-    return NextResponse.json({ error: "Ya tienes una version corta de este link" })
+  if (exist && exist.length > 0) {
+    return NextResponse.json({ error: "You already have a short version of this link" })
   } else {
     const { error } = await supabase.from("link").insert({
       original: original,
@@ -47,7 +51,7 @@ export async function POST(request: NextRequest) {
     if (error) {
       console.log(error)
       if (error.code == '42501') { return NextResponse.json({ error: "You have reached the limit of links" }) }
-      return NextResponse.json({ error: "Error al crear" })
+      return NextResponse.json({ error: "Error, view the console" })
     }
 
     const response = NextResponse.json({ response: shortLink })
