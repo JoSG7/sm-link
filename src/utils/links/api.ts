@@ -47,4 +47,16 @@ export async function createProtectedLink (short: string, password: string) {
   return data
 }
 
+// Validate link password
+
+export async function validateLinkPassword (short: string, password: string) {
+  const res = await fetch("api/guest-links/protected-links/validate", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ short, password })
+  })
+  const data : { error: string, response: string | null } = await res.json()
+  return data
+}
+
 
