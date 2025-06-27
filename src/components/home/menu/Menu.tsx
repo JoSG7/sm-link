@@ -5,10 +5,11 @@ import { motion } from 'framer-motion'
 import { useEffect, useState } from "react"
 import { LinkDetails } from "@/types/global"
 import { Accordion } from "@/components/shared/Accordion"
-import { RecentLinks } from "./RecentLinks"
+import { RecentLinks } from "./RecentLink"
 import { getLinkDetails } from "@/utils/links/api"
 import { useLinkChanges, useMenuDrawer } from "@/hooks/useModal"
 import { useScreenSize } from "@/hooks/useScreenSize"
+import { ProtectedLinks } from "./ProtectedLink"
 // import { DeleteLinkModal } from "@/components/modals/home/DeleteLinkModal"
 
 
@@ -79,7 +80,7 @@ export function MainMenu() {
                   <IconLock size={24} />
                   Protected Links
                 </li>,
-              content: "SISISI"
+              content: <ProtectedLinks data={linkDetails} loading={loading} />
             }
           ]} />
         </ul>

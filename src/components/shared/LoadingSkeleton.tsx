@@ -24,7 +24,15 @@ export function LinkCardSkeleton() {
         <div className=" py-3 rounded-full bg-neutral-800 animate-pulse lg-2:w-24"></div>
       </div>
     </article>
+  )
+}
 
+export function ProtectedLinkCardSkeleton () {
+
+  return (
+    <article>
+      
+    </article>
   )
 
 }

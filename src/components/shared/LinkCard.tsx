@@ -7,7 +7,7 @@ import { toast } from "sonner"
 import Image from "next/image"
 import Link from "next/link"
 import { DeleteLinkModal } from "../modals/home/DeleteLink"
-import { CreatePwdLinkModal } from "../modals/home/ProtectedLink"
+import { CreatePwdLinkModal } from "../modals/home/PwdLinkForm"
 import { LinkDetails } from "@/types/global"
 
 export function LinkCard({ data }: { data: LinkDetails }) {

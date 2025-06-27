@@ -1,11 +1,5 @@
-import { GuestLinks, LinkDetails } from "@/types/global"
+import { LinkDetails } from "@/types/global"
 // Get the guest links 
-
-export async function getGuestLinks() {
-  const res = await fetch(`api/guest-links`)
-  const data: GuestLinks[] = await res.json()
-  return data
-}
 
 export async function getLinkDetails() {
   const res = await fetch(`api/guest-links`)
@@ -56,6 +50,14 @@ export async function validateLinkPassword (short: string, password: string) {
     body: JSON.stringify({ short, password })
   })
   const data : { error: string, response: string | null } = await res.json()
+  return data
+}
+
+export async function removeProtectedLink (short: string) {
+  const res = await fetch(`api/guest-links/protected-links/${short}`, {
+    method: "DELETE"
+  })
+  const data: { error: string, response: string | null } = await res.json()
   return data
 }
 

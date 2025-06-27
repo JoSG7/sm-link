@@ -12,6 +12,7 @@ export async function POST (request: NextRequest) {
     console.log(error)
     return NextResponse.json({ error: "Error, look the console" })
   } else {
+    // return the original link, else return null
     return NextResponse.json({ response: data })
   }
 

@@ -1,12 +1,13 @@
 "use client"
 
 import { ReactNode, useState } from "react";
-import { DeleteLinkModal, LinkChanges, MenuDrawer, ProtectedLinkModal } from "../../../contexts/ModalContext";
+import { DeleteLinkModal, LinkChanges, MenuDrawer, ProtectedLinkModal, RemoveLinkPwdModal } from "../../../contexts/ModalContext";
 
 export function HomeModals({ children }: { children: ReactNode }) {
   const [menu, setMenu] = useState(false)
   const [deleteModal, setDeleteModal] = useState(false)
   const [pwdLinkModal, setPwdLinkModal] = useState(false)
+  const [removeLinkPwdModal, setRemoveLinkPwdModal] = useState(false)
   const [short, setShort] = useState("")
   const [linkChanges, setLinkChange] = useState(0)
 
@@ -16,12 +17,17 @@ export function HomeModals({ children }: { children: ReactNode }) {
 
   const toggleDeleteModal = (short?: string) => {
     setDeleteModal(prev => !prev)
-    if(short) setShort(short)
+    if (short) setShort(short)
   }
 
   const togglePwdLinkModal = (short?: string) => {
     setPwdLinkModal(prev => !prev)
-    if(short) setShort(short)
+    if (short) setShort(short)
+  }
+
+  const toggleRemoveLinkPwdModal = (short?: string) => {
+    setRemoveLinkPwdModal(prev => !prev)
+    if (short) setShort(short)
   }
 
   const recordLinkChanges = () => {
@@ -32,11 +38,13 @@ export function HomeModals({ children }: { children: ReactNode }) {
     <MenuDrawer.Provider value={{ menu, toggleMenu }}>
       <DeleteLinkModal.Provider value={{ deleteModal, short, toggleDeleteModal }}>
         <ProtectedLinkModal.Provider value={{ pwdLinkModal, short, togglePwdLinkModal }}>
-          <LinkChanges.Provider value={{ linkChanges, recordLinkChanges }}>
-            {children}
-          </LinkChanges.Provider>
+          <RemoveLinkPwdModal.Provider value={{ removeLinkPwdModal, short, toggleRemoveLinkPwdModal }}>
+            <LinkChanges.Provider value={{ linkChanges, recordLinkChanges }}>
+              {children}
+            </LinkChanges.Provider>
+          </RemoveLinkPwdModal.Provider>
         </ProtectedLinkModal.Provider>
-        </DeleteLinkModal.Provider>
+      </DeleteLinkModal.Provider>
     </MenuDrawer.Provider>
   )
 
