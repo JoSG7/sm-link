@@ -22,6 +22,8 @@ export function HomeTitle() {
               <Image src="/imgs/mano5.png" alt="logo" width={500} height={500} className="size-60 fade object-cover lg-2:hidden" />
             </div>
 
+            
+
             <h1 className="text-4xl tracking-tight text-center lg-2:text-start lg-2:text-6xl pt-2">The smartest way to share your links</h1>
 
             <p className="text-neutral-400 text-center pt-5 lg-2:text-start lg-2:pt-7 lg-2:font-medium lg-2:text-xl">

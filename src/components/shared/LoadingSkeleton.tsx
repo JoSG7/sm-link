@@ -27,11 +27,21 @@ export function LinkCardSkeleton() {
   )
 }
 
-export function ProtectedLinkCardSkeleton () {
+export function ProtectedLinkCardSkeleton() {
 
   return (
-    <article>
-      
+    <article className="rounded-xl border border-[#1c1c1d] p-3 flex">
+      <section className="w-full">
+        <div className="flex justify-center pb-3">
+          <div className="size-14 rounded-full bg-neutral-900 animate-pulse"></div>
+        </div>
+        <div className="flex justify-center">
+          <div className="w-20 py-2 bg-neutral-900 animate-pulse rounded-full"></div>
+        </div>
+      </section>
+      <aside>
+        <div className="size-7 rounded-md bg-neutral-900 animate-pulse"></div>
+      </aside>
     </article>
   )
 

@@ -1,7 +1,7 @@
 "use client"
 
 import { ReactNode, useState } from "react";
-import { DeleteLinkModal, LinkChanges, MenuDrawer, ProtectedLinkModal, RemoveLinkPwdModal } from "../../../contexts/ModalContext";
+import { DeleteLinkModal, LinkChanges, MenuDrawer, ProtectedLinkModal, RemoveLinkPwdModal } from "../../contexts/ModalContext";
 
 export function HomeModals({ children }: { children: ReactNode }) {
   const [menu, setMenu] = useState(false)

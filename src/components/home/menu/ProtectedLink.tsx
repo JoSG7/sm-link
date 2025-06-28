@@ -1,4 +1,4 @@
-import { LinkCardSkeleton } from "@/components/shared/LoadingSkeleton";
+import { ProtectedLinkCardSkeleton } from "@/components/shared/LoadingSkeleton";
 import { NoFound } from "@/components/shared/NoFound";
 import { ProtectedLinkCard } from "@/components/shared/ProtectedLinkCard";
 import { LinkDetails } from "@/types/global";
@@ -10,9 +10,12 @@ export function ProtectedLinks({ loading, data }: { loading: boolean, data: Link
     <div className="px-4 pb-4 grid lg-2:grid-cols-3 lg-2:gap-4">
       {
         loading ?
-          <div className="flex flex-col gap-4">
-            <LinkCardSkeleton />
-            <LinkCardSkeleton />
+          <div className="col-span-3 grid lg-2:grid-cols-3 lg-2:gap-4">
+            <ProtectedLinkCardSkeleton />
+            <ProtectedLinkCardSkeleton />
+            <ProtectedLinkCardSkeleton />
+            <ProtectedLinkCardSkeleton />
+            <ProtectedLinkCardSkeleton />
           </div>
           :
           data.length > 0 ?

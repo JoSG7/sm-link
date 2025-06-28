@@ -2,7 +2,7 @@ import { useRemoveLinkPwdModal } from "@/hooks/useModal";
 import { LinkDetails } from "@/types/global";
 import { IconTrashFilled } from "@tabler/icons-react";
 import Image from "next/image";
-import { RemoveLinkPwdModal } from "../modals/home/RemoveLinkPwd";
+import { RemoveLinkPwdModal } from "../../modals/home/RemoveLinkPwd";
 
 export function ProtectedLinkCard({ data }: { data: LinkDetails }) {
   const url = new URL(data.original)

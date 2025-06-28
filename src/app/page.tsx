@@ -1,11 +1,11 @@
 import { LoginBenefits } from "@/components/home/LoginBenefits";
 import { NavBar } from "@/components/home/NavbarHeader";
-import { LinkForm } from "@/components/home/NewLinkForm";
+import { LinkForm } from "@/components/home/ShortLinkForm";
 import { redirect } from "next/navigation";
-import { HomeTitle } from "@/components/home/Title";
 import { createSupabaseServer } from "@/lib/supabase/server";
-import { HomeModals } from "@/components/modals/home/Provider";
+import { HomeModals } from "@/modals/home/Provider";
 import { MainMenu } from "@/components/home/menu/Menu";
+import { Hero } from "@/components/home/sections/Hero/Hero";
 
 // export const dynamic = "force-dynamic"
 
@@ -25,7 +25,7 @@ export default async function Home() {
           <NavBar />
           <MainMenu />
           <div className="flex flex-col gap-28">
-            <HomeTitle />
+            <Hero />
             <LinkForm />
             <LoginBenefits />
             {/* <Footer /> */}
