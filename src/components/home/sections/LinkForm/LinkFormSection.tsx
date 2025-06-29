@@ -14,11 +14,8 @@ export function LinkFormSection() {
         <LinkFormTitle />
         <ShortLinkForm />
 
-        {/* <p className="pb-5 font-medium text-center text-neutral-400 lg-2:text-start lg-2:text-xl">
-          Quick to share and easy to manage perfect for social media, newsletters, team collaboration, and more
-        </p> */}
-
-        <p className="pb-5 font-medium text-neutral-400 text-muted-foreground text-center max-w-xs">
+        {/* This p only appears in 360px */}
+        <p className="pb-5 font-medium text-neutral-400 text-muted-foreground text-center max-w-xs lg-2:hidden">
           Quick to share and easy to manage, perfect for social media, newsletters, team collaboration, and more
         </p>
 
