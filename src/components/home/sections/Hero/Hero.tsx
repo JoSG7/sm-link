@@ -48,7 +48,7 @@ export function Hero() {
                 <div className="flex justify-center pb-2">
                   <IconSettingsFilled className="text-neutral-300" />
                 </div>
-                <p className="text-xs">Controll now</p>
+                <p className="text-xs">Control now</p>
               </article>
             </div>
 

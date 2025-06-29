@@ -35,9 +35,8 @@ export function ShortLinkForm() {
   }
 
   return (
-
-    <form onSubmit={handleSubmit} className="relative rounded-3xl border p-4 bg-form border-[#1c1d1d] fade-b
-    sm:p-7 lg:p-6 lg-2:p-7">
+    <form onSubmit={handleSubmit} className="relative rounded-3xl border p-4 pb-7 border-[#1c1d1d] fade-b
+        sm:p-7 lg:p-6 lg-2:p-7">
 
       <div className="flex justify-between">
         <label htmlFor="txtUrl" className="flex items-center gap-3">
@@ -60,12 +59,12 @@ export function ShortLinkForm() {
       </div>
 
       <div className="w-full py-2 px-4 my-4 bg-neutral-950 rounded-full border border-zinc-900 text-neutral-400
-      sm:mt-5 lg:p-3 lg-2:rounded-full lg-2:py-3">
+          sm:mt-5 lg:p-3 lg-2:rounded-full lg-2:py-3">
         <p className="sm:text-md">sm-link.vercel.app/{shortURL}</p>
       </div>
 
-      <button className="w-full text-center text-black py-2 mt-2 mb-5 rounded-lg bg-gradient-to-r
-      sm:text-lg from-neutral-100 to-neutral-400">
+      <button className="w-full text-center text-black py-2 mt-2 mb-7 rounded-lg bg-gradient-to-r
+          sm:text-lg from-neutral-100 to-neutral-400">
         Shorten Link
       </button>
 
@@ -73,9 +72,6 @@ export function ShortLinkForm() {
         By proceeding, you agree to our <span className="text-blue-500">Terms of Service</span> and
         <span className="text-blue-500"> Privacy Policy</span>.
       </p>
-
     </form>
-
   )
-
 }
