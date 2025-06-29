@@ -31,7 +31,7 @@ export function HomeTitle() {
             </p>
             <p className="text-neutral-400 text-center pb-5 lg-2:text-start lg-2:pb-5 lg-2:font-medium lg-2:text-xl">
               Shorten links in seconds and track their performance
-              <span className="lg-2:hidden"> anytime - 24 hours a day</span>
+              <span className="lg-2:hidden"> anywhere - 24 hours a day</span>
             </p>
 
             {/* Since 360px */}
