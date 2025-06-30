@@ -1,14 +1,25 @@
-export function Footer () {
+import { IconBrandGithubFilled, IconBrandX } from "@tabler/icons-react";
 
-  return(
+export function Footer() {
 
-    <section className="py-4 border-t border-gray-800 flex justify-center bg-[#09090b] sm:p-5">
+  return (
 
-      <div className="w-[90%] md:w-[94%] max-w-[1195px] flex justify-between">
-        <p className="opacity-70 sm:text-xl">@2025 SmLink</p>
-        <p className="opacity-70 sm:text-xl">Politica de Privacidad</p>
+    <section className="p-4 py-6 border-t border-[#1c1d1d] sm:p-5">
+      <div className="flex gap-4 pb-3">
+        <a href="https://github.com/JoSG7" target="_blank" className="flex justify-center items-center p-2 rounded-full bg-neutral-950">
+          <IconBrandGithubFilled className="size-6" />
+        </a>
+
+        <div className="flex justify-center items-center p-2 rounded-full bg-neutral-950">
+          <IconBrandX className="size-6" />
+        </div>
       </div>
-    
+
+      <div className="text-sm font-medium flex gap-4">
+        <span>Privacy Police</span> <span>Terms of Service</span> <span>License</span>
+      </div>
+
+      <p className="text-neutral-400 text-sm font-medium pt-1">@2025 SmLink. All Rights Reserved</p>
     </section>
 
   )

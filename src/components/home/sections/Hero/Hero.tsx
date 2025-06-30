@@ -30,21 +30,21 @@ export function Hero() {
 
             {/* Since 360px */}
             <div className="flex justify-between pb-5 lg-2:hidden">
-              <article className="rounded-xl bg-neutral-950 border border-[#1c1d1d] p-2 fade-b-lg">
+              <article className="rounded-xl bg-neutral-950 border border-[#1c1d1d] p-2 ">
                 <div className="flex justify-center pb-2">
                   <IconShieldCheckFilled className="text--300" />
                 </div>
                 <p className="text-xs">Protected links</p>
               </article>
 
-              <article className="rounded-xl bg-neutral-950 border border-[#1c1d1d] p-2 fade-b-lg">
+              <article className="rounded-xl bg-neutral-950 border border-[#1c1d1d] p-2 ">
                 <div className="flex justify-center pb-2">
                   <IconAlarmFilled className="text-neutral-300" />
                 </div>
                 <p className="text-xs">Set expirations</p>
               </article>
 
-              <article className="rounded-xl bg-neutral-950 border border-[#1c1d1d] p-2 fade-b-lg">
+              <article className="rounded-xl bg-neutral-950 border border-[#1c1d1d] p-2 ">
                 <div className="flex justify-center pb-2">
                   <IconSettingsFilled className="text-neutral-300" />
                 </div>

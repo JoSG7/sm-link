@@ -8,7 +8,7 @@ export function LogingDetails() {
   return (
 
     <section className="flex justify-center">
-      <div className="w-[90vw] py-12 lg-2:max-w-5xl lg-2:flex lg-2:pt-36 lg-2:justify-between lg-2:pb-20">
+      <div className="w-[90vw] max-w-[325px] pt-12 lg-2:max-w-5xl lg-2:flex lg-2:pt-36 lg-2:justify-between lg-2:pb-20">
 
         <div className="">
           <div className="flex flex-col lg-2:pt-14">
@@ -16,21 +16,21 @@ export function LogingDetails() {
 
             {/* Since 360px */}
             <div className="flex justify-between pb-3 lg-2:hidden">
-              <article className="rounded-xl border border-[#1c1d1d] p-2 fade-b-lg">
+              <article className="rounded-xl border bg-neutral-950 border-[#1c1d1d] p-2 ">
                 <div className="flex justify-center pb-2">
                   <IconChartHistogram className="text-neutral-300" />
                 </div>
                 <p className="text-xs">All Metrics</p>
               </article>
 
-              <article className="rounded-xl border border-[#1c1d1d] p-2 fade-b-lg">
+              <article className="rounded-xl border bg-neutral-950 border-[#1c1d1d] p-2 ">
                 <div className="flex justify-center pb-2">
                   <IconClockPlus className="text-neutral-300" />
                 </div>
                 <p className="text-xs">More Expirations</p>
               </article>
 
-              <article className="rounded-xl border border-[#1c1d1d] p-2 fade-b-lg">
+              <article className="rounded-xl border bg-neutral-950 border-[#1c1d1d] p-2 ">
                 <div className="flex justify-center pb-2">
                   <IconPencilStar className="text-neutral-300" />
                 </div>
@@ -39,14 +39,14 @@ export function LogingDetails() {
             </div>
 
             <div className="flex justify-center gap-3 pb-5 lg-2:hidden">
-              <article className="rounded-xl border border-[#1c1d1d] p-2 fade-b-lg">
+              <article className="rounded-xl border bg-neutral-950 border-[#1c1d1d] p-2 ">
                 <div className="flex justify-center pb-2">
                   <IconShieldPlus className="text-neutral-300" />
                 </div>
                 <p className="text-xs">More Protected Links</p>
               </article>
 
-              <article className="rounded-xl border border-[#1c1d1d] p-2 fade-b-lg">
+              <article className="rounded-xl border bg-neutral-950 border-[#1c1d1d] p-2 ">
                 <div className="flex justify-center pb-2">
                   <IconFolderCog className="text-neutral-300" />
                 </div>

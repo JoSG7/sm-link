@@ -35,7 +35,7 @@ export function ShortLinkForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="relative rounded-3xl border p-4 bg-neutral-950 border-[#1c1d1d] fade-b
+    <form onSubmit={handleSubmit} className="relative rounded-3xl border p-4 bg-neutral-950 border-[#1c1d1d]
         sm:p-7 lg:p-6 lg-2:p-7 lg-2:bg-black">
 
       <div className="flex justify-between">
