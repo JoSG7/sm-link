@@ -6,7 +6,7 @@ import { MainMenu } from "@/components/home/menu/Menu";
 import { Hero } from "@/components/home/sections/Hero/Hero";
 import { LinkFormSection } from "@/components/home/sections/LinkForm/LinkFormSection";
 import { LogingDetails } from "@/components/home/sections/LoginDetails/LoginDetails";
-import { Footer } from "@/components/layout/Footer";
+import { Footer } from "@/components/layout/HomeFooter";
 
 // export const dynamic = "force-dynamic"
 
