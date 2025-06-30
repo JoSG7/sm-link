@@ -7,7 +7,8 @@ export function Hero() {
   return (
 
     <section className="flex justify-center">
-      <div className="w-[90vw] max-w-[325px] lg-2:w-full lg-2:py-9 lg-2:max-w-5xl lg-2:flex lg-2:flex-row-reverse lg-2:justify-between">
+      <div className="w-[90vw] max-w-[325px] 
+      lg-2:w-full lg-2:py-9 lg-2:max-w-5xl lg-2:flex lg-2:flex-row-reverse lg-2:justify-between">
         {/* <div className="w-[420px] hidden lg-2:block">
           <ShortLinkForm />
         </div> */}

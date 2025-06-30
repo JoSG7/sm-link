@@ -10,7 +10,7 @@ import { isURL } from "validator";
 export function ShortLinkForm() {
 
   const [originalLink, setOriginalLink] = useState("")
-  const [submiting, setSubmiting ] = useState(false)
+  const [submiting, setSubmiting] = useState(false)
   const [shortURL, setShortURL] = useState("")
   const { recordLinkChanges } = useLinkChanges()
 
@@ -33,7 +33,7 @@ export function ShortLinkForm() {
           recordLinkChanges()
         }
       })
-      .finally(() => setSubmiting(false))
+        .finally(() => setSubmiting(false))
     }
   }
 
@@ -66,11 +66,13 @@ export function ShortLinkForm() {
         <p className="sm:text-md">sm-link.vercel.app/{shortURL}</p>
       </div>
 
-      <button className="w-full flex items-center justify-center gap-3 py-2 mt-2 mb-7 rounded-lg bg-red-800 disabled:opacity-50
-        sm:text-lg" disabled={submiting}>
-        {submiting ? <IconLoader2 className="size-4 animate-spin" /> : ""}
-        {submiting ? "Shortening..." : "Shorten link" }
-      </button>
+      <div className="flex justify-center">
+        <button className="w-3/4 flex items-center justify-center gap-3 py-2 mt-2 mb-7 rounded-lg disabled:opacity-50 bg-gradient-to-tr
+        from-purple-700 to-violet-950 sm:text-lg" disabled={submiting}>
+          {submiting ? <IconLoader2 className="size-4 animate-spin" /> : ""}
+          {submiting ? "Shortening..." : "Shorten link"}
+        </button>
+      </div>
 
       <p className="text-xs text-neutral-400 text-center">
         By proceeding, you agree to our <span className="text-blue-500">Terms of Service</span> and
