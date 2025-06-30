@@ -1,6 +1,6 @@
 import { IconChartHistogram, IconClockExclamation, IconClockPlus, IconFolderCog, IconListSearch, IconPencilStar, IconShieldLock, IconShieldPlus } from "@tabler/icons-react"
 import { LoginDetailsTitle } from "./Title"
-import { GitHubAuthButton, GoogleAuthButton } from "../../auth/AuthButtonClient"
+// import { GitHubAuthButton, GoogleAuthButton } from "../../auth/AuthButtonClient"
 import Image from "next/image"
 
 export function LogingDetails() {
@@ -106,9 +106,14 @@ export function LogingDetails() {
               </article>
             </div>
 
-            <div className="flex justify-center gap-5 lg-2:justify-start">
+            {/* <div className="flex justify-center gap-5 lg-2:justify-start">
               <GitHubAuthButton />
               <GoogleAuthButton />
+            </div> */}
+            <div className="flex items-center justify-center lg-2:justify-start">
+              <button className="py-2 px-5 text-base lg-2:py-2 lg-2:px-4 rounded-full bg-gradient-to-r from-neutral-100 to-neutral-400 text-neutral-950 transition-transform duration-200 hover:scale-105">
+                Get Started
+              </button>
             </div>
           </div>
         </div>

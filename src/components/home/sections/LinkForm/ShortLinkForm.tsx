@@ -2,7 +2,7 @@
 
 import { useLinkChanges } from "@/hooks/useModal";
 import { createShortLink } from "@/utils/links/api";
-import { IconScissors, IconWand } from "@tabler/icons-react";
+import { IconLoader2, IconScissors, IconWand } from "@tabler/icons-react";
 import { FormEvent, useState } from "react";
 import { toast } from "sonner";
 import { isURL } from "validator";
@@ -10,12 +10,14 @@ import { isURL } from "validator";
 export function ShortLinkForm() {
 
   const [originalLink, setOriginalLink] = useState("")
+  const [submiting, setSubmiting ] = useState(false)
   const [shortURL, setShortURL] = useState("")
   const { recordLinkChanges } = useLinkChanges()
 
   const handleSubmit = async (e: FormEvent) => {
 
     e.preventDefault()
+    setSubmiting(true)
     const loadingToast = toast.loading("Creating short link...")
 
     if (!isURL(originalLink)) {
@@ -31,6 +33,7 @@ export function ShortLinkForm() {
           recordLinkChanges()
         }
       })
+      .finally(() => setSubmiting(false))
     }
   }
 
@@ -58,14 +61,15 @@ export function ShortLinkForm() {
         <span className="text-lg sm:text-xl text-[#E5E7EB] font-semibold">Here the new link</span>
       </div>
 
-      <div className="w-full py-2 px-4 my-4 bg-neutral-900 rounded-full border border-zinc-900 text-neutral-400
-          sm:mt-5 lg:p-3 lg-2:rounded-full lg-2:py-3 lg-2:bg-neutral-950">
+      <div className="w-full py-2 px-4 my-4 mb-5 bg-neutral-900 rounded-full border border-zinc-900 text-neutral-400
+        sm:mt-5 lg:p-3 lg-2:rounded-full lg-2:py-3 lg-2:bg-neutral-950">
         <p className="sm:text-md">sm-link.vercel.app/{shortURL}</p>
       </div>
 
-      <button className="w-full text-center text-black py-2 mt-2 mb-7 rounded-lg bg-gradient-to-r
-          sm:text-lg from-neutral-100 to-neutral-400">
-        Shorten Link
+      <button className="w-full flex items-center justify-center gap-3 py-2 mt-2 mb-7 rounded-lg bg-red-800 disabled:opacity-50
+        sm:text-lg" disabled={submiting}>
+        {submiting ? <IconLoader2 className="size-4 animate-spin" /> : ""}
+        {submiting ? "Shortening..." : "Shorten link" }
       </button>
 
       <p className="text-xs text-neutral-400 text-center">

@@ -11,7 +11,7 @@ export function NavBar() {
   return (
 
     <header className="flex py-5 border-b border-[#1c1d1d] sticky top-0 left-0 right-0 justify-center z-10
-    bg-[rgba(0,0,0,0.9)] backdrop-blur-sm">
+    bg-[rgba(0,0,0,0.7)] backdrop-blur-sm">
 
       <div className="w-[90vw] md:w-[94vw] max-w-5xl  flex justify-between">
         <div className="flex items-center gap-1 sm:gap-1 lg-2:gap-2">

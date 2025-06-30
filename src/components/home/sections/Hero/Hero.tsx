@@ -65,7 +65,9 @@ export function Hero() {
             </div>
 
             <div className="flex items-center gap-4 justify-center lg-2:gap-7 lg-2:justify-start">
-              <button className="py-2 px-5 text-base lg-2:py-2 lg-2:px-4 rounded-full bg-gradient-to-r from-neutral-100 to-neutral-400 text-neutral-950 transition-transform duration-200 hover:scale-105">{`Let's start now!`}</button>
+              <button className="py-2 px-5 text-base lg-2:py-2 lg-2:px-4 rounded-full bg-gradient-to-r from-neutral-100 to-neutral-400 text-neutral-950 transition-transform duration-200 hover:scale-105">
+                {`Let's start now!`}
+              </button>
 
               <p className="hidden text-[#E2E2EB] items-center gap-1 text-xs lg-2:text-sm lg-2:flex">
                 <IconStarFilled className="size-4 text-amber-300" />
