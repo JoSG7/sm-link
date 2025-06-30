@@ -35,8 +35,8 @@ export function ShortLinkForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="relative rounded-3xl border p-4 pb-7 border-[#1c1d1d] fade-b
-        sm:p-7 lg:p-6 lg-2:p-7">
+    <form onSubmit={handleSubmit} className="relative rounded-3xl border p-4 bg-neutral-950 border-[#1c1d1d] fade-b
+        sm:p-7 lg:p-6 lg-2:p-7 lg-2:bg-black">
 
       <div className="flex justify-between">
         <label htmlFor="txtUrl" className="flex items-center gap-3">
@@ -48,7 +48,7 @@ export function ShortLinkForm() {
       </div>
 
       <input type="url" autoComplete="off" value={originalLink} onChange={(e) => setOriginalLink(e.currentTarget.value)}
-        className="w-full py-2 px-4 my-4 border border-zinc-900 text-neutral-400 bg-neutral-950 placeholder:text-neutral-700 rounded-full sm:text-md sm:my-5 lg:p-3 lg-2:rounded-full lg-2:py-3"
+        className="w-full py-2 px-4 my-4 border border-zinc-900 text-neutral-400 bg-neutral-900 placeholder:text-neutral-700 rounded-full sm:text-md sm:my-5 lg:p-3 lg-2:rounded-full lg-2:py-3 lg-2:bg-neutral-950"
         placeholder="Enter a long Link to short" required />
 
       <div className="flex items-center gap-3">
@@ -58,8 +58,8 @@ export function ShortLinkForm() {
         <span className="text-lg sm:text-xl text-[#E5E7EB] font-semibold">Here the new link</span>
       </div>
 
-      <div className="w-full py-2 px-4 my-4 bg-neutral-950 rounded-full border border-zinc-900 text-neutral-400
-          sm:mt-5 lg:p-3 lg-2:rounded-full lg-2:py-3">
+      <div className="w-full py-2 px-4 my-4 bg-neutral-900 rounded-full border border-zinc-900 text-neutral-400
+          sm:mt-5 lg:p-3 lg-2:rounded-full lg-2:py-3 lg-2:bg-neutral-950">
         <p className="sm:text-md">sm-link.vercel.app/{shortURL}</p>
       </div>
 

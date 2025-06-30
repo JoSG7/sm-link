@@ -1,22 +1,18 @@
-"use client"
-
 import { IconChartHistogram, IconClockExclamation, IconClockPlus, IconFolderCog, IconListSearch, IconPencilStar, IconShieldLock, IconShieldPlus } from "@tabler/icons-react"
-import React from "react"
-import { LoginTitle } from "./Title"
+import { LoginDetailsTitle } from "./Title"
+import { GitHubAuthButton, GoogleAuthButton } from "../../auth/AuthButtonClient"
 import Image from "next/image"
-import { GitHubAuthButton, GoogleAuthButton } from "./auth/AuthButtonClient"
 
-export function LoginBenefits() {
+export function LogingDetails() {
 
   return (
 
-    <section className="duration-300 flex justify-center
-    sm:pb-20 md:gap-5 lg-2:pb-0">
+    <section className="flex justify-center">
+      <div className="w-[90vw] py-12 lg-2:max-w-5xl lg-2:flex lg-2:pt-36 lg-2:justify-between lg-2:pb-20">
 
-      <div className="w-[87vw] max-w-5xl py-12 md:w-[94vw] lg-2:flex lg-2:pt-36 lg-2:justify-between lg-2:pb-20">
         <div className="">
           <div className="flex flex-col lg-2:pt-14">
-            <LoginTitle />
+            <LoginDetailsTitle />
 
             {/* Since 360px */}
             <div className="flex justify-between pb-3 lg-2:hidden">
@@ -120,55 +116,8 @@ export function LoginBenefits() {
         <div className="w-[400px] flex items-center">
           <Image src="/imgs/login6.png" alt="logo" width={200} height={200} className="hidden w-full fade lg-2:block lg-2:max-h-[500px]" />
         </div>
+
       </div>
     </section>
   )
 }
-
-
-
-
-// Protección con contraseña – Opción para proteger enlaces con contraseña y compartirlos solo con personas autorizadas.
-
-// Expiración de enlaces – Configura enlaces para que expiren después de un tiempo o un número específico de clics.
-
-
-{/* <section className="pt-4 pb-10 flex justify-center sm:pb-16 md:pt-0 md:pb-20">
-
-      <div className="w-[90%] max-w-[1080px] flex flex-col gap-7 duration-300 
-      md:w-[94%] md:grid md:grid-cols-2 md:gap-5 lg:gap-6">
-
-        <DetailCard title="Administra tus smLinks" 
-        icon = { <IconPencilStar size={40} className="sm:size-14 md:size-9 lg:size-12 text-[#4BA838] lg-2:text-purple-800 
-        md:text-sky-700 lg-2:size-16" /> } >
-        Crea, edita y elimina. Todo esto al alcance de tus manos ahora!
-        </DetailCard>
-
-        <DetailCard title="Conoce las metricas" 
-        icon = { <IconChartHistogram size={40} className="sm:size-14 md:size-9 lg:size-12 text-[#4BA838] lg-2:text-purple-800 
-        md:text-sky-700 lg-2:size-16" /> } >
-        Obten un informe detallado de todas las metricas disponibles!
-        </DetailCard>
-
-        <DetailCard title="Usa contraseñas seguras" 
-        icon = { <IconShieldLock size={40} className="sm:size-14 md:size-9 lg:size-12 text-[#4BA838] lg-2:text-purple-800 
-        md:text-sky-700 lg-2:size-16" /> } >
-        Protege todos tus smLinks con una contraseña y compartelos solo con personas autorizadas
-        </DetailCard>
-
-        <DetailCard title="Establece Expiraciones" 
-        icon = { <IconClockX size={40} className="sm:size-14 md:size-9 lg:size-12 text-[#4BA838] lg-2:text-purple-800 
-        md:text-sky-700 lg-2:size-16" /> } >
-        Establece un limite de visitas y bloquea el smLink de forma automatica
-        </DetailCard>
-
-      </div>
-        
-    </section> */}
-
-
-
-// linear-gradient(var(--bg-color),var(--bg-color)) padding-box,linear-gradient(107.65deg,#17C969 17.53%,#005DBB 94.64%) border-box
-
-
-// linear-gradient(var(--bg-color),var(--bg-color)) padding-box,linear-gradient(120.55deg,#FF4040 18.56%,#A20BD8 98.01%) border-box
