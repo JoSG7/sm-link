@@ -43,8 +43,8 @@ export function ShortLinkForm() {
 
       <div className="flex justify-between">
         <label htmlFor="txtUrl" className="flex items-center gap-3">
-          <div className="p-1.5 rounded-full bg-emerald-200 lg-2:block">
-            <IconScissors className="size-4 lg-2:size-5 text-green-700"></IconScissors>
+          <div className="p-1.5 rounded-full bg-gray-900 lg-2:block">
+            <IconScissors className="size-4 lg-2:size-5 text-yellow-300"></IconScissors>
           </div>
           <span className="text-lg sm:text-xl text-[#E5E7EB] font-semibold">Paste a long link</span>
         </label>
@@ -55,8 +55,8 @@ export function ShortLinkForm() {
         placeholder="Enter a long Link to short" required />
 
       <div className="flex items-center gap-3">
-        <div className="p-1.5 rounded-full bg-sky-300 lg-2:block">
-          <IconWand className="size-4 lg-2:size-5 text-blue-700"></IconWand>
+        <div className="p-1.5 rounded-full bg-gray-900 lg-2:block">
+          <IconWand className="size-4 lg-2:size-5 text-yellow-300"></IconWand>
         </div>
         <span className="text-lg sm:text-xl text-[#E5E7EB] font-semibold">Here the new link</span>
       </div>
@@ -67,16 +67,16 @@ export function ShortLinkForm() {
       </div>
 
       <div className="flex justify-center">
-        <button className="w-3/4 flex items-center justify-center gap-3 py-2 mt-2 mb-7 rounded-lg disabled:opacity-50 bg-gradient-to-tr
-        from-purple-700 to-violet-950 sm:text-lg" disabled={submiting}>
+        <button className="w-full flex items-center justify-center gap-3 py-2 mt-2 mb-7 rounded-lg disabled:opacity-50 bg-gradient-to-tr
+        from-amber-500 to-yellow-900 sm:text-lg" disabled={submiting}>
           {submiting ? <IconLoader2 className="size-4 animate-spin" /> : ""}
           {submiting ? "Shortening..." : "Shorten link"}
         </button>
       </div>
 
       <p className="text-xs text-neutral-400 text-center">
-        By proceeding, you agree to our <span className="text-blue-500">Terms of Service</span> and
-        <span className="text-blue-500"> Privacy Policy</span>.
+        By proceeding, you agree to our <span className="text-yellow-200">Terms of Service</span> and
+        <span className="text-yellow-200"> Privacy Policy</span>.
       </p>
     </form>
   )

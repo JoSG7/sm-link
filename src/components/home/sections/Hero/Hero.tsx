@@ -7,12 +7,13 @@ export function Hero() {
   return (
 
     <section className="flex justify-center">
-      <div className="w-[90vw] max-w-[325px] 
+      <div className="w-[90vw] max-w-[325px] sm:max-w-xl
       lg-2:w-full lg-2:py-9 lg-2:max-w-5xl lg-2:flex lg-2:flex-row-reverse lg-2:justify-between">
         {/* <div className="w-[420px] hidden lg-2:block">
           <ShortLinkForm />
-        </div> */}
-        <Image src="/imgs/mano5.png" alt="Home Imge for 1272px" width={430} height={454} className="hidden fade object-cover lg-2:block " />
+        </div> */} 
+        <Image src="/imgs/mano5.png" alt="Home Imge for 1272px" width={430} height={454} 
+        className="hidden fade object-cover lg-2:block " />
 
         <article className="lg-2:max-w-[580px]">
           <div className="py-7 lg-2:py-12">
@@ -20,7 +21,8 @@ export function Hero() {
               <Image src="/imgs/mano5.png" alt="logo" width={500} height={500} className="size-60 fade object-cover lg-2:hidden" />
             </div>
 
-            <h1 className="text-4xl tracking-tight text-center pt-2 lg-2:text-start lg-2:text-6xl ">
+            <h1 className="text-4xl tracking-tight text-center pt-2 sm:text-5xl
+            lg-2:text-white lg-2:text-start lg-2:text-6xl ">
               The smartest way to share your links
             </h1>
 
@@ -33,7 +35,7 @@ export function Hero() {
             <div className="flex justify-between pb-5 lg-2:hidden">
               <article className="rounded-xl bg-neutral-950 border border-[#1c1d1d] p-2 ">
                 <div className="flex justify-center pb-2">
-                  <IconShieldCheckFilled className="text--300" />
+                  <IconShieldCheckFilled className="text-neutral-300" />
                 </div>
                 <p className="text-xs">Protected links</p>
               </article>

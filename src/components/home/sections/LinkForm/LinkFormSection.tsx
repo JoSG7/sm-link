@@ -22,29 +22,29 @@ export function LinkFormSection() {
         <div className="overflow-x-auto flex justify-between lg-2:hidden">
           <article className="rounded-xl border bg-neutral-950 border-[#1c1d1d] p-2">
             <div className="flex justify-center pb-2">
-              <div className="p-1 rounded-full bg-neutral-900">
-                <IconBrandInstagramFilled className="text-neutral-300" />
+              <div className="p-1 rounded-full bg-gray-900">
+                <IconBrandInstagramFilled className="" />
               </div>
             </div>
-            <p className="text-xs text-neutral-300">Social Media</p>
+            <p className="text-xs">Social Media</p>
           </article>
 
           <article className="rounded-xl border bg-neutral-950 border-[#1c1d1d] p-2">
             <div className="flex justify-center pb-2">
-              <div className="p-1 rounded-full bg-neutral-900">
-                <IconBasketDiscount className="text-neutral-300" />
+              <div className="p-1 rounded-full bg-gray-900">
+                <IconBasketDiscount className="" />
               </div>
             </div>
-            <p className="text-xs text-neutral-300">Exclusive Offers</p>
+            <p className="text-xs">Exclusive Offers</p>
           </article>
 
           <article className="rounded-xl border bg-neutral-950 border-[#1c1d1d] p-2">
             <div className="flex justify-center pb-2">
-              <div className="p-1 rounded-full bg-neutral-900">
-                <IconBrandOffice className="text-neutral-300" />
+              <div className="p-1 rounded-full bg-gray-900">
+                <IconBrandOffice className="" />
               </div>
             </div>
-            <p className="text-xs text-neutral-300">Documents</p>
+            <p className="text-xs">Documents</p>
           </article>
         </div>
       </div>
