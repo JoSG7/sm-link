@@ -50,7 +50,7 @@ export function DeleteLinkModal() {
 
               <div className="p-4 flex gap-4 items-center text-sm">
                 <button onClick={() => { toggleDeleteModal() }} disabled={deleting}>Cancelar</button>
-                <button className="py-1 px-3 rounded-xl bg-red-700 border border-red-900 disabled:opacity-30 flex items-center gap-2" 
+                <button className="py-1 px-3 rounded-xl bg-red-700 border disabled:opacity-30 flex items-center gap-2" 
                 onClick={handleDelete} disabled={deleting}>
                   {deleting ? <IconLoader2 size={15} className="animate-spin"/> : "" }
                   {deleting ? "Eliminando...": "Eliminar"}
