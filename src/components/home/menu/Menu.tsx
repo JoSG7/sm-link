@@ -58,7 +58,7 @@ export function MainMenu() {
 
   return (
 
-    <motion.section className={`fixed inset-0 z-20 bg-modal backdrop-blur-sm text-[#E5E7EB] 
+    <motion.section className={`h-screen fixed inset-0 z-20 bg-modal backdrop-blur-sm text-[#E5E7EB] 
       ${menu ? "pointer-events-auto" : "pointer-events-none"}`}
       onClick={toggleMenu} initial={false} animate={{ opacity: menu ? 1 : 0 }} transition={{ duration: 0.1 }} >
       <motion.nav className={`absolute bottom-0 bg-[rgb(7,7,7)] border-[#1c1c1d] overflow-y-auto ${navWidth} sm:right-0 sm:border-l`}
