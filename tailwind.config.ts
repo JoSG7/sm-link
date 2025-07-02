@@ -19,8 +19,8 @@ export default {
     'opacity-0',
     'w-4/6',
     'w-1/2',
-    '',
-    ''
+    'z-30',
+    'w-[300px]'
 
   ],
   theme: {
