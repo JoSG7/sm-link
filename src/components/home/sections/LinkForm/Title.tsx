@@ -4,7 +4,7 @@ export function LinkFormTitle () {
 
     <section className="flex items-center">
       <div className="w-[90vw] pb-5 lg-2:max-w-[500px] lg-2:py-0">
-        <h1 className="text-4xl tracking-tight text-center text-transparent bg-clip-text bg-gradient-to-r from-white to-yellow-600 lg-2:text-start lg-2:text-6xl">
+        <h1 className="text-4xl tracking-tight text-center text-transparent bg-clip-text bg-gradient-to-r from-white to-amber-300 lg-2:text-start lg-2:text-6xl">
           Your link, but shorter
         </h1>
 

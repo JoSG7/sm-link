@@ -15,7 +15,7 @@ export function LinkFormSection() {
         <ShortLinkForm />
 
         {/* This p only appears in 360px */}
-        <p className="pb-5 pt-5 font-medium text-center text-transparent bg-gradient-to-br from-white to-yellow-300 bg-clip-text max-w-xs lg-2:hidden">
+        <p className="pb-5 pt-5 font-medium text-center text-transparent bg-gradient-to-br from-white via-amber-200 to-yellow-700 bg-clip-text max-w-xs lg-2:hidden">
           Quick to share and easy to manage, perfect for social media, newsletters, team collaboration, and more
         </p>
 

@@ -22,6 +22,7 @@ export function ShortLinkForm() {
 
     if (!isURL(originalLink)) {
       toast.error("Ingrese un link válido", { id: loadingToast })
+      setSubmiting(false)
     } else {
 
       await createShortLink(originalLink).then(res => {
