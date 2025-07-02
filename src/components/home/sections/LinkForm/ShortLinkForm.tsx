@@ -76,8 +76,8 @@ export function ShortLinkForm() {
       </div>
 
       <p className="text-xs text-neutral-400 text-center">
-        By proceeding, you agree to our <span className="text-white">Terms of Service</span> and
-        <span className="text-white"> Privacy Policy</span>.
+        By proceeding, you agree to our <span className="text-yellow-200">Terms of Service</span> and
+        <span className="text-yellow-200"> Privacy Policy</span>.
       </p>
     </form>
   )

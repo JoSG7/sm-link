@@ -15,7 +15,7 @@ export function LinkFormSection() {
         <ShortLinkForm />
 
         {/* This p only appears in 360px */}
-        <p className="pb-5 pt-5 font-medium text-center text-transparent bg-gradient-to-br from-white to-amber-500 bg-clip-text max-w-xs lg-2:hidden">
+        <p className="pb-5 pt-5 font-medium text-center text-[#E5E7Eb] max-w-xs lg-2:hidden">
           Quick to share and easy to manage, perfect for social media, newsletters, team collaboration, and more
         </p>
 
@@ -23,7 +23,7 @@ export function LinkFormSection() {
           <article className="rounded-xl border bg-neutral-950 border-[#1c1d1d] p-2">
             <div className="flex justify-center pb-2">
               <div className="p-1 rounded-full bg-gray-900">
-                <IconBrandInstagramFilled className="" />
+                <IconBrandInstagramFilled className="text-amber-200" />
               </div>
             </div>
             <p className="text-xs">Social Media</p>
@@ -32,7 +32,7 @@ export function LinkFormSection() {
           <article className="rounded-xl border bg-neutral-950 border-[#1c1d1d] p-2">
             <div className="flex justify-center pb-2">
               <div className="p-1 rounded-full bg-gray-900">
-                <IconBasketDiscount className="" />
+                <IconBasketDiscount className="text-amber-200" />
               </div>
             </div>
             <p className="text-xs">Exclusive Offers</p>
@@ -41,7 +41,7 @@ export function LinkFormSection() {
           <article className="rounded-xl border bg-neutral-950 border-[#1c1d1d] p-2">
             <div className="flex justify-center pb-2">
               <div className="p-1 rounded-full bg-gray-900">
-                <IconBrandOffice className="" />
+                <IconBrandOffice className="text-amber-200" />
               </div>
             </div>
             <p className="text-xs">Documents</p>
