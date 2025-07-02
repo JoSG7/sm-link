@@ -69,7 +69,7 @@ export function ShortLinkForm() {
 
       <div className="flex justify-center">
         <button className="w-full flex items-center justify-center gap-3 py-2 mt-2 mb-7 rounded-lg disabled:opacity-50 bg-gradient-to-tr
-        from-amber-400 to-yellow-700 sm:text-lg" disabled={submiting}>
+        from-amber-300 to-yellow-600 sm:text-lg" disabled={submiting}>
           {submiting ? <IconLoader2 className="size-4 animate-spin" /> : ""}
           {submiting ? "Shortening..." : "Shorten link"}
         </button>
