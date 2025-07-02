@@ -44,7 +44,7 @@ export function ShortLinkForm() {
       <div className="flex justify-between">
         <label htmlFor="txtUrl" className="flex items-center gap-3">
           <div className="p-1.5 rounded-full bg-gray-900 lg-2:block">
-            <IconScissors className="size-4 lg-2:size-5 text-yellow-300"></IconScissors>
+            <IconScissors className="size-4 lg-2:size-5 text-yellow-200"></IconScissors>
           </div>
           <span className="text-lg sm:text-xl text-[#E5E7EB] font-semibold">Paste a long link</span>
         </label>
@@ -56,7 +56,7 @@ export function ShortLinkForm() {
 
       <div className="flex items-center gap-3">
         <div className="p-1.5 rounded-full bg-gray-900 lg-2:block">
-          <IconWand className="size-4 lg-2:size-5 text-yellow-300"></IconWand>
+          <IconWand className="size-4 lg-2:size-5 text-yellow-200"></IconWand>
         </div>
         <span className="text-lg sm:text-xl text-[#E5E7EB] font-semibold">Here the new link</span>
       </div>
@@ -68,15 +68,15 @@ export function ShortLinkForm() {
 
       <div className="flex justify-center">
         <button className="w-full flex items-center justify-center gap-3 py-2 mt-2 mb-7 rounded-lg disabled:opacity-50 bg-gradient-to-tr
-        from-amber-500 to-yellow-900 sm:text-lg" disabled={submiting}>
+        from-amber-400 to-yellow-700 sm:text-lg" disabled={submiting}>
           {submiting ? <IconLoader2 className="size-4 animate-spin" /> : ""}
           {submiting ? "Shortening..." : "Shorten link"}
         </button>
       </div>
 
       <p className="text-xs text-neutral-400 text-center">
-        By proceeding, you agree to our <span className="text-yellow-200">Terms of Service</span> and
-        <span className="text-yellow-200"> Privacy Policy</span>.
+        By proceeding, you agree to our <span className="text-white">Terms of Service</span> and
+        <span className="text-white"> Privacy Policy</span>.
       </p>
     </form>
   )
