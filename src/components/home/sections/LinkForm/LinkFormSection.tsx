@@ -23,28 +23,28 @@ export function LinkFormSection() {
           <article className="rounded-xl border bg-neutral-950 border-[#1c1d1d] p-2">
             <div className="flex justify-center pb-2">
               <div className="p-1 rounded-full bg-gray-900">
-                <IconBrandInstagramFilled className="text-neutral-300" />
+                <IconBrandInstagramFilled className="" />
               </div>
             </div>
-            <p className="text-xs text-amber-200">Social Media</p>
+            <p className="text-xs ">Social Media</p>
           </article>
 
           <article className="rounded-xl border bg-neutral-950 border-[#1c1d1d] p-2">
             <div className="flex justify-center pb-2">
               <div className="p-1 rounded-full bg-gray-900">
-                <IconBasketDiscount className="text-neutral-300" />
+                <IconBasketDiscount className="" />
               </div>
             </div>
-            <p className="text-xs text-amber-200">Exclusive Offers</p>
+            <p className="text-xs ">Exclusive Offers</p>
           </article>
 
           <article className="rounded-xl border bg-neutral-950 border-[#1c1d1d] p-2">
             <div className="flex justify-center pb-2">
               <div className="p-1 rounded-full bg-gray-900">
-                <IconBrandOffice className="text-neutral-300" />
+                <IconBrandOffice className="" />
               </div>
             </div>
-            <p className="text-xs text-amber-200">Documents</p>
+            <p className="text-xs ">Documents</p>
           </article>
         </div>
       </div>
