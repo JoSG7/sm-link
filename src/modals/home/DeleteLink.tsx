@@ -33,27 +33,31 @@ export function DeleteLinkModal() {
     <AnimatePresence>
       {
         deleteModal && (
-          <motion.section className="fixed inset-0 z-30 bg-modal flex items-center justify-center"
+          <motion.section className="fixed inset-0 z-40 bg-modal flex items-center justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}>
 
-            <motion.div className="max-w-80 bg-neutral-950 rounded-xl border border-neutral-900 lg-2:max-w-max"
+            <motion.div className="w-72 bg-neutral-950 rounded-xl border border-neutral-900 lg-2:max-w-max"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
               transition={{ duration: 0.2 }}>
 
               <h1 className="p-4 border-b border-neutral-900 text-sm lg-2:text-base">
-                Deseas eliminar este link para siempre? {short}
+                Are you sure to delete this link for ever? {short}
               </h1>
 
               <div className="p-4 flex gap-4 items-center text-sm">
-                <button onClick={() => { toggleDeleteModal() }} disabled={deleting}>Cancelar</button>
-                <button className="py-1 px-3 rounded-xl bg-red-700 border disabled:opacity-30 flex items-center gap-2" 
+                <button className="py-1 px-3 text-center bg-neutral-900 rounded-lg"
+                onClick={() => { toggleDeleteModal() }} disabled={deleting}>
+                  Close  
+                </button>
+
+                <button className="py-1 px-3 rounded-lg bg-red-700 disabled:opacity-30 flex items-center gap-2" 
                 onClick={handleDelete} disabled={deleting}>
                   {deleting ? <IconLoader2 size={15} className="animate-spin"/> : "" }
-                  {deleting ? "Eliminando...": "Eliminar"}
+                  {deleting ? "Deleting...": "Delete"}
                 </button>
               </div>
             </motion.div>
