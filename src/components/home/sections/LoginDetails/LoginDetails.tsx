@@ -8,49 +8,52 @@ export function LogingDetails() {
   return (
 
     <section className="flex justify-center">
-      <div className="w-[90vw] max-w-[325px] pt-12 lg-2:max-w-5xl lg-2:flex lg-2:pt-36 lg-2:justify-between lg-2:pb-20">
+      <div className="w-[90vw] max-w-[325px] pt-12 sm:max-w-lg
+      lg-2:max-w-5xl lg-2:flex lg-2:pt-36 lg-2:justify-between lg-2:pb-20">
 
         <div className="">
           <div className="flex flex-col lg-2:pt-14">
             <LoginDetailsTitle />
 
             {/* Since 360px */}
-            <div className="flex justify-between pb-3 lg-2:hidden">
+            <div className="flex justify-between pb-3 sm:justify-start sm:gap-6 sm:pb-6
+            lg-2:hidden">
               <article className="rounded-xl border bg-neutral-950 border-[#1c1d1d] p-2 ">
                 <div className="flex justify-center pb-2">
-                  <IconChartHistogram className="text-neutral-300" />
+                  <IconChartHistogram className="text-neutral-300 sm:size-7" />
                 </div>
-                <p className="text-xs">All Metrics</p>
+                <p className="text-xs sm:text-base">All Metrics</p>
               </article>
 
               <article className="rounded-xl border bg-neutral-950 border-[#1c1d1d] p-2 ">
                 <div className="flex justify-center pb-2">
-                  <IconClockPlus className="text-neutral-300" />
+                  <IconClockPlus className="text-neutral-300 sm:size-7" />
                 </div>
-                <p className="text-xs">More Expirations</p>
+                <p className="text-xs sm:text-base">More Expirations</p>
               </article>
 
               <article className="rounded-xl border bg-neutral-950 border-[#1c1d1d] p-2 ">
                 <div className="flex justify-center pb-2">
-                  <IconPencilStar className="text-neutral-300" />
+                  <IconPencilStar className="text-neutral-300 sm:size-7" />
                 </div>
-                <p className="text-xs">Customizing</p>
+                <p className="text-xs sm:text-base">Customizing</p>
               </article>
             </div>
 
-            <div className="flex justify-center gap-3 pb-5 lg-2:hidden">
+            <div className="flex justify-center gap-3 pb-5 sm:justify-start sm:gap-6 sm:pb-6
+            lg-2:hidden">
               <article className="rounded-xl border bg-neutral-950 border-[#1c1d1d] p-2 ">
                 <div className="flex justify-center pb-2">
-                  <IconShieldPlus className="text-neutral-300" />
+                  <IconShieldPlus className="text-neutral-300 sm:size-7" />
                 </div>
-                <p className="text-xs">More Protected Links</p>
+                <p className="text-xs sm:text-base">More Protected Links</p>
               </article>
 
               <article className="rounded-xl border bg-neutral-950 border-[#1c1d1d] p-2 ">
                 <div className="flex justify-center pb-2">
-                  <IconFolderCog className="text-neutral-300" />
+                  <IconFolderCog className="text-neutral-300 sm:size-7" />
                 </div>
-                <p className="text-xs">Management</p>
+                <p className="text-xs sm:text-base">Management</p>
               </article>
             </div>
 
@@ -110,8 +113,10 @@ export function LogingDetails() {
               <GitHubAuthButton />
               <GoogleAuthButton />
             </div> */}
-            <div className="flex items-center justify-center lg-2:justify-start">
-              <button className="py-2 px-5 text-base lg-2:py-2 lg-2:px-4 rounded-full bg-gradient-to-r from-neutral-100 to-neutral-400 text-neutral-950 transition-transform duration-200 hover:scale-105">
+            <div className="flex items-center justify-center sm:justify-start
+            lg-2:justify-start">
+              <button className="py-2 px-5 text-base rounded-full bg-gradient-to-r from-neutral-100 to-neutral-400 text-neutral-950 transition-transform duration-200 hover:scale-105 sm:text-xl sm:py-4 sm:px-5
+              lg-2:py-2 lg-2:px-4">
                 Get Started
               </button>
             </div>

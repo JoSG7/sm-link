@@ -75,7 +75,7 @@ export function ShortLinkForm() {
         </button>
       </div>
 
-      <p className="text-xs text-neutral-400 text-center">
+      <p className="text-xs text-neutral-400 text-center sm:text-sm lg-2:text-xs">
         By proceeding, you agree to our <span className="text-yellow-200">Terms of Service</span> and
         <span className="text-yellow-200"> Privacy Policy</span>.
       </p>

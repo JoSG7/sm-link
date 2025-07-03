@@ -21,7 +21,7 @@ export function MainMenu() {
   const { linkChanges } = useLinkChanges()
   const width = useScreenSize()
   const isMobile = width < 640
-  const isTablet = width > 640 && width < 768
+  const isTablet = width >= 640 && width < 768
 
   const navVariants = {
     open: {
