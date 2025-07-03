@@ -9,16 +9,15 @@ export function Hero() {
     <section className="flex justify-center">
       <div className="w-[90vw] max-w-[325px] sm:max-w-lg
       lg-2:w-full lg-2:py-9 lg-2:max-w-5xl lg-2:flex lg-2:flex-row-reverse lg-2:justify-between">
-        
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/imgs/mano5.png" alt="Home Imge for 1272px" width={430} height={454} 
-        className="hidden fade object-cover lg-2:block " />
+
+        <Image src="/imgs/mano5.png" alt="Home Imge for 1272px" width={430} height={454}
+          className="hidden fade object-cover lg-2:block " />
 
         <article className="lg-2:max-w-[580px]">
           <div className="py-7 lg-2:py-12">
             <div className="flex justify-center">
-              <Image src="/imgs/mano5.png" alt="logo" width={500} height={500} 
-              className="size-60 fade object-cover sm:size-72 lg-2:hidden" />
+              <Image src="/imgs/mano5.png" alt="logo" width={500} height={500}
+                className="size-60 fade object-cover sm:size-72 lg-2:hidden" />
             </div>
 
             <h1 className="text-4xl tracking-tight text-center pt-2 sm:text-6xl sm:text-start
@@ -36,21 +35,27 @@ export function Hero() {
             <div className="flex justify-between pb-5 sm:justify-normal sm:gap-5 lg-2:hidden">
               <article className="rounded-xl bg-neutral-950 border border-[#1c1d1d] p-2 ">
                 <div className="flex justify-center pb-2">
-                  <IconShieldCheckFilled className="text-neutral-300 sm:size-7" />
+                  <div className="p-1 rounded-full bg-emerald-200">
+                    <IconShieldCheckFilled className="text-green-600 sm:size-7" />
+                  </div>
                 </div>
                 <p className="text-xs sm:text-base">Protected links</p>
               </article>
 
               <article className="rounded-xl bg-neutral-950 border border-[#1c1d1d] p-2 ">
                 <div className="flex justify-center pb-2">
-                  <IconAlarmFilled className="text-neutral-300 sm:size-7" />
+                  <div className="p-1 rounded-full bg-sky-300">
+                    <IconAlarmFilled className="text-sky-600 sm:size-7" />
+                  </div>
                 </div>
                 <p className="text-xs sm:text-base">Set expirations</p>
               </article>
 
               <article className="rounded-xl bg-neutral-950 border border-[#1c1d1d] p-2 ">
                 <div className="flex justify-center pb-2">
-                  <IconSettingsFilled className="text-neutral-300 sm:size-7" />
+                  <div className="p-1 rounded-full bg-violet-400">
+                    <IconSettingsFilled className="text-purple-700 sm:size-7" />
+                  </div>
                 </div>
                 <p className="text-xs sm:text-base">Control now</p>
               </article>
