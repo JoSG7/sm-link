@@ -8,7 +8,7 @@ export function LinkFormSection() {
 
   return (
 
-    <section className="flex justify-center">
+    <section className="flex justify-center" id="link-form-section">
       <div className="w-[90vw] py-7 max-w-[325px] sm:max-w-lg
       lg-2:flex md:gap-5 lg:gap-6 lg-2:max-w-5xl lg-2:py-9 lg-2:flex-row-reverse lg-2:justify-between">
         <LinkFormTitle />

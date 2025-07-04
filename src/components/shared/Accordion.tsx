@@ -20,7 +20,7 @@ export function Accordion({ items, buttonClass = "" }: { items: AccordionItem[],
 
         return (
           <div key={index} className="w-full">
-            <button className={`w-full ${buttonClass}`} onClick={() => {
+            <button type='button' className={`w-full ${buttonClass}`} onClick={() => {
               toggle(index)
             }}>
               {item.title}
