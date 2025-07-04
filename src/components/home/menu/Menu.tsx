@@ -45,7 +45,7 @@ export function MainMenu() {
       getLinkDetails().then(res => {
         if (res.length > 0) {
           // console.log(res)
-          setLinkDetails([])
+          setLinkDetails(res)
         } else {
           setLinkDetails([])
         }
