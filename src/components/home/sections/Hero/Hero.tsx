@@ -35,8 +35,8 @@ export function Hero() {
             <div className="flex justify-between pb-5 sm:justify-normal sm:gap-5 lg-2:hidden">
               <article className="rounded-xl bg-neutral-950 border border-[#1c1d1d] p-2 ">
                 <div className="flex justify-center pb-2">
-                  <div className="p-1 rounded-full bg-emerald-200">
-                    <IconShieldCheckFilled className="text-green-600 sm:size-7" />
+                  <div className="p-1 rounded-full bg-gray-800 ">
+                    <IconShieldCheckFilled className="text-emerald-400 sm:size-7" />
                   </div>
                 </div>
                 <p className="text-xs sm:text-base">Protected links</p>
@@ -44,8 +44,8 @@ export function Hero() {
 
               <article className="rounded-xl bg-neutral-950 border border-[#1c1d1d] p-2 ">
                 <div className="flex justify-center pb-2">
-                  <div className="p-1 rounded-full bg-sky-300">
-                    <IconAlarmFilled className="text-sky-600 sm:size-7" />
+                  <div className="p-1 rounded-full bg-gray-800 ">
+                    <IconAlarmFilled className="text-teal-400 sm:size-7" />
                   </div>
                 </div>
                 <p className="text-xs sm:text-base">Set expirations</p>
@@ -53,8 +53,8 @@ export function Hero() {
 
               <article className="rounded-xl bg-neutral-950 border border-[#1c1d1d] p-2 ">
                 <div className="flex justify-center pb-2">
-                  <div className="p-1 rounded-full bg-violet-400">
-                    <IconSettingsFilled className="text-purple-700 sm:size-7" />
+                  <div className="p-1 rounded-full bg-gray-800 ">
+                    <IconSettingsFilled className="text-purple-400 sm:size-7" />
                   </div>
                 </div>
                 <p className="text-xs sm:text-base">Control now</p>

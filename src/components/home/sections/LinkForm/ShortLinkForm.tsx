@@ -2,7 +2,7 @@
 
 import { useLinkChanges } from "@/hooks/useModal";
 import { createShortLink } from "@/utils/links/api";
-import { IconLoader2, IconScissors, IconWand } from "@tabler/icons-react";
+import { IconLoader2, IconPaperclip, IconScissors } from "@tabler/icons-react";
 import { FormEvent, useState } from "react";
 import { toast } from "sonner";
 import { isURL } from "validator";
@@ -44,8 +44,8 @@ export function ShortLinkForm() {
 
       <div className="flex justify-between">
         <label htmlFor="txtUrl" className="flex items-center gap-3">
-          <div className="p-1.5 rounded-full bg-gray-900 lg-2:block">
-            <IconScissors className="size-4 lg-2:size-5 text-yellow-200"></IconScissors>
+          <div className="p-1.5 rounded-full bg-gray-800 lg-2:block">
+            <IconPaperclip className="size-5 lg-2:size-5 text-gold"></IconPaperclip>
           </div>
           <span className="text-lg sm:text-xl text-[#E5E7EB] font-semibold">Paste a long link</span>
         </label>
@@ -56,8 +56,8 @@ export function ShortLinkForm() {
         placeholder="Enter a long Link to short" required />
 
       <div className="flex items-center gap-3">
-        <div className="p-1.5 rounded-full bg-gray-900 lg-2:block">
-          <IconWand className="size-4 lg-2:size-5 text-yellow-200"></IconWand>
+        <div className="p-1.5 rounded-full bg-gray-800 lg-2:block">
+          <IconScissors className="size-5 lg-2:size-5 text-gold"></IconScissors>
         </div>
         <span className="text-lg sm:text-xl text-[#E5E7EB] font-semibold">Here the new link</span>
       </div>
@@ -68,16 +68,16 @@ export function ShortLinkForm() {
       </div>
 
       <div className="flex justify-center">
-        <button className="w-full flex items-center justify-center gap-3 py-2 mt-2 mb-7 rounded-lg disabled:opacity-50 bg-gradient-to-tr
-        from-amber-300 to-yellow-600 sm:text-lg" disabled={submiting}>
+        <button className="w-full flex items-center justify-center gap-3 py-2 mt-2 mb-7 rounded-lg disabled:opacity-50 bg-gray-800
+        sm:text-lg" disabled={submiting}>
           {submiting ? <IconLoader2 className="size-4 animate-spin" /> : ""}
           {submiting ? "Shortening..." : "Shorten link"}
         </button>
       </div>
 
       <p className="text-xs text-neutral-400 text-center sm:text-sm lg-2:text-xs">
-        By proceeding, you agree to our <span className="text-yellow-200">Terms of Service</span> and
-        <span className="text-yellow-200"> Privacy Policy</span>.
+        By proceeding, you agree to our <span className="text-stone-100">Terms of Service</span> and
+        <span className="text-stone-100"> Privacy Policy</span>.
       </p>
     </form>
   )
