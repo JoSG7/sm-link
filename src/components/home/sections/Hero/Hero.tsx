@@ -1,8 +1,13 @@
+"use client"
+
 import { IconAlarmFilled, IconDeviceAnalytics, IconGlobe, IconLock, IconSettingsFilled, IconShieldCheckFilled, IconStarFilled } from "@tabler/icons-react";
 import { Pill } from "@/components/shared/Pill";
 import Image from "next/image";
+import { useScrollTo } from "@/hooks/useScrollTo";
 
 export function Hero() {
+
+  const scrollTo = useScrollTo()
 
   return (
 
@@ -76,7 +81,7 @@ export function Hero() {
             <div className="flex items-center gap-4 justify-center sm:justify-start
             lg-2:gap-7 lg-2:justify-start">
               <button className="py-2 px-5 text-base rounded-full bg-gradient-to-r from-neutral-100 to-neutral-400 text-neutral-950 transition-transform duration-200 hover:scale-105 sm:text-xl sm:py-4 sm:px-5
-              lg-2:py-2 lg-2:px-4 lg-2:text-lg">
+              lg-2:py-2 lg-2:px-4 lg-2:text-lg" onClick={() => { scrollTo("link-form-section") }}>
                 {`Let's start now!`}
               </button>
 

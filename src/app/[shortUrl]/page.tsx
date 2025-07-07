@@ -22,9 +22,11 @@ async function ShortURL({ params }: { params: Promise<{ shortUrl: string }> }) {
   } else if(link) {
 
     if(link.has_password){
-      return <PasswordForm short={shortUrl} />
-    } else if(link.original) {
-      redirect(link.original)
+      return <PasswordForm short={shortUrl} link_id={link.id} />
+    } else {
+      const { error } = await supabase.rpc("record_monthly_visits", { x_link_id: link.id })
+      if(error) console.log(error)
+      redirect(link.original!)
     }
     
   } else {

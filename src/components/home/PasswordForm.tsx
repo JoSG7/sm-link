@@ -1,28 +1,30 @@
 "use client"
 
+import { createSupabase } from "@/lib/supabase/client"
 import { validateLinkPassword } from "@/utils/links/api"
 import { IconCheck, IconLoader2, IconLock } from "@tabler/icons-react"
 import { motion } from "framer-motion"
 import { FormEvent, useState } from "react"
 import { toast } from "sonner"
 
-export function PasswordForm({ short }: { short: string }) {
+export function PasswordForm({ short, link_id }: { short: string, link_id?:string }) {
 
   const [submiting, setSubmiting] = useState(false)
   const [password, setPassword] = useState("")
+  const supabase = createSupabase()
   
-
   const handleRedirect = async (e: FormEvent) => {
     e.preventDefault()
     setSubmiting(true)
 
-    await validateLinkPassword(short, password).then(res => {
+    await validateLinkPassword(short, password).then(async (res) => {
       if(res.error){
         toast.error(res.error)
       } else {
         if(!res.response){
           toast.error("Wrong password")
         } else {
+          await supabase.rpc("record_monthly_visits", { x_link_id: link_id })
           window.location.href = res.response
         }
       }
