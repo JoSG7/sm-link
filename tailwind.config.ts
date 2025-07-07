@@ -20,8 +20,9 @@ export default {
     'w-4/6',
     'w-1/2',
     'z-30',
-    'w-[300px]'
-
+    'w-[300px]',
+    'bg-[rgba(0,0,0,0.4)]',
+    'bg-yellow-600'
   ],
   theme: {
     extend: {

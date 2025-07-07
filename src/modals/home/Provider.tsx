@@ -1,13 +1,14 @@
 "use client"
 
 import { ReactNode, useState } from "react";
-import { DeleteLinkModal, LinkChanges, MenuDrawer, ProtectedLinkModal, RemoveLinkPwdModal } from "../../contexts/ModalContext";
+import { DeleteLinkModal, LinkChanges, MenuDrawer, ProtectedLinkModal, RemoveLinkPwdModal, SetLinkExpiration } from "../../contexts/ModalContext";
 
 export function HomeModals({ children }: { children: ReactNode }) {
   const [menu, setMenu] = useState(false)
   const [deleteModal, setDeleteModal] = useState(false)
   const [pwdLinkModal, setPwdLinkModal] = useState(false)
   const [removeLinkPwdModal, setRemoveLinkPwdModal] = useState(false)
+  const [linkExpirationModal, setLinkExpirationModal] = useState(false)
   const [short, setShort] = useState("")
   const [linkChanges, setLinkChange] = useState(0)
 
@@ -30,6 +31,11 @@ export function HomeModals({ children }: { children: ReactNode }) {
     if (short) setShort(short)
   }
 
+  const toggleLinkExpirationModal = (short?: string) => {
+    setLinkExpirationModal(prev => !prev)
+    if (short) setShort(short)
+  }
+
   const recordLinkChanges = () => {
     setLinkChange(prev => prev + 1)
   }
@@ -39,9 +45,11 @@ export function HomeModals({ children }: { children: ReactNode }) {
       <DeleteLinkModal.Provider value={{ deleteModal, short, toggleDeleteModal }}>
         <ProtectedLinkModal.Provider value={{ pwdLinkModal, short, togglePwdLinkModal }}>
           <RemoveLinkPwdModal.Provider value={{ removeLinkPwdModal, short, toggleRemoveLinkPwdModal }}>
-            <LinkChanges.Provider value={{ linkChanges, recordLinkChanges }}>
-              {children}
-            </LinkChanges.Provider>
+            <SetLinkExpiration.Provider value={{ linkExpirationModal, short, toggleLinkExpirationModal }}>
+              <LinkChanges.Provider value={{ linkChanges, recordLinkChanges }}>
+                {children}
+              </LinkChanges.Provider>
+            </SetLinkExpiration.Provider>
           </RemoveLinkPwdModal.Provider>
         </ProtectedLinkModal.Provider>
       </DeleteLinkModal.Provider>

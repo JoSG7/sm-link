@@ -1,7 +1,7 @@
 "use client"
 
 import { IconCalendar, IconClockCheck, IconCopy, IconExternalLink, IconShieldLockFilled, IconTrashFilled } from "@tabler/icons-react"
-import { useDeleteLinkModal, usePwdLinkModal } from "@/hooks/useModal"
+import { useDeleteLinkModal, usePwdLinkModal, useSetLinkExpiration } from "@/hooks/useModal"
 import { months } from "@/utils/constants"
 import { toast } from "sonner"
 import Link from "next/link"
@@ -9,6 +9,7 @@ import { DeleteLinkModal } from "../../modals/home/DeleteLink"
 import { CreatePwdLinkModal } from "../../modals/home/PwdLinkForm"
 import { LinkDetails } from "@/types/global"
 import { DomainLogo } from "./DomainLogo"
+import { SetLinkExpirationModal } from "@/modals/home/LinkExpiration"
 
 export function LinkCard({ data }: { data: LinkDetails }) {
   const url = new URL(data.original)
@@ -18,12 +19,14 @@ export function LinkCard({ data }: { data: LinkDetails }) {
   const month = months[date.getMonth()]
   const { toggleDeleteModal } = useDeleteLinkModal()
   const { togglePwdLinkModal } = usePwdLinkModal()
+  const { toggleLinkExpirationModal } = useSetLinkExpiration()
 
   return (
 
     <article className="p-4 rounded-lg border border-[#1c1d1d] whitespace-normal">
       <DeleteLinkModal />
       <CreatePwdLinkModal />
+      <SetLinkExpirationModal />
       <div className="flex justify-between items-center pb-4 gap-1">
         <div className="flex flex-col max-w-[240px] sm:max-w-[285px] lg-2:max-w-[400px]">
           <p className="font-semibold">sm-link.vercel.app/{data.short}</p>
@@ -52,7 +55,8 @@ export function LinkCard({ data }: { data: LinkDetails }) {
           <IconTrashFilled className="size-5 " />
         </button>
 
-        <button className="p-2 rounded-xl bg-neutral-900">
+        <button className="p-2 rounded-xl bg-neutral-900 disabled:opacity-50" 
+        onClick={() => { toggleLinkExpirationModal(data.short) }}>
           <IconClockCheck className="size-5"/>
         </button>
 

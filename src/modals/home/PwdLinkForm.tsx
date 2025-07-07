@@ -46,7 +46,7 @@ export function CreatePwdLinkModal() {
     <AnimatePresence>
       {
         pwdLinkModal && (
-          <motion.section className="fixed inset-0 z-30 bg-modal flex items-center justify-center"
+          <motion.section className="fixed inset-0 z-30 bg-[rgba(0,0,0,0.4)] flex items-center justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}>

@@ -61,4 +61,14 @@ export async function removeProtectedLink (short: string) {
   return data
 }
 
+export async function addLinkExpiration (short: string, expires_at: string) {
+  const res = await fetch(`api/guest-links/link-expirations`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ short, expires_at })
+  })
+  const data: { error: string, response: string } = await res.json()
+  return data
+}
+
 

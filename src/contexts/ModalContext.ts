@@ -13,7 +13,6 @@ type DeleteLinkType = {
   toggleDeleteModal: (short?: string) => void
 }
 
-
 type ProtectedLinkType = {
   pwdLinkModal: boolean
   short: string | null
@@ -26,7 +25,11 @@ type RemoveLinkPwdType = {
   toggleRemoveLinkPwdModal: (short?: string) => void
 }
 
-
+type SetLinkExpiration = {
+  linkExpirationModal: boolean
+  short: string | null
+  toggleLinkExpirationModal: (short?: string) => void
+}
 
 type LinkChangesType = {
   linkChanges: number
@@ -38,4 +41,5 @@ export const DeleteLinkModal = createContext<DeleteLinkType | null>(null)
 export const LinkChanges = createContext<LinkChangesType | null>(null)
 export const ProtectedLinkModal = createContext<ProtectedLinkType | null>(null)
 export const RemoveLinkPwdModal = createContext<RemoveLinkPwdType | null>(null)
+export const SetLinkExpiration = createContext<SetLinkExpiration | null>(null)
 
