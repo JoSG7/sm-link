@@ -4,11 +4,11 @@ import { IconCalendar, IconClockCheck, IconCopy, IconExternalLink, IconShieldLoc
 import { useDeleteLinkModal, usePwdLinkModal } from "@/hooks/useModal"
 import { months } from "@/utils/constants"
 import { toast } from "sonner"
-import Image from "next/image"
 import Link from "next/link"
 import { DeleteLinkModal } from "../../modals/home/DeleteLink"
 import { CreatePwdLinkModal } from "../../modals/home/PwdLinkForm"
 import { LinkDetails } from "@/types/global"
+import { DomainLogo } from "./DomainLogo"
 
 export function LinkCard({ data }: { data: LinkDetails }) {
   const url = new URL(data.original)
@@ -38,8 +38,8 @@ export function LinkCard({ data }: { data: LinkDetails }) {
             {day} de {month}
           </p>
         </div>
-        <Image src={`https://www.google.com/s2/favicons?domain=${domain}&sz=64`} alt="logo" width={60} height={60}
-          className="size-12 rounded-full sm:size-14" />
+
+        <DomainLogo domain={domain} />
       </div>
 
       {/* Buttons section */}

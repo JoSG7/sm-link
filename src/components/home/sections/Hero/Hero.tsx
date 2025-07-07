@@ -45,7 +45,7 @@ export function Hero() {
               <article className="rounded-xl bg-neutral-950 border border-[#1c1d1d] p-2 ">
                 <div className="flex justify-center pb-2">
                   <div className="p-1 rounded-full bg-gray-800 ">
-                    <IconAlarmFilled className="text-teal-400 sm:size-7" />
+                    <IconAlarmFilled className="text-cyan-400 sm:size-7" />
                   </div>
                 </div>
                 <p className="text-xs sm:text-base">Set expirations</p>
