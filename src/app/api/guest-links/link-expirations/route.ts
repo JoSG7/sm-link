@@ -9,10 +9,12 @@ export async function POST( request : NextRequest) {
   const supabase = createSupabase(guestID)
   const { short, expires_at } = await request.json()
 
-  const { data } = await supabase.from("link").select("id").eq("short", short).single()
+  const { data, error } = await supabase.from("link").select("id").eq("short", short).single()
+  if(error) console.log(error)
 
   if(data?.id){
-    const { error } = await supabase.from("link_expirations").insert({
+
+    const { error } = await supabase.from("link_expiration").insert({
       link_id: data.id,
       expires_at
     })
@@ -24,7 +26,7 @@ export async function POST( request : NextRequest) {
       return NextResponse.json({ response: "Expiration set successfully" })
     }
   } else {
-    return NextResponse.json({ error: "Link not found" })
+    return NextResponse.json({ error: "You don't have permissions" })
   }
 }
 

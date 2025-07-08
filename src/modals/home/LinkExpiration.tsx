@@ -1,6 +1,8 @@
+import { ExpirationCalendar } from "@/components/shared/Calendar"
 import { useSetLinkExpiration } from "@/hooks/useModal"
 import { addLinkExpiration } from "@/utils/links/api"
-import { IconClockCheck, IconLoader2 } from "@tabler/icons-react"
+import { IconLoader2 } from "@tabler/icons-react"
+// import { IconClockCheck, IconLoader2 } from "@tabler/icons-react"
 import { AnimatePresence, motion } from "framer-motion"
 import { FormEvent, useState } from "react"
 import { toast } from "sonner"
@@ -20,7 +22,7 @@ export function SetLinkExpirationModal() {
       setSubmiting(true)
       await addLinkExpiration(short, expires_at).then(res => {
         if(res.error){
-          toast.error("In development, comming soon")
+          toast.error(res.error)
         } else {
           toast.success(res.response)
         }
@@ -51,13 +53,11 @@ export function SetLinkExpirationModal() {
 
               <form onSubmit={handleSubmit}>
                 {/* Date Input Section */}
-                <div className="p-4 flex flex-col gap-4 border-b border-neutral-900">
-                  <div className="flex items-center p-2 gap-2 bg-neutral-900 rounded-lg text-xs ">
-                    <IconClockCheck className="size-4" />
-                    <input className="w-full bg-transparent placeholder:text-neutral-700 lg-2:text-sm"
-                      placeholder="Enter a expiration date" type="date" required 
-                      onChange={(e) => setExpires_at(e.currentTarget.value)} />
-                  </div>
+                <div className="p-4 flex flex-col gap-4 border-b border-neutral-900 text-white">
+                  <ExpirationCalendar onChange={(value) => {
+                    setExpires_at(value)
+                    console.log(value)
+                  }} />
                 </div>
 
                 {/* Buttons Section */}
@@ -67,7 +67,7 @@ export function SetLinkExpirationModal() {
                     Close
                   </button>
 
-                  <button className="py-1 px-3 rounded-lg bg-yellow-600 disabled:opacity-50 flex items-center gap-2"
+                  <button className="py-1 px-3 rounded-lg bg-sky-600 disabled:opacity-50 flex items-center gap-2"
                     disabled={submiting} type="submit">
                     {submiting ? <IconLoader2 size={15} className="animate-spin" /> : ""}
                     {submiting ? "Creating..." : "Create"}

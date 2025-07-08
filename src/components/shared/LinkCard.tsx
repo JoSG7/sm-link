@@ -1,7 +1,7 @@
 "use client"
 
 import { IconCalendar, IconClockCheck, IconCopy, IconExternalLink, IconShieldLockFilled, IconTrashFilled } from "@tabler/icons-react"
-import { useDeleteLinkModal, usePwdLinkModal, useSetLinkExpiration } from "@/hooks/useModal"
+import { useDeleteLinkModal, usePwdLinkModal } from "@/hooks/useModal"
 import { months } from "@/utils/constants"
 import { toast } from "sonner"
 import Link from "next/link"
@@ -19,7 +19,7 @@ export function LinkCard({ data }: { data: LinkDetails }) {
   const month = months[date.getMonth()]
   const { toggleDeleteModal } = useDeleteLinkModal()
   const { togglePwdLinkModal } = usePwdLinkModal()
-  const { toggleLinkExpirationModal } = useSetLinkExpiration()
+  // const { toggleLinkExpirationModal } = useSetLinkExpiration()
 
   return (
 
@@ -52,23 +52,26 @@ export function LinkCard({ data }: { data: LinkDetails }) {
         <button className="p-2 rounded-xl bg-neutral-900 flex gap-1 items-center text-sm"
           onClick={() => { toggleDeleteModal(data.short) }}>
           
-          <IconTrashFilled className="size-5 " />
+          <IconTrashFilled className="size-5 text-red-400" />
         </button>
 
         <button className="p-2 rounded-xl bg-neutral-900 disabled:opacity-50" 
-        onClick={() => { toggleLinkExpirationModal(data.short) }}>
-          <IconClockCheck className="size-5"/>
+        onClick={() => {
+          alert("comming soon")
+          // toggleLinkExpirationModal(data.short)
+        }}>
+          <IconClockCheck className="size-5 text-sky-300"/>
         </button>
 
         <button className="p-2 rounded-xl bg-neutral-900 disabled:opacity-50"
         onClick={() => { togglePwdLinkModal(data.short) }} disabled={data.has_password}>
-          <IconShieldLockFilled className="size-5"/>
+          <IconShieldLockFilled className="size-5 text-green-400"/>
         </button>
 
         <Link href={`https://sm-link.vercel.app/${data.short}`} target="_blank"
           className="p-2 rounded-xl bg-neutral-900 flex gap-1 items-center text-sm">
           
-          <IconExternalLink className="size-5 "></IconExternalLink>
+          <IconExternalLink className="size-5 text-purple-400"></IconExternalLink>
         </Link>
 
         <button className="p-2 rounded-xl bg-neutral-900 flex gap-1 items-center text-sm"
@@ -76,7 +79,7 @@ export function LinkCard({ data }: { data: LinkDetails }) {
             navigator.clipboard.writeText(`sm-link.vercel.app/${data.short}`).then(() => { toast.success("Copiado Correctamente") })
           }}>
           
-          <IconCopy className="size-5 "></IconCopy>
+          <IconCopy className="size-5 text-gold"></IconCopy>
         </button>
       </div>
     </article>
