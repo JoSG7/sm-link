@@ -1,6 +1,7 @@
 import { ExpirationCalendar } from "@/components/shared/Calendar"
+import { ExpirationHour } from "@/components/shared/HourPicker"
 import { useSetLinkExpiration } from "@/hooks/useModal"
-import { addLinkExpiration } from "@/utils/links/api"
+// import { addLinkExpiration } from "@/utils/links/api"
 import { IconLoader2 } from "@tabler/icons-react"
 // import { IconClockCheck, IconLoader2 } from "@tabler/icons-react"
 import { AnimatePresence, motion } from "framer-motion"
@@ -10,24 +11,28 @@ import { toast } from "sonner"
 export function SetLinkExpirationModal() {
 
   const [submiting, setSubmiting] = useState(false)
-  const [expires_at, setExpires_at] = useState<Date | undefined>(undefined)
+  const [expiresDay, setExpiresDay] = useState<Date | undefined>(undefined)
+  const [expiresHour, setExpiresHour] = useState("")
   const { short, linkExpirationModal, toggleLinkExpirationModal } = useSetLinkExpiration()
-
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
-    if(!expires_at){
+
+    
+    if (!expiresDay) {
       toast.error("Please, enter a valid date")
-    } else if(short) {
+    } else if (short) {
+      
       setSubmiting(true)
-      await addLinkExpiration(short, expires_at.toISOString()).then(res => {
-        if(res.error){
-          toast.error(res.error)
-        } else {
-          toast.success(res.response)
-        }
-      })
-      .finally(() => setSubmiting(false))
+      toast.info("in development")
+      // await addLinkExpiration(short, expiresDay.toISOString()).then(res => {
+      //   if (res.error) {
+      //     toast.error(res.error)
+      //   } else {
+      //     toast.success(res.response)
+      //   }
+      // })
+      //   .finally(() => setSubmiting(false))
     }
   }
 
@@ -53,17 +58,24 @@ export function SetLinkExpirationModal() {
 
               <form onSubmit={handleSubmit}>
                 {/* Date Input Section */}
-                <div className="p-4 flex flex-col gap-4 border-b border-neutral-900 text-white">
-                  <ExpirationCalendar onChange={(value) => {
-                    setExpires_at(value)
-                  }} />
-                </div>
+                <section className="p-4 flex flex-col gap-2 border-b border-neutral-900 lg-2:flex-row">
+                  <ExpirationCalendar onChange={(value) => { setExpiresDay(value) }} />
+
+                  <div className="flex justify-between items-center lg-2:gap-4">
+                    <ExpirationHour onChange={(value) => { setExpiresHour(value) }} />
+
+                    <p className="rounded-lg text-sm border border-[#1c1d1d] p-3 lg-2:text-base">
+                      12/12/2005 {expiresHour == "" ? "00:00" : expiresHour}
+                    </p>
+                  </div>
+                </section>
 
                 {/* Buttons Section */}
                 <div className="p-4 flex gap-4 items-center text-sm">
                   <button className="py-1 px-3 text-center bg-neutral-900 rounded-lg disabled:opacity-50"
-                    type="button" disabled={submiting} onClick={() => { 
-                      setExpires_at(undefined) 
+                    type="button" disabled={submiting} onClick={() => {
+                      setExpiresDay(undefined)
+                      setExpiresHour("")
                       toggleLinkExpirationModal()
                     }}>
                     Close
