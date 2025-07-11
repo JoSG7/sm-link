@@ -1,48 +1,29 @@
 "use client"
 
 import { useState } from "react"
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
-import { DateCalendar, LocalizationProvider, TimeClock } from '@mui/x-date-pickers'
+import { DayPicker } from 'react-day-picker'
+import "react-day-picker/style.css";
 
-export function ExpirationCalendar ({ onChange }: { onChange: (iso: string) => void }) {
 
-  const [date, setDate] = useState<Date | null>(null)
-  const [time, setTime] = useState<Date | null>(null)
+export function ExpirationCalendar({ onChange }: { onChange: (iso: Date | undefined) => void }) {
 
-  const handleDateChange = (newDate: Date | null) => {
-    setDate(newDate)
-    if (newDate && time) {
-      const combined = new Date(newDate)
-      combined.setHours(time.getHours())
-      combined.setMinutes(time.getMinutes())
-      combined.setSeconds(0)
-      onChange(combined.toISOString())
-    }
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined)
+  // const [time, setTime] = useState<Date | null>(null)
+
+  const handleSelected = (newDay: Date) => {
+    setSelectedDate(newDay)
+    onChange(selectedDate)
   }
 
-  const handleTimeChange = (newTime: Date | null) => {
-    setTime(newTime)
-    if (date && newTime) {
-      const combined = new Date(date)
-      combined.setHours(newTime.getHours())
-      combined.setMinutes(newTime.getMinutes())
-      combined.setSeconds(0)
-      onChange(combined.toISOString())
-    }
-  }
-
-  return(
-
-    <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <div className="flex flex-col gap-4">
-        <DateCalendar value={date} onChange={handleDateChange} 
-        sx={{
-          color: "white"
-        }}/>
-        <TimeClock value={time} onChange={handleTimeChange} />
-      </div>
-    </LocalizationProvider>
-
+  return (
+    <div className="scale-90 flex justify-center lg-2:scale-100">
+      <DayPicker mode="single" disabled={{ before: new Date() }} animate required selected={selectedDate}
+      onSelect={handleSelected}
+      classNames={{
+        today: "text-sky-500",
+        selected: "bg-sky-500 rounded-full duration-500",
+      }} />
+    </div>
   )
 
 }

@@ -10,17 +10,17 @@ import { toast } from "sonner"
 export function SetLinkExpirationModal() {
 
   const [submiting, setSubmiting] = useState(false)
-  const [expires_at, setExpires_at] = useState("")
+  const [expires_at, setExpires_at] = useState<Date | undefined>(undefined)
   const { short, linkExpirationModal, toggleLinkExpirationModal } = useSetLinkExpiration()
 
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
-    if(expires_at == ""){
+    if(!expires_at){
       toast.error("Please, enter a valid date")
     } else if(short) {
       setSubmiting(true)
-      await addLinkExpiration(short, expires_at).then(res => {
+      await addLinkExpiration(short, expires_at.toISOString()).then(res => {
         if(res.error){
           toast.error(res.error)
         } else {
@@ -56,14 +56,16 @@ export function SetLinkExpirationModal() {
                 <div className="p-4 flex flex-col gap-4 border-b border-neutral-900 text-white">
                   <ExpirationCalendar onChange={(value) => {
                     setExpires_at(value)
-                    console.log(value)
                   }} />
                 </div>
 
                 {/* Buttons Section */}
                 <div className="p-4 flex gap-4 items-center text-sm">
                   <button className="py-1 px-3 text-center bg-neutral-900 rounded-lg disabled:opacity-50"
-                    onClick={() => { toggleLinkExpirationModal() }} type="button" disabled={submiting}>
+                    type="button" disabled={submiting} onClick={() => { 
+                      setExpires_at(undefined) 
+                      toggleLinkExpirationModal()
+                    }}>
                     Close
                   </button>
 
