@@ -13,7 +13,7 @@ async function ShortURL({ params }: { params: Promise<{ shortUrl: string }> }) {
 
   const supabase = createSupabase()
   const { shortUrl } = await params
-  const { data, error } = await supabase.rpc("get_link_details", { x_short: shortUrl }).maybeSingle()
+  const { data, error } = await supabase.rpc("get_link_with_details", { x_short: shortUrl }).maybeSingle()
   const link = data as Link | null
 
   if(error){

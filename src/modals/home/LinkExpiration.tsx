@@ -1,9 +1,9 @@
 import { ExpirationCalendar } from "@/components/shared/Calendar"
 import { ExpirationHour } from "@/components/shared/HourPicker"
+import { useLinkChanges } from "@/hooks/useLinkChanges"
 import { useAddExpirationModal } from "@/hooks/useModal"
 import { addLinkExpiration } from "@/utils/links/api"
 import { IconLoader2 } from "@tabler/icons-react"
-// import { IconClockCheck, IconLoader2 } from "@tabler/icons-react"
 import { AnimatePresence, motion } from "framer-motion"
 import { FormEvent, useState } from "react"
 import { toast } from "sonner"
@@ -14,6 +14,7 @@ export function SetLinkExpirationModal() {
   const [expirationDate, setExpirationDate] = useState<Date | undefined>(undefined)
   const [expirationHour, setExpirationHour] = useState("")
   const { shortLink, isAddExpirationModalOpen, toggleAddExpirationModal } = useAddExpirationModal()
+  const { recordLinkChanges } = useLinkChanges()
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
@@ -40,6 +41,7 @@ export function SetLinkExpirationModal() {
       })
         .finally(() => {
           setSubmiting(false)
+          recordLinkChanges()
           toggleAddExpirationModal()
         })
     }
