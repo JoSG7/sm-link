@@ -1,4 +1,5 @@
-import { useLinkChanges, usePwdLinkModal } from "@/hooks/useModal";
+import { useLinkChanges } from "@/hooks/useLinkChanges";
+import { useAddPasswordModal } from "@/hooks/useModal";
 import { createProtectedLink } from "@/utils/links/api";
 import { IconCheck, IconLoader2, IconLock, IconLockCheck, IconX } from "@tabler/icons-react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -8,7 +9,7 @@ import { toast } from "sonner";
 export function CreatePwdLinkModal() {
 
   const [submiting, setSubmiting] = useState(false)
-  const { pwdLinkModal, short, togglePwdLinkModal } = usePwdLinkModal()
+  const { isAddPasswordModalOpen, shortLink, toggleAddPasswordModal } = useAddPasswordModal()
   const { recordLinkChanges } = useLinkChanges()
   const pass = useRef<HTMLInputElement | null>(null)
   const confirmPass = useRef<HTMLInputElement | null>(null)
@@ -21,12 +22,12 @@ export function CreatePwdLinkModal() {
     
     setSubmiting(true)
 
-    if (password && confirmPassword && short) {
+    if (password && confirmPassword && shortLink) {
       if (password !== confirmPassword) {
         toast.error("The passwords don't match")
         setSubmiting(false)
       } else {
-        await createProtectedLink(short, password).then(res => {
+        await createProtectedLink(shortLink, password).then(res => {
           if(res.error){
             toast.error(res.error)
           } else {
@@ -36,7 +37,7 @@ export function CreatePwdLinkModal() {
         })
         .finally(() => {
           setSubmiting(false)
-          togglePwdLinkModal()
+          toggleAddPasswordModal()
         })
       }
     }
@@ -45,7 +46,7 @@ export function CreatePwdLinkModal() {
   return (
     <AnimatePresence>
       {
-        pwdLinkModal && (
+        isAddPasswordModalOpen && (
           <motion.section className="fixed inset-0 z-30 bg-[rgba(0,0,0,0.4)] flex items-center justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -58,7 +59,7 @@ export function CreatePwdLinkModal() {
 
               {/* Title */}
               <h1 className="p-4 text-sm border-b border-neutral-900 lg-2:text-lg">
-                Add protection to <span className="font-semibold">{short}</span>
+                Add protection to <span className="font-semibold">{shortLink}</span>
               </h1>
 
               <form onSubmit={handleCreate}>
@@ -80,7 +81,7 @@ export function CreatePwdLinkModal() {
                 {/* Buttons Section */}
                 <div className="p-4 flex gap-4 items-center">
                   <button className="flex items-center gap-1 p-2 pr-3 bg-neutral-900 rounded-xl text-xs lg-2:text-sm disabled:opacity-50"
-                    onClick={() => { togglePwdLinkModal() }} disabled={submiting} type="button">
+                    onClick={() => { toggleAddPasswordModal() }} disabled={submiting} type="button">
                     <IconX className="size-3" />
                     Cancelar
                   </button>

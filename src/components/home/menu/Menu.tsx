@@ -7,9 +7,10 @@ import { LinkDetails } from "@/types/global"
 import { Accordion } from "@/components/shared/Accordion"
 import { RecentLinks } from "./RecentLink"
 import { getLinkDetails } from "@/utils/links/api"
-import { useLinkChanges, useMenuDrawer } from "@/hooks/useModal"
+import { useMenuDrawer } from "@/hooks/useModal"
 import { useScreenSize } from "@/hooks/useScreenSize"
 import { ProtectedLinks } from "./ProtectedLink"
+import { useLinkChanges } from "@/hooks/useLinkChanges"
 // import { DeleteLinkModal } from "@/components/modals/home/DeleteLinkModal"
 
 
@@ -17,7 +18,7 @@ export function MainMenu() {
 
   const [linkDetails, setLinkDetails] = useState<LinkDetails[] | []>([])
   const [loading, setLoading] = useState(false)
-  const { menu, toggleMenu } = useMenuDrawer()
+  const { isMenuOpen, toggleMenu } = useMenuDrawer()
   const { linkChanges } = useLinkChanges()
   const width = useScreenSize()
   const isMobile = width < 640
@@ -59,10 +60,10 @@ export function MainMenu() {
   return (
 
     <motion.section className={`h-screen fixed inset-0 z-20 bg-modal backdrop-blur-sm text-[#E5E7EB] 
-      ${menu ? "pointer-events-auto" : "pointer-events-none"}`}
-      onClick={toggleMenu} initial={false} animate={{ opacity: menu ? 1 : 0 }} transition={{ duration: 0.1 }} >
+      ${isMenuOpen ? "pointer-events-auto" : "pointer-events-none"}`}
+      onClick={toggleMenu} initial={false} animate={{ opacity: isMenuOpen ? 1 : 0 }} transition={{ duration: 0.1 }} >
       <motion.nav className={`absolute bottom-0 bg-[rgb(7,7,7)] border-[#1c1c1d] overflow-y-auto ${navWidth} sm:right-0 sm:border-l`}
-        onClick={(e) => e.stopPropagation()} initial={false} animate={menu ? "open" : "closed"} variants={navVariants}>
+        onClick={(e) => e.stopPropagation()} initial={false} animate={isMenuOpen ? "open" : "closed"} variants={navVariants}>
         <ul className="flex flex-col">
           <Accordion items={[
             {
@@ -99,7 +100,7 @@ export function MainMenu() {
 // onClick={closeMainMenu}>
 //   <nav className="w-full h-0 bg-[rgb(7,7,7)] border-[#1c1c1d] self-end overflow-y-auto duration-100 whitespace-nowrap
 //   sm:w-0 sm:fixed sm:right-0 sm:h-full sm:border-l sm:overflow-x-hidden"
-//   id="menu" onClick={(e) => { e.stopPropagation() }}>
+//   id="isMenuOpen" onClick={(e) => { e.stopPropagation() }}>
 //     <ul className="option-list flex flex-col ">
 
 //       <Accordion items={[

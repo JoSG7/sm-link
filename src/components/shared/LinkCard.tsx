@@ -1,7 +1,6 @@
 "use client"
 
 import { IconCalendar, IconClockCheck, IconCopy, IconExternalLink, IconShieldLockFilled, IconTrashFilled } from "@tabler/icons-react"
-import { useDeleteLinkModal, usePwdLinkModal, useSetLinkExpiration } from "@/hooks/useModal"
 import { months } from "@/utils/constants"
 import { toast } from "sonner"
 import Link from "next/link"
@@ -10,6 +9,7 @@ import { CreatePwdLinkModal } from "../../modals/home/PwdLinkForm"
 import { LinkDetails } from "@/types/global"
 import { DomainLogo } from "./DomainLogo"
 import { SetLinkExpirationModal } from "@/modals/home/LinkExpiration"
+import { useAddExpirationModal, useAddPasswordModal, useDeleteLinkModal } from "@/hooks/useModal"
 
 export function LinkCard({ data }: { data: LinkDetails }) {
   const url = new URL(data.original)
@@ -18,8 +18,8 @@ export function LinkCard({ data }: { data: LinkDetails }) {
   const day = date.getDate()
   const month = months[date.getMonth()]
   const { toggleDeleteModal } = useDeleteLinkModal()
-  const { togglePwdLinkModal } = usePwdLinkModal()
-  const { toggleLinkExpirationModal } = useSetLinkExpiration()
+  const { toggleAddPasswordModal } = useAddPasswordModal()
+  const { toggleAddExpirationModal } = useAddExpirationModal()
 
   return (
 
@@ -57,15 +57,13 @@ export function LinkCard({ data }: { data: LinkDetails }) {
 
         {/* Expiration Button */}
         <button className="p-2 rounded-xl bg-neutral-900 disabled:opacity-50" 
-        onClick={() => {
-          toggleLinkExpirationModal(data.short)
-        }}>
+        onClick={() => { toggleAddExpirationModal(data.short) }} disabled={data.has_expiration}>
           <IconClockCheck className="size-5 "/>
         </button>
 
         {/* Protected Button */}
         <button className="p-2 rounded-xl bg-neutral-900 disabled:opacity-50"
-        onClick={() => { togglePwdLinkModal(data.short) }} disabled={data.has_password}>
+        onClick={() => { toggleAddPasswordModal(data.short) }} disabled={data.has_password}>
           <IconShieldLockFilled className="size-5 "/>
         </button>
 

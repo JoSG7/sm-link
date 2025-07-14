@@ -29,6 +29,7 @@ export interface LinkDetails {
   short: string
   created_at: string
   has_password: boolean
+  has_expiration: boolean
   expires_at: string | null
   max_visits: number | null
   current_visits: number |null

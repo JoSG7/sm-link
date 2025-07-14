@@ -1,6 +1,6 @@
 "use client"
 
-import { useLinkChanges } from "@/hooks/useModal";
+import { useLinkChanges } from "@/hooks/useLinkChanges";
 import { createShortLink } from "@/utils/links/api";
 import { IconLoader2, IconPaperclip, IconScissors } from "@tabler/icons-react";
 import { FormEvent, useState } from "react";

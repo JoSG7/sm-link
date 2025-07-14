@@ -1,6 +1,7 @@
 "use client"
 
-import { useDeleteLinkModal, useLinkChanges } from "@/hooks/useModal"
+import { useLinkChanges } from "@/hooks/useLinkChanges"
+import { useDeleteLinkModal } from "@/hooks/useModal"
 import { deleteGuestLink } from "@/utils/links/api"
 import { IconLoader2 } from "@tabler/icons-react"
 import { AnimatePresence, motion } from "framer-motion"
@@ -10,13 +11,13 @@ import { toast } from "sonner"
 export function DeleteLinkModal() {
 
   const [deleting, setDeleting] = useState(false)
-  const { deleteModal, short, toggleDeleteModal } = useDeleteLinkModal()
+  const { isDeleteModalOpen, shortLink, toggleDeleteModal } = useDeleteLinkModal()
   const { recordLinkChanges } = useLinkChanges()
 
   const handleDelete = async () => {
     setDeleting(true)
-    if(short){
-      await deleteGuestLink(short).then((res) => {
+    if(shortLink){
+      await deleteGuestLink(shortLink).then((res) => {
         if(res.error){
           toast.error(res.error)
         } else {
@@ -32,7 +33,7 @@ export function DeleteLinkModal() {
   return (
     <AnimatePresence>
       {
-        deleteModal && (
+        isDeleteModalOpen && (
           <motion.section className="fixed inset-0 z-30 bg-[rgba(0,0,0,0.4)] flex items-center justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -45,7 +46,7 @@ export function DeleteLinkModal() {
               transition={{ duration: 0.2 }}>
 
               <h1 className="p-4 border-b border-neutral-900 text-sm lg-2:text-base">
-                Are you sure to delete this link for ever? <span className="font-medium">{short}</span>
+                Are you sure to delete this link for ever? <span className="font-medium">{shortLink}</span>
               </h1>
 
               <div className="p-4 flex gap-4 items-center text-sm">

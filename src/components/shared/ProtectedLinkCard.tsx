@@ -1,4 +1,4 @@
-import { useRemoveLinkPwdModal } from "@/hooks/useModal";
+import { useRemovePasswordModal } from "@/hooks/useModal";
 import { LinkDetails } from "@/types/global";
 import { IconTrashFilled } from "@tabler/icons-react";
 import Image from "next/image";
@@ -7,7 +7,7 @@ import { RemoveLinkPwdModal } from "../../modals/home/RemoveLinkPwd";
 export function ProtectedLinkCard({ data }: { data: LinkDetails }) {
   const url = new URL(data.original)
   const domain = url.hostname
-  const { toggleRemoveLinkPwdModal } = useRemoveLinkPwdModal()
+  const { toggleRemovePasswordModal } = useRemovePasswordModal()
 
 
   if (!data.has_password) return
@@ -24,7 +24,7 @@ export function ProtectedLinkCard({ data }: { data: LinkDetails }) {
       </section>
       <aside>
         <button className="p-2 rounded-md bg-neutral-900 flex gap-1 items-center text-sm"
-          onClick={() => toggleRemoveLinkPwdModal(data.short)}>
+          onClick={() => toggleRemovePasswordModal(data.short)}>
           <IconTrashFilled className="size-4 " />
         </button>
       </aside>

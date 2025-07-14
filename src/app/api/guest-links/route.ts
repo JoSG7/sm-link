@@ -11,7 +11,7 @@ export async function GET() {
   if (!guestID) {
     return NextResponse.json({ error: "Unauthorized" })
   } else {
-    const { data: guestLinks, error } = await supabase.rpc("get_links_details")
+    const { data: guestLinks, error } = await supabase.rpc("get_links_with_details")
     return error ? NextResponse.json({ error: "Error, try again" }) : NextResponse.json(guestLinks)
   }
 }

@@ -1,7 +1,6 @@
 import { NavBar } from "@/components/home/NavbarHeader";
 import { redirect } from "next/navigation";
 import { createSupabaseServer } from "@/lib/supabase/server";
-import { HomeModals } from "@/modals/home/Provider";
 import { MainMenu } from "@/components/home/menu/Menu";
 import { Hero } from "@/components/home/sections/Hero/Hero";
 import { LinkFormSection } from "@/components/home/sections/LinkForm/LinkFormSection";
@@ -20,24 +19,18 @@ export default async function Home() {
   } else {
 
     return (
-
-      <HomeModals>
-        <main className="flex flex-col text-white bg-black">
-          <NavBar />
-          <MainMenu />
-          <div className="flex flex-col gap-28">
-            <Hero />
-            <LinkFormSection />
-            <LogingDetails />
-            <Footer />
-          </div>
-        </main>
-      </HomeModals>
-
+      <main className="flex flex-col text-white bg-black">
+        <NavBar />
+        <MainMenu />
+        <div className="flex flex-col gap-28">
+          <Hero />
+          <LinkFormSection />
+          <LogingDetails />
+          <Footer />
+        </div>
+      </main>
     )
-
   }
-
 }
 
 
