@@ -21,7 +21,7 @@ export default {
     'w-1/2',
     'z-30',
     'w-[300px]',
-    'bg-[rgba(0,0,0,0.4)]',
+    'bg-[rgba(0,0,0,0.8)]',
     'bg-sky-600',
     'w-max'
   ],
