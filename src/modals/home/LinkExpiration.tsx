@@ -74,7 +74,7 @@ export function SetLinkExpirationModal() {
                   <div className="flex items-center gap-4">
                     <ExpirationHour onChange={(value) => { setExpirationHour(value) }} />
 
-                    <p className="rounded-lg text-sm border border-[#1c1d1d] p-3 text-gold lg-2:text-base">
+                    <p className="rounded-lg text-sm border border-[#1c1d1d] p-3 text-gold grow-[2] lg-2:text-base">
                       {expirationDate ? expirationDate.toLocaleDateString() : ""} {expirationHour == "" ? "00:00" : expirationHour}
                     </p>
                   </div>

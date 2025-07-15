@@ -23,7 +23,7 @@ export default {
     'w-[300px]',
     'bg-[rgba(0,0,0,0.8)]',
     'bg-sky-600',
-    'w-max'
+    'duuration-300'
   ],
   theme: {
     extend: {
