@@ -37,14 +37,14 @@ export function Hero() {
             </p>
 
             {/* Since 360px */}
-            <div className="flex gap-4 pb-5 sm:justify-normal sm:gap-5 lg-2:hidden">
+            <div className="flex gap-5 pb-5 sm:justify-normal sm:gap-5 lg-2:hidden">
               <article className="rounded-xl bg-neutral-900 border border-graphite p-2 grow">
                 <div className="flex justify-center pb-2">
                   <div className="p-1 rounded-full bg-gray-800 ">
                     <IconShieldCheckFilled className="text-emerald-400 sm:size-7" />
                   </div>
                 </div>
-                <p className="text-xs text-center sm:text-base">Protected links</p>
+                <p className="text-xs text-center sm:text-base">Protection</p>
               </article>
 
               <article className="rounded-xl bg-neutral-900 border border-graphite p-2 grow">
@@ -53,7 +53,7 @@ export function Hero() {
                     <IconAlarmFilled className="text-cyan-400 sm:size-7" />
                   </div>
                 </div>
-                <p className="text-xs text-center sm:text-base">Set expirations</p>
+                <p className="text-xs text-center sm:text-base">Expirations</p>
               </article>
 
               <article className="rounded-xl bg-neutral-900 border border-graphite p-2 grow">
@@ -62,7 +62,7 @@ export function Hero() {
                     <IconSettingsFilled className="text-purple-400 sm:size-7" />
                   </div>
                 </div>
-                <p className="text-xs text-center sm:text-base">Control now</p>
+                <p className="text-xs text-center sm:text-base">Control </p>
               </article>
             </div>
 
