@@ -27,13 +27,17 @@ export default {
   ],
   theme: {
     extend: {
+      fontSize: {
+        
+      },
       screens: {
         "lg-2": "1272px"
       },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        gold: '#f5d98b'
+        gold: '#f5d98b',
+        graphite: '#1c1d1d'
       },
     },
   },
