@@ -10,12 +10,19 @@
 }
 
 .fade {
+  -webkit-mask-image:
+    linear-gradient(to bottom, black 80%, transparent 100%),
+    linear-gradient(to left, black 80%, transparent 100%),
+    linear-gradient(to right, black 80%, transparent 100%),
+    linear-gradient(to top, black 80%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  
   mask-image:
     linear-gradient(to bottom, black 80%, transparent 100%),
     linear-gradient(to left, black 80%, transparent 100%),
     linear-gradient(to right, black 80%, transparent 100%),
     linear-gradient(to top, black 80%, transparent 100%);
-  mask-composite: intersect;
+  mask-composite: source-in;
 }
 
 .fade-x {

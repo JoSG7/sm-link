@@ -25,20 +25,20 @@ export function Hero() {
                 className="size-60 fade object-cover sm:size-72 lg-2:hidden" />
             </div>
 
-            <h1 className="text-4xl pt-2 sm:text-6xl sm:text-start
+            <h1 className="text-4xl pt-2 text-center tracking-tight font-medium sm:text-6xl sm:text-start
             lg-2:text-white lg-2:text-start lg-2:text-6xl lg-2:tracking-tight">
               The smartest way to share your links
             </h1>
 
-            <p className="text-neutral-400 py-5 sm:text-xl sm:text-start
+            <p className="text-neutral-400 py-5 text-center text-lg sm:text-xl sm:text-start
             lg-2:text-start lg-2:text-xl lg-2:font-medium">
-              Tired of messy URLs? Shorten links in seconds and track their performance
+              Tired of messy URLs? Shorten links in seconds and track their metrics
               <span className="hidden lg-2:inline"> anywhere - 24 hours a day</span>
             </p>
 
             {/* Since 360px */}
             <div className="flex gap-5 pb-5 sm:justify-normal sm:gap-5 lg-2:hidden">
-              <article className="rounded-xl bg-neutral-900 border border-graphite p-2 grow">
+              <article className="rounded-xl bg-neutral-950 border border-graphite p-2 grow">
                 <div className="flex justify-center pb-2">
                   <div className="p-1 rounded-full bg-gray-800 ">
                     <IconShieldCheckFilled className="text-emerald-400 sm:size-7" />
@@ -47,7 +47,7 @@ export function Hero() {
                 <p className="text-xs text-center sm:text-base">Protection</p>
               </article>
 
-              <article className="rounded-xl bg-neutral-900 border border-graphite p-2 grow">
+              <article className="rounded-xl bg-neutral-950 border border-graphite p-2 grow">
                 <div className="flex justify-center pb-2">
                   <div className="p-1 rounded-full bg-gray-800 ">
                     <IconAlarmFilled className="text-cyan-400 sm:size-7" />
@@ -56,13 +56,13 @@ export function Hero() {
                 <p className="text-xs text-center sm:text-base">Expirations</p>
               </article>
 
-              <article className="rounded-xl bg-neutral-900 border border-graphite p-2 grow">
+              <article className="rounded-xl bg-neutral-950 border border-graphite p-2 grow">
                 <div className="flex justify-center pb-2">
                   <div className="p-1 rounded-full bg-gray-800 ">
                     <IconSettingsFilled className="text-purple-400 sm:size-7" />
                   </div>
                 </div>
-                <p className="text-xs text-center sm:text-base">Control </p>
+                <p className="text-xs text-center sm:text-base">Settings </p>
               </article>
             </div>
 
@@ -81,7 +81,7 @@ export function Hero() {
             {/* Start Button section */}
             <div className="flex items-center gap-4 justify-center sm:justify-start
             lg-2:gap-7 lg-2:justify-start">
-              <button className="py-2 px-5 text-lg rounded-full bg-gradient-to-r from-neutral-100 to-neutral-400 text-neutral-950 transition-transform duration-200 hover:scale-105 sm:text-xl sm:py-4 sm:px-5
+              <button className="py-2 px-5 text-lg rounded-full font-medium bg-gradient-to-r from-neutral-100 to-neutral-400 text-neutral-950 transition-transform duration-200 hover:scale-105 sm:text-xl sm:py-4 sm:px-5
               lg-2:py-2 lg-2:px-4 lg-2:text-lg" onClick={() => { scrollTo("link-form-section") }}>
                 {`Let's start now!`}
               </button>
