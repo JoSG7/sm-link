@@ -25,8 +25,8 @@ export function Hero() {
                 className="size-60 fade object-cover sm:size-72 lg-2:hidden" />
             </div>
 
-            <h1 className="text-4xl pt-2 text-center tracking-tight font-medium sm:text-6xl sm:text-start
-            lg-2:text-white lg-2:text-start lg-2:text-6xl lg-2:tracking-tight">
+            <h1 className="text-4xl pt-2 text-center tracking-tight sm:text-6xl sm:text-start
+            lg-2:text-white lg-2:text-start lg-2:text-6xl">
               The smartest way to share your links
             </h1>
 
@@ -37,7 +37,7 @@ export function Hero() {
             </p>
 
             {/* Since 360px */}
-            <div className="flex gap-5 pb-5 sm:justify-normal sm:gap-5 lg-2:hidden">
+            <div className="flex gap-5 pb-6 sm:justify-normal sm:gap-5 lg-2:hidden">
               <article className="rounded-xl bg-neutral-950 border border-graphite p-2 grow">
                 <div className="flex justify-center pb-2">
                   <div className="p-1 rounded-full bg-gray-800 ">

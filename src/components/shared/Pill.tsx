@@ -1,19 +1,19 @@
-import { HtmlHTMLAttributes, ReactNode } from "react"
+import { ReactNode } from "react"
 
 interface Props {
   title?: string
-  className?: HtmlHTMLAttributes<HTMLParagraphElement>
+  containerClass?: string
   icon?: ReactNode
   iconContainerClass?: string
-  containerClass?: string
+  titleClass?: string
 }
 
-export const Pill = ({ title = "", className, icon = null, iconContainerClass, containerClass }: Props) => {
+export const Pill = ({ title = "", containerClass, icon = null, iconContainerClass, titleClass }: Props) => {
 
   return (
-    <article className={`rounded-full border border-[#1c1d1d] py-1 px-3 flex gap-3 items-center lg-2:gap-3 ${containerClass}`}>
+    <article className={`rounded-full border border-graphite py-1 px-3 flex gap-2 items-center ${containerClass}`}>
       <div>
-        <p className={`text-xs ${className}`}>
+        <p className={`text-xs ${titleClass}`}>
           {title}
         </p>
       </div>

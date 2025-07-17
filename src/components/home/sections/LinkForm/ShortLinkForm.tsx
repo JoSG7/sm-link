@@ -2,7 +2,7 @@
 
 import { useLinkChanges } from "@/hooks/useLinkChanges";
 import { createShortLink } from "@/utils/links/api";
-import { IconLoader2, IconPaperclip, IconScissors } from "@tabler/icons-react";
+import { IconLoader2, IconPaperclip, IconStarFilled } from "@tabler/icons-react";
 import { FormEvent, useState } from "react";
 import { toast } from "sonner";
 import { isURL } from "validator";
@@ -40,12 +40,15 @@ export function ShortLinkForm() {
 
   return (
     <form onSubmit={handleSubmit} className="relative rounded-3xl border p-4 bg-neutral-950 border-[#1c1d1d]
-        sm:p-7 lg:p-6 lg-2:p-7 lg-2:bg-black">
+    sm:p-7 lg:p-6 lg-2:p-7 lg-2:bg-black">
+      {/* Borders */}
+      <div className="absolute -top-[1px] left-10 h-px w-1/3 bg-gradient-to-r from-transparent via-lime-500 to-transparent "></div>
+      <div className="absolute -bottom-[1px] right-10 h-px w-1/3 bg-gradient-to-r from-transparent via-lime-700 to-transparent "></div>
 
       <div className="flex justify-between">
         <label htmlFor="txtUrl" className="flex items-center gap-3">
-          <div className="p-1.5 rounded-full bg-gray-800 lg-2:block">
-            <IconPaperclip className="size-5 lg-2:size-5 text-gold"></IconPaperclip>
+          <div className="rounded-full lg-2:block">
+            <IconPaperclip className="size-5 lg-2:size-5 text-lime-400"></IconPaperclip>
           </div>
           <span className="text-lg sm:text-xl text-[#E5E7EB] font-semibold">Paste a long link</span>
         </label>
@@ -56,8 +59,8 @@ export function ShortLinkForm() {
         placeholder="Enter a long Link to short" required />
 
       <div className="flex items-center gap-3">
-        <div className="p-1.5 rounded-full bg-gray-800 lg-2:block">
-          <IconScissors className="size-5 lg-2:size-5 text-gold"></IconScissors>
+        <div className="rounded-full lg-2:block">
+          <IconStarFilled className="size-5 lg-2:size-5 text-emerald-400"></IconStarFilled>
         </div>
         <span className="text-lg sm:text-xl text-[#E5E7EB] font-semibold">Here the new link</span>
       </div>
@@ -68,16 +71,16 @@ export function ShortLinkForm() {
       </div>
 
       <div className="flex justify-center">
-        <button className="w-full flex items-center justify-center gap-3 py-2 mt-2 mb-7 rounded-lg disabled:opacity-50 bg-gray-800
-        sm:text-lg" disabled={submiting}>
+        <button className="w-full flex items-center justify-center gap-3 py-2 mt-2 mb-7 bg-gradient-to-r rounded-lg from-white via-neutral-300 to-neutral-600 text-black font-medium
+        disabled:opacity-50 sm:text-lg" disabled={submiting}>
           {submiting ? <IconLoader2 className="size-4 animate-spin" /> : ""}
           {submiting ? "Shortening..." : "Shorten link"}
         </button>
       </div>
 
       <p className="text-xs text-neutral-400 text-center sm:text-sm lg-2:text-xs">
-        By proceeding, you agree to our <span className="text-stone-100">Terms of Service</span> and
-        <span className="text-stone-100"> Privacy Policy</span>.
+        By proceeding, you agree to our <span className="text-green-300">Terms of Service</span> and
+        <span className="text-green-300"> Privacy Policy</span>.
       </p>
     </form>
   )
