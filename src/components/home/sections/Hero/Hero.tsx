@@ -30,36 +30,54 @@ export function Hero() {
               The smartest way to share your links
             </h1>
 
-            <p className="text-neutral-400 py-5 text-center text-lg sm:text-xl sm:text-start
-            lg-2:text-start lg-2:text-xl lg-2:font-medium">
+            <p className="text-neutral-300 py-5 text-center text-lg sm:text-xl sm:text-start
+            lg-2:text-start lg-2:text-xl lg-2:text-neutral-400 lg-2:font-medium">
               Tired of messy URLs? Shorten links in seconds and track their metrics
               <span className="hidden lg-2:inline"> anywhere - 24 hours a day</span>
             </p>
 
             {/* Since 360px */}
             <div className="flex gap-5 pb-6 sm:justify-normal sm:gap-5 lg-2:hidden">
-              <article className="rounded-xl bg-neutral-950 border border-graphite p-2 grow">
+              <article className="relative rounded-xl bg-neutral-950 border border-graphite p-2 grow">
+                {/* Borders */}
+                <div className="absolute -top-[1px] left-1/3 h-px w-1/3 bg-gradient-to-r from-transparent via-sky-400 
+                to-transparent " />
+                {/* <div className="absolute -bottom-[1px] right-10 h-px w-1/3 bg-gradient-to-r from-transparent via-sky-700 
+                to-transparent " /> */}
+
                 <div className="flex justify-center pb-2">
-                  <div className="p-1 rounded-full bg-gray-800 ">
-                    <IconShieldCheckFilled className="text-emerald-400 sm:size-7" />
+                  <div className=" ">
+                    <IconShieldCheckFilled className="text-sky-400 sm:size-7" />
                   </div>
                 </div>
                 <p className="text-xs text-center sm:text-base">Protection</p>
               </article>
 
-              <article className="rounded-xl bg-neutral-950 border border-graphite p-2 grow">
+              <article className="relative rounded-xl bg-neutral-950 border border-graphite p-2 grow">
+                {/* Borders */}
+                <div className="absolute -top-[1px] left-1/3 h-px w-1/3 bg-gradient-to-r from-transparent via-blue-500 
+                to-transparent " />
+                {/* <div className="absolute -bottom-[1px] right-10 h-px w-1/3 bg-gradient-to-r from-transparent via-blue-700 
+                to-transparent " /> */}
+
                 <div className="flex justify-center pb-2">
-                  <div className="p-1 rounded-full bg-gray-800 ">
-                    <IconAlarmFilled className="text-cyan-400 sm:size-7" />
+                  <div className=" ">
+                    <IconAlarmFilled className="text-blue-500 sm:size-7" />
                   </div>
                 </div>
                 <p className="text-xs text-center sm:text-base">Expirations</p>
               </article>
 
-              <article className="rounded-xl bg-neutral-950 border border-graphite p-2 grow">
+              <article className="relative rounded-xl bg-neutral-950 border border-graphite p-2 grow">
+                {/* Borders */}
+                <div className="absolute -top-[1px] left-1/3 h-px w-1/3 bg-gradient-to-r from-transparent via-indigo-500 
+                to-transparent " />
+                {/* <div className="absolute -bottom-[1px] right-10 h-px w-1/3 bg-gradient-to-r from-transparent via-lime-700 
+                to-transparent " /> */}
+
                 <div className="flex justify-center pb-2">
-                  <div className="p-1 rounded-full bg-gray-800 ">
-                    <IconSettingsFilled className="text-purple-400 sm:size-7" />
+                  <div className=" ">
+                    <IconSettingsFilled className="text-indigo-600 sm:size-7" />
                   </div>
                 </div>
                 <p className="text-xs text-center sm:text-base">Settings </p>
