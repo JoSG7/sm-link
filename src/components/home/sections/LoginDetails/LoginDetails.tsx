@@ -1,6 +1,5 @@
-import { IconChartHistogram, IconClockExclamation, IconClockPlus, IconFolderCog, IconListSearch, IconPencilStar, IconShieldLock, IconShieldPlus } from "@tabler/icons-react"
+import { IconChartHistogram, IconClockExclamation, IconFolderCog, IconListSearch, IconPencilStar, IconShieldLock, IconShieldPlus } from "@tabler/icons-react"
 import { LoginDetailsTitle } from "./Title"
-// import { GitHubAuthButton, GoogleAuthButton } from "../../auth/AuthButtonClient"
 import Image from "next/image"
 
 export function LogingDetails() {
@@ -16,9 +15,52 @@ export function LogingDetails() {
             <LoginDetailsTitle />
 
             {/* Since 360px */}
-            <div className="flex justify-between pb-3 sm:justify-start sm:gap-6 sm:pb-6
+            <div className="flex flex-col gap-4 pb-5 sm:justify-start sm:gap-6 sm:pb-6
             lg-2:hidden">
-              <article className="rounded-xl border bg-neutral-950 border-[#1c1d1d] p-2 ">
+              {/* First Card */}
+              <article className="p-3 rounded-lg flex gap-4 bg-neutral-950 border border-graphite">
+                <div className="flex flex-col gap-1 grow">
+                  <h1 className="font-medium">Full detailed metrics</h1>
+                  <p className="text-xs text-neutral-300 ">
+                    Get all data recoleted from your links per month, or a determinated date
+                  </p>
+                </div>
+
+                <div className="flex items-center p-3 rounded-lg bg-neutral-900">
+                  <IconChartHistogram className=" size-7" />
+                </div>
+              </article>
+
+              <section className="flex gap-4">
+                <div className="min-w-40 flex flex-col gap-4">
+                  <article className="p-3 rounded-lg bg-neutral-950 border border-graphite">
+                    <h1 className="font-medium pb-1">More SmLinks</h1>
+                    <p className="text-xs text-neutral-300 ">Now you can create 15 SmLink instead of 7</p>
+                  </article>
+                
+                  <article className="p-3 rounded-lg bg-neutral-950 border border-graphite">
+                    <h1 className="font-medium pb-1">Set a nickname</h1>
+                    <p className="text-xs text-neutral-300 ">Create a unique name for your SmLink</p>
+                  </article>
+                </div>
+
+                <article className="flex flex-col justify-between p-3 grow rounded-lg bg-neutral-950 border border-graphite">
+                  <h1 className="font-medium">Rename your SmLinks</h1>
+                  <p className="text-xs text-neutral-300">Change the url whit a original name that you can choose</p>
+
+                  <div className="flex justify-between">
+                    <div className="flex p-3 rounded-lg bg-neutral-900">
+                      <IconPencilStar className="size-7" />
+                    </div>
+
+                    <div className="flex p-3 rounded-lg bg-neutral-900">
+                      <IconShieldPlus className="size-7" />
+                    </div>
+                  </div>
+                </article>
+              </section>
+
+              {/* <article className="rounded-xl border bg-neutral-950 border-[#1c1d1d] p-2 ">
                 <div className="flex justify-center pb-2">
                   <IconChartHistogram className="text-neutral-300 sm:size-7" />
                 </div>
@@ -54,7 +96,7 @@ export function LogingDetails() {
                   <IconFolderCog className="text-neutral-300 sm:size-7" />
                 </div>
                 <p className="text-xs sm:text-base">Management</p>
-              </article>
+              </article> */}
             </div>
 
             {/* Since 1272px */}
@@ -115,7 +157,7 @@ export function LogingDetails() {
             </div> */}
             <div className="flex items-center justify-center sm:justify-start
             lg-2:justify-start">
-              <button className="py-2 px-5 text-base rounded-full bg-gradient-to-r from-neutral-100 to-neutral-400 text-neutral-950 transition-transform duration-200 hover:scale-105 sm:text-xl sm:py-4 sm:px-5
+              <button className="py-2 px-5 text-lg font-medium rounded-full bg-gradient-to-r from-neutral-100 to-neutral-400 text-neutral-950 transition-transform duration-200 hover:scale-105 sm:text-xl sm:py-4 sm:px-5
               lg-2:py-2 lg-2:px-4">
                 Get Started
               </button>

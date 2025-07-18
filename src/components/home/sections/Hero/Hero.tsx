@@ -42,8 +42,6 @@ export function Hero() {
                 {/* Borders */}
                 <div className="absolute -top-[1px] left-1/3 h-px w-1/3 bg-gradient-to-r from-transparent via-sky-400 
                 to-transparent " />
-                {/* <div className="absolute -bottom-[1px] right-10 h-px w-1/3 bg-gradient-to-r from-transparent via-sky-700 
-                to-transparent " /> */}
 
                 <div className="flex justify-center pb-2">
                   <div className=" ">
@@ -57,8 +55,6 @@ export function Hero() {
                 {/* Borders */}
                 <div className="absolute -top-[1px] left-1/3 h-px w-1/3 bg-gradient-to-r from-transparent via-blue-500 
                 to-transparent " />
-                {/* <div className="absolute -bottom-[1px] right-10 h-px w-1/3 bg-gradient-to-r from-transparent via-blue-700 
-                to-transparent " /> */}
 
                 <div className="flex justify-center pb-2">
                   <div className=" ">
@@ -72,8 +68,6 @@ export function Hero() {
                 {/* Borders */}
                 <div className="absolute -top-[1px] left-1/3 h-px w-1/3 bg-gradient-to-r from-transparent via-indigo-500 
                 to-transparent " />
-                {/* <div className="absolute -bottom-[1px] right-10 h-px w-1/3 bg-gradient-to-r from-transparent via-lime-700 
-                to-transparent " /> */}
 
                 <div className="flex justify-center pb-2">
                   <div className=" ">

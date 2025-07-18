@@ -7,9 +7,9 @@ export function LoginDetailsTitle () {
           Sign in to control all your links
         </h1>
 
-        <p className="py-5 font-medium text-neutral-400 text-center sm:text-xl sm:text-start sm:pb-6
+        <p className="py-5 font-medium text-lg text-neutral-300 text-center sm:text-xl sm:text-start sm:pb-6
         lg-2:text-xl lg-2:text-start">
-          Access your dashboard to take full control—track performance, edit details, and easily set security options
+          Access your dashboard to take full control—track performance
           <span className="hidden lg-2:inline"></span>
         </p>
       </div>

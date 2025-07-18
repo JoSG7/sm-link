@@ -16,8 +16,8 @@ export function LinkFormSection() {
 
         {/* This section only appears in 360px */}
         <section className="lg-2:hidden">
-          <p className="font-medium text-center text-neutral-300">
-            Quick to share and easy to manage, perfect for social media and team work
+          <p className="font-medium text-center text-lg text-neutral-300">
+            Quick to share and easy to manage, perfect for social media and team collaboration
           </p>
 
           {/* Pill Section */}
