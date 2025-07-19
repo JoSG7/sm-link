@@ -19,3 +19,19 @@ export function LinkFormTitle () {
   )
 
 }
+
+
+{/*           <div className="mt-6 grid grid-cols-3 gap-4 text-center">
+                <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10">
+                  <div className="text-2xl font-bold text-green-400">1M+</div>
+                  <div className="text-xs text-gray-400">Links Created</div>
+                </div>
+                <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10">
+                  <div className="text-2xl font-bold text-blue-400">50M+</div>
+                  <div className="text-xs text-gray-400">Clicks Tracked</div>
+                </div>
+                <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10">
+                  <div className="text-2xl font-bold text-purple-400">99.9%</div>
+                  <div className="text-xs text-gray-400">Uptime</div>
+                </div>
+              </div> */}
