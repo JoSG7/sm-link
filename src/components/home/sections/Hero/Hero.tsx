@@ -42,7 +42,7 @@ export function Hero() {
               <article className="relative rounded-lg bg-neutral-950 border border-graphite p-2 grow">
                 <div className="flex justify-center pb-2">
                   <div className=" ">
-                    <IconShieldCheckFilled className="text-green-400 sm:size-7" />
+                    <IconShieldCheckFilled className="text-green-300 sm:size-7" />
                   </div>
                 </div>
                 <p className="text-xs text-center sm:text-base">Protection</p>
@@ -51,7 +51,7 @@ export function Hero() {
               <article className="relative rounded-lg bg-neutral-950 border border-graphite p-2 grow">
                 <div className="flex justify-center pb-2">
                   <div className=" ">
-                    <IconAlarmFilled className="text-blue-400 sm:size-7" />
+                    <IconAlarmFilled className="text-blue-300 sm:size-7" />
                   </div>
                 </div>
                 <p className="text-xs text-center sm:text-base">Expirations</p>
@@ -60,7 +60,7 @@ export function Hero() {
               <article className="relative rounded-lg bg-neutral-950 border border-graphite p-2 grow">
                 <div className="flex justify-center pb-2">
                   <div className=" ">
-                    <IconSettingsFilled className="text-purple-400 sm:size-7" />
+                    <IconSettingsFilled className="text-purple-300 sm:size-7" />
                   </div>
                 </div>
                 <p className="text-xs text-center sm:text-base">Settings </p>
@@ -68,7 +68,7 @@ export function Hero() {
             </div>
 
             {/* Since 1024 */}
-            <div className="hidden lg-2:flex lg-2:gap-2 lg-2:pb-7">
+            <div className="hidden lg-2:flex lg-2:gap-3 lg-2:pb-7">
               <Pill title="Global Reach"
                 icon={<IconGlobe className="text-green-700 size-4" />} iconContainerClass="bg-emerald-200" />
 
@@ -82,7 +82,7 @@ export function Hero() {
             {/* Start Button section */}
             <div className="flex items-center gap-4 justify-center sm:justify-start
             lg-2:gap-7 lg-2:justify-start">
-              <button className="py-2 px-7 text-lg rounded-full font-medium bg-gradient-to-r from-green-500 to-blue-600 transition-transform duration-200 hover:scale-105 sm:text-xl sm:py-4 sm:px-5
+              <button className="py-2 px-7 text-lg rounded-full font-medium bg-gradient-to-r from-green-400 to-blue-600 text-neutral-200 transition-transform duration-200 hover:scale-105 sm:text-xl sm:py-4 sm:px-5
               lg-2:py-2 lg-2:px-4 lg-2:text-lg lg-2:text-neutral-950 lg-2:from-neutral-100 lg-2:to-neutral-400"
               onClick={() => { scrollTo("link-form-section") }}>
                 {`Let's start now!`}
