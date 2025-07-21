@@ -1,8 +1,8 @@
 "use client"
 
+import { IconLoader2, IconPaperclip, IconStarFilled } from "@tabler/icons-react";
 import { useLinkChanges } from "@/hooks/useLinkChanges";
 import { createShortLink } from "@/utils/links/api";
-import { IconLoader2, IconPaperclip, IconStarFilled } from "@tabler/icons-react";
 import { FormEvent, useState } from "react";
 import { toast } from "sonner";
 import { isURL } from "validator";
@@ -34,7 +34,9 @@ export function ShortLinkForm() {
           recordLinkChanges()
         }
       })
-        .finally(() => setSubmiting(false))
+        .finally(() => {
+          setSubmiting(false)
+        })
     }
   }
 
@@ -48,7 +50,7 @@ export function ShortLinkForm() {
       <div className="flex justify-between">
         <label htmlFor="txtUrl" className="flex items-center gap-3">
           <div className="rounded-full lg-2:block">
-            <IconPaperclip className="size-5 lg-2:size-5 text-lime-400"></IconPaperclip>
+            <IconPaperclip className="size-5 lg-2:size-5 text-emerald-400"></IconPaperclip>
           </div>
           <span className="text-lg sm:text-xl text-[#E5E7EB] font-semibold">Paste a long link</span>
         </label>
@@ -72,7 +74,7 @@ export function ShortLinkForm() {
       </div>
 
       <div className="flex justify-center">
-        <button className="w-full flex items-center justify-center gap-3 py-2 mt-2 mb-7 bg-gradient-to-r rounded-lg from-green-500 via-blue-600 to-purple-700 font-medium
+        <button className="w-full flex items-center justify-center gap-3 py-2 mt-2 mb-7 bg-gradient-to-r rounded-lg from-green-500 via-blue-500 to-purple-600 font-medium
         disabled:opacity-50 sm:text-lg" disabled={submiting}>
           {submiting ? <IconLoader2 className="size-4 animate-spin" /> : ""}
           {submiting ? "Shortening..." : "Shorten link"}

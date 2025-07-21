@@ -25,9 +25,10 @@ export function Hero() {
                 className="size-60 fade object-cover sm:size-72 lg-2:hidden" />
             </div>
 
-            <h1 className="text-4xl pt-2 text-center tracking-tight sm:text-6xl sm:text-start
+            <h1 className="text-fluid-title pt-2 text-center tracking-tight sm:text-6xl sm:text-start
             lg-2:text-white lg-2:text-start lg-2:text-6xl">
-              The smartest way to share your links
+              The <span className="">smartest way </span> 
+              to share your links
             </h1>
 
             <p className="text-neutral-300 py-5 text-center text-lg sm:text-xl sm:text-start
@@ -38,40 +39,28 @@ export function Hero() {
 
             {/* Since 360px */}
             <div className="flex gap-5 pb-6 sm:justify-normal sm:gap-5 lg-2:hidden">
-              <article className="relative rounded-xl bg-neutral-950 border border-graphite p-2 grow">
-                {/* Borders */}
-                <div className="absolute -top-[1px] left-1/3 h-px w-1/3 bg-gradient-to-r from-transparent via-sky-400 
-                to-transparent " />
-
+              <article className="relative rounded-lg bg-neutral-950 border border-graphite p-2 grow">
                 <div className="flex justify-center pb-2">
                   <div className=" ">
-                    <IconShieldCheckFilled className="text-sky-400 sm:size-7" />
+                    <IconShieldCheckFilled className="text-green-400 sm:size-7" />
                   </div>
                 </div>
                 <p className="text-xs text-center sm:text-base">Protection</p>
               </article>
 
-              <article className="relative rounded-xl bg-neutral-950 border border-graphite p-2 grow">
-                {/* Borders */}
-                <div className="absolute -top-[1px] left-1/3 h-px w-1/3 bg-gradient-to-r from-transparent via-blue-500 
-                to-transparent " />
-
+              <article className="relative rounded-lg bg-neutral-950 border border-graphite p-2 grow">
                 <div className="flex justify-center pb-2">
                   <div className=" ">
-                    <IconAlarmFilled className="text-blue-500 sm:size-7" />
+                    <IconAlarmFilled className="text-blue-400 sm:size-7" />
                   </div>
                 </div>
                 <p className="text-xs text-center sm:text-base">Expirations</p>
               </article>
 
-              <article className="relative rounded-xl bg-neutral-950 border border-graphite p-2 grow">
-                {/* Borders */}
-                <div className="absolute -top-[1px] left-1/3 h-px w-1/3 bg-gradient-to-r from-transparent via-indigo-500 
-                to-transparent " />
-
+              <article className="relative rounded-lg bg-neutral-950 border border-graphite p-2 grow">
                 <div className="flex justify-center pb-2">
                   <div className=" ">
-                    <IconSettingsFilled className="text-indigo-600 sm:size-7" />
+                    <IconSettingsFilled className="text-purple-400 sm:size-7" />
                   </div>
                 </div>
                 <p className="text-xs text-center sm:text-base">Settings </p>
@@ -93,8 +82,9 @@ export function Hero() {
             {/* Start Button section */}
             <div className="flex items-center gap-4 justify-center sm:justify-start
             lg-2:gap-7 lg-2:justify-start">
-              <button className="py-2 px-5 text-lg rounded-full font-medium bg-gradient-to-r from-neutral-100 to-neutral-400 text-neutral-950 transition-transform duration-200 hover:scale-105 sm:text-xl sm:py-4 sm:px-5
-              lg-2:py-2 lg-2:px-4 lg-2:text-lg" onClick={() => { scrollTo("link-form-section") }}>
+              <button className="py-2 px-7 text-lg rounded-full font-medium bg-gradient-to-r from-green-500 to-blue-600 transition-transform duration-200 hover:scale-105 sm:text-xl sm:py-4 sm:px-5
+              lg-2:py-2 lg-2:px-4 lg-2:text-lg lg-2:text-neutral-950 lg-2:from-neutral-100 lg-2:to-neutral-400"
+              onClick={() => { scrollTo("link-form-section") }}>
                 {`Let's start now!`}
               </button>
 

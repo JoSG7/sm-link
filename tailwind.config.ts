@@ -28,7 +28,9 @@ export default {
   theme: {
     extend: {
       fontSize: {
-        
+        'fluid-title' : ['clamp(36px, 10vw, 52px)', {
+          lineHeight: '1.05',
+        }]
       },
       screens: {
         "lg-2": "1272px"
