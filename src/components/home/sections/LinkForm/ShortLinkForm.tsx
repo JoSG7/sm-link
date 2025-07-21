@@ -1,6 +1,6 @@
 "use client"
 
-import { IconLoader2, IconPaperclip, IconStarFilled } from "@tabler/icons-react";
+import { IconBolt, IconLoader2, IconPaperclip, IconStarFilled } from "@tabler/icons-react";
 import { useLinkChanges } from "@/hooks/useLinkChanges";
 import { createShortLink } from "@/utils/links/api";
 import { FormEvent, useState } from "react";
@@ -74,9 +74,9 @@ export function ShortLinkForm() {
       </div>
 
       <div className="flex justify-center">
-        <button className="w-full flex items-center justify-center gap-3 py-2 mt-2 mb-7 bg-gradient-to-r rounded-lg from-green-500 to-blue-700 font-medium
+        <button className="w-full flex items-center justify-center gap-2 py-2 mt-2 mb-7 bg-gradient-to-r rounded-lg from-green-500 to-blue-700 font-medium
         disabled:opacity-50 sm:text-lg" disabled={submiting}>
-          {submiting ? <IconLoader2 className="size-4 animate-spin" /> : ""}
+          {submiting ? <IconLoader2 className="size-4 animate-spin lg-2:size-5" /> : <IconBolt className="size-4 lg-2:size-5" />}
           {submiting ? "Shortening..." : "Shorten link"}
         </button>
       </div>

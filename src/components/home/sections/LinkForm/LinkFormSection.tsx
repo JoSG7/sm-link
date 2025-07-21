@@ -25,17 +25,17 @@ export function LinkFormSection() {
         {/* This section only appears in 360px */}
         <div className="flex gap-4 items-center pt-5 lg-2:hidden">
           <article className="bg-neutral-950/70 backdrop-blur-sm rounded-lg p-4 border border-graphite grow">
-            <div className="text-xl font-bold text-green-300">1M+</div>
+            <div className="text-xl font-bold text-sky-300">1M+</div>
             <div className="text-xs text-gray-300">Links</div>
           </article>
 
           <article className="bg-neutral-950/70 backdrop-blur-sm rounded-lg p-4 border border-graphite grow">
-            <div className="text-xl font-bold text-sky-300">50M+</div>
+            <div className="text-xl font-bold text-green-300">50M+</div>
             <div className="text-xs text-gray-300">Clicks Tracked</div>
           </article>
 
           <article className="bg-neutral-950/70 backdrop-blur-sm rounded-lg p-4 border border-graphite grow">
-            <div className="text-xl font-bold text-purple-300">99.9%</div>
+            <div className="text-xl font-bold text-sky-300">99.9%</div>
             <div className="text-xs text-gray-300">Uptime</div>
           </article>
         </div>

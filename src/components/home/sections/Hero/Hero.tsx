@@ -27,7 +27,7 @@ export function Hero() {
 
             <h1 className="text-fluid-title pt-2 text-center tracking-tight sm:text-6xl sm:text-start
             lg-2:text-white lg-2:text-start lg-2:text-6xl">
-              The <span className="">smartest way </span> 
+              The <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">smartest way </span> 
               to share your links
             </h1>
 
@@ -42,7 +42,7 @@ export function Hero() {
               <article className="relative rounded-lg bg-neutral-950 border border-graphite p-2 grow">
                 <div className="flex justify-center pb-2">
                   <div className=" ">
-                    <IconShieldCheckFilled className="text-green-300 sm:size-7" />
+                    <IconShieldCheckFilled className="text-green-400 sm:size-7" />
                   </div>
                 </div>
                 <p className="text-xs text-center sm:text-base">Protection</p>
@@ -51,7 +51,7 @@ export function Hero() {
               <article className="relative rounded-lg bg-neutral-950 border border-graphite p-2 grow">
                 <div className="flex justify-center pb-2">
                   <div className=" ">
-                    <IconAlarmFilled className="text-blue-300 sm:size-7" />
+                    <IconAlarmFilled className="text-blue-400 sm:size-7" />
                   </div>
                 </div>
                 <p className="text-xs text-center sm:text-base">Expirations</p>
@@ -60,7 +60,7 @@ export function Hero() {
               <article className="relative rounded-lg bg-neutral-950 border border-graphite p-2 grow">
                 <div className="flex justify-center pb-2">
                   <div className=" ">
-                    <IconSettingsFilled className="text-purple-300 sm:size-7" />
+                    <IconSettingsFilled className="text-emerald-400 sm:size-7" />
                   </div>
                 </div>
                 <p className="text-xs text-center sm:text-base">Settings </p>
@@ -70,27 +70,30 @@ export function Hero() {
             {/* Since 1024 */}
             <div className="hidden lg-2:flex lg-2:gap-3 lg-2:pb-7">
               <Pill title="Global Reach"
-                icon={<IconGlobe className="text-green-700 size-4" />} iconContainerClass="bg-emerald-200" />
+                icon={<IconGlobe className="text-green-700 size-4" />} iconContainerClass="bg-emerald-300" />
 
               <Pill title="Real-Time Analytics"
-                icon={<IconDeviceAnalytics className="text-blue-700 size-4" />} iconContainerClass="bg-sky-300" />
+                icon={<IconDeviceAnalytics className="text-blue-700 size-4" />} iconContainerClass="bg-sky-400" />
 
               <Pill title="100% Secure"
-                icon={<IconLock className="text-purple-700 size-4" />} iconContainerClass="bg-violet-400" />
+                icon={<IconLock className="text-green-700 size-4" />} iconContainerClass="bg-emerald-300" />
             </div>
 
             {/* Start Button section */}
             <div className="flex items-center gap-4 justify-center sm:justify-start
             lg-2:gap-7 lg-2:justify-start">
-              <button className="py-2 px-7 text-lg rounded-full font-medium bg-gradient-to-r from-green-400 to-blue-600 text-neutral-200 transition-transform duration-200 hover:scale-105 sm:text-xl sm:py-4 sm:px-5
-              lg-2:py-2 lg-2:px-4 lg-2:text-lg lg-2:text-neutral-950 lg-2:from-neutral-100 lg-2:to-neutral-400"
+              <button className="py-2 px-7 text-lg rounded-full font-medium bg-gradient-to-r 
+              from-green-400 to-blue-500 text-neutral-200 transition-transform duration-200 hover:scale-105 
+              sm:text-xl sm:py-4 sm:px-5
+              lg-2:py-2 lg-2:px-4 lg-2:text-lg lg-2:from-green-500 lg-2:to-blue-600"
               onClick={() => { scrollTo("link-form-section") }}>
+
                 {`Let's start now!`}
               </button>
 
               <p className="hidden text-[#E2E2EB] items-center gap-1 text-xs sm:flex sm:text-base
               lg-2:text-sm lg-2:flex">
-                <IconStarFilled className="size-4 text-amber-300" />
+                <IconStarFilled className="size-4 text-lime-400" />
                 Trusted by 10,000+ users
               </p>
             </div>
