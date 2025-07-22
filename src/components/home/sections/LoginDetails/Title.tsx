@@ -4,7 +4,7 @@ export function LoginDetailsTitle () {
       <div className="lg-2:max-w-[565px]">
         <h1 className="text-4xl tracking-tight text-center sm:text-6xl sm:text-start
         lg-2:text-start lg-2:text-6xl">
-          Sign in to control all your links
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">Sign In</span> to control all your links
         </h1>
 
         <p className="py-5 font-medium text-lg text-neutral-300 text-center sm:text-xl sm:text-start sm:pb-6

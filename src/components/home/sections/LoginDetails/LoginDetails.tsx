@@ -1,4 +1,4 @@
-import { IconChartHistogram, IconClockExclamation, IconFolderCog, IconListSearch, IconPencilStar, IconShieldLock, IconShieldPlus } from "@tabler/icons-react"
+import { IconChartHistogram, IconClockExclamation, IconFolderCog, IconLinkPlus, IconListSearch, IconPencilStar, IconShieldLock } from "@tabler/icons-react"
 import { LoginDetailsTitle } from "./Title"
 import Image from "next/image"
 
@@ -7,7 +7,7 @@ export function LogingDetails() {
   return (
 
     <section className="flex justify-center">
-      <div className="w-[90vw] max-w-[325px] pt-12 sm:max-w-lg
+      <div className="w-[90vw] pt-12 sm:max-w-lg
       lg-2:max-w-5xl lg-2:flex lg-2:pt-36 lg-2:justify-between lg-2:pb-20">
 
         <div className="">
@@ -15,88 +15,47 @@ export function LogingDetails() {
             <LoginDetailsTitle />
 
             {/* Since 360px */}
-            <div className="flex flex-col gap-4 pb-5 sm:justify-start sm:gap-6 sm:pb-6
+            <div className="flex flex-col gap-5 pb-5 sm:justify-start sm:gap-6 sm:pb-6
             lg-2:hidden">
               {/* First Card */}
-              <article className="p-3 rounded-lg flex gap-4 bg-neutral-950 border border-graphite">
-                <div className="flex flex-col gap-1 grow">
-                  <h1 className="font-medium">Full detailed metrics</h1>
-                  <p className="text-xs text-neutral-300 ">
-                    Get all data recoleted from your links per month, or a determinated date
+              <article className="p-3 rounded-lg flex gap-5 bg-neutral-950 border border-graphite">
+                <div className="grow">
+                  <h1 className="text-lg font-medium pb-1">Advanced Analytics</h1>
+                  <p className="text-sm text-neutral-300 ">
+                    Track clicks, referrers, and device information with detailed insights.
+                  </p>
+                </div>
+
+                {/* <div className="flex items-center p-3 rounded-lg bg-neutral-900">
+                  <IconChartHistogram className=" size-7" />
+                </div> */}
+              </article>
+
+              <article className="p-3 rounded-lg flex gap-5 bg-neutral-950 border border-graphite">
+                <div className="grow">
+                  <h1 className="text-lg font-medium pb-1">Customize your SmLink</h1>
+                  <p className="text-sm text-neutral-300 ">
+                    Customize the url of your link
+                  </p>
+                </div>
+              </article>
+
+
+              <article className="p-3 rounded-lg flex gap-5 bg-neutral-950 border border-graphite grow">
+                <div className="grow">
+                  <h1 className="text-lg font-medium pb-1">More SmLinks</h1>
+                  <p className="text-sm text-neutral-300">
+                    Extend limit from 7 to 15 links
                   </p>
                 </div>
 
                 <div className="flex items-center p-3 rounded-lg bg-neutral-900">
-                  <IconChartHistogram className=" size-7" />
+                  <IconLinkPlus className=" size-7" />
                 </div>
               </article>
 
-              <section className="flex gap-4">
-                <div className="min-w-40 flex flex-col gap-4">
-                  <article className="p-3 rounded-lg bg-neutral-950 border border-graphite">
-                    <h1 className="font-medium pb-1">More SmLinks</h1>
-                    <p className="text-xs text-neutral-300 ">Now you can create 15 SmLink instead of 7</p>
-                  </article>
-                
-                  <article className="p-3 rounded-lg bg-neutral-950 border border-graphite">
-                    <h1 className="font-medium pb-1">Set a nickname</h1>
-                    <p className="text-xs text-neutral-300 ">Create a unique name for your SmLink</p>
-                  </article>
-                </div>
 
-                <article className="flex flex-col justify-between p-3 grow rounded-lg bg-neutral-950 border border-graphite">
-                  <h1 className="font-medium">Rename your SmLinks</h1>
-                  <p className="text-xs text-neutral-300">Change the url whit a original name that you can choose</p>
 
-                  <div className="flex justify-between">
-                    <div className="flex p-3 rounded-lg bg-neutral-900">
-                      <IconPencilStar className="size-7" />
-                    </div>
-
-                    <div className="flex p-3 rounded-lg bg-neutral-900">
-                      <IconShieldPlus className="size-7" />
-                    </div>
-                  </div>
-                </article>
-              </section>
-
-              {/* <article className="rounded-xl border bg-neutral-950 border-[#1c1d1d] p-2 ">
-                <div className="flex justify-center pb-2">
-                  <IconChartHistogram className="text-neutral-300 sm:size-7" />
-                </div>
-                <p className="text-xs sm:text-base">All Metrics</p>
-              </article>
-
-              <article className="rounded-xl border bg-neutral-950 border-[#1c1d1d] p-2 ">
-                <div className="flex justify-center pb-2">
-                  <IconClockPlus className="text-neutral-300 sm:size-7" />
-                </div>
-                <p className="text-xs sm:text-base">More Expirations</p>
-              </article>
-
-              <article className="rounded-xl border bg-neutral-950 border-[#1c1d1d] p-2 ">
-                <div className="flex justify-center pb-2">
-                  <IconPencilStar className="text-neutral-300 sm:size-7" />
-                </div>
-                <p className="text-xs sm:text-base">Customizing</p>
-              </article>
-            </div>
-
-            <div className="flex justify-center gap-3 pb-5 sm:justify-start sm:gap-6 sm:pb-6
-            lg-2:hidden">
-              <article className="rounded-xl border bg-neutral-950 border-[#1c1d1d] p-2 ">
-                <div className="flex justify-center pb-2">
-                  <IconShieldPlus className="text-neutral-300 sm:size-7" />
-                </div>
-                <p className="text-xs sm:text-base">More Protected Links</p>
-              </article>
-
-              <article className="rounded-xl border bg-neutral-950 border-[#1c1d1d] p-2 ">
-                <div className="flex justify-center pb-2">
-                  <IconFolderCog className="text-neutral-300 sm:size-7" />
-                </div>
-                <p className="text-xs sm:text-base">Management</p>
-              </article> */}
             </div>
 
             {/* Since 1272px */}
@@ -157,7 +116,9 @@ export function LogingDetails() {
             </div> */}
             <div className="flex items-center justify-center sm:justify-start
             lg-2:justify-start">
-              <button className="py-2 px-5 text-lg font-medium rounded-full bg-gradient-to-r from-neutral-100 to-neutral-400 text-neutral-950 transition-transform duration-200 hover:scale-105 sm:text-xl sm:py-4 sm:px-5
+              <button className="py-2 px-5 text-lg font-medium rounded-full bg-gradient-to-r from-green-400 to-blue-500 
+              text-neutral-200 transition-transform duration-200 hover:scale-105 
+              sm:text-xl sm:py-4 sm:px-5
               lg-2:py-2 lg-2:px-4">
                 Get Started
               </button>
