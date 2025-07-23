@@ -25,13 +25,13 @@ export function Hero() {
                 className="size-60 fade object-cover sm:size-72 lg-2:hidden" />
             </div>
 
-            <h1 className="text-fluid-title pt-2 text-center tracking-tight sm:text-6xl sm:text-start
+            <h1 className="text-4xl-fluid pt-2 text-center tracking-tight
             lg-2:text-white lg-2:text-start lg-2:text-6xl">
               The <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">smartest way </span> 
               to share your links
             </h1>
 
-            <p className="text-neutral-300 py-5 text-center text-lg sm:text-xl sm:text-start
+            <p className="text-neutral-300 py-5 text-center text-lg-fluid
             lg-2:text-start lg-2:text-xl lg-2:text-neutral-400 lg-2:font-medium">
               Tired of messy URLs? Shorten links in seconds and track their metrics
               <span className="hidden lg-2:inline"> anywhere - 24 hours a day</span>
@@ -45,7 +45,7 @@ export function Hero() {
                     <IconShieldCheckFilled className="text-green-400 sm:size-7" />
                   </div>
                 </div>
-                <p className="text-xs text-center sm:text-base">Protection</p>
+                <p className="text-xs-fluid text-center sm:text-base">Protection</p>
               </article>
 
               <article className="relative rounded-lg bg-neutral-950 border border-graphite p-2 grow">
@@ -54,7 +54,7 @@ export function Hero() {
                     <IconAlarmFilled className="text-blue-400 sm:size-7" />
                   </div>
                 </div>
-                <p className="text-xs text-center sm:text-base">Expirations</p>
+                <p className="text-xs-fluid text-center sm:text-base">Expirations</p>
               </article>
 
               <article className="relative rounded-lg bg-neutral-950 border border-graphite p-2 grow">
@@ -63,7 +63,7 @@ export function Hero() {
                     <IconSettingsFilled className="text-emerald-400 sm:size-7" />
                   </div>
                 </div>
-                <p className="text-xs text-center sm:text-base">Settings </p>
+                <p className="text-xs-fluid text-center sm:text-base">Settings </p>
               </article>
             </div>
 
@@ -82,7 +82,7 @@ export function Hero() {
             {/* Start Button section */}
             <div className="flex items-center gap-4 justify-center sm:justify-start
             lg-2:gap-7 lg-2:justify-start">
-              <button className="py-2 px-7 text-lg rounded-full font-medium bg-gradient-to-r 
+              <button className="py-2 px-7 text-lg-fluid rounded-full font-medium bg-gradient-to-r 
               from-green-400 to-blue-500 text-neutral-200 transition-transform duration-200 hover:scale-105 
               sm:text-xl sm:py-4 sm:px-5
               lg-2:py-2 lg-2:px-4 lg-2:text-lg lg-2:from-green-500 lg-2:to-blue-600"

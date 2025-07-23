@@ -28,9 +28,31 @@ export default {
   theme: {
     extend: {
       fontSize: {
-        'fluid-title' : ['clamp(36px, 10vw, 52px)', {
-          lineHeight: '1.05',
-        }]
+        'xs-fluid': ['clamp(12px, 3.2vw, 36px)', {
+          lineHeight: '1.2',
+        }],
+        'base-fluid': ['clamp(16px, 4.2vw, 36px)', {
+          lineHeight: '1.2',
+        }],
+        'lg-fluid': ['clamp(18px, 5vw, 36px)', {
+          lineHeight: '1.5',
+        }],
+        'xl-fluid': ['clamp(20px, 5.5vw, 36px)', {
+          lineHeight: '1.5',
+        }],
+        '4xl-fluid': ['clamp(36px, 10vw, 64px)', {
+          lineHeight: '1.1',
+        }],
+      },
+      width: {
+        '5-fluid': 'clamp(20px, 5.5vw, 32px)',
+        '6-fluid': 'clamp(24px, 6.5vw, 36px)',
+        '7-fluid': 'clamp(28px, 8vw, 40px)'
+      },
+      height: {
+        '5-fluid': 'clamp(20px, 5.5vw, 32px)',
+        '6-fluid': 'clamp(24px, 5.2vw, 36px)',
+        '7-fluid': 'clamp(28px, 8vw, 40px)'
       },
       screens: {
         "lg-2": "1272px"

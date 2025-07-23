@@ -18,7 +18,11 @@ export function LogingDetails() {
             <div className="flex flex-col gap-5 pb-5 sm:justify-start sm:gap-6 sm:pb-6
             lg-2:hidden">
               {/* First Card */}
-              <article className="p-3 rounded-lg flex gap-5 bg-neutral-950 border border-graphite">
+              <article className="relative p-3 rounded-lg flex gap-5 bg-neutral-950 border border-graphite">
+                {/* Borders */}
+                <div className="absolute -top-[1px] left-10 h-px w-1/3 bg-gradient-to-r from-transparent via-emerald-500 to-transparent" />
+                <div className="absolute -bottom-[1px] right-10 h-px w-1/3 bg-gradient-to-r from-transparent via-emerald-700 to-transparent " />
+
                 <div className="grow">
                   <h1 className="text-lg font-medium pb-1">Advanced Analytics</h1>
                   <p className="text-sm text-neutral-300 ">
@@ -31,7 +35,7 @@ export function LogingDetails() {
                 </div>
               </article>
 
-              <article className="p-3 rounded-lg flex gap-5 bg-neutral-950 border border-graphite">
+              <article className="relative p-3 rounded-lg flex gap-5 bg-neutral-950 border border-graphite">
                 <div className="grow">
                   <h1 className="text-lg font-medium pb-1">Customize your SmLink</h1>
                   <p className="text-sm text-neutral-300 ">
@@ -113,10 +117,6 @@ export function LogingDetails() {
               </article>
             </div>
 
-            {/* <div className="flex justify-center gap-5 lg-2:justify-start">
-              <GitHubAuthButton />
-              <GoogleAuthButton />
-            </div> */}
             <div className="flex items-center justify-center sm:justify-start
             lg-2:justify-start">
               <button className="py-2 px-5 text-lg font-medium rounded-full bg-gradient-to-r from-green-400 to-blue-500 
