@@ -26,9 +26,9 @@ export function LogingDetails() {
                   </p>
                 </div>
 
-                {/* <div className="flex items-center p-3 rounded-lg bg-neutral-900">
-                  <IconChartHistogram className=" size-7" />
-                </div> */}
+                <div className="flex items-center p-3 rounded-lg bg-neutral-900">
+                  <IconChartHistogram className="text-green-300 size-7" />
+                </div>
               </article>
 
               <article className="p-3 rounded-lg flex gap-5 bg-neutral-950 border border-graphite">
@@ -38,8 +38,11 @@ export function LogingDetails() {
                     Customize the url of your link
                   </p>
                 </div>
-              </article>
 
+                <div className="flex items-center p-3 rounded-lg bg-neutral-900">
+                  <IconPencilStar className="text-sky-300 size-7" />
+                </div>
+              </article>
 
               <article className="p-3 rounded-lg flex gap-5 bg-neutral-950 border border-graphite grow">
                 <div className="grow">
@@ -50,7 +53,7 @@ export function LogingDetails() {
                 </div>
 
                 <div className="flex items-center p-3 rounded-lg bg-neutral-900">
-                  <IconLinkPlus className=" size-7" />
+                  <IconLinkPlus className="text-green-300 size-7" />
                 </div>
               </article>
 
