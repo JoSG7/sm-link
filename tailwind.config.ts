@@ -56,6 +56,10 @@ export default {
         '6-fluid': 'clamp(24px, 5.2vw, 36px)',
         '7-fluid': 'clamp(28px, 8vw, 40px)'
       },
+      padding: {
+        '4-fluid' : 'clamp(16px, 4.5vw, 40px)'
+      },
+      
       screens: {
         "lg-2": "1272px"
       },

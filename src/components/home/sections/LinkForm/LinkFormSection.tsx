@@ -15,7 +15,7 @@ export function LinkFormSection() {
         <LinkFormTitle />
 
         <section className="lg-2:hidden">
-          <p className="font-medium text-center text-lg-fluid text-neutral-300 pb-5">
+          <p className="pb-5 font-medium text-center text-lg-fluid text-neutral-300">
             Quick to share and easy to manage, perfect for social media and team
           </p>
         </section>
@@ -23,20 +23,20 @@ export function LinkFormSection() {
         <ShortLinkForm />
 
         {/* This section only appears in 360px */}
-        <div className="flex gap-4 items-center pt-5 lg-2:hidden">
-          <article className="bg-neutral-950/70 backdrop-blur-sm rounded-lg p-4 border border-graphite grow">
-            <div className="text-xl-fluid font-bold text-sky-300">1M+</div>
-            <div className="text-xs-fluid text-gray-300">Links</div>
+        <div className="flex items-center gap-4 pt-5 lg-2:hidden">
+          <article className="border rounded-lg bg-neutral-950/70 backdrop-blur-sm p-4-fluid border-graphite grow">
+            <div className="font-bold text-xl-fluid text-sky-300">1M+</div>
+            <div className="text-gray-300 text-xs-fluid">Links</div>
           </article>
 
-          <article className="bg-neutral-950/70 backdrop-blur-sm rounded-lg p-4 border border-graphite grow">
-            <div className="text-xl-fluid font-bold text-green-300">50M+</div>
-            <div className="text-xs-fluid text-gray-300">Clicks Tracked</div>
+          <article className="border rounded-lg bg-neutral-950/70 backdrop-blur-sm p-4-fluid border-graphite grow">
+            <div className="font-bold text-green-300 text-xl-fluid">50M+</div>
+            <div className="text-gray-300 text-xs-fluid">Clicks Tracked</div>
           </article>
 
-          <article className="bg-neutral-950/70 backdrop-blur-sm rounded-lg p-4 border border-graphite grow">
-            <div className="text-xl-fluid font-bold text-sky-300">99.9%</div>
-            <div className="text-xs-fluid text-gray-300">Uptime</div>
+          <article className="border rounded-lg bg-neutral-950/70 backdrop-blur-sm p-4-fluid border-graphite grow">
+            <div className="font-bold text-xl-fluid text-sky-300">99.9%</div>
+            <div className="text-gray-300 text-xs-fluid">Uptime</div>
           </article>
         </div>
       </div>

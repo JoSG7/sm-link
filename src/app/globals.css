@@ -3,9 +3,12 @@
 @tailwind utilities;
 
 @layer utilities {
-  .border-gradient-green {
-    background: linear-gradient(black, black) padding-box,
-      linear-gradient(107.65deg, #17C969 17.53%, #005DBB 94.64%) border-box;
+  .size-6-fluid {
+    @apply w-6-fluid h-6-fluid;
+  }
+
+  .size-5-fluid {
+    @apply w-5-fluid h-5-fluid;
   }
 }
 

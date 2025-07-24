@@ -4,8 +4,8 @@ export function Footer() {
 
   return (
 
-    <section className="p-4 py-5 border-t border-[#1c1d1d] flex justify-center">
-      <div className="w-full lg-2:max-w-5xl">
+    <section className="flex justify-center border-t border-graphite">
+      <div className="w-[90vw] py-5 lg-2:max-w-5xl">
         <div className="flex gap-4 pb-3">
           <a href="https://github.com/JoSG7" target="_blank" className="flex items-center justify-center p-2 rounded-full bg-neutral-950">
             <IconBrandGithubFilled className="size-6" />
