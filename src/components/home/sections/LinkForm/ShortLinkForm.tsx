@@ -60,7 +60,7 @@ export function ShortLinkForm() {
         className="w-full py-2 px-4 my-4 text-base-fluid border border-neutral-800 text-neutral-400 bg-neutral-900 rounded-lg
         placeholder:text-neutral-700 
         sm:text-md sm:my-5 lg:p-3 
-        lg-2:py-3 lg-2:bg-neutral-950"
+        lg-2:py-3 lg-2:bg-neutral-950 lg-2:text-lg" 
         placeholder="https://example.com/long-url-to-short" required />
 
       <div className="flex items-center gap-3">
@@ -72,7 +72,7 @@ export function ShortLinkForm() {
 
       <div className="w-full py-2 px-4 my-4 mb-5 bg-neutral-900 rounded-lg border border-neutral-800 text-neutral-300
         sm:mt-5 lg:p-3 lg-2:py-3 lg-2:bg-neutral-950">
-        <p className="text-base-fluid sm:text-md">sm-link.vercel.app/{shortURL}</p>
+        <p className="text-base-fluid lg-2:text-lg">sm-link.vercel.app/{shortURL}</p>
       </div>
 
       <div className="flex justify-center">

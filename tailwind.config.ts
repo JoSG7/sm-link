@@ -7,7 +7,6 @@ export default {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   safelist: [
-
     'border-green-400',
     'border-red-400',
     'h-[310px]',
@@ -31,8 +30,11 @@ export default {
         'xs-fluid': ['clamp(12px, 3.2vw, 36px)', {
           lineHeight: '1.2',
         }],
+        'sm-fluid': ['clamp(14px, 3.8vw, 36px)', {
+          lineHeight: '1.4',
+        }],
         'base-fluid': ['clamp(16px, 4.2vw, 36px)', {
-          lineHeight: '1.2',
+          lineHeight: '1.4',
         }],
         'lg-fluid': ['clamp(18px, 5vw, 36px)', {
           lineHeight: '1.5',
