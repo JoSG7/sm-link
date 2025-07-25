@@ -6,7 +6,8 @@ export function LoginDetailsTitle () {
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">Sign In</span> to control all your links
         </h1>
 
-        <p className="py-5 font-medium text-center text-lg-fluid text-neutral-300 sm:text-xl sm:text-start sm:pb-6 lg-2:text-xl lg-2:text-start">
+        <p className="py-5 font-medium text-center text-lg-fluid text-neutral-300 xs:pb-6
+        lg-2:text-xl lg-2:text-start">
           Access your dashboard to take full control—track performance
           <span className="hidden lg-2:inline"></span>
         </p>

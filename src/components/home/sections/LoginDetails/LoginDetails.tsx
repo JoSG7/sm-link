@@ -13,7 +13,7 @@ export function LogingDetails() {
           <div className="flex flex-col lg-2:pt-14">
             <LoginDetailsTitle />
             {/* Since 360px */}
-            <div className="flex flex-col gap-5 pb-5 sm:justify-start sm:gap-6 sm:pb-6 lg-2:hidden">
+            <div className="flex flex-col gap-5 pb-5 xs:gap-6 xs:pb-6 lg-2:hidden">
               {/* First Card */}
               <article className="relative flex gap-5 p-3 border rounded-lg bg-neutral-950 border-graphite">
                 <div className="grow">
@@ -24,7 +24,7 @@ export function LogingDetails() {
                 </div>
 
                 <div className="flex items-center p-3 rounded-lg bg-neutral-900">
-                  <IconChartHistogram className="text-green-300 size-7" />
+                  <IconChartHistogram className="text-green-300 size-7 xs:size-9" />
                 </div>
 
                 {/* Borders */}
@@ -41,7 +41,7 @@ export function LogingDetails() {
                 </div>
 
                 <div className="flex items-center p-3 rounded-lg bg-neutral-900">
-                  <IconPencilStar className="text-sky-300 size-7" />
+                  <IconPencilStar className="text-sky-300 size-7 xs:size-9" />
                 </div>
               </article>
 
@@ -49,12 +49,12 @@ export function LogingDetails() {
                 <div className="grow">
                   <h1 className="pb-1 font-medium text-lg-fluid">More SmLinks</h1>
                   <p className="text-sm-fluid text-neutral-300">
-                    Extend limit from 7 to 15 links
+                    Extend limit from 7 xs: to 15 links
                   </p>
                 </div>
 
                 <div className="flex items-center p-3 rounded-lg bg-neutral-900">
-                  <IconLinkPlus className="text-green-300 size-7" />
+                  <IconLinkPlus className="text-green-300 size-7 xs:size-9" />
                 </div>
               </article>
             </div>
@@ -111,7 +111,8 @@ export function LogingDetails() {
             </div>
 
             <div className="flex items-center justify-center sm:justify-start lg-2:justify-start">
-              <button className="px-5 py-2 font-medium transition-transform duration-200 rounded-full text-lg-fluid bg-gradient-to-r from-green-400 to-blue-500 text-neutral-200 hover:scale-105 sm:text-xl sm:py-4 sm:px-5 lg-2:py-2 lg-2:px-4">
+              <button className="px-7 py-2 font-medium transition-transform duration-200 rounded-full text-lg-fluid bg-gradient-to-r from-green-400 to-blue-500 text-neutral-200 hover:scale-105 xs:py-3
+              lg-2:py-2 lg-2:px-4">
                 Get Started
               </button>
             </div>

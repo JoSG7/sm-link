@@ -59,8 +59,8 @@ export default {
       padding: {
         '4-fluid' : 'clamp(16px, 4.5vw, 40px)'
       },
-      
       screens: {
+        'xs' : "412px",
         "lg-2": "1272px"
       },
       colors: {
