@@ -18,7 +18,7 @@ export function Hero() {
           {/* Img Section */}
           <div className="flex justify-center">
             <Image src="/imgs/mano5.png" alt="logo" width={500} height={500}
-              className="size-60 fade sm:size-72 lg-2:w-[430px] lg-2:h-[454px]" />
+              className="size-60 fade sm:size-80 lg-2:w-[430px] lg-2:h-[454px]" />
           </div>
 
           {/* Text and Cards Sections */}
@@ -31,36 +31,36 @@ export function Hero() {
             </h1>
 
             {/* Paragraph */}
-            <p className="py-5 text-center text-neutral-300 text-lg-fluid xs:pb-6
+            <p className="py-5 text-center text-neutral-300 text-lg-fluid xs:pb-6 sm:pb-7
               lg-2:text-start lg-2:text-xl lg-2:text-neutral-400 lg-2:font-medium">
               Tired of messy URLs? Shorten links in seconds and track their metrics
               <span className="hidden lg-2:inline"> anywhere - 24 hours a day</span>
             </p>
 
             {/* Since 360px */}
-            <div className="flex gap-5 pb-6 xs:gap-6 xs:pb-7 lg-2:hidden">
-              <article className="p-2 border rounded-lg bg-neutral-950 border-graphite grow xs:p-3">
+            <div className="flex gap-5 pb-6 xs:gap-6 xs:pb-7 sm:gap-8 sm:pb-9 lg-2:hidden">
+              <article className="p-2 border rounded-lg bg-neutral-950 border-graphite grow xs:p-3 sm:p-5">
                 <div className="flex justify-center pb-2">
                   <div className="">
-                    <IconShieldCheckFilled className="text-green-400 xs:size-7" />
+                    <IconShieldCheckFilled className="text-green-400 xs:size-7 sm:size-10" />
                   </div>
                 </div>
                 <p className="text-center text-xs-fluid ">Protection</p>
               </article>
 
-              <article className="p-2 border rounded-lg bg-neutral-950 border-graphite grow xs:p-3">
+              <article className="p-2 border rounded-lg bg-neutral-950 border-graphite grow xs:p-3 sm:p-5">
                 <div className="flex justify-center pb-2">
                   <div className="">
-                    <IconAlarmFilled className="text-blue-400 xs:size-7" />
+                    <IconAlarmFilled className="text-blue-400 xs:size-7 sm:size-10" />
                   </div>
                 </div>
                 <p className="text-center text-xs-fluid ">Expirations</p>
               </article>
 
-              <article className="p-2 border rounded-lg bg-neutral-950 border-graphite grow xs:p-3">
+              <article className="p-2 border rounded-lg bg-neutral-950 border-graphite grow xs:p-3 sm:p-5">
                 <div className="flex justify-center pb-2">
                   <div className="">
-                    <IconSettingsFilled className="text-emerald-400 xs:size-7" />
+                    <IconSettingsFilled className="text-emerald-400 xs:size-7 sm:size-10" />
                   </div>
                 </div>
                 <p className="text-center text-xs-fluid ">Settings </p>

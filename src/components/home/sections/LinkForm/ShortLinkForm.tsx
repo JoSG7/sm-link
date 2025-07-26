@@ -42,39 +42,41 @@ export function ShortLinkForm() {
 
   return (
     <form onSubmit={handleSubmit} 
-    className="relative border p-4 rounded-xl border-graphite bg-neutral-950/70 backdrop-blur-sm xs:p-5
+    className="relative border p-4 rounded-xl border-graphite bg-neutral-950/70 backdrop-blur-sm xs:p-5 sm:p-7
     lg-2:p-7 lg-2:bg-black">
       <div className="flex justify-between">
         <label htmlFor="txtUrl" className="flex items-center gap-3">
           <div className="rounded-full lg-2:block">
-            <IconPaperclip className="size-5-fluid lg-2:size-5 text-emerald-400"></IconPaperclip>
+            <IconPaperclip className="size-5-fluid text-emerald-400 lg-2:size-5"></IconPaperclip>
           </div>
-          <span className="font-semibold text-lg-fluid sm:text-xl">Paste a long link</span>
+          <span className="font-semibold text-lg-fluid lg-2:text-xl">Paste a long link</span>
         </label>
       </div>
 
       {/* Input */}
       <input type="url" autoComplete="off" value={originalLink} onChange={(e) => setOriginalLink(e.currentTarget.value)}
-        className="w-full px-4 py-2 my-4 border rounded-lg text-base-fluid border-neutral-800 text-neutral-400 bg-neutral-900 placeholder:text-neutral-700 xs:my-5 lg-2:py-3 lg-2:bg-neutral-950 lg-2:text-lg" 
+        className="w-full px-4 py-2 my-4 border rounded-lg text-base-fluid border-neutral-800 text-neutral-400 bg-neutral-900 placeholder:text-neutral-700 xs:my-5 xs:py-3
+        sm:my-7 sm:py-4 lg-2:py-3 lg-2:bg-neutral-950 lg-2:text-lg" 
         placeholder="https://example.com/long-url-to-short" required />
 
       <div className="flex items-center gap-3">
         <div className="rounded-full lg-2:block">
           <IconStarFilled className="size-5-fluid lg-2:size-5 text-emerald-400"></IconStarFilled>
         </div>
-        <span className="font-semibold text-lg-fluid sm:text-xl">Here is the new link</span>
+        <span className="font-semibold text-lg-fluid lg-2:text-xl">Here is the new link</span>
       </div>
 
       {/* Short Link Response */}
       <div className="w-full px-4 py-2 my-4 border rounded-lg bg-neutral-900 border-neutral-800 text-neutral-300 
-      xs:my-5 lg-2:py-3 lg-2:bg-neutral-950">
+      xs:my-5 xs:py-3 sm:my-7 sm:py-4 lg-2:py-3 lg-2:bg-neutral-950">
         <p className="text-base-fluid lg-2:text-lg">sm-link.vercel.app/{shortURL}</p>
       </div>
 
       {/* Button Section */}
       <div className="flex justify-center">
-        <button className="flex items-center justify-center w-full gap-2 py-2 mt-2 font-medium rounded-lg mb-7 text-base-fluid bg-gradient-to-r from-green-500 to-blue-700 disabled:opacity-50 sm:text-lg" disabled={submiting}>
-          {submiting ? <IconLoader2 className="size-4 animate-spin lg-2:size-5" /> : <IconBolt className="size-4 lg-2:size-5" />}
+        <button className="flex items-center justify-center w-full gap-2 py-2 mt-2 font-medium rounded-lg mb-7 text-base-fluid bg-gradient-to-r from-green-500 to-blue-700 disabled:opacity-50 xs:py-3 sm:py-4" disabled={submiting}>
+          {submiting ? <IconLoader2 className="size-4 animate-spin sm:size-5 lg-2:size-7" /> : 
+          <IconBolt className="size-4 sm:size-7 lg-2:size-5" />}
           {submiting ? "Shortening..." : "Shorten link"}
         </button>
       </div>

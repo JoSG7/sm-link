@@ -27,19 +27,19 @@ export default {
   theme: {
     extend: {
       fontSize: {
-        'xs-fluid': ['clamp(12px, 3.2vw, 36px)', {
+        'xs-fluid': ['clamp(12px, 3.2vw, 50px)', {
           lineHeight: '1.2',
         }],
-        'sm-fluid': ['clamp(14px, 3.8vw, 36px)', {
+        'sm-fluid': ['clamp(14px, 3.8vw, 50px)', {
           lineHeight: '1.4',
         }],
-        'base-fluid': ['clamp(16px, 4.2vw, 36px)', {
+        'base-fluid': ['clamp(16px, 4.2vw, 50px)', {
           lineHeight: '1.4',
         }],
-        'lg-fluid': ['clamp(18px, 5vw, 36px)', {
+        'lg-fluid': ['clamp(18px, 5vw, 50px)', {
           lineHeight: '1.5',
         }],
-        'xl-fluid': ['clamp(20px, 5.5vw, 36px)', {
+        'xl-fluid': ['clamp(20px, 5.5vw, 50px)', {
           lineHeight: '1.5',
         }],
         '4xl-fluid': ['clamp(36px, 10vw, 64px)', {
