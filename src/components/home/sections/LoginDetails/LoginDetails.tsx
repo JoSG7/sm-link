@@ -7,7 +7,7 @@ export function LogingDetails() {
   return (
 
     <section className="flex justify-center">
-      <div className="w-[90vw] pt-12 sm:max-w-lg
+      <div className="w-[90vw] pt-12
       lg-2:max-w-5xl lg-2:flex lg-2:pt-36 lg-2:justify-between lg-2:pb-20">
         <div className="">
           <div className="flex flex-col lg-2:pt-14">
@@ -49,7 +49,7 @@ export function LogingDetails() {
                 <div className="grow">
                   <h1 className="pb-1 font-medium text-lg-fluid">More SmLinks</h1>
                   <p className="text-sm-fluid text-neutral-300">
-                    Extend limit from 7 xs: to 15 links
+                    Extend limit from 7 to 15 links
                   </p>
                 </div>
 
@@ -111,8 +111,8 @@ export function LogingDetails() {
             </div>
 
             <div className="flex items-center justify-center sm:justify-start lg-2:justify-start">
-              <button className="px-7 py-2 font-medium transition-transform duration-200 rounded-full text-lg-fluid bg-gradient-to-r from-green-400 to-blue-500 text-neutral-200 hover:scale-105 xs:py-3
-              lg-2:py-2 lg-2:px-4">
+              <button className="px-7 py-2 font-medium transition-transform duration-200 rounded-full text-lg-fluid bg-gradient-to-r from-green-400 to-blue-500 text-neutral-200 hover:scale-105 xs:py-3 
+              lg-2:text-lg lg-2:py-2 lg-2:px-4">
                 Get Started
               </button>
             </div>

@@ -10,29 +10,29 @@ export function Hero() {
   const scrollTo = useScrollTo()
 
   return (
-
     <section className="flex justify-center">
-      <div className="w-[90vw]
-      lg-2:w-full lg-2:py-9 lg-2:max-w-5xl lg-2:flex lg-2:flex-row-reverse lg-2:justify-between">
+      {/* Layout Content */}
+      <div className="w-[90vw] lg-2:w-full lg-2:py-9 lg-2:max-w-5xl ">
+        {/* Main content */}
+        <div className="py-7 xs:py-10 lg-2:py-0 lg-2:flex lg-2:flex-row-reverse lg-2:justify-between">
+          {/* Img Section */}
+          <div className="flex justify-center">
+            <Image src="/imgs/mano5.png" alt="logo" width={500} height={500}
+              className="size-60 fade sm:size-72 lg-2:w-[430px] lg-2:h-[454px]" />
+          </div>
 
-        <Image src="/imgs/mano5.png" alt="Home Imge for 1272px" width={430} height={454}
-          className="hidden object-cover fade lg-2:block " />
-
-        <article className="lg-2:max-w-[580px]">
-          <div className="py-7 xs:py-10 lg-2:py-12">
-            <div className="flex justify-center">
-              <Image src="/imgs/mano5.png" alt="logo" width={500} height={500}
-                className="object-cover size-60 fade sm:size-72 lg-2:hidden" />
-            </div>
-
+          {/* Text and Cards Sections */}
+          <section className="lg-2:max-w-[580px] lg-2:py-12">
+            {/* Title */}
             <h1 className="pt-2 tracking-tight text-center text-4xl-fluid 
-            lg-2:text-start lg-2:text-white  lg-2:text-6xl">
-              The <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">smartest way </span> 
+              lg-2:text-start lg-2:text-white  lg-2:text-6xl">
+              The <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">smartest way </span>
               to share your links
             </h1>
 
+            {/* Paragraph */}
             <p className="py-5 text-center text-neutral-300 text-lg-fluid xs:pb-6
-            lg-2:text-start lg-2:text-xl lg-2:text-neutral-400 lg-2:font-medium">
+              lg-2:text-start lg-2:text-xl lg-2:text-neutral-400 lg-2:font-medium">
               Tired of messy URLs? Shorten links in seconds and track their metrics
               <span className="hidden lg-2:inline"> anywhere - 24 hours a day</span>
             </p>
@@ -82,22 +82,20 @@ export function Hero() {
             {/* Start Button section */}
             <div className="flex justify-center lg-2:items-center lg-2:gap-7 lg-2:justify-start">
               <button className="py-2 font-medium transition-transform duration-200 rounded-full px-7 text-lg-fluid bg-gradient-to-r from-green-400 to-blue-500 text-neutral-200 hover:scale-105 xs:py-3
-              lg-2:py-2 lg-2:px-4 lg-2:text-lg lg-2:from-green-500 lg-2:to-blue-600"
-              onClick={() => { scrollTo("link-form-section") }}>
+                lg-2:py-2 lg-2:px-4 lg-2:text-lg lg-2:from-green-500 lg-2:to-blue-600"
+                onClick={() => { scrollTo("link-form-section") }}>
                 {`Let's start now!`}
               </button>
 
               <p className="hidden text-neutral-200 items-center gap-1 
-              lg-2:text-sm lg-2:flex">
+                lg-2:text-sm lg-2:flex">
                 <IconStarFilled className="size-4 text-lime-400" />
                 Trusted by 10,000+ users
               </p>
             </div>
-          </div>
-        </article>
+          </section>
+        </div>
       </div>
     </section>
-
   )
-
 }
