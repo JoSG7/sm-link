@@ -55,8 +55,9 @@ export function ShortLinkForm() {
 
       {/* Input */}
       <input type="url" autoComplete="off" value={originalLink} onChange={(e) => setOriginalLink(e.currentTarget.value)}
-        className="w-full px-4 py-2 my-4 border rounded-lg text-base-fluid border-neutral-800 text-neutral-400 bg-neutral-900 placeholder:text-neutral-700 xs:my-5 xs:py-3
-        sm:my-7 sm:py-4 lg-2:py-3 lg-2:bg-neutral-950 lg-2:text-lg" 
+        className="w-full px-4 py-2 my-4 border rounded-lg text-base-fluid border-neutral-800 text-neutral-400 bg-neutral-900 placeholder:text-neutral-700 
+        xs:my-5 xs:py-3 sm:my-7 sm:py-4 
+        lg-2:py-3 lg-2:bg-neutral-950 lg-2:text-lg lg-2:my-4" 
         placeholder="https://example.com/long-url-to-short" required />
 
       <div className="flex items-center gap-3">
@@ -68,13 +69,17 @@ export function ShortLinkForm() {
 
       {/* Short Link Response */}
       <div className="w-full px-4 py-2 my-4 border rounded-lg bg-neutral-900 border-neutral-800 text-neutral-300 
-      xs:my-5 xs:py-3 sm:my-7 sm:py-4 lg-2:py-3 lg-2:bg-neutral-950">
+      xs:my-5 xs:py-3 sm:my-7 sm:py-4 
+      lg-2:py-3 lg-2:bg-neutral-950 lg-2:my-4">
         <p className="text-base-fluid lg-2:text-lg">sm-link.vercel.app/{shortURL}</p>
       </div>
 
       {/* Button Section */}
       <div className="flex justify-center">
-        <button className="flex items-center justify-center w-full gap-2 py-2 mt-2 font-medium rounded-lg mb-7 text-base-fluid bg-gradient-to-r from-green-500 to-blue-700 disabled:opacity-50 xs:py-3 sm:py-4" disabled={submiting}>
+        <button className="flex items-center justify-center w-full gap-2 py-2 mt-2 font-medium rounded-lg mb-7 text-base-fluid bg-gradient-to-r from-green-500 to-blue-700 disabled:opacity-50 
+        xs:py-3 sm:py-4 
+        lg-2:text-lg lg-2:py-3" 
+        disabled={submiting}>
           {submiting ? <IconLoader2 className="size-4 animate-spin sm:size-5 lg-2:size-7" /> : 
           <IconBolt className="size-4 sm:size-7 lg-2:size-5" />}
           {submiting ? "Shortening..." : "Shorten link"}

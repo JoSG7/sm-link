@@ -42,7 +42,7 @@ export default {
         'xl-fluid': ['clamp(20px, 5.5vw, 50px)', {
           lineHeight: '1.5',
         }],
-        '4xl-fluid': ['clamp(36px, 10vw, 64px)', {
+        '4xl-fluid': ['clamp(36px, 10vw, 100px)', {
           lineHeight: '1.1',
         }],
       },
