@@ -17,8 +17,8 @@ export function LogingDetails() {
               {/* First Card */}
               <article className="relative flex gap-5 p-3 border rounded-lg bg-neutral-950 border-graphite sm:p-6">
                 <div className="grow">
-                  <h1 className="pb-1 font-medium text-lg-fluid">Advanced Analytics</h1>
-                  <p className="text-sm-fluid text-neutral-300 ">
+                  <h1 className="pb-1 font-medium text-lg-movil">Advanced Analytics</h1>
+                  <p className="text-sm-movil text-neutral-300 ">
                     Track clicks, referrers, and device information with detailed insights.
                   </p>
                 </div>
@@ -34,8 +34,8 @@ export function LogingDetails() {
 
               <article className="relative flex gap-5 p-3 border rounded-lg bg-neutral-950 border-graphite sm:p-6">
                 <div className="grow">
-                  <h1 className="pb-1 font-medium text-lg-fluid">Customize your SmLink</h1>
-                  <p className="text-sm-fluid text-neutral-300 ">
+                  <h1 className="pb-1 font-medium text-lg-movil">Customize your SmLink</h1>
+                  <p className="text-sm-movil text-neutral-300 ">
                     Customize the url of your link
                   </p>
                 </div>
@@ -47,8 +47,8 @@ export function LogingDetails() {
 
               <article className="flex gap-5 p-3 border rounded-lg bg-neutral-950 border-graphite sm:p-6">
                 <div className="grow">
-                  <h1 className="pb-1 font-medium text-lg-fluid">More SmLinks</h1>
-                  <p className="text-sm-fluid text-neutral-300">
+                  <h1 className="pb-1 font-medium text-lg-movil">More SmLinks</h1>
+                  <p className="text-sm-movil text-neutral-300">
                     Extend limit from 7 to 15 links
                   </p>
                 </div>
@@ -111,7 +111,7 @@ export function LogingDetails() {
             </div>
 
             <div className="flex items-center justify-center lg-2:justify-start">
-              <button className="px-7 py-2 font-medium transition-transform duration-200 rounded-full text-lg-fluid bg-gradient-to-r from-green-400 to-blue-500 text-neutral-200 hover:scale-105 xs:py-3 
+              <button className="px-7 py-2 font-medium transition-transform duration-200 rounded-full text-lg-movil bg-gradient-to-r from-green-400 to-blue-500 text-neutral-200 hover:scale-105 xs:py-3 
               lg-2:text-lg lg-2:py-2 lg-2:px-4">
                 Get Started
               </button>

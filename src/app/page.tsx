@@ -22,7 +22,7 @@ export default async function Home() {
       <main className="flex flex-col text-white bg-black">
         <NavBar />
         <MainMenu />
-        <div className="flex flex-col gap-28">
+        <div className="flex flex-col gap-28 lg:gap-40">
           <Hero />
           <LinkFormSection />
           <LogingDetails />

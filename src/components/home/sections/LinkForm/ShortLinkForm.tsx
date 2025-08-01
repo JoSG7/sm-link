@@ -49,13 +49,13 @@ export function ShortLinkForm() {
           <div className="rounded-full lg-2:block">
             <IconPaperclip className="size-5-fluid text-emerald-400 lg-2:size-5"></IconPaperclip>
           </div>
-          <span className="font-semibold text-lg-fluid lg-2:text-xl">Paste a long link</span>
+          <span className="font-semibold text-lg-movil lg-2:text-xl">Paste a long link</span>
         </label>
       </div>
 
       {/* Input */}
       <input type="url" autoComplete="off" value={originalLink} onChange={(e) => setOriginalLink(e.currentTarget.value)}
-        className="w-full px-4 py-2 my-4 border rounded-lg text-base-fluid border-neutral-800 text-neutral-400 bg-neutral-900 placeholder:text-neutral-700 
+        className="w-full px-4 py-2 my-4 border rounded-lg text-base-movil border-neutral-800 text-neutral-400 bg-neutral-900 placeholder:text-neutral-700 
         xs:my-5 xs:py-3 sm:my-7 sm:py-4 
         lg-2:py-3 lg-2:bg-neutral-950 lg-2:text-lg lg-2:my-4" 
         placeholder="https://example.com/long-url-to-short" required />
@@ -64,19 +64,19 @@ export function ShortLinkForm() {
         <div className="rounded-full lg-2:block">
           <IconStarFilled className="size-5-fluid lg-2:size-5 text-emerald-400"></IconStarFilled>
         </div>
-        <span className="font-semibold text-lg-fluid lg-2:text-xl">Here is the new link</span>
+        <span className="font-semibold text-lg-movil lg-2:text-xl">Here is the new link</span>
       </div>
 
       {/* Short Link Response */}
       <div className="w-full px-4 py-2 my-4 border rounded-lg bg-neutral-900 border-neutral-800 text-neutral-300 
       xs:my-5 xs:py-3 sm:my-7 sm:py-4 
       lg-2:py-3 lg-2:bg-neutral-950 lg-2:my-4">
-        <p className="text-base-fluid lg-2:text-lg">sm-link.vercel.app/{shortURL}</p>
+        <p className="text-base-movil lg-2:text-lg">sm-link.vercel.app/{shortURL}</p>
       </div>
 
       {/* Button Section */}
       <div className="flex justify-center">
-        <button className="flex items-center justify-center w-full gap-2 py-2 mt-2 font-medium rounded-lg mb-7 text-base-fluid bg-gradient-to-r from-green-500 to-blue-700 disabled:opacity-50 
+        <button className="flex items-center justify-center w-full gap-2 py-2 mt-2 font-medium rounded-lg mb-7 text-base-movil bg-gradient-to-r from-green-500 to-blue-700 disabled:opacity-50 
         xs:py-3 sm:py-4 
         lg-2:text-lg lg-2:py-3" 
         disabled={submiting}>
@@ -87,7 +87,7 @@ export function ShortLinkForm() {
       </div>
 
       {/* Terms section */}
-      <p className="text-center text-xs-fluid text-neutral-400 lg-2:text-xs">
+      <p className="text-center text-xs-movil text-neutral-400 lg-2:text-xs">
         By proceeding, you agree to our <span className="text-green-400">Terms of Service</span> and
         <span className="text-green-400"> Privacy Policy</span>.
       </p>
