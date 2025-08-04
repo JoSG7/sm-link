@@ -54,7 +54,7 @@ export default {
         'sm-desktop-sm': ['clamp(14px, 1.3vw, 50px)', {
           lineHeight: '1.1',
         }],
-        'base-desktop-sm': ['clamp(16px, 4.2vw, 50px)', {
+        'base-desktop-sm': ['clamp(16px, 1.4vw, 50px)', {
           lineHeight: '1.4',
         }],
         'lg-desktop-sm': ['clamp(18px, 1.7vw, 50px)', {
@@ -69,22 +69,22 @@ export default {
 
         // Desktop 
 
-        'xs-desktop': ['clamp(12px, 1vw, 25px)', {
+        'xs-desktop': ['clamp(12px, 0.9vw, 25px)', {
           lineHeight: '1.1',
         }],
-        'sm-desktop': ['clamp(14px, 1.3vw, 30px)', {
+        'sm-desktop': ['clamp(14px, 1.2vw, 30px)', {
           lineHeight: '1.1',
         }],
-        'base-desktop': ['clamp(16px, 4.2vw, 50px)', {
-          lineHeight: '1.4',
+        'base-desktop': ['clamp(16px, 1.3vw, 50px)', {
+          lineHeight: '1.2',
         }],
-        'lg-desktop': ['clamp(18px, 1.5vw, 38px)', {
+        'lg-desktop': ['clamp(18px, 1.4vw, 38px)', {
           lineHeight: '1.5',
         }],
         'xl-desktop': ['clamp(20px, 1.5vw, 39px)', {
           lineHeight: '1.5',
         }],
-        '4xl-desktop': ['clamp(36px, 10vw, 100px)', {
+        '4xl-desktop': ['clamp(36px, 3.5vw, 100px)', {
           lineHeight: '1.1',
         }],
         '6xl-desktop': ['clamp(60px, 4.7vw, 120px)', {

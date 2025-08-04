@@ -13,7 +13,7 @@ export const Pill = ({ title = "", containerClass, icon = null, iconContainerCla
   return (
     <article className={`rounded-full border border-graphite py-1 px-3 flex gap-2 items-center ${containerClass}`}>
       <div>
-        <p className={`text-xs ${titleClass}`}>
+        <p className={`${titleClass}`}>
           {title}
         </p>
       </div>
