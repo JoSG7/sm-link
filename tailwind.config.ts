@@ -72,10 +72,10 @@ export default {
         'xs-desktop': ['clamp(12px, 0.9vw, 25px)', {
           lineHeight: '1.1',
         }],
-        'sm-desktop': ['clamp(14px, 1.2vw, 30px)', {
-          lineHeight: '1.1',
+        'sm-desktop': ['clamp(14px, 1.1vw, 30px)', {
+          lineHeight: '1.45',
         }],
-        'base-desktop': ['clamp(16px, 1.3vw, 50px)', {
+        'base-desktop': ['clamp(16px, 1.25vw, 50px)', {
           lineHeight: '1.2',
         }],
         'lg-desktop': ['clamp(18px, 1.4vw, 38px)', {

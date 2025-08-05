@@ -9,7 +9,7 @@ export function RecentLinks({loading, data} : { loading: boolean, data: LinkDeta
 
   return (
     <>
-      <div className="px-4 pb-4 flex flex-col gap-4">
+      <div className="px-4 pb-4 flex flex-col gap-4 2xl:px-5 2xl:pb-5 2xl:gap-5">
         {
           loading ?
             <div className="flex flex-col gap-4">

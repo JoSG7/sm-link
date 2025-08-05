@@ -62,28 +62,30 @@ export function MainMenu() {
     <motion.section className={`h-screen fixed inset-0 z-20 bg-modal backdrop-blur-sm text-[#E5E7EB] 
       ${isMenuOpen ? "pointer-events-auto" : "pointer-events-none"}`}
       onClick={toggleMenu} initial={false} animate={{ opacity: isMenuOpen ? 1 : 0 }} transition={{ duration: 0.1 }} >
-      <motion.nav className={`absolute bottom-0 bg-[rgb(7,7,7)] border-[#1c1c1d] overflow-y-auto ${navWidth} sm:right-0 sm:border-l`}
+      <motion.nav className={`absolute bottom-0 bg-[rgb(7,7,7)] border-graphite overflow-y-auto ${navWidth} sm:right-0 sm:border-l`}
         onClick={(e) => e.stopPropagation()} initial={false} animate={isMenuOpen ? "open" : "closed"} variants={navVariants}>
         <ul className="flex flex-col">
           <Accordion items={[
             {
               title:
-                <li className="border-t border-[#1c1d1d] p-4 text-xl font-semibold flex justify-between items-center cursor-pointer lg-2:border-none">
-                  <div className="flex gap-2 items-center">
-                    <IconClockCheck size={24} />
-                    Recent SmLinks
+                <li className="border-t border-graphite p-4 text-xl font-semibold flex justify-between items-center cursor-pointer lg-2:border-none 2xl:p-5">
+                  <div className="flex gap-2 items-center lg-2:text-xl-desktop">
+                    <IconClockCheck className="size-6 text-green-500 
+                    2xl:size-7" />
+                    <span className="text-green-300">Recent</span> SmLinks
                   </div>
 
-                  <span className="text-base">{linkDetails.length}/7</span>
+                  <span className="text-base lg-2:text-base-desktop">{linkDetails.length}/7</span>
                 </li>,
               content: <RecentLinks data={linkDetails} loading={loading} />
             },
             {
               title:
-                <li className="border-t border-[#1c1d1d] p-4 text-xl font-semibold flex gap-2 items-center cursor-pointer"
-                >
-                  <IconLock size={24} />
-                  Protected Links
+                <li className="border-t border-graphite p-4 text-xl font-semibold flex gap-2 items-center cursor-pointer
+                lg-2:text-xl-desktop 2xl:p-5">
+                  <IconLock className="size-6 text-sky-500
+                  2xl:size-7" />
+                  <span className="text-sky-300">Protected</span> Links
                 </li>,
               content: <ProtectedLinks data={linkDetails} loading={loading} />
             }
