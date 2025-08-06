@@ -24,27 +24,37 @@ export function LinkCard({ data }: { data: LinkDetails }) {
   return (
 
     <article className="p-4 rounded-lg border border-graphite whitespace-normal duration-300 ease-out border-l-2 
-    hover:border-l-sky-400
+    xs:p-5
+    lg:p-4
     2xl:p-5">
+
       <DeleteLinkModal />
       <CreatePwdLinkModal />
       <SetLinkExpirationModal />
-      <div className="flex justify-between items-center pb-4 2xl:pb-5">
-        <div className="flex flex-col max-w-[240px] sm:max-w-[285px] lg-2:max-w-[400px] 2xl:max-w-[700px]">
-          <p className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500
+
+      <div className="flex justify-between items-center pb-4 xs:pb-5 
+      lg:pb-4 lg:gap-5
+      2xl:pb-5">
+
+        <div className="flex flex-col grow">
+          <p className="font-semibold text-base-movil text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500
+          lg:text-base-desktop-sm
           lg-2:text-base-desktop">
             sm-link.vercel.app/{data.short}
           </p>
 
-          <p className="w-full max-w-[210px] text-sm text-neutral-200 mt-1 mb-2 break-words max-h-11 overflow-y-auto
-          lg-2:max-w-[500px] lg-2:mt-2 lg-2:mb-3 lg-2:text-sm-desktop
+          <p className="w-full max-w-[210px] text-sm-movil text-neutral-200 mt-1 mb-2 break-words max-h-10 overflow-y-auto
+          xs:max-w-[260px] xs:max-h-12 xs:mt-2 xs:mb-3
+          lg:text-sm-desktop-sm lg:max-w-[350px] lg:max-h-10 lg:mt-2 lg:mb-3
+          lg-2:max-w-[450px] lg-2:text-sm-desktop 
           2xl:max-h-14 ">
             {data.original}
           </p>
 
-          <p className="text-sm flex gap-1 text-sky-300 
+          <p className="text-sm-movil flex gap-1 text-green-300 
+          xs:gap-2 lg:gap-1 lg:text-sm-desktop-sm
           lg-2:text-sm-desktop">
-            <IconCalendar className="size-5 text-sky-400 2xl:size-6" />
+            <IconCalendar className="size-5 text-green-500 xs:size-6 lg-2:size-5 2xl:size-6" />
             {day} de {month}
           </p>
         </div>
@@ -54,30 +64,35 @@ export function LinkCard({ data }: { data: LinkDetails }) {
 
       {/* Buttons section */}
 
-      <div className="flex justify-end gap-3 2xl:gap-4">
+      <div className="flex justify-end gap-3 xs:gap-4 
+      lg-2:gap-3 2xl:gap-4">
 
         {/* Delete button */}
         <button className="p-2 rounded-xl bg-neutral-900 flex gap-1 items-center text-sm"
           onClick={() => { toggleDeleteModal(data.short) }}>
-          <IconTrashFilled className="size-5 2xl:size-6" />
+          <IconTrashFilled className="size-5 2xl:size-6
+          :size-6 lg-2:size-5 " />
         </button>
 
         {/* Expiration Button */}
         <button className="p-2 rounded-xl bg-neutral-900 disabled:opacity-50" 
         onClick={() => { toggleAddExpirationModal(data.short) }} disabled={data.has_expiration}>
-          <IconClockCheck className="size-5 text-emerald-300 2xl:size-6"/>
+          <IconClockCheck className="size-5 text-emerald-400
+          xs:size-6 lg:size-5 2xl:size-6"/>
         </button>
 
         {/* Protected Button */}
         <button className="p-2 rounded-xl bg-neutral-900 disabled:opacity-50"
         onClick={() => { toggleAddPasswordModal(data.short) }} disabled={data.has_password}>
-          <IconShieldLockFilled className="size-5 text-sky-300 2xl:size-6"/>
+          <IconShieldLockFilled className="size-5 text-sky-400
+          xs:size-6 lg:size-5 2xl:size-6"/>
         </button>
 
         {/* Visit button */}
         <Link href={`https://sm-link.vercel.app/${data.short}`} target="_blank"
           className="p-2 rounded-xl bg-neutral-900 flex gap-1 items-center text-sm">
-          <IconExternalLink className="size-5 text-emerald-300 2xl:size-6"></IconExternalLink>
+          <IconExternalLink className="size-5 text-emerald-400
+          xs:size-6 lg:size-5 2xl:size-6"></IconExternalLink>
         </Link>
 
         {/* Copy button */}
@@ -85,7 +100,8 @@ export function LinkCard({ data }: { data: LinkDetails }) {
           onClick={() => {
             navigator.clipboard.writeText(`sm-link.vercel.app/${data.short}`).then(() => { toast.success("Copiado Correctamente") })
           }}>
-          <IconCopy className="size-5 text-sky-300 2xl:size-6"></IconCopy>
+          <IconCopy className="size-5 text-sky-400
+          xs:size-6 lg:size-5 2xl:size-6"></IconCopy>
         </button>
       </div>
     </article>

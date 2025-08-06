@@ -68,23 +68,27 @@ export function MainMenu() {
           <Accordion items={[
             {
               title:
-                <li className="border-t border-graphite p-4 text-xl font-semibold flex justify-between items-center cursor-pointer lg-2:border-none 2xl:p-5">
-                  <div className="flex gap-2 items-center lg-2:text-xl-desktop">
-                    <IconClockCheck className="size-6 text-green-500 
+                <li className="border-t border-graphite p-4 text-xl-movil font-semibold flex justify-between items-center cursor-pointer
+                xs:p-5 lg:p-4 lg:border-none 2xl:p-5">
+                  <div className="flex gap-2 items-center 
+                  lg:text-xl-desktop-sm
+                  lg-2:text-xl-desktop">
+                    <IconClockCheck className="size-6 text-green-500 xs:size-7
+                    lg:size-6
                     2xl:size-7" />
                     <span className="text-green-300">Recent</span> SmLinks
                   </div>
 
-                  <span className="text-base lg-2:text-base-desktop">{linkDetails.length}/7</span>
+                  <span className="text-base-movil lg:text-base-desktop-sm lg-2:text-base-desktop">{linkDetails.length}/7</span>
                 </li>,
               content: <RecentLinks data={linkDetails} loading={loading} />
             },
             {
               title:
-                <li className="border-t border-graphite p-4 text-xl font-semibold flex gap-2 items-center cursor-pointer
+                <li className="border-t border-graphite p-4 text-xl-movil font-semibold flex gap-2 items-center cursor-pointer
+                xs:p-5 lg:p-4 lg:text-xl-desktop-sm
                 lg-2:text-xl-desktop 2xl:p-5">
-                  <IconLock className="size-6 text-sky-500
-                  2xl:size-7" />
+                  <IconLock className="size-6 text-sky-500 xs:size-7 lg:size-6 2xl:size-7" />
                   <span className="text-sky-300">Protected</span> Links
                 </li>,
               content: <ProtectedLinks data={linkDetails} loading={loading} />

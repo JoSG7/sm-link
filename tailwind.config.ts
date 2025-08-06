@@ -52,7 +52,7 @@ export default {
           lineHeight: '1.1',
         }],
         'sm-desktop-sm': ['clamp(14px, 1.3vw, 50px)', {
-          lineHeight: '1.1',
+          lineHeight: '1.45',
         }],
         'base-desktop-sm': ['clamp(16px, 1.4vw, 50px)', {
           lineHeight: '1.4',
@@ -60,7 +60,7 @@ export default {
         'lg-desktop-sm': ['clamp(18px, 1.7vw, 50px)', {
           lineHeight: '1.5',
         }],
-        'xl-desktop-sm': ['clamp(20px, 5.5vw, 50px)', {
+        'xl-desktop-sm': ['clamp(20px, 1.9vw, 50px)', {
           lineHeight: '1.5',
         }],
         '6xl-desktop-sm': ['clamp(60px, 5.8vw, 200px)', {
