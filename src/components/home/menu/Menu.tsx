@@ -11,8 +11,6 @@ import { useMenuDrawer } from "@/hooks/useModal"
 import { useScreenSize } from "@/hooks/useScreenSize"
 import { ProtectedLinks } from "./ProtectedLink"
 import { useLinkChanges } from "@/hooks/useLinkChanges"
-// import { DeleteLinkModal } from "@/components/modals/home/DeleteLinkModal"
-
 
 export function MainMenu() {
 
@@ -61,9 +59,17 @@ export function MainMenu() {
 
     <motion.section className={`h-screen fixed inset-0 z-20 bg-modal backdrop-blur-sm text-[#E5E7EB] 
       ${isMenuOpen ? "pointer-events-auto" : "pointer-events-none"}`}
-      onClick={toggleMenu} initial={false} animate={{ opacity: isMenuOpen ? 1 : 0 }} transition={{ duration: 0.1 }} >
+      onClick={toggleMenu}
+      initial={false}
+      animate={{ opacity: isMenuOpen ? 1 : 0 }}
+      transition={{ duration: 0.1 }} >
+
       <motion.nav className={`absolute bottom-0 bg-[rgb(7,7,7)] border-graphite overflow-y-auto ${navWidth} sm:right-0 sm:border-l`}
-        onClick={(e) => e.stopPropagation()} initial={false} animate={isMenuOpen ? "open" : "closed"} variants={navVariants}>
+        onClick={(e) => e.stopPropagation()} 
+        initial={false} 
+        animate={isMenuOpen ? "open" : "closed"} 
+        variants={navVariants}>
+        
         <ul className="flex flex-col">
           <Accordion items={[
             {
