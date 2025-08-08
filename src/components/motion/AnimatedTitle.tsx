@@ -6,9 +6,10 @@ type TitleProps = {
   title: string
   gradientWords: string[]
   className?: string | undefined
+  delay?: number
 }
 
-export function AnimatedTitle({ title, gradientWords, className }: TitleProps) {
+export function AnimatedTitle({ title, gradientWords, className, delay = 0 }: TitleProps) {
 
   const words = title.split(' ')
   const normalWords = words.filter((wrd) => !gradientWords.includes(wrd))
@@ -25,7 +26,8 @@ export function AnimatedTitle({ title, gradientWords, className }: TitleProps) {
 
   return (
 
-    <h1 className={className}>
+    <motion.h1 className={className}
+    >
       {
         finalWords.map((word, i) => {
 
@@ -38,8 +40,9 @@ export function AnimatedTitle({ title, gradientWords, className }: TitleProps) {
               whileInView={{ opacity: 1, filter: 'blur(0px)', y: 0 }}
               transition={{
                 duration: 0.4,
-                delay: i * 0.1,
+                delay: (delay + i) * 0.1 ,
                 ease: 'easeOut',
+                type: "spring"
               }}
               viewport={{ once: true }}
               className={
@@ -52,6 +55,6 @@ export function AnimatedTitle({ title, gradientWords, className }: TitleProps) {
           )
         })
       }
-    </h1>
+    </motion.h1>
   )
 }

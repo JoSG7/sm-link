@@ -28,9 +28,9 @@ export function Hero() {
           {/* Img Section */}
           <div className="flex justify-center">
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: 'easeOut' }}
+              initial={{ opacity: 0, y: 50, filter: 'blur(5px)' }}
+              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              transition={{ duration: 0.5, delay: 1.6 , ease: 'easeOut' }}
               viewport={{ once: true }}>
 
               <Image src="/imgs/mano5.png" alt="logo" width={500} height={500}
@@ -57,21 +57,9 @@ export function Hero() {
               2xl:pt-6 2xl:pb-7 
               3xl:pt-7 3xl:pb-8
               4xl:pt-9 4xl:pb-10"
-                initial={{
-                  opacity: 0,
-                  filter: "blur(3px)",
-                  clipPath: "inset(0 100% 0 0)",
-                }}
-                whileInView={{
-                  opacity: 1,
-                  filter: "blur(0px)",
-                  clipPath: "inset(0 0% 0 0)",
-                }}
-                transition={{
-                  duration: 0.5,
-                  ease: "easeOut",
-                  delay: 0.7
-                }}
+                initial={{ opacity: 0, filter: "blur(3px)", clipPath: "inset(0 100% 0 0)" }}
+                whileInView={{ opacity: 1, filter: "blur(0px)", clipPath: "inset(0 0% 0 0)" }}
+                transition={{ duration: 0.5, ease: "easeOut", delay: 0.5 }}
                 viewport={{ once: true }}>
                 Tired of messy URLs? Shorten links in seconds and track their metrics
                 <span className="hidden lg:inline"> anywhere - 24 hours a day</span>
@@ -95,7 +83,7 @@ export function Hero() {
                 <motion.article className="p-2 border rounded-lg bg-neutral-950 border-graphite grow xs:p-3 sm:p-5"
                   initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
                   whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                  transition={{ duration: 0.5, delay: 1, ease: "easeOut" }}
+                  transition={{ duration: 0.5, delay: 1.2, ease: "easeOut" }}
                   viewport={{ once: true }}>
                   <div className="flex justify-center pb-2">
                     <div className="">
@@ -108,7 +96,7 @@ export function Hero() {
                 <motion.article className="p-2 border rounded-lg bg-neutral-950 border-graphite grow xs:p-3 sm:p-5"
                   initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
                   whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                  transition={{ duration: 0.5, delay: 1, ease: "easeOut" }}
+                  transition={{ duration: 0.5, delay: 1.4, ease: "easeOut" }}
                   viewport={{ once: true }}>
                   <div className="flex justify-center pb-2">
                     <div className="">
@@ -160,7 +148,7 @@ export function Hero() {
                 lg-2:text-lg-desktop 
                 2xl:px-6 3xl:py-3 3xl:px-8"
                   onClick={() => { scrollTo("link-form-section") }}
-                  initial={{ opacity: 0, filter: "blur(8px)" }}
+                  initial={{ opacity: 0, filter: "blur(5px)" }}
                   whileInView={{ opacity: 1, filter: "blur(0px)" }}
                   transition={{ duration: 0.5, delay: 1.3, ease: "easeIn" }}
                   viewport={{ once: true }}
