@@ -7,6 +7,7 @@ import { FormEvent, useState } from "react";
 import { toast } from "sonner";
 import { isURL } from "validator";
 import { motion } from 'framer-motion'
+import { useMediaQuery } from 'usehooks-ts'
 
 export function ShortLinkForm() {
 
@@ -14,6 +15,7 @@ export function ShortLinkForm() {
   const [submiting, setSubmiting] = useState(false)
   const [shortURL, setShortURL] = useState("")
   const { recordLinkChanges } = useLinkChanges()
+  const isMobile = useMediaQuery("(max-width: 639px)")
 
   const handleSubmit = async (e: FormEvent) => {
 
@@ -50,13 +52,13 @@ export function ShortLinkForm() {
       whileInView={{ opacity: 1, x: 0, scale: 1 }}
       transition={{
         duration: 0.5,
-        delay: 0.4,
+        delay: isMobile ? 1 : 0,
         ease: "easeOut",
         type: "spring",
         stiffness: 80
       }}
       viewport={{ once: true }}>
-      
+
       <div className="flex justify-between">
         <label htmlFor="txtUrl" className="flex items-center gap-3">
           <div className="rounded-full ">

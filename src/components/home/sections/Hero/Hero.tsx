@@ -28,9 +28,9 @@ export function Hero() {
           {/* Img Section */}
           <div className="flex justify-center">
             <motion.div
-              initial={{ opacity: 0, y: 50, filter: 'blur(5px)' }}
-              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-              transition={{ duration: 0.5, delay: 1.6 , ease: 'easeOut' }}
+              initial={{ opacity: 0, scale: 0.5, filter: 'blur(5px)' }}
+              whileInView={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+              transition={{ duration: 0.3, delay: 2, ease: 'easeOut' }}
               viewport={{ once: true }}>
 
               <Image src="/imgs/mano5.png" alt="logo" width={500} height={500}
@@ -129,7 +129,7 @@ export function Hero() {
                   4xl:px-6"
                   iconContainerClass="bg-sky-400 3xl:p-1.5"
                   titleClass="text-xs-desktop-sm lg-2:text-xs-desktop"
-                  delay={1} />
+                  delay={1.2} />
 
                 <Pill title="100% Secure"
                   icon={<IconLock className="text-green-700 size-4 2xl:size-5 3xl:size-6 4xl:size-8" />}
@@ -138,7 +138,7 @@ export function Hero() {
                   4xl:px-6"
                   iconContainerClass="bg-emerald-300 3xl:p-1.5"
                   titleClass="text-xs-desktop-sm lg-2:text-xs-desktop"
-                  delay={1} />
+                  delay={1.4} />
               </div>
 
               {/* Start Button section */}
@@ -150,7 +150,7 @@ export function Hero() {
                   onClick={() => { scrollTo("link-form-section") }}
                   initial={{ opacity: 0, filter: "blur(5px)" }}
                   whileInView={{ opacity: 1, filter: "blur(0px)" }}
-                  transition={{ duration: 0.5, delay: 1.3, ease: "easeIn" }}
+                  transition={{ duration: 0.5, delay: 1.6, ease: "easeIn" }}
                   viewport={{ once: true }}
                 >
                   {`Let's start now!`}
@@ -161,7 +161,7 @@ export function Hero() {
                 2xl:gap-2"
                   initial={{ opacity: 0, filter: "blur(8px)" }}
                   whileInView={{ opacity: 1, filter: "blur(0px)" }}
-                  transition={{ duration: 0.5, delay: 1.3, ease: "easeIn" }}
+                  transition={{ duration: 0.5, delay: 1.6, ease: "easeIn" }}
                   viewport={{ once: true }}
                 >
                   <IconStarFilled className="size-4 text-lime-400 2xl:size-5 3xl:size-6 4xl:size-7" />

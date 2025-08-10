@@ -1,37 +1,37 @@
+"use client"
+
 import { AnimatedTitle } from "@/components/motion/AnimatedTitle";
 import { Pill } from "@/components/shared/Pill";
 import { IconBolt, IconWorld } from "@tabler/icons-react";
 import { motion } from 'framer-motion'
+import { useMediaQuery } from "usehooks-ts";
 
 export function LinkFormTitle() {
+
+  const isMobile = useMediaQuery("(max-width: 639px)")
 
   return (
 
     <section className="flex items-center lg:w-[60%] lg-2:w-[50%]">
       <div className="lg-2:py-0">
 
-        {/* Title for movil */}
-        <h1 className="tracking-tight text-center text-4xl-movil lg:hidden">
-          Start by shortening your <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 ">fisrt link</span>
-        </h1>
-
-        {/* Title for desktop */}
-        <AnimatedTitle title="Shorten your first link in seconds" gradientWords={["your", "first"]} delay={7}
-          className="hidden tracking-tight text-6xl-desktop-sm text-start lg:block lg-2:text-6xl-desktop" />
+        {/* Title */}
+        <AnimatedTitle title="Shorten your first link in seconds" gradientWords={["your", "first"]} delay={isMobile ? 0 : 7} 
+          className="text-4xl-movil text-center tracking-tight lg:text-6xl-desktop-sm lg:text-start lg:block lg-2:text-6xl-desktop" />
 
         {/* Paragraph */}
-        <motion.p className="py-5 font-medium text-center text-lg-movil text-neutral-300 xs:pb-6 sm:pb-7
+        <motion.p className="py-5 pt-3 font-medium text-center text-lg-movil text-neutral-300 xs:pb-6 sm:pb-7
         lg:text-start lg:py-4 lg:text-lg-desktop-sm lg:text-neutral-400
         lg-2:text-xl-desktop
         2xl:py-5 3xl:py-6 4xl:py-8"
-          initial={{ opacity: 0, filter: "blur(3px)", clipPath: "inset(0 100% 0 0)" }}
-          whileInView={{ opacity: 1, filter: "blur(0px)", clipPath: "inset(0 0% 0 0)" }}
-          transition={{ duration: 0.5, ease: "easeOut", delay: 1.3 }}
+          initial={{ opacity: 0, y: -10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3, delay: isMobile ? 0.7 : 1.3, type: "spring" }}
           viewport={{ once: true }}>
-          Quick to share and easy to manage, perfect for social media and team
+          Quick to share and easy to manage, perfect for social media and team 
         </motion.p>
 
-        {/* Features for desktop */}
+        {/* Features only for desktop */}
         <section className="hidden lg:block">
 
           {/* Features Pills */}
@@ -84,8 +84,8 @@ export function LinkFormTitle() {
             </motion.article>
 
             <motion.article className="border rounded-lg bg-neutral-950 border-graphite py-3 px-4 grow
-            2xl:py-4 2xl:px-5 3xl:py-5 3xl:px-6 4xl:py-7 4xl:px-8" 
-            initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
+            2xl:py-4 2xl:px-5 3xl:py-5 3xl:px-6 4xl:py-7 4xl:px-8"
+              initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
               whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ duration: 0.5, delay: 2.2, ease: "easeOut" }}
               viewport={{ once: true }}>

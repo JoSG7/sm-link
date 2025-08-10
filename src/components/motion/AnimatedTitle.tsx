@@ -47,8 +47,8 @@ export function AnimatedTitle({ title, gradientWords, className, delay = 0 }: Ti
               viewport={{ once: true }}
               className={
                 isGradient
-                  ? 'inline-block text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500'
-                  : 'inline-block '
+                  ? 'inline-block text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 z-10' 
+                  : 'inline-block z-10'
               }>
               {word}{"\u00A0"}
             </motion.span>
