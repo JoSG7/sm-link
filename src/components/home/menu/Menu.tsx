@@ -54,34 +54,38 @@ export function MainMenu() {
     fetchRecentLinks()
   }, [linkChanges])
 
-
   return (
 
-    <motion.section className={`h-screen fixed inset-0 z-20 bg-modal backdrop-blur-sm text-[#E5E7EB] 
+    <motion.section className={`h-screen fixed inset-0 z-20 bg-modal backdrop-blur-sm text-[#E5E7EB]
       ${isMenuOpen ? "pointer-events-auto" : "pointer-events-none"}`}
       onClick={toggleMenu}
       initial={false}
       animate={{ opacity: isMenuOpen ? 1 : 0 }}
       transition={{ duration: 0.1 }} >
 
-      <motion.nav className={`absolute bottom-0 bg-[rgb(7,7,7)] border-graphite overflow-y-auto ${navWidth} sm:right-0 sm:border-l`}
-        onClick={(e) => e.stopPropagation()} 
-        initial={false} 
-        animate={isMenuOpen ? "open" : "closed"} 
+      <motion.nav className={`absolute bottom-0 bg-[rgb(7,7,7)] max-w-[1270px] border-graphite overflow-y-auto ${navWidth} 
+      sm:right-0 sm:border-l`}
+        onClick={(e) => e.stopPropagation()}
+        initial={false}
+        animate={isMenuOpen ? "open" : "closed"}
         variants={navVariants}>
-        
+
         <ul className="flex flex-col">
           <Accordion items={[
             {
               title:
                 <li className="border-t border-graphite p-4 text-xl-movil font-semibold flex justify-between items-center cursor-pointer
-                xs:p-5 lg:p-4 lg:border-none 2xl:p-5">
+                xs:p-5 lg:p-4 lg:border-none 
+                2xl:p-5 3xl:p-6 4xl:p-8 ">
                   <div className="flex gap-2 items-center 
                   lg:text-xl-desktop-sm
-                  lg-2:text-xl-desktop">
+                  lg-2:text-xl-desktop
+                  2xl:gap-3 3xl:gap-4 4xl:gap-6 ">
                     <IconClockCheck className="size-6 text-green-500 xs:size-7
                     lg:size-6
-                    2xl:size-7" />
+                    2xl:size-7
+                    3xl:size-8
+                    4xl:size-10" />
                     <span className="text-green-300">Recent</span> SmLinks
                   </div>
 
@@ -93,8 +97,15 @@ export function MainMenu() {
               title:
                 <li className="border-t border-graphite p-4 text-xl-movil font-semibold flex gap-2 items-center cursor-pointer
                 xs:p-5 lg:p-4 lg:text-xl-desktop-sm
-                lg-2:text-xl-desktop 2xl:p-5">
-                  <IconLock className="size-6 text-sky-500 xs:size-7 lg:size-6 2xl:size-7" />
+                lg-2:text-xl-desktop 
+                2xl:p-5 2xl:gap-3
+                3xl:p-6 3xl:gap-4
+                4xl:p-8 4xl:gap-6">
+                  <IconLock className="size-6 text-sky-500 xs:size-7 
+                  lg:size-6 
+                  2xl:size-7 
+                  3xl:size-8
+                  4xl:size-10" />
                   <span className="text-sky-300">Protected</span> Links
                 </li>,
               content: <ProtectedLinks data={linkDetails} loading={loading} />
@@ -107,33 +118,3 @@ export function MainMenu() {
 }
 
 // #e3c45e
-
-{/* <section className="w-full h-screen fixed hidden bottom-0 bg-modal z-20 backdrop-blur-sm text-[#E5E7EB]" id="bgMenu" */ }
-// onClick={closeMainMenu}>
-//   <nav className="w-full h-0 bg-[rgb(7,7,7)] border-[#1c1c1d] self-end overflow-y-auto duration-100 whitespace-nowrap
-//   sm:w-0 sm:fixed sm:right-0 sm:h-full sm:border-l sm:overflow-x-hidden"
-//   id="isMenuOpen" onClick={(e) => { e.stopPropagation() }}>
-//     <ul className="option-list flex flex-col ">
-
-//       <Accordion items={[
-//         {
-//           title:
-//             <li className="border-t border-[#1c1d1d] p-4 text-xl font-semibold flex gap-2 items-center cursor-pointer lg-2:border-none" onClick={fetchRecentLinks}>
-//               <IconClockCheck size={24} />
-//               Recent Sm Links
-//             </li>,
-//           content: <RecentLinks data={recentLinks} loading={loading} />
-//         },
-//         {
-//           title:
-//             <li className="border-t border-[#1c1d1d] p-4 text-xl font-semibold flex gap-2 items-center cursor-pointer"
-//             onClick={() => { toggleMenu() }}>
-//               <IconLock size={24} />
-//               Protected Links
-//             </li>,
-//           content: "SISISI"
-//         }
-//       ]} />
-//     </ul>
-//   </nav>
-// </section>

@@ -9,7 +9,11 @@ export function DomainLogo({ domain }: { domain: string }) {
   if (error) {
     return (
       <div className="flex items-center justify-end grow" >
-        <IconWorldExclamation className="size-12 xs:size-14 lg-2:size-[70px] 2xl:size-16" />
+        <IconWorldExclamation className="min-size-[48px] 
+        xs:min-size-[56px] 
+        lg:min-size-[70px] 
+        2xl:min-size-[90px]
+        3xl:min-size-[110px]" />
       </div>
     )
   }
@@ -21,7 +25,12 @@ export function DomainLogo({ domain }: { domain: string }) {
         alt="Logo"
         width={60}
         height={60}
-        className="size-12 rounded-full xs:size-14 sm:size-14 lg-2:size-[70px] 2xl:size-24"
+        className="min-size-[48px] rounded-full 
+        xs:min-size-[56px] 
+        lg:min-size-[70px] 
+        2xl:min-size-[90px]
+        3xl:min-size-[110px]
+        4xl:min-size-[150px]"
         onError={() => setError(true)}
       />
     </div>

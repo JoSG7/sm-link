@@ -21,21 +21,31 @@ export function LinkCard({ data }: { data: LinkDetails }) {
   const { toggleAddPasswordModal } = useAddPasswordModal()
   const { toggleAddExpirationModal } = useAddExpirationModal()
 
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(`sm-link.vercel.app/${data.short}`).then(() => { toast.success("Copiado Correctamente") })
+  }
+
   return (
 
     <article className="p-4 rounded-lg border border-graphite whitespace-normal duration-300 ease-out border-l-2 
     xs:p-5
     lg:p-4
-    2xl:p-5">
+    2xl:p-5
+    3xl:p-6
+    4xl:p-8">
 
       <DeleteLinkModal />
       <CreatePwdLinkModal />
       <SetLinkExpirationModal />
 
-      <div className="flex justify-between items-center pb-4 xs:pb-5 
-      lg:pb-4 lg:gap-5
-      2xl:pb-5">
+      <div className="flex items-center pb-4 gap-3
+      xs:pb-5 xs:gap-5
+      lg:pb-4 lg:gap-10
+      2xl:pb-6 2xl:gap-14
+      3xl:pb-8 3xl:gap-16
+      4xl:pb-12 4xl:gap-20">
 
+        {/* Short Link */}
         <div className="flex flex-col grow">
           <p className="font-semibold text-base-movil text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500
           lg:text-base-desktop-sm
@@ -43,65 +53,87 @@ export function LinkCard({ data }: { data: LinkDetails }) {
             sm-link.vercel.app/{data.short}
           </p>
 
-          <p className="w-full max-w-[210px] text-sm-movil text-neutral-200 mt-1 mb-2 break-words max-h-10 overflow-y-auto
-          xs:max-w-[260px] xs:max-h-12 xs:mt-2 xs:mb-3
-          lg:text-sm-desktop-sm lg:max-w-[350px] lg:max-h-10 lg:mt-2 lg:mb-3
-          lg-2:max-w-[450px] lg-2:text-sm-desktop 
-          2xl:max-h-14 ">
+          {/* Original Link */}
+          <p className="w-full max-w-max text-sm-movil text-neutral-200 mt-1 mb-2 break-all max-h-10 overflow-y-auto
+          xs:max-h-12 xs:mt-2 xs:mb-3
+          lg:max-h-11 lg:mt-2 lg:mb-3 lg:text-sm-desktop-sm
+          lg-2:text-sm-desktop
+          2xl:max-h-14 2xl:mt-2.5 2xl:mb-3.5
+          3xl:max-h-16 3xl:mt-3 3xl:mb-4
+          4xl:max-h-20 4xl:mt-4 4xl:mb-5">
             {data.original}
           </p>
 
-          <p className="text-sm-movil flex gap-1 text-green-300 
-          xs:gap-2 lg:gap-1 lg:text-sm-desktop-sm
-          lg-2:text-sm-desktop">
-            <IconCalendar className="size-5 text-green-500 xs:size-6 lg-2:size-5 2xl:size-6" />
+          {/* Creation date */}
+          <p className="text-sm-movil flex gap-1 text-green-300 xs:gap-2 
+          lg:gap-1 lg:text-sm-desktop-sm
+          lg-2:text-sm-desktop 
+          2xl:gap-2
+          3xl:gap-3 ">
+            <IconCalendar className="size-5 text-green-500 xs:size-6 lg:size-5 2xl:size-6 3xl:size-7 4xl:size-10" />
             {day} de {month}
           </p>
         </div>
 
+        {/* Link Logo */}
         <DomainLogo domain={domain} />
       </div>
 
       {/* Buttons section */}
-
       <div className="flex justify-end gap-3 xs:gap-4 
-      lg-2:gap-3 2xl:gap-4">
+      lg-2:gap-3 2xl:gap-4 3xl:gap-5 4xl:gap-7">
 
         {/* Delete button */}
-        <button className="p-2 rounded-xl bg-neutral-900 flex gap-1 items-center text-sm"
+        <button className="p-2 rounded-xl bg-neutral-900 
+        2xl:p-2.5 3xl:p-3 3xl:rounded-2xl
+        4xl:p-4 4xl:rounded-3xl"
           onClick={() => { toggleDeleteModal(data.short) }}>
-          <IconTrashFilled className="size-5 2xl:size-6
-          :size-6 lg-2:size-5 " />
+
+          <IconTrashFilled className="size-5 
+          xs:size-6 lg:size-5 2xl:size-6 3xl:size-7 4xl:size-10 " />
         </button>
 
         {/* Expiration Button */}
-        <button className="p-2 rounded-xl bg-neutral-900 disabled:opacity-50" 
-        onClick={() => { toggleAddExpirationModal(data.short) }} disabled={data.has_expiration}>
+        <button className="p-2 rounded-xl bg-neutral-900 disabled:opacity-50 
+        2xl:p-2.5 3xl:p-3 3xl:rounded-2xl
+        4xl:p-4 4xl:rounded-3xl"
+          onClick={() => { toggleAddExpirationModal(data.short) }}
+          disabled={data.has_expiration}>
+
           <IconClockCheck className="size-5 text-emerald-400
-          xs:size-6 lg:size-5 2xl:size-6"/>
+          xs:size-6 lg:size-5 2xl:size-6 3xl:size-7 4xl:size-10" />
         </button>
 
         {/* Protected Button */}
-        <button className="p-2 rounded-xl bg-neutral-900 disabled:opacity-50"
-        onClick={() => { toggleAddPasswordModal(data.short) }} disabled={data.has_password}>
+        <button className="p-2 rounded-xl bg-neutral-900 disabled:opacity-50 
+        2xl:p-2.5 3xl:p-3 3xl:rounded-2xl
+        4xl:p-4 4xl:rounded-3xl"
+          onClick={() => { toggleAddPasswordModal(data.short) }}
+          disabled={data.has_password}>
+
           <IconShieldLockFilled className="size-5 text-sky-400
-          xs:size-6 lg:size-5 2xl:size-6"/>
+          xs:size-6 lg:size-5 2xl:size-6 3xl:size-7 4xl:size-10" />
         </button>
 
         {/* Visit button */}
-        <Link href={`https://sm-link.vercel.app/${data.short}`} target="_blank"
-          className="p-2 rounded-xl bg-neutral-900 flex gap-1 items-center text-sm">
+        <Link className="p-2 rounded-xl bg-neutral-900 
+        2xl:p-2.5 3xl:p-3 3xl:rounded-2xl
+        4xl:p-4 4xl:rounded-3xl"
+          href={`https://sm-link.vercel.app/${data.short}`}
+          target="_blank"
+        >
           <IconExternalLink className="size-5 text-emerald-400
-          xs:size-6 lg:size-5 2xl:size-6"></IconExternalLink>
+          xs:size-6 lg:size-5 2xl:size-6 3xl:size-7 4xl:size-10" />
         </Link>
 
         {/* Copy button */}
-        <button className="p-2 rounded-xl bg-neutral-900 flex gap-1 items-center text-sm"
-          onClick={() => {
-            navigator.clipboard.writeText(`sm-link.vercel.app/${data.short}`).then(() => { toast.success("Copiado Correctamente") })
-          }}>
+        <button className="p-2 rounded-xl bg-neutral-900 
+        2xl:p-2.5 3xl:p-3 3xl:rounded-2xl
+        4xl:p-4 4xl:rounded-3xl"
+          onClick={copyToClipboard}>
+
           <IconCopy className="size-5 text-sky-400
-          xs:size-6 lg:size-5 2xl:size-6"></IconCopy>
+          xs:size-6 lg:size-5 2xl:size-6 3xl:size-7 4xl:size-10" />
         </button>
       </div>
     </article>
@@ -109,22 +141,3 @@ export function LinkCard({ data }: { data: LinkDetails }) {
 }
 
 
-{/* <button className="py-2 px-2.5 rounded-xl bg-red-200 text-red-500 flex gap-1 items-center text-sm"
-          onClick={() => { toggleDeleteModal(short) }}>
-          Borrar
-          <IconTrash className="size-5 " />
-        </button>
-
-        <Link href={`https://sm-link.vercel.app/${short}`} target="_blank"
-          className="py-2 px-2.5 rounded-xl bg-emerald-200 text-green-500 flex gap-1 items-center text-sm">
-          Visitar
-          <IconExternalLink className="size-5 "></IconExternalLink>
-        </Link>
-
-        <button className="py-2 px-3 rounded-xl bg-yellow-100 text-amber-500 flex gap-1 items-center text-sm"
-          onClick={() => {
-            navigator.clipboard.writeText(`sm-link.vercel.app/${short}`).then(() => { toast.success("Copiado Correctamente") })
-          }}>
-          Copiar
-          <IconCopy className="size-5 "></IconCopy>
-        </button> */}

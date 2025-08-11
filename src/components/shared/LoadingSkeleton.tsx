@@ -30,7 +30,7 @@ export function LinkCardSkeleton() {
 export function ProtectedLinkCardSkeleton() {
 
   return (
-    <article className="rounded-xl border border-[#1c1c1d] p-3 flex">
+    <article className="rounded-xl border border-graphite p-3 flex">
       <section className="w-full">
         <div className="flex justify-center pb-3">
           <div className="size-14 rounded-full bg-neutral-900 animate-pulse"></div>

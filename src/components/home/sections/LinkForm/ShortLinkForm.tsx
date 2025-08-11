@@ -62,7 +62,7 @@ export function ShortLinkForm() {
       <div className="flex justify-between">
         <label htmlFor="txtUrl" className="flex items-center gap-3">
           <div className="rounded-full ">
-            <IconPaperclip className="size-5-fluid text-emerald-400 
+            <IconPaperclip className="size-5 text-emerald-400 xs:size-6
             lg:size-5
             2xl:size-6
             3xl:size-7
@@ -86,7 +86,7 @@ export function ShortLinkForm() {
 
       <div className="flex items-center gap-3">
         <div className="rounded-full lg-2:block">
-          <IconStarFilled className="size-5-fluid text-emerald-400
+          <IconStarFilled className="size-5 text-emerald-400 xs:size-6
           lg:size-5
           2xl:size-6
           3xl:size-7

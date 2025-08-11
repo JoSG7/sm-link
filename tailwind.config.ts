@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import { PluginAPI } from "tailwindcss/types/config";
 
 export default {
   content: [
@@ -27,43 +28,43 @@ export default {
   theme: {
     extend: {
       fontSize: {
-        'xs-movil': ['clamp(12px, 3.2vw, 50px)', {
+        'xs-movil': ['clamp(12px, 3.2vw, 16px)', {
           lineHeight: '1.2',
         }],
-        'sm-movil': ['clamp(14px, 3.8vw, 50px)', {
+        'sm-movil': ['clamp(14px, 3.8vw, 18px)', {
           lineHeight: '1.4',
         }],
-        'base-movil': ['clamp(16px, 4.2vw, 50px)', {
+        'base-movil': ['clamp(16px, 4.2vw, 20px)', {
           lineHeight: '1.4',
         }],
-        'lg-movil': ['clamp(18px, 5vw, 50px)', {
+        'lg-movil': ['clamp(18px, 5vw, 24px)', {
           lineHeight: '1.5',
         }],
-        'xl-movil': ['clamp(20px, 5.5vw, 50px)', {
+        'xl-movil': ['clamp(20px, 5.5vw, 26px)', {
           lineHeight: '1.5',
         }],
-        '4xl-movil': ['clamp(36px, 10vw, 100px)', {
+        '4xl-movil': ['clamp(36px, 10vw, 48px)', {
           lineHeight: '1.1',
         }],
 
         // Desktop Sm Sizes
 
-        'xs-desktop-sm': ['clamp(12px, 1.1vw, 50px)', {
+        'xs-desktop-sm': ['clamp(12px, 1.1vw, 14px)', {
           lineHeight: '1.1',
         }],
-        'sm-desktop-sm': ['clamp(14px, 1.3vw, 50px)', {
+        'sm-desktop-sm': ['clamp(14px, 1.3vw, 16px)', {
           lineHeight: '1.45',
         }],
-        'base-desktop-sm': ['clamp(16px, 1.4vw, 50px)', {
+        'base-desktop-sm': ['clamp(16px, 1.4vw, 18px)', {
           lineHeight: '1.4',
         }],
-        'lg-desktop-sm': ['clamp(18px, 1.7vw, 50px)', {
+        'lg-desktop-sm': ['clamp(18px, 1.7vw, 22px)', {
           lineHeight: '1.5',
         }],
-        'xl-desktop-sm': ['clamp(20px, 1.9vw, 50px)', {
+        'xl-desktop-sm': ['clamp(20px, 1.9vw, 24px)', {
           lineHeight: '1.5',
         }],
-        '6xl-desktop-sm': ['clamp(60px, 5.8vw, 200px)', {
+        '6xl-desktop-sm': ['clamp(60px, 5.8vw, 74px)', {
           lineHeight: '1',
         }],
 
@@ -75,7 +76,7 @@ export default {
         'sm-desktop': ['clamp(14px, 1.1vw, 30px)', {
           lineHeight: '1.45',
         }],
-        'base-desktop': ['clamp(16px, 1.25vw, 50px)', {
+        'base-desktop': ['clamp(16px, 1.25vw, 32px)', {
           lineHeight: '1.2',
         }],
         'lg-desktop': ['clamp(18px, 1.4vw, 38px)', {
@@ -100,29 +101,29 @@ export default {
         '5-fluid': 'clamp(20px, 5.5vw, 32px)',
         '6-fluid': 'clamp(24px, 5.2vw, 36px)',
         '7-fluid': 'clamp(28px, 8vw, 40px)',
-        'content-desktop-sm' : 'calc(100vh - 68px)',
-        'content-desktop' : 'calc(100vh - 72px)',
-        'content-desktop-lg' : 'calc(100vh - 80px)',
-        'content-desktop-xl' : 'calc(100vh - 97px)',
-        'content-desktop-2xl' : 'calc(100vh - 121px)'
+        'content-desktop-sm': 'calc(100vh - 68px)',
+        'content-desktop': 'calc(100vh - 72px)',
+        'content-desktop-lg': 'calc(100vh - 80px)',
+        'content-desktop-xl': 'calc(100vh - 97px)',
+        'content-desktop-2xl': 'calc(100vh - 121px)'
       },
       padding: {
-        '4-fluid' : 'clamp(16px, 4.5vw, 40px)',
+        '4-fluid': 'clamp(16px, 4.5vw, 40px)',
       },
       minWidth: {
-        'img-desktop-sm' : 'clamp(376px, 36.5vw, 390px)',
-        'img-desktop' : 'clamp(430px, 34vw, 865px)'
+        'img-desktop-sm': 'clamp(376px, 36.5vw, 390px)',
+        'img-desktop': 'clamp(430px, 34vw, 865px)'
 
       },
       minHeight: {
-        'img-desktop-sm' : 'clamp(400px, 39vw, 414px)',
-        'img-desktop' : 'clamp(454px, 35vw, 890px)'
+        'img-desktop-sm': 'clamp(400px, 39vw, 414px)',
+        'img-desktop': 'clamp(454px, 35vw, 890px)'
       },
       screens: {
-        'xs' : "412px",
+        'xs': "412px",
         "lg-2": "1272px",
-        '3xl' : "1908px",
-        '4xl' : "2540px"
+        '3xl': "1908px",
+        '4xl': "2540px"
       },
       colors: {
         background: "var(--background)",
@@ -132,5 +133,17 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ matchUtilities }: PluginAPI) {
+      matchUtilities(
+        {
+          'min-size': (value) => ({
+            minWidth: value,
+            minHeight: value,
+          }),
+        },
+        { values: {} } 
+      )
+    },
+  ],
 } satisfies Config;
