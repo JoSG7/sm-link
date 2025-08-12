@@ -15,11 +15,9 @@ export function ProtectedLinks({ loading, data }: { loading: boolean, data: Link
     4xl:px-8 4xl:pb-8 4xl:gap-8">
       {
         loading ?
-          <div className="col-span-2 grid
-          xs:px-5 xs:pb-5 xs:gap-5
-          lg:grid-cols-3 lg:gap-4
-          lg-2:gap-5 ">
-            <ProtectedLinkCardSkeleton />
+          <div className="col-span-2 grid grid-cols-2 gap-4 xs:gap-5
+          lg:col-span-3 lg:grid-cols-3 lg:gap-4
+          2xl:gap-5 3xl:gap-6 4xl:gap-8">
             <ProtectedLinkCardSkeleton />
             <ProtectedLinkCardSkeleton />
             <ProtectedLinkCardSkeleton />
@@ -31,7 +29,9 @@ export function ProtectedLinks({ loading, data }: { loading: boolean, data: Link
               <ProtectedLinkCard key={element.id} data={element} />
             ))
             :
-            <NoFound />
+            <div className="col-span-2 lg:col-span-3">
+              <NoFound />
+            </div>
       }
     </div>
   )

@@ -11,6 +11,7 @@ import { useMenuDrawer } from "@/hooks/useModal"
 import { useScreenSize } from "@/hooks/useScreenSize"
 import { ProtectedLinks } from "./ProtectedLink"
 import { useLinkChanges } from "@/hooks/useLinkChanges"
+import { useMediaQuery } from "usehooks-ts"
 
 export function MainMenu() {
 
@@ -19,8 +20,8 @@ export function MainMenu() {
   const { isMenuOpen, toggleMenu } = useMenuDrawer()
   const { linkChanges } = useLinkChanges()
   const width = useScreenSize()
-  const isMobile = width < 640
-  const isTablet = width >= 640 && width < 768
+  const isMobile = useMediaQuery("(max-width: 639px)")
+  const isTablet = width >= 640 && width < 1024
 
   const navVariants = {
     open: {
