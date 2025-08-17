@@ -2,9 +2,9 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Lexend } from "next/font/google"
 import { Toaster } from "sonner";
 import type { Metadata } from "next";
-import { LinkChangesProvider } from "@/contexts/providers/LinkChangesProvider";
 import "./globals.css";
-import { ModalsProvider } from "@/contexts/providers/ModalsProvider";
+import { ModalsProvider } from "@/features/shared/contexts/GlobalModalsProvider";
+import { LinkChangesProvider } from "@/features/shared/contexts/LinkChangesProvider";
 
 export const metadata: Metadata = {
   title: "Sm Link",
