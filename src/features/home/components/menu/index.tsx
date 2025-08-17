@@ -8,8 +8,8 @@ import { IconClockCheck, IconLock } from "@tabler/icons-react"
 import { RecentLinks } from "./RecentLinks"
 import { LinkDetails } from "@/types/global"
 import { Accordion } from "../ui/Accordion"
-import { getLinkDetails } from "../../utils/guestLinks"
-import { useLinkChanges } from "../../utils/useLinkChanges"
+import { getLinkDetails } from "../../utils/guest-links"
+import { useLinkChanges } from "../../hooks/useLinkChanges"
 import { ProtectedLinks } from "./ProtectedLinks"
 
 export function MenuDrawer() {

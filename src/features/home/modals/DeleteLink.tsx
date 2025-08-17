@@ -5,8 +5,8 @@ import { AnimatePresence, motion } from "framer-motion"
 import { useState } from "react"
 import { toast } from "sonner"
 import { useDeleteLinkModal } from "../hooks/useModals"
-import { deleteGuestLink } from "../utils/guestLinks"
-import { useLinkChanges } from "../utils/useLinkChanges"
+import { deleteGuestLink } from "../utils/guest-links"
+import { useLinkChanges } from "../hooks/useLinkChanges"
 
 export function DeleteLinkModal() {
 

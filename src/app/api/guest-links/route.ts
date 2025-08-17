@@ -1,10 +1,15 @@
+import { getGuestID } from "@/features/shared/auth/cookies"
 import { createSupabase } from "@/lib/supabase/client"
-import { getGuestID } from "@/utils/auth/cookies"
-import { createBase64Code } from "@/utils/links/id-utils"
 import { NextRequest, NextResponse } from "next/server"
 
-export async function GET() {
+const createBase64Code = (): string => {
+  const array = new Uint8Array(Math.ceil(7 * 0.75))
+  crypto.getRandomValues(array)
+  const base64 = btoa(String.fromCharCode(...array)).replace(/[^a-zA-Z0-9]/g, '')
+  return base64.slice(0, 7)
+}
 
+export async function GET() {
   const guestID = await getGuestID()
   const supabase = createSupabase(guestID)
 
@@ -15,8 +20,6 @@ export async function GET() {
     return error ? NextResponse.json({ error: "Error, try again" }) : NextResponse.json(guestLinks)
   }
 }
-
-
 
 export async function POST(request: NextRequest) {
 

@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "framer-motion"
 import { FormEvent, useState } from "react"
 import { toast } from "sonner"
 import { useSetLinkExpirationModal } from "../hooks/useModals"
-import { addLinkExpiration } from "../utils/guestLinks"
+import { addLinkExpiration } from "../utils/guest-links"
 
 export function SetLinkExpirationModal() {
 

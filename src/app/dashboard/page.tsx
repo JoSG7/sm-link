@@ -1,4 +1,4 @@
-import { SignOutButton } from "@/components/dashboard/sign-out-button"
+import { SignOutButton } from "@/features/dashboard/components/sign-out-button"
 import { createSupabaseServer } from "@/lib/supabase/server"
 import { redirect } from "next/navigation"
 

@@ -5,7 +5,7 @@ import { IconCheck, IconLoader2, IconLock } from "@tabler/icons-react"
 import { motion } from "framer-motion"
 import { FormEvent, useState } from "react"
 import { toast } from "sonner"
-import { validateLinkPassword } from "../utils/guestLinks"
+import { validateLinkPassword } from "../utils/guest-links"
 
 export function PasswordForm({ short, link_id }: { short: string, link_id?:string }) {
 

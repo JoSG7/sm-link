@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from "framer-motion"
 import { useState } from "react"
 import { toast } from "sonner"
 import { useDeleteLinkPasswordModal } from "../hooks/useModals"
-import { removeProtectedLink } from "../utils/guestLinks"
+import { removeProtectedLink } from "../utils/guest-links"
 
 export function RemoveLinkPasswordModal() {
   const [removing, setRemoving] = useState(false)

@@ -1,5 +1,5 @@
+import { getGuestID } from "@/features/shared/auth/cookies";
 import { createSupabase } from "@/lib/supabase/client";
-import { getGuestID } from "@/utils/auth/cookies";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function DELETE (request: NextRequest, { params }: { params: Promise<{ shortUrl: string }> }) {

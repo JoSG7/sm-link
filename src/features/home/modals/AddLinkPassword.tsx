@@ -3,8 +3,8 @@ import { useSetLinkPasswordModal } from "../hooks/useModals"
 import { IconCheck, IconLoader2, IconLock, IconLockCheck, IconX } from "@tabler/icons-react"
 import { FormEvent, useState } from "react"
 import { toast } from "sonner"
-import { createProtectedLink } from "../utils/guestLinks"
-import { useLinkChanges } from "../utils/useLinkChanges"
+import { createProtectedLink } from "../utils/guest-links"
+import { useLinkChanges } from "../hooks/useLinkChanges"
 
 export function AddLinkPasswordModal() {
 
