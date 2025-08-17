@@ -1,11 +1,11 @@
-import { ExpirationCalendar } from "@/components/shared/Calendar"
-import { ExpirationHour } from "@/components/shared/HourPicker"
 import { IconLoader2 } from "@tabler/icons-react"
 import { AnimatePresence, motion } from "framer-motion"
 import { FormEvent, useState } from "react"
 import { toast } from "sonner"
 import { useSetLinkExpirationModal } from "../hooks/useModals"
 import { addLinkExpiration } from "../utils/guest-links"
+import { ExpirationCalendar } from "../components/ui/Calendar"
+import { ExpirationHour } from "../components/ui/HourPicker"
 
 export function SetLinkExpirationModal() {
 

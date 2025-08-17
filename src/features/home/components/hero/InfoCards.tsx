@@ -1,8 +1,8 @@
 "use client"
 
-import { Pill } from "@/components/shared/Pill"
 import { IconAlarmFilled, IconDeviceAnalytics, IconGlobe, IconLock, IconSettingsFilled, IconShieldCheckFilled } from "@tabler/icons-react"
 import { motion } from "framer-motion"
+import { Pill } from "../ui/Pill"
 
 export function InfoCards() {
 
