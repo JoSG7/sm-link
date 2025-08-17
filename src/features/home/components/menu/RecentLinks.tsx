@@ -1,6 +1,6 @@
 "use client"
 
-import { LinkDetails } from "@/types/global"
+import { LinkDetails } from "@/global"
 import { LinkCardSkeleton } from "../ui/LoadingSkeleton"
 import { LinkCard } from "./LinkCard"
 import { NoFound } from "../ui/NoFound"

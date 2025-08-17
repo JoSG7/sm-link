@@ -1,4 +1,4 @@
-import { LinkDetails } from "@/types/global";
+import { LinkDetails } from "@/global";
 import { IconTrashFilled } from "@tabler/icons-react";
 import Image from "next/image";
 import { useDeleteLinkPasswordModal } from "../../hooks/useModals";

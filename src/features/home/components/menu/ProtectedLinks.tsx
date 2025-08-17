@@ -1,4 +1,4 @@
-import { LinkDetails } from "@/types/global";
+import { LinkDetails } from "@/global";
 import { ProtectedLinkCardSkeleton } from "../ui/LoadingSkeleton";
 import { NoFound } from "../ui/NoFound";
 import { ProtectedLinkCard } from "./ProtectedLinkCard";

@@ -1,4 +1,4 @@
-import { LinkDetails } from "@/types/global"
+import { LinkDetails } from "@/global"
 // Get the guest links 
 
 export async function getLinkDetails() {

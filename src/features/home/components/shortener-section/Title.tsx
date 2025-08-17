@@ -1,10 +1,10 @@
 "use client"
 
-import { AnimatedTitle } from "@/components/motion/AnimatedTitle";
 import { IconBolt, IconWorld } from "@tabler/icons-react";
 import { motion } from 'framer-motion'
 import { useMediaQuery } from "usehooks-ts";
 import { Pill } from "../ui/Pill";
+import { AnimatedTitle } from "../AnimatedTitle";
 
 export function LinkFormTitle() {
 

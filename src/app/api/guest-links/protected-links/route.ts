@@ -1,6 +1,6 @@
 import { getGuestID } from "@/features/shared/auth/cookies";
 import { createSupabase } from "@/lib/supabase/client";
-import { GuestLinks } from "@/types/global";
+import { GuestLinks } from "@/global";
 import { NextRequest, NextResponse } from "next/server";
 
 // export async function GET(request: NextRequest) {

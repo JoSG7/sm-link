@@ -1,7 +1,7 @@
 "use client"
 
-import { AnimatedTitle } from "@/components/motion/AnimatedTitle"
 import { motion } from "framer-motion"
+import { AnimatedTitle } from "../AnimatedTitle"
 
 export function HeroTitle() {
 

@@ -1,10 +1,10 @@
 "use client"
 
 import { IconCalendar, IconClockCheck, IconCopy, IconExternalLink, IconShieldLockFilled, IconTrashFilled } from "@tabler/icons-react"
-import { months } from "@/utils/constants"
+import { months } from "@/global-consts"
 import { toast } from "sonner"
 import Link from "next/link"
-import { LinkDetails } from "@/types/global"
+import { LinkDetails } from "@/global"
 import { useDeleteLinkModal, useSetLinkExpirationModal, useSetLinkPasswordModal } from "../../hooks/useModals"
 import { DeleteLinkModal } from "../../modals/DeleteLink"
 import { AddLinkPasswordModal } from "../../modals/AddLinkPassword"
