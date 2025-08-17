@@ -1,5 +1,5 @@
-import { LinkIsExpired } from "@/components/home/LinkIsExpired";
-import { PasswordForm } from "@/components/home/PasswordForm";
+import { LinkIsExpired } from "@/features/home/components/LinkIsExpired";
+import { PasswordForm } from "@/features/home/components/PasswordForm";
 import { createSupabase } from "@/lib/supabase/client";
 import { redirect } from "next/navigation";
 

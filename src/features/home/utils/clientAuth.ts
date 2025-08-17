@@ -1,0 +1,21 @@
+import { createSupabase } from "@/lib/supabase/client";
+import { Provider } from "@supabase/supabase-js";
+import { redirect } from "next/navigation";
+
+export async function signInWithOAuth (provider : Provider) {
+
+  const supabase = createSupabase()
+  await supabase.auth.signInWithOAuth({
+    provider,
+    options: {
+      redirectTo: "https://sm-link.vercel.app/auth/callback"
+    }
+  })
+
+}
+
+export async function signOut () {
+  const supabase = createSupabase()
+  await supabase.auth.signOut()
+  redirect("/")
+}

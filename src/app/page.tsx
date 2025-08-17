@@ -2,10 +2,10 @@ import { NavBar } from "@/components/home/NavbarHeader";
 import { redirect } from "next/navigation";
 import { createSupabaseServer } from "@/lib/supabase/server";
 import { MainMenu } from "@/components/home/menu/Menu";
-import { Hero } from "@/components/home/sections/Hero/Hero";
-import { LinkFormSection } from "@/components/home/sections/LinkForm/LinkFormSection";
-import { LogingDetails } from "@/components/home/sections/LoginDetails/LoginDetails";
-import { Footer } from "@/components/layout/HomeFooter";
+import { Hero } from "@/features/home/components/hero";
+import { LinkFormSection } from "@/features/home/components/shortener-section";
+import { LoginDetails } from "@/features/home/components/login-details";
+import { Footer } from "@/features/home/layout/HomeFooter";
 
 // export const dynamic = "force-dynamic"
 
@@ -25,7 +25,7 @@ export default async function Home() {
         <div className="flex flex-col gap-28 lg:gap-10">
           <Hero />
           <LinkFormSection />
-          <LogingDetails />
+          <LoginDetails />
           <Footer />
         </div>
       </main>
