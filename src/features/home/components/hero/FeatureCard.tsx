@@ -7,8 +7,8 @@ export function FeatureCard ({ icon, title } : Props) {
 
   return(
 
-    <article className="flex items-center rounded-xl border-[1.5px] border-neutral-800 text-sm
-    xl:px-4 xl:py-3 xl:gap-2">
+    <article className="flex p-2 gap-2 items-center text-sm rounded-lg border-[1.5px] border-neutral-800
+    xl:px-4 xl:py-3 xl:gap-2 xl:rounded-xl">
       {icon}
       <p>{title}</p>
     </article>

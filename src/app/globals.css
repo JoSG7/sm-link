@@ -7,6 +7,42 @@
   --breakpoint-4xl: 158.75rem;
 }
 
+/* Movil Text Sizes */
+
+@utility text-base-movil {
+  font-size: clamp(16px, 5vw, 20px);
+  line-height: 1.5;
+}
+
+@utility text-4xl-movil {
+  font-size: clamp(45px, 14vw, 85px);
+  line-height: 1.11;
+}
+
+
+
+.a{
+  font-size: 11px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @utility border-graphite {
   border-color: #1c1c1d;
 }
@@ -16,24 +52,6 @@
   height: calc(100vh - 72px)
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 :root {

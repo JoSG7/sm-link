@@ -25,7 +25,7 @@ export function HomeNavBar() {
           2xl:w-14 2xl:h-10 
           3xl:w-16 3xl:h-12
           4xl:w-20 4xl:h-14"/>
-          <p className="text-lg-fluid text-neutral-200 md:text-xl lg:text-lg 2xl:text-2xl 3xl:text-3xl 4xl:text-4xl">SmLink</p>
+          <p className="text-base-movil text-neutral-200 md:text-xl lg:text-lg 2xl:text-2xl 3xl:text-3xl 4xl:text-4xl">SmLink</p>
         </div>
 
         <button type="button" className="flex justify-center items-center cursor-pointer" onClick={toggleMenu}>

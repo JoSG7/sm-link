@@ -10,11 +10,7 @@ export function Hero() {
   return (
 
     <section className="flex justify-center 
-    lg:h-content-desktop-sm 
-    xl:h-content-desktop 
-    2xl:h-content-desktop-lg 
-    3xl:h-content-desktop-xl 3xl:max-h-[1091px]
-    4xl:h-content-desktop-2xl">
+    xl:h-content-desktop ">
 
       {/* Layout Content */}
       <div className="w-[90vw]
@@ -37,8 +33,8 @@ export function Hero() {
             </section>
 
             {/* Features Cards Section */}
-            <section className="w-full flex justify-center
-            xl:gap-4 xl:py-6">
+            <section className="flex flex-col gap-3 py-5 w-full justify-center
+            xl:flex-row xl:gap-4 xl:py-6">
               <FeatureCard title="Global CDN for fast redirects"
               icon={<IconWorld className="text-blue-400" />} />
 

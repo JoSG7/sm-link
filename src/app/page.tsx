@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import { createSupabaseServer } from "@/lib/supabase/server";
 import { Hero } from "@/features/home/components/hero";
-import { HomeNavBar } from "@/features/home/layout/NavbarHeader";
+import { HomeNavBar } from "@/features/home/layout/Navbar";
 import { MenuDrawer } from "@/features/home/components/menu";
 
 // export const dynamic = "force-dynamic"

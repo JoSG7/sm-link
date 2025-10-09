@@ -5,7 +5,7 @@ export function HeroTitle() {
   return (
     <div>
       {/* Title */}
-      <h1 className="pt-2 tracking-tight text-center text-4xl-movil 
+      <h1 className="tracking-tight text-4xl-movil
       lg:text-6xl-desktop-sm lg:p-0
       xl:text-7xl " >
         The 
@@ -14,7 +14,8 @@ export function HeroTitle() {
       </h1>
 
       {/* Paragraph */}
-      <p className="py-5 text-center text-neutral-300 text-lg-movil xs:pb-6 sm:pb-7
+      <p className="py-5 text-neutral-300 text-base-movil
+      xs:pb-6 sm:pb-7
       lg:text-lg-desktop-sm lg:text-start lg:py-4 lg:text-neutral-400
       xl:text-xl xl:text-center xl:py-6 
       2xl:pt-6 2xl:pb-7 
