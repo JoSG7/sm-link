@@ -28,12 +28,13 @@ export function Hero() {
             {/* Title */}
             <HeroTitle />
 
-            <section className="flex justify-center">
+            <section className="flex flex-col justify-center">
               <ShorterForm />
+              <div id="new-link" />
             </section>
 
             {/* Features Cards Section */}
-            <section className="flex flex-col gap-3 py-5 w-full justify-center
+            <section className="w-full flex flex-col gap-3 py-5 justify-center
             xl:flex-row xl:gap-4 xl:py-6">
               <FeatureCard title="Global CDN for fast redirects"
               icon={<IconWorld className="text-blue-400" />} />
@@ -56,38 +57,6 @@ export function Hero() {
               <span className="text-blue-400"> Privacy Policy</span>.
             </p>
 
-
-
-            {/* Info Cards for movils and desktop */}
-            {/* <InfoCards /> */}
-
-            {/* Start Button section */}
-            {/* <div className="flex justify-center lg:items-center lg:gap-7 lg:justify-start">
-              <motion.button className="py-2 font-medium transition-transform duration-200 rounded-full px-7 text-lg-movil bg-gradient-to-r from-green-400 to-blue-500 text-neutral-200 hover:scale-105 xs:py-3
-                lg:py-2 lg:px-4 lg:text-lg-desktop-sm lg:from-green-500 lg:to-blue-600
-                lg-2:text-lg-desktop 
-                2xl:px-6 3xl:py-3 3xl:px-8"
-                onClick={() => { scrollTo("link-form-section") }}
-                initial={{ opacity: 0, filter: "blur(5px)" }}
-                whileInView={{ opacity: 1, filter: "blur(0px)" }}
-                transition={{ duration: 0.5, delay: 1.6, ease: "easeIn" }}
-                viewport={{ once: true }}
-              >
-                {`Let's start now!`}
-              </motion.button>
-
-              <motion.p className="hidden text-neutral-200 items-center gap-1 
-                lg:text-sm-desktop-sm lg:flex lg-2:text-sm-desktop
-                2xl:gap-2"
-                initial={{ opacity: 0, filter: "blur(8px)" }}
-                whileInView={{ opacity: 1, filter: "blur(0px)" }}
-                transition={{ duration: 0.5, delay: 1.6, ease: "easeIn" }}
-                viewport={{ once: true }}
-              >
-                <IconStarFilled className="size-4 text-lime-400 2xl:size-5 3xl:size-6 4xl:size-7" />
-                Trusted by 10,000+ users
-              </motion.p>
-            </div> */}
           </section>
         </main>
       </div>
