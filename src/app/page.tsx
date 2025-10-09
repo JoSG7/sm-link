@@ -1,9 +1,6 @@
 import { redirect } from "next/navigation";
 import { createSupabaseServer } from "@/lib/supabase/server";
 import { Hero } from "@/features/home/components/hero";
-import { LinkFormSection } from "@/features/home/components/shortener-section";
-import { LoginDetails } from "@/features/home/components/login-details";
-import { Footer } from "@/features/home/layout/HomeFooter";
 import { HomeNavBar } from "@/features/home/layout/NavbarHeader";
 import { MenuDrawer } from "@/features/home/components/menu";
 
@@ -24,9 +21,9 @@ export default async function Home() {
         <MenuDrawer />
         <div className="flex flex-col gap-28 lg:gap-10">
           <Hero />
-          <LinkFormSection />
+          {/* <LinkFormSection />
           <LoginDetails />
-          <Footer />
+          <Footer /> */}
         </div>
       </main>
     )
@@ -34,13 +31,4 @@ export default async function Home() {
 }
 
 
-// Fondos
 
-// 001413 verdoso
-// 060B0F oscuro
-// 040c10 otro oscuro
-// md:bg-[#040f1e]
-// lg-2:bg-[#0e051a]
-// bg-[#001413]
-
-//  rounded-b-[50%_20px] md:rounded-b-[50%_30px] lg-2:rounded-b-[100%_10%]

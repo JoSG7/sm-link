@@ -56,7 +56,7 @@ export function MenuDrawer() {
 
   return (
 
-    <motion.section className={`h-screen fixed inset-0 z-20 bg-modal backdrop-blur-sm text-[#E5E7EB]
+    <motion.section className={`h-screen fixed inset-0 z-20 bg-modal backdrop-blur-sm
       ${isMenuOpen ? "pointer-events-auto" : "pointer-events-none"}`}
       onClick={toggleMenu}
       initial={false}

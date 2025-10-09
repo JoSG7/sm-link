@@ -1,91 +1,20 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-@layer utilities {
-  
+@theme {
+  --breakpoint-xs: 25.75rem;
+  --breakpoint-xl: 79.5rem;
+  --breakpoint-3xl: 118.75rem;
+  --breakpoint-4xl: 158.75rem;
 }
 
-.fade {
-  -webkit-mask-image:
-    linear-gradient(to bottom, black 80%, transparent 100%),
-    linear-gradient(to left, black 80%, transparent 100%),
-    linear-gradient(to right, black 80%, transparent 100%),
-    linear-gradient(to top, black 80%, transparent 100%);
-  -webkit-mask-composite: source-in;
-  
-  mask-image:
-    linear-gradient(to bottom, black 80%, transparent 100%),
-    linear-gradient(to left, black 80%, transparent 100%),
-    linear-gradient(to right, black 80%, transparent 100%),
-    linear-gradient(to top, black 80%, transparent 100%);
-  mask-composite: source-in;
+@utility border-graphite {
+  border-color: #1c1c1d;
 }
 
-.fade-x {
-  mask-image:
-    linear-gradient(to left, black 80%, transparent 100%),
-    linear-gradient(to right, black 80%, transparent 100%);
-  mask-composite: source-in;
-}
+@utility h-content-desktop {
 
-.fade-l {
-  mask-image:
-    linear-gradient(to left, black 80%, transparent 100%);
-}
+  height: calc(100vh - 72px)
 
-.fade-r {
-  mask-image:
-    linear-gradient(to right, black 80%, transparent 100%);
-}
-
-.fade-b {
-  mask-image:
-    linear-gradient(to bottom, black 80%, transparent 100%);
-}
-
-.fade-b-lg {
-  mask-image:
-    linear-gradient(to bottom, black 65%, transparent 100%);
-}
-
-
-.bg-modal {
-  background-color: rgba(0, 0, 0, 0.7);
-}
-
-.border-gradient-green {
-  background: linear-gradient(black, black) padding-box,
-    linear-gradient(107.65deg, #17C969 17.53%, #005DBB 94.64%) border-box;
-}
-
-.border-gradient-red {
-  background: linear-gradient(black, black) padding-box,
-    linear-gradient(107.65deg, #FF4040 17.53%, #A20BD8 94.64%) border-box;
-}
-
-.border-gradient-yellow {
-  background: linear-gradient(black, black) padding-box,
-    linear-gradient(107.65deg, #F9D423 7.64%, #FF4E50 97.11%) border-box;
-}
-
-.border-gradient-blue {
-  background: linear-gradient(black, black) padding-box,
-    linear-gradient(107.65deg, #0148BA 1.35%, #01A5FF 104.47%) border-box;
-}
-
-.border-gradient-purple {
-  background: linear-gradient(black, black) padding-box,
-    linear-gradient(107.65deg, #AD00FF 0.31%, #330371 104.9%) border-box;
-}
-
-.border-gradient-black {
-  background: linear-gradient(black, black) padding-box,
-    linear-gradient(to bottom, #5d5d5d 1%, #1c1d1d 20%) border-box;
-}
-
-.bg-form {
-  background: radial-gradient(70% 80% at center 0%, rgba(255, 255, 255, 0.06) 3%, rgba(98, 255, 179, 0) 70%, rgba(98, 255, 179, 0) 100%)
 }
 
 
@@ -95,13 +24,17 @@
 
 
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  outline: none;
-}
+
+
+
+
+
+
+
+
+
+
+
 
 :root {
   --background: #ffffff;
@@ -115,12 +48,15 @@
   }
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
-
 
 @media (max-width: 1200px) {}
 
