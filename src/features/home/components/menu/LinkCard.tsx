@@ -12,6 +12,7 @@ import { SetLinkExpirationModal } from "../../modals/SetLinkExpiration"
 import { DomainLogo } from "../ui/DomainLogo"
 
 export function LinkCard({ data }: { data: LinkDetails }) {
+
   const url = new URL(data.original)
   const domain = url.hostname
   const date = new Date(data.created_at)
@@ -38,23 +39,21 @@ export function LinkCard({ data }: { data: LinkDetails }) {
       <AddLinkPasswordModal />
       <SetLinkExpirationModal />
 
-      <div className="flex items-center pb-4 gap-3
+      <section className="grow flex items-center pb-4 gap-5
       xs:pb-5 xs:gap-5
       lg:pb-4 lg:gap-10
-      2xl:pb-6 2xl:gap-14
-      3xl:pb-8 3xl:gap-16
-      4xl:pb-12 4xl:gap-20">
+      ">
 
-        {/* Short Link */}
         <div className="flex flex-col grow">
-          <p className="font-semibold text-base-movil text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500
-          lg:text-base-desktop-sm
-          lg-2:text-base-desktop">
+
+          {/* Short Link */}
+          <p className="font-semibold text-sm-movil text-nowrap
+          text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 ">
             sm-link.vercel.app/{data.short}
           </p>
 
           {/* Original Link */}
-          <p className="w-full max-w-max text-sm-movil text-neutral-200 mt-1 mb-2 break-all max-h-10 overflow-y-auto
+          <p className="text-sm-movil text-neutral-200 mt-1 mb-2 break-all max-h-[42px] overflow-y-auto
           xs:max-h-12 xs:mt-2 xs:mb-3
           lg:max-h-11 lg:mt-2 lg:mb-3 lg:text-sm-desktop-sm
           lg-2:text-sm-desktop
@@ -65,7 +64,8 @@ export function LinkCard({ data }: { data: LinkDetails }) {
           </p>
 
           {/* Creation date */}
-          <p className="text-sm-movil flex gap-1 text-green-300 xs:gap-2 
+          <p className="text-sm-movil flex gap-1 text-green-300 
+          xs:gap-2 
           lg:gap-1 lg:text-sm-desktop-sm
           lg-2:text-sm-desktop 
           2xl:gap-2
@@ -77,11 +77,11 @@ export function LinkCard({ data }: { data: LinkDetails }) {
 
         {/* Link Logo */}
         <DomainLogo domain={domain} />
-      </div>
+      </section>
 
       {/* Buttons section */}
       <div className="flex justify-end gap-3 xs:gap-4 
-      lg-2:gap-3 2xl:gap-4 3xl:gap-5 4xl:gap-7">
+      xl:gap-3 2xl:gap-4 3xl:gap-5 4xl:gap-7">
 
         {/* Delete button */}
         <button className="p-2 rounded-xl bg-neutral-900 
@@ -100,7 +100,7 @@ export function LinkCard({ data }: { data: LinkDetails }) {
           onClick={() => { toggleSetLinkExpirationModal(data.short) }}
           disabled={data.has_expiration}>
 
-          <IconClockCheck className="size-5 text-emerald-400
+          <IconClockCheck className="size-5 
           xs:size-6 lg:size-5 2xl:size-6 3xl:size-7 4xl:size-10" />
         </button>
 
@@ -111,7 +111,7 @@ export function LinkCard({ data }: { data: LinkDetails }) {
           onClick={() => { toggleSetLinkPasswordModal(data.short) }}
           disabled={data.has_password}>
 
-          <IconShieldLockFilled className="size-5 text-sky-400
+          <IconShieldLockFilled className="size-5 
           xs:size-6 lg:size-5 2xl:size-6 3xl:size-7 4xl:size-10" />
         </button>
 
@@ -122,7 +122,7 @@ export function LinkCard({ data }: { data: LinkDetails }) {
           href={`https://sm-link.vercel.app/${data.short}`}
           target="_blank"
         >
-          <IconExternalLink className="size-5 text-emerald-400
+          <IconExternalLink className="size-5 
           xs:size-6 lg:size-5 2xl:size-6 3xl:size-7 4xl:size-10" />
         </Link>
 
@@ -132,7 +132,7 @@ export function LinkCard({ data }: { data: LinkDetails }) {
         4xl:p-4 4xl:rounded-3xl"
           onClick={copyToClipboard}>
 
-          <IconCopy className="size-5 text-sky-400
+          <IconCopy className="size-5 
           xs:size-6 lg:size-5 2xl:size-6 3xl:size-7 4xl:size-10" />
         </button>
       </div>

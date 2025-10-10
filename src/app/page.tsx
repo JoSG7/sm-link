@@ -21,7 +21,7 @@ export default async function Home() {
         <MenuDrawer />
         <div className="flex flex-col gap-28 lg:gap-10">
           <Hero />
-          {/* <LinkFormSection />
+          {/* 
           <LoginDetails />
           <Footer /> */}
         </div>

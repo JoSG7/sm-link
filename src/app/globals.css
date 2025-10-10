@@ -9,13 +9,28 @@
 
 /* Movil Text Sizes */
 
+@utility text-xs-movil {
+  font-size: clamp(12px, 3.65vw, 16px);
+  line-height: 1.33;
+}
+
+@utility text-sm-movil {
+  font-size: clamp(14px, 4.4vw, 18px);
+  line-height: 1.42;
+}
+
 @utility text-base-movil {
   font-size: clamp(16px, 5vw, 20px);
   line-height: 1.5;
 }
 
+@utility text-lg-movil {
+  font-size: clamp(18px, 5.5vw, 22px);
+  line-height: 1.55;
+}
+
 @utility text-4xl-movil {
-  font-size: clamp(45px, 14vw, 85px);
+  font-size: clamp(45px, 14vw, 70px);
   line-height: 1.11;
 }
 
@@ -48,9 +63,12 @@
 }
 
 @utility h-content-desktop {
-
   height: calc(100vh - 72px)
+}
 
+@utility min-size-brand {
+  min-width: clamp(40px, 12.5vw, 80px);
+  min-height: clamp(40px, 12.5vw, 80px);
 }
 
 
@@ -68,6 +86,7 @@
 
 * {
   box-sizing: border-box;
+  outline: none;
 }
 
 body {

@@ -17,12 +17,12 @@ export function NewLink({ short }: { short: string }) {
 
   return createPortal(
 
-    <motion.section className="mt-5 py-2 px-3 flex justify-between text-sm text-neutral-200 rounded-lg 
+    <motion.section className="mt-5 py-2 px-3 flex items-center justify-between text-sm-movil text-neutral-200 rounded-lg 
     border-[1.5px] border-neutral-800 bg-neutral-950/50
     xl:m-0 xl:p-0"
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}>
+      transition={{ duration: 0.4, ease: "easeOut" }}>
 
       <p>
         sm-link.vercel.app/<span>{short}</span>

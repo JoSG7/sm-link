@@ -19,9 +19,7 @@ export function Hero() {
 
         {/* Main content */}
         <main className="py-7 xs:py-10
-        lg:flex lg:py-0 lg:items-center
-        xl:gap-4 xl:grow
-        2xl:gap-6 3xl:gap-8">
+        xl:gap-4 xl:grow ">
 
           <section className="grow">
 
@@ -34,23 +32,28 @@ export function Hero() {
             </section>
 
             {/* Features Cards Section */}
-            <section className="w-full flex flex-col gap-3 py-5 justify-center
+            <section className="w-full flex flex-col gap-4 py-5 justify-center
+            xs:gap-5 xs:py-6
             xl:flex-row xl:gap-4 xl:py-6">
               <FeatureCard title="Global CDN for fast redirects"
-              icon={<IconWorld className="text-blue-400" />} />
+              icon={<IconWorld className="text-blue-400 
+              xs:size-8" />} />
 
               <FeatureCard title="Advanced Security"
-              icon={<IconShieldCheckFilled className="text-green-400" />} />
+              icon={<IconShieldCheckFilled className="text-green-400 
+              xs:size-8" />} />
 
               <FeatureCard title="Real-Time Analitycs"
-              icon={<IconChartHistogram className="text-blue-400" />} />
+              icon={<IconChartHistogram className="text-blue-400 
+              xs:size-8" />} />
 
               <FeatureCard title="+1M links created"
-              icon={<IconPaperclip className="text-green-400" />} />
+              icon={<IconPaperclip className="text-green-400 
+              xs:size-8" />} />
             </section>
 
             {/* Terms Section */}
-            <p className="text-center text-neutral-400 text-xs ">
+            <p className="text-center text-neutral-400 text-xs-movil ">
               By proceeding, you agree to our
               <span className="text-blue-400"> Terms of Service </span>
               and
