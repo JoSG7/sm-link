@@ -91,16 +91,16 @@ export function AddLinkPasswordModal() {
                 </div>
 
                 {/* Buttons Section */}
-                <div className="p-4 flex gap-4 items-center
+                <div className="p-4 flex gap-4 items-center text-xs-movil
                 xs:p-5">
-                  <button className="p-2 px-3 text-xs-movil flex items-center gap-2 rounded-lg bg-neutral-900 disabled:opacity-50 
+                  <button className="p-2 px-3 flex items-center gap-2 rounded-lg bg-neutral-900 disabled:opacity-50 
                   xs:p-3 xs:px-4 xs:gap-3"
                     onClick={() => { toggleSetLinkPasswordModal() }} disabled={submiting} type="button">
                     <IconX className="size-4" />
-                    Cancelar
+                    Close
                   </button>
 
-                  <button className="p-2 px-3 text-xs-movil flex items-center gap-2 rounded-lg bg-green-700 disabled:opacity-50 
+                  <button className="p-2 px-3 flex items-center gap-2 rounded-lg bg-green-700 disabled:opacity-50 
                   xs:p-3 xs:px-4 xs:gap-3"
                     disabled={submiting} >
                     {submiting ? 

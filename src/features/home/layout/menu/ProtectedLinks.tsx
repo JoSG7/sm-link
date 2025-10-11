@@ -1,6 +1,6 @@
 import { LinkDetails } from "@/global";
-import { ProtectedLinkCardSkeleton } from "../ui/LoadingSkeleton";
-import { NoFound } from "../ui/NoFound";
+import { ProtectedLinkCardSkeleton } from "../../components/ui/LoadingSkeleton";
+import { NoFound } from "../../components/ui/NoFound";
 import { ProtectedLinkCard } from "./ProtectedLinkCard";
 
 export function ProtectedLinks({ loading, data }: { loading: boolean, data: LinkDetails[] | [] }) {
@@ -15,7 +15,8 @@ export function ProtectedLinks({ loading, data }: { loading: boolean, data: Link
     4xl:px-8 4xl:pb-8 4xl:gap-8">
       {
         loading ?
-          <div className="col-span-2 grid grid-cols-2 gap-4 xs:gap-5
+          <div className="col-span-2 grid grid-cols-2 gap-4 
+          xs:gap-5
           lg:col-span-3 lg:grid-cols-3 lg:gap-4
           2xl:gap-5 3xl:gap-6 4xl:gap-8">
             <ProtectedLinkCardSkeleton />

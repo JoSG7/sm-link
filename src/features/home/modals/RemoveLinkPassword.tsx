@@ -4,11 +4,12 @@ import { useState } from "react"
 import { toast } from "sonner"
 import { useDeleteLinkPasswordModal } from "../hooks/useModals"
 import { removeProtectedLink } from "../utils/guest-links"
+import { useLinkChanges } from "../hooks/useLinkChanges"
 
 export function RemoveLinkPasswordModal() {
   const [removing, setRemoving] = useState(false)
   const { toggleDeleteLinkPasswordModal, isDeleteLinkPasswordOpen, shortLink } = useDeleteLinkPasswordModal() 
-  // const { recordLinkChanges } = useLinkChanges()
+  const { recordLinkChanges } = useLinkChanges()
 
   const handleDelete = async () => {
     setRemoving(true)
@@ -22,7 +23,7 @@ export function RemoveLinkPasswordModal() {
       })
       .finally(() => {
         setRemoving(false)
-        // recordLinkChanges()
+        recordLinkChanges()
         toggleDeleteLinkPasswordModal()
       })
     }
@@ -32,30 +33,37 @@ export function RemoveLinkPasswordModal() {
     <AnimatePresence>
       {
         isDeleteLinkPasswordOpen && (
-          <motion.section className="fixed inset-0 z-30 bg-[rgba(0,0,0,0.8)] flex items-center justify-center"
+          <motion.section className="fixed inset-0 z-30 bg-[rgba(0,0,0,0.7)] flex items-center justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}>
 
-            <motion.div className="w-[300px] bg-neutral-950 rounded-xl border border-neutral-900 lg-2:w-96"
+            <motion.div className="w-[90vw] text-sm-movil rounded-xl border border-neutral-800 bg-neutral-950 
+            xl:w-[30vw]"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
               transition={{ duration: 0.2 }}>
-
-              <h1 className="p-4 border-b border-neutral-900 text-sm lg-2:text-base">
+              
+              {/* Modal title */}
+              <h1 className="p-4 border-b border-neutral-800 
+              xs:p-5">
                 Are you sure to remove the password of this link? <span className="font-semibold">{shortLink}</span>
               </h1>
 
-              <div className="p-4 flex gap-4 items-center text-sm">
-                <button className="py-1 px-3 bg-neutral-900 rounded-lg"
+              {/* Buttons Section */}
+              <div className="p-4 flex gap-4 items-center 
+              xs:p-5 xs:gap-5">
+                <button className="py-1 px-4 bg-neutral-900 rounded-lg
+                xs:py-2 xs:px-5"
                 onClick={() => { toggleDeleteLinkPasswordModal() }} disabled={removing}>
-                  Cancelar
+                  Close
                 </button>
-                <button className="py-1 px-3 rounded-lg bg-red-700 disabled:opacity-30 flex items-center gap-2" 
+
+                <button className="py-1 px-4 rounded-lg bg-red-700 flex items-center gap-2 disabled:opacity-30
+                xs:py-2 xs:px-5"
                 onClick={handleDelete} disabled={removing}>
-                  {removing ? <IconLoader2 size={15} className="animate-spin"/> : "" }
-                  {removing ? "Removing...": "Remove"}
+                  {removing ? <IconLoader2 className="size-5 animate-spin"/> : "Remove" }
                 </button>
               </div>
             </motion.div>

@@ -7,7 +7,7 @@ import { motion } from "framer-motion"
 import { IconClockCheck, IconLock } from "@tabler/icons-react"
 import { RecentLinks } from "./RecentLinks"
 import { LinkDetails } from "@/global"
-import { Accordion } from "../ui/Accordion"
+import { Accordion } from "../../components/ui/Accordion"
 import { getLinkDetails } from "../../utils/guest-links"
 import { useLinkChanges } from "../../hooks/useLinkChanges"
 import { ProtectedLinks } from "./ProtectedLinks"
@@ -63,8 +63,8 @@ export function MenuDrawer() {
       animate={{ opacity: isMenuOpen ? 1 : 0 }}
       transition={{ duration: 0.1 }} >
 
-      <motion.nav className={`absolute bottom-0 bg-[rgb(7,7,7)] max-w-[1270px] border-graphite overflow-y-auto ${navWidth} 
-      sm:right-0 sm:border-l`}
+      <motion.nav className={`absolute bottom-0 bg-[rgb(7,7,7)] max-w-[1270px] border-neutral-800 overflow-y-auto ${navWidth} 
+      sm:right-0 sm:border-l-[1.5px]`}
         onClick={(e) => e.stopPropagation()}
         initial={false}
         animate={isMenuOpen ? "open" : "closed"}

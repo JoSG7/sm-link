@@ -1,9 +1,9 @@
 "use client"
 
 import { LinkDetails } from "@/global"
-import { LinkCardSkeleton } from "../ui/LoadingSkeleton"
+import { LinkCardSkeleton } from "../../components/ui/LoadingSkeleton"
 import { LinkCard } from "./LinkCard"
-import { NoFound } from "../ui/NoFound"
+import { NoFound } from "../../components/ui/NoFound"
 
 interface Props {
   loading: boolean
