@@ -34,6 +34,34 @@
   line-height: 1.11;
 }
 
+/* Tablet text Sizes */
+
+@utility text-xs-tablet {
+  font-size: clamp(12px, 1.87vw, 18px);
+  line-height: 1.33;
+}
+
+@utility text-lg-tablet {
+  font-size: clamp(18px, 2.81vw, 24px);
+  line-height: 1.55;
+}
+
+@utility text-xl-tablet {
+  font-size: clamp(20px, 3.12vw, 26px);
+  line-height: 1.4;
+}
+
+@utility text-2xl-tablet {
+  font-size: clamp(24px, 3.75vw, 30px);
+  line-height: 1.33;
+}
+
+@utility text-7xl-tablet {
+  font-size: clamp(72px, 11.25vw, 90px);
+  line-height: 1;
+}
+
+
 
 
 .a{
