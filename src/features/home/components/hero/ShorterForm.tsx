@@ -67,6 +67,7 @@ export function ShorterForm() {
         </div>
 
         <button className="py-2 px-3 flex gap-1 items-center bg-gradient-to-r from-green-500 to-blue-700 cursor-pointer
+        disabled:opacity-30
         xs:py-3 xs:px-4 xs:gap-2
         sm:py-5 sm:px-6 sm:gap-3
         xl:py-3 xl:px-5 xl:gap-1"

@@ -95,8 +95,8 @@
 }
 
 @utility min-size-brand {
-  min-width: clamp(40px, 12.5vw, 80px);
-  min-height: clamp(40px, 12.5vw, 80px);
+  min-width: clamp(40px, 12.5vw, 60px);
+  min-height: clamp(40px, 12.5vw, 60px);
 }
 
 

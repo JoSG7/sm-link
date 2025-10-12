@@ -75,7 +75,9 @@ export function MenuDrawer() {
             {
               title:
                 <li className="p-4 text-lg-movil font-semibold flex justify-between items-center border-t-[1.5px] border-neutral-800  cursor-pointer
-                xs:p-5 
+                xs:p-5
+                sm:p-6 sm:text-2xl-tablet
+                md:p-7
                 lg:p-4 lg:border-none 
                 2xl:p-5 3xl:p-6 4xl:p-8 ">
 
@@ -83,12 +85,18 @@ export function MenuDrawer() {
                   <div className="flex gap-2 items-center ">
                     <IconClockCheck className="size-6 text-green-500 
                     xs:size-7
+                    sm:size-8 sm:gap-3
+                    md:size-9 md:gap-4
                     lg:size-6 " />
                     <span className="text-green-300">Recent</span> SmLinks
                   </div>
 
                   {/* Total of links */}
-                  <span className="text-base-movil lg:text-base-desktop-sm lg-2:text-base-desktop">{linkDetails.length}/7</span>
+                  <span className="text-base-movil 
+                  sm:text-2xl-tablet
+                  lg:text-base-desktop">
+                    {linkDetails.length}/7
+                  </span>
                 </li>,
               content: <RecentLinks data={linkDetails} loading={loading} />
             },
@@ -96,12 +104,17 @@ export function MenuDrawer() {
               title:
                 <li className="p-4 text-lg-movil font-semibold flex gap-2 items-center border-t-[1.5px] border-neutral-800 
                 cursor-pointer
-                xs:p-5 lg:p-4 ">
+                xs:p-5
+                sm:p-6 sm:gap-3 sm:text-2xl-tablet
+                md:p-7 md:gap-4
+                lg:p-4 ">
 
                   {/* Icon and title */}
                   <IconLock className="size-6 text-sky-500 
-                  xs:size-7 " />
-                  <span className="text-sky-300">Protected</span> Links
+                  xs:size-7
+                  sm:size-8 
+                  md:size-9" />
+                  <span className="text-sky-300">Protected</span> SmLinks
 
                 </li>,
               content: <ProtectedLinks data={linkDetails} loading={loading} />
