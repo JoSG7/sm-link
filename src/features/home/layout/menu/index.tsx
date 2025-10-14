@@ -34,6 +34,7 @@ export function MenuDrawer() {
       transition: { type: "tween", duration: 0.1 },
     },
   }
+  
   const navWidth = isMobile ? "w-full h-[75vh]" :
     isTablet ? "w-4/6 h-full" : "w-1/2 h-full"
 

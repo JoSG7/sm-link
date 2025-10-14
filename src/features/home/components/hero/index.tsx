@@ -9,8 +9,7 @@ export function Hero() {
 
   return (
 
-    <section className="flex justify-center 
-    xl:h-content-desktop ">
+    <section className="flex justify-center ">
 
       {/* Layout Content */}
       <div className="w-[90vw]
@@ -18,7 +17,7 @@ export function Hero() {
       xl:w-[85vw] 3xl:max-w-[2060px] ">
 
         {/* Main content */}
-        <main className="py-7 xs:py-10
+        <main className="py-7 xs:py-10 sm:py-16 md:py-20
         xl:gap-4 xl:grow ">
 
           <section className="grow">

@@ -17,7 +17,7 @@ export function ExpirationCalendar({ onChange }: { onChange: (iso: Date | undefi
   return (
     <div className="flex justify-center">
       <DayPicker mode="single" disabled={{ before: new Date() }} animate required selected={selectedDate}
-      className="scale-90 lg-2:scale-100"
+      className="scale-90 xs:scale-100"
       onSelect={handleSelected}
       classNames={{
         today: "text-sky-500",
