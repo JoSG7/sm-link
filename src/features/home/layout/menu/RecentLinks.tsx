@@ -3,7 +3,7 @@
 import { LinkDetails } from "@/global"
 import { LinkCardSkeleton } from "../../components/ui/LoadingSkeleton"
 import { LinkCard } from "./LinkCard"
-import { NoFound } from "../../components/ui/NoFound"
+import { NoFound } from "../../components/ui/EmptyLinks"
 
 interface Props {
   loading: boolean
@@ -34,7 +34,7 @@ export function RecentLinks({loading, data} : Props) {
                 <LinkCard key={element.id} data={element} />
               ))
               :
-              <NoFound />
+              <NoFound type="recent" />
         }
       </div>
     </>

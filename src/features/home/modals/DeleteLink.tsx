@@ -34,7 +34,7 @@ export function DeleteLinkModal() {
     <AnimatePresence>
       {
         isDeleteLinkOpen && (
-          <motion.section className="fixed inset-0 z-30 bg-[rgba(0,0,0,0.7)] flex items-center justify-center"
+          <motion.section className="fixed inset-0 z-30 bg-[rgba(0,0,0,0.8)] flex items-center justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}>
@@ -46,18 +46,20 @@ export function DeleteLinkModal() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
               transition={{ duration: 0.2 }}>
-
+              
+              {/* Title */}
               <h1 className="p-4 border-b border-neutral-800 text-sm-movil 
-              sm:p-5 sm:gap-5 sm:text-xl-tablet
-              md:p-6 md:gap-6
-              xs:p-5">
+              xs:p-5
+              sm:p-6 sm:text-xl-tablet
+              md:p-7 ">
                 Are you sure to delete this link for ever? <span className="font-medium">{shortLink}</span>
               </h1>
 
+              {/* Buttons section */}
               <div className="p-4 flex gap-4 items-center text-sm-movil 
-              sm:p-5 sm:gap-5 sm:text-xl-tablet
-              md:p-6 md:gap-6
-              xs:p-5">
+              xs:p-5 xs:gap-5
+              sm:p-6 sm:gap-6 sm:text-xl-tablet
+              md:p-7 md:gap-7 ">
 
                 <button className="py-1.5 px-3 flex gap-1 items-center rounded-lg bg-neutral-900  
                 xs:py-2 xs:px-4 

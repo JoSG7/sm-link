@@ -1,4 +1,4 @@
-import { IconLoader2 } from "@tabler/icons-react"
+import { IconLoader2, IconTrashX, IconX } from "@tabler/icons-react"
 import { AnimatePresence, motion } from "framer-motion"
 import { useState } from "react"
 import { toast } from "sonner"
@@ -33,12 +33,13 @@ export function RemoveLinkPasswordModal() {
     <AnimatePresence>
       {
         isDeleteLinkPasswordOpen && (
-          <motion.section className="fixed inset-0 z-30 bg-[rgba(0,0,0,0.7)] flex items-center justify-center"
+          <motion.section className="fixed inset-0 z-30 bg-[rgba(0,0,0,0.8)] flex items-center justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}>
 
             <motion.div className="w-[90vw] text-sm-movil rounded-xl border border-neutral-800 bg-neutral-950 
+            sm:w-[70vw]
             xl:w-[30vw]"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -46,24 +47,37 @@ export function RemoveLinkPasswordModal() {
               transition={{ duration: 0.2 }}>
               
               {/* Modal title */}
-              <h1 className="p-4 border-b border-neutral-800 
-              xs:p-5">
-                Are you sure to remove the password of this link? <span className="font-semibold">{shortLink}</span>
+              <h1 className="p-4 border-b border-neutral-800 text-sm-movil 
+              xs:p-5
+              sm:p-6 sm:text-xl-tablet
+              md:p-7">
+                Are you sure to remove the password from this link? <span className="font-semibold">{shortLink}</span>
               </h1>
 
               {/* Buttons Section */}
-              <div className="p-4 flex gap-4 items-center 
-              xs:p-5 xs:gap-5">
-                <button className="py-1 px-4 bg-neutral-900 rounded-lg
-                xs:py-2 xs:px-5"
+              <div className="p-4 flex gap-4 items-center text-sm-movil 
+              xs:p-5 xs:gap-5
+              sm:p-6 sm:gap-6 sm:text-xl-tablet
+              md:p-7 md:gap-7">
+
+                <button className="py-1.5 px-3 flex gap-1 items-center rounded-lg bg-neutral-900  
+                xs:py-2 xs:px-4 
+                md:py-3 md:px-5 md:gap-2"
                 onClick={() => { toggleDeleteLinkPasswordModal() }} disabled={removing}>
+                  <IconX className="size-4 xs:size-5 md:size-6" />
                   Close
                 </button>
 
-                <button className="py-1 px-4 rounded-lg bg-red-700 flex items-center gap-2 disabled:opacity-30
-                xs:py-2 xs:px-5"
+                <button className="py-1.5 px-4 flex gap-1 items-center rounded-lg bg-red-700 disabled:opacity-30 
+                xs:py-2 xs:px-4 
+                md:py-3 md:px-5 md:gap-2"
                 onClick={handleDelete} disabled={removing}>
-                  {removing ? <IconLoader2 className="size-5 animate-spin"/> : "Remove" }
+                  {
+                  removing ? 
+                  <IconLoader2 className="size-4 xs:size-5 md:size-6 animate-spin"/> : 
+                  <IconTrashX className="size-4 xs:size-5 md:size-6" />
+                  }
+                  {removing ? "Deleting..." : "Delete"}
                 </button>
               </div>
             </motion.div>

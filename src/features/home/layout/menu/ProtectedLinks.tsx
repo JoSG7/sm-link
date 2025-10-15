@@ -1,6 +1,6 @@
 import { LinkDetails } from "@/global";
 import { ProtectedLinkCardSkeleton } from "../../components/ui/LoadingSkeleton";
-import { NoFound } from "../../components/ui/NoFound";
+import { NoFound } from "../../components/ui/EmptyLinks";
 import { ProtectedLinkCard } from "./ProtectedLinkCard";
 
 export function ProtectedLinks({ loading, data }: { loading: boolean, data: LinkDetails[] | [] }) {
@@ -33,7 +33,7 @@ export function ProtectedLinks({ loading, data }: { loading: boolean, data: Link
             ))
             :
             <div className="col-span-2 lg:col-span-3">
-              <NoFound />
+              <NoFound type="protected" />
             </div>
       }
     </div>
