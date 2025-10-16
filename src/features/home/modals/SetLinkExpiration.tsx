@@ -4,9 +4,10 @@ import { FormEvent, useState } from "react"
 import { toast } from "sonner"
 import { useSetLinkExpirationModal } from "../hooks/useModals"
 import { addLinkExpiration } from "../utils/guest-links"
-import { ExpirationCalendar } from "../components/ui/Calendar"
-import { ExpirationHour } from "../components/ui/HourPicker"
 import { useLinkChanges } from "../hooks/useLinkChanges"
+import { DatePicker } from "../components/ui/DatePicker"
+
+
 
 export function SetLinkExpirationModal() {
 
@@ -74,22 +75,29 @@ export function SetLinkExpirationModal() {
               <form onSubmit={handleSubmit}>
 
                 {/* Date Input Section */}
-                <section className="p-4 flex flex-col gap-2 border-b border-neutral-800 
+                <section className="p-4 flex flex-col gap-4 border-b border-neutral-800 text-sm-movil
                 xs:p-5 xs:gap-4
                 md:p-6 md:pt-8 md:gap-10">
                   {/* Day Picker */}
-                  <ExpirationCalendar onChange={(value) => { setExpirationDate(value) }} />
+                  <DatePicker onChange={(e) => setExpirationDate(e)} />
 
-                  <div className="flex items-center gap-4 text-sm-movil
-                  sm:text-lg-tablet md:gap-6">
-                    {/* Hour Picker */}
-                    <ExpirationHour onChange={(value) => { setExpirationHour(value) }} />
-
-                    {/* Final Expiration Date */}
-                    <p className="rounded-lg border border-neutral-800 p-3 grow-[2] ">
-                      {expirationDate ? expirationDate.toLocaleDateString() : ""} {expirationHour == "" ? "00:00" : expirationHour}
-                    </p>
+                  {/* Hour Picker */}
+                  <div className="p-2 px-3  rounded-lg border border-neutral-800  
+                  xs:p-3 xs:px-4">
+                    <input type="time" className="text-white bg-transparent"
+                      required
+                      onChange={(e) => {
+                        setExpirationHour(e.currentTarget.value)
+                      }} />
                   </div>
+
+                  {/* Final Expiration Date */}
+                  <p className="text-sm-movil text-neutral-400 sm:text-lg-tablet">
+                    {expirationDate ? 
+                      "Your link will expire on " + expirationDate.toLocaleDateString() : ""} 
+
+                    {expirationHour == "" ? "" : " at " + expirationHour}
+                  </p>
                 </section>
 
                 {/* Buttons Section */}
