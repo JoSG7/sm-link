@@ -34,7 +34,7 @@ export function ProtectedLinkCard({ data }: { data: LinkDetails }) {
           {data.short}
         </p>
       </section>
-      
+
       <aside>
         <button className="p-2 rounded-md bg-neutral-900 
         3xl:p-2.5 4xl:p-3"

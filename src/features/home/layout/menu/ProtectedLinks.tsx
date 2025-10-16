@@ -28,9 +28,14 @@ export function ProtectedLinks({ loading, data }: { loading: boolean, data: Link
           </div>
           :
           data.length > 0 ?
-            data.map((element) => (
-              <ProtectedLinkCard key={element.id} data={element} />
-            ))
+            data.filter((element) => element.has_password).length == 0 ?
+              <div className="col-span-2 lg:col-span-3">
+                <NoFound type="protected" />
+              </div>
+              :
+              data.map((element) => (
+                <ProtectedLinkCard key={element.id} data={element} />
+              ))
             :
             <div className="col-span-2 lg:col-span-3">
               <NoFound type="protected" />
@@ -39,3 +44,7 @@ export function ProtectedLinks({ loading, data }: { loading: boolean, data: Link
     </div>
   )
 }
+
+
+
+
