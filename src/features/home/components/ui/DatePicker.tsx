@@ -14,13 +14,19 @@ export function DatePicker({ value, onChange }: { value?: Date; onChange?: (date
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button className="w-full py-3 px-4 justify-start text-sm-movil rounded-lg border border-neutral-800 bg-neutral-950"
-        size="custom">
-          <CalendarIcon className="mr-2 size-4" />
+        <Button className="w-full py-3 px-4 justify-start text-sm-movil rounded-lg border border-neutral-800 bg-neutral-950
+        xs:gap-3
+        sm:py-4 sm:px-5 sm:gap-4 sm:text-xl-tablet
+        md:gap-5"
+          size="custom">
+
+          <CalendarIcon className="size-4 xs:size-5 sm:size-6 md:size-7" />
           {date ? format(date, "PPP") : <span>Pick a date</span>}
+
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-auto p-0">
+      <PopoverContent className="w-auto p-0 sm:scale-110 md:scale-125">
+
         <Calendar className=""
           mode="single"
           selected={date}
@@ -28,8 +34,9 @@ export function DatePicker({ value, onChange }: { value?: Date; onChange?: (date
             setDate(d)
             onChange?.(d!)
           }}
-          disabled={{ before: new Date() }} 
+          disabled={{ before: new Date() }}
         />
+        
       </PopoverContent>
     </Popover>
   )

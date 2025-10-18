@@ -83,12 +83,11 @@ export function MenuDrawer() {
                 2xl:p-5 3xl:p-6 4xl:p-8 ">
 
                   {/* Icon and title */}
-                  <div className="flex gap-2 items-center ">
+                  <div className="flex gap-2 items-center 
+                  sm:gap-3 md:gap-4">
                     <IconClockCheck className="size-6 text-green-500 
-                    xs:size-7
-                    sm:size-8 sm:gap-3
-                    md:size-9 md:gap-4
-                    lg:size-6 " />
+                    xs:size-7 sm:size-8 md:size-9 lg:size-6 " />
+
                     <span className="text-green-300">Recent</span> SmLinks
                   </div>
 
@@ -112,9 +111,8 @@ export function MenuDrawer() {
 
                   {/* Icon and title */}
                   <IconLock className="size-6 text-sky-500 
-                  xs:size-7
-                  sm:size-8 
-                  md:size-9" />
+                  xs:size-7 sm:size-8 md:size-9" />
+                  
                   <span className="text-sky-300">Protected</span> SmLinks
 
                 </li>,

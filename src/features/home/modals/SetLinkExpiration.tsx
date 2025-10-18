@@ -76,15 +76,18 @@ export function SetLinkExpirationModal() {
 
                 {/* Date Input Section */}
                 <section className="p-4 flex flex-col gap-4 border-b border-neutral-800 text-sm-movil
-                xs:p-5 xs:gap-4
-                md:p-6 md:pt-8 md:gap-10">
+                xs:p-5 xs:gap-5
+                sm:text-xl-tablet
+                md:p-6 md:pt-8 md:gap-6">
+
                   {/* Day Picker */}
                   <DatePicker onChange={(e) => setExpirationDate(e)} />
 
                   {/* Hour Picker */}
-                  <div className="p-2 px-3  rounded-lg border border-neutral-800  
-                  xs:p-3 xs:px-4">
-                    <input type="time" className="text-white bg-transparent"
+                  <div className="p-2 px-3 rounded-lg border border-neutral-800  
+                  xs:p-3 xs:px-4
+                  sm:p-4 sm:px-5">
+                    <input type="time" className="w-full text-white bg-transparent"
                       required
                       onChange={(e) => {
                         setExpirationHour(e.currentTarget.value)
@@ -94,9 +97,11 @@ export function SetLinkExpirationModal() {
                   {/* Final Expiration Date */}
                   <p className="text-sm-movil text-neutral-400 sm:text-lg-tablet">
                     {expirationDate ? 
-                      "Your link will expire on " + expirationDate.toLocaleDateString() : ""} 
-
-                    {expirationHour == "" ? "" : " at " + expirationHour}
+                      "Your link will expire on " + expirationDate.toLocaleDateString() + 
+                      (expirationHour && " at " + expirationHour) 
+                      : 
+                      ""
+                    } 
                   </p>
                 </section>
 
