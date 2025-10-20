@@ -9,7 +9,7 @@ export function DomainLogo({ domain }: { domain: string }) {
   if (error) {
     return (
       <div className="flex items-center justify-end grow" >
-        <IconWorldExclamation className="min-size-brand  " />
+        <IconWorldExclamation className="min-size-brand xl:min-size-brand-desktop" />
       </div>
     )
   }
@@ -21,7 +21,7 @@ export function DomainLogo({ domain }: { domain: string }) {
         alt="Logo"
         width={40}
         height={40}
-        className="min-size-brand rounded-full "
+        className="min-size-brand rounded-full xl:min-size-brand-desktop"
         onError={() => setError(true)}
       />
     </div>

@@ -13,7 +13,7 @@ export function ProtectedLinkCard({ data }: { data: LinkDetails }) {
 
   return (
     <article className="rounded-xl border border-neutral-800 p-3 flex 
-    xs:p-4 sm:p-5 md:p-6
+    xs:p-4 sm:p-5 md:p-6 lg:p-4
     2xl:p-5 3xl:p-6 4xl:p-8">
       <RemoveLinkPasswordModal />
 
@@ -28,9 +28,8 @@ export function ProtectedLinkCard({ data }: { data: LinkDetails }) {
         </div>
 
         <p className="font-semibold text-center text-sm-movil
-        sm:text-xl-tablet
-        lg:text-sm-desktop-sm
-        xl:text-sm-desktop ">
+        sm:text-xl
+        lg:text-sm ">
           {data.short}
         </p>
       </section>
@@ -41,7 +40,7 @@ export function ProtectedLinkCard({ data }: { data: LinkDetails }) {
           onClick={() => toggleDeleteLinkPasswordModal(data.short)}>
 
           <IconTrashFilled className="size-4 
-          xs:size-5 sm:size-6 md:size-7
+          xs:size-5 sm:size-6 md:size-7 lg:size-5
           2xl:size-6 3xl:size-7 4xl:size-9" />
         </button>
       </aside>
