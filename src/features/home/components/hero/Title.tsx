@@ -19,7 +19,7 @@ export function HeroTitle() {
       xs:pb-6 
       sm:py-8 sm:text-2xl-tablet
       md:py-9 
-      lg:text-lg-desktop-sm lg:text-start lg:py-4 lg:text-neutral-400
+      lg:text-lg-desktop-sm lg:text-start lg:py-5 lg:text-neutral-400
       xl:text-xl xl:text-center xl:py-6 
       2xl:pt-6 2xl:pb-7 
       3xl:pt-7 3xl:pb-8

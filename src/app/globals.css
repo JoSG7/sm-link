@@ -79,6 +79,47 @@
   line-height: 1;
 }
 
+/* Desktop Sm Text sizes */
+
+@utility text-sm-desktop-sm {
+  font-size: clamp(14px, 1.36vw, 18px);
+  line-height: 1.42;
+}
+
+@utility text-lg-desktop-sm {
+  font-size: clamp(18px, 1.75vw, 24px);
+  line-height: 1.56;
+}
+
+@utility text-xl-desktop-sm {
+  font-size: clamp(20px, 1.95vw, 26px);
+  line-height: 1.4;
+}
+
+@utility text-2xl-desktop-sm {
+  font-size: clamp(24px, 2.34vw, 30px);
+  line-height: 1.33;
+}
+
+@utility text-3x-desktop-sm {
+  font-size: clamp(30px, 2.928vw, 42px);
+  line-height: 1.2;
+}
+
+@utility text-6xl-desktop-sm {
+  font-size: clamp(60px, 5.85vw, 78px);
+  line-height: 1;
+}
+
+@utility text-7xl-desktop-sm {
+  font-size: clamp(72px, 7vw, 90px);
+  line-height: 1;
+}
+
+
+
+
+
 .a {
   font-size: 11px;
 }

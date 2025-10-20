@@ -5,29 +5,30 @@ interface Props {
   type: "recent" | "protected"
 }
 
-export function NoFound({ type }: Props) {
+export function EmptyLinks({ type }: Props) {
 
   const { toggleMenu } = useMenuDrawer()
 
   return (
 
     <section className="p-4 rounded-lg border border-neutral-800 
-    xs:p-5 sm:p-6 md:p-7">
+    xs:p-5 sm:p-6 md:p-7 lg:p-5">
 
       {/* Card Title */}
       <h1 className="text-2xl-movil font-medium flex gap-4 items-center text-transparent bg-clip-text 
       bg-gradient-to-b from-green-500 to-blue-700
       xs:gap-5 
       sm:gap-6 sm:text-3x-tablet 
-      md:gap-7">
+      md:gap-7
+      lg:gap-5 lg:text-2xl">
 
         {/* Icon */}
         <div className="p-2 flex items-center justify-center rounded-xl text-white
         bg-gradient-to-br from-green-500 via-emerald-500 to-blue-700">
           {
             type == "recent" ?
-            <IconPaperclip className="size-7 xs:size-8 sm:size-9 md:size-10" /> :
-            <IconShield className="size-7 xs:size-8 sm:size-9 md:size-10 " />
+            <IconPaperclip className="size-7 xs:size-8 sm:size-9 md:size-10 lg:size-7" /> :
+            <IconShield className="size-7 xs:size-8 sm:size-9 md:size-10 lg:size-7" />
           }
         </div>
 
@@ -43,7 +44,8 @@ export function NoFound({ type }: Props) {
       <p className="pt-3 text-sm-movil text-neutral-300
       xs:pt-4 
       sm:pt-5 sm:text-lg-tablet 
-      md:pt-6">
+      md:pt-6
+      lg:pt-4 lg:text-sm">
         {
           type == "recent" ? 
           "Start creating your first shortened links and manage all your URLs in one place" :
@@ -59,10 +61,11 @@ export function NoFound({ type }: Props) {
         bg-gradient-to-r from-green-500 via-emerald-500 to-blue-700
         xs:mt-4 
         sm:mt-5 sm:gap-2
-        md:mt-6 md:gap-3"
+        md:mt-6 md:gap-3
+        lg:mt-4 lg:gap-1 lg:text-base"
         type="button"
         onClick={() => toggleMenu()}>
-          <IconPlus className="size-5 xs:size-6 sm:size-7 md:size-8" />
+          <IconPlus className="size-5 xs:size-6 sm:size-7 md:size-8 lg:size-6" />
           Create first link
         </button>
       }

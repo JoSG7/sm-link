@@ -79,22 +79,23 @@ export function MenuDrawer() {
                 xs:p-5
                 sm:p-6 sm:text-2xl-tablet
                 md:p-7
-                lg:p-4 lg:border-none 
+                lg:p-4 lg:border-none lg:text-xl
                 2xl:p-5 3xl:p-6 4xl:p-8 ">
 
                   {/* Icon and title */}
                   <div className="flex gap-2 items-center 
-                  sm:gap-3 md:gap-4">
+                  sm:gap-3 md:gap-4 lg:gap-2">
                     <IconClockCheck className="size-6 text-green-500 
                     xs:size-7 sm:size-8 md:size-9 lg:size-6 " />
-
-                    <span className="text-green-300">Recent</span> SmLinks
+                    <p>
+                      <span className="text-green-300">Recent</span> SmLinks
+                    </p>
                   </div>
 
                   {/* Total of links */}
                   <span className="text-base-movil 
                   sm:text-2xl-tablet
-                  lg:text-base-desktop">
+                  lg:text-xl">
                     {linkDetails.length}/7
                   </span>
                 </li>,
@@ -107,13 +108,14 @@ export function MenuDrawer() {
                 xs:p-5
                 sm:p-6 sm:gap-3 sm:text-2xl-tablet
                 md:p-7 md:gap-4
-                lg:p-4 ">
+                lg:p-4 lg:gap-2 lg:text-xl">
 
                   {/* Icon and title */}
                   <IconLock className="size-6 text-sky-500 
-                  xs:size-7 sm:size-8 md:size-9" />
-                  
-                  <span className="text-sky-300">Protected</span> SmLinks
+                  xs:size-7 sm:size-8 md:size-9 lg:size-6" />
+                  <p>
+                    <span className="text-sky-300">Protected</span> SmLinks
+                  </p>
 
                 </li>,
               content: <ProtectedLinks data={linkDetails} loading={loading} />

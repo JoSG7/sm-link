@@ -15,6 +15,7 @@ export function HomeNavBar() {
     backdrop-blur-sm 
     sm:p-6
     md:p-7
+    lg:p-5
     3xl:py-6 
     4xl:py-8 ">
 
@@ -37,7 +38,7 @@ export function HomeNavBar() {
 
           <p className="text-base-movil text-neutral-200 
           sm:text-2xl-tablet 
-          lg:text-lg ">
+          lg:text-lg-desktop-sm ">
             SmLink
           </p>
         </div>
@@ -45,7 +46,7 @@ export function HomeNavBar() {
         <button type="button" className="flex justify-center items-center cursor-pointer" 
         onClick={toggleMenu}>
 
-          <IconMenu2 className="sm:size-8 md:size-9 2xl:size-9 3xl:size-11 4xl:size-12" />
+          <IconMenu2 className="sm:size-8 md:size-9 lg:size-7 2xl:size-9 3xl:size-11 4xl:size-12" />
         </button>
       </div>
 

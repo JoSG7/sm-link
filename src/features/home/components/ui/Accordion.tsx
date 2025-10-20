@@ -35,7 +35,7 @@ export function Accordion({ items, buttonClass = "" }: { items: AccordionItem[],
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.3, ease: "easeInOut" }}
                   className="overflow-y-auto max-h-[380px] 
-                  sm:max-h-[540px] md:max-h-[650px]
+                  sm:max-h-[540px] md:max-h-[650px] lg:max-h-[400px]
                   xl:max-h-[400px] 2xl:max-h-[500px] 3xl:max-h-[600px] 4xl:max-h-[820px]"
                 >
                   {item.content}

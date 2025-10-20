@@ -47,12 +47,14 @@ export function ShorterForm() {
     <>
       <form className="w-full text-sm-movil flex rounded-xl bg-neutral-950 border border-neutral-800 overflow-hidden
       sm:text-2xl-tablet
+      lg:text-lg-desktop-sm
       xl:w-[75vw] xl:text-xl"
         onSubmit={handleSubmit}>
 
         <div className="p-2 pl-3 text-neutral-200 grow
         xs:p-3 xs:pl-4
         sm:p-5 sm:pl-6
+        lg:p-3 lg:pl-4
         xl:p-3 xl:pl-5">
 
           <input className="w-full outline-none placeholder:text-neutral-700 mask-r-from-90%"
@@ -70,9 +72,10 @@ export function ShorterForm() {
         disabled:opacity-30
         xs:py-3 xs:px-4 xs:gap-2
         sm:py-5 sm:px-6 sm:gap-3
+        lg:py-3 g:px-4 lg:gap-2
         xl:py-3 xl:px-5 xl:gap-1"
           disabled={submiting}>
-          <IconBolt className="size-4 sm:size-7 xs:size-5 xl:size-5" />
+          <IconBolt className="size-4 sm:size-7 xs:size-5 lg:size-5 2xl:size-6" />
           Short
         </button>
 

@@ -42,8 +42,10 @@ export function LinkCard({ data }: { data: LinkDetails }) {
       md:pb-7 md:gap-7
       lg:pb-4 lg:gap-10 ">
 
-        <div className="flex flex-col grow text-sm-movil 
-        sm:text-lg-tablet">
+        <div className="flex flex-col grow text-sm
+        xs:text-sm-movil
+        sm:text-lg-tablet 
+        lg:text-lg">
 
           {/* Short Link */}
           <p className="font-semibold text-nowrap text-transparent bg-clip-text 
@@ -56,7 +58,7 @@ export function LinkCard({ data }: { data: LinkDetails }) {
           xs:max-h-12 xs:mt-2 xs:mb-3
           sm:max-h-14 sm:mt-3 sm:mb-4
           md:max-h-16 md:mt-4 md:mb-5
-          lg:max-h-11 lg:mt-2 lg:mb-3 
+          lg:max-h-14 lg:mt-2 lg:mb-3 
           2xl:max-h-14 2xl:mt-2.5 2xl:mb-3.5
           3xl:max-h-16 3xl:mt-3 3xl:mb-4
           4xl:max-h-20 4xl:mt-4 4xl:mb-5">
@@ -64,8 +66,8 @@ export function LinkCard({ data }: { data: LinkDetails }) {
           </p>
 
           {/* Creation date */}
-          <p className=" flex gap-1 text-green-300 
-          xs:gap-2 md:gap-3 lg:gap-1 
+          <p className=" flex gap-1 text-green-300 items-center
+          xs:gap-2 md:gap-3 lg:gap-2 
           2xl:gap-2 3xl:gap-3 ">
 
             <IconCalendar className="size-5 text-green-500 
@@ -81,7 +83,7 @@ export function LinkCard({ data }: { data: LinkDetails }) {
 
       {/* Buttons section */}
       <div className="flex justify-end gap-3 
-      xs:gap-4 sm:gap-5 md:gap-6
+      xs:gap-4 sm:gap-5 md:gap-6 lg:gap-4
       xl:gap-3 2xl:gap-4 3xl:gap-5 4xl:gap-7">
 
         {/* Delete button */}
