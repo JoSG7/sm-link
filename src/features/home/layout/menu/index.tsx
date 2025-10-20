@@ -54,7 +54,6 @@ export function MenuDrawer() {
       fetchRecentLinks()
     }, [linkChanges])
 
-
   return (
 
     <motion.section className={`h-screen fixed inset-0 bg-[rgba(0,0,0,0.7)] backdrop-blur-sm z-20
@@ -89,7 +88,8 @@ export function MenuDrawer() {
                   2xl:gap-3 3xl:gap-4 4xl:gap-5 ">
 
                     <IconClockCheck className="size-6 text-green-500 
-                    xs:size-7 sm:size-8 md:size-9 lg:size-6 2xl:size-7 3xl:size-8 4xl:size-10 " />
+                    xs:size-7 sm:size-8 md:size-9 lg:size-6 
+                    2xl:size-7 3xl:size-8 4xl:size-10 " />
 
                     <p>
                       <span className="text-green-300">Recent</span> SmLinks
@@ -120,7 +120,8 @@ export function MenuDrawer() {
 
                   {/* Icon and title */}
                   <IconLock className="size-6 text-sky-500 
-                  xs:size-7 sm:size-8 md:size-9 lg:size-6 2xl:size-7 3xl:size-8 4xl:size-10" />
+                  xs:size-7 sm:size-8 md:size-9 lg:size-6 
+                  2xl:size-7 3xl:size-8 4xl:size-10" />
 
                   <p>
                     <span className="text-sky-300">Protected</span> SmLinks

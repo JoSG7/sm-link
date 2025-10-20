@@ -12,9 +12,9 @@ export function ProtectedLinks({ loading, data }: { loading: boolean, data: Link
     sm:px-6 sm:pb-6 sm:gap-6
     md:px-7 md:pb-7 md:gap-7
     lg:px-5 lg:pb-5 lg:gap-5
-    2xl:px-5 2xl:pb-5 2xl:gap-5
-    3xl:px-6 3xl:pb-6 3xl:gap-6
-    4xl:px-8 4xl:pb-8 4xl:gap-8">
+    2xl:px-6 2xl:pb-6 2xl:gap-6
+    3xl:px-7 3xl:pb-7 3xl:gap-7
+    4xl:px-9 4xl:pb-9 4xl:gap-9">
       {
         loading ?
           <div className="col-span-2 grid grid-cols-2 gap-4 
