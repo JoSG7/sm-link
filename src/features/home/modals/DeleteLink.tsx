@@ -59,7 +59,7 @@ export function DeleteLinkModal() {
               </h1>
 
               {/* Buttons section */}
-              <div className="p-4 flex gap-4 items-center text-sm-movil 
+              <div className="p-4 flex gap-4 items-center text-xs-movil 
               xs:p-5 xs:gap-5
               sm:p-6 sm:gap-6 sm:text-xl-tablet
               md:p-7 md:gap-7
@@ -69,12 +69,13 @@ export function DeleteLinkModal() {
               3xl:p-7 3xl:gap-7
               4xl:p-9 4xl:gap-9">
 
-                <button className="py-1.5 px-3 flex gap-1 items-center rounded-lg bg-neutral-900  
-                xs:py-2 xs:px-4 
-                md:py-3 md:px-5 md:gap-2 
-                lg:py-2 lg:px-4 lg:gap-1
-                2xl:py-2.5 2xl:px-5 2xl:gap-2
-                4xl:py-4 4xl:px-6 4xl:gap-3"
+                <button className="p-2 px-3 flex items-center gap-2 rounded-lg bg-neutral-900 cursor-pointer
+                xs:p-2.5 xs:px-4 
+                sm:p-3 sm:px-4
+                lg:p-2 lg:px-4
+                2xl:p-2.5 2xl:px-4
+                3xl:p-3 3xl:px-4
+                4xl:p-4 4xl:px-5"
                   onClick={() => { toggleDeleteLinkModal() }} disabled={deleting}>
 
                   <IconX className="size-4 xs:size-5 md:size-6 lg:size-5 
@@ -83,12 +84,13 @@ export function DeleteLinkModal() {
 
                 </button>
 
-                <button className="py-1.5 px-4 flex gap-1 items-center rounded-lg bg-red-700 disabled:opacity-30 
-                xs:py-2 xs:px-4 
-                md:py-3 md:px-5 md:gap-2
-                lg:py-2 lg:px-4
-                2xl:py-2.5 2xl:px-5 2xl:gap-2
-                4xl:py-3.5 4xl:px-6 4xl:gap-3"
+                <button className="p-2 px-3 flex items-center gap-2 rounded-lg bg-red-700 disabled:opacity-30 cursor-pointer
+                xs:p-2.5 xs:px-4 
+                sm:p-3 sm:px-4
+                lg:p-2 lg:px-4
+                2xl:p-2.5 2xl:px-5
+                3xl:p-3 3xl:px-6
+                4xl:p-4 4xl:px-7"
                   onClick={handleDelete} disabled={deleting}>
 
                   {
