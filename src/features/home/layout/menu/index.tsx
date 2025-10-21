@@ -131,7 +131,6 @@ export function MenuDrawer() {
               content: <ProtectedLinks data={linkDetails} loading={loading} />
             }
           ]} />
-
         </ul>
       </motion.nav>
     </motion.section>
