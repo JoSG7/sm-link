@@ -17,15 +17,17 @@ export function Hero() {
       xl:w-[85vw] 3xl:max-w-[2060px] ">
 
         {/* Main content */}
-        <main className="py-7 xs:py-10 sm:py-16 md:py-20 lg:py-10
-        xl:gap-4 xl:grow ">
+        <main className="py-7 xs:py-10 sm:py-16 md:py-20 
+        lg:py-20 lg:grow
+        xl:gap-4 ">
 
           <section className="grow">
 
             {/* Title */}
             <HeroTitle />
 
-            <section className="flex flex-col justify-center">
+            <section className="w-full flex flex-col justify-center duration-300 transition-all
+            lg:flex-row ">
               <ShorterForm />
               <div id="new-link" />
             </section>
@@ -35,8 +37,8 @@ export function Hero() {
             xs:gap-5 xs:py-6
             sm:gap-7 sm:py-8 sm:grid-cols-2
             md:gap-8 md:py-9
-            lg:gap-4 lg:py-5 lg:flex
-            xl:flex xl:flex-row xl:gap-4 xl:py-6">
+            lg:gap-6 lg:py-6 lg:flex lg:justify-start
+            xl:flex xl:flex-row xl:justify-start">
 
               <FeatureCard title="Global CDN for fast redirects"
               icon={<IconWorld className="text-blue-400 
@@ -71,7 +73,8 @@ export function Hero() {
             {/* Terms Section */}
             <p className="text-center text-neutral-400 text-xs-movil 
             sm:text-lg-tablet
-            lg:text-sm-desktop-sm">
+            lg:text-sm
+            xl:text-start">
               By proceeding, you agree to our
               <span className="text-blue-400"> Terms of Service </span>
               and

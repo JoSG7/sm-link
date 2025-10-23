@@ -21,7 +21,8 @@ export function NewLink({ short }: { short: string }) {
     border-[1.5px] border-neutral-800 bg-neutral-950/50
     xs:mt-6 xs:py-3 xs:px-4
     sm:mt-8 sm:py-5 sm:px-6 sm:text-2xl-tablet
-    xl:m-0 xl:p-0"
+    lg:mt-0 lg:py-3 lg:px-4 lg:ml-6 lg:text-base lg:gap-3
+    "
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.4, ease: "easeOut" }}>
@@ -32,12 +33,14 @@ export function NewLink({ short }: { short: string }) {
 
       <div className="flex items-center gap-2
       xs:gap-3
-      sm:gap-4">
+      sm:gap-4
+      lg:gap-3">
         <button className="p-1"
           onClick={copyToClipboard}>
           <IconCopyPlusFilled className="size-4 text-green-400
           xs:size-5
-          sm:size-7" />
+          sm:size-7
+          lg:size-5" />
         </button>
 
         <a href={`https://sm-link.vercel.app/${short}`}
@@ -45,7 +48,8 @@ export function NewLink({ short }: { short: string }) {
           aria-label="Use the new Link">
           <IconExternalLink className="size-4 text-blue-400
           xs:size-5
-          sm:size-7" />
+          sm:size-7
+          lg:size-5" />
         </a>
       </div>
     </motion.section>,

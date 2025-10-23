@@ -38,7 +38,7 @@ export function HomeNavBar() {
 
           <p className="text-base-movil text-neutral-200 
           sm:text-2xl-tablet 
-          lg:text-lg-desktop-sm ">
+          lg:text-lg ">
             SmLink
           </p>
         </div>

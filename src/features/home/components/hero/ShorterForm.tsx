@@ -45,10 +45,10 @@ export function ShorterForm() {
 
   return (
     <>
-      <form className="w-full text-sm-movil flex rounded-xl bg-neutral-950 border border-neutral-800 overflow-hidden
+      <form className="text-sm-movil flex rounded-xl bg-neutral-950 border border-neutral-800 overflow-hidden grow
       sm:text-2xl-tablet
-      lg:text-lg-desktop-sm
-      xl:w-[75vw] xl:text-xl"
+      lg:text-lg
+      xl:text-lg"
         onSubmit={handleSubmit}>
 
         <div className="p-2 pl-3 text-neutral-200 grow
