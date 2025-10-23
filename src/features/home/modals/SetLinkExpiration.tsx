@@ -1,11 +1,13 @@
-import { IconLoader2 } from "@tabler/icons-react"
+import { IconCheck, IconLoader2, IconX } from "@tabler/icons-react"
 import { AnimatePresence, motion } from "framer-motion"
 import { FormEvent, useState } from "react"
 import { toast } from "sonner"
 import { useSetLinkExpirationModal } from "../hooks/useModals"
 import { addLinkExpiration } from "../utils/guest-links"
-import { ExpirationCalendar } from "../components/ui/Calendar"
-import { ExpirationHour } from "../components/ui/HourPicker"
+import { useLinkChanges } from "../hooks/useLinkChanges"
+import { DatePicker } from "../components/ui/DatePicker"
+
+
 
 export function SetLinkExpirationModal() {
 
@@ -13,7 +15,7 @@ export function SetLinkExpirationModal() {
   const [expirationDate, setExpirationDate] = useState<Date | undefined>(undefined)
   const [expirationHour, setExpirationHour] = useState("")
   const { shortLink, isSetLinkExpirationOpen, toggleSetLinkExpirationModal } = useSetLinkExpirationModal()
-  // const { recordLinkChanges } = useLinkChanges()
+  const { recordLinkChanges } = useLinkChanges()
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
@@ -40,7 +42,7 @@ export function SetLinkExpirationModal() {
       })
         .finally(() => {
           setSubmiting(false)
-          // recordLinkChanges()
+          recordLinkChanges()
           toggleSetLinkExpirationModal()
         })
     }
@@ -55,49 +57,118 @@ export function SetLinkExpirationModal() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}>
 
-            <motion.div className="w-[300px] bg-neutral-950 rounded-xl border border-neutral-900 lg-2:w-96"
+            <motion.div className="w-[90vw] bg-neutral-950 rounded-xl border border-neutral-800 max-w-[1270px]
+            sm:w-[60vw]
+            lg:w-[50vw]"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
               transition={{ duration: 0.2 }}>
 
-              <h1 className="p-4 border-b border-neutral-900 text-sm lg-2:text-lg">
+              <h1 className="p-4 border-b border-neutral-800 text-sm-movil 
+              xs:p-5
+              sm:p-5 sm:gap-5 sm:text-xl-tablet
+              md:p-6 md:gap-6
+              lg:p-5 lg:text-lg
+              xl:text-lg-desktop
+              2xl:p-6 3xl:p-7 4xl:p-9">
                 Set a expiration date for <span className="font-medium">{shortLink}</span>
               </h1>
 
               <form onSubmit={handleSubmit}>
+
                 {/* Date Input Section */}
-                <section className="p-4 flex flex-col gap-2 border-b border-neutral-900 lg-2:gap-4">
-                  <ExpirationCalendar onChange={(value) => { setExpirationDate(value) }} />
+                <section className="p-4 flex flex-col gap-4 border-b border-neutral-800 text-sm-movil
+                xs:p-5 xs:gap-5
+                sm:text-xl-tablet
+                md:p-6 md:pt-8 md:gap-6
+                lg:p-5 lg:gap-5 lg:text-lg
+                xl:text-lg-desktop
+                2xl:p-6 2xl:gap-6
+                3xl:p-7 3xl:gap-7
+                4xl:p-9 4xl:gap-9">
 
-                  <div className="flex items-center gap-4">
-                    <ExpirationHour onChange={(value) => { setExpirationHour(value) }} />
+                  {/* Day Picker */}
+                  <DatePicker onChange={(e) => setExpirationDate(e)} />
 
-                    <p className="rounded-lg text-sm border border-[#1c1d1d] p-3 text-gold grow-[2] lg-2:text-base">
-                      {expirationDate ? expirationDate.toLocaleDateString() : ""} {expirationHour == "" ? "00:00" : expirationHour}
-                    </p>
+                  {/* Hour Picker */}
+                  <div className="p-2 px-3 rounded-lg border border-neutral-800  
+                  xs:p-3 xs:px-4
+                  sm:p-4 sm:px-5
+                  lg:p-3 lg:gap-3
+                  2xl:p-4 2xl:gap-4
+                  3xl:p-5 3xl:gap-5
+                  4xl:p-7 4xl:gap-7">
+                    <input type="time" className="w-full text-white bg-transparent"
+                      required
+                      onChange={(e) => {
+                        setExpirationHour(e.currentTarget.value)
+                      }} />
                   </div>
+
+                  {/* Final Expiration Date */}
+                  <p className="text-sm-movil text-neutral-400 sm:text-lg-tablet 
+                  lg:text-lg xl:text-lg-desktop">
+                    {expirationDate ? 
+                      "Your link will expire on " + expirationDate.toLocaleDateString() + 
+                      (expirationHour && " at " + expirationHour) 
+                      : 
+                      ""
+                    } 
+                  </p>
                 </section>
 
                 {/* Buttons Section */}
-                <div className="p-4 flex gap-4 items-center text-sm">
-                  <button className="py-1 px-3 text-center bg-neutral-900 rounded-lg disabled:opacity-50"
-                    type="button" disabled={submiting} onClick={() => {
+                <div className="p-4 flex gap-4 items-center text-sm-movil
+                xs:p-5 xs:gap-5
+                sm:p-6 sm:gap-6 sm:text-xl-tablet
+                md:p-7 md:gap-7 
+                lg:p-5 lg:gap-5 lg:text-base
+                xl:text-base-desktop
+                2xl:p-6 2xl:gap-6
+                3xl:p-7 3xl:gap-7
+                4xl:p-9 4xl:gap-9 ">
+
+                  <button className="p-2 px-3 flex items-center gap-2 rounded-lg bg-neutral-900 cursor-pointer
+                  xs:p-2.5 xs:px-4 
+                  sm:p-3 sm:px-4
+                  lg:p-2 lg:px-4
+                  2xl:p-2.5 2xl:px-4
+                  3xl:p-3 3xl:px-4
+                  4xl:p-4 4xl:px-5 "
+                    type="button"
+                    disabled={submiting}
+                    onClick={() => {
                       setExpirationDate(undefined)
                       setExpirationHour("")
                       toggleSetLinkExpirationModal()
                     }}>
+                    <IconX className="size-4 xs:size-5 md:size-6 lg:size-5 
+                    2xl:size-6 3xl:size-7 4xl:size-9" />
                     Close
                   </button>
 
-                  <button className="py-1 px-3 rounded-lg bg-sky-600 disabled:opacity-50 flex items-center gap-2"
-                    disabled={submiting} type="submit">
-                    {submiting ? <IconLoader2 size={15} className="animate-spin" /> : ""}
+                  <button className="p-2 px-3 flex items-center gap-2 rounded-lg bg-sky-600 disabled:opacity-30 cursor-pointer
+                  xs:p-2.5 xs:px-4 
+                  sm:p-3 sm:px-4
+                  lg:p-2 lg:px-4
+                  2xl:p-2.5 2xl:px-4
+                  3xl:p-3 3xl:px-4
+                  4xl:p-4 4xl:px-5 "
+                    type="button"
+                    disabled={submiting}>
+                    {
+                      submiting ?
+                        <IconLoader2 className="size-4 animate-spin xs:size-5 md:size-6 lg:size-5 
+                        2xl:size-6 3xl:size-7 4xl:size-9" /> :
+
+                        <IconCheck className="size-4 xs:size-5 md:size-6 lg:size-5 
+                        2xl:size-6 3xl:size-7 4xl:size-9" />
+                    }
                     {submiting ? "Creating..." : "Create"}
                   </button>
                 </div>
               </form>
-
             </motion.div>
           </motion.section>
         )

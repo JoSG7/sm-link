@@ -1,30 +1,31 @@
-import { IconLoader2 } from "@tabler/icons-react"
+import { IconLoader2, IconTrashX, IconX } from "@tabler/icons-react"
 import { AnimatePresence, motion } from "framer-motion"
 import { useState } from "react"
 import { toast } from "sonner"
 import { useDeleteLinkPasswordModal } from "../hooks/useModals"
 import { removeProtectedLink } from "../utils/guest-links"
+import { useLinkChanges } from "../hooks/useLinkChanges"
 
 export function RemoveLinkPasswordModal() {
   const [removing, setRemoving] = useState(false)
-  const { toggleDeleteLinkPasswordModal, isDeleteLinkPasswordOpen, shortLink } = useDeleteLinkPasswordModal() 
-  // const { recordLinkChanges } = useLinkChanges()
+  const { toggleDeleteLinkPasswordModal, isDeleteLinkPasswordOpen, shortLink } = useDeleteLinkPasswordModal()
+  const { recordLinkChanges } = useLinkChanges()
 
   const handleDelete = async () => {
     setRemoving(true)
-    if(shortLink){
+    if (shortLink) {
       removeProtectedLink(shortLink).then(res => {
-        if(res.error){
+        if (res.error) {
           toast.error(res.error)
         } else {
           toast.success(res.response)
         }
       })
-      .finally(() => {
-        setRemoving(false)
-        // recordLinkChanges()
-        toggleDeleteLinkPasswordModal()
-      })
+        .finally(() => {
+          setRemoving(false)
+          recordLinkChanges()
+          toggleDeleteLinkPasswordModal()
+        })
     }
   }
 
@@ -37,25 +38,70 @@ export function RemoveLinkPasswordModal() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}>
 
-            <motion.div className="w-[300px] bg-neutral-950 rounded-xl border border-neutral-900 lg-2:w-96"
+            <motion.div className="w-[90vw] text-sm-movil rounded-xl border border-neutral-800 bg-neutral-950 
+            sm:w-[70vw]
+            lg:w-[50vw]"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
               transition={{ duration: 0.2 }}>
 
-              <h1 className="p-4 border-b border-neutral-900 text-sm lg-2:text-base">
-                Are you sure to remove the password of this link? <span className="font-semibold">{shortLink}</span>
+              {/* Modal title */}
+              <h1 className="p-4 border-b border-neutral-800 text-sm-movil 
+              xs:p-5
+              sm:p-6 sm:text-xl-tablet
+              md:p-7
+              lg:p-5 lg:text-lg
+              xl:text-lg-desktop
+              2xl:p-6 3xl:p-7 4xl:p-9">
+                Are you sure to remove the password from this link? <span className="font-semibold">{shortLink}</span>
               </h1>
 
-              <div className="p-4 flex gap-4 items-center text-sm">
-                <button className="py-1 px-3 bg-neutral-900 rounded-lg"
-                onClick={() => { toggleDeleteLinkPasswordModal() }} disabled={removing}>
-                  Cancelar
+              {/* Buttons Section */}
+              <div className="p-4 flex gap-4 items-center text-sm-movil 
+              xs:p-5 xs:gap-5
+              sm:p-6 sm:gap-6 sm:text-xl-tablet
+              md:p-7 md:gap-7
+              lg:p-5 lg:gap-5 lg:text-base
+              xl:text-base-desktop
+              2xl:p-6 2xl:gap-6
+              3xl:p-7 3xl:gap-7
+              4xl:p-9 4xl:gap-9">
+
+                <button className="p-2 px-3 flex items-center gap-2 rounded-lg bg-neutral-900 cursor-pointer
+                xs:p-2.5 xs:px-4 
+                sm:p-3 sm:px-4
+                lg:p-2 lg:px-4
+                2xl:p-2.5 2xl:px-5
+                3xl:p-3 3xl:px-6
+                4xl:p-4 4xl:px-7"
+                  onClick={() => { toggleDeleteLinkPasswordModal() }} disabled={removing}>
+
+                  <IconX className="size-4 xs:size-5 md:size-6 lg:size-5 
+                  2xl:size-6 3xl:size-7 4xl:size-9" />
+                  Close
+
                 </button>
-                <button className="py-1 px-3 rounded-lg bg-red-700 disabled:opacity-30 flex items-center gap-2" 
-                onClick={handleDelete} disabled={removing}>
-                  {removing ? <IconLoader2 size={15} className="animate-spin"/> : "" }
-                  {removing ? "Removing...": "Remove"}
+
+                <button className="p-2 px-3 flex items-center gap-2 rounded-lg bg-red-700 disabled:opacity-30 cursor-pointer
+                xs:p-2.5 xs:px-4 
+                sm:p-3 sm:px-4
+                lg:p-2 lg:px-4
+                2xl:p-2.5 2xl:px-5
+                3xl:p-3 3xl:px-6
+                4xl:p-4 4xl:px-7"
+                  onClick={handleDelete} disabled={removing}>
+
+                  {
+                    removing ?
+                      <IconLoader2 className="size-4 xs:size-5 md:size-6 lg:size-5 
+                      2xl:size-6 3xl:size-7 4xl:size-9 animate-spin"/> :
+
+                      <IconTrashX className="size-4 xs:size-5 md:size-6 lg:size-5 
+                      2xl:size-6 3xl:size-7 4xl:size-9" />
+                  }
+                  {removing ? "Deleting..." : "Delete"}
+
                 </button>
               </div>
             </motion.div>

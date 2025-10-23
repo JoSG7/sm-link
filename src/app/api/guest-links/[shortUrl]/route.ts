@@ -3,7 +3,7 @@ import { createSupabase } from "@/lib/supabase/client";
 import { NextRequest, NextResponse } from "next/server";
 
 interface Props {
-  params: Promise<{ shortUrl: string, guestID: string }>
+  params: Promise<{ shortUrl: string }>
 }
 
 export async function DELETE (request: NextRequest, { params }: Props) {
