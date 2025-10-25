@@ -47,15 +47,15 @@ export function ShorterForm() {
     <>
       <form className="text-sm-movil flex rounded-xl bg-neutral-950 border border-neutral-800 overflow-hidden grow
       sm:text-2xl-tablet
-      lg:text-lg
-      xl:text-lg"
+      lg:text-lg-desktop-sm
+      xl:text-lg-desktop"
         onSubmit={handleSubmit}>
 
         <div className="p-2 pl-3 text-neutral-200 grow
         xs:p-3 xs:pl-4
         sm:p-5 sm:pl-6
-        lg:p-3 lg:pl-4
-        xl:p-3 xl:pl-5">
+        lg:p-4 lg:pl-5
+        xl:p-4 xl:pl-5">
 
           <input className="w-full outline-none placeholder:text-neutral-700 mask-r-from-90%"
             placeholder="https://example.com/long-url-to-short"
@@ -75,7 +75,7 @@ export function ShorterForm() {
         lg:py-3 g:px-4 lg:gap-2
         xl:py-3 xl:px-5 xl:gap-1"
           disabled={submiting}>
-          <IconBolt className="size-4 sm:size-7 xs:size-5 lg:size-5 2xl:size-6" />
+          <IconBolt className="size-4 sm:size-7 xs:size-5 lg:size-6 2xl:size-6" />
           Short
         </button>
 

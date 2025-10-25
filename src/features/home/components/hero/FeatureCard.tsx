@@ -11,8 +11,8 @@ export function FeatureCard ({ icon, title } : Props) {
     xs:p-3 xs:gap-3
     sm:p-6 sm:gap-4 sm:text-xl-tablet sm:flex-col sm:items-baseline sm:rounded-2xl sm:bg-neutral-950/50
     md:p-7 md:gap-5
-    lg:p-3 lg:gap-3 lg:flex-row lg:text-sm lg:items-center
-    xl:px-4 xl:py-3 xl:text-sm xl:flex-row xl:items-center xl:gap-2 xl:rounded-xl">
+    lg:px-4 lg:py-3 lg:gap-3 lg:text-sm-desktop-sm lg:flex-row lg:items-center
+    xl:pr-5 xl:py-4 xl:gap-2 xl:text-sm-desktop xl:rounded-xl">
       {icon}
       <p>{title}</p>
     </article>

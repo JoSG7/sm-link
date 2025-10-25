@@ -18,27 +18,29 @@ export function Hero() {
 
         {/* Main content */}
         <main className="py-7 xs:py-10 sm:py-16 md:py-20 
-        lg:py-20 lg:grow
-        xl:gap-4 ">
+        lg:py-20 lg:grow ">
 
-          <section className="grow">
+          <section className="grow
+          lg:flex lg:gap-10 xl:gap-[72px]">
 
-            {/* Title */}
-            <HeroTitle />
+            <div className="grow">
+              {/* Title */}
+              <HeroTitle />
 
-            <section className="w-full flex flex-col justify-center duration-300 transition-all
-            lg:flex-row ">
-              <ShorterForm />
-              <div id="new-link" />
-            </section>
+              <section className="w-full flex flex-col justify-center 
+              lg:flex-row">
+                <ShorterForm />
+                <div id="new-link" />
+              </section>
+            </div>
 
             {/* Features Cards Section */}
             <section className="w-full grid grid-cols-1 gap-4 py-5 justify-center
             xs:gap-5 xs:py-6
             sm:gap-7 sm:py-8 sm:grid-cols-2
             md:gap-8 md:py-9
-            lg:gap-6 lg:py-6 lg:flex lg:justify-start
-            xl:flex xl:flex-row xl:justify-start">
+            lg:gap-7 lg:py-0 lg:grid-cols-1 lg:max-w-max
+            ">
 
               <FeatureCard title="Global CDN for fast redirects"
               icon={<IconWorld className="text-blue-400 
@@ -70,11 +72,10 @@ export function Hero() {
 
             </section>
 
-            {/* Terms Section */}
+            {/* Terms Section in Movil */}
             <p className="text-center text-neutral-400 text-xs-movil 
             sm:text-lg-tablet
-            lg:text-sm
-            xl:text-start">
+            lg:hidden">
               By proceeding, you agree to our
               <span className="text-blue-400"> Terms of Service </span>
               and

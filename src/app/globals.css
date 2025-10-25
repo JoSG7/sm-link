@@ -82,8 +82,13 @@
 /* Desktop Sm Text sizes */
 
 @utility text-sm-desktop-sm {
-  font-size: clamp(14px, 1.36vw, 18px);
+  font-size: clamp(14px, 1.36vw, 20px);
   line-height: 1.42;
+}
+
+@utility text-base-desktop-sm {
+  font-size: clamp(16px, 1.56vw, 22px);
+  line-height: 1.5;
 }
 
 @utility text-lg-desktop-sm {
