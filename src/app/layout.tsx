@@ -18,7 +18,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
 
     <html lang="en">
-      <body className={`antialiased ${lexend.className} overflow-y-auto min-h-screen relative`}>
+      <body className={`antialiased ${lexend.className} overflow-y-auto min-h-screen relative `}>
         <SpeedInsights />
         <ModalsProvider>
           <LinkChangesProvider>

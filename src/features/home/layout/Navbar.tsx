@@ -11,7 +11,7 @@ export function HomeNavBar() {
 
   return (
 
-    <motion.header className="flex p-5 bg-[rgba(0,0,0,0.7)] border-b border-graphite sticky top-0 left-0 right-0 justify-center z-10
+    <motion.header className="flex p-5 bg-[rgba(0,0,0,0.7)] border-b border-neutral-800 sticky top-0 left-0 right-0 justify-center z-10
     backdrop-blur-sm 
     sm:p-6
     md:p-7
@@ -38,7 +38,10 @@ export function HomeNavBar() {
 
           <p className="text-base-movil text-neutral-200 
           sm:text-2xl-tablet 
-          lg:text-lg ">
+          lg:text-lg 
+          2xl:text-xl
+          3xl:text-2xl
+          4xl:text-3xl">
             SmLink
           </p>
         </div>
