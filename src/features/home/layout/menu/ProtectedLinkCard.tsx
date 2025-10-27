@@ -1,8 +1,8 @@
 import { LinkDetails } from "@/global";
 import { IconTrashFilled } from "@tabler/icons-react";
-import Image from "next/image";
 import { useDeleteLinkPasswordModal } from "../../hooks/useModals";
 import { RemoveLinkPasswordModal } from "../../modals/RemoveLinkPassword";
+import { DomainLogo } from "../../components/ui/DomainLogo";
 
 export function ProtectedLinkCard({ data }: { data: LinkDetails }) {
   const url = new URL(data.original)
@@ -20,14 +20,7 @@ export function ProtectedLinkCard({ data }: { data: LinkDetails }) {
       <section className="w-full">
         <div className="flex justify-center pb-3
         2xl:pb-4 3xl:pb-5 4xl:pb-7">
-
-          <Image className="size-12 rounded-full 
-          xs:size-14 md:size-16
-          xl:min-size-brand-desktop"
-            src={`https://www.google.com/s2/favicons?domain=${domain}&sz=64`}
-            alt="logo"
-            width={56} height={56} />
-
+          <DomainLogo domain={domain} />
         </div>
 
         <p className="font-semibold text-center text-sm-movil

@@ -8,23 +8,23 @@ export function DomainLogo({ domain }: { domain: string }) {
 
   if (error) {
     return (
-      <div className="flex items-center justify-end grow" >
-        <IconWorldExclamation className="min-size-brand xl:min-size-brand-desktop" />
-      </div>
+      
+      <IconWorldExclamation className="min-size-brand xl:min-size-brand-desktop" />
+      
     )
   }
 
   return (
-    <div className="flex justify-end items-center grow">
+    
       <Image
         src={`https://www.google.com/s2/favicons?domain=${domain}&sz=64`}
         alt="Logo"
         width={40}
-        height={40}
+        height={40}        
         className="min-size-brand rounded-full xl:min-size-brand-desktop"
         onError={() => setError(true)}
       />
-    </div>
+    
   )
 
 }

@@ -1,5 +1,5 @@
-import { LinkIsExpired } from "@/features/home/components/LinkIsExpired";
-import { PasswordForm } from "@/features/home/components/PasswordForm";
+import { AccessLinkForm } from "@/features/home/components/ui/AccessLinkForm";
+import { LinkIsExpired } from "@/features/home/components/ui/LinkIsExpired";
 import { createSupabase } from "@/lib/supabase/client";
 import { redirect } from "next/navigation";
 
@@ -16,7 +16,6 @@ async function ShortURL({ params }: { params: Promise<{ shortUrl: string }> }) {
   const supabase = createSupabase()
   const { shortUrl } = await params
   const { data, error } = await supabase.rpc("get_link_with_details", { x_short: shortUrl }).maybeSingle()
-  console.log(data)
   const link = data as Link | null
 
   if (error) {
@@ -27,7 +26,7 @@ async function ShortURL({ params }: { params: Promise<{ shortUrl: string }> }) {
     if (link.is_expired) {
       return <LinkIsExpired />
     } else if (link.has_password) {
-      return <PasswordForm short={shortUrl} link_id={link.id} />
+      return <AccessLinkForm short={shortUrl} link_id={link.id} />
     } else {
       const { error } = await supabase.rpc("record_monthly_visits", { x_link_id: link.id })
       if (error) console.log(error)

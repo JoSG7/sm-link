@@ -156,7 +156,8 @@ export function SetLinkExpirationModal() {
                   3xl:p-3 3xl:px-4
                   4xl:p-4 4xl:px-5 "
                     type="button"
-                    disabled={submiting}>
+                    disabled={submiting}
+                    onClick={handleSubmit}>
                     {
                       submiting ?
                         <IconLoader2 className="size-4 animate-spin xs:size-5 md:size-6 lg:size-5 

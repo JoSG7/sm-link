@@ -92,7 +92,7 @@ export function LinkCard({ data }: { data: LinkDetails }) {
       xl:gap-3 2xl:gap-4 3xl:gap-5 4xl:gap-7">
 
         {/* Delete button */}
-        <button className="p-2 rounded-xl bg-neutral-900 
+        <button className="p-2 rounded-xl bg-neutral-900 cursor-pointer
         2xl:p-2.5 3xl:p-3 3xl:rounded-2xl
         4xl:p-4 4xl:rounded-3xl"
           onClick={() => { toggleDeleteLinkModal(data.short) }}>
@@ -103,7 +103,7 @@ export function LinkCard({ data }: { data: LinkDetails }) {
         </button>
 
         {/* Expiration Button */}
-        <button className="p-2 rounded-xl bg-neutral-900 disabled:opacity-50 
+        <button className="p-2 rounded-xl bg-neutral-900 cursor-pointer disabled:opacity-50
         2xl:p-2.5 3xl:p-3 3xl:rounded-2xl
         4xl:p-4 4xl:rounded-3xl"
           onClick={() => { toggleSetLinkExpirationModal(data.short) }}
@@ -115,7 +115,7 @@ export function LinkCard({ data }: { data: LinkDetails }) {
         </button>
 
         {/* Protected Button */}
-        <button className="p-2 rounded-xl bg-neutral-900 disabled:opacity-50 
+        <button className="p-2 rounded-xl bg-neutral-900 cursor-pointer disabled:opacity-50
         2xl:p-2.5 3xl:p-3 3xl:rounded-2xl
         4xl:p-4 4xl:rounded-3xl"
           onClick={() => { toggleSetLinkPasswordModal(data.short) }}
@@ -139,7 +139,7 @@ export function LinkCard({ data }: { data: LinkDetails }) {
         </Link>
 
         {/* Copy button */}
-        <button className="p-2 rounded-xl bg-neutral-900 
+        <button className="p-2 rounded-xl bg-neutral-900 cursor-pointer
         2xl:p-2.5 3xl:p-3 3xl:rounded-2xl
         4xl:p-4 4xl:rounded-3xl"
           onClick={copyToClipboard}>
