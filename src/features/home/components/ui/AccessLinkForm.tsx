@@ -68,7 +68,7 @@ export function AccessLinkForm({ short, link_id }: { short: string, link_id?: st
             lg:p-3 lg:gap-3 lg:text-lg lg:rounded-lg
             xl:text-lg-desktop
             2xl:p-4 2xl:gap-4
-            3xl:p-5 3xl:gap-5
+            3xl:p-5 3xl:gap-5 3xl:rounded-2xl
             4xl:p-7 4xl:gap-7">
 
               <IconLock className="size-4 xs:size-5 sm:size-7 md:size-8 lg:size-6 

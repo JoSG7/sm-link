@@ -86,7 +86,7 @@ export function AddLinkPasswordModal() {
                   md:p-5 md:gap-5
                   lg:p-3 lg:gap-3 lg:rounded-lg
                   2xl:p-4 2xl:gap-4
-                  3xl:p-5 3xl:gap-5
+                  3xl:p-5 3xl:gap-5 3xl:rounded-2xl
                   4xl:p-7 4xl:gap-7">
 
                     <IconLock className="size-5 xs:size-6 sm:size-7 md:size-8 lg:size-6 
