@@ -68,9 +68,10 @@ export function AddLinkPasswordModal() {
               {/* Form */}
               <form onSubmit={handleCreate}>
 
-                <div className="p-4 flex flex-col gap-4 text-xs-movil border-b border-neutral-800 
+                {/* Inputs Container */}
+                <section className="p-4 flex flex-col gap-4 text-xs-movil border-b border-neutral-800 
                 xs:p-5 xs:gap-5
-                sm:p-6 sm:gap-6 sm:text-xl-tablet
+                sm:p-6 sm:gap-6 sm:text-xl-tablet 
                 md:p-7 md:gap-7
                 lg:p-5 lg:gap-5 lg:text-lg
                 xl:text-lg-desktop
@@ -81,11 +82,11 @@ export function AddLinkPasswordModal() {
                   {/* Input Password */}
                   <div className="p-2 flex items-center gap-2 rounded-lg bg-neutral-900 
                   xs:p-3 xs:gap-3
-                  sm:p-4 sm:gap-4 
+                  sm:p-4 sm:gap-4 sm:rounded-xl
                   md:p-5 md:gap-5
-                  lg:p-3 lg:gap-3
+                  lg:p-3 lg:gap-3 lg:rounded-lg
                   2xl:p-4 2xl:gap-4
-                  3xl:p-5 3xl:gap-5
+                  3xl:p-5 3xl:gap-5 3xl:rounded-2xl
                   4xl:p-7 4xl:gap-7">
 
                     <IconLock className="size-5 xs:size-6 sm:size-7 md:size-8 lg:size-6 
@@ -102,9 +103,9 @@ export function AddLinkPasswordModal() {
                   {/* Repeat Password */}
                   <div className="p-2 flex items-center gap-2 rounded-lg bg-neutral-900 
                   xs:p-3 xs:gap-3
-                  sm:p-4 sm:gap-4 
+                  sm:p-4 sm:gap-4 sm:rounded-xl
                   md:p-5 md:gap-5
-                  lg:p-3 lg:gap-3
+                  lg:p-3 lg:gap-3 lg:rounded-lg
                   2xl:p-4 2xl:gap-4
                   3xl:p-5 3xl:gap-5
                   4xl:p-7 4xl:gap-7">
@@ -119,10 +120,10 @@ export function AddLinkPasswordModal() {
                       onChange={(e) => setConfirmPassword(e.currentTarget.value)} />
                   </div>
 
-                </div>
+                </section>
 
                 {/* Buttons Section */}
-                <div className="p-4 flex gap-4 items-center text-xs-movil
+                <section className="p-4 flex gap-4 items-center text-xs-movil
                 xs:p-5 xs:gap-5
                 sm:p-6 sm:gap-6 sm:text-xl-tablet
                 md:p-7 md:gap-7 
@@ -167,7 +168,7 @@ export function AddLinkPasswordModal() {
                     {submiting ? "Protecting..." : "Protect"}
 
                   </button>
-                </div>
+                </section>
               </form>
             </motion.div>
           </motion.section>
