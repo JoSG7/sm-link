@@ -4,44 +4,51 @@ import { IconBolt } from "@tabler/icons-react"
 import { FormEvent, useState } from "react"
 import { toast } from "sonner"
 import { isURL } from "validator"
-import { createShortLink } from "../../utils/guest-links"
 import { useLinkChanges } from "../../hooks/useLinkChanges"
 import { NewLink } from "./NewLink"
+import { GuestLinkServices } from "../../services/guest-link.service"
 
 export function ShorterForm() {
 
   const [original, setOriginal] = useState("")
   const [short, setShort] = useState<null | string>(null)
   const [submiting, setSubmiting] = useState(false)
-
   const { recordLinkChanges } = useLinkChanges()
+
 
   const handleSubmit = (e: FormEvent) => {
 
     e.preventDefault()
     setSubmiting(true)
-    const loadingToast = toast.loading("Creating short link...")
+
+    const guestLinkServices = new GuestLinkServices()
 
     if (!isURL(original)) {
-      toast.error("Ingrese un link válido", { id: loadingToast })
+
       setSubmiting(false)
+
     } else {
 
-      createShortLink(original).then(res => {
-        if (res.error) {
-          toast.error(res.error, { id: loadingToast })
-        } else {
-          toast.success("Se genero correctamente", { id: loadingToast })
-          setShort(res.response)
-          recordLinkChanges()
-        }
-      })
+      guestLinkServices.createLink(original)
+        .then(res => {
+
+          if (res.error) {
+            toast.error(res.error)
+          } else {
+            toast.success("Se genero correctamente")
+            setShort(res.response)
+            recordLinkChanges()
+          }
+
+        })
         .finally(() => {
           setSubmiting(false)
           setOriginal("")
         })
+
     }
   }
+
 
   return (
     <>

@@ -7,7 +7,7 @@ export async function POST( request : NextRequest) {
 
   const guestID = await getGuestID()
   const supabase = createSupabase(guestID)
-  const { short, expires_at } = await request.json()
+  const { short, expiresAt } = await request.json()
 
   const { data, error } = await supabase.from("link").select("id").eq("short", short).single()
   if(error) console.log(error)
@@ -16,7 +16,7 @@ export async function POST( request : NextRequest) {
 
     const { error } = await supabase.from("link_expiration").insert({
       link_id: data.id,
-      expires_at
+      expires_at: expiresAt
     })
   
     if (error) {

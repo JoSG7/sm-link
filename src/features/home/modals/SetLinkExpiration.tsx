@@ -3,9 +3,9 @@ import { AnimatePresence, motion } from "framer-motion"
 import { FormEvent, useState } from "react"
 import { toast } from "sonner"
 import { useSetLinkExpirationModal } from "../hooks/useModals"
-import { addLinkExpiration } from "../utils/guest-links"
 import { useLinkChanges } from "../hooks/useLinkChanges"
 import { DatePicker } from "../components/ui/DatePicker"
+import { GuestLinkServices } from "../services/guest-link.service"
 
 
 
@@ -17,11 +17,14 @@ export function SetLinkExpirationModal() {
   const { shortLink, isSetLinkExpirationOpen, toggleSetLinkExpirationModal } = useSetLinkExpirationModal()
   const { recordLinkChanges } = useLinkChanges()
 
+
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
 
     if (!expirationDate || expirationHour == "") {
+
       toast.error("Please, enter a valid date and hour")
+
     } else if (shortLink) {
 
       const [hour, min] = expirationHour.split(":").map(Number)
@@ -32,21 +35,29 @@ export function SetLinkExpirationModal() {
         hour,
         min
       )
+
       setSubmiting(true)
-      addLinkExpiration(shortLink, fullDate.toISOString()).then(res => {
-        if (res.error) {
-          toast.error(res.error)
-        } else {
-          toast.success(res.response)
-        }
-      })
+      const guestLinksServices = new GuestLinkServices()
+
+      guestLinksServices.expiration.createLink(shortLink, fullDate.toISOString())
+        .then(res => {
+
+          if (res.error) {
+            toast.error(res.error)
+          } else {
+            toast.success(res.response)
+          }
+
+        })
         .finally(() => {
           setSubmiting(false)
           recordLinkChanges()
           toggleSetLinkExpirationModal()
         })
+
     }
   }
+
 
   return (
     <AnimatePresence>
@@ -109,12 +120,12 @@ export function SetLinkExpirationModal() {
                   {/* Final Expiration Date */}
                   <p className="text-sm-movil text-neutral-400 sm:text-lg-tablet 
                   lg:text-lg xl:text-lg-desktop">
-                    {expirationDate ? 
-                      "Your link will expire on " + expirationDate.toLocaleDateString() + 
-                      (expirationHour && " at " + expirationHour) 
-                      : 
+                    {expirationDate ?
+                      "Your link will expire on " + expirationDate.toLocaleDateString() +
+                      (expirationHour && " at " + expirationHour)
+                      :
                       ""
-                    } 
+                    }
                   </p>
                 </section>
 

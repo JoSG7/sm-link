@@ -8,9 +8,9 @@ import { IconClockCheck, IconLock } from "@tabler/icons-react"
 import { RecentLinks } from "./RecentLinks"
 import { LinkDetails } from "@/global"
 import { Accordion } from "../../components/ui/Accordion"
-import { getLinkDetails } from "../../utils/guest-links"
 import { useLinkChanges } from "../../hooks/useLinkChanges"
 import { ProtectedLinks } from "./ProtectedLinks"
+import { GuestLinkServices } from "../../services/guest-link.service"
 
 export function MenuDrawer() {
 
@@ -21,6 +21,7 @@ export function MenuDrawer() {
   const width = useScreenSize()
   const isMobile = width < 640
   const isTablet = width >= 640 && width < 1024
+
 
   const navVariants = {
     open: {
@@ -34,25 +35,34 @@ export function MenuDrawer() {
       transition: { type: "tween", duration: 0.1 },
     },
   }
-  
+
+
   const navWidth = isMobile ? "w-full h-[75vh]" :
     isTablet ? "w-4/6 h-full" : "w-1/2 h-full"
 
+  
   useEffect(() => {
-      const fetchRecentLinks = () => {
-        setLoading(true)
-        getLinkDetails().then(res => {
+    const fetchRecentLinks = () => {
+
+      setLoading(true)
+      const guestLinkServices = new GuestLinkServices()
+
+      guestLinkServices.getLinks()
+        .then(res => {
+          console.log(res)
           if (res.length > 0) {
-            // console.log(res)
             setLinkDetails(res)
           } else {
             setLinkDetails([])
           }
         })
-          .finally(() => setLoading(false))
-      }
-      fetchRecentLinks()
-    }, [linkChanges])
+        .finally(() => setLoading(false))
+
+    }
+
+    fetchRecentLinks()
+  }, [linkChanges])
+
 
   return (
 

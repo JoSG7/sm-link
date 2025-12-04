@@ -9,6 +9,8 @@ const createBase64Code = (): string => {
   return base64.slice(0, 7)
 }
 
+
+
 export async function GET() {
   const guestID = await getGuestID()
   const supabase = createSupabase(guestID)
@@ -20,6 +22,8 @@ export async function GET() {
     return error ? NextResponse.json({ error: "Error, try again" }) : NextResponse.json(guestLinks)
   }
 }
+
+
 
 export async function POST(request: NextRequest) {
 
@@ -46,7 +50,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "You already have a short version of this link" })
   } else {
     const { error } = await supabase.from("link").insert({
-      original: original,
+      original,
       short: shortLink,
       guess_id: guestID
     })
