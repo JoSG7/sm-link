@@ -5,8 +5,8 @@ import { AnimatePresence, motion } from "framer-motion"
 import { useState } from "react"
 import { toast } from "sonner"
 import { useDeleteLinkModal } from "../hooks/useModals"
-import { deleteGuestLink } from "../utils/guest-links"
 import { useLinkChanges } from "../hooks/useLinkChanges"
+import { GuestLinkServices } from "../services/guest-link.service"
 
 export function DeleteLinkModal() {
 
@@ -15,18 +15,26 @@ export function DeleteLinkModal() {
   const { recordLinkChanges } = useLinkChanges()
 
   const handleDelete = () => {
+
     setDeleting(true)
+    const guestLinkServices = new GuestLinkServices()
+
     if (shortLink) {
-      deleteGuestLink(shortLink).then((res) => {
-        if (res.error) {
-          toast.error(res.error)
-        } else {
-          toast.success(res.response)
-          recordLinkChanges()
-          toggleDeleteLinkModal()
-        }
-      })
+
+      guestLinkServices.deleteLink(shortLink)
+        .then(res => {
+
+          if (res.error) {
+            toast.error(res.error)
+          } else {
+            toast.success(res.response)
+            recordLinkChanges()
+            toggleDeleteLinkModal()
+          }
+
+        })
         .finally(() => setDeleting(false))
+      
     }
   }
 

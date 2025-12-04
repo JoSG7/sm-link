@@ -2,7 +2,7 @@
 
 import { IconCalendar, IconClockCheck, IconCopy, IconExternalLink, IconShieldLockFilled, IconTrashFilled } from "@tabler/icons-react"
 import { useDeleteLinkModal, useSetLinkExpirationModal, useSetLinkPasswordModal } from "../../hooks/useModals"
-import { months } from "@/global-consts"
+import { months } from "@/consts"
 import { toast } from "sonner"
 import { LinkDetails } from "@/global"
 import { DeleteLinkModal } from "../../modals/DeleteLink"

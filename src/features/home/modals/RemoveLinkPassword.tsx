@@ -3,31 +3,39 @@ import { AnimatePresence, motion } from "framer-motion"
 import { useState } from "react"
 import { toast } from "sonner"
 import { useDeleteLinkPasswordModal } from "../hooks/useModals"
-import { removeProtectedLink } from "../utils/guest-links"
 import { useLinkChanges } from "../hooks/useLinkChanges"
+import { GuestLinkServices } from "../services/guest-link.service"
 
 export function RemoveLinkPasswordModal() {
   const [removing, setRemoving] = useState(false)
   const { toggleDeleteLinkPasswordModal, isDeleteLinkPasswordOpen, shortLink } = useDeleteLinkPasswordModal()
   const { recordLinkChanges } = useLinkChanges()
 
+
   const handleDelete = async () => {
+    
     setRemoving(true)
+    const guestLinkServices = new GuestLinkServices()
+
     if (shortLink) {
-      removeProtectedLink(shortLink).then(res => {
-        if (res.error) {
-          toast.error(res.error)
-        } else {
-          toast.success(res.response)
-        }
-      })
-        .finally(() => {
-          setRemoving(false)
-          recordLinkChanges()
-          toggleDeleteLinkPasswordModal()
+
+      guestLinkServices.protected.deleteLink(shortLink)
+        .then(res => {
+
+          if (res.error) {
+            toast.error(res.error)
+          } else {
+            toast.success(res.response)
+            recordLinkChanges()
+            toggleDeleteLinkPasswordModal()
+          }
+
         })
+        .finally(() => setRemoving(false))
+
     }
   }
+
 
   return (
     <AnimatePresence>

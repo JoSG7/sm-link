@@ -3,8 +3,8 @@ import { useSetLinkPasswordModal } from "../hooks/useModals"
 import { IconCheck, IconLoader2, IconLock, IconLockCheck, IconX } from "@tabler/icons-react"
 import { FormEvent, useState } from "react"
 import { toast } from "sonner"
-import { createProtectedLink } from "../utils/guest-links"
 import { useLinkChanges } from "../hooks/useLinkChanges"
+import { GuestLinkServices } from "../services/guest-link.service"
 
 export function AddLinkPasswordModal() {
 
@@ -15,29 +15,37 @@ export function AddLinkPasswordModal() {
   const { shortLink, isSetLinkPasswordOpen, toggleSetLinkPasswordModal } = useSetLinkPasswordModal()
   const { recordLinkChanges } = useLinkChanges()
 
+
   const handleCreate = (e: FormEvent) => {
     e.preventDefault()
 
     if (password != confirmPassword) {
       toast.error("The passwords not match, try again")
     } else if (shortLink) {
-      setSubmiting(true)
 
-      createProtectedLink(shortLink, password).then(res => {
-        if (res.error) {
-          toast.error(res.error)
-        } else {
-          recordLinkChanges()
-          toast.success(res.response)
-        }
-      })
+      setSubmiting(true)
+      const guestLinkServices = new GuestLinkServices()
+
+      guestLinkServices.protected.createLink(shortLink, password)
+        .then(res => {
+
+          if (res.error) {
+            toast.error(res.error)
+          } else {
+            recordLinkChanges()
+            toast.success(res.response)
+          }
+
+        })
         .finally(() => {
           setSubmiting(false)
           toggleSetLinkPasswordModal()
         })
+
     }
   }
 
+  
   return (
     <AnimatePresence>
       {
