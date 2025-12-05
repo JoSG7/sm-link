@@ -2,9 +2,9 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Lexend } from "next/font/google"
 import { Toaster } from "sonner";
 import type { Metadata } from "next";
-import "./globals.css";
-import { ModalsProvider } from "@/features/shared/contexts/GlobalModalsProvider";
+import { ModalsProvider } from "@/features/shared/contexts/ModalsProvider";
 import { LinkChangesProvider } from "@/features/shared/contexts/LinkChangesProvider";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Sm Link",
@@ -19,6 +19,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 
     <html lang="en">
       <body className={`antialiased ${lexend.className} overflow-y-auto min-h-screen relative `}>
+
         <SpeedInsights />
         <ModalsProvider>
           <LinkChangesProvider>
