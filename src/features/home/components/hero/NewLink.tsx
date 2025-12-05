@@ -31,7 +31,7 @@ export function NewLink({ short }: { short: string }) {
       transition={{ duration: 0.4, ease: "easeOut" }}>
 
       <p>
-        sm-link.vercel.app/<span>{short}</span>
+        sm-link.vercel.app/{short}
       </p>
 
       {/* these buttons is hidden in desktop */}

@@ -15,6 +15,7 @@ export async function DELETE (request: NextRequest, { params }: { params: Promis
     const { data, error } = await supabase.from("link").select("id").eq("short", shortUrl).maybeSingle()
     
     if(!data || error){
+
       console.log(error)
       return NextResponse.json({ error: "Link not found" })
     } else {
@@ -22,9 +23,11 @@ export async function DELETE (request: NextRequest, { params }: { params: Promis
       const { error} = await supabase.from("protected_link").delete().eq("link_id", data.id)
 
       if (error){
+
         console.log(error)
         return NextResponse.json({ error: "Error, look the console" })
       }
+      
       return NextResponse.json({ response: "Removed Succesfully" })
     }
   }

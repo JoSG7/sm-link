@@ -25,8 +25,10 @@ export async function POST( request : NextRequest) {
     } else {
       return NextResponse.json({ response: "Expiration set successfully" })
     }
+
   } else {
-    return NextResponse.json({ error: "You don't have permissions" })
+    
+    return NextResponse.json({ error: "Unauthorized" })
   }
 }
 

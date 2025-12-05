@@ -4,7 +4,6 @@ import { Hero } from "@/features/home/components/hero";
 import { HomeNavBar } from "@/features/home/layout/Navbar";
 import { MenuDrawer } from "@/features/home/layout/menu";
 
-// export const dynamic = "force-dynamic"
 
 export default async function Home() {
 
@@ -21,9 +20,6 @@ export default async function Home() {
         <MenuDrawer />
         <div className="flex flex-col gap-28 lg:gap-10">
           <Hero />
-          {/* 
-          <LoginDetails />
-          <Footer /> */}
         </div>
       </main>
     )
