@@ -1,6 +1,8 @@
+"use client"
+
 import { IconBrandGithubFilled, IconBrandX } from "@tabler/icons-react";
 
-export function Footer() {
+export function HomeFooter() {
 
   return (
 

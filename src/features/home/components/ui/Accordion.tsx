@@ -19,17 +19,21 @@ export function Accordion({ items, buttonClass = "" }: { items: AccordionItem[],
       {items.map((item, index) => {
 
         return (
-          <div key={index} className="w-full">
-            <button type='button' className={`w-full ${buttonClass}`} onClick={() => {
-              toggle(index)
-            }}>
+          <div className="w-full"
+            key={index}>
+
+            <button className={`w-full ${buttonClass}`}
+              type='button'
+              onClick={() => {
+                toggle(index)
+              }}>
+
               {item.title}
             </button>
 
             <AnimatePresence initial={false}>
               {openIndex === index && (
                 <motion.div
-                  key="content"
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: "auto", opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
@@ -42,6 +46,7 @@ export function Accordion({ items, buttonClass = "" }: { items: AccordionItem[],
                 </motion.div>
               )}
             </AnimatePresence>
+
           </div>
         )
 

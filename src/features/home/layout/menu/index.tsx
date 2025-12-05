@@ -49,12 +49,13 @@ export function MenuDrawer() {
 
       guestLinkServices.getLinks()
         .then(res => {
-          console.log(res)
+
           if (res.length > 0) {
             setLinkDetails(res)
           } else {
             setLinkDetails([])
           }
+
         })
         .finally(() => setLoading(false))
 
@@ -75,6 +76,7 @@ export function MenuDrawer() {
 
       <motion.nav className={`absolute bottom-0 bg-[rgb(7,7,7)] max-w-[1270px] border-neutral-800 overflow-y-auto ${navWidth} 
       sm:right-0 sm:border-l-[1.5px] lg:border-l`}
+        layout
         onClick={(e) => e.stopPropagation()}
         initial={false}
         animate={isMenuOpen ? "open" : "closed"}
