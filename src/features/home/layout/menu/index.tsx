@@ -69,6 +69,7 @@ export function MenuDrawer() {
 
     <motion.section className={`h-screen fixed inset-0 bg-[rgba(0,0,0,0.7)] backdrop-blur-sm z-20
       ${isMenuOpen ? "pointer-events-auto" : "pointer-events-none"}`}
+      layout
       onClick={toggleMenu}
       initial={false}
       animate={{ opacity: isMenuOpen ? 1 : 0 }}

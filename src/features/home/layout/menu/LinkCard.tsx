@@ -5,9 +5,6 @@ import { useDeleteLinkModal, useSetLinkExpirationModal, useSetLinkPasswordModal 
 import { months } from "@/consts"
 import { toast } from "sonner"
 import { LinkDetails } from "@/global"
-import { DeleteLinkModal } from "../../modals/DeleteLink"
-import { AddLinkPasswordModal } from "../../modals/AddLinkPassword"
-import { SetLinkExpirationModal } from "../../modals/SetLinkExpiration"
 import { DomainLogo } from "../../components/ui/DomainLogo"
 import Link from "next/link"
 
@@ -31,10 +28,6 @@ export function LinkCard({ data }: { data: LinkDetails }) {
     <article className="p-4 rounded-lg border border-graphite whitespace-normal duration-300 ease-out border-l-2 
     xs:p-5 md:p-6 lg:p-4
     2xl:p-5 3xl:p-6 4xl:p-8">
-
-      <DeleteLinkModal />
-      <AddLinkPasswordModal />
-      <SetLinkExpirationModal />
 
       <section className="grow flex items-center pb-4 gap-5
       xs:pb-5 xs:gap-5
@@ -103,7 +96,7 @@ export function LinkCard({ data }: { data: LinkDetails }) {
         </button>
 
         {/* Expiration Button */}
-        <button className="p-2 rounded-xl bg-neutral-900 cursor-pointer disabled:opacity-50
+        <button className="p-2 rounded-xl bg-neutral-900 cursor-pointer disabled:opacity-50 disabled:cursor-auto
         2xl:p-2.5 3xl:p-3 3xl:rounded-2xl
         4xl:p-4 4xl:rounded-3xl"
           onClick={() => { toggleSetLinkExpirationModal(data.short) }}
@@ -115,7 +108,7 @@ export function LinkCard({ data }: { data: LinkDetails }) {
         </button>
 
         {/* Protected Button */}
-        <button className="p-2 rounded-xl bg-neutral-900 cursor-pointer disabled:opacity-50
+        <button className="p-2 rounded-xl bg-neutral-900 cursor-pointer disabled:opacity-50 disabled:cursor-auto
         2xl:p-2.5 3xl:p-3 3xl:rounded-2xl
         4xl:p-4 4xl:rounded-3xl"
           onClick={() => { toggleSetLinkPasswordModal(data.short) }}

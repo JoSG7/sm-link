@@ -1,7 +1,6 @@
 import { LinkDetails } from "@/global";
 import { IconTrashFilled } from "@tabler/icons-react";
 import { useDeleteLinkPasswordModal } from "../../hooks/useModals";
-import { RemoveLinkPasswordModal } from "../../modals/RemoveLinkPassword";
 import { DomainLogo } from "../../components/ui/DomainLogo";
 
 export function ProtectedLinkCard({ data }: { data: LinkDetails }) {
@@ -15,7 +14,6 @@ export function ProtectedLinkCard({ data }: { data: LinkDetails }) {
     <article className="rounded-xl border border-neutral-800 p-3 flex duration-300
     xs:p-4 sm:p-5 md:p-6 lg:p-4
     2xl:p-5 3xl:p-6 4xl:p-8">
-      <RemoveLinkPasswordModal />
 
       <section className="w-full">
         <div className="flex justify-center pb-3
