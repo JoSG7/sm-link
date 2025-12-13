@@ -4,16 +4,21 @@ import { IconLoader2, IconTrashX, IconX } from "@tabler/icons-react"
 import { AnimatePresence, motion } from "framer-motion"
 import { useState } from "react"
 import { toast } from "sonner"
-import { useDeleteLinkModal } from "../hooks/useModals"
-import { useLinkChanges } from "../hooks/useLinkChanges"
 import { GuestLinkServices } from "../services/guest-link.service"
 import ModalLayout from "@/features/shared/modals/ModalLayout"
+import { useDispatch, useSelector } from "react-redux"
+import { RootState } from "@/store/store-config"
+import { recordChange } from "@/store/link-changes-slice"
+import { toggleDeleteLink } from "@/store/modal-slice"
 
 export function DeleteLinkModal() {
 
   const [deleting, setDeleting] = useState(false)
-  const { isDeleteLinkOpen, shortLink, toggleDeleteLinkModal } = useDeleteLinkModal()
-  const { recordLinkChanges } = useLinkChanges()
+
+  const dispatch = useDispatch()
+  const { shortLink, isOpen } = useSelector(
+    (state: RootState) => state.modals.deleteLink
+  )
 
 
   const handleDelete = () => {
@@ -30,8 +35,8 @@ export function DeleteLinkModal() {
             toast.error(res.error)
           } else {
             toast.success(res.response)
-            recordLinkChanges()
-            toggleDeleteLinkModal()
+            dispatch(recordChange())
+            dispatch(toggleDeleteLink())
           }
 
         })
@@ -45,7 +50,7 @@ export function DeleteLinkModal() {
     <ModalLayout>
       <AnimatePresence>
         {
-          isDeleteLinkOpen && (
+          isOpen && (
             <motion.section className="fixed inset-0 z-30 bg-[rgba(0,0,0,0.8)] flex items-center justify-center "
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -88,7 +93,8 @@ export function DeleteLinkModal() {
                   2xl:p-2.5 2xl:px-4
                   3xl:p-3 3xl:px-4
                   4xl:p-4 4xl:px-5"
-                    onClick={() => { toggleDeleteLinkModal() }} disabled={deleting}>
+                    onClick={() => { dispatch(toggleDeleteLink()) }} 
+                    disabled={deleting}>
 
                     <IconX className="size-4 xs:size-5 md:size-6 lg:size-5 
                     2xl:size-6 3xl:size-7 4xl:size-9" />
@@ -103,7 +109,8 @@ export function DeleteLinkModal() {
                   2xl:p-2.5 2xl:px-5
                   3xl:p-3 3xl:px-6
                   4xl:p-4 4xl:px-7"
-                    onClick={handleDelete} disabled={deleting}>
+                    onClick={handleDelete} 
+                    disabled={deleting}>
 
                     {
                       deleting ?

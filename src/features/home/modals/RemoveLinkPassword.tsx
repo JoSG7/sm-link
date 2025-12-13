@@ -4,15 +4,21 @@ import { IconLoader2, IconTrashX, IconX } from "@tabler/icons-react"
 import { AnimatePresence, motion } from "framer-motion"
 import { useState } from "react"
 import { toast } from "sonner"
-import { useDeleteLinkPasswordModal } from "../hooks/useModals"
-import { useLinkChanges } from "../hooks/useLinkChanges"
 import { GuestLinkServices } from "../services/guest-link.service"
 import ModalLayout from "@/features/shared/modals/ModalLayout"
+import { useDispatch, useSelector } from "react-redux"
+import { RootState } from "@/store/store-config"
+import { toggleDeletePassword } from "@/store/modal-slice"
+import { recordChange } from "@/store/link-changes-slice"
+
 
 export function RemoveLinkPasswordModal() {
   const [removing, setRemoving] = useState(false)
-  const { toggleDeleteLinkPasswordModal, isDeleteLinkPasswordOpen, shortLink } = useDeleteLinkPasswordModal()
-  const { recordLinkChanges } = useLinkChanges()
+  
+  const dispatch = useDispatch()
+  const { isOpen, shortLink } = useSelector(
+    (state: RootState) => state.modals.deletePassword
+  )
 
 
   const handleDelete = async () => {
@@ -29,8 +35,8 @@ export function RemoveLinkPasswordModal() {
             toast.error(res.error)
           } else {
             toast.success(res.response)
-            recordLinkChanges()
-            toggleDeleteLinkPasswordModal()
+            dispatch(recordChange())
+            dispatch(toggleDeletePassword())
           }
 
         })
@@ -44,7 +50,7 @@ export function RemoveLinkPasswordModal() {
     <ModalLayout>
       <AnimatePresence>
         {
-          isDeleteLinkPasswordOpen && (
+          isOpen && (
             <motion.section className="fixed inset-0 z-30 bg-[rgba(0,0,0,0.8)] flex items-center justify-center"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -87,7 +93,7 @@ export function RemoveLinkPasswordModal() {
                   2xl:p-2.5 2xl:px-5
                   3xl:p-3 3xl:px-6
                   4xl:p-4 4xl:px-7"
-                    onClick={() => { toggleDeleteLinkPasswordModal() }} 
+                    onClick={() => { dispatch(toggleDeletePassword()) }} 
                     disabled={removing}>
 
                     <IconX className="size-4 xs:size-5 md:size-6 lg:size-5 

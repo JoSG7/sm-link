@@ -3,11 +3,12 @@
 import { IconMenu2 } from "@tabler/icons-react";
 import { motion } from 'framer-motion'
 import Image from "next/image";
-import { useMenuDrawer } from "../../hooks/useModals";
+import { useDispatch } from "react-redux";
+import { toggleMenuDrawer } from "@/store/modal-slice";
 
 export function HomeNavBar() {
 
-  const { toggleMenu } = useMenuDrawer()
+  const dispatch = useDispatch()
 
   return (
 
@@ -47,7 +48,7 @@ export function HomeNavBar() {
         </div>
 
         <button type="button" className="flex justify-center items-center cursor-pointer" 
-        onClick={toggleMenu}>
+        onClick={() => { dispatch(toggleMenuDrawer()) }}>
 
           <IconMenu2 className="sm:size-8 md:size-9 lg:size-7 2xl:size-9 3xl:size-11 4xl:size-12" />
         </button>

@@ -1,13 +1,16 @@
 "use client"
 
+
 import { AnimatePresence, motion } from "framer-motion"
-import { useSetLinkPasswordModal } from "../hooks/useModals"
 import { IconCheck, IconLoader2, IconLock, IconLockCheck, IconX } from "@tabler/icons-react"
 import { FormEvent, useState } from "react"
 import { toast } from "sonner"
-import { useLinkChanges } from "../hooks/useLinkChanges"
 import { GuestLinkServices } from "../services/guest-link.service"
 import ModalLayout from "@/features/shared/modals/ModalLayout"
+import { useDispatch, useSelector } from "react-redux"
+import { RootState } from "@/store/store-config"
+import { toggleSetPassword } from "@/store/modal-slice"
+import { recordChange } from "@/store/link-changes-slice"
 
 
 export function AddLinkPasswordModal() {
@@ -16,8 +19,11 @@ export function AddLinkPasswordModal() {
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
 
-  const { shortLink, isSetLinkPasswordOpen, toggleSetLinkPasswordModal } = useSetLinkPasswordModal()
-  const { recordLinkChanges } = useLinkChanges()
+  const dispatch = useDispatch()
+  const { isOpen, shortLink } = useSelector(
+    (state: RootState) => state.modals.setPassword
+  )
+
 
   const handleCreate = (e: FormEvent) => {
     e.preventDefault()
@@ -35,24 +41,25 @@ export function AddLinkPasswordModal() {
           if (res.error) {
             toast.error(res.error)
           } else {
-            recordLinkChanges()
+            dispatch(recordChange())
             toast.success(res.response)
           }
 
         })
         .finally(() => {
           setSubmiting(false)
-          toggleSetLinkPasswordModal()
+          dispatch(toggleSetPassword())
         })
 
     }
   }
 
+
   return (
     <ModalLayout>
       <AnimatePresence>
         {
-          isSetLinkPasswordOpen && (
+          isOpen && (
             <motion.section className="fixed inset-0 z-30 bg-[rgba(0,0,0,0.8)] flex items-center justify-center"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -151,7 +158,7 @@ export function AddLinkPasswordModal() {
                     2xl:p-2.5 2xl:px-4
                     3xl:p-3 3xl:px-4
                     4xl:p-4 4xl:px-5 "
-                      onClick={() => { toggleSetLinkPasswordModal() }} disabled={submiting} type="button">
+                      onClick={() => { dispatch(toggleSetPassword()) }} disabled={submiting} type="button">
 
                       <IconX className="size-4 xs:size-5 md:size-6 lg:size-5 
                       2xl:size-6 3xl:size-7 4xl:size-9" />

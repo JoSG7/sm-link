@@ -4,11 +4,13 @@ import { IconCheck, IconLoader2, IconX } from "@tabler/icons-react"
 import { AnimatePresence, motion } from "framer-motion"
 import { FormEvent, useState } from "react"
 import { toast } from "sonner"
-import { useSetLinkExpirationModal } from "../hooks/useModals"
-import { useLinkChanges } from "../hooks/useLinkChanges"
 import { DatePicker } from "../components/ui/DatePicker"
 import { GuestLinkServices } from "../services/guest-link.service"
 import ModalLayout from "@/features/shared/modals/ModalLayout"
+import { useDispatch, useSelector } from "react-redux"
+import { RootState } from "@/store/store-config"
+import { recordChange } from "@/store/link-changes-slice"
+import { toggleSetExpiration } from "@/store/modal-slice"
 
 
 
@@ -17,8 +19,11 @@ export function SetLinkExpirationModal() {
   const [submiting, setSubmiting] = useState(false)
   const [expirationDate, setExpirationDate] = useState<Date | undefined>(undefined)
   const [expirationHour, setExpirationHour] = useState("")
-  const { shortLink, isSetLinkExpirationOpen, toggleSetLinkExpirationModal } = useSetLinkExpirationModal()
-  const { recordLinkChanges } = useLinkChanges()
+  
+  const dispatch = useDispatch()
+  const { isOpen, shortLink } = useSelector(
+    (state: RootState) => state.modals.setExpiration
+  )
 
 
   const handleSubmit = (e: FormEvent) => {
@@ -54,8 +59,8 @@ export function SetLinkExpirationModal() {
         })
         .finally(() => {
           setSubmiting(false)
-          recordLinkChanges()
-          toggleSetLinkExpirationModal()
+          dispatch(recordChange())
+          dispatch(toggleSetExpiration())
         })
 
     }
@@ -66,7 +71,7 @@ export function SetLinkExpirationModal() {
     <ModalLayout>
       <AnimatePresence>
         {
-          isSetLinkExpirationOpen && (
+          isOpen && (
             <motion.section className="fixed inset-0 z-30 bg-[rgba(0,0,0,0.8)] flex items-center justify-center"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -156,7 +161,7 @@ export function SetLinkExpirationModal() {
                       onClick={() => {
                         setExpirationDate(undefined)
                         setExpirationHour("")
-                        toggleSetLinkExpirationModal()
+                        dispatch(toggleSetExpiration())
                       }}>
                       <IconX className="size-4 xs:size-5 md:size-6 lg:size-5 
                       2xl:size-6 3xl:size-7 4xl:size-9" />

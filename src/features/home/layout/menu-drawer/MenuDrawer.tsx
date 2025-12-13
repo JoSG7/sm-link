@@ -1,27 +1,35 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { useMenuDrawer } from "../../hooks/useModals"
 import { useScreenSize } from "../../hooks/useScreenSize"
 import { motion } from "framer-motion"
 import { IconClockCheck, IconLock } from "@tabler/icons-react"
 import { RecentLinks } from "./components/RecentLinks"
 import { LinkDetails } from "@/global"
 import { Accordion } from "../../components/ui/Accordion"
-import { useLinkChanges } from "../../hooks/useLinkChanges"
 import { ProtectedLinks } from "./components/ProtectedLinks"
 import { GuestLinkServices } from "../../services/guest-link.service"
+import { useDispatch, useSelector } from "react-redux"
+import { RootState } from "@/store/store-config"
+import { toggleMenuDrawer } from "@/store/modal-slice"
+
 
 export function MenuDrawer() {
 
   const [linkDetails, setLinkDetails] = useState<LinkDetails[] | []>([])
   const [loading, setLoading] = useState(false)
-  const { isMenuOpen, toggleMenu } = useMenuDrawer()
-  const { linkChanges } = useLinkChanges()
+
+  const dispatch = useDispatch()
+  const { isOpen } = useSelector(
+    (state: RootState) => state.modals.menuDrawer
+  )
+  const { changes } = useSelector(
+    (state: RootState) => state.linkChanges
+  )
+
   const width = useScreenSize()
   const isMobile = width < 640
   const isTablet = width >= 640 && width < 1024
-
 
   const navVariants = {
     open: {
@@ -36,11 +44,10 @@ export function MenuDrawer() {
     },
   }
 
-
   const navWidth = isMobile ? "w-full h-[75vh]" :
     isTablet ? "w-4/6 h-full" : "w-1/2 h-full"
 
-  
+
   useEffect(() => {
     const fetchRecentLinks = () => {
 
@@ -62,17 +69,17 @@ export function MenuDrawer() {
     }
 
     fetchRecentLinks()
-  }, [linkChanges])
+  }, [changes])
 
 
   return (
 
     <motion.section className={`h-screen fixed inset-0 bg-[rgba(0,0,0,0.7)] backdrop-blur-sm z-20
-      ${isMenuOpen ? "pointer-events-auto" : "pointer-events-none"}`}
+      ${isOpen ? "pointer-events-auto" : "pointer-events-none"}`}
       layout
-      onClick={toggleMenu}
+      onClick={() => { dispatch(toggleMenuDrawer()) }}
       initial={false}
-      animate={{ opacity: isMenuOpen ? 1 : 0 }}
+      animate={{ opacity: isOpen ? 1 : 0 }}
       transition={{ duration: 0.1 }} >
 
       <motion.nav className={`absolute bottom-0 bg-[rgb(7,7,7)] max-w-[1270px] border-neutral-800 overflow-y-auto ${navWidth} 
@@ -80,7 +87,7 @@ export function MenuDrawer() {
         layout
         onClick={(e) => e.stopPropagation()}
         initial={false}
-        animate={isMenuOpen ? "open" : "closed"}
+        animate={isOpen ? "open" : "closed"}
         variants={navVariants}>
 
         <ul className="flex flex-col ">
