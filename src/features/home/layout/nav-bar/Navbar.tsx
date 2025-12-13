@@ -3,7 +3,7 @@
 import { IconMenu2 } from "@tabler/icons-react";
 import { motion } from 'framer-motion'
 import Image from "next/image";
-import { useMenuDrawer } from "../hooks/useModals";
+import { useMenuDrawer } from "../../hooks/useModals";
 
 export function HomeNavBar() {
 

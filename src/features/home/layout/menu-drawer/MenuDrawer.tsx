@@ -5,11 +5,11 @@ import { useMenuDrawer } from "../../hooks/useModals"
 import { useScreenSize } from "../../hooks/useScreenSize"
 import { motion } from "framer-motion"
 import { IconClockCheck, IconLock } from "@tabler/icons-react"
-import { RecentLinks } from "./RecentLinks"
+import { RecentLinks } from "./components/RecentLinks"
 import { LinkDetails } from "@/global"
 import { Accordion } from "../../components/ui/Accordion"
 import { useLinkChanges } from "../../hooks/useLinkChanges"
-import { ProtectedLinks } from "./ProtectedLinks"
+import { ProtectedLinks } from "./components/ProtectedLinks"
 import { GuestLinkServices } from "../../services/guest-link.service"
 
 export function MenuDrawer() {

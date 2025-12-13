@@ -1,12 +1,13 @@
 "use client"
 
 import { IconCalendar, IconClockCheck, IconCopy, IconExternalLink, IconShieldLockFilled, IconTrashFilled } from "@tabler/icons-react"
-import { useDeleteLinkModal, useSetLinkExpirationModal, useSetLinkPasswordModal } from "../../hooks/useModals"
+import { useDeleteLinkModal, useSetLinkExpirationModal, useSetLinkPasswordModal } from "../../../hooks/useModals"
 import { months } from "@/consts"
 import { toast } from "sonner"
 import { LinkDetails } from "@/global"
-import { DomainLogo } from "../../components/ui/DomainLogo"
+import { DomainLogo } from "../../../components/ui/DomainLogo"
 import Link from "next/link"
+
 
 export function LinkCard({ data }: { data: LinkDetails }) {
 

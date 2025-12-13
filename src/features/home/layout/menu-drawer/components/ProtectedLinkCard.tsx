@@ -1,7 +1,8 @@
 import { LinkDetails } from "@/global";
 import { IconTrashFilled } from "@tabler/icons-react";
-import { useDeleteLinkPasswordModal } from "../../hooks/useModals";
-import { DomainLogo } from "../../components/ui/DomainLogo";
+import { useDeleteLinkPasswordModal } from "../../../hooks/useModals";
+import { DomainLogo } from "../../../components/ui/DomainLogo";
+
 
 export function ProtectedLinkCard({ data }: { data: LinkDetails }) {
   const url = new URL(data.original)
