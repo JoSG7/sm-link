@@ -1,13 +1,15 @@
 import { LinkDetails } from "@/global";
 import { IconTrashFilled } from "@tabler/icons-react";
-import { useDeleteLinkPasswordModal } from "../../hooks/useModals";
-import { RemoveLinkPasswordModal } from "../../modals/RemoveLinkPassword";
-import { DomainLogo } from "../../components/ui/DomainLogo";
+import { DomainLogo } from "../../../components/ui/DomainLogo";
+import { useDispatch } from "react-redux";
+import { toggleDeletePassword } from "@/store/modal-slice";
+
 
 export function ProtectedLinkCard({ data }: { data: LinkDetails }) {
   const url = new URL(data.original)
   const domain = url.hostname
-  const { toggleDeleteLinkPasswordModal } = useDeleteLinkPasswordModal()
+
+  const dispatch = useDispatch()
 
   if (!data.has_password) return
 
@@ -15,7 +17,6 @@ export function ProtectedLinkCard({ data }: { data: LinkDetails }) {
     <article className="rounded-xl border border-neutral-800 p-3 flex duration-300
     xs:p-4 sm:p-5 md:p-6 lg:p-4
     2xl:p-5 3xl:p-6 4xl:p-8">
-      <RemoveLinkPasswordModal />
 
       <section className="w-full">
         <div className="flex justify-center pb-3
@@ -34,7 +35,7 @@ export function ProtectedLinkCard({ data }: { data: LinkDetails }) {
       <aside>
         <button className="p-2 rounded-md bg-neutral-900 
         3xl:p-2.5 4xl:p-3"
-          onClick={() => toggleDeleteLinkPasswordModal(data.short)}>
+          onClick={() => dispatch(toggleDeletePassword(data.short))}>
 
           <IconTrashFilled className="size-4 
           xs:size-5 sm:size-6 md:size-7 lg:size-5

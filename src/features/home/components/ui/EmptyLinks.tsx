@@ -1,5 +1,6 @@
+import { toggleMenuDrawer } from "@/store/modal-slice";
 import { IconPaperclip, IconPlus, IconShield } from "@tabler/icons-react";
-import { useMenuDrawer } from "../../hooks/useModals";
+import { useDispatch } from "react-redux";
 
 interface Props {
   type: "recent" | "protected"
@@ -7,7 +8,7 @@ interface Props {
 
 export function EmptyLinks({ type }: Props) {
 
-  const { toggleMenu } = useMenuDrawer()
+  const dispatch = useDispatch()  
 
   return (
 
@@ -76,7 +77,7 @@ export function EmptyLinks({ type }: Props) {
         3xl:mt-6 3xl:gap-3
         4xl:mt-8 4xl:gap-5"
           type="button"
-          onClick={() => toggleMenu()}>
+          onClick={() => dispatch(toggleMenuDrawer())}>
 
           <IconPlus className="size-5 xs:size-6 sm:size-7 
           md:size-8 lg:size-6 2xl:size-7 3xl:size-8 4xl:size-10" />

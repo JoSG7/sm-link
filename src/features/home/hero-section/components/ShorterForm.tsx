@@ -4,17 +4,18 @@ import { IconBolt } from "@tabler/icons-react"
 import { FormEvent, useState } from "react"
 import { toast } from "sonner"
 import { isURL } from "validator"
-import { useLinkChanges } from "../../hooks/useLinkChanges"
 import { NewLink } from "./NewLink"
 import { GuestLinkServices } from "../../services/guest-link.service"
+import { useDispatch } from "react-redux"
+import { recordChange } from "@/store/link-changes-slice"
 
 export function ShorterForm() {
 
   const [original, setOriginal] = useState("")
   const [short, setShort] = useState<null | string>(null)
   const [submiting, setSubmiting] = useState(false)
-  const { recordLinkChanges } = useLinkChanges()
 
+  const dispatch= useDispatch()
 
   const handleSubmit = (e: FormEvent) => {
 
@@ -37,7 +38,7 @@ export function ShorterForm() {
           } else {
             toast.success("Se genero correctamente")
             setShort(res.response)
-            recordLinkChanges()
+            dispatch(recordChange())
           }
 
         })

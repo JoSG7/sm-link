@@ -2,10 +2,10 @@
 
 import { CalendarIcon } from "lucide-react"
 import { format } from "date-fns"
-import { Popover, PopoverContent, PopoverTrigger } from "@/shadcn-components/popover";
-import { Button } from "@/shadcn-components/button";
-import { Calendar } from "@/shadcn-components/calendar";
 import { useState } from "react";
+import { Popover, PopoverContent, PopoverTrigger } from "@/features/shared/components/popover";
+import { Button } from "@/features/shared/components/button";
+import { Calendar } from "@/features/shared/components/calendar";
 
 
 export function DatePicker({ value, onChange }: { value?: Date; onChange?: (date: Date) => void }) {

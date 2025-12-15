@@ -1,6 +1,6 @@
 import { LinkDetails } from "@/global";
-import { ProtectedLinkCardSkeleton } from "../../components/ui/LoadingSkeleton";
-import { EmptyLinks } from "../../components/ui/EmptyLinks";
+import { ProtectedLinkCardSkeleton } from "../../../components/ui/LoadingSkeleton";
+import { EmptyLinks } from "../../../components/ui/EmptyLinks";
 import { ProtectedLinkCard } from "./ProtectedLinkCard";
 
 export function ProtectedLinks({ loading, data }: { loading: boolean, data: LinkDetails[] | [] }) {

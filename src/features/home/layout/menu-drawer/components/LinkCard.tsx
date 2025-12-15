@@ -1,15 +1,15 @@
 "use client"
 
 import { IconCalendar, IconClockCheck, IconCopy, IconExternalLink, IconShieldLockFilled, IconTrashFilled } from "@tabler/icons-react"
-import { useDeleteLinkModal, useSetLinkExpirationModal, useSetLinkPasswordModal } from "../../hooks/useModals"
+// import { useDeleteLinkModal, useSetLinkExpirationModal, useSetLinkPasswordModal } from "../../../hooks/useModals"
 import { months } from "@/consts"
 import { toast } from "sonner"
 import { LinkDetails } from "@/global"
-import { DeleteLinkModal } from "../../modals/DeleteLink"
-import { AddLinkPasswordModal } from "../../modals/AddLinkPassword"
-import { SetLinkExpirationModal } from "../../modals/SetLinkExpiration"
-import { DomainLogo } from "../../components/ui/DomainLogo"
+import { DomainLogo } from "../../../components/ui/DomainLogo"
 import Link from "next/link"
+import { useDispatch } from "react-redux"
+import { toggleDeleteLink, toggleSetExpiration, toggleSetPassword } from "@/store/modal-slice"
+
 
 export function LinkCard({ data }: { data: LinkDetails }) {
 
@@ -18,23 +18,19 @@ export function LinkCard({ data }: { data: LinkDetails }) {
   const date = new Date(data.created_at)
   const day = date.getDate()
   const month = months[date.getMonth()]
-  const { toggleDeleteLinkModal } = useDeleteLinkModal()
-  const { toggleSetLinkPasswordModal } = useSetLinkPasswordModal()
-  const { toggleSetLinkExpirationModal } = useSetLinkExpirationModal()
+  const dispatch = useDispatch()
+
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(`sm-link.vercel.app/${data.short}`).then(() => { toast.success("Copiado Correctamente") })
   }
+
 
   return (
 
     <article className="p-4 rounded-lg border border-graphite whitespace-normal duration-300 ease-out border-l-2 
     xs:p-5 md:p-6 lg:p-4
     2xl:p-5 3xl:p-6 4xl:p-8">
-
-      <DeleteLinkModal />
-      <AddLinkPasswordModal />
-      <SetLinkExpirationModal />
 
       <section className="grow flex items-center pb-4 gap-5
       xs:pb-5 xs:gap-5
@@ -78,7 +74,7 @@ export function LinkCard({ data }: { data: LinkDetails }) {
             <IconCalendar className="size-5 text-green-500 
             xs:size-6 sm:size-7 md:size-8 lg:size-5 
             2xl:size-6 3xl:size-7 4xl:size-10" />
-            {day} de {month}
+            {month} {day}
           </p>
         </div>
 
@@ -95,7 +91,7 @@ export function LinkCard({ data }: { data: LinkDetails }) {
         <button className="p-2 rounded-xl bg-neutral-900 cursor-pointer
         2xl:p-2.5 3xl:p-3 3xl:rounded-2xl
         4xl:p-4 4xl:rounded-3xl"
-          onClick={() => { toggleDeleteLinkModal(data.short) }}>
+          onClick={() => { dispatch(toggleDeleteLink(data.short)) }}>
 
           <IconTrashFilled className="size-5 
           xs:size-6 md:size-7 lg:size-5  
@@ -103,10 +99,10 @@ export function LinkCard({ data }: { data: LinkDetails }) {
         </button>
 
         {/* Expiration Button */}
-        <button className="p-2 rounded-xl bg-neutral-900 cursor-pointer disabled:opacity-50
+        <button className="p-2 rounded-xl bg-neutral-900 cursor-pointer disabled:opacity-50 disabled:cursor-auto
         2xl:p-2.5 3xl:p-3 3xl:rounded-2xl
         4xl:p-4 4xl:rounded-3xl"
-          onClick={() => { toggleSetLinkExpirationModal(data.short) }}
+          onClick={() => { dispatch(toggleSetExpiration(data.short)) }}
           disabled={data.has_expiration}>
 
           <IconClockCheck className="size-5 
@@ -115,10 +111,10 @@ export function LinkCard({ data }: { data: LinkDetails }) {
         </button>
 
         {/* Protected Button */}
-        <button className="p-2 rounded-xl bg-neutral-900 cursor-pointer disabled:opacity-50
+        <button className="p-2 rounded-xl bg-neutral-900 cursor-pointer disabled:opacity-50 disabled:cursor-auto
         2xl:p-2.5 3xl:p-3 3xl:rounded-2xl
         4xl:p-4 4xl:rounded-3xl"
-          onClick={() => { toggleSetLinkPasswordModal(data.short) }}
+          onClick={() => { dispatch(toggleSetPassword(data.short)) }}
           disabled={data.has_password}>
 
           <IconShieldLockFilled className="size-5 

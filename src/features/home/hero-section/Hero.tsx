@@ -1,9 +1,9 @@
 "use client"
 
 import { IconChartHistogram, IconPaperclip, IconShieldCheckFilled, IconWorld } from '@tabler/icons-react'
-import { FeatureCard } from './FeatureCard'
-import { ShorterForm } from './ShorterForm'
-import { HeroTitle } from './Title'
+import { FeatureCard } from './components/FeatureCard'
+import { ShorterForm } from './components/ShorterForm'
+import { HeroTitle } from './components/Title'
 
 export function Hero() {
 

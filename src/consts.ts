@@ -1,5 +1,5 @@
 export const months = [
-"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
-"Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+"January", "Febrary", "March", "April", "May", "June",
+"July", "Agost", "September", "October", "November", "December"
 ]
 
