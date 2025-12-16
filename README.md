@@ -82,7 +82,7 @@ It allows shortening long URLs, protecting them with passwords, and setting expi
 
   ```bash
     git clone https://github.com/JoSG7/sm-link.git
-    cd smlink
+    cd sm-link
     npm install
     npm run dev
   ```
@@ -106,4 +106,4 @@ It allows shortening long URLs, protecting them with passwords, and setting expi
 
 ## Author
 
-**JGDev** --- Fullstack Developer
+**JGDev (JoSG7)** --- Fullstack Developer
