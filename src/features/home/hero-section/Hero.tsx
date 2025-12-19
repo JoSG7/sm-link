@@ -12,10 +12,10 @@ export function Hero() {
     <section className="flex justify-center ">
 
       {/* Layout Content */}
-      <div className="w-full px-5 xs:px-6 lg:flex">
+      <div className="w-full px-5 xs:px-6 lg:flex xl:max-w-7xl">
 
         {/* Main content */}
-        <main className="py-14 
+        <main className="py-10 xs:py-14 sm:py-20
         lg:py-20 lg:grow ">
 
           <section className="grow flex flex-col gap-10
@@ -29,7 +29,7 @@ export function Hero() {
 
               <section className="w-full flex flex-col justify-center 
               lg:flex-row">
-
+                
                 <ShorterForm />
                 <div id="new-link" />
 
@@ -46,7 +46,7 @@ export function Hero() {
 
             {/* Features Cards Section */}
             <section className="w-full grid grid-cols-1 gap-4 justify-center
-            ">
+            md:grid-cols-2">
 
               <FeatureCard title="Global CDN for fast redirects"
                 icon={<IconWorld className="text-blue-400 " />} />

@@ -61,7 +61,8 @@ export function ShorterForm() {
         <div className="text-neutral-200 grow ">
 
           <input className="w-full p-2 pl-3 pr-4 outline-none rounded-l-lg border-[1.5px] border-r-0 border-neutral-800
-          placeholder:text-neutral-700 focus:border-green-400 "
+          placeholder:text-neutral-700 focus:border-green-400 
+          sm:p-3"
             placeholder="https://example.com/long-url-to-short"
             disabled={submiting}
             autoComplete="off"

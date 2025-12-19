@@ -21,14 +21,12 @@ export function HomeNavBar() {
         <div className="flex items-center gap-1
         xl:gap-2 ">
 
-          <Image className="w-10 h-7 
-          xl:w-11 xl:h-8 "
+          <Image className="w-10 h-7 "
           src="/imgs/Espada1.png" 
           alt="Icono" 
           width={40} height={28}/>
 
-          <p className="text-xl font-medium
-          lg:text-xl ">
+          <p className="text-xl font-medium ">
             SmLink
           </p>
         </div>
@@ -37,7 +35,7 @@ export function HomeNavBar() {
           type="button"
           onClick={() => { dispatch(toggleMenuDrawer()) }}>
 
-          <IconMenu className="size-6 lg:size-5" />
+          <IconMenu className="size-6" />
         </button>
       </div>
 
