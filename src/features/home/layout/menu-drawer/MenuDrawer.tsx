@@ -82,7 +82,7 @@ export function MenuDrawer() {
       animate={{ opacity: isOpen ? 1 : 0 }}
       transition={{ duration: 0.1 }} >
 
-      <motion.nav className={`absolute bottom-0 bg-[rgb(7,7,7)] max-w-[1270px] border-neutral-800 overflow-y-auto ${navWidth} 
+      <motion.nav className={`absolute bottom-0 bg-[rgb(7,7,7)] max-w-7xl border-neutral-800 overflow-y-auto ${navWidth} 
       sm:right-0 sm:border-l-[1.5px] lg:border-l`}
         layout
         onClick={(e) => e.stopPropagation()}
@@ -94,22 +94,12 @@ export function MenuDrawer() {
           <Accordion items={[
             {
               title:
-                <li className="p-4 text-lg-movil font-semibold flex justify-between items-center border-t-[1.5px] border-neutral-800  cursor-pointer
-                xs:p-5
-                sm:p-6 sm:text-2xl-tablet
-                md:p-7
-                lg:p-4 lg:border-none lg:text-xl 
-                xl:text-xl-desktop
-                2xl:p-5 3xl:p-6 4xl:p-8 ">
+                <li className="p-4 text-lg font-semibold flex justify-between items-center border-t-[1.5px] border-neutral-800  cursor-pointer ">
 
                   {/* Icon and title */}
-                  <div className="flex gap-2 items-center 
-                  sm:gap-3 md:gap-4 lg:gap-2
-                  2xl:gap-3 3xl:gap-4 4xl:gap-5 ">
+                  <div className="flex gap-2 items-center ">
 
-                    <IconClockCheck className="size-6 text-green-500 
-                    xs:size-7 sm:size-8 md:size-9 lg:size-6 
-                    2xl:size-7 3xl:size-8 4xl:size-10 " />
+                    <IconClockCheck className="size-6 text-green-500 " />
 
                     <p>
                       <span className="text-green-300">Recent</span> SmLinks
@@ -118,8 +108,7 @@ export function MenuDrawer() {
                   </div>
 
                   {/* Total of links */}
-                  <span className="text-base-movil 
-                  sm:text-2xl-tablet lg:text-xl xl:text-xl-desktop">
+                  <span className="text-base">
                     {linkDetails.length}/7
                   </span>
                 </li>,
@@ -127,21 +116,11 @@ export function MenuDrawer() {
             },
             {
               title:
-                <li className="p-4 text-lg-movil font-semibold flex gap-2 items-center border-t-[1.5px] border-neutral-800 
-                cursor-pointer
-                xs:p-5
-                sm:p-6 sm:gap-3 sm:text-2xl-tablet
-                md:p-7 md:gap-4
-                lg:p-4 lg:gap-2 lg:text-xl lg:border-t
-                xl:text-xl-desktop
-                2xl:p-5 2xl:gap-3
-                3xl:p-6 3xl:gap-4
-                4xl:p-8 4xl:gap-5">
+                <li className="p-4 text-lg font-semibold flex gap-2 items-center border-t-[1.5px] border-neutral-800 
+                cursor-pointer ">
 
                   {/* Icon and title */}
-                  <IconLock className="size-6 text-sky-500 
-                  xs:size-7 sm:size-8 md:size-9 lg:size-6 
-                  2xl:size-7 3xl:size-8 4xl:size-10" />
+                  <IconLock className="size-6 text-sky-500 " />
 
                   <p>
                     <span className="text-sky-300">Protected</span> SmLinks
