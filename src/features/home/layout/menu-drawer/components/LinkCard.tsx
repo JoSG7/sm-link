@@ -35,7 +35,8 @@ export function LinkCard({ data }: { data: LinkDetails }) {
 
           {/* Short Link */}
           <p className="font-semibold text-nowrap text-transparent bg-clip-text 
-          bg-gradient-to-r from-green-400 to-blue-500 ">
+          bg-gradient-to-r from-green-400 to-blue-500 
+          sm:text-base lg:text-sm">
             sm-link.vercel.app/{data.short}
           </p>
 
