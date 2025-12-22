@@ -13,7 +13,7 @@ import { toggleDeleteLink } from "@/store/modal-slice"
 
 export function DeleteLinkModal() {
 
-  const [deleting, setDeleting] = useState(false)
+  const [removing, setDeleting] = useState(false)
 
   const dispatch = useDispatch()
   const { shortLink, isOpen } = useSelector(
@@ -52,7 +52,8 @@ export function DeleteLinkModal() {
       <AnimatePresence>
         {
           isOpen && (
-            <motion.section className="fixed inset-0 z-30 bg-[rgba(0,0,0,0.8)] flex items-center justify-center "
+            <motion.section className={`fixed inset-0 z-30 bg-[rgba(0,0,0,0.8)] flex items-center justify-center
+            ${removing && "pointer-events-none"}`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -76,15 +77,15 @@ export function DeleteLinkModal() {
                 <div className="p-4 flex gap-4 items-center text-xs ">
 
                   <button className="p-2 px-3 flex items-center gap-2 rounded-sm bg-red-700 disabled:opacity-30 cursor-pointer "
-                    disabled={deleting}>
+                    disabled={removing}>
 
                     {
-                      deleting ?
+                      removing ?
                         <IconLoader2 className="size-4 animate-spin" /> :
 
                         <IconTrashX className="size-4 " />
                     }
-                    {deleting ? "Deleting..." : "Delete"}
+                    {removing ? "Deleting..." : "Delete"}
 
                   </button>
                 </div>

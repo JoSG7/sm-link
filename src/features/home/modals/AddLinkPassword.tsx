@@ -41,6 +41,8 @@ export function AddLinkPasswordModal() {
           if (res.error) {
             toast.error(res.error)
           } else {
+            setPassword("")
+            setConfirmPassword("")
             dispatch(recordChange())
             toast.success(res.response)
           }
@@ -65,7 +67,11 @@ export function AddLinkPasswordModal() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => dispatch(toggleSetPassword())}>
+              onClick={() => {
+                setPassword("")
+                setConfirmPassword("")
+                dispatch(toggleSetPassword())
+              }}>
 
               <motion.div className="w-[90vw] bg-neutral-950 rounded-xl border border-neutral-800 max-w-xl
               sm:w-[80vw] lg:w-[50vw]"
@@ -87,10 +93,11 @@ export function AddLinkPasswordModal() {
                   <section className="p-4 flex flex-col gap-4 text-xs border-b border-neutral-800 ">
 
                     {/* Input Password */}
-                    <div className="p-2 flex items-center gap-2 rounded-lg bg-neutral-900 ">
+                    <div className="p-2 flex items-center gap-2 rounded-lg bg-neutral-900 
+                    sm:p-3">
 
                       <IconLock className="size-5 " />
-                      <input className="w-full bg-transparent placeholder:text-neutral-700 focus:"
+                      <input className="w-full bg-transparent placeholder:text-neutral-700 "
                         placeholder="Enter a password"
                         type="password"
                         required
@@ -100,7 +107,8 @@ export function AddLinkPasswordModal() {
                     </div>
 
                     {/* Repeat Password */}
-                    <div className="p-2 flex items-center gap-2 rounded-lg bg-neutral-900 ">
+                    <div className="p-2 flex items-center gap-2 rounded-lg bg-neutral-900 
+                    sm:p-3">
 
                       <IconLockCheck className="size-5 " />
                       <input className="w-full bg-transparent placeholder:text-neutral-700 "
@@ -113,7 +121,7 @@ export function AddLinkPasswordModal() {
 
                   </section>
 
-                  {/* Buttons Section */}
+                  {/* Button Section */}
                   <section className="p-4 flex gap-4 items-center text-xs ">
 
                     <button className="p-2 px-3 flex items-center gap-2 rounded-sm bg-green-700 disabled:opacity-50 cursor-pointer "
