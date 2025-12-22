@@ -178,9 +178,8 @@
 
 
 
-
-.a {
-  font-size: 11px;
+@utility max-w-8xl {
+  max-width: 90rem;
 }
 
 @utility border-graphite {
@@ -196,10 +195,6 @@
   min-height: clamp(40px, 12.5vw, 60px);
 }
 
-@utility min-size-brand-desktop {
-  min-width: clamp(60px, 4.71vw, 120px);
-  min-height: clamp(60px, 4.71vw, 120px);
-}
 
 * {
   box-sizing: border-box;

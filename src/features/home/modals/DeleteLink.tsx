@@ -1,8 +1,8 @@
 "use client"
 
-import { IconLoader2, IconTrashX, IconX } from "@tabler/icons-react"
+import { IconLoader2, IconTrashX } from "@tabler/icons-react"
 import { AnimatePresence, motion } from "framer-motion"
-import { useState } from "react"
+import { FormEvent, useState } from "react"
 import { toast } from "sonner"
 import { GuestLinkServices } from "../services/guest-link.service"
 import ModalLayout from "@/features/shared/modals/ModalLayout"
@@ -13,7 +13,7 @@ import { toggleDeleteLink } from "@/store/modal-slice"
 
 export function DeleteLinkModal() {
 
-  const [deleting, setDeleting] = useState(false)
+  const [removing, setDeleting] = useState(false)
 
   const dispatch = useDispatch()
   const { shortLink, isOpen } = useSelector(
@@ -21,8 +21,9 @@ export function DeleteLinkModal() {
   )
 
 
-  const handleDelete = () => {
+  const handleDelete = (e: FormEvent) => {
 
+    e.preventDefault()
     setDeleting(true)
     const guestLinkServices = new GuestLinkServices()
 
@@ -45,86 +46,50 @@ export function DeleteLinkModal() {
     }
   }
 
-  
+
   return (
     <ModalLayout>
       <AnimatePresence>
         {
           isOpen && (
-            <motion.section className="fixed inset-0 z-30 bg-[rgba(0,0,0,0.8)] flex items-center justify-center "
+            <motion.section className={`fixed inset-0 z-30 bg-[rgba(0,0,0,0.8)] flex items-center justify-center
+            ${removing && "pointer-events-none"}`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}>
+              exit={{ opacity: 0 }}
+              onClick={() => dispatch(toggleDeleteLink())}>
 
-              <motion.div className="w-[90vw] bg-neutral-950 rounded-xl border border-neutral-800 max-w-[1270px]
-              sm:w-[70vw]
-              lg:w-[50vw]"
+              <motion.form className="w-[90vw] bg-neutral-950 rounded-xl border border-neutral-800 max-w-96
+              sm:w-[70vw] lg:w-[50vw]"
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.8, opacity: 0 }}
-                transition={{ duration: 0.2 }}>
+                transition={{ duration: 0.2 }}
+                onClick={(e) => e.stopPropagation()}
+                onSubmit={handleDelete}>
 
                 {/* Title */}
-                <h1 className="p-4 border-b border-neutral-800 text-sm-movil 
-                xs:p-5
-                sm:p-6 sm:text-xl-tablet
-                md:p-7
-                lg:p-5 lg:text-lg
-                xl:text-lg-desktop
-                2xl:p-6 3xl:p-7 4xl:p-9">
+                <h1 className="p-4 border-b border-neutral-800 text-sm sm:text-base lg:text-sm">
                   Are you sure to delete this link for ever? <span className="font-medium">{shortLink}</span>
                 </h1>
 
                 {/* Buttons section */}
-                <div className="p-4 flex gap-4 items-center text-xs-movil 
-                xs:p-5 xs:gap-5
-                sm:p-6 sm:gap-6 sm:text-xl-tablet
-                md:p-7 md:gap-7
-                lg:p-5 lg:gap-5 lg:text-base
-                xl:text-base-desktop
-                2xl:p-6 2xl:gap-6
-                3xl:p-7 3xl:gap-7
-                4xl:p-9 4xl:gap-9">
+                <div className="p-4 flex gap-4 items-center text-xs ">
 
-                  <button className="p-2 px-3 flex items-center gap-2 rounded-lg bg-neutral-900 cursor-pointer
-                  xs:p-2.5 xs:px-4 
-                  sm:p-3 sm:px-4
-                  lg:p-2 lg:px-4
-                  2xl:p-2.5 2xl:px-4
-                  3xl:p-3 3xl:px-4
-                  4xl:p-4 4xl:px-5"
-                    onClick={() => { dispatch(toggleDeleteLink()) }} 
-                    disabled={deleting}>
-
-                    <IconX className="size-4 xs:size-5 md:size-6 lg:size-5 
-                    2xl:size-6 3xl:size-7 4xl:size-9" />
-                    Close
-
-                  </button>
-
-                  <button className="p-2 px-3 flex items-center gap-2 rounded-lg bg-red-700 disabled:opacity-30 cursor-pointer
-                  xs:p-2.5 xs:px-4 
-                  sm:p-3 sm:px-4
-                  lg:p-2 lg:px-4
-                  2xl:p-2.5 2xl:px-5
-                  3xl:p-3 3xl:px-6
-                  4xl:p-4 4xl:px-7"
-                    onClick={handleDelete} 
-                    disabled={deleting}>
+                  <button className="p-2 px-3 flex items-center gap-2 rounded-sm bg-red-700 disabled:opacity-30 cursor-pointer "
+                    disabled={removing}>
 
                     {
-                      deleting ?
-                        <IconLoader2 className="size-4 xs:size-5 md:size-6 lg:size-5 
-                        2xl:size-6 3xl:size-7 4xl:size-9 animate-spin"/> :
+                      removing ?
+                        <IconLoader2 className="size-4 animate-spin" /> :
 
-                        <IconTrashX className="size-4 xs:size-5 md:size-6 lg:size-5 
-                        2xl:size-6 3xl:size-7 4xl:size-9" />
+                        <IconTrashX className="size-4 " />
                     }
-                    {deleting ? "Deleting..." : "Delete"}
+                    {removing ? "Deleting..." : "Delete"}
 
                   </button>
                 </div>
-              </motion.div>
+              </motion.form>
             </motion.section>
           )
         }

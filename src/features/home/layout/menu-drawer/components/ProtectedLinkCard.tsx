@@ -14,32 +14,23 @@ export function ProtectedLinkCard({ data }: { data: LinkDetails }) {
   if (!data.has_password) return
 
   return (
-    <article className="rounded-xl border border-neutral-800 p-3 flex duration-300
-    xs:p-4 sm:p-5 md:p-6 lg:p-4
-    2xl:p-5 3xl:p-6 4xl:p-8">
+    <article className="rounded-xl border border-neutral-800 p-3 flex duration-300 ">
 
       <section className="w-full">
-        <div className="flex justify-center pb-3
-        2xl:pb-4 3xl:pb-5 4xl:pb-7">
+        <div className="flex justify-center pb-3 ">
           <DomainLogo domain={domain} />
         </div>
 
-        <p className="font-semibold text-center text-sm-movil
-        sm:text-xl
-        lg:text-sm 
-        xl:text-sm-desktop">
+        <p className="font-semibold text-center text-sm ">
           {data.short}
         </p>
       </section>
 
       <aside>
-        <button className="p-2 rounded-md bg-neutral-900 
-        3xl:p-2.5 4xl:p-3"
+        <button className="p-2 rounded-md bg-neutral-900 "
           onClick={() => dispatch(toggleDeletePassword(data.short))}>
 
-          <IconTrashFilled className="size-4 
-          xs:size-5 sm:size-6 md:size-7 lg:size-5
-          2xl:size-6 3xl:size-7 4xl:size-9" />
+          <IconTrashFilled className="size-4 " />
         </button>
       </aside>
     </article>
