@@ -19,7 +19,7 @@ export function NewLink({ short }: { short: string }) {
 
     <motion.section className="mt-6 py-2 px-3 flex items-center justify-between text-sm text-neutral-200 rounded-lg 
     border-[1.5px] border-neutral-800 bg-neutral-950/50 
-    xs:text-base sm:p-3 lg:m-0"
+    xs:text-base sm:p-3 "
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.4, ease: "easeOut" }}>
@@ -29,19 +29,18 @@ export function NewLink({ short }: { short: string }) {
       </p>
 
       {/* these buttons is hidden in desktop */}
-      <div className="flex items-center gap-2
-      lg:hidden">
-        <button className="p-1"
+      <div className="flex items-center gap-2 ">
+        <button className="p-1 cursor-pointer"
           onClick={copyToClipboard}>
           <IconCopyPlusFilled className="size-4 text-green-400
-          sm:size-6" />
+          sm:size-5" />
         </button>
 
         <a href={`https://sm-link.vercel.app/${short}`}
           target="_blank"
           aria-label="Use the new Link">
           <IconExternalLink className="size-4 text-blue-400
-          sm:size-6" />
+          sm:size-5" />
         </a>
       </div>
     </motion.section>,

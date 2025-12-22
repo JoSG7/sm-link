@@ -20,21 +20,20 @@ export function Hero() {
 
           <section className="grow flex flex-col gap-10
           lg:flex lg:gap-10 
-          xl:flex-col xl:gap-0">
+          xl:flex-col ">
             
             {/* Title and Form */}
             <div className="grow">
               
               <HeroTitle />
 
-              <section className="w-full flex flex-col justify-center 
-              lg:flex-row">
+              <section className="w-full flex flex-col justify-center ">
                 
                 <ShorterForm />
                 <div id="new-link" />
 
                 <p className="mt-6 text-center text-neutral-400 text-xs
-                lg:hidden xl:block">
+                lg:block ">
                   By proceeding, you agree to our
                   <span className="text-blue-400"> Terms of Service </span>
                   and
@@ -46,7 +45,8 @@ export function Hero() {
 
             {/* Features Cards Section */}
             <section className="w-full grid grid-cols-1 gap-4 justify-center
-            md:grid-cols-2">
+            md:grid-cols-2
+            lg:flex">
 
               <FeatureCard title="Global CDN for fast redirects"
                 icon={<IconWorld className="text-blue-400 " />} />
