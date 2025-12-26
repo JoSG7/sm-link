@@ -1,6 +1,6 @@
 "use client"
 
-import { IconBolt } from "@tabler/icons-react"
+import { IconBolt, IconPaperclip } from "@tabler/icons-react"
 import { FormEvent, useState } from "react"
 import { toast } from "sonner"
 import { isURL } from "validator"
@@ -15,9 +15,9 @@ export function ShorterForm() {
   const [short, setShort] = useState<null | string>(null)
   const [submiting, setSubmiting] = useState(false)
 
-  const dispatch= useDispatch()
+  const dispatch = useDispatch()
 
-  
+
   const handleSubmit = (e: FormEvent) => {
 
     e.preventDefault()
@@ -55,33 +55,53 @@ export function ShorterForm() {
 
   return (
     <>
-      <form className="flex rounded-lg overflow-hidden grow "
-        onSubmit={handleSubmit}>
+      <section className="rounded-lg flex-col justify-center xl:p-6 xl:h-full xl:flex 
+      xl:border-[1.5px] xl:border-neutral-900 xl:bg-neutral-950/50">
 
-        <div className="text-neutral-200 grow ">
+        <form className="overflow-hidden "
+          onSubmit={handleSubmit}>
 
-          <input className="w-full p-2 pl-3 pr-4 outline-none rounded-l-lg border-[1.5px] border-r-0 border-neutral-800
-          placeholder:text-neutral-700 focus:border-green-400 
-          sm:p-3"
-            placeholder="https://example.com/long-url-to-short"
-            disabled={submiting}
-            autoComplete="off"
-            value={original}
-            type="url"
-            required
-            onChange={(e) => setOriginal(e.currentTarget.value.trim())} />
+          <label className="hidden pb-5 items-center gap-2 text-lg font-medium xl:flex">
+            <IconPaperclip className="size-5" />
+            Paste a long URL
+          </label>
 
-        </div>
+          <section className="flex">
 
-        <button className="py-2 px-3 flex gap-1 items-center bg-gradient-to-r from-green-500 to-blue-700 cursor-pointer
-        disabled:opacity-30 "
-          disabled={submiting}>
+            <input className="w-full p-2 pl-3 pr-4 text-neutral-200 outline-none rounded-l-lg border-[1.5px] 
+            border-r-0 border-neutral-800 grow placeholder:text-neutral-700 focus:border-green-400 
+            sm:p-3"
+              placeholder="https://example.com/long-url-to-short"
+              disabled={submiting}
+              autoComplete="off"
+              value={original}
+              type="url"
+              required
+              onChange={(e) => setOriginal(e.currentTarget.value.trim())} />
 
-          <IconBolt className="size-5 lg:size-6 " />
-          Short
+            <button className="py-2 px-3 flex gap-1 items-center rounded-r-lg bg-gradient-to-r from-green-500 to-blue-700 
+            cursor-pointer disabled:opacity-30 xl:px-5"
+              disabled={submiting}>
 
-        </button>
-      </form>
+              <IconBolt className="size-5 lg:size-6 " />
+              Short
+            </button>
+
+          </section>
+        </form>
+
+        <div id="new-link" />
+
+        <p className="mt-6 text-center text-neutral-400 text-xs
+        lg:block ">
+          By proceeding, you agree to our
+          <span className="text-blue-400"> Terms of Service </span>
+          and
+          <span className="text-blue-400"> Privacy Policy</span>.
+        </p>
+
+      </section>
+
 
       {/* Here’s the new link inside the #new-link container. */}
       {

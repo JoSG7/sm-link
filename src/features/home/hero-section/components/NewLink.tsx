@@ -18,7 +18,7 @@ export function NewLink({ short }: { short: string }) {
   return createPortal(
 
     <motion.section className="mt-6 py-2 px-3 flex items-center justify-between text-sm text-neutral-200 rounded-lg 
-    border-[1.5px] border-neutral-800 bg-neutral-950/50 
+    border-[1.5px] border-neutral-800 bg-neutral-950/70 
     xs:text-base sm:p-3 "
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
