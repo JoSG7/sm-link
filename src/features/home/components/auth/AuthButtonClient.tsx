@@ -7,10 +7,13 @@ import { IconBrandGithubFilled, IconBrandGoogleFilled } from "@tabler/icons-reac
 
 export function GitHubAuthButton() {
   return (
-    <button type="button" className="py-2 px-4 flex gap-2 items-center rounded-lg bg-[#1a1d1f] 
-    border border-neutral-800" onClick={() => { signInWithOAuth("github") }}>
+    <button className="py-3 px-5 flex gap-2 items-center text-sm rounded-full cursor-pointer duration-300
+    border-2 border-neutral-900 hover:scale-105 "
+      type="button"
+      onClick={() => { signInWithOAuth("github") }}>
+
       <IconBrandGithubFilled size={20}></IconBrandGithubFilled>
-      Git Hub
+      Get started with Git Hub
     </button>
   )
 }
