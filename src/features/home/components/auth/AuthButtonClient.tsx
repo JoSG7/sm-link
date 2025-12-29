@@ -1,6 +1,6 @@
 'use client'
 
-import { signInWithOAuth } from "@/features/shared/auth/auth-client"
+// import { signInWithOAuth } from "@/features/shared/auth/auth-client"
 import { IconBrandGithubFilled, IconBrandGoogleFilled } from "@tabler/icons-react"
 
 // Auth with GitHub
@@ -10,7 +10,7 @@ export function GitHubAuthButton() {
     <button className="py-3 px-5 flex gap-2 items-center text-sm rounded-full cursor-pointer duration-300
     border-2 border-neutral-900 hover:scale-105 "
       type="button"
-      onClick={() => { signInWithOAuth("github") }}>
+      onClick={() => { alert("In Development") }}>
 
       <IconBrandGithubFilled size={20}></IconBrandGithubFilled>
       Get started with Git Hub
