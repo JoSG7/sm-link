@@ -8,7 +8,8 @@ export async function signInWithOAuth (provider : Provider) {
   await supabase.auth.signInWithOAuth({
     provider,
     options: {
-      redirectTo: "https://sm-link.vercel.app/auth/callback"
+      redirectTo: `${location.origin}/auth/callback`
+      // redirectTo: "https://sm-link.vercel.app/auth/callback"
     }
   })
 
