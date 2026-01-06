@@ -16,7 +16,7 @@ export function UserProfile() {
 
   return (
 
-    <section className="absolute w-full flex flex-col gap-5 p-5 bottom-0 left-0 border-t-2 border-neutral-900">
+    <section className="flex flex-col gap-5 p-5 bottom-0 left-0 border-t-2 border-neutral-900">
 
       <div className="flex gap-3 items-center">
         <Image className="size-10 rounded-full"
@@ -25,7 +25,7 @@ export function UserProfile() {
           alt="user-photo" />
 
         <div className="text-sm">
-          <p className="text-neutral-200">{user.user_metadata.user_name}</p>
+          <p className="text-neutral-200">{user.user_metadata.name}</p>
           <p className="text-neutral-400">{user.email}</p>
         </div>
       </div>

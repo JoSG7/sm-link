@@ -19,7 +19,7 @@ export function Accordion({ items, buttonClass = "" }: { items: AccordionItem[],
       {items.map((item, index) => {
 
         return (
-          <div className="w-full"
+          <section className="w-full"
             key={index}>
 
             <button className={`w-full ${buttonClass}`}
@@ -47,7 +47,7 @@ export function Accordion({ items, buttonClass = "" }: { items: AccordionItem[],
               )}
             </AnimatePresence>
 
-          </div>
+          </section>
         )
 
       })}
