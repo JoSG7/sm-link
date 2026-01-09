@@ -14,12 +14,12 @@ export default async function DashboardLayout({ children }: { children: ReactNod
 
   return (
 
-    <section className="w-screen min-h-screen flex bg-neutral-950/80 ">
+    <section className="w-screen min-h-screen flex bg-neutral-950/70 text-white">
 
       <SideBar />
       <AuthListener />
 
-      <main className="grow lg:px-5">
+      <main className="grow md:px-7 xl:px-8">
         {children}
       </main>
 

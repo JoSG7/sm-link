@@ -15,11 +15,11 @@ export function RecentLinks({loading, data} : Props) {
   return (
     <>
       {/* Layout for Cards */}
-      <div className="px-4 pb-4 flex flex-col gap-4 ">
+      <div className="px-4 pb-4 flex flex-col gap-4 xl:px-5 xl:pb-5 xl:gap-5">
         {
           loading ?
             // Skeleton
-            <div className="flex flex-col gap-4 ">
+            <div className="flex flex-col gap-4 xl:gap-5">
               <LinkCardSkeleton />
               <LinkCardSkeleton />
             </div>

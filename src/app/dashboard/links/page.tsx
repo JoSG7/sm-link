@@ -1,15 +1,10 @@
+import { LinksOverview } from "@/features/dashboard/admin/links-overview/LinksOverview";
 
-
-
-export default function LinksOverview () {
+export default function AdminLinks () {
 
   return(
 
-    <section>
-
-      <h1>LinksOverview</h1>
-
-    </section>
+    <LinksOverview />
 
   )
 

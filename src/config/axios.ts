@@ -3,7 +3,7 @@ import axios from 'axios'
 
 
 export const api = axios.create({
-  baseURL: "api/",
+  baseURL: "/api/",
   timeout: 10000,
   withCredentials: true
 })

@@ -10,9 +10,17 @@ export class GuestLinkServices {
 
   async getLinks() {
 
-    const res = await api.get("guest-links")
-    return res.data as LinkDetails[]
+    try {
+      
+      const res = await api.get("guest-links")
+      return res.data as LinkDetails[]
 
+    } catch (e) {
+      
+      console.log(e)
+      return []
+
+    }
   }
 
 
