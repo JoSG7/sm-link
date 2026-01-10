@@ -46,7 +46,7 @@ const UnclaimedLink = ({ info, imgDomain, onClick }: {
 }
 
 
-export function GuestLinks() {
+export function UnclaimedLinks() {
 
   const [loading, setLoading] = useState(true)
   const [guestLinks, setGuestLinks] = useState<LinkDetails[] | []>([])

@@ -1,6 +1,6 @@
 import { getGuestID } from "@/features/shared/auth/cookies";
 import { createSupabase } from "@/lib/supabase/client";
-import { GuestLinks } from "@/global";
+import { LinkDetails } from "@/global";
 import { NextRequest, NextResponse } from "next/server";
 
 
@@ -17,7 +17,7 @@ export async function POST(request: NextRequest) {
   } else {
 
 
-    const { data, error } = await supabase.rpc("get_link_by_short", { short_url: short })
+    const { data, error } = await supabase.rpc("get_link_with_details", { x_short: short }).maybeSingle()
 
     if (!data || error) {
 
@@ -25,8 +25,14 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Link not found" })
     }
 
-    const link = data as GuestLinks
-    const { error: e } = await supabase.rpc("insert_protected_link", { x_password: password, x_link_id: link.id })
+    const link = data as LinkDetails
+
+    const { error: e } = await supabase.rpc("insert_protected_link",
+      { 
+        x_password: password, 
+        x_link_id: link.id 
+      }
+    )
 
     if (e) {
 

@@ -52,13 +52,13 @@ export function LinkCard({ data }: { data: LinkDetails }) {
     },
     {
       icon: <IconCopy className="size-5 " />,
-      onClick: () => copyToClipboard,
+      onClick: () => { copyToClipboard() },
       disabled: false
     }
   ]
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(`sm-link.vercel.app/${data.short}`).then(() => { toast.success("Copiado Correctamente") })
+    navigator.clipboard.writeText(`sm-link.vercel.app/${data.short}`).then(() => { toast.success("Copied!") })
   }
 
 
