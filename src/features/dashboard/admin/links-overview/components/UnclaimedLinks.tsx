@@ -6,7 +6,7 @@ import { DomainLogo } from "@/features/shared/components/DomainLogo"
 import { LinkDetails } from "@/global"
 import { recordChange } from "@/store/link-changes-slice"
 import { RootState } from "@/store/store-config"
-import { IconCheck, IconLoader } from "@tabler/icons-react"
+import { IconCheck, IconLoader, IconX } from "@tabler/icons-react"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { toast } from "sonner"
@@ -52,6 +52,7 @@ export function UnclaimedLinks() {
   const [guestLinks, setGuestLinks] = useState<LinkDetails[] | []>([])
   const [selectedLinks, setSelectedLinks] = useState<string[]>([])
   const [submiting, setSubmiting] = useState(false)
+  const [hidden, setHidden] = useState(false)
 
   const dispatch = useDispatch()
 
@@ -92,22 +93,22 @@ export function UnclaimedLinks() {
 
     if (selectedLinks.length < 1) {
       toast.error("Please, select one")
-      
+
     } else {
-      
+
       setSubmiting(true)
       const userLinksServices = new UserLinkServices()
-  
+
       userLinksServices.claim(selectedLinks)
         .then(res => {
-  
+
           if (res.error) {
             toast.error(res.error)
           } else {
             dispatch(recordChange())
             toast.success(res.response)
           }
-  
+
         })
         .finally(() => {
           setSubmiting(false)
@@ -120,9 +121,9 @@ export function UnclaimedLinks() {
 
     <AnimatePresence>
 
-      {guestLinks.length > 0 && (
+      {guestLinks.length > 0 && hidden == false && (
 
-        <motion.section className="w-full rounded-lg border-2 border-neutral-900 bg-neutral-900/50 lg:p-5"
+        <motion.section className="w-full rounded-lg border-2 border-neutral-900 bg-neutral-900/50 lg:p-5 relative"
           initial={{ opacity: 0 }}
           animate={{
             opacity: 1,
@@ -181,6 +182,13 @@ export function UnclaimedLinks() {
                 })
             }
           </div>
+
+          <button className="p-1 rounded-full border-2 border-neutral-900 absolute -top-2 -right-2 
+          cursor-pointer bg-neutral-950"
+            onClick={() => setHidden(true)}>
+            <IconX className="size-4" />
+          </button>
+
         </motion.section>
       )}
     </AnimatePresence>
