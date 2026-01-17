@@ -1,10 +1,3 @@
-export interface GuestLinks {
-  id: string
-  short: string
-  original: string
-  created_at: string
-}
-
 export interface ShortLink {
   id: string
   original: string

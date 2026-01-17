@@ -9,9 +9,11 @@ export async function POST( request : NextRequest) {
   const supabase = createSupabase(guestID)
   const { short, expiresAt } = await request.json()
 
-  const { data, error } = await supabase.from("link").select("id").eq("short", short).single()
-  if(error) console.log(error)
+  if(!guestID) return NextResponse.json({ error: "Unauthorized" }, { status: 403 })
 
+  const { data, error } = await supabase.from("link").select("id").eq("short", short).single()
+  if(error) return NextResponse.json({ error: "Error in server" }, { status: 500 })
+  
   if(data?.id){
 
     const { error } = await supabase.from("link_expiration").insert({
@@ -20,15 +22,14 @@ export async function POST( request : NextRequest) {
     })
   
     if (error) {
-      console.log(error)
-      return NextResponse.json({ error: "Error, look the console" })
+      return NextResponse.json({ error: "Error in server" }, { status: 500 })
     } else {
-      return NextResponse.json({ response: "Expiration set successfully" })
+      return NextResponse.json({ response: "Expiration set successfully" }, { status: 200 })
     }
 
   } else {
     
-    return NextResponse.json({ error: "Unauthorized" })
+    return NextResponse.json({ error: "Unauthorized" }, { status: 403 })
   }
 }
 

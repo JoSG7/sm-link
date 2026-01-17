@@ -47,7 +47,7 @@ export function SideBar() {
 
   return (
 
-    <aside className="max-h-screen w-72 flex flex-col bg-neutral-950 border-r-2 border-neutral-900">
+    <aside className="max-h-screen min-w-72 flex flex-col bg-neutral-950 border-r-2 border-neutral-900">
 
       {/* Title and Logo */}
       <header className="flex items-center gap-3 border-b-2 border-neutral-900 lg:p-5">

@@ -5,45 +5,37 @@ import { IconCheck, IconLoader2, IconLock } from "@tabler/icons-react"
 import { motion } from "framer-motion"
 import { FormEvent, useState } from "react"
 import { toast } from "sonner"
-import { GuestLinkServices } from "../../services/guest-link.service"
+import { GuestLinkServices } from "../../../../services/guest-link.service"
 
-export function AccessLinkForm({ short, link_id }: { short: string, link_id?: string }) {
+export function AccessLinkForm({ short, linkID }: { short: string, linkID?: string }) {
 
   const [submiting, setSubmiting] = useState(false)
   const [password, setPassword] = useState("")
   const supabase = createSupabase()
 
 
-  const handleRedirect = (e: FormEvent) => {
+  const handleRedirect = async (e: FormEvent) => {
     e.preventDefault()
 
     setSubmiting(true)
     const guestLinkServices = new GuestLinkServices()
 
-    guestLinkServices.protected.validatePassword(short, password)
-      .then(async (res) => {
+    try {
 
-        if (res.error) {
+      const { response } = await guestLinkServices.protected.validatePassword(short, password)
+      await supabase.rpc("record_monthly_visits", { x_link_id: linkID })
+      window.location.href = response
 
-          toast.error(res.error)
-          setSubmiting(false)
+    } catch {
 
-        } else {
-          if (!res.response) {
+      toast.error("Wrong Password")
+      // toast.error((e as Error).message)
 
-            toast.error("Wrong password")
-            setSubmiting(false)
+    } finally {
 
-          } else {
+      setSubmiting(false)
 
-            await supabase.rpc("record_monthly_visits", { x_link_id: link_id })
-            window.location.href = res.response
-
-          }
-        }
-
-      })
-
+    }
   }
 
 

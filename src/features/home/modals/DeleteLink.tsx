@@ -4,7 +4,7 @@ import { IconLoader2, IconTrashX } from "@tabler/icons-react"
 import { AnimatePresence, motion } from "framer-motion"
 import { FormEvent, useState } from "react"
 import { toast } from "sonner"
-import { GuestLinkServices } from "../services/guest-link.service"
+import { GuestLinkServices } from "../../../services/guest-link.service"
 import ModalLayout from "@/features/shared/modals/ModalLayout"
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "@/store/store-config"
@@ -21,28 +21,30 @@ export function DeleteLinkModal() {
   )
 
 
-  const handleDelete = (e: FormEvent) => {
+  const handleDelete = async (e: FormEvent) => {
 
     e.preventDefault()
-    setDeleting(true)
-    const guestLinkServices = new GuestLinkServices()
-
+    
     if (shortLink) {
+      
+      setDeleting(true)
+      
+      try {
 
-      guestLinkServices.deleteLink(shortLink)
-        .then(res => {
+        const { response } = await new GuestLinkServices().deleteLink(shortLink)
+        dispatch(recordChange())
+        dispatch(toggleDeleteLink())
+        toast.success(response)
 
-          if (res.error) {
-            toast.error(res.error)
-          } else {
-            toast.success(res.response)
-            dispatch(recordChange())
-            dispatch(toggleDeleteLink())
-          }
+      } catch (e) {
 
-        })
-        .finally(() => setDeleting(false))
+        toast.error((e as Error).message)
 
+      } finally {
+
+        setDeleting(false)
+
+      }
     }
   }
 

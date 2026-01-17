@@ -14,14 +14,8 @@ export async function POST(req: NextRequest) {
     x_links_id: linksID
   })
 
-  if(error) {
+  if(error) return NextResponse.json({ error: "Unauthorized" }, { status: 403 })
 
-    console.log(error)
-    return NextResponse.json({ error: "Unauthorized" })
-
-  }
-
-  return NextResponse.json({ response: "Success" })
-
+  return NextResponse.json({ response: "Success" }, { status: 200 })
 
 }

@@ -15,17 +15,14 @@ export async function GET() {
   const guestID = await getGuestID()
   const supabase = createSupabase(guestID)
 
-  if (!guestID) {
+  if (!guestID) return NextResponse.json({ error: "Unauthorized" }, { status: 403 })
 
-    return NextResponse.json({ error: "Unauthorized" })
-  } else {
+  const { data, error } = await supabase.rpc("get_links_with_details")
 
-    const { data , error } = await supabase.rpc("get_links_with_details")
+  if (error) return NextResponse.json({ error: "Error in Server" }, { status: 500 })
 
-    if(error) return NextResponse.json({ error: "Error, try again" })
+  return NextResponse.json(data, { status: 200 })
 
-    return NextResponse.json(data)
-  }
 }
 
 
@@ -54,12 +51,12 @@ export async function POST(request: NextRequest) {
   if (error) {
 
     console.log(error)
-    return NextResponse.json({ error: "Error, try again" })
+    return NextResponse.json({ error: "Error in Server" }, { status: 500 })
   }
 
   if (data && data.length > 0) {
 
-    return NextResponse.json({ error: "You already have a short version of this link" })
+    return NextResponse.json({ error: "You already have a short version of this link" }, { status: 500 })
   } else {
 
     // insert the short version, original and the guestID in the DB
@@ -73,11 +70,11 @@ export async function POST(request: NextRequest) {
 
       console.log(error)
       // there is a policy in Supabase that limits the number of short links each guest can create
-      if (error.code == '42501') { return NextResponse.json({ error: "You have reached the limit of links" }) }
-      return NextResponse.json({ error: "Error, view the console" })
+      if (error.code == '42501') { return NextResponse.json({ error: "You have reached the limit of links" }, { status: 500 }) }
+      return NextResponse.json({ error: "Error in Sercer" }, { status: 500 })
     }
 
-    const response = NextResponse.json({ response: shortLink })
+    const response = NextResponse.json({ response: shortLink }, { status: 200 })
 
     // if is a new guest, set a cookie with the new UUID
     if (newGuest) {

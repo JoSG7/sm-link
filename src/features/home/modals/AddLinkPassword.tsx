@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "framer-motion"
 import { IconCheck, IconLoader2, IconLock, IconLockCheck } from "@tabler/icons-react"
 import { FormEvent, useState } from "react"
 import { toast } from "sonner"
-import { GuestLinkServices } from "../services/guest-link.service"
+import { GuestLinkServices } from "../../../services/guest-link.service"
 import ModalLayout from "@/features/shared/modals/ModalLayout"
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "@/store/store-config"
@@ -25,7 +25,7 @@ export function AddLinkPasswordModal() {
   )
 
 
-  const handleCreate = (e: FormEvent) => {
+  const handleCreate = async (e: FormEvent) => {
     e.preventDefault()
 
     if (password != confirmPassword) {
@@ -33,26 +33,25 @@ export function AddLinkPasswordModal() {
     } else if (shortLink) {
 
       setSubmiting(true)
-      const guestLinkServices = new GuestLinkServices()
 
-      guestLinkServices.protected.createLink(shortLink, password)
-        .then(res => {
+      try {
 
-          if (res.error) {
-            toast.error(res.error)
-          } else {
-            setPassword("")
-            setConfirmPassword("")
-            dispatch(recordChange())
-            toast.success(res.response)
-          }
+        const { response } = await new GuestLinkServices().protected.createLink(shortLink, password)
+        setPassword("")
+        setConfirmPassword("")
+        dispatch(recordChange())
+        toast.success(response)
 
-        })
-        .finally(() => {
-          setSubmiting(false)
-          dispatch(toggleSetPassword())
-        })
+      } catch (e) {
 
+        toast.error((e as Error).message)
+
+      } finally {
+
+        setSubmiting(false)
+        dispatch(toggleSetPassword())
+
+      }
     }
   }
 

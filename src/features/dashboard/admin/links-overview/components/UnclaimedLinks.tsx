@@ -1,7 +1,7 @@
 "use client"
 
-import { UserLinkServices } from "@/features/dashboard/services/user-link.service"
-import { GuestLinkServices } from "@/features/home/services/guest-link.service"
+import { UserLinkServices } from "@/services/user-link.service"
+import { GuestLinkServices } from "@/services/guest-link.service"
 import { DomainLogo } from "@/features/shared/components/DomainLogo"
 import { LinkDetails } from "@/global"
 import { recordChange } from "@/store/link-changes-slice"
@@ -89,7 +89,7 @@ export function UnclaimedLinks() {
   }, [changes])
 
 
-  const handleClaim = () => {
+  const handleClaim = async () => {
 
     if (selectedLinks.length < 1) {
       toast.error("Please, select one")
@@ -99,20 +99,21 @@ export function UnclaimedLinks() {
       setSubmiting(true)
       const userLinksServices = new UserLinkServices()
 
-      userLinksServices.claim(selectedLinks)
-        .then(res => {
+      try {
 
-          if (res.error) {
-            toast.error(res.error)
-          } else {
-            dispatch(recordChange())
-            toast.success(res.response)
-          }
+        const res = await userLinksServices.claim(selectedLinks)
+        toast.success(res.response)
+        dispatch(recordChange())
+        
+      } catch (e) {
+        
+        toast.error((e as Error).message)
 
-        })
-        .finally(() => {
-          setSubmiting(false)
-        })
+      } finally {
+
+        setSubmiting(false)
+
+      }
     }
   }
 

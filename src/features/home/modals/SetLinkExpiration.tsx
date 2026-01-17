@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "framer-motion"
 import { FormEvent, useState } from "react"
 import { toast } from "sonner"
 import { DatePicker } from "../../shared/components/DatePicker"
-import { GuestLinkServices } from "../services/guest-link.service"
+import { GuestLinkServices } from "../../../services/guest-link.service"
 import ModalLayout from "@/features/shared/modals/ModalLayout"
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "@/store/store-config"
@@ -26,7 +26,7 @@ export function SetLinkExpirationModal() {
   )
 
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
 
     if (!expirationDate || expirationHour == "") {
@@ -45,24 +45,23 @@ export function SetLinkExpirationModal() {
       )
 
       setSubmiting(true)
-      const guestLinksServices = new GuestLinkServices()
 
-      guestLinksServices.expiration.createLink(shortLink, fullDate.toISOString())
-        .then(res => {
+      try {
 
-          if (res.error) {
-            toast.error(res.error)
-          } else {
-            toast.success(res.response)
-          }
+        const { response } = await new GuestLinkServices().expiration.createLink(shortLink, fullDate.toISOString())
+        toast.success(response)
 
-        })
-        .finally(() => {
-          setSubmiting(false)
-          dispatch(recordChange())
-          dispatch(toggleSetExpiration())
-        })
+      } catch (e) {
 
+        toast.error((e as Error).message)
+
+      } finally {
+
+        setSubmiting(false)
+        dispatch(recordChange())
+        dispatch(toggleSetExpiration())
+
+      }
     }
   }
 

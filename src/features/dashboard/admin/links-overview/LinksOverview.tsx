@@ -7,9 +7,12 @@ import { SearchSelect } from "./components/SearchSelect";
 import { SearchBar } from "./components/SearchBar";
 import { useEffect, useState } from "react";
 import { LinkDetails } from "@/global";
-import { UserLinkServices } from "../../services/user-link.service";
+import { UserLinkServices } from "../../../../services/user-link.service";
 import { RootState } from "@/store/store-config";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { UserLinksTable } from "./components/UserLinksTable";
+import { toggleCreateLink } from "@/store/user-modals-slice";
+import { toast } from "sonner";
 
 
 
@@ -18,6 +21,7 @@ export function LinksOverview() {
   const [userLinks, setUserLinks] = useState<LinkDetails[] | []>([])
   const [loading, setLoading] = useState(true)
   const { changes } = useSelector((state: RootState) => state.linkChanges)
+  const dispatch = useDispatch()
 
 
   useEffect(() => {
@@ -28,9 +32,10 @@ export function LinksOverview() {
 
       userLinksServices.getUserLinks()
         .then(res => {
-          console.log(res)
+          // console.log(res)
           setUserLinks(res)
         })
+        .catch((e: Error) => toast.error(e.message))
         .finally(() => setLoading(false))
 
     }
@@ -70,12 +75,14 @@ export function LinksOverview() {
         </div>
 
         <button className="p-3 px-4 flex items-center gap-1 rounded-lg bg-gradient-to-r from-green-500 to-sky-600 
-        cursor-pointer hover:scale-105 disabled:opacity-50 duration-300">
+        cursor-pointer hover:scale-105 disabled:opacity-50 duration-300"
+        onClick={() => dispatch(toggleCreateLink())}>
           <IconPlus className="size-5" />
           Create Link
         </button>
       </section>
 
+      <UserLinksTable data={userLinks} loading={loading} />
 
     </section>
 

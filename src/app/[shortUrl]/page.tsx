@@ -20,7 +20,6 @@ async function ShortURL({ params }: { params: Promise<{ shortUrl: string }> }) {
 
   if (error) {
 
-    console.log(error)
     return <p>Has ocurred an unexpected error, please try again</p>
   } else if (link) {
 
@@ -29,17 +28,17 @@ async function ShortURL({ params }: { params: Promise<{ shortUrl: string }> }) {
       return <LinkIsExpired />
     } else if (link.has_password) {
 
-      return <AccessLinkForm short={shortUrl} link_id={link.id} />
+      return <AccessLinkForm short={shortUrl} linkID={link.id} />
     } else {
 
-      const { error } = await supabase.rpc("record_monthly_visits", { x_link_id: link.id })
-      if (error) console.log(error)
+      await supabase.rpc("record_monthly_visits", { x_link_id: link.id })
       redirect(link.original!)
+
     }
     
   } else {
 
-    return <p>No hay</p>
+    return <p>Link not found</p>
   }
 }
 

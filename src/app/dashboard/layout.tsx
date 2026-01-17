@@ -19,7 +19,7 @@ export default async function DashboardLayout({ children }: { children: ReactNod
       <SideBar />
       <AuthListener />
 
-      <main className="grow md:px-7 xl:px-8">
+      <main className="max-h-screen grow overflow-y-auto md:px-7 xl:px-8">
         {children}
       </main>
 

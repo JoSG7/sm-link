@@ -24,7 +24,7 @@ export function UserProfile() {
             },
           }}
           exit={{
-            y: -40,
+            y: 40,
             opacity: 0,
             transition: {
               duration: 0.3,

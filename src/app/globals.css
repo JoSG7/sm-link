@@ -52,7 +52,9 @@ body {
 
 }
 
-
+.scroll-bar-sm::-webkit-scrollbar {
+  width: 10px;
+}
 
 
 

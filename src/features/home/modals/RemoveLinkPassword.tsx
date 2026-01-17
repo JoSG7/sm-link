@@ -4,7 +4,7 @@ import { IconLoader2, IconTrashX } from "@tabler/icons-react"
 import { AnimatePresence, motion } from "framer-motion"
 import { useState } from "react"
 import { toast } from "sonner"
-import { GuestLinkServices } from "../services/guest-link.service"
+import { GuestLinkServices } from "../../../services/guest-link.service"
 import ModalLayout from "@/features/shared/modals/ModalLayout"
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "@/store/store-config"
@@ -14,7 +14,7 @@ import { recordChange } from "@/store/link-changes-slice"
 
 export function RemoveLinkPasswordModal() {
   const [removing, setRemoving] = useState(false)
-  
+
   const dispatch = useDispatch()
   const { isOpen, shortLink } = useSelector(
     (state: RootState) => state.modals.deletePassword
@@ -22,26 +22,27 @@ export function RemoveLinkPasswordModal() {
 
 
   const handleDelete = async () => {
-
-    setRemoving(true)
-    const guestLinkServices = new GuestLinkServices()
-
+    
     if (shortLink) {
+      
+      setRemoving(true)
 
-      guestLinkServices.protected.deleteLink(shortLink)
-        .then(res => {
+      try {
 
-          if (res.error) {
-            toast.error(res.error)
-          } else {
-            toast.success(res.response)
-            dispatch(recordChange())
-            dispatch(toggleDeletePassword())
-          }
+        const { response } = await new GuestLinkServices().protected.deleteLink(shortLink)
+        dispatch(recordChange())
+        dispatch(toggleDeletePassword())
+        toast.success(response)
 
-        })
-        .finally(() => setRemoving(false))
+      } catch (e) {
 
+        toast.error((e as Error).message)
+
+      } finally {
+
+        setRemoving(false)
+
+      }
     }
   }
 
@@ -75,12 +76,12 @@ export function RemoveLinkPasswordModal() {
                 <div className="p-4 flex gap-4 items-center text-sm ">
 
                   <button className="p-2 px-3 flex items-center gap-2 rounded-sm bg-red-700 disabled:opacity-30 cursor-pointer "
-                    onClick={handleDelete} 
+                    onClick={handleDelete}
                     disabled={removing}>
 
                     {
                       removing ?
-                        <IconLoader2 className="size-4 animate-spin"/> :
+                        <IconLoader2 className="size-4 animate-spin" /> :
 
                         <IconTrashX className="size-4 " />
                     }

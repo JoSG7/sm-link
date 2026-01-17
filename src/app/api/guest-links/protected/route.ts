@@ -11,36 +11,24 @@ export async function POST(request: NextRequest) {
   const guestID = await getGuestID()
   const supabase = createSupabase(guestID)
 
-  if (!guestID) {
+  if (!guestID) return NextResponse.json({ error: "Unauthorized" }, { status: 403 })
 
-    return NextResponse.json({ error: "Unauthorized" })
-  } else {
+  const { data, error } = await supabase.rpc("get_link_with_details", { x_short: short }).maybeSingle()
 
+  if (!data || error) return NextResponse.json({ error: "Link not found" }, { status: 500 })
 
-    const { data, error } = await supabase.rpc("get_link_with_details", { x_short: short }).maybeSingle()
+  const link = data as LinkDetails
 
-    if (!data || error) {
-
-      console.log(error)
-      return NextResponse.json({ error: "Link not found" })
+  const { error: e } = await supabase.rpc("insert_protected_link",
+    {
+      x_password: password,
+      x_link_id: link.id
     }
+  )
 
-    const link = data as LinkDetails
+  if (e) return NextResponse.json({ error: "Failed to protect link" }, { status: 403 })
 
-    const { error: e } = await supabase.rpc("insert_protected_link",
-      { 
-        x_password: password, 
-        x_link_id: link.id 
-      }
-    )
+  return NextResponse.json({ response: "Protecting Succes" }, { status: 200 })
 
-    if (e) {
-
-      console.log(e)
-      return NextResponse.json({ error: "Failed to protect link" })
-    }
-
-    return NextResponse.json({ response: "Protecting Succes" })
-  }
 }
 

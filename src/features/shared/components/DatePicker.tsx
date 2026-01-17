@@ -3,9 +3,9 @@
 import { CalendarIcon } from "lucide-react"
 import { format } from "date-fns"
 import { useState } from "react";
-import { Popover, PopoverContent, PopoverTrigger } from "@/features/shared/components/popover";
-import { Button } from "@/features/shared/components/button";
-import { Calendar } from "@/features/shared/components/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "@/features/shared/components/shadcn/popover";
+import { Button } from "@/features/shared/components/shadcn/button";
+import { Calendar } from "@/features/shared/components/shadcn/calendar";
 
 
 export function DatePicker({ value, onChange }: { value?: Date; onChange?: (date: Date) => void }) {
