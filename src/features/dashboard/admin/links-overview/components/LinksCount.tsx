@@ -15,19 +15,23 @@ export function LinksCount({ loading, count }: Props) {
     <article className="p-4 flex items-center justify-between rounded-lg border-2 border-neutral-900 bg-neutral-900/50 
     lg:p-5">
       {
-        loading ? 
-        <div>carg</div>
-        :
         <>
 
           <div>
-            <h1 className="text-neutral-300 text-sm">
+            <h1 className="text-neutral-300 text-sm pb-1">
               Total links
             </h1>
 
-            <p className="pt-1 text-4xl font-semibold">
-              {count}
-            </p>
+            <div className="text-4xl font-semibold">
+              {
+                loading ? 
+                <div className="size-10 bg-neutral-800 animate-pulse rounded-lg" />
+                :
+                <p>
+                  {count}
+                </p>
+              }
+            </div>
           </div>
         
           <div className="p-2 rounded-full bg-green-300">

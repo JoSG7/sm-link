@@ -1,20 +1,50 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 
 type ModalState = {
-  createLink: {
+  createUserLink: {
     isOpen: boolean
+  },
+  deleteUserLink: {
+    isOpen: boolean
+    short: string 
   }
-  updateLink: {
+  updateUserLink: {
     isOpen: boolean
     short: string | null
+  }
+
+  protected: {
+    insertUserLinkPassword: {
+      isOpen: boolean
+      short: string | null
+    }
+    deleteUserLinkPassword: {
+      isOpen: boolean
+      short: string | null
+    }
   }
 }
 
 
 const initialState: ModalState = {
-  createLink: { isOpen: false },
-  updateLink: { isOpen: false, short: null }
+
+  createUserLink: { isOpen: false },
+  updateUserLink: { isOpen: false, short: "" },
+  deleteUserLink: { isOpen: false, short: "" },
+
+  protected: {
+    deleteUserLinkPassword: {
+      isOpen: false, 
+      short: ""
+    },
+    insertUserLinkPassword: {
+      isOpen: false,
+      short: ""
+    }
+  }
+
+
 }
 
 
@@ -22,15 +52,30 @@ export const userModalSlice = createSlice({
   name: "user-modals",
   initialState,
   reducers: {
-    toggleCreateLink(state) {
-      state.createLink.isOpen = !state.createLink.isOpen
-    }
+    toggleCreateUserLink(state) {
+      state.createUserLink.isOpen = !state.createUserLink.isOpen
+    },
+    toggleDeleteUserLink(state, action: PayloadAction<string | undefined>) {
+      state.deleteUserLink.isOpen = !state.deleteUserLink.isOpen
+      state.deleteUserLink.short = action.payload ?? ""
+    },
+    toggleInsertUserLinkPassword(state, action: PayloadAction<string | undefined>) {
+      state.protected.insertUserLinkPassword.isOpen = !state.protected.insertUserLinkPassword.isOpen
+      state.protected.insertUserLinkPassword.short = action.payload ?? ""
+    },
+    toggleDeleteUserLinkPassword(state, action: PayloadAction<string | undefined>) {
+      state.protected.deleteUserLinkPassword.isOpen = !state.protected.deleteUserLinkPassword.isOpen
+      state.protected.deleteUserLinkPassword.short = action.payload ?? ""
+    },
   }
-}) 
+})
 
 
 export const {
-  toggleCreateLink
+  toggleCreateUserLink,
+  toggleDeleteUserLink,
+  toggleInsertUserLinkPassword,
+  toggleDeleteUserLinkPassword
 } = userModalSlice.actions
 
 

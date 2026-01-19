@@ -6,11 +6,11 @@ import { AnimatePresence } from "framer-motion"
 import { FormEvent, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { motion } from "framer-motion"
-import { toggleCreateLink } from "@/store/user-modals-slice"
 import { IconCheck, IconEditCircle, IconLoader, IconPaperclip } from "@tabler/icons-react"
 import { UserLinkServices } from "@/services/user-link.service"
 import { recordChange } from "@/store/link-changes-slice"
 import { toast } from "sonner"
+import { toggleCreateUserLink } from "@/store/user-modals-slice"
 
 
 export function CreateUserLink() {
@@ -18,7 +18,7 @@ export function CreateUserLink() {
   const [submiting, setSubmiting] = useState(false)
   const [original, setOriginal] = useState("")
   const [short, setShort] = useState("")
-  const { isOpen } = useSelector((state: RootState) => state.userModals.createLink)
+  const { isOpen } = useSelector((state: RootState) => state.userModals.createUserLink)
   const dispatch = useDispatch()
 
 
@@ -26,12 +26,12 @@ export function CreateUserLink() {
 
     e.preventDefault()
     setSubmiting(true)
-    const userLinksServices = new UserLinkServices()
     const data = { original, short: short.trim() }
 
     try {
 
-      const response = await userLinksServices.createUserSmLink(data)
+      const response = await new UserLinkServices().createUserSmLink(data)
+      dispatch(recordChange())
       toast.success(response.response)
 
     } catch (e) {
@@ -41,8 +41,7 @@ export function CreateUserLink() {
     } finally {
 
       setSubmiting(false)
-      dispatch(recordChange())
-      dispatch(toggleCreateLink())
+      dispatch(toggleCreateUserLink())
 
     }
   }
@@ -60,7 +59,7 @@ export function CreateUserLink() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => { dispatch(toggleCreateLink()) }}>
+              onClick={() => { dispatch(toggleCreateUserLink()) }}>
 
               <motion.div className="w-[90vw] bg-neutral-950 rounded-xl border border-neutral-800 max-w-xl
               sm:w-[80vw] lg:w-[70vw]"

@@ -40,3 +40,24 @@ export async function POST(request: NextRequest) {
   return NextResponse.json({ response: "Success" }, { status: 200 })
 
 }
+
+
+export async function DELETE(request: NextRequest) {
+
+  const { searchParams } = new URL(request.url)
+  const supabase = await createSupabaseServer()
+  const shorts = searchParams.getAll("short[]")
+
+  console.log(shorts)
+
+  const { error } = await supabase.from("link").delete().in("short", shorts)
+
+  if(error) {
+    console.log(error)
+    return NextResponse.json({ error: "Unauthorized" }, { status: 403 })
+  }
+
+  return NextResponse.json({ response: "Succes" }, { status: 200 })
+
+
+}

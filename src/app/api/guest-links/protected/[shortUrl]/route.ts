@@ -7,34 +7,28 @@ export async function DELETE(request: NextRequest, { params }: { params: Promise
   const { shortUrl } = await params
   const guestID = await getGuestID()
 
-  if (!guestID) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 403 })
+  if (!guestID) return NextResponse.json({ error: "Unauthorized" }, { status: 403 })
+
+  const supabase = createSupabase(guestID)
+
+  const { data, error } = await supabase.from("link").select("id").eq("short", shortUrl).maybeSingle()
+
+  if (!data || error) {
+
+    console.log(error)
+    return NextResponse.json({ error: "Link not found" }, { status: 500 })
+
   } else {
 
-    const supabase = createSupabase(guestID)
-    const { data, error } = await supabase.from("link").select("id").eq("short", shortUrl).maybeSingle()
+    const { error } = await supabase.from("protected_link").delete().eq("link_id", data.id)
 
-    if (!data || error) {
+    if (error) {
 
       console.log(error)
-      return NextResponse.json({ error: "Link not found" }, { status: 500 })
-    } else {
-
-      const { error } = await supabase.from("protected_link").delete().eq("link_id", data.id)
-
-      if (error) {
-
-        console.log(error)
-        return NextResponse.json({ error: "Error in Server" }, { status: 500 })
-      }
-
-      return NextResponse.json({ response: "Removed Succesfully" }, { status: 200 })
+      return NextResponse.json({ error: "Error in Server" }, { status: 500 })
     }
+
+    return NextResponse.json({ response: "Removed Succesfully" }, { status: 200 })
+    
   }
-
-
-
-
-
-
 }

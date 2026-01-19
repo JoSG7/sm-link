@@ -11,8 +11,8 @@ import { UserLinkServices } from "../../../../services/user-link.service";
 import { RootState } from "@/store/store-config";
 import { useDispatch, useSelector } from "react-redux";
 import { UserLinksTable } from "./components/UserLinksTable";
-import { toggleCreateLink } from "@/store/user-modals-slice";
 import { toast } from "sonner";
+import { toggleCreateUserLink } from "@/store/user-modals-slice";
 
 
 
@@ -26,18 +26,22 @@ export function LinksOverview() {
 
   useEffect(() => {
 
-    const fetchUserLinks = () => {
+    const fetchUserLinks = async () => {
 
-      const userLinksServices = new UserLinkServices()
+      try {
 
-      userLinksServices.getUserLinks()
-        .then(res => {
-          // console.log(res)
-          setUserLinks(res)
-        })
-        .catch((e: Error) => toast.error(e.message))
-        .finally(() => setLoading(false))
+        const response = await new UserLinkServices().getUserLinks()
+        setUserLinks(response)
 
+      } catch (e) {
+
+        toast.error((e as Error).message)
+        
+      } finally {
+
+        setLoading(false)
+
+      }
     }
 
     fetchUserLinks()
@@ -76,7 +80,7 @@ export function LinksOverview() {
 
         <button className="p-3 px-4 flex items-center gap-1 rounded-lg bg-gradient-to-r from-green-500 to-sky-600 
         cursor-pointer hover:scale-105 disabled:opacity-50 duration-300"
-        onClick={() => dispatch(toggleCreateLink())}>
+        onClick={() => dispatch(toggleCreateUserLink())}>
           <IconPlus className="size-5" />
           Create Link
         </button>

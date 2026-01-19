@@ -32,4 +32,30 @@ export class UserLinkServices {
     return data
     
   }
-}
+
+  async deleteUserSmLinks({ shorts }: { shorts?: string[] }) {
+
+    const { data } = await api.delete<ApiResponse>("user-links", {
+      params: {
+        short: shorts
+      }
+    })
+    return data
+
+  }
+
+  protected = {
+
+    async insertUserSmLinkPassword({ short, password }: { short: string, password: string }) {
+
+      const { data } = await api.post<ApiResponse>("user-links/protected", {
+        short,
+        password
+      })
+      return data
+
+    }
+
+  }
+
+} 
