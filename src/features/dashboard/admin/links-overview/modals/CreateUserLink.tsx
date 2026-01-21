@@ -6,7 +6,7 @@ import { AnimatePresence } from "framer-motion"
 import { FormEvent, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { motion } from "framer-motion"
-import { IconCheck, IconEditCircle, IconLoader, IconPaperclip } from "@tabler/icons-react"
+import { IconCheck, IconEditCircle, IconLoader, IconPaperclip, IconPlus } from "@tabler/icons-react"
 import { UserLinkServices } from "@/services/user-link.service"
 import { recordChange } from "@/store/link-changes-slice"
 import { toast } from "sonner"
@@ -69,41 +69,46 @@ export function CreateUserLink() {
                 transition={{ duration: 0.2 }}
                 onClick={(e) => e.stopPropagation()}>
 
-                <h1 className="p-4 text-sm border-neutral-800 xl:text-base">
-                  Create New SmLink
-                </h1>
+                <header className="p-4 flex items-center gap-4 ">
+                  <div className="p-2 rounded-lg border border-sky-500/30 bg-sky-500/20">
+                    <IconPlus className="size-5 text-sky-400" />
+                  </div>
 
-                <form className=""
-                  onSubmit={handleCreate}>
+                  <div>
+                    <h1 className="font-medium text-lg">Create new link</h1>
+                  </div>
+                </header>
+
+                <form onSubmit={handleCreate}>
 
                   <section className="p-4 flex flex-col gap-3 border-y border-neutral-800">
-                    <label className="flex items-center gap-2 text-sm">
-                      <IconPaperclip className="size-4" />
+                    <label className="flex items-center gap-2">
+                      <IconPaperclip className="size-5" />
                       Paste a long URL
                     </label>
 
-                    <input className="p-3 rounded-lg text-xs border border-neutral-800 bg-neutral-900 
-                    focus:border-green-600"
+                    <input className="p-3 rounded-lg text-sm border-[1.5px] border-neutral-800 bg-neutral-900 
+                    focus:border-sky-600"
                       type="text"
                       placeholder="https://example.com/long-url-to-short"
                       required
                       onChange={(e) => setOriginal(e.currentTarget.value)} />
 
-                    <label className="flex items-center gap-2 text-sm pt-2">
-                      <IconEditCircle className="size-4" />
+                    <label className="flex items-center gap-2 pt-2">
+                      <IconEditCircle className="size-5" />
                       Customize short version (max: 20 characters)
                     </label>
 
-                    <input className="w-1/2 p-3 rounded-lg text-xs border border-neutral-800 bg-neutral-900
-                    focus:border-green-600"
+                    <input className="w-1/2 p-3 rounded-lg text-sm border-[1.5px] border-neutral-800 bg-neutral-900
+                    focus:border-sky-600"
                       type="text"
                       placeholder="Optional, example VTN_IO"
                       onChange={(e) => setShort(e.currentTarget.value)} />
                   </section>
 
                   <div className="p-4 flex justify-start">
-                    <button className="py-2 px-4 flex items-center gap-2 text-sm rounded-lg cursor-pointer bg-green-600
-                    disabled:opacity-50"
+                    <button className="py-2 px-4 flex items-center gap-2 text-sm rounded-lg cursor-pointer
+                    disabled:opacity-50 bg-gradient-to-b from-sky-500 to-sky-500/50"
                       disabled={submiting}>
                       {submiting ? <IconLoader className="size-3 animate-spin" /> : <IconCheck className="size-3" />}
                       Create

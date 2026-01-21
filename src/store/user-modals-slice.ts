@@ -7,7 +7,7 @@ type ModalState = {
   },
   deleteUserLink: {
     isOpen: boolean
-    short: string 
+    short: string
   }
   updateUserLink: {
     isOpen: boolean
@@ -18,6 +18,10 @@ type ModalState = {
     insertUserLinkPassword: {
       isOpen: boolean
       short: string | null
+    }
+    editUserLinkPassword: {
+      isOpen: boolean
+      short: string
     }
     deleteUserLinkPassword: {
       isOpen: boolean
@@ -35,10 +39,14 @@ const initialState: ModalState = {
 
   protected: {
     deleteUserLinkPassword: {
-      isOpen: false, 
+      isOpen: false,
       short: ""
     },
     insertUserLinkPassword: {
+      isOpen: false,
+      short: ""
+    },
+    editUserLinkPassword: {
       isOpen: false,
       short: ""
     }
@@ -67,6 +75,10 @@ export const userModalSlice = createSlice({
       state.protected.deleteUserLinkPassword.isOpen = !state.protected.deleteUserLinkPassword.isOpen
       state.protected.deleteUserLinkPassword.short = action.payload ?? ""
     },
+    toggleEditUserLinkPassword(state, action: PayloadAction<string | undefined>) {
+      state.protected.editUserLinkPassword.isOpen = !state.protected.editUserLinkPassword.isOpen
+      state.protected.editUserLinkPassword.short = action.payload ?? ""
+    },
   }
 })
 
@@ -74,8 +86,11 @@ export const userModalSlice = createSlice({
 export const {
   toggleCreateUserLink,
   toggleDeleteUserLink,
+
   toggleInsertUserLinkPassword,
-  toggleDeleteUserLinkPassword
+  toggleDeleteUserLinkPassword,
+  toggleEditUserLinkPassword,
+  
 } = userModalSlice.actions
 
 

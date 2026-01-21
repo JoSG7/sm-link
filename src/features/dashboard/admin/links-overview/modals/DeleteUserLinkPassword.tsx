@@ -1,7 +1,9 @@
+"use client"
+
 import ModalLayout from "@/features/shared/modals/ModalLayout";
 import { RootState } from "@/store/store-config";
 import { toggleDeleteUserLinkPassword } from "@/store/user-modals-slice";
-import { IconLoader, IconTrashX } from "@tabler/icons-react";
+import { IconLoader, IconTrash, IconTrashX } from "@tabler/icons-react";
 import { AnimatePresence } from "framer-motion";
 import { motion } from "framer-motion";
 import { useState } from "react";
@@ -45,10 +47,16 @@ export function DeleteUserLinkPasswordModal() {
                 onClick={(e) => e.stopPropagation()}
                 onSubmit={handleDelete}>
 
-                {/* Title */}
-                <h1 className="p-4 border-b border-neutral-800 text-sm sm:text-base lg:text-sm">
-                  Are you sure to delete the password of this link forever? <span className="font-medium">{short}</span>
-                </h1>
+                <header className="p-4 flex items-center gap-4 ">
+                  <div className="p-2 rounded-lg border border-green-500/30 bg-green-500/20">
+                    <IconTrash className="size-6 text-green-400" />
+                  </div>
+
+                  <div>
+                    <h1 className="font-medium">Are you sure to delete this link?</h1>
+                    <p className="text-xs text-neutral-400">{short}</p>
+                  </div>
+                </header>
 
                 {/* Buttons section */}
                 <div className="p-4 flex gap-4 items-center text-xs ">

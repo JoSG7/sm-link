@@ -37,7 +37,7 @@ import { LinkDetails } from "@/global"
 import { months } from "@/consts"
 import { IconAlertCircleFilled, IconShieldCheckFilled } from "@tabler/icons-react"
 import { useDispatch } from "react-redux"
-import { toggleDeleteUserLink, toggleInsertUserLinkPassword } from "@/store/user-modals-slice"
+import { toggleDeleteUserLink, toggleEditUserLinkPassword, toggleInsertUserLinkPassword } from "@/store/user-modals-slice"
 
 
 export function UserLinksTable({ data, loading }: { data: LinkDetails[] | [], loading: boolean }) {
@@ -177,7 +177,8 @@ export function UserLinksTable({ data, loading }: { data: LinkDetails[] | [], lo
               </DropdownMenuItem>
               {
                 hasPassword ?
-                  <DropdownMenuItem className="hover:bg-neutral-700">
+                  <DropdownMenuItem className="hover:bg-neutral-700"
+                    onClick={() => dispatch(toggleEditUserLinkPassword(short))}>
                     Edit Password
                   </DropdownMenuItem>
                   :

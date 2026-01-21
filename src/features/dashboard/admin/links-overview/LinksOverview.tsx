@@ -60,7 +60,7 @@ export function LinksOverview() {
         </h1>
 
         <p className="pt-2 text-neutral-300">
-          Welcome back to your smlinks features, here you can manage them
+          Manage and track all your shortened links
         </p>
       </header>
 

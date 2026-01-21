@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
   })  
 
   if(error) {
-    const errorMsg = error.code == "P0001" ? error.message : "Error in server"  
+    const errorMsg = error.code == "P0001" ? error.message : "Short version too long"  
     return NextResponse.json({ error: errorMsg }, { status: 500 })
   }
 

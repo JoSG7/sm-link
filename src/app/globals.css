@@ -34,6 +34,14 @@
 }
 
 
+@utility border-1.5 {
+
+  border-style: var(--tw-border-style);
+  border-width: 1.5px;
+
+}
+
+
 * {
   box-sizing: border-box;
   outline: none;
