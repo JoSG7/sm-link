@@ -11,21 +11,36 @@ type ModalState = {
   }
   updateUserLink: {
     isOpen: boolean
-    short: string | null
+    short: string
   }
 
   protected: {
-    insertUserLinkPassword: {
+    createUserLinkPassword: {
       isOpen: boolean
-      short: string | null
+      short: string
     }
-    editUserLinkPassword: {
+    updateUserLinkPassword: {
       isOpen: boolean
       short: string
     }
     deleteUserLinkPassword: {
       isOpen: boolean
-      short: string | null
+      short: string
+    }
+  }
+
+  expiration: {
+    createUserLinkExpiration: {
+      isOpen: boolean,
+      short: string
+    },
+    updateUserLinkExpiration: {
+      isOpen: boolean
+      short: string
+    },
+    deleteUserLinkExpiration: {
+      isOpen: boolean
+      short: string
     }
   }
 }
@@ -38,19 +53,35 @@ const initialState: ModalState = {
   deleteUserLink: { isOpen: false, short: "" },
 
   protected: {
+    createUserLinkPassword: {
+      isOpen: false,
+      short: ""
+    },
+    updateUserLinkPassword: {
+      isOpen: false,
+      short: ""
+    },
     deleteUserLinkPassword: {
       isOpen: false,
       short: ""
     },
-    insertUserLinkPassword: {
+  },
+
+  expiration: {
+    createUserLinkExpiration: {
       isOpen: false,
       short: ""
     },
-    editUserLinkPassword: {
+    updateUserLinkExpiration: {
+      isOpen: false,
+      short: ""
+    },
+    deleteUserLinkExpiration: {
       isOpen: false,
       short: ""
     }
-  }
+  },
+
 
 
 }
@@ -67,17 +98,31 @@ export const userModalSlice = createSlice({
       state.deleteUserLink.isOpen = !state.deleteUserLink.isOpen
       state.deleteUserLink.short = action.payload ?? ""
     },
-    toggleInsertUserLinkPassword(state, action: PayloadAction<string | undefined>) {
-      state.protected.insertUserLinkPassword.isOpen = !state.protected.insertUserLinkPassword.isOpen
-      state.protected.insertUserLinkPassword.short = action.payload ?? ""
+
+    toggleCreateUserLinkPassword(state, action: PayloadAction<string | undefined>) {
+      state.protected.createUserLinkPassword.isOpen = !state.protected.createUserLinkPassword.isOpen
+      state.protected.createUserLinkPassword.short = action.payload ?? ""
+    },
+    toggleUpdateUserLinkPassword(state, action: PayloadAction<string | undefined>) {
+      state.protected.updateUserLinkPassword.isOpen = !state.protected.updateUserLinkPassword.isOpen
+      state.protected.updateUserLinkPassword.short = action.payload ?? ""
     },
     toggleDeleteUserLinkPassword(state, action: PayloadAction<string | undefined>) {
       state.protected.deleteUserLinkPassword.isOpen = !state.protected.deleteUserLinkPassword.isOpen
       state.protected.deleteUserLinkPassword.short = action.payload ?? ""
     },
-    toggleEditUserLinkPassword(state, action: PayloadAction<string | undefined>) {
-      state.protected.editUserLinkPassword.isOpen = !state.protected.editUserLinkPassword.isOpen
-      state.protected.editUserLinkPassword.short = action.payload ?? ""
+
+    toggleCreateUserLinkExpiration(state, action: PayloadAction<string | undefined>) {
+      state.expiration.createUserLinkExpiration.isOpen = !state.expiration.createUserLinkExpiration.isOpen
+      state.expiration.createUserLinkExpiration.short = action.payload ?? ""
+    },
+    toggleUpdateUserLinkExpiration(state, action: PayloadAction<string | undefined>) {
+      state.expiration.updateUserLinkExpiration.isOpen = !state.expiration.updateUserLinkExpiration.isOpen
+      state.expiration.updateUserLinkExpiration.short = action.payload ?? ""
+    },
+    toggleDeleteUserLinkExpiration(state, action: PayloadAction<string | undefined>) {
+      state.expiration.deleteUserLinkExpiration.isOpen = !state.expiration.deleteUserLinkExpiration.isOpen
+      state.expiration.deleteUserLinkExpiration.short = action.payload ?? ""
     },
   }
 })
@@ -87,9 +132,13 @@ export const {
   toggleCreateUserLink,
   toggleDeleteUserLink,
 
-  toggleInsertUserLinkPassword,
+  toggleCreateUserLinkPassword,
   toggleDeleteUserLinkPassword,
-  toggleEditUserLinkPassword,
+  toggleUpdateUserLinkPassword,
+
+  toggleCreateUserLinkExpiration,
+  toggleUpdateUserLinkExpiration,
+  toggleDeleteUserLinkExpiration,
   
 } = userModalSlice.actions
 

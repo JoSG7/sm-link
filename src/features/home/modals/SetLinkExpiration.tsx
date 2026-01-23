@@ -21,9 +21,7 @@ export function SetLinkExpirationModal() {
   const [expirationHour, setExpirationHour] = useState("")
 
   const dispatch = useDispatch()
-  const { isOpen, shortLink } = useSelector(
-    (state: RootState) => state.modals.setExpiration
-  )
+  const { isOpen, shortLink } = useSelector((state: RootState) => state.modals.setExpiration)
 
 
   const handleSubmit = async (e: FormEvent) => {

@@ -6,11 +6,11 @@ import { AnimatePresence } from "framer-motion";
 import { FormEvent, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
-import { toggleInsertUserLinkPassword } from "@/store/user-modals-slice";
 import { IconCheck, IconLoader, IconLock, IconLockCheck } from "@tabler/icons-react";
 import { toast } from "sonner";
 import { UserLinkServices } from "@/services/user-link.service";
 import { recordChange } from "@/store/link-changes-slice";
+import { toggleCreateUserLinkPassword } from "@/store/user-modals-slice";
 
 export function InsertUserLinkPasswordModal() {
 
@@ -19,7 +19,7 @@ export function InsertUserLinkPasswordModal() {
   const [confirmPassword, setConfirmPassword] = useState("")
   const dispatch = useDispatch()
 
-  const { isOpen, short } = useSelector((state: RootState) => state.userModals.protected.insertUserLinkPassword)
+  const { isOpen, short } = useSelector((state: RootState) => state.userModals.protected.createUserLinkPassword)
 
 
   const handleCreate = async (e: FormEvent) => {
@@ -41,7 +41,7 @@ export function InsertUserLinkPasswordModal() {
 
       } finally {
 
-        dispatch(toggleInsertUserLinkPassword())
+        dispatch(toggleCreateUserLinkPassword())
         setSubmiting(false)
 
       }
@@ -67,7 +67,7 @@ export function InsertUserLinkPasswordModal() {
               onClick={() => {
                 setPassword("")
                 setConfirmPassword("")
-                dispatch(toggleInsertUserLinkPassword())
+                dispatch(toggleCreateUserLinkPassword())
               }}>
 
               <motion.div className="w-[90vw] bg-neutral-950 rounded-xl border border-neutral-800 max-w-xl

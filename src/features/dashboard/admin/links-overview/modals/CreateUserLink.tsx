@@ -61,61 +61,67 @@ export function CreateUserLink() {
               exit={{ opacity: 0 }}
               onClick={() => { dispatch(toggleCreateUserLink()) }}>
 
-              <motion.div className="w-[90vw] bg-neutral-950 rounded-xl border border-neutral-800 max-w-xl
+              <motion.form className="w-[90vw] bg-neutral-950 rounded-xl border border-neutral-800 max-w-[35rem]
               sm:w-[80vw] lg:w-[70vw]"
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.8, opacity: 0 }}
                 transition={{ duration: 0.2 }}
-                onClick={(e) => e.stopPropagation()}>
+                onClick={(e) => e.stopPropagation()}
+                onSubmit={handleCreate}>
 
                 <header className="p-4 flex items-center gap-4 ">
                   <div className="p-2 rounded-lg border border-sky-500/30 bg-sky-500/20">
                     <IconPlus className="size-5 text-sky-400" />
                   </div>
 
-                  <div>
-                    <h1 className="font-medium text-lg">Create new link</h1>
-                  </div>
+                  <h1 className="font-medium text-lg">Create new link</h1>
                 </header>
 
-                <form onSubmit={handleCreate}>
+                <section className="px-4 py-2 flex flex-col gap-5">
 
-                  <section className="p-4 flex flex-col gap-3 border-y border-neutral-800">
-                    <label className="flex items-center gap-2">
+                  <article className="flex items-center text-sm">
+                    <div className="p-2.5 rounded-s-lg border-1.5 border-e-0 border-neutral-800 bg-neutral-900/80">
                       <IconPaperclip className="size-5" />
-                      Paste a long URL
-                    </label>
+                    </div>
 
-                    <input className="p-3 rounded-lg text-sm border-[1.5px] border-neutral-800 bg-neutral-900 
+                    <input className="grow p-2.5 rounded-e-lg border-1.5 border-neutral-800 bg-neutral-900/80
                     focus:border-sky-600"
-                      type="text"
-                      placeholder="https://example.com/long-url-to-short"
+                      type="url"
                       required
+                      placeholder="https://example.com/log-url-to-short"
                       onChange={(e) => setOriginal(e.currentTarget.value)} />
+                  </article>
 
-                    <label className="flex items-center gap-2 pt-2">
-                      <IconEditCircle className="size-5" />
-                      Customize short version (max: 20 characters)
-                    </label>
+                  <div className="flex gap-5">
+                    <article className="flex items-center text-sm grow">
+                      <div className="p-2.5 rounded-s-lg border-1.5 border-e-0 border-neutral-800 bg-neutral-900/80">
+                        <IconEditCircle className="size-5" />
+                      </div>
 
-                    <input className="w-1/2 p-3 rounded-lg text-sm border-[1.5px] border-neutral-800 bg-neutral-900
-                    focus:border-sky-600"
-                      type="text"
-                      placeholder="Optional, example VTN_IO"
-                      onChange={(e) => setShort(e.currentTarget.value)} />
-                  </section>
+                      <input className="p-2.5 rounded-e-lg border-1.5 border-neutral-800 bg-neutral-900/80 grow
+                      focus:border-sky-600"
+                        type="url"
+                        placeholder="Max 20 characters"
+                        onChange={(e) => setShort(e.currentTarget.value)} />
+                    </article>
 
-                  <div className="p-4 flex justify-start">
-                    <button className="py-2 px-4 flex items-center gap-2 text-sm rounded-lg cursor-pointer
-                    disabled:opacity-50 bg-gradient-to-b from-sky-500 to-sky-500/50"
-                      disabled={submiting}>
-                      {submiting ? <IconLoader className="size-3 animate-spin" /> : <IconCheck className="size-3" />}
-                      Create
-                    </button>
+                    <div className="p-2.5 rounded-lg border border-sky-500/30 bg-sky-500/20 text-sm text-sky-400">
+                      Customize the short version
+                    </div>
                   </div>
-                </form>
-              </motion.div>
+
+                </section>
+
+                <div className="p-4 flex justify-start">
+                  <button className="py-2 px-4 flex items-center gap-2 text-sm rounded-lg cursor-pointer
+                    disabled:opacity-50 bg-gradient-to-b from-sky-500 to-sky-500/50"
+                    disabled={submiting}>
+                    {submiting ? <IconLoader className="size-3 animate-spin" /> : <IconCheck className="size-3" />}
+                    Create
+                  </button>
+                </div>
+              </motion.form>
             </motion.section>
           )
         }

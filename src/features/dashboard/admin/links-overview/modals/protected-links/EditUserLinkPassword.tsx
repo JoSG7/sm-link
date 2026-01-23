@@ -6,11 +6,11 @@ import { AnimatePresence } from "framer-motion";
 import { FormEvent, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
-import { toggleEditUserLinkPassword } from "@/store/user-modals-slice";
 import { IconCheck, IconKey, IconLoader, IconLockCheck, IconLockFilled, IconLockPassword } from "@tabler/icons-react";
 import { toast } from "sonner";
 import { UserLinkServices } from "@/services/user-link.service";
 import { recordChange } from "@/store/link-changes-slice";
+import { toggleUpdateUserLinkPassword } from "@/store/user-modals-slice";
 
 
 export function EditUserLinkPasswordModal() {
@@ -19,7 +19,7 @@ export function EditUserLinkPasswordModal() {
   const [currentPassword, setCurrentPassword] = useState("")
   const [newPassword, setNewPassword] = useState("")
   const [confirmNewPassword, setConfirmNewPassword] = useState("")
-  const { isOpen, short } = useSelector((state: RootState) => state.userModals.protected.editUserLinkPassword)
+  const { isOpen, short } = useSelector((state: RootState) => state.userModals.protected.updateUserLinkPassword)
   const dispatch = useDispatch()
 
 
@@ -42,7 +42,7 @@ export function EditUserLinkPasswordModal() {
         const { response } = await new UserLinkServices().protected.editUserSmLinkPassword(data)
         toast.success(response)
         dispatch(recordChange())
-        dispatch(toggleEditUserLinkPassword())
+        dispatch(toggleUpdateUserLinkPassword())
 
       } catch (e) {
 
@@ -74,7 +74,7 @@ export function EditUserLinkPasswordModal() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => dispatch(toggleEditUserLinkPassword())}>
+              onClick={() => dispatch(toggleUpdateUserLinkPassword())}>
 
               <motion.form className="w-[90vw] bg-neutral-950 rounded-xl border border-neutral-800 max-w-[35rem]
               sm:w-[70vw] lg:w-[50vw]"
@@ -99,11 +99,11 @@ export function EditUserLinkPasswordModal() {
                 <section className="px-4 py-2 flex flex-col gap-4">
 
                   <article className="flex items-center text-sm">
-                    <div className="p-2 rounded-s-lg border-1.5 border-e-0 border-neutral-800 bg-neutral-900/80">
+                    <div className="p-2.5 rounded-s-lg border-1.5 border-e-0 border-neutral-800 bg-neutral-900/80">
                       <IconLockPassword className="size-5" />
                     </div>
 
-                    <input className="grow p-2 rounded-e-lg border-1.5 border-neutral-800 bg-neutral-900/80
+                    <input className="grow p-2.5 rounded-e-lg border-1.5 border-neutral-800 bg-neutral-900/80
                     focus:border-green-600"
                       type="password"
                       required
@@ -114,11 +114,11 @@ export function EditUserLinkPasswordModal() {
                   <div className="flex gap-4">
 
                     <article className="flex items-center text-sm grow">
-                      <div className="p-2 rounded-s-lg border-1.5 border-e-0 border-neutral-800 bg-neutral-900/80">
+                      <div className="p-2.5 rounded-s-lg border-1.5 border-e-0 border-neutral-800 bg-neutral-900/80">
                         <IconKey className="size-5" />
                       </div>
 
-                      <input className="grow p-2 rounded-e-lg border-1.5 border-neutral-800 bg-neutral-900/80
+                      <input className="grow p-2.5 rounded-e-lg border-1.5 border-neutral-800 bg-neutral-900/80
                       focus:border-green-600"
                         type="password"
                         required
@@ -127,11 +127,11 @@ export function EditUserLinkPasswordModal() {
                     </article>
 
                     <article className="flex items-center text-sm grow">
-                      <div className="p-2 rounded-s-lg border-1.5 border-e-0 border-neutral-800 bg-neutral-900/80">
+                      <div className="p-2.5 rounded-s-lg border-1.5 border-e-0 border-neutral-800 bg-neutral-900/80">
                         <IconLockCheck className="size-5" />
                       </div>
 
-                      <input className="grow p-2 rounded-e-lg border-1.5 border-neutral-800 bg-neutral-900/80
+                      <input className="grow p-2.5 rounded-e-lg border-1.5 border-neutral-800 bg-neutral-900/80
                       focus:border-green-600"
                         type="password"
                         required

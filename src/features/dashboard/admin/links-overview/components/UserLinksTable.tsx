@@ -37,7 +37,7 @@ import { LinkDetails } from "@/global"
 import { months } from "@/consts"
 import { IconAlertCircleFilled, IconShieldCheckFilled } from "@tabler/icons-react"
 import { useDispatch } from "react-redux"
-import { toggleDeleteUserLink, toggleEditUserLinkPassword, toggleInsertUserLinkPassword } from "@/store/user-modals-slice"
+import { toggleCreateUserLinkExpiration, toggleCreateUserLinkPassword, toggleDeleteUserLink, toggleUpdateUserLinkPassword, } from "@/store/user-modals-slice"
 
 
 export function UserLinksTable({ data, loading }: { data: LinkDetails[] | [], loading: boolean }) {
@@ -160,7 +160,7 @@ export function UserLinksTable({ data, loading }: { data: LinkDetails[] | [], lo
       cell: ({ row }) => {
 
         const hasPassword = row.getValue("has_password") as boolean
-        // const hasExpiration = row.getValue("expires_at") as string | null
+        const hasExpiration = row.getValue("expires_at") as string | null
         const short = row.getValue("short") as string
 
         return (
@@ -178,18 +178,27 @@ export function UserLinksTable({ data, loading }: { data: LinkDetails[] | [], lo
               {
                 hasPassword ?
                   <DropdownMenuItem className="hover:bg-neutral-700"
-                    onClick={() => dispatch(toggleEditUserLinkPassword(short))}>
+                    onClick={() => dispatch(toggleUpdateUserLinkPassword(short))}>
                     Edit Password
                   </DropdownMenuItem>
                   :
                   <DropdownMenuItem className="hover:bg-neutral-700"
-                    onClick={() => dispatch(toggleInsertUserLinkPassword(short))}>
+                    onClick={() => dispatch(toggleCreateUserLinkPassword(short))}>
                     Add Password
                   </DropdownMenuItem>
               }
-              <DropdownMenuItem className="hover:bg-neutral-700">
-                Edit Expiration
-              </DropdownMenuItem>
+              {
+                hasExpiration ?
+                  <DropdownMenuItem className="hover:bg-neutral-700"
+                    onClick={() => dispatch(toggleCreateUserLinkExpiration(short))}>
+                    Edit Expiration
+                  </DropdownMenuItem>
+                  :
+                  <DropdownMenuItem className="hover:bg-neutral-700"
+                    onClick={() => dispatch(toggleCreateUserLinkExpiration(short))}>
+                    Add Expiration
+                  </DropdownMenuItem>
+              }
               <DropdownMenuItem className="hover:bg-neutral-700">
                 View Analytics
               </DropdownMenuItem>
