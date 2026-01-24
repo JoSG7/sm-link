@@ -32,6 +32,7 @@ export function CreateUserLink() {
 
       const response = await new UserLinkServices().createUserSmLink(data)
       dispatch(recordChange())
+      dispatch(toggleCreateUserLink())
       toast.success(response.response)
 
     } catch (e) {
@@ -41,7 +42,6 @@ export function CreateUserLink() {
     } finally {
 
       setSubmiting(false)
-      dispatch(toggleCreateUserLink())
 
     }
   }
@@ -101,7 +101,7 @@ export function CreateUserLink() {
 
                       <input className="p-2.5 rounded-e-lg border-1.5 border-neutral-800 bg-neutral-900/80 grow
                       focus:border-sky-600"
-                        type="url"
+                        type="text"
                         placeholder="Max 20 characters"
                         onChange={(e) => setShort(e.currentTarget.value)} />
                     </article>

@@ -10,17 +10,17 @@ export async function DELETE(request: NextRequest, { params }: ParamsProps) {
   const { short } = await params
   const supabase = await createSupabaseServer()
 
-  const { data } = await supabase.from("link").select("id").eq("short", short).single() 
+  const { data } = await supabase.from("link").select("id").eq("short", short).single()
 
-  if(!data) return NextResponse.json({ error: "Unauthorized" }, { status: 403 })
+  if (!data) return NextResponse.json({ error: "Unauthorized" }, { status: 403 })
 
   const { error } = await supabase.from("protected_link").delete().eq("link_id", data.id)
 
-  if(error) return NextResponse.json({ error: "Unauthorized" }, { status: 403 })
+  if (error) return NextResponse.json({ error: "Unauthorized" }, { status: 403 })
 
   return NextResponse.json({ response: "Success" })
 
-} 
+}
 
 
 export async function PATCH(request: NextRequest, { params }: ParamsProps) {
@@ -35,13 +35,13 @@ export async function PATCH(request: NextRequest, { params }: ParamsProps) {
     x_new_password: newPassword
   })
 
-  if(error) {
+  if (error) {
     console.log(error)
     return NextResponse.json({ error: error.message }, { status: 500 })
   }
 
   return NextResponse.json({ response: "Success" }, { status: 200 })
 
-  
+
 
 }

@@ -72,4 +72,29 @@ export class UserLinkServices {
 
   }
 
+  expiration = {
+
+    async createUserSmLinkExpiration({ short, expirationDate }: { short: string, expirationDate: string }) {
+
+      const { data } = await api.post<ApiResponse>("user-links/expiration", {
+        short,
+        expirationDate
+      })
+
+      return data
+
+    },
+
+    async updateUserSmLinkExpiration({ short, newExpirationDate }: { short: string, newExpirationDate: string }) {
+
+      const { data } = await api.patch<ApiResponse>(`user-links/expiration/${short}`, {
+        newExpirationDate
+      })
+
+      return data
+
+    }
+
+  }
+
 } 

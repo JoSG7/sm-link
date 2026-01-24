@@ -37,7 +37,7 @@ import { LinkDetails } from "@/global"
 import { months } from "@/consts"
 import { IconAlertCircleFilled, IconShieldCheckFilled } from "@tabler/icons-react"
 import { useDispatch } from "react-redux"
-import { toggleCreateUserLinkExpiration, toggleCreateUserLinkPassword, toggleDeleteUserLink, toggleUpdateUserLinkPassword, } from "@/store/user-modals-slice"
+import { toggleCreateUserLinkExpiration, toggleCreateUserLinkPassword, toggleDeleteUserLink, toggleUpdateUserLinkExpiration, toggleUpdateUserLinkPassword, } from "@/store/user-modals-slice"
 
 
 export function UserLinksTable({ data, loading }: { data: LinkDetails[] | [], loading: boolean }) {
@@ -161,6 +161,7 @@ export function UserLinksTable({ data, loading }: { data: LinkDetails[] | [], lo
 
         const hasPassword = row.getValue("has_password") as boolean
         const hasExpiration = row.getValue("expires_at") as string | null
+        const expirationDate = row.getValue("expires_at") as string
         const short = row.getValue("short") as string
 
         return (
@@ -190,7 +191,7 @@ export function UserLinksTable({ data, loading }: { data: LinkDetails[] | [], lo
               {
                 hasExpiration ?
                   <DropdownMenuItem className="hover:bg-neutral-700"
-                    onClick={() => dispatch(toggleCreateUserLinkExpiration(short))}>
+                    onClick={() => dispatch(toggleUpdateUserLinkExpiration({ short, expirationDate }))}>
                     Edit Expiration
                   </DropdownMenuItem>
                   :

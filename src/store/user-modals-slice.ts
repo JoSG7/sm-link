@@ -37,6 +37,7 @@ type ModalState = {
     updateUserLinkExpiration: {
       isOpen: boolean
       short: string
+      actually: string
     },
     deleteUserLinkExpiration: {
       isOpen: boolean
@@ -74,7 +75,8 @@ const initialState: ModalState = {
     },
     updateUserLinkExpiration: {
       isOpen: false,
-      short: ""
+      short: "",
+      actually: ""
     },
     deleteUserLinkExpiration: {
       isOpen: false,
@@ -116,9 +118,10 @@ export const userModalSlice = createSlice({
       state.expiration.createUserLinkExpiration.isOpen = !state.expiration.createUserLinkExpiration.isOpen
       state.expiration.createUserLinkExpiration.short = action.payload ?? ""
     },
-    toggleUpdateUserLinkExpiration(state, action: PayloadAction<string | undefined>) {
+    toggleUpdateUserLinkExpiration(state, action: PayloadAction<{ short: string, expirationDate: string } | undefined>) {
       state.expiration.updateUserLinkExpiration.isOpen = !state.expiration.updateUserLinkExpiration.isOpen
-      state.expiration.updateUserLinkExpiration.short = action.payload ?? ""
+      state.expiration.updateUserLinkExpiration.short = action.payload?.short ?? ""
+      state.expiration.updateUserLinkExpiration.actually = action.payload?.expirationDate ?? ""
     },
     toggleDeleteUserLinkExpiration(state, action: PayloadAction<string | undefined>) {
       state.expiration.deleteUserLinkExpiration.isOpen = !state.expiration.deleteUserLinkExpiration.isOpen

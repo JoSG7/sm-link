@@ -31,6 +31,7 @@ export function DeleteUserLinkModal() {
 
       const { response } = await new UserLinkServices().deleteUserSmLinks({ shorts: data })
       dispatch(recordChange())
+      dispatch(toggleDeleteUserLink())
       toast.success(response)
 
     } catch (e) {
@@ -40,7 +41,6 @@ export function DeleteUserLinkModal() {
     } finally {
 
       setSubmiting(false)
-      dispatch(toggleDeleteUserLink())
 
     }
 
