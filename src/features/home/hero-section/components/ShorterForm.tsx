@@ -20,9 +20,7 @@ export function ShorterForm() {
   const handleSubmit = async (e: FormEvent) => {
 
     e.preventDefault()
-    
-    const guestLinkServices = new GuestLinkServices()
-    
+        
     if (!isURL(original)) {
       
       toast.error("Invalid URL")
@@ -33,7 +31,7 @@ export function ShorterForm() {
       
       try {
 
-        const { response } = await guestLinkServices.createLink(original)
+        const { response } = await new GuestLinkServices().createSmLink(original)
         setShort(response)
         dispatch(recordChange())
         toast.success("Succes")

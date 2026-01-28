@@ -43,7 +43,7 @@ export function CreateUserLink() {
 
       if (password.trim() !== "") {
         extraPromises.push(
-          service.protected.insertUserSmLinkPassword(
+          service.protected.createUserSmLinkPassword(
             {
               short: response,
               password

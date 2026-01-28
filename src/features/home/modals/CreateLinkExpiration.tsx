@@ -14,7 +14,7 @@ import { toggleSetExpiration } from "@/store/modal-slice"
 
 
 
-export function SetLinkExpirationModal() {
+export function CreateLinkExpirationModal() {
 
   const [submiting, setSubmiting] = useState(false)
   const [expirationDate, setExpirationDate] = useState<Date | undefined>(undefined)
@@ -46,7 +46,7 @@ export function SetLinkExpirationModal() {
 
       try {
 
-        const { response } = await new GuestLinkServices().expiration.createLink(shortLink, fullDate.toISOString())
+        const { response } = await new GuestLinkServices().expiration.createSmLinkExpiration(shortLink, fullDate.toISOString())
         toast.success(response)
 
       } catch (e) {

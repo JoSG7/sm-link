@@ -12,8 +12,8 @@ import { toggleDeletePassword } from "@/store/modal-slice"
 import { recordChange } from "@/store/link-changes-slice"
 
 
-export function RemoveLinkPasswordModal() {
-  const [removing, setRemoving] = useState(false)
+export function DeleteLinkPasswordModal() {
+  const [submiting, setSubmiting] = useState(false)
 
   const dispatch = useDispatch()
   const { isOpen, shortLink } = useSelector(
@@ -25,11 +25,11 @@ export function RemoveLinkPasswordModal() {
     
     if (shortLink) {
       
-      setRemoving(true)
+      setSubmiting(true)
 
       try {
 
-        const { response } = await new GuestLinkServices().protected.deleteLink(shortLink)
+        const { response } = await new GuestLinkServices().protected.deleteSmLinkPassword(shortLink)
         dispatch(recordChange())
         dispatch(toggleDeletePassword())
         toast.success(response)
@@ -40,7 +40,7 @@ export function RemoveLinkPasswordModal() {
 
       } finally {
 
-        setRemoving(false)
+        setSubmiting(false)
 
       }
     }
@@ -53,7 +53,7 @@ export function RemoveLinkPasswordModal() {
         {
           isOpen && (
             <motion.section className={`fixed inset-0 z-30 bg-[rgba(0,0,0,0.8)] flex items-center justify-center
-            ${removing && "pointer-events-none"}`}
+            ${submiting && "pointer-events-none"}`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -77,15 +77,15 @@ export function RemoveLinkPasswordModal() {
 
                   <button className="p-2 px-3 flex items-center gap-2 rounded-sm bg-red-700 disabled:opacity-30 cursor-pointer "
                     onClick={handleDelete}
-                    disabled={removing}>
+                    disabled={submiting}>
 
                     {
-                      removing ?
+                      submiting ?
                         <IconLoader2 className="size-4 animate-spin" /> :
 
                         <IconTrashX className="size-4 " />
                     }
-                    {removing ? "Deleting..." : "Delete"}
+                    {submiting ? "Deleting..." : "Delete"}
 
                   </button>
                 </div>

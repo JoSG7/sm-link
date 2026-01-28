@@ -15,7 +15,7 @@ export class GuestLinkServices {
   }
 
 
-  async createLink(original: string) {
+  async createSmLink(original: string) {
 
     const { data } = await api.post<ApiResponse>("guest-links", {
       original
@@ -24,7 +24,7 @@ export class GuestLinkServices {
   }
 
 
-  async deleteLink(short: string) {
+  async deleteSmLink(short: string) {
 
     const { data } = await api.delete<ApiResponse>(`guest-links/${short}`)
     return data
@@ -34,7 +34,7 @@ export class GuestLinkServices {
 
   protected = {
 
-    async createLink(short: string, password: string) {
+    async createSmLinkPassword(short: string, password: string) {
 
       const { data } = await api.post<ApiResponse>("guest-links/protected", {
         short,
@@ -45,7 +45,7 @@ export class GuestLinkServices {
     },
 
 
-    async deleteLink(short: string) {
+    async deleteSmLinkPassword(short: string) {
 
       const { data } = await api.delete<ApiResponse>(`guest-links/protected/${short}`)
       return data
@@ -53,7 +53,7 @@ export class GuestLinkServices {
     },
 
 
-    async validatePassword(short: string, password: string) {
+    async validateSmLinkPassword(short: string, password: string) {
 
       const { data } = await api.post<ApiResponse>("guest-links/protected/validate", {
         short,
@@ -67,7 +67,7 @@ export class GuestLinkServices {
 
   expiration = {
 
-    async createLink(short: string, expiresAt: string) {
+    async createSmLinkExpiration(short: string, expiresAt: string) {
 
       const { data } = await api.post<ApiResponse>("guest-links/expiration", {
         short,

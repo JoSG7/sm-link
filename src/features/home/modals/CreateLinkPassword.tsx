@@ -13,7 +13,7 @@ import { toggleSetPassword } from "@/store/modal-slice"
 import { recordChange } from "@/store/link-changes-slice"
 
 
-export function AddLinkPasswordModal() {
+export function CreateLinkPasswordModal() {
 
   const [submiting, setSubmiting] = useState(false)
   const [password, setPassword] = useState("")
@@ -36,7 +36,7 @@ export function AddLinkPasswordModal() {
 
       try {
 
-        const { response } = await new GuestLinkServices().protected.createLink(shortLink, password)
+        const { response } = await new GuestLinkServices().protected.createSmLinkPassword(shortLink, password)
         setPassword("")
         setConfirmPassword("")
         dispatch(recordChange())

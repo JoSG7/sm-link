@@ -18,11 +18,10 @@ export function AccessLinkForm({ short, linkID }: { short: string, linkID?: stri
     e.preventDefault()
 
     setSubmiting(true)
-    const guestLinkServices = new GuestLinkServices()
 
     try {
 
-      const { response } = await guestLinkServices.protected.validatePassword(short, password)
+      const { response } = await new GuestLinkServices().protected.validateSmLinkPassword(short, password)
       await supabase.rpc("record_monthly_visits", { x_link_id: linkID })
       window.location.href = response
 

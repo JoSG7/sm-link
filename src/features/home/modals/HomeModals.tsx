@@ -1,17 +1,19 @@
-import { AddLinkPasswordModal } from "./AddLinkPassword";
+import { CreateLinkExpirationModal } from "./CreateLinkExpiration";
+import { CreateLinkPasswordModal } from "./CreateLinkPassword";
 import { DeleteLinkModal } from "./DeleteLink";
-import { RemoveLinkPasswordModal } from "./RemoveLinkPassword";
-import { SetLinkExpirationModal } from "./SetLinkExpiration";
+import { DeleteLinkPasswordModal } from "./DeleteLinkPassword";
 
 
 export function HomeModals() {
 
   return(
     <>
-      <AddLinkPasswordModal />
       <DeleteLinkModal />
-      <RemoveLinkPasswordModal />
-      <SetLinkExpirationModal />
+
+      <CreateLinkPasswordModal />
+      <DeleteLinkPasswordModal />
+      
+      <CreateLinkExpirationModal />
     </>
   )
 }

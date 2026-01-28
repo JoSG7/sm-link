@@ -12,7 +12,7 @@ import { UserLinkServices } from "@/services/user-link.service";
 import { recordChange } from "@/store/link-changes-slice";
 import { toggleCreateUserLinkPassword } from "@/store/user-modals-slice";
 
-export function InsertUserLinkPasswordModal() {
+export function CreateUserLinkPasswordModal() {
 
   const [submiting, setSubmiting] = useState(false)
   const [password, setPassword] = useState("")
@@ -32,7 +32,7 @@ export function InsertUserLinkPasswordModal() {
 
       try {
 
-        const { response } = await new UserLinkServices().protected.insertUserSmLinkPassword({ short, password })
+        const { response } = await new UserLinkServices().protected.createUserSmLinkPassword({ short, password })
         dispatch(recordChange())
         toast.success(response)
 

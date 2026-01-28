@@ -46,7 +46,7 @@ export class UserLinkServices {
 
   protected = {
 
-    async insertUserSmLinkPassword({ short, password }: { short: string, password: string }) {
+    async createUserSmLinkPassword({ short, password }: { short: string, password: string }) {
 
       const { data } = await api.post<ApiResponse>("user-links/protected", {
         short,
@@ -56,7 +56,7 @@ export class UserLinkServices {
 
     },
 
-    async editUserSmLinkPassword({ short, currentPassword, newPassword }: {
+    async updateUserSmLinkPassword({ short, currentPassword, newPassword }: {
       short: string,
       currentPassword: string,
       newPassword: string

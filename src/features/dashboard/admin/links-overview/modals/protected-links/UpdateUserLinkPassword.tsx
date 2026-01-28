@@ -39,7 +39,7 @@ export function UpdateUserLinkPasswordModal() {
 
       try {
 
-        const { response } = await new UserLinkServices().protected.editUserSmLinkPassword(data)
+        const { response } = await new UserLinkServices().protected.updateUserSmLinkPassword(data)
         toast.success(response)
         dispatch(recordChange())
         dispatch(toggleUpdateUserLinkPassword())

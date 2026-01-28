@@ -19,6 +19,7 @@ export interface LinkDetails {
   short: string
   created_at: string
   has_password: boolean
+  has_expiration: boolean
   has_user_id: boolean
   expires_at: string | null
   is_expired: boolean
