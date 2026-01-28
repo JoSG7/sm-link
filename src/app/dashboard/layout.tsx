@@ -14,7 +14,7 @@ export default async function DashboardLayout({ children }: { children: ReactNod
 
   return (
 
-    <section className="w-screen min-h-screen flex bg-neutral-950/70 text-white">
+    <section className="w-screen min-h-screen flex bg-neutral-950/50 text-white">
 
       <SideBar />
       <AuthListener />

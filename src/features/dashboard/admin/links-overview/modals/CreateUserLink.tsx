@@ -6,7 +6,7 @@ import { AnimatePresence } from "framer-motion"
 import { FormEvent, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { motion } from "framer-motion"
-import { IconCheck, IconEditCircle, IconLoader, IconPaperclip, IconPlus } from "@tabler/icons-react"
+import { IconCalendar, IconCheck, IconEditCircle, IconLoader, IconLock, IconPaperclip, IconPlus } from "@tabler/icons-react"
 import { UserLinkServices } from "@/services/user-link.service"
 import { recordChange } from "@/store/link-changes-slice"
 import { toast } from "sonner"
@@ -18,6 +18,8 @@ export function CreateUserLink() {
   const [submiting, setSubmiting] = useState(false)
   const [original, setOriginal] = useState("")
   const [short, setShort] = useState("")
+  const [password, setPassword] = useState("")
+  const [expirationDate, setExpirationDate] = useState("")
   const { isOpen } = useSelector((state: RootState) => state.userModals.createUserLink)
   const dispatch = useDispatch()
 
@@ -25,15 +27,53 @@ export function CreateUserLink() {
   const handleCreate = async (e: FormEvent) => {
 
     e.preventDefault()
-    setSubmiting(true)
-    const data = { original, short: short.trim() }
+
+    const data = { original, short: short }
+    const service = new UserLinkServices()
 
     try {
 
-      const response = await new UserLinkServices().createUserSmLink(data)
+      setSubmiting(true)
+
+      const { response } = await service.createUserSmLink(data)
+
+      if (!response) return
+
+      const extraPromises: Promise<unknown>[] = []
+
+      if (password.trim() !== "") {
+        extraPromises.push(
+          service.protected.insertUserSmLinkPassword(
+            {
+              short: response,
+              password
+            }
+          )
+        )
+      }
+
+      if (expirationDate.trim() !== "") {
+        const [year, month, day] = expirationDate.split("-").map(Number)
+        const fullDate = new Date(year, month - 1, day).toISOString()
+
+        extraPromises.push(
+          service.expiration.createUserSmLinkExpiration({
+            short: response,
+            expirationDate: fullDate,
+          })
+        )
+      }
+
+      if (extraPromises.length > 0) {
+        await Promise.all(extraPromises)
+      }
+
+      setShort("")
+      setPassword("")
+      setExpirationDate("")
       dispatch(recordChange())
       dispatch(toggleCreateUserLink())
-      toast.success(response.response)
+      toast.success("Success")
 
     } catch (e) {
 
@@ -75,10 +115,10 @@ export function CreateUserLink() {
                     <IconPlus className="size-5 text-sky-400" />
                   </div>
 
-                  <h1 className="font-medium text-lg">Create new link</h1>
+                  <h1 className="font-medium text-lg">Create new SmLink</h1>
                 </header>
 
-                <section className="px-4 py-2 flex flex-col gap-5">
+                <section className="px-4 py-2 flex flex-col gap-4">
 
                   <article className="flex items-center text-sm">
                     <div className="p-2.5 rounded-s-lg border-1.5 border-e-0 border-neutral-800 bg-neutral-900/80">
@@ -93,7 +133,7 @@ export function CreateUserLink() {
                       onChange={(e) => setOriginal(e.currentTarget.value)} />
                   </article>
 
-                  <div className="flex gap-5">
+                  <div className="flex gap-4">
                     <article className="flex items-center text-sm grow">
                       <div className="p-2.5 rounded-s-lg border-1.5 border-e-0 border-neutral-800 bg-neutral-900/80">
                         <IconEditCircle className="size-5" />
@@ -102,8 +142,9 @@ export function CreateUserLink() {
                       <input className="p-2.5 rounded-e-lg border-1.5 border-neutral-800 bg-neutral-900/80 grow
                       focus:border-sky-600"
                         type="text"
+                        maxLength={20}
                         placeholder="Max 20 characters"
-                        onChange={(e) => setShort(e.currentTarget.value)} />
+                        onChange={(e) => setShort(e.currentTarget.value.trim().replace(/\s+/g, ""))} />
                     </article>
 
                     <div className="p-2.5 rounded-lg border border-sky-500/30 bg-sky-500/20 text-sm text-sky-400">
@@ -111,6 +152,37 @@ export function CreateUserLink() {
                     </div>
                   </div>
 
+                  <h1 className="font-medium">Set a Password and Expiration (Optional)</h1>
+
+                  <div className="grid grid-cols-2 gap-4">
+
+                    <article className="flex items-center text-sm grow">
+                      <div className="p-2.5 rounded-s-lg border-1.5 border-e-0 border-neutral-800 bg-neutral-900/80">
+                        <IconLock className="size-5" />
+                      </div>
+
+                      <input className="p-2.5 rounded-e-lg border-1.5 border-neutral-800 bg-neutral-900/80 grow
+                      focus:border-sky-600"
+                        type="password"
+                        placeholder="No whitespaces"
+                        onChange={(e) => setPassword(e.currentTarget.value.replace(/\s+/g, ""))} />
+                    </article>
+
+                    <article className="flex items-center text-sm grow">
+                      <div className="p-2.5 rounded-s-lg border-1.5 border-e-0 border-neutral-800 bg-neutral-900/80">
+                        <IconCalendar className="size-5" />
+                      </div>
+
+                      <input className="p-2.5 rounded-e-lg border-1.5 border-neutral-800 bg-neutral-900/80
+                      focus:border-sky-600 grow"
+                        type="date"
+                        min={new Date().toISOString().split("T")[0]}
+                        max={"2026-12-31"}
+                        value={expirationDate}
+                        onChange={(e) => setExpirationDate(e.currentTarget.value)} />
+                    </article>
+
+                  </div>
                 </section>
 
                 <div className="p-4 flex justify-start">

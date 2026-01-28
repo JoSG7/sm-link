@@ -75,15 +75,22 @@ export function UnclaimedLinks() {
 
     const fetchGuestLinks = async () => {
 
-      const guestLinkServices = new GuestLinkServices()
+      try {
+        
+        const response = await new GuestLinkServices().getLinks()
+        setGuestLinks(response.filter(el => !el.has_user_id))
 
-      guestLinkServices.getLinks()
-        .then((res) => {
-          setGuestLinks(res.filter(el => !el.has_user_id))
-        })
-        .finally(() => setLoading(false))
+      } catch (e) {
+        
+        toast.error((e as Error).message)
 
+      } finally {
+
+        setLoading(false)
+
+      }
     }
+
     fetchGuestLinks()
 
   }, [changes])
@@ -97,12 +104,11 @@ export function UnclaimedLinks() {
     } else {
 
       setSubmiting(true)
-      const userLinksServices = new UserLinkServices()
 
       try {
 
-        const res = await userLinksServices.claim(selectedLinks)
-        toast.success(res.response)
+        const { response } = await new UserLinkServices().claim(selectedLinks)
+        toast.success(response)
         dispatch(recordChange())
         
       } catch (e) {

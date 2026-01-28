@@ -13,7 +13,7 @@ import { recordChange } from "@/store/link-changes-slice";
 import { toggleUpdateUserLinkPassword } from "@/store/user-modals-slice";
 
 
-export function EditUserLinkPasswordModal() {
+export function UpdateUserLinkPasswordModal() {
 
   const [submiting, setSubmiting] = useState(false)
   const [currentPassword, setCurrentPassword] = useState("")

@@ -3,8 +3,8 @@ import { DeleteUserLinkModal } from "../admin/links-overview/modals/DeleteUserLi
 import { CreateUserLinkExpirationModal } from "../admin/links-overview/modals/links-expiration/CreateUserLinkExpiration";
 import { UpdateUserLinkExpirationModal } from "../admin/links-overview/modals/links-expiration/UpdateUserLinkExpiration";
 import { DeleteUserLinkPasswordModal } from "../admin/links-overview/modals/protected-links/DeleteUserLinkPassword";
-import { EditUserLinkPasswordModal } from "../admin/links-overview/modals/protected-links/EditUserLinkPassword";
 import { InsertUserLinkPasswordModal } from "../admin/links-overview/modals/protected-links/InsertUserLinkPassword";
+import { UpdateUserLinkPasswordModal } from "../admin/links-overview/modals/protected-links/UpdateUserLinkPassword";
 
 export function DashboardModals() {
 
@@ -15,7 +15,7 @@ export function DashboardModals() {
       
       <InsertUserLinkPasswordModal />
       <DeleteUserLinkPasswordModal />
-      <EditUserLinkPasswordModal />
+      <UpdateUserLinkPasswordModal />
 
       <CreateUserLinkExpirationModal />
       <UpdateUserLinkExpirationModal />

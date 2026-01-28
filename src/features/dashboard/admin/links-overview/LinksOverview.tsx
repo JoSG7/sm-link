@@ -18,7 +18,7 @@ import { toggleCreateUserLink } from "@/store/user-modals-slice";
 
 export function LinksOverview() {
 
-  const [userLinks, setUserLinks] = useState<LinkDetails[] | []>([])
+  const [userLinks, setUserLinks] = useState<LinkDetails[]>([])
   const [loading, setLoading] = useState(true)
   const { changes } = useSelector((state: RootState) => state.linkChanges)
   const dispatch = useDispatch()

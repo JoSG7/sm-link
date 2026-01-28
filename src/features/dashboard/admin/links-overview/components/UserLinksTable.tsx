@@ -14,7 +14,6 @@ import {
   type SortingState,
   type VisibilityState,
 } from "@tanstack/react-table"
-import { ArrowUpDown, MoreHorizontal } from "lucide-react"
 
 import { Button } from "@/features/shared/components/shadcn/button"
 import { Checkbox } from "@/features/shared/components/shadcn/checkbox"
@@ -34,17 +33,21 @@ import {
   TableRow,
 } from "@/features/shared/components/shadcn/table"
 import { LinkDetails } from "@/global"
-import { months } from "@/consts"
-import { IconAlertCircleFilled, IconShieldCheckFilled } from "@tabler/icons-react"
+import { IconAlertCircleFilled, IconCopy, IconShieldCheckFilled, IconSortDescending } from "@tabler/icons-react"
 import { useDispatch } from "react-redux"
 import { toggleCreateUserLinkExpiration, toggleCreateUserLinkPassword, toggleDeleteUserLink, toggleUpdateUserLinkExpiration, toggleUpdateUserLinkPassword, } from "@/store/user-modals-slice"
+import { toast } from "sonner"
+import { format, formatDistanceToNow } from "date-fns"
+import { MoreHorizontal } from "lucide-react"
 
 
-export function UserLinksTable({ data, loading }: { data: LinkDetails[] | [], loading: boolean }) {
+export function UserLinksTable({ data, loading }: { data: LinkDetails[], loading: boolean }) {
 
   const [sorting, setSorting] = useState<SortingState>([])
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
-  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({})
+  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({
+    has_password: false
+  })
   const [rowSelection, setRowSelection] = useState({})
   const dispatch = useDispatch()
 
@@ -75,36 +78,44 @@ export function UserLinksTable({ data, loading }: { data: LinkDetails[] | [], lo
       accessorKey: "original",
       header: "Original URL",
       cell: ({ row }) => (
-        <div className="max-w-96 text-nowrap overflow-x-hidden mask-r-from-90">{row.getValue("original")}</div>
+        <div className="max-w-96 font-medium text-nowrap overflow-x-hidden mask-r-from-90">{row.getValue("original")}</div>
       ),
     },
     {
       accessorKey: "short",
-      header: "Short Version",
+      header: "Short URL",
       cell: ({ row }) => (
-        <div className="">{row.getValue("short")}</div>
+        <div className="flex gap-2 items-center">
+          <IconCopy className="size-4 text-neutral-400 hover:text-neutral-100 cursor-pointer"
+            onClick={() =>
+              navigator.clipboard.writeText(`sm-link.vercel.app/${row.getValue("short")}`).then(() => { toast.success("Copied!") })
+            } />
+          {row.getValue("short")}
+        </div>
       ),
     },
     {
       accessorKey: "has_password",
-      header: () => <div className="">Protection</div>,
-      cell: ({ row }) => {
-
-        const hasPassword = row.getValue("has_password") as boolean
-
-        if (!hasPassword) {
-          return (
-            <div className="w-max py-1 px-2 text-xs text-neutral-300 rounded-full border border-neutral-800">
-              Public
-            </div>
-          )
-        }
-
+      enableHiding: true
+    },
+    {
+      accessorKey: "created_at",
+      header: ({ column }) => {
         return (
-          <div className="w-max py-1 px-2 flex items-center justify-center gap-1 text-xs rounded-full border border-neutral-800">
-            <IconShieldCheckFilled className="size-3 text-green-400" />
-            Protected
-          </div>
+          <button className="flex gap-2 items-center cursor-pointer hover:text-white duration-300"
+            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
+            Created At
+            <IconSortDescending className="size-4" />
+          </button>
+        )
+      },
+      cell: ({ row }) => {
+        const date = new Date(row.getValue("created_at") as string)
+        return (
+          <p className="text-sm text-neutral-300"
+            title={format(date, "PPP 'at' HH:mm")}>
+            {formatDistanceToNow(date, { addSuffix: true })}
+          </p>
         )
       },
     },
@@ -128,31 +139,39 @@ export function UserLinksTable({ data, loading }: { data: LinkDetails[] | [], lo
           return (
             <div className="w-max py-1 px-2 flex items-center justify-center gap-1 text-xs rounded-full border border-neutral-800">
               <IconAlertCircleFilled className="size-3 text-amber-300" />
-              {months[date.getMonth()] + " " + date.getDate() + " - " + date.getFullYear()}
+              {format(date, "MMM d, yyyy")}
             </div>
           )
         }
       },
     },
     {
-      accessorKey: "created_at",
-      header: ({ column }) => {
-        return (
-          <Button className="hover:bg-neutral-800 hover:text-white "
-            variant="ghost"
-            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          >
-            Created At
-            <ArrowUpDown />
-          </Button>
-        )
-      },
+      accessorKey: "status",
+      header: () => <div>Status</div>,
       cell: ({ row }) => {
-        const date = new Date(row.getValue("created_at") as string)
+
+        const hasPassword = row.getValue("has_password") as boolean
+
         return (
-          <div className="">{months[date.getMonth()] + " " + date.getDate() + " - " + date.getFullYear()}</div>
+
+          <div className="flex gap-2 text-xs font-medium">
+            {
+              hasPassword ?
+                <p className="py-1 px-2 flex gap-1 items-center rounded-md border border-blue-500/30 bg-blue-500/20 text-blue-400">
+                  <IconShieldCheckFilled className="size-3" />
+                  Locked
+                </p>
+                :
+                <p className="py-1 px-2 flex gap-1 items-center rounded-md border border-green-500/30 bg-green-500/20 text-green-400">
+                  Public
+                </p>
+            }
+
+          </div>
+
         )
-      },
+
+      }
     },
     {
       id: "actions",
@@ -242,15 +261,15 @@ export function UserLinksTable({ data, loading }: { data: LinkDetails[] | [], lo
 
   return (
     <div className="w-full">
-      <div className="overflow-hidden scroll-bar-sm rounded-md border-[1.5px] border-neutral-900">
+      <div className="overflow-hidden scroll-bar-sm rounded-md border-1.5 border-neutral-900 bg-neutral-950">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow className="bg-neutral-900 text-base hover:bg-neutral-900"
+              <TableRow className="bg-neutral-900 hover:bg-neutral-900"
                 key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
                   return (
-                    <TableHead className="px-4"
+                    <TableHead className="px-4 text-sm text-neutral-300 h-14"
                       key={header.id}>
                       {header.isPlaceholder
                         ? null
@@ -269,7 +288,7 @@ export function UserLinksTable({ data, loading }: { data: LinkDetails[] | [], lo
             {
               loading ?
                 <TableRow>
-                  <TableCell className="text-center hover:bg-neutral-950"
+                  <TableCell className="text-center hover:bg-neutral-950 h-20"
                     colSpan={columns.length}>
                     Loading
                   </TableCell>
@@ -277,7 +296,8 @@ export function UserLinksTable({ data, loading }: { data: LinkDetails[] | [], lo
                 :
                 table.getRowModel().rows?.length ? (
                   table.getRowModel().rows.map((row) => (
-                    <TableRow
+
+                    <TableRow className="h-16"
                       key={row.id}
                       data-state={row.getIsSelected() && "selected"}>
                       {
@@ -292,6 +312,7 @@ export function UserLinksTable({ data, loading }: { data: LinkDetails[] | [], lo
                         ))
                       }
                     </TableRow>
+
                   ))
                 )
                   :
