@@ -18,45 +18,17 @@ async function ShortURL({ params }: { params: Promise<{ shortUrl: string }> }) {
   const { data, error } = await supabase.rpc("get_link_with_details", { x_short: shortUrl.trim() }).maybeSingle()
   const link = data as Link | null
 
-  if (error) {
+  if (error) return <p>Has ocurred an unexpected error, please try again</p>
 
-    return <p>Has ocurred an unexpected error, please try again</p>
-  } else if (link) {
+  if (!link) return <p>Link not found</p>
 
-    if (link.is_expired) {
+  if (link.is_expired) return <LinkIsExpired />
 
-      return <LinkIsExpired />
-    } else if (link.has_password) {
+  if (link.has_password) return <AccessLinkForm short={shortUrl} linkID={link.id} />
 
-      return <AccessLinkForm short={shortUrl} linkID={link.id} />
-    } else {
+  supabase.rpc("record_monthly_visits", { x_link_id: link.id })
+  redirect(link.original!)
 
-      await supabase.rpc("record_monthly_visits", { x_link_id: link.id })
-      redirect(link.original!)
-
-    }
-    
-  } else {
-
-    return <p>Link not found</p>
-  }
 }
 
 export default ShortURL
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
