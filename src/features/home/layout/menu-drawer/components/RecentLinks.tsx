@@ -1,9 +1,9 @@
 "use client"
 
 import { LinkDetails } from "@/global"
-import { LinkCardSkeleton } from "../../../components/ui/LoadingSkeleton"
-import { LinkCard } from "./LinkCard"
-import { EmptyLinks } from "../../../components/ui/EmptyLinks"
+import { LinkCardSkeleton } from "../../../ui/LoadingSkeleton"
+import { EmptyLinks } from "../../../ui/EmptyLinks"
+import { SmLinkCard } from "./SmLinkCard"
 
 interface Props {
   loading: boolean
@@ -15,11 +15,11 @@ export function RecentLinks({loading, data} : Props) {
   return (
     <>
       {/* Layout for Cards */}
-      <div className="px-4 pb-4 flex flex-col gap-4 ">
+      <div className="px-4 pb-4 flex flex-col gap-4 xl:px-5 xl:pb-5 xl:gap-5">
         {
           loading ?
             // Skeleton
-            <div className="flex flex-col gap-4 ">
+            <div className="flex flex-col gap-4 xl:gap-5">
               <LinkCardSkeleton />
               <LinkCardSkeleton />
             </div>
@@ -27,7 +27,7 @@ export function RecentLinks({loading, data} : Props) {
             // Cards
             data.length > 0 ?
               data.map((element) => (
-                <LinkCard key={element.id} data={element} />
+                <SmLinkCard key={element.id} data={element} />
               ))
               :
               <EmptyLinks type="recent" />

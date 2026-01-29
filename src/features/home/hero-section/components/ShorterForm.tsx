@@ -5,7 +5,7 @@ import { FormEvent, useState } from "react"
 import { toast } from "sonner"
 import { isURL } from "validator"
 import { NewLink } from "./NewLink"
-import { GuestLinkServices } from "../../services/guest-link.service"
+import { GuestLinkServices } from "../../../../services/guest-link.service"
 import { useDispatch } from "react-redux"
 import { recordChange } from "@/store/link-changes-slice"
 
@@ -14,41 +14,38 @@ export function ShorterForm() {
   const [original, setOriginal] = useState("")
   const [short, setShort] = useState<null | string>(null)
   const [submiting, setSubmiting] = useState(false)
-
   const dispatch = useDispatch()
 
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
 
     e.preventDefault()
-    setSubmiting(true)
-
-    const guestLinkServices = new GuestLinkServices()
-
+        
     if (!isURL(original)) {
-
+      
       toast.error("Invalid URL")
-      setSubmiting(false)
-
+      
     } else {
 
-      guestLinkServices.createLink(original)
-        .then(res => {
+      setSubmiting(true)
+      
+      try {
 
-          if (res.error) {
-            toast.error(res.error)
-          } else {
-            toast.success("Se genero correctamente")
-            setShort(res.response)
-            dispatch(recordChange())
-          }
+        const { response } = await new GuestLinkServices().createSmLink(original)
+        setShort(response)
+        dispatch(recordChange())
+        toast.success("Succes")
 
-        })
-        .finally(() => {
-          setSubmiting(false)
-          setOriginal("")
-        })
+      } catch (e) {
 
+        toast.error((e as Error).message)
+
+      } finally {
+
+        setSubmiting(false)
+        setOriginal("")
+
+      }
     }
   }
 

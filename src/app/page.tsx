@@ -1,8 +1,8 @@
 import { redirect } from "next/navigation";
-import { createSupabaseServer } from "@/lib/supabase/server";
 import { Hero } from "@/features/home/hero-section/Hero";
 import { HomeNavBar } from "@/features/home/layout/nav-bar/Navbar";
 import { MenuDrawer } from "@/features/home/layout/menu-drawer/MenuDrawer";
+import { createSupabaseServer } from "@/lib/supabase/server";
 
 
 export default async function Home() {

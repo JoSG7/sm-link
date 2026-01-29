@@ -1,5 +1,5 @@
-import { AccessLinkForm } from "@/features/home/components/ui/AccessLinkForm";
-import { LinkIsExpired } from "@/features/home/components/ui/LinkIsExpired";
+import { AccessLinkForm } from "@/features/home/ui/AccessLinkForm";
+import { LinkIsExpired } from "@/features/home/ui/LinkIsExpired";
 import { createSupabase } from "@/lib/supabase/client";
 import { redirect } from "next/navigation";
 
@@ -18,46 +18,17 @@ async function ShortURL({ params }: { params: Promise<{ shortUrl: string }> }) {
   const { data, error } = await supabase.rpc("get_link_with_details", { x_short: shortUrl.trim() }).maybeSingle()
   const link = data as Link | null
 
-  if (error) {
+  if (error) return <p>Has ocurred an unexpected error, please try again</p>
 
-    console.log(error)
-    return <p>Has ocurred an unexpected error, please try again</p>
-  } else if (link) {
+  if (!link) return <p>Link not found</p>
 
-    if (link.is_expired) {
+  if (link.is_expired) return <LinkIsExpired />
 
-      return <LinkIsExpired />
-    } else if (link.has_password) {
+  if (link.has_password) return <AccessLinkForm short={shortUrl} linkID={link.id} />
 
-      return <AccessLinkForm short={shortUrl} link_id={link.id} />
-    } else {
+  supabase.rpc("record_monthly_visits", { x_link_id: link.id })
+  redirect(link.original!)
 
-      const { error } = await supabase.rpc("record_monthly_visits", { x_link_id: link.id })
-      if (error) console.log(error)
-      redirect(link.original!)
-    }
-    
-  } else {
-
-    return <p>No hay</p>
-  }
 }
 
 export default ShortURL
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

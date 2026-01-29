@@ -14,12 +14,8 @@ export async function DELETE (request: NextRequest, { params }: Props) {
 
   const { error } = await supabase.from("link").delete().eq("short", shortUrl)
   
-  if (error) {
-
-    console.log(error)
-    return NextResponse.json({ error: "Error in server" })
+  if (error) return NextResponse.json({ error: "Error in server" }, { status: 500 })
     
-  } else {
-    return NextResponse.json({ response: "Deleted Succesfully" })
-  }
+  return NextResponse.json({ response: "Deleted Succesfully" }, { status: 200 })
+  
 }

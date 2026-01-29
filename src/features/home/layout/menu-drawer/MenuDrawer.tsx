@@ -6,17 +6,18 @@ import { motion } from "framer-motion"
 import { IconClockCheck, IconLock } from "@tabler/icons-react"
 import { RecentLinks } from "./components/RecentLinks"
 import { LinkDetails } from "@/global"
-import { Accordion } from "../../components/ui/Accordion"
+import { Accordion } from "../../../shared/components/Accordion"
 import { ProtectedLinks } from "./components/ProtectedLinks"
-import { GuestLinkServices } from "../../services/guest-link.service"
+import { GuestLinkServices } from "../../../../services/guest-link.service"
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "@/store/store-config"
 import { toggleMenuDrawer } from "@/store/modal-slice"
+import { toast } from "sonner"
 
 
 export function MenuDrawer() {
 
-  const [linkDetails, setLinkDetails] = useState<LinkDetails[] | []>([])
+  const [linkDetails, setLinkDetails] = useState<LinkDetails[]>([])
   const [loading, setLoading] = useState(false)
 
   const dispatch = useDispatch()
@@ -49,23 +50,24 @@ export function MenuDrawer() {
 
 
   useEffect(() => {
-    const fetchRecentLinks = () => {
+    const fetchRecentLinks = async () => {
 
       setLoading(true)
-      const guestLinkServices = new GuestLinkServices()
+      
+      try {
 
-      guestLinkServices.getLinks()
-        .then(res => {
+        const res = await new GuestLinkServices().getLinks()
+        setLinkDetails(res)
 
-          if (res.length > 0) {
-            setLinkDetails(res)
-          } else {
-            setLinkDetails([])
-          }
+      } catch (e) {
 
-        })
-        .finally(() => setLoading(false))
+        toast.error((e as Error).message)
 
+      } finally {
+
+        setLoading(false)
+
+      }
     }
 
     fetchRecentLinks()

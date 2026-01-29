@@ -11,11 +11,11 @@ export async function POST (request: NextRequest) {
   if(error){
     
     console.log(error)
-    return NextResponse.json({ error: "Error, look the console" })
+    return NextResponse.json({ error: "Unexpected error in Server" }, { status: 500 })
   } else {
 
     // return the original link, else return null
-    return NextResponse.json({ response: data })
+    return NextResponse.json({ response: data }, { status: 200 })
   }
 
 }

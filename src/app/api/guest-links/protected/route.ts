@@ -1,6 +1,5 @@
 import { getGuestID } from "@/features/shared/auth/cookies";
 import { createSupabase } from "@/lib/supabase/client";
-import { GuestLinks } from "@/global";
 import { NextRequest, NextResponse } from "next/server";
 
 
@@ -11,30 +10,19 @@ export async function POST(request: NextRequest) {
   const guestID = await getGuestID()
   const supabase = createSupabase(guestID)
 
-  if (!guestID) {
+  if (!guestID) return NextResponse.json({ error: "Unauthorized" }, { status: 403 })
 
-    return NextResponse.json({ error: "Unauthorized" })
-  } else {
+  const { error } = await supabase.rpc("insert_link_password", {
+    x_short: short,
+    x_password: password
+  })
 
-
-    const { data, error } = await supabase.rpc("get_link_by_short", { short_url: short })
-
-    if (!data || error) {
-
-      console.log(error)
-      return NextResponse.json({ error: "Link not found" })
-    }
-
-    const link = data as GuestLinks
-    const { error: e } = await supabase.rpc("insert_protected_link", { x_password: password, x_link_id: link.id })
-
-    if (e) {
-
-      console.log(e)
-      return NextResponse.json({ error: "Failed to protect link" })
-    }
-
-    return NextResponse.json({ response: "Protecting Succes" })
+  if(error) {
+    console.log(error)
+    return NextResponse.json({ error: "Unauthorized" }, { status: 403 })
   }
+
+  return NextResponse.json({ response: "Success" }, { status: 200 })
+
 }
 

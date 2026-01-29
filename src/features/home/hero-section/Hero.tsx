@@ -4,7 +4,7 @@ import { IconChartHistogram, IconClockExclamation, IconShieldCheckFilled, IconWo
 import { FeatureCard } from './components/FeatureCard'
 import { ShorterForm } from './components/ShorterForm'
 import { HeroTitle } from './components/Title'
-import { GitHubAuthButton } from '../components/auth/AuthButtonClient'
+// import { GitHubAuthButton } from '../auth/SignInButton'
 
 export function Hero() {
 
@@ -24,7 +24,7 @@ export function Hero() {
             <HeroTitle />
 
             <div className="hidden xl:flex">
-              <GitHubAuthButton />
+              {/* <GitHubAuthButton /> */}
             </div>
           </section>
 
