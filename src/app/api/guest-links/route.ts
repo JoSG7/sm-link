@@ -15,8 +15,6 @@ export async function GET() {
   const guestID = await getGuestID()
   const supabase = createSupabase(guestID)
 
-  if (!guestID) return NextResponse.json({ error: "Unauthorized" }, { status: 403 })
-
   const { data, error } = await supabase.rpc("get_links_with_details")
 
   if (error) return NextResponse.json({ error: "Error in Server" }, { status: 500 })
