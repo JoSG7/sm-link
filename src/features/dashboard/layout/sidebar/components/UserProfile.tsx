@@ -1,6 +1,6 @@
 "use client"
 
-import { SignOutButton } from "@/features/dashboard/components/SignOutButton"
+import { SignOutButton } from "@/features/dashboard/auth/SignOutButton"
 import { RootState } from "@/store/store-config"
 import { useSelector } from "react-redux"
 import { AnimatePresence, motion } from "framer-motion"

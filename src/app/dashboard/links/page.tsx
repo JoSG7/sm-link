@@ -1,4 +1,4 @@
-import { LinksOverview } from "@/features/dashboard/admin/links-overview/LinksOverview";
+import { LinksOverview } from "@/features/dashboard/links-overview/LinksOverview";
 
 export default function AdminLinks () {
 

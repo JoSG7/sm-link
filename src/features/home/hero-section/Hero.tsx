@@ -4,7 +4,7 @@ import { IconChartHistogram, IconClockExclamation, IconShieldCheckFilled, IconWo
 import { FeatureCard } from './components/FeatureCard'
 import { ShorterForm } from './components/ShorterForm'
 import { HeroTitle } from './components/Title'
-import { GitHubAuthButton } from '../components/auth/SignInButton'
+import { GitHubAuthButton } from '../auth/SignInButton'
 
 export function Hero() {
 

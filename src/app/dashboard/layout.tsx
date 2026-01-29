@@ -1,5 +1,5 @@
 import { AuthListener } from "@/features/dashboard/layout/AuthListener";
-import { SideBar } from "@/features/dashboard/layout/side-bar/SideBar";
+import { SideBar } from "@/features/dashboard/layout/sidebar/SideBar";
 import { createSupabaseServer } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 import { ReactNode } from "react";

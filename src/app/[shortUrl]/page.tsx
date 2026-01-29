@@ -1,5 +1,5 @@
-import { AccessLinkForm } from "@/features/home/components/ui/AccessLinkForm";
-import { LinkIsExpired } from "@/features/home/components/ui/LinkIsExpired";
+import { AccessLinkForm } from "@/features/home/ui/AccessLinkForm";
+import { LinkIsExpired } from "@/features/home/ui/LinkIsExpired";
 import { createSupabase } from "@/lib/supabase/client";
 import { redirect } from "next/navigation";
 

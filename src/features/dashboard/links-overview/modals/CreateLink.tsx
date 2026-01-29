@@ -13,7 +13,7 @@ import { toast } from "sonner"
 import { toggleCreateUserLink } from "@/store/user-modals-slice"
 
 
-export function CreateUserLink() {
+export function CreateUserLinkModal() {
 
   const [submiting, setSubmiting] = useState(false)
   const [original, setOriginal] = useState("")

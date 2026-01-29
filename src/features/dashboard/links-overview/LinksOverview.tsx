@@ -7,12 +7,12 @@ import { SearchSelect } from "./components/SearchSelect";
 import { SearchBar } from "./components/SearchBar";
 import { useEffect, useState } from "react";
 import { LinkDetails } from "@/global";
-import { UserLinkServices } from "../../../../services/user-link.service";
 import { RootState } from "@/store/store-config";
 import { useDispatch, useSelector } from "react-redux";
 import { UserLinksTable } from "./components/UserLinksTable";
 import { toast } from "sonner";
 import { toggleCreateUserLink } from "@/store/user-modals-slice";
+import { UserLinkServices } from "@/services/user-link.service";
 
 
 

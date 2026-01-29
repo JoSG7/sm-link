@@ -20,7 +20,7 @@ interface ActionButtons {
 }
 
 
-export function LinkCard({ data }: { data: LinkDetails }) {
+export function SmLinkCard({ data }: { data: LinkDetails }) {
 
   const url = new URL(data.original)
   const domain = url.hostname

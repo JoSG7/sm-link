@@ -4,7 +4,7 @@ export function LinkCardSkeleton() {
 
     <article className="p-4 rounded-xl border border-neutral-800
     2xl:p-5 3xl:p-6 4xl:p-8">
-      
+
       <section className="flex justify-between items-center relative">
 
         {/* Original and Short section */}
