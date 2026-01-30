@@ -15,19 +15,14 @@ export async function DELETE(request: NextRequest, { params }: { params: Promise
 
   if (!data || error) {
 
-    console.log(error)
     return NextResponse.json({ error: "Link not found" }, { status: 500 })
 
   } else {
 
     const { error } = await supabase.from("protected_link").delete().eq("link_id", data.id)
 
-    if (error) {
-
-      console.log(error)
-      return NextResponse.json({ error: "Error in Server" }, { status: 500 })
-    }
-
+    if (error) return NextResponse.json({ error: "Error in Server" }, { status: 500 })
+    
     return NextResponse.json({ response: "Removed Succesfully" }, { status: 200 })
     
   }
