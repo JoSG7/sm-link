@@ -1,26 +1,19 @@
 export interface SmLink {
   id: string
-  original: string
   short: string
+  original: string | null
+  has_password: boolean
+  is_expired: boolean
 }
 
-export interface Metric {
-  id: string
-  views: number
-  year: number
-  month: number
-  link_id: string
-  created_at: string
-}
 
 export interface LinkDetails {
   id: string
-  original: string
   short: string
-  created_at: string
+  original: string
   has_password: boolean
-  has_expiration: boolean
-  has_user_id: boolean
   expires_at: string | null
   is_expired: boolean
+  has_user_id: boolean
+  created_at: string
 }

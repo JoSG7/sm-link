@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { Hero } from "@/features/home/hero-section/Hero";
-import { HomeNavBar } from "@/features/home/layout/nav-bar/Navbar";
+import { HomeNavBar } from "@/features/home/layout/navbar/Navbar";
 import { MenuDrawer } from "@/features/home/layout/menu-drawer/MenuDrawer";
 import { createSupabaseServer } from "@/lib/supabase/server";
 

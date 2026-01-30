@@ -38,7 +38,7 @@ export function SmLinkCard({ data }: { data: LinkDetails }) {
     {
       icon: <IconClockCheck className="size-5 " />,
       onClick: () => { dispatch(toggleSetExpiration(data.short)) },
-      disabled: data.has_user_id || data.has_expiration
+      disabled: data.has_user_id || data.expires_at ? true : false
     },
     {
       icon: <IconShieldLockFilled className="size-5 " />,

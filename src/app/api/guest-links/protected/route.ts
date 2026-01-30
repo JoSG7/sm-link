@@ -17,11 +17,8 @@ export async function POST(request: NextRequest) {
     x_password: password
   })
 
-  if(error) {
-    console.log(error)
-    return NextResponse.json({ error: "Unauthorized" }, { status: 403 })
-  }
-
+  if(error) return NextResponse.json({ error: "Unauthorized" }, { status: 403 })
+  
   return NextResponse.json({ response: "Success" }, { status: 200 })
 
 }

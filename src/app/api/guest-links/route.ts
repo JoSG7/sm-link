@@ -15,7 +15,7 @@ export async function GET() {
   const guestID = await getGuestID()
   const supabase = createSupabase(guestID)
 
-  const { data, error } = await supabase.rpc("get_links_with_details")
+  const { data, error } = await supabase.rpc("get_guest_links")
 
   if (error) return NextResponse.json({ error: "Error in Server" }, { status: 500 })
 
@@ -44,7 +44,7 @@ export async function POST(request: NextRequest) {
 
   // verifie if the link already exists in the DB
   const supabase = createSupabase(guestID)
-  const { data, error } = await supabase.from("link").select("*").eq("original", original)
+  const { data, error } = await supabase.from("link").select("id").eq("original", original)
 
   if (error) {
 
@@ -69,7 +69,7 @@ export async function POST(request: NextRequest) {
       console.log(error)
       // there is a policy in Supabase that limits the number of short links each guest can create
       if (error.code == '42501') { return NextResponse.json({ error: "You have reached the limit of links" }, { status: 500 }) }
-      return NextResponse.json({ error: "Error in Sercer" }, { status: 500 })
+      return NextResponse.json({ error: "Error in Server" }, { status: 500 })
     }
 
     const response = NextResponse.json({ response: shortLink }, { status: 200 })

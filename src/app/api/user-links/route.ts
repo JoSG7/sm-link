@@ -15,7 +15,7 @@ export async function GET() {
 
   const { data, error } = await supabase.rpc("get_user_links")
 
-  if(error) return NextResponse.json({ error: "Error in server" }, { status: 500 })
+  if(error) return NextResponse.json([])
 
   return NextResponse.json(data, { status: 200 })
 
