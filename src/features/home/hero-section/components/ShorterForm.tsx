@@ -53,7 +53,7 @@ export function ShorterForm() {
   return (
     <>
       <section className="rounded-lg flex-col justify-center xl:p-6 xl:h-full xl:flex 
-      xl:border-[1.5px] xl:border-neutral-900 xl:bg-neutral-950/50">
+      xl:border-1.5 xl:border-neutral-900 xl:bg-neutral-950/50">
 
         <form className="overflow-hidden "
           onSubmit={handleSubmit}>
