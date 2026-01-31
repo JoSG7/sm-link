@@ -20,15 +20,15 @@ export function ShorterForm() {
   const handleSubmit = async (e: FormEvent) => {
 
     e.preventDefault()
-        
+
     if (!isURL(original)) {
-      
+
       toast.error("Invalid URL")
-      
+
     } else {
 
       setSubmiting(true)
-      
+
       try {
 
         const { response } = await new GuestLinkServices().createSmLink(original)
@@ -58,36 +58,43 @@ export function ShorterForm() {
         <form className="overflow-hidden "
           onSubmit={handleSubmit}>
 
-          <label className="hidden pb-5 items-center gap-2 text-lg font-medium xl:flex">
+          <label className="hidden pb-4 items-center gap-2 text-lg font-medium xl:flex">
             <IconPaperclip className="size-5" />
             Paste a long URL
           </label>
 
           <section className="flex">
 
-            <input className="w-full p-2 pl-3 pr-4 text-neutral-200 outline-none rounded-l-lg border-[1.5px] 
-            border-r-0 border-neutral-800 grow placeholder:text-neutral-700 focus:border-green-400 
-            sm:p-3"
-              placeholder="https://example.com/long-url-to-short"
-              disabled={submiting}
-              autoComplete="off"
-              value={original}
-              type="url"
-              required
-              onChange={(e) => setOriginal(e.currentTarget.value.trim())} />
+            <article className="flex grow">
+              <div className="p-3 rounded-s-lg border-1.5 border-e-0 border-neutral-800 bg-neutral-900/80">
+                <IconPaperclip className="" />
+              </div>
 
-            <button className="py-2 px-3 flex gap-1 items-center rounded-r-lg bg-gradient-to-r from-green-500 to-blue-700 
+              <input className="w-full p-3 text-neutral-200 outline-none border-1.5 border-r-0 bg-neutral-950
+              border-neutral-800 placeholder:text-neutral-700 focus:border-green-400 "
+                placeholder="Paste a long URL"
+                disabled={submiting}
+                autoComplete="off"
+                value={original}
+                type="url"
+                required
+                onChange={(e) => setOriginal(e.currentTarget.value.trim())} />
+            </article>
+
+            <button className="p-3 flex gap-1 justify-center items-center rounded-r-lg
+            bg-gradient-to-r from-green-500 to-blue-700 
             cursor-pointer disabled:opacity-30 xl:px-5"
               disabled={submiting}>
 
               <IconBolt className="size-5 lg:size-6 " />
-              Short
+              <span className="">Short</span>
             </button>
 
           </section>
-        </form>
 
-        <div id="new-link" />
+          <div id="new-link" />
+
+        </form>
 
         <p className="mt-6 text-center text-neutral-400 text-xs
         lg:block ">

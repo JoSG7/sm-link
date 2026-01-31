@@ -17,8 +17,8 @@ export function NewLink({ short }: { short: string }) {
 
   return createPortal(
 
-    <motion.section className="mt-6 py-2 px-3 flex items-center justify-between text-sm text-neutral-200 rounded-lg 
-    border-[1.5px] border-neutral-800 bg-neutral-950/70 
+    <motion.section className="mt-5 p-3 flex items-center justify-between text-sm text-neutral-200 rounded-lg 
+    border-1.5 border-neutral-800 bg-neutral-950 
     xs:text-base sm:p-3 "
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
@@ -31,15 +31,16 @@ export function NewLink({ short }: { short: string }) {
       {/* these buttons is hidden in desktop */}
       <div className="flex items-center gap-2 ">
         <button className="p-1 cursor-pointer"
-          onClick={copyToClipboard}>
-          <IconCopyPlusFilled className="size-4 text-green-400
+          onClick={copyToClipboard}
+          type="button">
+          <IconCopyPlusFilled className="size-5 text-green-400
           sm:size-5" />
         </button>
 
         <a href={`https://sm-link.vercel.app/${short}`}
           target="_blank"
           aria-label="Use the new Link">
-          <IconExternalLink className="size-4 text-blue-400
+          <IconExternalLink className="size-5 text-blue-400
           sm:size-5" />
         </a>
       </div>
