@@ -1,12 +1,42 @@
 "use client"
 
 import { IconChartHistogram, IconClockExclamation, IconShieldCheckFilled, IconWorld } from '@tabler/icons-react'
-import { FeatureCard } from './components/FeatureCard'
 import { ShorterForm } from './components/ShorterForm'
 import { HeroTitle } from './components/Title'
-import { GitHubAuthButton } from '../auth/SignInButton'
+// import { GitHubAuthButton } from '../auth/SignInButton'
+import { ReactNode } from 'react'
+
+interface FeatureCard {
+  title: string
+  icon: ReactNode
+  color: "blue" | "green"
+}
 
 export function Hero() {
+
+  const featureCards: FeatureCard[] = [
+    {
+      title: "Global CDN for fast redirects",
+      icon: <IconWorld className="text-blue-400 " />,
+      color: "blue"
+    },
+    {
+      title: "Advanced Security",
+      icon: <IconShieldCheckFilled className="text-green-400 " />,
+      color: "green"
+    },
+    {
+      title: "Real-Time Analytics",
+      icon: <IconChartHistogram className="text-blue-400 " />,
+      color: "blue"
+    },
+    {
+      title: "Custom Expirations",
+      icon: <IconClockExclamation className="text-green-400 " />,
+      color: "green"
+    }
+  ]
+
 
   return (
 
@@ -24,7 +54,7 @@ export function Hero() {
             <HeroTitle />
 
             <div className="hidden xl:flex">
-              <GitHubAuthButton />
+              {/* <GitHubAuthButton /> */}
             </div>
           </section>
 
@@ -36,23 +66,38 @@ export function Hero() {
         {/* Features Cards Section */}
         <section className="w-full grid grid-cols-1 gap-4 justify-center
         md:grid-cols-2 lg:flex">
+          {
+            featureCards.map((el, i) => {
 
-          <FeatureCard title="Global CDN for fast redirects"
-            icon={<IconWorld className="text-blue-400 " />} />
+              if (el.color == "blue") return (
+                <article className="flex p-3 gap-3 items-center rounded-lg text-neutral-200 grow
+                border-1.5 border-neutral-900 bg-neutral-850"
+                  key={i}>
 
-          <FeatureCard title="Advanced Security"
-            icon={<IconShieldCheckFilled className="text-green-400 " />} />
+                  <div className="p-2 rounded-full bg-blue-500/10">
+                    {el.icon}
+                  </div>
+                  <p>{el.title}</p>
 
-          <FeatureCard title="Real-Time Analytics"
-            icon={<IconChartHistogram className="text-blue-400 " />} />
+                </article>
+              )
 
-          <FeatureCard title="Custom Expirations"
-            icon={<IconClockExclamation className="text-green-400 " />} />
+              return (
+                <article className="flex p-3 gap-3 items-center rounded-lg text-neutral-200 grow
+                border-1.5 border-neutral-900 bg-neutral-850"
+                  key={i}>
 
+                  <div className="p-2 rounded-full bg-green-500/10">
+                    {el.icon}
+                  </div>
+                  <p>{el.title}</p>
+
+                </article>
+              )
+            })
+          }
         </section>
-
       </main>
     </section>
-
   )
 }
