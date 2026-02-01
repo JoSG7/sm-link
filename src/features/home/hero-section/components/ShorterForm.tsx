@@ -63,16 +63,13 @@ export function ShorterForm() {
             Paste a long URL
           </label>
 
-          <section className="flex">
+          <section className="flex text-sm">
 
             <article className="flex grow">
-              <div className="p-3 rounded-s-lg border-1.5 border-e-0 border-neutral-800 bg-neutral-900/80">
-                <IconPaperclip className="" />
-              </div>
 
-              <input className="w-full p-3 text-neutral-200 outline-none border-1.5 border-r-0 bg-neutral-950
+              <input className="w-full p-3 text-neutral-200 outline-none rounded-s-lg border-1.5 border-r-0 bg-neutral-900/80
               border-neutral-800 placeholder:text-neutral-700 focus:border-green-400 "
-                placeholder="Paste a long URL"
+                placeholder="https://example.com/long-url"
                 disabled={submiting}
                 autoComplete="off"
                 value={original}
@@ -81,7 +78,7 @@ export function ShorterForm() {
                 onChange={(e) => setOriginal(e.currentTarget.value.trim())} />
             </article>
 
-            <button className="p-3 flex gap-1 justify-center items-center rounded-r-lg
+            <button className="p-3 px-4 flex gap-1 justify-center items-center rounded-r-lg
             bg-gradient-to-r from-green-500 to-blue-700 
             cursor-pointer disabled:opacity-30 xl:px-5"
               disabled={submiting}>
