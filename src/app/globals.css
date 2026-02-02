@@ -5,7 +5,6 @@
 
 @theme {
   --breakpoint-xs: 25.75rem;
-  --breakpoint-xl: 79.5rem;
   --breakpoint-3xl: 118.75rem;
   --breakpoint-4xl: 158.75rem;
   --color-neutral-850: rgb(11,11,12);
@@ -33,7 +32,6 @@
   font-size: 4.1rem;
   line-height: 1;
 }
-
 
 @utility border-1.5 {
 

@@ -52,14 +52,14 @@ export function ShorterForm() {
 
   return (
     <>
-      <section className="rounded-lg flex-col justify-center xl:p-6 xl:h-full xl:flex 
-      xl:border-1.5 xl:border-neutral-900 xl:bg-neutral-950/50">
+      <section className="rounded-3xl flex-col justify-center
+      lg:p-5 lg:h-full lg:flex lg:border-1.5 lg:border-neutral-800/70 lg:bg-neutral-950">
 
         <form className="overflow-hidden "
           onSubmit={handleSubmit}>
 
-          <label className="hidden pb-4 items-center gap-2 text-lg font-medium xl:flex">
-            <IconPaperclip className="size-5" />
+          <label className="hidden pb-4 items-center gap-2 font-medium lg:flex">
+            <IconPaperclip className="size-4" />
             Paste a long URL
           </label>
 
@@ -80,16 +80,16 @@ export function ShorterForm() {
 
             <button className="p-3 px-4 flex gap-1 justify-center items-center rounded-r-lg
             bg-gradient-to-r from-green-500 to-blue-700 
-            cursor-pointer disabled:opacity-30 xl:px-5"
+            cursor-pointer disabled:opacity-30 lg:px-5"
               disabled={submiting}>
 
-              <IconBolt className="size-5 lg:size-6 " />
+              <IconBolt className="size-5 xl:size-6 " />
               <span className="">Short</span>
             </button>
 
           </section>
 
-          <div id="new-link" />
+          <NewLink short={short} />
 
         </form>
 
@@ -102,12 +102,6 @@ export function ShorterForm() {
         </p>
 
       </section>
-
-
-      {/* Here’s the new link inside the #new-link container. */}
-      {
-        short && <NewLink short={short} />
-      }
     </>
   )
 }
