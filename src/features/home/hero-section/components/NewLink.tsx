@@ -13,7 +13,7 @@ export function NewLink({ short }: { short: string | null }) {
 
   return (
 
-    <section className="mt-5 flex gap-3 text-sm xs:text-base lg:text-sm">
+    <section className="mt-5 flex gap-3 text-sm xs:text-base lg:text-sm lg:gap-4">
 
       <p className="p-3 text-nowrap overflow-hidden rounded-lg grow
       border-1.5 border-neutral-800 bg-neutral-900/80 ">
