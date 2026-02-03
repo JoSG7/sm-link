@@ -19,7 +19,7 @@ export function HomeNavBar() {
       xl:w-full xl:max-w-8xl">
 
         <div className="flex items-center gap-1
-        xl:gap-2 ">
+        lg:gap-2 ">
 
           <Image className="w-10 h-7 "
           src="/imgs/Espada1.png" 

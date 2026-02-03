@@ -1,6 +1,6 @@
 "use client"
 
-import { IconCalendar, IconClockCheck, IconCopy, IconExclamationCircle, IconExternalLink, IconShieldLockFilled, IconTrashFilled } from "@tabler/icons-react"
+import { IconCalendar, IconClockCheck, IconCopy, IconExternalLink, IconShieldLockFilled, IconTrashFilled, IconUserFilled } from "@tabler/icons-react"
 import { months } from "@/consts"
 import { toast } from "sonner"
 import { LinkDetails } from "@/global"
@@ -95,13 +95,10 @@ export function SmLinkCard({ data }: { data: LinkDetails }) {
 
       {/* Buttons section */}
       <div className="flex justify-end items-center gap-3 relative">
-
         {
           data.has_user_id && (
-            <div className="absolute left-0 py-2 px-3 flex gap-2 items-center rounded-lg text-sm 
-            bg-gradient-to-r from-green-400/80 to-sky-500/80">
-              <IconExclamationCircle className="size-4" />
-              On your Account
+            <div className="absolute left-0 p-2.5 rounded-full border border-neutral-800">
+              <IconUserFilled className="size-4" />
             </div>
           )
         }

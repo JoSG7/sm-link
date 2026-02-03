@@ -1,49 +1,51 @@
 "use client"
 
 import { IconCopyPlusFilled, IconExternalLink } from "@tabler/icons-react";
-import { createPortal } from "react-dom";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
 
-export function NewLink({ short }: { short: string }) {
-
-  const container = document.getElementById("new-link")
+export function NewLink({ short }: { short: string | null }) {
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(`sm-link.vercel.app/${short}`).then(() => { toast.success("Copied!") })
   }
 
-  if (!container) return null
+  return (
 
-  return createPortal(
+    <section className="mt-5 flex gap-3 text-sm xs:text-base lg:text-sm lg:gap-4">
 
-    <motion.section className="mt-6 py-2 px-3 flex items-center justify-between text-sm text-neutral-200 rounded-lg 
-    border-[1.5px] border-neutral-800 bg-neutral-950/70 
-    xs:text-base sm:p-3 "
-      initial={{ y: -50, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.4, ease: "easeOut" }}>
-
-      <p>
-        sm-link.vercel.app/{short}
+      <p className="p-3 text-nowrap overflow-hidden rounded-lg grow
+      border-1.5 border-neutral-800 bg-neutral-900/80 ">
+        {
+          short ?
+            <span>sm-link.vercel.app/{short}</span>
+            :
+            <span className="text-neutral-500">sm-link.vercel.app/abc123 (Example) </span>
+        }
       </p>
 
-      {/* these buttons is hidden in desktop */}
-      <div className="flex items-center gap-2 ">
-        <button className="p-1 cursor-pointer"
-          onClick={copyToClipboard}>
-          <IconCopyPlusFilled className="size-4 text-green-400
-          sm:size-5" />
-        </button>
+      {
+        short &&
+        <motion.div className="flex items-center gap-3 p-3 rounded-lg border-1.5 border-neutral-800 bg-neutral-900/80"
+          initial={{ y: 10, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}>
+          <button className="cursor-pointer"
+            onClick={copyToClipboard}
+            type="button">
+            <IconCopyPlusFilled className="size-5 text-green-400
+            xs:size-5" />
+          </button>
 
-        <a href={`https://sm-link.vercel.app/${short}`}
-          target="_blank"
-          aria-label="Use the new Link">
-          <IconExternalLink className="size-4 text-blue-400
-          sm:size-5" />
-        </a>
-      </div>
-    </motion.section>,
-    container
+          <Link className=""
+            href={`https://sm-link.vercel.app/${short}`}
+            target="_blank"
+            aria-label="Use the new Link">
+            <IconExternalLink className="size-5 text-blue-400
+            xs:size-5" />
+          </Link>
+        </motion.div>
+      }
+    </section>
   )
 }
