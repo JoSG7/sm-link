@@ -261,7 +261,7 @@ export function UserLinksTable({ data, loading }: { data: LinkDetails[], loading
 
   return (
     <div className="w-full">
-      <div className="overflow-hidden scroll-bar-sm rounded-md border-1.5 border-neutral-900 bg-neutral-950">
+      <div className="overflow-hidden rounded-md border-1.5 border-neutral-900 bg-neutral-950">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (

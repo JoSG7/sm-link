@@ -52,15 +52,26 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-@media (max-width: 1200px) {}
 
 ::-webkit-scrollbar {
   width: 0px;
-
 }
 
-.scroll-bar-sm::-webkit-scrollbar {
+.scroll-sm::-webkit-scrollbar {
   width: 10px;
+}
+
+.scroll-sm::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scroll-sm::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  /* border-radius: 999px; */
+}
+
+.scroll-sm::-webkit-scrollbar-thumb:hover {
+  background-color: #171717;
 }
 
 
