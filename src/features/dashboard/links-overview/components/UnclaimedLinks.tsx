@@ -6,7 +6,7 @@ import { DomainLogo } from "@/features/shared/components/DomainLogo"
 import { LinkDetails } from "@/global"
 import { recordChange } from "@/store/link-changes-slice"
 import { RootState } from "@/store/store-config"
-import { IconCheck, IconLoader, IconX } from "@tabler/icons-react"
+import { IconCheck, IconEyeCancel, IconLoader, IconX } from "@tabler/icons-react"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { toast } from "sonner"
@@ -56,6 +56,15 @@ export function UnclaimedLinks() {
 
   const dispatch = useDispatch()
 
+  const hideUnclaimedLinks = () => {
+
+    window.localStorage.setItem("unclaimedlinks-hidden", "true")
+    toast.success("Saved")
+    setHidden(true)
+
+  }
+
+
   const { changes } = useSelector(
     (state: RootState) => state.linkChanges
   )
@@ -75,19 +84,24 @@ export function UnclaimedLinks() {
 
     const fetchGuestLinks = async () => {
 
-      try {
-        
-        const response = await new GuestLinkServices().getLinks()
-        setGuestLinks(response.filter(el => !el.has_user_id))
+      const isHidden = window.localStorage.getItem("unclaimedlinks-hidden") == "true"
 
-      } catch (e) {
-        
-        toast.error((e as Error).message)
+      if (!isHidden) {
 
-      } finally {
-
-        setLoading(false)
-
+        try {
+  
+          const response = await new GuestLinkServices().getLinks()
+          setGuestLinks(response.filter(el => !el.has_user_id))
+  
+        } catch (e) {
+  
+          toast.error((e as Error).message)
+  
+        } finally {
+  
+          setLoading(false)
+  
+        }
       }
     }
 
@@ -110,9 +124,9 @@ export function UnclaimedLinks() {
         const { response } = await new UserLinkServices().claim(selectedLinks)
         toast.success(response)
         dispatch(recordChange())
-        
+
       } catch (e) {
-        
+
         toast.error((e as Error).message)
 
       } finally {
@@ -152,7 +166,15 @@ export function UnclaimedLinks() {
               </p>
             </div>
 
-            <div className="flex items-center">
+            <div className="flex items-center gap-3">
+              <button className="py-2 px-4 flex items-center gap-2 rounded-lg cursor-pointer hover:scale-105 duration-300
+              bg-neutral-800"
+                onClick={hideUnclaimedLinks}
+                disabled={submiting}>
+                <IconEyeCancel className="lg:size-4" />
+                No show more
+              </button>
+
               <button className="py-2 px-4 flex items-center gap-2 rounded-lg cursor-pointer hover:scale-105 duration-300
               bg-gradient-to-r from-green-500 to-sky-600 disabled:opacity-50"
                 onClick={handleClaim}

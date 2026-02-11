@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { ModalsRoot } from "@/features/shared/modals/ModalsRoot";
 import { ReduxProvider } from "@/store/ReduxProvider";
 import "./globals.css";
+import { TooltipProvider } from "@/features/shared/components/shadcn/tooltip";
 
 export const metadata: Metadata = {
   title: "SmLink",
@@ -25,11 +26,13 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body className={`antialiased ${lexend.className} overflow-y-auto min-h-screen relative `}>
         <SpeedInsights />
 
-        <ReduxProvider>
-          <Toaster richColors />
-          <ModalsRoot />
-          {children}
-        </ReduxProvider>
+        <TooltipProvider>
+          <ReduxProvider>
+            <Toaster richColors />
+            <ModalsRoot />
+            {children}
+          </ReduxProvider>
+        </TooltipProvider>
       </body>
     </html>
 

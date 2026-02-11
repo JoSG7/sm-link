@@ -1,13 +1,23 @@
 "use client"
 
-export function SearchBar() {
+import { ChangeEvent } from "react"
+
+
+export function SearchBar({ onChange }: { onChange: (value: string) => void }) {
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+
+    onChange(e.currentTarget.value)
+
+  }
 
   return (
 
-    <input className="w-96 p-3 text-sm rounded-lg border-2 border-neutral-900 bg-neutral-900/50 placeholder:text-neutral-500
-    focus:border-green-500/80"
+    <input className="w-64 text-sm py-2 px-3 rounded-lg border-1.5 border-neutral-800/70 bg-neutral-950
+    focus:border-green-400"
       type="text"
-      placeholder="Search by original link" />
+      placeholder="Search by original URL"
+      onChange={(e) => handleChange(e)} />
 
   )
 

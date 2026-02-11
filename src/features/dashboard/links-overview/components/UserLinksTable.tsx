@@ -2,42 +2,17 @@
 
 import { useState } from "react"
 
-import {
-  flexRender,
-  getCoreRowModel,
-  getFilteredRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
-  useReactTable,
-  type ColumnDef,
-  type ColumnFiltersState,
-  type SortingState,
-  type VisibilityState,
-} from "@tanstack/react-table"
-
+import { flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, useReactTable, type ColumnDef, type ColumnFiltersState, type SortingState, type VisibilityState } from "@tanstack/react-table"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/features/shared/components/shadcn/dropdown-menu"
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/features/shared/components/shadcn/table"
 import { Button } from "@/features/shared/components/shadcn/button"
 import { Checkbox } from "@/features/shared/components/shadcn/checkbox"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/features/shared/components/shadcn/dropdown-menu"
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/features/shared/components/shadcn/table"
 import { LinkDetails } from "@/global"
-import { IconAlertCircleFilled, IconCopy, IconShieldCheckFilled, IconSortDescending } from "@tabler/icons-react"
 import { useDispatch } from "react-redux"
-import { toggleCreateUserLinkExpiration, toggleCreateUserLinkPassword, toggleDeleteUserLink, toggleUpdateUserLinkExpiration, toggleUpdateUserLinkPassword, } from "@/store/user-modals-slice"
 import { toast } from "sonner"
 import { format, formatDistanceToNow } from "date-fns"
+import { toggleCreateUserLinkExpiration, toggleCreateUserLinkPassword, toggleDeleteUserLink, toggleUpdateUserLinkExpiration, toggleUpdateUserLinkPassword } from "@/store/user-modals-slice"
+import { IconChevronLeft, IconChevronRight, IconChevronsLeft, IconChevronsRight, IconCopy, IconSortDescending } from "@tabler/icons-react"
 import { MoreHorizontal } from "lucide-react"
 
 
@@ -46,7 +21,8 @@ export function UserLinksTable({ data, loading }: { data: LinkDetails[], loading
   const [sorting, setSorting] = useState<SortingState>([])
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({
-    has_password: false
+    has_password: false,
+    is_expired: false
   })
   const [rowSelection, setRowSelection] = useState({})
   const dispatch = useDispatch()
@@ -99,6 +75,10 @@ export function UserLinksTable({ data, loading }: { data: LinkDetails[], loading
       enableHiding: true
     },
     {
+      accessorKey: "is_expired",
+      enableHiding: true
+    },
+    {
       accessorKey: "created_at",
       header: ({ column }) => {
         return (
@@ -128,7 +108,7 @@ export function UserLinksTable({ data, loading }: { data: LinkDetails[], loading
 
         if (!expiresAt) {
           return (
-            <div className="w-max py-1 px-2 text-xs text-neutral-300 rounded-full border border-neutral-800">
+            <div className="w-max py-1 px-2 text-xs text-neutral-300 rounded-md border border-neutral-800">
               No expires
             </div>
           )
@@ -137,10 +117,10 @@ export function UserLinksTable({ data, loading }: { data: LinkDetails[], loading
           const date = new Date(expiresAt)
 
           return (
-            <div className="w-max py-1 px-2 flex items-center justify-center gap-1 text-xs rounded-full border border-neutral-800">
-              <IconAlertCircleFilled className="size-3 text-amber-300" />
+            <p className="w-max py-1 px-2 flex items-center justify-center gap-1 text-xs rounded-md text-yellow-300
+            border border-yellow-500/30 bg-yellow-500/20">
               {format(date, "MMM d, yyyy")}
-            </div>
+            </p>
           )
         }
       },
@@ -150,7 +130,8 @@ export function UserLinksTable({ data, loading }: { data: LinkDetails[], loading
       header: () => <div>Status</div>,
       cell: ({ row }) => {
 
-        const hasPassword = row.getValue("has_password") as boolean
+        const hasPassword = row.getValue<boolean>("has_password")
+        const isExpired = row.getValue<boolean>("is_expired")
 
         return (
 
@@ -158,7 +139,6 @@ export function UserLinksTable({ data, loading }: { data: LinkDetails[], loading
             {
               hasPassword ?
                 <p className="py-1 px-2 flex gap-1 items-center rounded-md border border-blue-500/30 bg-blue-500/20 text-blue-400">
-                  <IconShieldCheckFilled className="size-3" />
                   Locked
                 </p>
                 :
@@ -166,7 +146,13 @@ export function UserLinksTable({ data, loading }: { data: LinkDetails[], loading
                   Public
                 </p>
             }
-
+            {
+              isExpired &&
+              <p className="py-1 px-2 flex gap-1 items-center rounded-md border border-red-500/30 bg-red-500/20 
+              text-red-400">
+                Expired
+              </p>
+            }
           </div>
 
         )
@@ -331,28 +317,41 @@ export function UserLinksTable({ data, loading }: { data: LinkDetails[], loading
         </Table>
       </div>
 
-      <div className="flex items-center justify-end space-x-2 py-4">
-        <div className="text-muted-foreground flex-1 text-sm">
+      <div className="flex items-center justify-end space-x-2 pt-6">
+
+        <div className="text-neutral-400 flex-1 text-sm">
           {table.getFilteredSelectedRowModel().rows.length} of{" "}
           {table.getFilteredRowModel().rows.length} row(s) selected.
         </div>
+
         <div className="space-x-2">
-          <Button
-            variant="outline"
-            size="sm"
+          <button className="p-2 rounded-lg border-1.5 border-neutral-800 bg-neutral-950 cursor-pointer 
+          disabled:opacity-50 disabled:cursor-auto"
+            onClick={() => table.firstPage()}
+            disabled={!table.getCanPreviousPage()}>
+            <IconChevronsLeft className="size-5" />
+          </button>
+
+          <button className="p-2 rounded-lg border-1.5 border-neutral-800 bg-neutral-950 cursor-pointer 
+          disabled:opacity-50 disabled:cursor-auto"
             onClick={() => table.previousPage()}
-            disabled={!table.getCanPreviousPage()}
-          >
-            Previous
-          </Button>
-          <Button
-            variant="outline"
-            size="sm"
+            disabled={!table.getCanPreviousPage()}>
+            <IconChevronLeft className="size-5" />
+          </button>
+
+          <button className="p-2 rounded-lg border-1.5 border-neutral-800 bg-neutral-950 cursor-pointer 
+          disabled:opacity-50 disabled:cursor-auto"
             onClick={() => table.nextPage()}
-            disabled={!table.getCanNextPage()}
-          >
-            Next
-          </Button>
+            disabled={!table.getCanNextPage()}>
+            <IconChevronRight className="size-5" />
+          </button>
+
+          <button className="p-2 rounded-lg border-1.5 border-neutral-800 bg-neutral-950 cursor-pointer 
+          disabled:opacity-50 disabled:cursor-auto"
+            onClick={() => table.lastPage()}
+            disabled={!table.getCanNextPage()}>
+            <IconChevronsRight className="size-5" />
+          </button>
         </div>
       </div>
     </div>

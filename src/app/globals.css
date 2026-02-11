@@ -8,7 +8,7 @@
   --breakpoint-3xl: 118.75rem;
   --breakpoint-4xl: 158.75rem;
   --color-neutral-850: rgb(11,11,12);
-  --border: 1.5px;
+  --border-1.5: 1.5px;
 }
 
 @utility max-w-8xl {
