@@ -1,55 +1,50 @@
 "use client"
 
-import { SignOutButton } from "@/features/dashboard/auth/SignOutButton"
-import { RootState } from "@/store/store-config"
-import { useSelector } from "react-redux"
-import { AnimatePresence, motion } from "framer-motion"
+import { signOut } from "@/features/shared/auth/auth-client"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/features/shared/components/shadcn/dropdown-menu"
+import { User } from "@supabase/supabase-js"
+import { IconLogout } from "@tabler/icons-react"
 import Image from "next/image"
 
-export function UserProfile() {
-  
-  const { user } = useSelector((state: RootState) => state.user)
+export function UserProfile({ user }: { user: User }) {
+
+  const handleLogOut = async () => {
+    await signOut()
+  }
 
   return (
-    <AnimatePresence>
-      {user && (
-        <motion.section className="flex flex-col gap-5 p-5 bottom-0 left-0 border-t-2 border-neutral-900"
-          initial={{ y: 40, opacity: 0 }}
-          animate={{
-            y: 0,
-            opacity: 1,
-            transition: {
-              duration: 0.3,
-              ease: "easeOut",
-            },
-          }}
-          exit={{
-            y: 40,
-            opacity: 0,
-            transition: {
-              duration: 0.3,
-              ease: "easeIn",
-            },
-          }}
-        >
-          <div className="flex gap-3 items-center">
 
-            <Image className="size-10 rounded-full"
-              src={user.user_metadata.avatar_url}
-              width={40}
-              height={40}
-              alt="user-photo"
-            />
+    <DropdownMenu>
 
-            <div className="text-sm">
-              <p className="text-neutral-200">{user.user_metadata.name}</p>
-              <p className="text-neutral-400">{user.email}</p>
-            </div>
-          </div>
+      <DropdownMenuTrigger>
+        <Image className="size-9 rounded-full cursor-pointer"
+          src={user.user_metadata.avatar_url}
+          width={36}
+          height={36}
+          alt="userPhoto"
+        />
+      </DropdownMenuTrigger>
 
-          <SignOutButton />
-        </motion.section>
-      )}
-    </AnimatePresence>
+      <DropdownMenuContent className="bg-neutral-900 text-white border border-neutral-800 translate-x-2 -translate-y-4"
+        side="right" align="start">
+
+        <DropdownMenuItem>
+          {user.email}
+        </DropdownMenuItem>
+
+        <DropdownMenuSeparator className="bg-neutral-800" />
+
+        <DropdownMenuItem className="hover:bg-neutral-800">
+          <button className="w-full flex gap-1 items-center cursor-pointer"
+            onClick={handleLogOut}>
+            <IconLogout className="size-4" />
+            Log Out
+          </button>
+        </DropdownMenuItem>
+
+      </DropdownMenuContent>
+
+    </DropdownMenu>
+
   )
 }
