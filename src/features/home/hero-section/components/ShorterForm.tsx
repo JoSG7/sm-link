@@ -63,12 +63,12 @@ export function ShorterForm() {
             Paste a long URL
           </label>
 
-          <section className="flex text-sm">
+          <section className="flex text-base">
 
             <article className="flex flex-1">
               <input className="w-full p-3 text-neutral-200 outline-none rounded-s-lg border-1.5 border-r-0 bg-neutral-900/80
-              border-neutral-800 placeholder:text-neutral-700 focus:border-green-400 "
-                placeholder="https://example.com/long-url"
+              border-neutral-800 placeholder:text-neutral-500 focus:border-green-400 "
+                placeholder="https://exmpl.com/long-url"
                 disabled={submiting}
                 autoComplete="off"
                 value={original}
