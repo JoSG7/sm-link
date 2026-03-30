@@ -1,14 +1,14 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { useScreenSize } from "../../hooks/useScreenSize"
+import { useScreenSize } from "@/hooks/useScreenSize"
 import { motion } from "framer-motion"
 import { IconClockCheck, IconLock } from "@tabler/icons-react"
 import { RecentLinks } from "./components/RecentLinks"
 import { LinkDetails } from "@/global"
 import { Accordion } from "../../../shared/components/Accordion"
 import { ProtectedLinks } from "./components/ProtectedLinks"
-import { GuestLinkServices } from "../../../../services/guest-link.service"
+import { GuestLinkServices } from "@/services/guest-link.service"
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "@/store/store-config"
 import { toggleMenuDrawer } from "@/store/modal-slice"
@@ -32,6 +32,9 @@ export function MenuDrawer() {
   const isMobile = width < 640
   const isTablet = width >= 640 && width < 1024
 
+  const navWidth = isMobile ? "w-full h-[75vh]" :
+  isTablet ? "w-4/6 h-full" : "w-1/2 h-full"
+  
   const navVariants = {
     open: {
       x: 0,
@@ -45,15 +48,11 @@ export function MenuDrawer() {
     },
   }
 
-  const navWidth = isMobile ? "w-full h-[75vh]" :
-    isTablet ? "w-4/6 h-full" : "w-1/2 h-full"
-
-
   useEffect(() => {
     const fetchRecentLinks = async () => {
 
       setLoading(true)
-      
+
       try {
 
         const res = await new GuestLinkServices().getLinks()

@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { toggleMenuDrawer } from "@/store/modal-slice";
 import { LogoBrand } from "./components/LogoBrand";
 import { LoginButton } from "./components/LoginButton";
-import { useScreenSize } from "../../hooks/useScreenSize";
+import { useScreenSize } from "@/hooks/useScreenSize";
 
 
 export function HomeNavBar() {
@@ -15,8 +15,8 @@ export function HomeNavBar() {
 
   return (
 
-    <header className="flex py-4 bg-[rgba(0,0,0,0.7)] sticky top-0 left-0 right-0 justify-center z-10
-    backdrop-blur-sm ">
+    <header className="h-16 flex justify-center bg-black/70 sticky top-0 left-0 right-0  z-10
+    backdrop-blur-sm lg:h-18">
 
       <div className="w-full flex justify-between px-4 xs:px-6
       xl:w-full xl:max-w-8xl">

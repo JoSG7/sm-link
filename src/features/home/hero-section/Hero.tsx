@@ -5,6 +5,7 @@ import { ShorterForm } from './components/ShorterForm'
 import { HeroTitle } from './components/Title'
 // import { GitHubAuthButton } from '../auth/SignInButton'
 import { ReactNode } from 'react'
+import { FeatureCard } from './components/FeatureCard'
 
 interface FeatureCard {
   title: string
@@ -44,6 +45,8 @@ export function Hero() {
     <section className="w-full px-5 justify-center items-center xs:px-6 lg:flex lg:mx-auto
     lg:max-w-7xl ">
 
+      <div className="absolute mask-[linear-gradient(to_right,transparent,black_30%,black_70%,transparent)]"></div>
+
       {/* Main content */}
       <main className="py-10 flex flex-col gap-7 grow xs:py-14 sm:py-20 lg:py-14">
 
@@ -61,36 +64,15 @@ export function Hero() {
         <section className="w-full grid grid-cols-1 gap-4 justify-center
         md:grid-cols-2 lg:flex lg:gap-5">
           {
-            featureCards.map((el, i) => {
-
-              if (el.color == "blue") return (
-                <article className="flex p-3 gap-3 items-center rounded-lg text-neutral-200 grow
-                border-1.5 border-neutral-900 bg-neutral-850 
-                lg:border-neutral-800/70"
-                  key={i}>
-
-                  <div className="p-2 rounded-full bg-blue-500/10">
-                    {el.icon}
-                  </div>
-                  <p>{el.title}</p>
-
-                </article>
-              )
-
-              return (
-                <article className="flex p-3 gap-3 items-center rounded-lg text-neutral-200 grow
-                border-1.5 border-neutral-900 bg-neutral-850 
-                lg:border-neutral-800/70"
-                  key={i}>
-
-                  <div className="p-2 rounded-full bg-green-500/10">
-                    {el.icon}
-                  </div>
-                  <p>{el.title}</p>
-
-                </article>
-              )
-            })
+            featureCards.map((el, i) => (
+              
+              <FeatureCard 
+              key={i}
+              icon={el.icon}
+              title={el.title}
+              color={el.color} />
+              
+            ))
           }
         </section>
       </main>

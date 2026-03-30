@@ -21,7 +21,7 @@ export function HeroTitle() {
       </h1>
 
       {/* Paragraph */}
-      <p className="py-6 text-neutral-400 xs:text-center lg:pb-0 lg:text-start">
+      <p className="py-6 text-neutral-300/90 xs:text-center lg:pb-0 lg:text-start">
         <span className="hidden lg:inline">Shorten links in seconds and get instant insights on how your links perform in real time.</span>
         <span className="lg:hidden">Tired of messy URLs? Shorten links in seconds and track their metrics</span>
       </p>
