@@ -16,7 +16,10 @@ export const metadata: Metadata = {
   }
 };
 
-const lexend = Lexend({ subsets: ["latin"] })
+const lexend = Lexend({ 
+  subsets: ["latin"], 
+  weight: ['200', '300', '400', '600', '700'], 
+})
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
 

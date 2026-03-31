@@ -13,9 +13,9 @@ export function NewLink({ short }: { short: string | null }) {
 
   return (
 
-    <section className="mt-5 flex gap-3 text-base xs:text-base lg:text-sm lg:gap-4">
+    <section className="mt-5 flex gap-3 text-base xs:text-base sm:text-lg sm:gap-4 lg:text-sm">
 
-      <p className="p-3 text-nowrap overflow-hidden rounded-lg grow
+      <p className="p-3 text-nowrap overflow-hidden rounded-lg flex-1
       border-1.5 border-neutral-800 bg-neutral-900/80 ">
         {
           short ?
@@ -33,16 +33,14 @@ export function NewLink({ short }: { short: string | null }) {
           <button className="cursor-pointer"
             onClick={copyToClipboard}
             type="button">
-            <IconCopyPlusFilled className="size-5 text-green-400
-            xs:size-5" />
+            <IconCopyPlusFilled className="size-5 text-green-400" />
           </button>
 
           <Link className=""
             href={`https://sm-link.vercel.app/${short}`}
             target="_blank"
             aria-label="Use the new Link">
-            <IconExternalLink className="size-5 text-blue-400
-            xs:size-5" />
+            <IconExternalLink className="size-5 text-blue-400" />
           </Link>
         </motion.div>
       }

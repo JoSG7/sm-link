@@ -14,7 +14,7 @@ export function LogoBrand() {
         width={40}
         height={28} />
 
-      <p className="text-lg font-medium xl:text-xl">
+      <p className="text-lg font-medium sm:text-xl">
         SmLink
       </p>
     </div>

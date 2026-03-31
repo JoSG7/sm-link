@@ -52,8 +52,13 @@ export function ShorterForm() {
 
   return (
     <>
-      <section className="rounded-3xl flex-col justify-center
-      lg:p-5 lg:h-full lg:flex lg:border-1.5 lg:border-neutral-800/70 lg:bg-neutral-950">
+      <section className="rounded-3xl flex-col justify-center relative
+      lg:p-5 lg:h-full lg:flex lg:bg-neutral-950
+      lg:shadow-[0px_32px_64px_-16px_transparent,0px_16px_32px_-8px_transparent,0px_8px_16px_-4px_transparent,0px_4px_8px_-2px_transparent,0px_-8px_16px_-1px_transparent,0px_2px_4px_-1px_transparent,0px_0px_0px_1px_transparent,inset_0px_0px_0px_1px_rgba(255,255,255,0.1),inset_0px_1px_0px_rgb(255,255,255,0.1)]">
+
+        <div className="absolute -top-5 right-5 hidden py-2 px-4 rounded-full border-1.5 border-neutral-800/70 lg:block bg-neutral-950 text-sm">
+          No log in is required
+        </div>
 
         <form className="overflow-hidden "
           onSubmit={handleSubmit}>
@@ -63,7 +68,7 @@ export function ShorterForm() {
             Paste a long URL
           </label>
 
-          <section className="flex text-base">
+          <section className="flex text-base sm:text-lg lg:text-sm">
 
             <article className="flex flex-1">
               <input className="w-full p-3 text-neutral-200 outline-none rounded-s-lg border-1.5 border-r-0 bg-neutral-900/80
@@ -93,7 +98,7 @@ export function ShorterForm() {
         </form>
 
         <p className="mt-6 text-start text-neutral-300/90 text-xs
-        lg:block ">
+        sm:text-sm sm:text-center lg:block lg:text-xs">
           By proceeding, you agree to our
           <span className="text-blue-400"> Terms of Service </span>
           and

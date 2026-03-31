@@ -5,18 +5,16 @@ import { useDispatch } from "react-redux";
 import { toggleMenuDrawer } from "@/store/modal-slice";
 import { LogoBrand } from "./components/LogoBrand";
 import { LoginButton } from "./components/LoginButton";
-import { useScreenSize } from "@/hooks/useScreenSize";
 
 
 export function HomeNavBar() {
 
   const dispatch = useDispatch()
-  const windowWidth = useScreenSize()
 
   return (
 
     <header className="h-16 flex justify-center bg-black/70 sticky top-0 left-0 right-0  z-10
-    backdrop-blur-sm lg:h-18">
+    backdrop-blur-sm sm:h-18">
 
       <div className="w-full flex justify-between px-4 xs:px-6
       xl:w-full xl:max-w-8xl">
@@ -24,11 +22,8 @@ export function HomeNavBar() {
         <LogoBrand />
 
         <div className="flex items-center gap-4">
-          
-          {
-            windowWidth > 768 &&
-            <LoginButton />
-          }
+
+          <LoginButton />
 
           <button className="flex justify-center items-center cursor-pointer p-2 rounded-full border border-neutral-700"
             type="button"
