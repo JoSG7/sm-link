@@ -1,13 +1,13 @@
 "use client"
 
-import { IconEditCircle, IconGraph, IconSettings } from "@tabler/icons-react"
+import { IconCircleFilled } from "@tabler/icons-react"
 
 
 export function HeroTitle() {
 
 
   return (
-    <div className="lg:shrink-0 lg:my-auto lg:max-w-[33rem] xl:max-w-[35rem]">
+    <div className="lg:shrink-0 lg:my-auto lg:pb-2 lg:max-w-[33rem] xl:max-w-[35rem]">
       {/* Title */}
       <h1 className="tracking-tight text-5xl font-[400]
       xs:text-center sm:text-7xl 
@@ -31,28 +31,28 @@ export function HeroTitle() {
       {/* This section only appears in destokp */}
       <section className="hidden flex-col text-sm text-neutral-200 lg:block">
 
-        <article className="flex flex-wrap gap-3 pb-5">
+        <article className="flex flex-wrap gap-3">
 
-          <div className="flex gap-1.5 items-center">
-            <IconGraph />
-            Access to dashboard
+          <div className="flex gap-1.5 items-center ">
+            <IconCircleFilled className="text-purple-400 size-4" />
+            Instant short links
           </div>
           |
           <div className="flex gap-1.5 items-center">
-            <IconEditCircle/>
+            <IconCircleFilled className="text-blue-400 size-4" />
             Customize your links
           </div>
           |
           <div className="flex gap-1.5 items-center">
-            <IconSettings />
-            Settings
+            <IconCircleFilled className="text-red-400 size-4" />
+            Pro Settings
           </div>
 
         </article>
 
-        <button className="relative inline-flex items-center justify-center select-none rounded-2xl disabled:cursor-not-allowed ease-in-out text-white border-2 border-white/5 backdrop-blur-[25px] bg-origin-border bg-[linear-gradient(104deg,rgba(253,253,253,0.05)_5%,rgba(240,240,228,0.1)_100%)] focus-visible:text-black text-base h-12 gap-0 px-5 font-medium">
+        {/* <button className="relative inline-flex items-center justify-center select-none rounded-2xl disabled:cursor-not-allowed ease-in-out text-white border-2 border-white/5 backdrop-blur-[25px] bg-origin-border bg-[linear-gradient(104deg,rgba(253,253,253,0.05)_5%,rgba(240,240,228,0.1)_100%)] focus-visible:text-black text-base h-12 gap-0 px-5 font-medium">
           Get Started
-        </button>
+        </button> */}
 
       </section>
     </div>

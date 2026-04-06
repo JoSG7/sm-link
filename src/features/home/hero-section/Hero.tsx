@@ -1,9 +1,8 @@
 "use client"
 
-import { IconChartHistogram, IconClockExclamation, IconEyeOff, IconShieldCheckFilled, IconTimeline, IconWorld } from '@tabler/icons-react'
+import { IconChartHistogram, IconClockExclamation, IconShieldCheckFilled, IconWorld } from '@tabler/icons-react'
 import { ShorterForm } from './components/ShorterForm'
 import { HeroTitle } from './components/Title'
-// import { GitHubAuthButton } from '../auth/SignInButton'
 import { ReactNode } from 'react'
 import { FeatureCard } from './components/FeatureCard'
 
@@ -17,12 +16,12 @@ export function Hero() {
 
   const featureCards: FeatureCard[] = [
     {
-      title: "Global CDN for fast redirects",
+      title: "Global Edge Network",
       icon: <IconWorld />,
       color: "blue"
     },
     {
-      title: "Advanced Security",
+      title: "Privacy focused",
       icon: <IconShieldCheckFilled />,
       color: "green"
     },
@@ -55,35 +54,17 @@ export function Hero() {
 
           <div className="flex flex-col flex-1 lg:gap-5">
             <ShorterForm />
-
-            <div className="hidden flex-wrap gap-5 lg:flex">
-              <FeatureCard
-                icon={<IconTimeline />}
-                title="Uptime 99%"
-                color="blue" />
-
-              <FeatureCard
-                icon={<IconChartHistogram />}
-                title="Live tracking"
-                color="green" />
-
-              <FeatureCard
-                icon={<IconEyeOff />}
-                title="Privacy focused"
-                color="blue" />
-            </div>
           </div>
-
 
         </div>
 
         {/* Features Cards Section */}
         <section className="w-full grid grid-cols-1 gap-4 justify-center
-        sm:grid-cols-2 sm:gap-5 lg:hidden">
+        sm:grid-cols-2 sm:gap-5 lg:flex xl:gap-6">
           {
             featureCards.map((el, i) => (
 
-              <FeatureCard
+              <FeatureCard className="h-18"
                 key={i}
                 icon={el.icon}
                 title={el.title}
