@@ -1,4 +1,4 @@
-import { getGuestID } from "@/features/shared/auth/cookies"
+import { getGuestID } from "@/utils/auth/cookies"
 import { createSupabase } from "@/lib/supabase/client"
 import { NextRequest, NextResponse } from "next/server"
 

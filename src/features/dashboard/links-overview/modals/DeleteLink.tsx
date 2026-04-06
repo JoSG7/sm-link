@@ -1,6 +1,6 @@
 "use client"
 
-import ModalLayout from "@/features/shared/modals/ModalLayout";
+import ModalLayout from "@/components/modals/ModalLayout";
 import { AnimatePresence } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";

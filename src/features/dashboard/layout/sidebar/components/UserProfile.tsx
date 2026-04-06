@@ -1,7 +1,7 @@
 "use client"
 
-import { signOut } from "@/features/shared/auth/auth-client"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/features/shared/components/shadcn/dropdown-menu"
+import { signOut } from "@/utils/auth/auth-client"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/shadcn/dropdown-menu"
 import { User } from "@supabase/supabase-js"
 import { IconLogout } from "@tabler/icons-react"
 import Image from "next/image"

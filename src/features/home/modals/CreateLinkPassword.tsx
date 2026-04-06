@@ -6,7 +6,7 @@ import { IconCheck, IconLoader2, IconLock, IconLockCheck } from "@tabler/icons-r
 import { FormEvent, useState } from "react"
 import { toast } from "sonner"
 import { GuestLinkServices } from "../../../services/guest-link.service"
-import ModalLayout from "@/features/shared/modals/ModalLayout"
+import ModalLayout from "@/components/modals/ModalLayout"
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "@/store/store-config"
 import { toggleSetPassword } from "@/store/modal-slice"

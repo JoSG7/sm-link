@@ -1,6 +1,6 @@
 "use client"
 
-import ModalLayout from "@/features/shared/modals/ModalLayout";
+import ModalLayout from "@/components/modals/ModalLayout";
 import { RootState } from "@/store/store-config";
 import { toggleDeleteUserLinkPassword } from "@/store/user-modals-slice";
 import { IconLoader, IconTrash, IconTrashX } from "@tabler/icons-react";

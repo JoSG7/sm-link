@@ -1,6 +1,6 @@
 'use client'
 
-import { signInWithOAuth } from "@/features/shared/auth/auth-client"
+import { signInWithOAuth } from "@/utils/auth/auth-client"
 import { IconBrandGithubFilled, IconBrandGoogleFilled } from "@tabler/icons-react"
 
 

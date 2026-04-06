@@ -4,7 +4,7 @@ import { IconCalendar, IconClockCheck, IconCopy, IconExternalLink, IconShieldLoc
 import { months } from "@/consts"
 import { toast } from "sonner"
 import { LinkDetails } from "@/global"
-import { DomainLogo } from "../../../../shared/components/DomainLogo"
+import { DomainLogo } from "../../../../../components/ui/DomainLogo"
 import Link from "next/link"
 import { useDispatch } from "react-redux"
 import { toggleDeleteLink, toggleSetExpiration, toggleSetPassword } from "@/store/modal-slice"
@@ -78,7 +78,7 @@ export function SmLinkCard({ data }: { data: LinkDetails }) {
           </p>
 
           {/* Original Link */}
-          <p className="max-h-[42px] mt-1 mb-2 break-all overflow-y-auto text-neutral-200 ">
+          <p className="max-h-10.5 mt-1 mb-2 break-all overflow-y-auto text-neutral-200 ">
             {data.original}
           </p>
 

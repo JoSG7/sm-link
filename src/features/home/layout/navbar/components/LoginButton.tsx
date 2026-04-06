@@ -1,7 +1,7 @@
 "use client"
 
-import { GitHubAuthButton } from "@/features/home/auth/SignInButton";
-import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/features/shared/components/shadcn/hover-card";
+import { GitHubAuthButton } from "@/components/auth/SignInButton";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/shadcn/hover-card";
 
 export function LoginButton() {
 

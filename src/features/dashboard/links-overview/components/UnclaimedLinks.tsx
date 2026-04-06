@@ -2,7 +2,7 @@
 
 import { UserLinkServices } from "@/services/user-link.service"
 import { GuestLinkServices } from "@/services/guest-link.service"
-import { DomainLogo } from "@/features/shared/components/DomainLogo"
+import { DomainLogo } from "@/components/ui/DomainLogo"
 import { LinkDetails } from "@/global"
 import { recordChange } from "@/store/link-changes-slice"
 import { RootState } from "@/store/store-config"

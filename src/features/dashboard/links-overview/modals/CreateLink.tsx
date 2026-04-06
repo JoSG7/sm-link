@@ -1,6 +1,6 @@
 "use client"
 
-import ModalLayout from "@/features/shared/modals/ModalLayout"
+import ModalLayout from "@/components/modals/ModalLayout"
 import { RootState } from "@/store/store-config"
 import { AnimatePresence } from "framer-motion"
 import { FormEvent, useState } from "react"

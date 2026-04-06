@@ -4,7 +4,7 @@ import { IconChartBar, IconLayoutDashboard, IconLink } from "@tabler/icons-react
 import { ReactNode } from "react"
 import Link from "next/link"
 import { Tooltip } from "@radix-ui/react-tooltip"
-import { TooltipContent, TooltipTrigger } from "@/features/shared/components/shadcn/tooltip"
+import { TooltipContent, TooltipTrigger } from "@/components/shadcn/tooltip"
 import { User } from "@supabase/supabase-js"
 import { UserProfile } from "./components/UserProfile"
 

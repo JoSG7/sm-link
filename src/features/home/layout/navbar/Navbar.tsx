@@ -4,7 +4,7 @@ import { IconMenu } from "@tabler/icons-react";
 import { useDispatch } from "react-redux";
 import { toggleMenuDrawer } from "@/store/modal-slice";
 import { LogoBrand } from "./components/LogoBrand";
-// import { LoginButton } from "./components/LoginButton";
+import { LoginButton } from "./components/LoginButton";
 
 
 export function HomeNavBar() {
@@ -23,7 +23,7 @@ export function HomeNavBar() {
 
         <div className="flex items-center gap-4">
 
-          {/* <LoginButton /> */}
+          <LoginButton />
 
           <button className="flex justify-center items-center cursor-pointer p-2 rounded-full border border-neutral-700"
             type="button"
