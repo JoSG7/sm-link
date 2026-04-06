@@ -64,7 +64,7 @@ export function Hero() {
           {
             featureCards.map((el, i) => (
 
-              <FeatureCard className="h-18"
+              <FeatureCard className="lg:h-18"
                 key={i}
                 icon={el.icon}
                 title={el.title}
