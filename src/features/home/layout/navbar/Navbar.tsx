@@ -1,9 +1,10 @@
 "use client"
 
 import { IconMenu } from "@tabler/icons-react";
-import Image from "next/image";
 import { useDispatch } from "react-redux";
 import { toggleMenuDrawer } from "@/store/modal-slice";
+import { LogoBrand } from "./components/LogoBrand";
+// import { LoginButton } from "./components/LoginButton";
 
 
 export function HomeNavBar() {
@@ -12,31 +13,26 @@ export function HomeNavBar() {
 
   return (
 
-    <header className="flex py-4 bg-[rgba(0,0,0,0.7)] sticky top-0 left-0 right-0 justify-center z-10
-    backdrop-blur-sm ">
+    <header className="h-16 flex justify-center bg-black/70 sticky top-0 left-0 right-0  z-10
+    backdrop-blur-sm sm:h-18">
 
       <div className="w-full flex justify-between px-4 xs:px-6
       xl:w-full xl:max-w-8xl">
 
-        <div className="flex items-center gap-1
-        lg:gap-2 ">
+        <LogoBrand />
 
-          <Image className="w-10 h-7 "
-          src="/imgs/Espada1.png" 
-          alt="Icono" 
-          width={40} height={28}/>
+        <div className="flex items-center gap-4">
 
-          <p className="text-xl font-medium ">
-            SmLink
-          </p>
+          {/* <LoginButton /> */}
+
+          <button className="flex justify-center items-center cursor-pointer p-2 rounded-full border border-neutral-700"
+            type="button"
+            onClick={() => { dispatch(toggleMenuDrawer()) }}>
+
+            <IconMenu className="size-5 xl:size-6" />
+          </button>
         </div>
 
-        <button className="flex justify-center items-center cursor-pointer p-2 rounded-full border border-neutral-700"
-          type="button"
-          onClick={() => { dispatch(toggleMenuDrawer()) }}>
-
-          <IconMenu className="size-6" />
-        </button>
       </div>
 
     </header>
