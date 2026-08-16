@@ -6,7 +6,7 @@ import { motion } from "framer-motion"
 import { IconClockCheck, IconLock } from "@tabler/icons-react"
 import { RecentLinks } from "./components/RecentLinks"
 import { LinkDetails } from "@/global"
-import { Accordion } from "../../../../components/ui/Accordion"
+import { Accordion } from "@/components/ui/Accordion"
 import { ProtectedLinks } from "./components/ProtectedLinks"
 import { GuestLinkServices } from "@/services/guest-link.service"
 import { useDispatch, useSelector } from "react-redux"
@@ -39,12 +39,12 @@ export function MenuDrawer() {
     open: {
       x: 0,
       y: 0,
-      transition: { type: "tween", duration: 0.1 },
+      transition: { type: "tween" as const, duration: 0.1 },
     },
     closed: {
       x: isMobile ? 0 : "100%",
       y: isMobile ? "100%" : 0,
-      transition: { type: "tween", duration: 0.1 },
+      transition: { type: "tween" as const, duration: 0.1 },
     },
   }
 
@@ -75,7 +75,7 @@ export function MenuDrawer() {
 
   return (
 
-    <motion.section className={`h-screen fixed inset-0 bg-[rgba(0,0,0,0.7)] backdrop-blur-sm z-20
+    <motion.section className={`h-screen fixed inset-0 bg-black/70 backdrop-blur-sm z-20
       ${isOpen ? "pointer-events-auto" : "pointer-events-none"}`}
       layout
       onClick={() => { dispatch(toggleMenuDrawer()) }}
@@ -99,13 +99,10 @@ export function MenuDrawer() {
 
                   {/* Icon and title */}
                   <div className="flex gap-2 items-center ">
-
                     <IconClockCheck className="size-6 text-green-500 " />
-
                     <p>
                       <span className="text-green-300">Recent</span> SmLinks
                     </p>
-
                   </div>
 
                   {/* Total of links */}

@@ -2,7 +2,7 @@
 
 
 import { AnimatePresence, motion } from "framer-motion"
-import { IconCheck, IconLoader2, IconLock, IconLockCheck } from "@tabler/icons-react"
+import { IconCheck, IconKey, IconLoader, IconLockCheck, IconLockFilled } from "@tabler/icons-react"
 import { FormEvent, useState } from "react"
 import { toast } from "sonner"
 import { GuestLinkServices } from "../../../services/guest-link.service"
@@ -61,7 +61,7 @@ export function CreateLinkPasswordModal() {
       <AnimatePresence>
         {
           isOpen && (
-            <motion.section className={`fixed inset-0 z-30 bg-[rgba(0,0,0,0.8)] flex items-center justify-center
+            <motion.section className={`fixed inset-0 z-30 bg-black/80 flex items-center justify-center
             ${submiting && "pointer-events-none"}`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -72,72 +72,70 @@ export function CreateLinkPasswordModal() {
                 dispatch(toggleSetPassword())
               }}>
 
-              <motion.div className="w-[90vw] bg-neutral-950 rounded-xl border border-neutral-800 max-w-xl
-              sm:w-[80vw] lg:w-[50vw]"
+              <motion.form className="w-[90vw] bg-neutral-950 rounded-xl border border-neutral-800 max-w-[35rem]
+              sm:w-[70vw] lg:w-[50vw]"
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.8, opacity: 0 }}
                 transition={{ duration: 0.2 }}
-                onClick={(e) => e.stopPropagation()}>
+                onClick={(e) => e.stopPropagation()}
+                onSubmit={handleCreate}>
 
-                {/* Title */}
-                <h1 className="p-4 text-sm border-b border-neutral-800 ">
-                  Add protection to <span className="font-semibold">{shortLink}</span>
-                </h1>
+                <header className="p-4 flex items-center gap-4 lg:p-5">
+                  <div className="p-2 rounded-lg border border-green-500/30 bg-green-500/20">
+                    <IconLockFilled className="size-4 text-green-400 lg:size-6" />
+                  </div>
 
-                {/* Form */}
-                <form onSubmit={handleCreate}>
+                  <div>
+                    <h1 className="text-sm font-medium lg:text-base">Add Password</h1>
+                    <p className="text-xs text-neutral-400">{shortLink}</p>
+                  </div>
+                </header>
 
-                  {/* Inputs Container */}
-                  <section className="p-4 flex flex-col gap-4 text-xs border-b border-neutral-800 ">
+                <section className="p-4 pt-0 flex flex-col gap-4 lg:p-5 lg:pt-0">
 
-                    {/* Input Password */}
-                    <div className="p-2 flex items-center gap-2 rounded-lg bg-neutral-900 
-                    sm:p-3">
-
-                      <IconLock className="size-5 " />
-                      <input className="w-full bg-transparent placeholder:text-neutral-700 "
-                        placeholder="Enter a password"
-                        type="password"
-                        required
-                        value={password}
-                        onChange={(e) => setPassword(e.currentTarget.value)} />
-
+                  <article className="flex items-center text-xs grow lg:text-sm">
+                    <div className="p-2.5 rounded-s-lg border-1.5 border-e-0 border-neutral-800 bg-neutral-900/80">
+                      <IconKey className="size-4 lg:size-5" />
                     </div>
 
-                    {/* Repeat Password */}
-                    <div className="p-2 flex items-center gap-2 rounded-lg bg-neutral-900 
-                    sm:p-3">
+                    <input className="grow p-2.5 rounded-e-lg border-1.5 border-neutral-800 bg-neutral-900/80
+                      focus:border-green-600" 
+                      type="password"
+                      required
+                      placeholder="New password"
+                      onChange={(e) => setPassword(e.currentTarget.value)} />
+                  </article>
 
-                      <IconLockCheck className="size-5 " />
-                      <input className="w-full bg-transparent placeholder:text-neutral-700 "
-                        placeholder="Confirm the password"
-                        type="password"
-                        required
-                        value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.currentTarget.value)} />
+                  <article className="flex items-center text-xs grow lg:text-sm">
+                    <div className="p-2.5 rounded-s-lg border-1.5 border-e-0 border-neutral-800 bg-neutral-900/80">
+                      <IconLockCheck className="size-4 lg:size-5" />
                     </div>
 
-                  </section>
+                    <input className="grow p-2.5 rounded-e-lg border-1.5 border-neutral-800 bg-neutral-900/80
+                      focus:border-green-600"
+                      type="password"
+                      required
+                      placeholder="Confirm new password"
+                      onChange={(e) => setConfirmPassword(e.currentTarget.value)} />
+                  </article>
 
-                  {/* Button Section */}
-                  <section className="p-4 flex gap-4 items-center text-xs ">
+                  <div className="flex flex-col gap-4 lg:flex-row-reverse">
+                    <p className="p-2.5 rounded-lg text-xs text-green-300 border-1.5 border-green-500/30 bg-green-500/20
+                    flex-1 lg:text-sm">
+                      This link will require a password to open
+                    </p>
 
-                    <button className="p-2 px-3 flex items-center gap-2 rounded-sm bg-green-700 disabled:opacity-50 cursor-pointer "
+                    <button className="max-w-max py-2 px-4 flex items-center gap-2 text-xs rounded-lg cursor-pointer
+                    disabled:opacity-50 bg-gradient-to-b from-green-500 to-green-500/50 lg:text-sm"
                       disabled={submiting}>
-
-                      {
-                        submiting ?
-                          <IconLoader2 className="size-4 animate-spin " /> :
-
-                          <IconCheck className="size-4 " />
-                      }
-                      {submiting ? "Protecting..." : "Protect"}
-
+                      {submiting ? <IconLoader className="size-4 animate-spin" /> : <IconCheck className="size-4" />}
+                      Create
                     </button>
-                  </section>
-                </form>
-              </motion.div>
+                  </div>
+
+                </section>
+              </motion.form>
             </motion.section>
           )
         }
@@ -145,3 +143,6 @@ export function CreateLinkPasswordModal() {
     </ModalLayout>
   )
 }
+
+
+

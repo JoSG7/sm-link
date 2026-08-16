@@ -5,7 +5,6 @@ import { IconCircleFilled } from "@tabler/icons-react"
 
 export function HeroTitle() {
 
-
   return (
     <div className="lg:shrink-0 lg:my-auto lg:pb-2 lg:max-w-[33rem] xl:max-w-[35rem]">
       {/* Title */}
@@ -40,7 +39,7 @@ export function HeroTitle() {
           |
           <div className="flex gap-1.5 items-center">
             <IconCircleFilled className="text-blue-400 size-4" />
-            Customize your links
+            Custom SmLinks
           </div>
           |
           <div className="flex gap-1.5 items-center">
@@ -50,14 +49,15 @@ export function HeroTitle() {
 
         </article>
 
-        {/* <button className="relative inline-flex items-center justify-center select-none rounded-2xl disabled:cursor-not-allowed ease-in-out text-white border-2 border-white/5 backdrop-blur-[25px] bg-origin-border bg-[linear-gradient(104deg,rgba(253,253,253,0.05)_5%,rgba(240,240,228,0.1)_100%)] focus-visible:text-black text-base h-12 gap-0 px-5 font-medium">
-          Get Started
-        </button> */}
-
       </section>
     </div>
   )
 }
+
+
+{/* <button className="relative inline-flex items-center justify-center select-none rounded-2xl disabled:cursor-not-allowed ease-in-out text-white border-2 border-white/5 backdrop-blur-[25px] bg-origin-border bg-[linear-gradient(104deg,rgba(253,253,253,0.05)_5%,rgba(240,240,228,0.1)_100%)] focus-visible:text-black text-base h-12 gap-0 px-5 font-medium">
+          Get Started
+        </button> */}
 
 
 

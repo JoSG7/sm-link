@@ -1,6 +1,6 @@
 "use client"
 
-import { IconLoader2, IconTrashX } from "@tabler/icons-react"
+import { IconAlertHexagon, IconLoader2, IconTrash } from "@tabler/icons-react"
 import { AnimatePresence, motion } from "framer-motion"
 import { useState } from "react"
 import { toast } from "sonner"
@@ -22,9 +22,9 @@ export function DeleteLinkPasswordModal() {
 
 
   const handleDelete = async () => {
-    
+
     if (shortLink) {
-      
+
       setSubmiting(true)
 
       try {
@@ -52,15 +52,14 @@ export function DeleteLinkPasswordModal() {
       <AnimatePresence>
         {
           isOpen && (
-            <motion.section className={`fixed inset-0 z-30 bg-[rgba(0,0,0,0.8)] flex items-center justify-center
+            <motion.section className={`fixed inset-0 z-30 bg-black/80 flex items-center justify-center
             ${submiting && "pointer-events-none"}`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => dispatch(toggleDeletePassword())}>
 
-              <motion.form className="w-[90vw] bg-neutral-950 rounded-xl border border-neutral-800 max-w-96
-              sm:w-[70vw] lg:w-[50vw]"
+              <motion.form className="p-4 w-[90vw] bg-neutral-950 rounded-xl flex flex-col gap-4 border border-neutral-800 max-w-96 xs:p-5 sm:max-w-max"
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.8, opacity: 0 }}
@@ -68,27 +67,28 @@ export function DeleteLinkPasswordModal() {
                 onClick={(e) => e.stopPropagation()}>
 
                 {/* Modal title */}
-                <h1 className="p-4 border-b border-neutral-800 text-sm sm:text-base lg:text-sm ">
-                  Are you sure to remove the password from this link? <span className="font-semibold">{shortLink}</span>
+                <h1 className="text-sm sm:text-base flex gap-2 items-center">
+                  <IconAlertHexagon className="size-5 text-red-500" />
+                  <p>
+                    Are you sure to remove the password from <span className="font-medium text-neutral-300"> {shortLink}</span>?
+                  </p>
                 </h1>
 
                 {/* Buttons Section */}
-                <div className="p-4 flex gap-4 items-center text-sm ">
+                <button className="w-max p-2 px-3 flex items-center gap-2 text-sm rounded-md bg-red-700/50 hover:opacity-80
+                  disabled:opacity-30 cursor-pointer border border-red-700/70"
+                  onClick={handleDelete}
+                  disabled={submiting}>
 
-                  <button className="p-2 px-3 flex items-center gap-2 rounded-sm bg-red-700 disabled:opacity-30 cursor-pointer "
-                    onClick={handleDelete}
-                    disabled={submiting}>
+                  {
+                    submiting ?
+                      <IconLoader2 className="size-4 animate-spin" /> :
 
-                    {
-                      submiting ?
-                        <IconLoader2 className="size-4 animate-spin" /> :
+                      <IconTrash className="size-4 " />
+                  }
+                  {submiting ? "Deleting..." : "Delete"}
 
-                        <IconTrashX className="size-4 " />
-                    }
-                    {submiting ? "Deleting..." : "Delete"}
-
-                  </button>
-                </div>
+                </button>
               </motion.form>
             </motion.section>
           )
