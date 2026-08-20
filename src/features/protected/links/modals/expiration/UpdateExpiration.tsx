@@ -75,7 +75,7 @@ export function UpdateUserLinkExpirationModal() {
               exit={{ opacity: 0 }}
               onClick={() => dispatch(toggleUpdateUserLinkExpiration())}>
 
-              <motion.form className="w-[90vw] bg-neutral-950 rounded-xl border border-neutral-800 max-w-[35rem]
+              <motion.form className="w-[90vw] bg-neutral-950 rounded-xl border border-neutral-800 max-w-140
               sm:w-[70vw] lg:w-[50vw]"
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
@@ -145,7 +145,7 @@ export function UpdateUserLinkExpirationModal() {
 
                 <div className="p-4 flex justify-start">
                   <button className="py-2 px-4 flex items-center gap-2 text-sm rounded-lg cursor-pointer
-                  disabled:opacity-50 bg-gradient-to-b from-amber-500 to-amber-500/50"
+                  disabled:opacity-50 bg-linear-to-b from-amber-500 to-amber-500/50"
                     disabled={submiting}>
                     {submiting ? <IconLoader className="size-3 animate-spin" /> : <IconCheck className="size-3" />}
                     Update
