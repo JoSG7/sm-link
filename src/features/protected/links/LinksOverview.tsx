@@ -4,15 +4,15 @@ import { IconAlarm, IconClockExclamation, IconLink, IconPlus, IconShieldCheckFil
 import { UnclaimedLinks } from "./components/UnclaimedLinks";
 import { FilterBar } from "./components/FilterBar";
 import { ReactNode, useDeferredValue, useEffect, useMemo, useState } from "react";
-import { LinkDetails } from "@/global";
 import { RootState } from "@/store/store-config";
 import { useDispatch, useSelector } from "react-redux";
-import { UserLinksTable } from "./components/UserLinksTable";
+import { UserLinksTable } from "./components/LinksTable";
 import { toast } from "sonner";
 import { toggleCreateUserLink } from "@/store/user-modals-slice";
 import { UserLinkServices } from "@/services/user-link.service";
 import clsx from "clsx";
 import { SearchBar } from "./components/SearchBar";
+import { LinkDetails } from "@/types/global";
 
 interface StatCard {
   count: number,

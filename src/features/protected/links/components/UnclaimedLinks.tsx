@@ -3,7 +3,7 @@
 import { UserLinkServices } from "@/services/user-link.service"
 import { LinkServices } from "@/services/link.service"
 import { DomainLogo } from "@/components/ui/DomainLogo"
-import { LinkDetails } from "@/global"
+import { LinkDetails } from "@/types/global"
 import { recordChange } from "@/store/link-changes-slice"
 import { RootState } from "@/store/store-config"
 import { IconCheck, IconEyeCancel, IconLoader, IconX } from "@tabler/icons-react"
@@ -176,7 +176,7 @@ export function UnclaimedLinks() {
               </button>
 
               <button className="py-2 px-4 flex items-center gap-2 rounded-lg cursor-pointer hover:scale-105 duration-300
-              bg-gradient-to-r from-green-500 to-sky-600 disabled:opacity-50"
+              bg-linear-to-r from-green-500 to-sky-600 disabled:opacity-50"
                 onClick={handleClaim}
                 disabled={submiting}>
                 {submiting ? <IconLoader className="animate-spin lg:size-4" /> : <IconCheck className="lg:size-4" />}

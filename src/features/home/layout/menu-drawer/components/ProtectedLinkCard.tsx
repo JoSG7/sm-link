@@ -1,4 +1,4 @@
-import { LinkDetails } from "@/global";
+import { LinkDetails } from "@/types/global";
 import { IconTrashFilled } from "@tabler/icons-react";
 import { DomainLogo } from "../../../../../components/ui/DomainLogo";
 import { useDispatch } from "react-redux";

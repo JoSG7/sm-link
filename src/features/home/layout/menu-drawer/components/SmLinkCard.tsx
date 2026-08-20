@@ -3,7 +3,7 @@
 import { IconCalendar, IconClockCheck, IconCopy, IconExternalLink, IconShieldLockFilled, IconTrashFilled, IconUserFilled } from "@tabler/icons-react"
 import { format } from "date-fns"
 import { toast } from "sonner"
-import { LinkDetails } from "@/global"
+import { LinkDetails } from "@/types/global"
 import { DomainLogo } from "@/components/ui/DomainLogo"
 import Link from "next/link"
 import { useDispatch } from "react-redux"

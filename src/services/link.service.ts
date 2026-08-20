@@ -1,5 +1,5 @@
 import { api } from "@/config/axios";
-import { LinkDetails } from "@/global";
+import { LinkDetails } from "@/types/global";
 
 interface SuccessResponse {
   data: string

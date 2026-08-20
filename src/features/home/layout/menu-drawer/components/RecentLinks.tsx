@@ -1,6 +1,6 @@
 "use client"
 
-import { LinkDetails } from "@/global"
+import { LinkDetails } from "@/types/global"
 import { LinkCardSkeleton } from "../../../ui/LoadingSkeleton"
 import { EmptyLinks } from "../../../ui/EmptyLinks"
 import { SmLinkCard } from "./SmLinkCard"

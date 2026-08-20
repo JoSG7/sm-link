@@ -7,7 +7,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSepara
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/shadcn/table"
 import { Button } from "@/components/shadcn/button"
 import { Checkbox } from "@/components/shadcn/checkbox"
-import { LinkDetails } from "@/global"
+import { LinkDetails } from "@/types/global"
 import { useDispatch } from "react-redux"
 import { toast } from "sonner"
 import { format, formatDistanceToNow } from "date-fns"
