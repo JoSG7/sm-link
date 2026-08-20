@@ -1,6 +1,6 @@
-drop policy if exists "Allow guests and user to insert a new link" on public.links;
+drop policy if exists "Allow guests and users to insert a new link, only 7 links per guest" on public.links;
 
-create policy "Allow guests and user to insert a new link"
+create policy "Allow guests and users to insert a new link, only 7 links per guest "
 on public.links
 for insert
 to anon, authenticated
@@ -12,6 +12,13 @@ with check (
       current_setting('request.headers', true)::json ->> 'x-guest-id',
       ''
     )
+    and (
+      select count(*)
+      from public.links l
+      where l.guest_id = (
+        current_setting('request.headers', true)::json ->> 'x-guest-id'
+      )::uuid
+    ) < 7
   )
   or
   (

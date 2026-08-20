@@ -65,7 +65,7 @@ export class LinkServices {
   
       async createExpiration({ short, expiresAt }: { short: string, expiresAt: string }) {
   
-        const { data } = await api.post<SuccessResponse>("links/expiration", {
+        const { data } = await api.post<SuccessResponse>("links/expirations", {
           short,
           expiresAt
         })

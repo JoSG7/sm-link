@@ -32,8 +32,7 @@ export function MenuDrawer() {
   const isMobile = width < 640
   const isTablet = width >= 640 && width < 1024
 
-  const navWidth = isMobile ? "w-full h-[75vh]" :
-  isTablet ? "w-4/6 h-full" : "w-1/2 h-full"
+  const navWidth = isMobile ? "w-full h-[75vh]" : isTablet ? "w-4/6 h-full" : "w-1/2 h-full"
   
   const navVariants = {
     open: {

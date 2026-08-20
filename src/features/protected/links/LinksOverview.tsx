@@ -119,7 +119,7 @@ export function LinksOverview() {
 
       <header>
         <h1 className="text-4xl font-semibold">
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-sky-500">SmLinks </span>
+          <span className="text-transparent bg-clip-text bg-linear-to-r from-green-400 to-sky-500">SmLinks </span>
           Overview
         </h1>
 
@@ -181,7 +181,7 @@ export function LinksOverview() {
           <SearchBar onChange={handleSearch} />
         </div>
 
-        <button className="p-3 px-4 flex items-center gap-1 rounded-lg bg-gradient-to-r from-green-500 to-sky-600 
+        <button className="p-3 px-4 flex items-center gap-1 rounded-lg bg-linear-to-r from-green-500 to-sky-600 
         cursor-pointer hover:scale-105 disabled:opacity-50 duration-300"
           onClick={() => dispatch(toggleCreateUserLink())}>
           <IconPlus className="size-5" />

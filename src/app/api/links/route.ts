@@ -14,7 +14,7 @@ export async function GET() {
 
   const supabase = await createSupabaseServerClient()
 
-  const { data, error } = await supabase.from("links").select("*")
+  const { data, error } = await supabase.rpc("get_guest_links")
 
   if (error) return NextResponse.json({ error: "Error in server" }, { status: 500 })
 

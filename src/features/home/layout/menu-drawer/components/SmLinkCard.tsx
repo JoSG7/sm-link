@@ -4,7 +4,7 @@ import { IconCalendar, IconClockCheck, IconCopy, IconExternalLink, IconShieldLoc
 import { months } from "@/consts"
 import { toast } from "sonner"
 import { LinkDetails } from "@/global"
-import { DomainLogo } from "../../../../../components/ui/DomainLogo"
+import { DomainLogo } from "@/components/ui/DomainLogo"
 import Link from "next/link"
 import { useDispatch } from "react-redux"
 import { toggleDeleteLink, toggleSetExpiration, toggleSetPassword } from "@/store/modal-slice"
@@ -38,7 +38,7 @@ export function SmLinkCard({ data }: { data: LinkDetails }) {
     {
       icon: <IconClockCheck className="size-5 " />,
       onClick: () => { dispatch(toggleSetExpiration(data.short)) },
-      disabled: data.has_user_id || data.expires_at ? true : true
+      disabled: data.has_user_id || data.expires_at ? true : false
     },
     {
       icon: <IconShieldLockFilled className="size-5 " />,

@@ -1,10 +1,10 @@
-import { CreateUserLinkModal } from "@/features/protected/links-overview/modals/CreateLink";
-import { DeleteUserLinkModal } from "@/features/protected/links-overview/modals/DeleteLink";
-import { CreateUserLinkExpirationModal } from "@/features/protected/links-overview/modals/expiration/CreateExpiration";
-import { UpdateUserLinkExpirationModal } from "@/features/protected/links-overview/modals/expiration/UpdateExpiration";
-import { CreateUserLinkPasswordModal } from "@/features/protected/links-overview/modals/protected/CreatePassword";
-import { DeleteUserLinkPasswordModal } from "@/features/protected/links-overview/modals/protected/DeletePassword";
-import { UpdateUserLinkPasswordModal } from "@/features/protected/links-overview/modals/protected/UpdatePassword";
+import { CreateUserLinkModal } from "@/features/protected/links/modals/CreateLink";
+import { DeleteUserLinkModal } from "@/features/protected/links/modals/DeleteLink";
+import { CreateUserLinkExpirationModal } from "@/features/protected/links/modals/expiration/CreateExpiration";
+import { UpdateUserLinkExpirationModal } from "@/features/protected/links/modals/expiration/UpdateExpiration";
+import { CreateUserLinkPasswordModal } from "@/features/protected/links/modals/protected/CreatePassword";
+import { DeleteUserLinkPasswordModal } from "@/features/protected/links/modals/protected/DeletePassword";
+import { UpdateUserLinkPasswordModal } from "@/features/protected/links/modals/protected/UpdatePassword";
 import { CreateLinkExpirationModal } from "@/features/home/modals/CreateExpiration";
 import { CreateLinkPasswordModal } from "@/features/home/modals/CreatePassword";
 import { DeleteLinkModal } from "@/features/home/modals/DeleteLink";
