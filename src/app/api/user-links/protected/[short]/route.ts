@@ -1,4 +1,4 @@
-import { createSupabaseServer } from "@/lib/supabase/server";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { NextRequest, NextResponse } from "next/server";
 
 interface ParamsProps {
@@ -8,7 +8,7 @@ interface ParamsProps {
 export async function DELETE(request: NextRequest, { params }: ParamsProps) {
 
   const { short } = await params
-  const supabase = await createSupabaseServer()
+  const supabase = await createSupabaseServerClient()
 
   const { data } = await supabase.from("link").select("id").eq("short", short).single()
 
@@ -27,7 +27,7 @@ export async function PATCH(request: NextRequest, { params }: ParamsProps) {
 
   const { short } = await params
   const { currentPassword, newPassword } = await request.json()
-  const supabase = await createSupabaseServer()
+  const supabase = await createSupabaseServerClient()
 
   const { error } = await supabase.rpc("update_link_password", {
     x_short: short,

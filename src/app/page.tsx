@@ -1,19 +1,15 @@
 import { redirect } from "next/navigation";
-import { Hero } from "@/features/home/hero-section/Hero";
+import { Hero } from "@/features/home/hero/Hero";
 import { HomeNavBar } from "@/features/home/layout/navbar/Navbar";
 import { MenuDrawer } from "@/features/home/layout/menu-drawer/MenuDrawer";
-import { createSupabaseServer } from "@/lib/supabase/server";
-
+import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 export default async function Home() {
 
-  const supabaseServer = await createSupabaseServer()
-  const { data: { user } } = await supabaseServer.auth.getUser()
+  const supabaseServer = await createSupabaseServerClient()
+  const { data } = await supabaseServer.auth.getClaims()
 
-  if (user) {
-    redirect("/dashboard")
-  } else {
-
+  if(!data?.claims ) {
     return (
       <main className="flex flex-col text-white bg-black">
         <HomeNavBar />
@@ -23,6 +19,9 @@ export default async function Home() {
         </div>
       </main>
     )
+  } else {
+
+    redirect("/dashboard")
   }
 }
 

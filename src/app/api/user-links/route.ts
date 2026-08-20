@@ -1,4 +1,4 @@
-import { createSupabaseServer } from "@/lib/supabase/server";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { NextRequest, NextResponse } from "next/server";
 
 const createBase64Code = (): string => {
@@ -11,7 +11,7 @@ const createBase64Code = (): string => {
 
 export async function GET() {
 
-  const supabase = await createSupabaseServer()
+  const supabase = await createSupabaseServerClient()
 
   const { data, error } = await supabase.rpc("get_user_links")
 
@@ -25,7 +25,7 @@ export async function GET() {
 export async function POST(request: NextRequest) {
 
   const { original, short } : { original: string, short: string } = await request.json()
-  const supabase = await createSupabaseServer()
+  const supabase = await createSupabaseServerClient()
 
   const { data, error } = await supabase.rpc("insert_user_link", {
     x_original: original,
@@ -47,7 +47,7 @@ export async function POST(request: NextRequest) {
 export async function DELETE(request: NextRequest) {
 
   const { searchParams } = new URL(request.url)
-  const supabase = await createSupabaseServer()
+  const supabase = await createSupabaseServerClient()
   const shorts = searchParams.getAll("short[]")
 
   const { error } = await supabase.from("link").delete().in("short", shorts)

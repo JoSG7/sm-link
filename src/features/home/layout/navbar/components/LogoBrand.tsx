@@ -12,7 +12,8 @@ export function LogoBrand() {
         src="/imgs/Espada1.png"
         alt="Icono"
         width={40}
-        height={28} />
+        height={28}
+        loading="eager" />
 
       <p className="text-lg font-medium sm:text-xl">
         SmLink

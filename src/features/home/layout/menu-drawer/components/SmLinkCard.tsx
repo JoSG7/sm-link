@@ -1,10 +1,10 @@
 "use client"
 
 import { IconCalendar, IconClockCheck, IconCopy, IconExternalLink, IconShieldLockFilled, IconTrashFilled, IconUserFilled } from "@tabler/icons-react"
-import { months } from "@/consts"
+import { format } from "date-fns"
 import { toast } from "sonner"
-import { LinkDetails } from "@/global"
-import { DomainLogo } from "../../../../shared/components/DomainLogo"
+import { LinkDetails } from "@/types/global"
+import { DomainLogo } from "@/components/ui/DomainLogo"
 import Link from "next/link"
 import { useDispatch } from "react-redux"
 import { toggleDeleteLink, toggleSetExpiration, toggleSetPassword } from "@/store/modal-slice"
@@ -26,7 +26,7 @@ export function SmLinkCard({ data }: { data: LinkDetails }) {
   const domain = url.hostname
   const date = new Date(data.created_at)
   const day = date.getDate()
-  const month = months[date.getMonth()]
+  const month = format(date, "MMMM")
   const dispatch = useDispatch()
 
   const actionButtons: ActionButtons[] = [
@@ -61,7 +61,6 @@ export function SmLinkCard({ data }: { data: LinkDetails }) {
     navigator.clipboard.writeText(`sm-link.vercel.app/${data.short}`).then(() => { toast.success("Copied!") })
   }
 
-
   return (
 
     <article className="p-4 rounded-lg border border-graphite whitespace-normal border-l-2 xl:p-5">
@@ -72,13 +71,13 @@ export function SmLinkCard({ data }: { data: LinkDetails }) {
 
           {/* Short Link */}
           <p className="font-semibold text-nowrap text-transparent bg-clip-text 
-          bg-gradient-to-r from-green-400 to-blue-500 
+          bg-linear-to-r from-green-400 to-blue-500 
           sm:text-base lg:text-sm">
             sm-link.vercel.app/{data.short}
           </p>
 
           {/* Original Link */}
-          <p className="max-h-[42px] mt-1 mb-2 break-all overflow-y-auto text-neutral-200 ">
+          <p className="max-h-10.5 mt-1 mb-2 break-all overflow-y-auto text-neutral-200 ">
             {data.original}
           </p>
 

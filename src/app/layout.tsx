@@ -2,10 +2,10 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Lexend } from "next/font/google"
 import { Toaster } from "sonner";
 import type { Metadata } from "next";
-import { ModalsRoot } from "@/features/shared/modals/ModalsRoot";
+import { ModalsRoot } from "@/components/modals/ModalsRoot";
 import { ReduxProvider } from "@/store/ReduxProvider";
+import { TooltipProvider } from "@/components/shadcn/tooltip";
 import "./globals.css";
-import { TooltipProvider } from "@/features/shared/components/shadcn/tooltip";
 
 export const metadata: Metadata = {
   title: "SmLink",

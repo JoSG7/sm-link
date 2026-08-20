@@ -5,14 +5,14 @@ import { useScreenSize } from "@/hooks/useScreenSize"
 import { motion } from "framer-motion"
 import { IconClockCheck, IconLock } from "@tabler/icons-react"
 import { RecentLinks } from "./components/RecentLinks"
-import { LinkDetails } from "@/global"
-import { Accordion } from "../../../shared/components/Accordion"
+import { LinkDetails } from "@/types/global"
+import { Accordion } from "@/components/ui/Accordion"
 import { ProtectedLinks } from "./components/ProtectedLinks"
-import { GuestLinkServices } from "@/services/guest-link.service"
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "@/store/store-config"
 import { toggleMenuDrawer } from "@/store/modal-slice"
 import { toast } from "sonner"
+import { LinkServices } from "@/services/link.service"
 
 
 export function MenuDrawer() {
@@ -32,19 +32,18 @@ export function MenuDrawer() {
   const isMobile = width < 640
   const isTablet = width >= 640 && width < 1024
 
-  const navWidth = isMobile ? "w-full h-[75vh]" :
-  isTablet ? "w-4/6 h-full" : "w-1/2 h-full"
+  const navWidth = isMobile ? "w-full h-[75vh]" : isTablet ? "w-4/6 h-full" : "w-1/2 h-full"
   
   const navVariants = {
     open: {
       x: 0,
       y: 0,
-      transition: { type: "tween", duration: 0.1 },
+      transition: { type: "tween" as const, duration: 0.1 },
     },
     closed: {
       x: isMobile ? 0 : "100%",
       y: isMobile ? "100%" : 0,
-      transition: { type: "tween", duration: 0.1 },
+      transition: { type: "tween" as const, duration: 0.1 },
     },
   }
 
@@ -55,7 +54,7 @@ export function MenuDrawer() {
 
       try {
 
-        const res = await new GuestLinkServices().getLinks()
+        const res = await new LinkServices().getSmLinks()
         setLinkDetails(res)
 
       } catch (e) {
@@ -75,7 +74,7 @@ export function MenuDrawer() {
 
   return (
 
-    <motion.section className={`h-screen fixed inset-0 bg-[rgba(0,0,0,0.7)] backdrop-blur-sm z-20
+    <motion.section className={`h-screen fixed inset-0 bg-black/70 backdrop-blur-sm z-20
       ${isOpen ? "pointer-events-auto" : "pointer-events-none"}`}
       layout
       onClick={() => { dispatch(toggleMenuDrawer()) }}
@@ -83,7 +82,7 @@ export function MenuDrawer() {
       animate={{ opacity: isOpen ? 1 : 0 }}
       transition={{ duration: 0.1 }} >
 
-      <motion.nav className={`max-w-2xl absolute bottom-0 bg-[rgb(7,7,7)] border-neutral-800 overflow-y-auto ${navWidth} 
+      <motion.nav className={`max-w-2xl absolute bottom-0 bg-black/70 border-neutral-800 overflow-y-auto ${navWidth} 
       sm:right-0 sm:border-l-[1.5px] lg:border-l`}
         layout
         onClick={(e) => e.stopPropagation()}
@@ -99,13 +98,10 @@ export function MenuDrawer() {
 
                   {/* Icon and title */}
                   <div className="flex gap-2 items-center ">
-
                     <IconClockCheck className="size-6 text-green-500 " />
-
                     <p>
                       <span className="text-green-300">Recent</span> SmLinks
                     </p>
-
                   </div>
 
                   {/* Total of links */}

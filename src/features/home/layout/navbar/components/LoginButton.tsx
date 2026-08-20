@@ -1,7 +1,7 @@
 "use client"
 
-import { GitHubAuthButton } from "@/features/home/auth/SignInButton";
-import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/features/shared/components/shadcn/hover-card";
+import { GitHubAuthButton } from "@/components/auth/SignInButton";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/shadcn/hover-card";
 
 export function LoginButton() {
 
@@ -9,8 +9,7 @@ export function LoginButton() {
 
     <HoverCard openDelay={200}>
 
-      <HoverCardTrigger className="hidden px-3 py-2 items-center rounded-lg text-sm text-neutral-300
-      hover:bg-neutral-800 hover:text-white lg:flex">
+      <HoverCardTrigger className="hidden px-3 py-2 items-center rounded-lg text-sm text-neutral-300 hover:bg-neutral-800 hover:text-white lg:flex">
         Log in
       </HoverCardTrigger>
 

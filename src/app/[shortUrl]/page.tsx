@@ -1,10 +1,8 @@
 import { AccessLinkForm } from "@/features/home/ui/AccessLinkForm";
 import { LinkIsExpired } from "@/features/home/ui/LinkIsExpired";
-import { SmLink } from "@/global";
+import { SmLink } from "@/types/global";
 import { createSupabase } from "@/lib/supabase/client";
 import { redirect } from "next/navigation";
-
-
 
 async function ShortURL({ params }: { params: Promise<{ shortUrl: string }> }) {
 

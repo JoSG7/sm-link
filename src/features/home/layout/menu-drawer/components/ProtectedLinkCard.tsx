@@ -1,6 +1,6 @@
-import { LinkDetails } from "@/global";
+import { LinkDetails } from "@/types/global";
 import { IconTrashFilled } from "@tabler/icons-react";
-import { DomainLogo } from "../../../../shared/components/DomainLogo";
+import { DomainLogo } from "../../../../../components/ui/DomainLogo";
 import { useDispatch } from "react-redux";
 import { toggleDeletePassword } from "@/store/modal-slice";
 
