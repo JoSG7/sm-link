@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useMemo, useState } from "react"
 import {
   flexRender,
   getCoreRowModel,
@@ -11,11 +11,12 @@ import {
   type SortingState,
   type VisibilityState,
 } from "@tanstack/react-table"
-import { IconChevronLeft, IconChevronRight, IconChevronsLeft, IconChevronsRight, IconCopy, IconSortDescending } from "@tabler/icons-react"
+import { IconChevronLeft, IconChevronRight, IconChevronsLeft, IconChevronsRight, IconCopy, IconPlus, IconSearch, IconSortDescending } from "@tabler/icons-react"
 import { MoreHorizontal } from "lucide-react"
 import { toast } from "sonner"
 import { format, formatDistanceToNow } from "date-fns"
 import { Checkbox } from "@/components/shadcn/checkbox"
+import { Input } from "@/components/shadcn/input"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/shadcn/table"
 import { LinkDetails } from "@/types/global"
 
@@ -25,11 +26,26 @@ interface AdminLinksTableProps {
 
 export function AdminLinksTable({ links }: AdminLinksTableProps) {
   const [sorting, setSorting] = useState<SortingState>([])
+  const [filter, setFilter] = useState<"all" | "protected" | "expired">("all")
+  const [search, setSearch] = useState("")
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({
     has_password: false,
     is_expired: false,
   })
   const [rowSelection, setRowSelection] = useState({})
+
+  const filteredLinks = useMemo(() => {
+    const normalizedSearch = search.trim().toLowerCase()
+
+    return links.filter(link => {
+      const matchesFilter = filter === "all"
+        || (filter === "protected" && link.has_password)
+        || (filter === "expired" && link.is_expired)
+      const matchesSearch = !normalizedSearch || link.original.toLowerCase().includes(normalizedSearch)
+
+      return matchesFilter && matchesSearch
+    })
+  }, [filter, links, search])
 
   const columns: ColumnDef<LinkDetails>[] = [
     {
@@ -153,7 +169,7 @@ export function AdminLinksTable({ links }: AdminLinksTableProps) {
   ]
 
   const table = useReactTable({
-    data: links,
+    data: filteredLinks,
     columns,
     state: { sorting, columnVisibility, rowSelection },
     onSortingChange: setSorting,
@@ -166,7 +182,44 @@ export function AdminLinksTable({ links }: AdminLinksTableProps) {
 
   return (
     <div className="w-full">
-      <div className="overflow-hidden rounded-md border-1.5 border-neutral-800/80 bg-neutral-950">
+
+      <section className="mb-5 flex flex-col gap-3 rounded-2xl border border-neutral-800/80 bg-neutral-950 p-3 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-wrap items-center gap-2">
+          {(["all", "protected", "expired"] as const).map(option => (
+            <button
+              key={option}
+              type="button"
+              className={option === filter
+                ? "rounded-lg bg-neutral-100 px-3 py-2 text-sm font-medium text-neutral-950 transition"
+                : "rounded-lg px-3 py-2 text-sm font-medium text-neutral-400 transition hover:bg-neutral-800 hover:text-neutral-100"}
+              onClick={() => setFilter(option)}
+            >
+              {option === "all" ? "All" : option === "protected" ? "Protected" : "Expired"}
+            </button>
+          ))}
+
+          <div className="relative min-w-52 sm:ml-2 sm:w-64">
+            <IconSearch className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-neutral-500" />
+            <Input
+              value={search}
+              onChange={event => setSearch(event.target.value)}
+              placeholder="Search original URL"
+              aria-label="Search by original URL"
+              className="h-10 border-neutral-800 bg-neutral-900/70 pl-9 text-sm text-neutral-100 placeholder:text-neutral-500"
+            />
+          </div>
+        </div>
+
+        <button
+          type="button"
+          className="flex shrink-0 items-center justify-center gap-2 rounded-lg bg-linear-to-r from-green-500 to-sky-600 px-4 py-2.5 text-sm font-medium text-white shadow-lg shadow-sky-950/20 transition duration-300 hover:-translate-y-0.5 hover:shadow-sky-900/30"
+        >
+          <IconPlus className="size-4" />
+          Create Link
+        </button>
+      </section>
+
+      <div className="overflow-hidden rounded-xl border-1.5 border-neutral-800/80 bg-neutral-950">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map(headerGroup => (

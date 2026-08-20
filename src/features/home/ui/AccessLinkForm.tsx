@@ -41,7 +41,7 @@ export function AccessLinkForm({ short, linkID }: { short: string, linkID?: stri
 
     <section className="w-screen h-screen flex items-center justify-center">
 
-      <motion.div className="w-[90vw] bg-neutral-950 rounded-xl border border-neutral-800 max-w-[1270px]
+      <motion.div className="w-[90vw] bg-neutral-950 rounded-xl border border-neutral-800 max-w-300
       sm:w-[80vw] lg:w-[50vw]"
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
