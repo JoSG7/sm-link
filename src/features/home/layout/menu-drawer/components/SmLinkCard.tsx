@@ -1,7 +1,7 @@
 "use client"
 
 import { IconCalendar, IconClockCheck, IconCopy, IconExternalLink, IconShieldLockFilled, IconTrashFilled, IconUserFilled } from "@tabler/icons-react"
-import { months } from "@/consts"
+import { format } from "date-fns"
 import { toast } from "sonner"
 import { LinkDetails } from "@/global"
 import { DomainLogo } from "@/components/ui/DomainLogo"
@@ -26,7 +26,7 @@ export function SmLinkCard({ data }: { data: LinkDetails }) {
   const domain = url.hostname
   const date = new Date(data.created_at)
   const day = date.getDate()
-  const month = months[date.getMonth()]
+  const month = format(date, "MMMM")
   const dispatch = useDispatch()
 
   const actionButtons: ActionButtons[] = [

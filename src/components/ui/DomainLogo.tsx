@@ -8,9 +8,7 @@ export function DomainLogo({ domain, className }: { domain: string, className?: 
 
   if (error) {
     return (
-      
       <IconWorldExclamation className={`min-size-brand ${className}`} />
-      
     )
   }
 
