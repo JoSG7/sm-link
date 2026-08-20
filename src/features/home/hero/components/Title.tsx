@@ -6,16 +6,16 @@ import { IconCircleFilled } from "@tabler/icons-react"
 export function HeroTitle() {
 
   return (
-    <div className="lg:shrink-0 lg:my-auto lg:pb-2 lg:max-w-[33rem] xl:max-w-[35rem]">
+    <div className="lg:shrink-0 lg:my-auto lg:pb-2 lg:max-w-132 xl:max-w-140">
       {/* Title */}
-      <h1 className="tracking-tight text-5xl font-[400]
+      <h1 className="tracking-tight text-5xl font-normal
       xs:text-center sm:text-7xl 
       lg:text-6xl lg:text-start xl:text-title">
         The
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to bg-blue-500 lg:hidden">
+        <span className="text-transparent bg-clip-text bg-linear-to-r from-green-400 to bg-blue-500 lg:hidden">
           {" Best way "}
         </span>
-        <span className="hidden text-transparent bg-clip-text bg-gradient-to-r from-green-400 to bg-blue-500 lg:inline">
+        <span className="hidden text-transparent bg-clip-text bg-linear-to-r from-green-400 to bg-blue-500 lg:inline">
           {" Smartest way "}
         </span>
         to share your links

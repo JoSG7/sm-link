@@ -8,11 +8,11 @@ import { RecentLinks } from "./components/RecentLinks"
 import { LinkDetails } from "@/global"
 import { Accordion } from "@/components/ui/Accordion"
 import { ProtectedLinks } from "./components/ProtectedLinks"
-import { GuestLinkServices } from "@/services/guest-link.service"
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "@/store/store-config"
 import { toggleMenuDrawer } from "@/store/modal-slice"
 import { toast } from "sonner"
+import { LinkServices } from "@/services/link.service"
 
 
 export function MenuDrawer() {
@@ -55,7 +55,7 @@ export function MenuDrawer() {
 
       try {
 
-        const res = await new GuestLinkServices().getLinks()
+        const res = await new LinkServices().getSmLinks()
         setLinkDetails(res)
 
       } catch (e) {
@@ -83,7 +83,7 @@ export function MenuDrawer() {
       animate={{ opacity: isOpen ? 1 : 0 }}
       transition={{ duration: 0.1 }} >
 
-      <motion.nav className={`max-w-2xl absolute bottom-0 bg-[rgb(7,7,7)] border-neutral-800 overflow-y-auto ${navWidth} 
+      <motion.nav className={`max-w-2xl absolute bottom-0 bg-black/70 border-neutral-800 overflow-y-auto ${navWidth} 
       sm:right-0 sm:border-l-[1.5px] lg:border-l`}
         layout
         onClick={(e) => e.stopPropagation()}

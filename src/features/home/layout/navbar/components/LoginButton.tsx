@@ -9,8 +9,7 @@ export function LoginButton() {
 
     <HoverCard openDelay={200}>
 
-      <HoverCardTrigger className="hidden px-3 py-2 items-center rounded-lg text-sm text-neutral-300
-      hover:bg-neutral-800 hover:text-white lg:flex">
+      <HoverCardTrigger className="hidden px-3 py-2 items-center rounded-lg text-sm text-neutral-300 hover:bg-neutral-800 hover:text-white lg:flex">
         Log in
       </HoverCardTrigger>
 

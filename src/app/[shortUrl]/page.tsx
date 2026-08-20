@@ -4,8 +4,6 @@ import { SmLink } from "@/global";
 import { createSupabase } from "@/lib/supabase/client";
 import { redirect } from "next/navigation";
 
-
-
 async function ShortURL({ params }: { params: Promise<{ shortUrl: string }> }) {
 
   const supabase = createSupabase()

@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { toggleMenuDrawer } from "@/store/modal-slice";
 import { LogoBrand } from "./components/LogoBrand";
 import { LoginButton } from "./components/LoginButton";
+import Link from "next/link";
 
 
 export function HomeNavBar() {
@@ -13,8 +14,7 @@ export function HomeNavBar() {
 
   return (
 
-    <header className="h-16 flex justify-center bg-black/70 sticky top-0 left-0 right-0  z-10
-    backdrop-blur-sm sm:h-18">
+    <header className="h-16 flex justify-center bg-black/70 sticky top-0 left-0 right-0 z-10 backdrop-blur-sm sm:h-18">
 
       <div className="w-full flex justify-between px-4 xs:px-6
       xl:w-full xl:max-w-8xl">
@@ -22,6 +22,10 @@ export function HomeNavBar() {
         <LogoBrand />
 
         <div className="flex items-center gap-4">
+
+          <Link href="/dashboard" >
+            Dashboard
+          </Link>
 
           <LoginButton />
 

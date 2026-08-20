@@ -1,13 +1,12 @@
 "use client"
 
 import { IconBolt, IconPaperclip } from "@tabler/icons-react"
-import { FormEvent, useState } from "react"
+import { SubmitEvent, useState } from "react"
 import { toast } from "sonner"
-import { isURL } from "validator"
 import { NewLink } from "./NewLink"
-import { GuestLinkServices } from "../../../../services/guest-link.service"
 import { useDispatch } from "react-redux"
 import { recordChange } from "@/store/link-changes-slice"
+import { LinkServices } from "@/services/link.service"
 
 export function ShorterForm() {
 
@@ -17,36 +16,29 @@ export function ShorterForm() {
   const dispatch = useDispatch()
 
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = async (e: SubmitEvent) => {
 
     e.preventDefault()
+    setSubmiting(true)
 
-    if (!isURL(original)) {
+    try {
 
-      toast.error("Invalid URL")
+      const { data } = await new LinkServices().createSmLink(original)
+      setShort(data)
+      dispatch(recordChange())
+      toast.success("Succes")
 
-    } else {
+    } catch (e) {
 
-      setSubmiting(true)
+      toast.error((e as Error).message)
 
-      try {
+    } finally {
 
-        const { response } = await new GuestLinkServices().createSmLink(original)
-        setShort(response)
-        dispatch(recordChange())
-        toast.success("Succes")
+      setSubmiting(false)
+      setOriginal("")
 
-      } catch (e) {
-
-        toast.error((e as Error).message)
-
-      } finally {
-
-        setSubmiting(false)
-        setOriginal("")
-
-      }
     }
+
   }
 
 
@@ -83,7 +75,7 @@ export function ShorterForm() {
             </article>
 
             <button className="p-3 px-4 flex gap-1 justify-center items-center rounded-r-lg cursor-pointer
-            bg-gradient-to-r from-green-500 to-blue-700 
+            bg-linear-to-r from-green-500 to-blue-700 
             disabled:opacity-30 lg:px-5"
               disabled={submiting}>
 

@@ -2,14 +2,14 @@
 
 import { IconAlertHexagon, IconLoader2, IconTrash } from "@tabler/icons-react"
 import { AnimatePresence, motion } from "framer-motion"
-import { FormEvent, useState } from "react"
+import { SubmitEvent, useState } from "react"
 import { toast } from "sonner"
-import { GuestLinkServices } from "../../../services/guest-link.service"
 import ModalLayout from "@/components/modals/ModalLayout"
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "@/store/store-config"
 import { recordChange } from "@/store/link-changes-slice"
 import { toggleDeleteLink } from "@/store/modal-slice"
+import { LinkServices } from "@/services/link.service"
 
 export function DeleteLinkModal() {
 
@@ -21,7 +21,7 @@ export function DeleteLinkModal() {
   )
 
 
-  const handleDelete = async (e: FormEvent) => {
+  const handleDelete = async (e: SubmitEvent) => {
 
     e.preventDefault()
 
@@ -31,10 +31,10 @@ export function DeleteLinkModal() {
 
       try {
 
-        const { response } = await new GuestLinkServices().deleteSmLink(shortLink)
+        const { data } = await new LinkServices().deleteSmLink(shortLink)
         dispatch(recordChange())
         dispatch(toggleDeleteLink())
-        toast.success(response)
+        toast.success(data)
 
       } catch (e) {
 
@@ -61,7 +61,7 @@ export function DeleteLinkModal() {
               exit={{ opacity: 0 }}
               onClick={() => dispatch(toggleDeleteLink())}>
 
-              <motion.form className="p-4 w-[90vw] bg-neutral-950 rounded-xl flex flex-col gap-4 border-1 border-neutral-800 max-w-96 xs:p-5 sm:max-w-max "
+              <motion.form className="p-4 w-[90vw] bg-neutral-950 rounded-xl flex flex-col gap-4 border border-neutral-800 max-w-96 xs:p-5 sm:max-w-max "
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.8, opacity: 0 }}

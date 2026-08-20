@@ -1,0 +1,16 @@
+drop policy if exists "Allow guests and users to delete their own links" on public.links
+
+create policy "Allow guests and users to delete their own links" on link for delete 
+to anon, authenticated
+using (
+  (
+    auth.uid () is not null
+    and user_id = auth.uid ()
+  )
+  or (
+    auth.uid () is null
+    and guest_id = (
+      current_setting('request.headers', true)::json ->> 'x-guest-id'::text
+    )::uuid
+  )
+);

@@ -17,7 +17,7 @@ export function LinkCardSkeleton() {
           lg:py-3 2xl:py-4 3xl:py-5 4xl:py-6" />
 
           {/* Original */}
-          <div className="w-36 py-5 rounded-xl bg-neutral-800 animate-pulse max-w-[760px]
+          <div className="w-36 py-5 rounded-xl bg-neutral-800 animate-pulse max-w-190
           lg:w-[30vw] lg:py-7
           2xl:py-9 3xl:py-11 4xl:py-14" />
 

@@ -1,4 +1,4 @@
-import { createSupabaseServer } from "@/lib/supabase/server";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { NextRequest, NextResponse } from "next/server";
 
 
@@ -8,7 +8,7 @@ export async function POST(req: NextRequest) {
   const { linksID }: { linksID: string[] } = await req.json()
 
   // Create a supabase server to cookies access
-  const supabase = await createSupabaseServer()
+  const supabase = await createSupabaseServerClient()
 
   const { error } = await supabase.rpc("claim_guest_links", {
     x_links_id: linksID

@@ -38,7 +38,7 @@ export function SmLinkCard({ data }: { data: LinkDetails }) {
     {
       icon: <IconClockCheck className="size-5 " />,
       onClick: () => { dispatch(toggleSetExpiration(data.short)) },
-      disabled: data.has_user_id || data.expires_at ? true : false
+      disabled: data.has_user_id || data.expires_at ? true : true
     },
     {
       icon: <IconShieldLockFilled className="size-5 " />,
@@ -61,7 +61,6 @@ export function SmLinkCard({ data }: { data: LinkDetails }) {
     navigator.clipboard.writeText(`sm-link.vercel.app/${data.short}`).then(() => { toast.success("Copied!") })
   }
 
-
   return (
 
     <article className="p-4 rounded-lg border border-graphite whitespace-normal border-l-2 xl:p-5">
@@ -72,7 +71,7 @@ export function SmLinkCard({ data }: { data: LinkDetails }) {
 
           {/* Short Link */}
           <p className="font-semibold text-nowrap text-transparent bg-clip-text 
-          bg-gradient-to-r from-green-400 to-blue-500 
+          bg-linear-to-r from-green-400 to-blue-500 
           sm:text-base lg:text-sm">
             sm-link.vercel.app/{data.short}
           </p>

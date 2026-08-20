@@ -1,14 +1,14 @@
-import { CreateUserLinkModal } from "@/features/dashboard/links-overview/modals/CreateLink";
-import { DeleteUserLinkModal } from "@/features/dashboard/links-overview/modals/DeleteLink";
-import { CreateUserLinkExpirationModal } from "@/features/dashboard/links-overview/modals/expiration/CreateExpiration";
-import { UpdateUserLinkExpirationModal } from "@/features/dashboard/links-overview/modals/expiration/UpdateExpiration";
-import { CreateUserLinkPasswordModal } from "@/features/dashboard/links-overview/modals/protected/CreatePassword";
-import { DeleteUserLinkPasswordModal } from "@/features/dashboard/links-overview/modals/protected/DeletePassword";
-import { UpdateUserLinkPasswordModal } from "@/features/dashboard/links-overview/modals/protected/UpdatePassword";
-import { CreateLinkExpirationModal } from "@/features/home/modals/CreateLinkExpiration";
-import { CreateLinkPasswordModal } from "@/features/home/modals/CreateLinkPassword";
+import { CreateUserLinkModal } from "@/features/protected/links-overview/modals/CreateLink";
+import { DeleteUserLinkModal } from "@/features/protected/links-overview/modals/DeleteLink";
+import { CreateUserLinkExpirationModal } from "@/features/protected/links-overview/modals/expiration/CreateExpiration";
+import { UpdateUserLinkExpirationModal } from "@/features/protected/links-overview/modals/expiration/UpdateExpiration";
+import { CreateUserLinkPasswordModal } from "@/features/protected/links-overview/modals/protected/CreatePassword";
+import { DeleteUserLinkPasswordModal } from "@/features/protected/links-overview/modals/protected/DeletePassword";
+import { UpdateUserLinkPasswordModal } from "@/features/protected/links-overview/modals/protected/UpdatePassword";
+import { CreateLinkExpirationModal } from "@/features/home/modals/CreateExpiration";
+import { CreateLinkPasswordModal } from "@/features/home/modals/CreatePassword";
 import { DeleteLinkModal } from "@/features/home/modals/DeleteLink";
-import { DeleteLinkPasswordModal } from "@/features/home/modals/DeleteLinkPassword";
+import { DeleteLinkPasswordModal } from "@/features/home/modals/DeletePassword";
 
 
 export function ModalsRoot() {

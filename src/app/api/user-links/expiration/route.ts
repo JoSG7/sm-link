@@ -1,4 +1,4 @@
-import { createSupabaseServer } from "@/lib/supabase/server";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { NextRequest, NextResponse } from "next/server";
 
 
@@ -6,7 +6,7 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(request: NextRequest) {
 
   const { short, expirationDate }: { short: string, expirationDate: string } = await request.json()
-  const supabase = await createSupabaseServer()
+  const supabase = await createSupabaseServerClient()
 
   const { data } = await supabase.from("link").select("id").eq("short", short).single()
 
