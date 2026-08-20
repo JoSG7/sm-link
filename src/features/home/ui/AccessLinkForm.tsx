@@ -5,7 +5,7 @@ import { IconCheck, IconLoader2, IconLock } from "@tabler/icons-react"
 import { motion } from "framer-motion"
 import { FormEvent, useState } from "react"
 import { toast } from "sonner"
-import { GuestLinkServices } from "@/services/guest-link.service"
+import { LinkServices } from "@/services/link.service"
 
 export function AccessLinkForm({ short, linkID }: { short: string, linkID?: string }) {
 
@@ -21,9 +21,9 @@ export function AccessLinkForm({ short, linkID }: { short: string, linkID?: stri
     
     try {
       
-      const { response } = await new GuestLinkServices().protected.validateSmLinkPassword(short, password)
+      const { data } = await new LinkServices().protected.validatePassword({ short, password })
       supabase.rpc("record_monthly_visits", { x_link_id: linkID })
-      window.location.replace(response) 
+      window.location.replace(data) 
 
     } catch {
 

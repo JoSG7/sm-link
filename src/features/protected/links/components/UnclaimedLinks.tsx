@@ -1,7 +1,7 @@
 "use client"
 
 import { UserLinkServices } from "@/services/user-link.service"
-import { GuestLinkServices } from "@/services/guest-link.service"
+import { LinkServices } from "@/services/link.service"
 import { DomainLogo } from "@/components/ui/DomainLogo"
 import { LinkDetails } from "@/global"
 import { recordChange } from "@/store/link-changes-slice"
@@ -90,7 +90,7 @@ export function UnclaimedLinks() {
 
         try {
   
-          const response = await new GuestLinkServices().getLinks()
+          const response = await new LinkServices().getSmLinks()
           setGuestLinks(response.filter(el => !el.has_user_id))
   
         } catch (e) {
