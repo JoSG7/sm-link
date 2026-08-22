@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
   const supabase = await createSupabaseServerClient()
 
   const { original, short }: { original: string, short?: string } = await req.json()
-  const shortURL = createBase64Code()
+  const base64code = createBase64Code()
 
   const { data, error } = await supabase.from("links").select("id").eq("original", original).maybeSingle()
 
@@ -37,19 +37,34 @@ export async function POST(req: NextRequest) {
 
   if (data) return NextResponse.json({ error: "You already have a short version of this link" }, { status: 500 })
 
-  const res = await supabase.from("links").insert({
-    original,
-    short: short || shortURL,
-    guest_id: await getGuestID()
-  })
+  const { data: auth } = await supabase.auth.getClaims()
 
-  if (res.error) {
+  if(auth?.claims) {
 
-    if (res.error.code == '42501') return NextResponse.json({ error: "You have reached the limit of links" }, { status: 500 })
-    return NextResponse.json({ error: "Error in Server" }, { status: 500 })
+    const { error } = await supabase.rpc("insert_user_link", {
+      x_original: original,
+      x_short: short || base64code
+    })
+
+    if(error) return NextResponse.json({ error: "Error in server" }, { status: 500 })
+
+    return NextResponse.json({ data: short || base64code }, { status: 200 })
+
+  } else {
+
+    const { error } = await supabase.from("links").insert({
+      original,
+      short: short || base64code,
+      guest_id: await getGuestID()
+    })
+  
+    if (error) {
+      if (error.code == '42501') return NextResponse.json({ error: "You have reached the limit of links" }, { status: 500 })
+      return NextResponse.json({ error: "Error in Server" }, { status: 500 })
+    }
+  
+    return NextResponse.json({ data: short || base64code }, { status: 200 })
 
   }
-
-  return NextResponse.json({ data: short || shortURL }, { status: 200 })
 
 }

@@ -2,13 +2,12 @@
 
 import ModalLayout from "@/components/modals/ModalLayout";
 import { AnimatePresence } from "framer-motion";
-import { FormEvent, useState } from "react";
-import { useDispatch } from "react-redux";
+import { SubmitEvent, useState } from "react";
 import { motion } from "framer-motion";
 import { IconAlarmPlus, IconCalendarPlus, IconCheck, IconClockHour3, IconLoader } from "@tabler/icons-react";
 import { toast } from "sonner";
-import { UserLinkServices } from "@/services/user-link.service";
-import { recordChange } from "@/store/link-changes-slice";
+import { LinkServices } from "@/services/link.service";
+import { useRouter } from "next/navigation";
 
 interface CreateUserLinkExpirationModalProps {
   isOpen: boolean
@@ -21,10 +20,9 @@ export function CreateUserLinkExpirationModal({ isOpen, short, onClose }: Create
   const [submiting, setSubmiting] = useState(false)
   const [expirationDate, setExpirationDate] = useState("")
   const [expirationHour, setExpirationHour] = useState("")
+  const router = useRouter()
 
-  const dispatch = useDispatch()
-
-  const handleCreate = async (e: FormEvent) => {
+  const handleCreate = async (e: SubmitEvent) => {
 
     e.preventDefault()
 
@@ -36,15 +34,16 @@ export function CreateUserLinkExpirationModal({ isOpen, short, onClose }: Create
 
       setSubmiting(true)
 
-      const { response } = await new UserLinkServices().expiration.createUserSmLinkExpiration({
-        short, expirationDate: fullDate.toISOString()
+      const { data } = await new LinkServices().expiration.createExpiration({
+        short,
+        expiresAt: fullDate.toISOString()
       })
 
-      dispatch(recordChange())
       setExpirationDate("")
       setExpirationHour("")
+      toast.success(data)
       onClose()
-      toast.success(response)
+      router.refresh()
 
     } catch (e) {
 
@@ -58,24 +57,20 @@ export function CreateUserLinkExpirationModal({ isOpen, short, onClose }: Create
   }
 
 
-
   return (
 
     <ModalLayout>
       <AnimatePresence>
-
         {
           isOpen && (
 
-            <motion.section className={`fixed inset-0 z-30 bg-[rgba(0,0,0,0.8)] flex items-center justify-center backdrop-blur-sm
-            ${submiting && "pointer-events-none"}`}
+            <motion.section className={`fixed inset-0 z-30 bg-black/80 flex items-center justify-center backdrop-blur-sm ${submiting && "pointer-events-none"}`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={onClose}>
 
-              <motion.form className="w-[90vw] bg-neutral-950 rounded-xl border border-neutral-800 max-w-140
-              sm:w-[70vw] lg:w-[50vw]"
+              <motion.form className="w-[90vw] p-5 bg-neutral-950 rounded-xl border border-neutral-800 max-w-150 sm:w-[70vw] lg:w-[50vw]"
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.8, opacity: 0 }}
@@ -83,7 +78,7 @@ export function CreateUserLinkExpirationModal({ isOpen, short, onClose }: Create
                 onClick={(e) => e.stopPropagation()}
                 onSubmit={handleCreate}>
 
-                <header className="p-4 flex items-center gap-4 ">
+                <header className="pb-4 flex items-center gap-4 ">
                   <div className="p-2 rounded-lg border border-yellow-500/30 bg-yellow-500/20">
                     <IconAlarmPlus className="size-6 text-yellow-400" />
                   </div>
@@ -94,7 +89,7 @@ export function CreateUserLinkExpirationModal({ isOpen, short, onClose }: Create
                   </div>
                 </header>
 
-                <section className="px-4 py-2 flex flex-col gap-4">
+                <section className="py-2 flex flex-col gap-4">
 
                   <article className="flex items-center text-sm">
                     <div className="p-2.5 rounded-s-lg border-1.5 border-e-0 border-neutral-800 bg-neutral-900/80">
@@ -133,15 +128,13 @@ export function CreateUserLinkExpirationModal({ isOpen, short, onClose }: Create
 
                   </div>
 
-                  <p className="p-2.5 rounded-lg text-sm text-yellow-200 border-1.5 border-amber-500/30 bg-amber-500/20 
-                    grow">
+                  <p className="p-2.5 rounded-lg text-sm text-yellow-200 border-1.5 border-amber-500/30 bg-amber-500/20 grow">
                     After the expiration date, this link will no longer be accessible
                   </p>
                 </section>
 
-                <div className="p-4 flex justify-start">
-                  <button className="py-2 px-4 flex items-center gap-2 text-sm rounded-lg cursor-pointer
-                  disabled:opacity-50 bg-linear-to-b from-amber-500 to-amber-500/50"
+                <div className="pt-4 flex justify-start">
+                  <button className="py-2 px-4 flex items-center gap-2 text-sm rounded-lg disabled:opacity-50 bg-linear-to-b from-amber-500 to-amber-500/50"
                     disabled={submiting}>
                     {submiting ? <IconLoader className="size-3 animate-spin" /> : <IconCheck className="size-3" />}
                     Create
@@ -151,7 +144,6 @@ export function CreateUserLinkExpirationModal({ isOpen, short, onClose }: Create
             </motion.section>
           )
         }
-
       </AnimatePresence>
     </ModalLayout>
   )

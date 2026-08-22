@@ -8,13 +8,14 @@ import { IconCheck, IconKey, IconLoader, IconLockCheck, IconLockFilled } from "@
 import { toast } from "sonner";
 import { LinkServices } from "@/services/link.service";
 import { useRouter } from "next/navigation";
+
 interface CreateUserLinkPasswordModalProps {
   isOpen: boolean
   short: string
   onClose: () => void
 }
 
-export function CreateUserLinkPasswordModal({ isOpen, short, onClose }: CreateUserLinkPasswordModalProps) {
+export function CreatePasswordModal({ isOpen, short, onClose }: CreateUserLinkPasswordModalProps) {
 
   const [submiting, setSubmiting] = useState(false)
   const [password, setPassword] = useState("")

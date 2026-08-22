@@ -43,6 +43,16 @@ export class LinkServices {
 
     },
 
+    async updatePassword({ short, currentPassword, newPassword }: { short: string, currentPassword: string, newPassword: string }) {
+
+      const { data } = await api.patch<SuccessResponse>(`links/protected/${short}`, {
+        currentPassword,
+        newPassword
+      })
+      return data
+
+    },
+
     async deletePassword(short: string) {
 
       const { data } = await api.delete<SuccessResponse>(`links/protected/${short}`)

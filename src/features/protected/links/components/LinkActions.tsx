@@ -8,11 +8,11 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/shadcn/dropdown-menu"
-import { CreateUserLinkPasswordModal } from "../modals/protected/CreatePassword"
-import { UpdateUserLinkPasswordModal } from "../modals/protected/UpdatePassword"
+import { CreatePasswordModal } from "../modals/protected/CreatePassword"
+import { UpdatePasswordModal } from "../modals/protected/UpdatePassword"
 import { CreateUserLinkExpirationModal } from "../modals/expiration/CreateExpiration"
 import { UpdateUserLinkExpirationModal } from "../modals/expiration/UpdateExpiration"
-import { DeleteUserLinkModal } from "../modals/DeleteLink"
+import { DeleteLinkModal } from "../modals/DeleteLink"
 
 type LinkAction = "password" | "expiration" | "delete"
 
@@ -89,13 +89,13 @@ function LinkActionsComponent({ short, hasPassword, expirationDate }: LinkAction
         </DropdownMenuContent>
 
         {activeAction === "password" && hasPassword && (
-          <UpdateUserLinkPasswordModal
+          <UpdatePasswordModal
             isOpen={isModalOpen}
             short={short}
             onClose={closeModal} />
         )}
         {activeAction === "password" && !hasPassword && (
-          <CreateUserLinkPasswordModal
+          <CreatePasswordModal
             isOpen={isModalOpen}
             short={short}
             onClose={closeModal} />
@@ -115,7 +115,7 @@ function LinkActionsComponent({ short, hasPassword, expirationDate }: LinkAction
             onClose={closeModal} />
         )}
         {activeAction === "delete" && (
-          <DeleteUserLinkModal
+          <DeleteLinkModal
             isOpen={isModalOpen}
             short={short}
             onClose={closeModal} />
