@@ -4,23 +4,25 @@ import { useEffect, useState } from "react"
 import { useScreenSize } from "@/hooks/useScreenSize"
 import { motion } from "framer-motion"
 import { IconClockCheck, IconLock } from "@tabler/icons-react"
-import { RecentLinks } from "./components/RecentLinks"
 import { LinkDetails } from "@/types/global"
 import { Accordion } from "@/components/ui/Accordion"
-import { ProtectedLinks } from "./components/ProtectedLinks"
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "@/store/store-config"
 import { toggleMenuDrawer } from "@/store/modal-slice"
 import { toast } from "sonner"
 import { LinkServices } from "@/services/link.service"
+import { LinkCardSkeleton, ProtectedLinkCardSkeleton } from "../../ui/LoadingSkeleton"
+import { SmLinkCard } from "./components/SmLinkCard"
+import { EmptyLinks } from "../../ui/EmptyLinks"
+import { ProtectedLinkCard } from "./components/ProtectedLinkCard"
 
 
 export function MenuDrawer() {
 
   const [linkDetails, setLinkDetails] = useState<LinkDetails[]>([])
   const [loading, setLoading] = useState(false)
-
   const dispatch = useDispatch()
+
   const { isOpen } = useSelector(
     (state: RootState) => state.modals.menuDrawer
   )
@@ -33,7 +35,7 @@ export function MenuDrawer() {
   const isTablet = width >= 640 && width < 1024
 
   const navWidth = isMobile ? "w-full h-[75vh]" : isTablet ? "w-4/6 h-full" : "w-1/2 h-full"
-  
+
   const navVariants = {
     open: {
       x: 0,
@@ -108,22 +110,59 @@ export function MenuDrawer() {
                     {linkDetails.length}/7
                   </span>
                 </li>,
-              content: <RecentLinks data={linkDetails} loading={loading} />
+              content:
+                <div className="px-4 pb-4 flex flex-col gap-4 xl:px-5 xl:pb-5 xl:gap-5">
+                  {
+                    loading ?
+                      // Skeleton
+                      <div className="flex flex-col gap-4 xl:gap-5">
+                        <LinkCardSkeleton />
+                        <LinkCardSkeleton />
+                      </div>
+                      :
+                      // Cards
+                      linkDetails.length > 0 ?
+                        linkDetails.map((element) => (
+                          <SmLinkCard key={element.id} data={element} />
+                        ))
+                        :
+                        <EmptyLinks type="recent" />
+                  }
+                </div>
             },
             {
               title:
-                <li className="p-4 text-lg font-semibold flex gap-2 items-center border-t-[1.5px] border-neutral-800 
-                cursor-pointer ">
-
+                <li className="p-4 text-lg font-semibold flex gap-2 items-center border-t-[1.5px] border-neutral-800 cursor-pointer ">
                   {/* Icon and title */}
                   <IconLock className="size-6 text-sky-500 " />
-
                   <p>
                     <span className="text-sky-300">Protected</span> SmLinks
                   </p>
-
                 </li>,
-              content: <ProtectedLinks data={linkDetails} loading={loading} />
+              content:
+                <div className="px-4 pb-4 grid grid-cols-2 gap-4 ">
+                  {
+                    loading ?
+                      <div className="col-span-2 grid grid-cols-2 gap-4 ">
+                        <ProtectedLinkCardSkeleton />
+                        <ProtectedLinkCardSkeleton />
+                      </div>
+                      :
+                      linkDetails.length > 0 ?
+                        linkDetails.filter(element => element.has_password).length == 0 ?
+                          <div className="col-span-2 lg:col-span-3">
+                            <EmptyLinks type="protected" />
+                          </div>
+                          :
+                          linkDetails.map((element) => (
+                            <ProtectedLinkCard key={element.id} data={element} />
+                          ))
+                        :
+                        <div className="col-span-2 lg:col-span-3">
+                          <EmptyLinks type="protected" />
+                        </div>
+                  }
+                </div>
             }
           ]} />
         </ul>

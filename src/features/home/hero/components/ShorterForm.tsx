@@ -23,7 +23,7 @@ export function ShorterForm() {
 
     try {
 
-      const { data } = await new LinkServices().createSmLink(original)
+      const { data } = await new LinkServices().createSmLink({ original })
       setShort(data)
       dispatch(recordChange())
       toast.success("Succes")

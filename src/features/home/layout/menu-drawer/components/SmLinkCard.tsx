@@ -24,9 +24,7 @@ export function SmLinkCard({ data }: { data: LinkDetails }) {
 
   const url = new URL(data.original)
   const domain = url.hostname
-  const date = new Date(data.created_at)
-  const day = date.getDate()
-  const month = format(date, "MMMM")
+  const createdAt = format(new Date(data.created_at), "MMMM d")
   const dispatch = useDispatch()
 
   const actionButtons: ActionButtons[] = [
@@ -84,7 +82,7 @@ export function SmLinkCard({ data }: { data: LinkDetails }) {
           {/* Creation date */}
           <p className=" flex gap-1 text-green-300 items-center ">
             <IconCalendar className="size-5 text-green-500 " />
-            {month} {day}
+            {createdAt}
           </p>
         </div>
 

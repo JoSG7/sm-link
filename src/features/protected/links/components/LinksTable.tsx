@@ -21,12 +21,12 @@ import { LinkFilters } from "./LinkFilters"
 import { LinkActions } from "./LinkActions"
 import { RelativeDate } from "./RelativeDate"
 
-interface AdminLinksTableProps {
+interface LinksTableProps {
   links: LinkDetails[]
   isAuthenticated: boolean
 } 
 
-export function AdminLinksTable({ links, isAuthenticated }: AdminLinksTableProps) {
+export function LinksTable({ links, isAuthenticated }: LinksTableProps) {
   const [sorting, setSorting] = useState<SortingState>([])
   const [filter, setFilter] = useState<"all" | "protected" | "expired">("all")
   const [search, setSearch] = useState("")
@@ -197,7 +197,7 @@ export function AdminLinksTable({ links, isAuthenticated }: AdminLinksTableProps
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map(headerGroup => (
-              <TableRow className="bg-neutral-900 hover:bg-neutral-900" key={headerGroup.id}>
+              <TableRow className="bg-neutral-900" key={headerGroup.id}>
                 {headerGroup.headers.map(header => (
                   <TableHead className="h-14 px-4 text-sm text-neutral-300" key={header.id}>
                     {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}

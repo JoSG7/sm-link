@@ -1,5 +1,5 @@
 import { LinkDetails } from "@/types/global"
-import { AdminLinksTable } from "./components/LinksTable"
+import { LinksTable } from "./components/LinksTable"
 import { StatCard } from "./components/StatCard"
 import { createSupabaseServerClient } from "@/lib/supabase/server"
 
@@ -32,7 +32,7 @@ export async function LinksOverview() {
         <StatCard links={links} type="expired" />
       </div>
 
-      <AdminLinksTable links={links} isAuthenticated={Boolean(auth)} />
+      <LinksTable links={links} isAuthenticated={Boolean(auth)} />
 
     </section>
 
