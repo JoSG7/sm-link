@@ -1,26 +1,28 @@
 "use client"
 
 import ModalLayout from "@/components/modals/ModalLayout";
-import { RootState } from "@/store/store-config";
 import { AnimatePresence } from "framer-motion";
 import { FormEvent, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { motion } from "framer-motion";
-import { toggleCreateUserLinkExpiration } from "@/store/user-modals-slice";
 import { IconAlarmPlus, IconCalendarPlus, IconCheck, IconClockHour3, IconLoader } from "@tabler/icons-react";
 import { toast } from "sonner";
 import { UserLinkServices } from "@/services/user-link.service";
 import { recordChange } from "@/store/link-changes-slice";
 
-export function CreateUserLinkExpirationModal() {
+interface CreateUserLinkExpirationModalProps {
+  isOpen: boolean
+  short: string
+  onClose: () => void
+}
+
+export function CreateUserLinkExpirationModal({ isOpen, short, onClose }: CreateUserLinkExpirationModalProps) {
 
   const [submiting, setSubmiting] = useState(false)
   const [expirationDate, setExpirationDate] = useState("")
   const [expirationHour, setExpirationHour] = useState("")
 
   const dispatch = useDispatch()
-  const { isOpen, short } = useSelector((state: RootState) => state.userModals.expiration.createUserLinkExpiration)
-
 
   const handleCreate = async (e: FormEvent) => {
 
@@ -41,7 +43,7 @@ export function CreateUserLinkExpirationModal() {
       dispatch(recordChange())
       setExpirationDate("")
       setExpirationHour("")
-      dispatch(toggleCreateUserLinkExpiration())
+      onClose()
       toast.success(response)
 
     } catch (e) {
@@ -70,14 +72,14 @@ export function CreateUserLinkExpirationModal() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => dispatch(toggleCreateUserLinkExpiration())}>
+              onClick={onClose}>
 
-              <motion.form className="w-[90vw] bg-neutral-950 rounded-xl border border-neutral-800 max-w-[35rem]
+              <motion.form className="w-[90vw] bg-neutral-950 rounded-xl border border-neutral-800 max-w-140
               sm:w-[70vw] lg:w-[50vw]"
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.8, opacity: 0 }}
-                transition={{ duration: 0.2 }}
+                transition={{ duration: 0.1 }}
                 onClick={(e) => e.stopPropagation()}
                 onSubmit={handleCreate}>
 
@@ -139,7 +141,7 @@ export function CreateUserLinkExpirationModal() {
 
                 <div className="p-4 flex justify-start">
                   <button className="py-2 px-4 flex items-center gap-2 text-sm rounded-lg cursor-pointer
-                  disabled:opacity-50 bg-gradient-to-b from-amber-500 to-amber-500/50"
+                  disabled:opacity-50 bg-linear-to-b from-amber-500 to-amber-500/50"
                     disabled={submiting}>
                     {submiting ? <IconLoader className="size-3 animate-spin" /> : <IconCheck className="size-3" />}
                     Create

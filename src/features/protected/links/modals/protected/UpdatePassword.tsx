@@ -1,25 +1,26 @@
 "use client"
 
 import ModalLayout from "@/components/modals/ModalLayout";
-import { RootState } from "@/store/store-config";
 import { AnimatePresence } from "framer-motion";
 import { FormEvent, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { motion } from "framer-motion";
 import { IconCheck, IconKey, IconLoader, IconLockCheck, IconLockFilled, IconLockPassword } from "@tabler/icons-react";
 import { toast } from "sonner";
 import { UserLinkServices } from "@/services/user-link.service";
 import { recordChange } from "@/store/link-changes-slice";
-import { toggleUpdateUserLinkPassword } from "@/store/user-modals-slice";
+interface UpdateUserLinkPasswordModalProps {
+  isOpen: boolean
+  short: string
+  onClose: () => void
+}
 
-
-export function UpdateUserLinkPasswordModal() {
+export function UpdateUserLinkPasswordModal({ isOpen, short, onClose }: UpdateUserLinkPasswordModalProps) {
 
   const [submiting, setSubmiting] = useState(false)
   const [currentPassword, setCurrentPassword] = useState("")
   const [newPassword, setNewPassword] = useState("")
   const [confirmNewPassword, setConfirmNewPassword] = useState("")
-  const { isOpen, short } = useSelector((state: RootState) => state.userModals.protected.updateUserLinkPassword)
   const dispatch = useDispatch()
 
 
@@ -42,7 +43,7 @@ export function UpdateUserLinkPasswordModal() {
         const { response } = await new UserLinkServices().protected.updateUserSmLinkPassword(data)
         toast.success(response)
         dispatch(recordChange())
-        dispatch(toggleUpdateUserLinkPassword())
+        onClose()
 
       } catch (e) {
 
@@ -74,7 +75,7 @@ export function UpdateUserLinkPasswordModal() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => dispatch(toggleUpdateUserLinkPassword())}>
+              onClick={onClose}>
 
               <motion.form className="w-[90vw] bg-neutral-950 rounded-xl border border-neutral-800 max-w-140
               sm:w-[70vw] lg:w-[50vw]"

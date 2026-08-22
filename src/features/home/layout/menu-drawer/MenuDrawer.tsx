@@ -82,7 +82,7 @@ export function MenuDrawer() {
       animate={{ opacity: isOpen ? 1 : 0 }}
       transition={{ duration: 0.1 }} >
 
-      <motion.nav className={`max-w-2xl absolute bottom-0 bg-black/70 border-neutral-800 overflow-y-auto ${navWidth} 
+      <motion.nav className={`max-w-2xl absolute bottom-0 bg-[#080a08] border-neutral-800 overflow-y-auto ${navWidth} 
       sm:right-0 sm:border-l-[1.5px] lg:border-l`}
         layout
         onClick={(e) => e.stopPropagation()}
@@ -94,8 +94,7 @@ export function MenuDrawer() {
           <Accordion items={[
             {
               title:
-                <li className="p-4 text-lg font-semibold flex justify-between items-center border-t-[1.5px] border-neutral-800  cursor-pointer ">
-
+                <li className="p-4 text-lg font-semibold flex justify-between items-center border-neutral-800  cursor-pointer ">
                   {/* Icon and title */}
                   <div className="flex gap-2 items-center ">
                     <IconClockCheck className="size-6 text-green-500 " />

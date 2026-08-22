@@ -28,8 +28,8 @@ export async function POST(req: NextRequest) {
 
   const supabase = await createSupabaseServerClient()
 
-  const { original }: { original: string } = await req.json()
-  const short = createBase64Code()
+  const { original, short }: { original: string, short?: string } = await req.json()
+  const shortURL = createBase64Code()
 
   const { data, error } = await supabase.from("links").select("id").eq("original", original).maybeSingle()
 
@@ -39,7 +39,7 @@ export async function POST(req: NextRequest) {
 
   const res = await supabase.from("links").insert({
     original,
-    short,
+    short: short || shortURL,
     guest_id: await getGuestID()
   })
 
@@ -50,6 +50,6 @@ export async function POST(req: NextRequest) {
 
   }
 
-  return NextResponse.json({ data: short }, { status: 200 })
+  return NextResponse.json({ data: short || shortURL }, { status: 200 })
 
 }

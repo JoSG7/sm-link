@@ -2,22 +2,25 @@
 
 import ModalLayout from "@/components/modals/ModalLayout";
 import { AnimatePresence } from "framer-motion";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { motion } from "framer-motion";
 import { FormEvent, useState } from "react";
 import { IconCheck, IconLoader, IconTrash } from "@tabler/icons-react";
-import { RootState } from "@/store/store-config";
-import { toggleDeleteUserLink } from "@/store/user-modals-slice";
 import { toast } from "sonner";
 import { UserLinkServices } from "@/services/user-link.service";
 import { recordChange } from "@/store/link-changes-slice";
 
 
-export function DeleteUserLinkModal() {
+interface DeleteUserLinkModalProps {
+  isOpen: boolean
+  short: string
+  onClose: () => void
+}
+
+export function DeleteUserLinkModal({ isOpen, short, onClose }: DeleteUserLinkModalProps) {
 
   const [submiting, setSubmiting] = useState(false)
   const dispatch = useDispatch()
-  const { isOpen, short } = useSelector((state: RootState) => state.userModals.deleteUserLink)
 
 
   const handleDelete = async (e: FormEvent) => {
@@ -31,7 +34,7 @@ export function DeleteUserLinkModal() {
 
       const { response } = await new UserLinkServices().deleteUserSmLinks({ shorts: data })
       dispatch(recordChange())
-      dispatch(toggleDeleteUserLink())
+      onClose()
       toast.success(response)
 
     } catch (e) {
@@ -57,7 +60,7 @@ export function DeleteUserLinkModal() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => dispatch(toggleDeleteUserLink())}>
+              onClick={onClose}>
 
               <motion.form className="w-[90vw] bg-neutral-950 rounded-xl border border-neutral-800 max-w-96
               sm:w-[70vw] lg:w-[50vw]"
@@ -83,7 +86,7 @@ export function DeleteUserLinkModal() {
                 <div className="p-4 flex gap-4 items-center text-xs ">
 
                   <button className="p-2 px-3 flex items-center gap-2 rounded-sm cursor-pointer
-                  disabled:opacity-30  bg-gradient-to-b from-red-500 to-red-600/50"
+                  disabled:opacity-30  bg-linear-to-b from-red-500 to-red-600/50"
                     disabled={submiting}>
 
                     {

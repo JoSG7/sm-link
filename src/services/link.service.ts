@@ -14,10 +14,11 @@ export class LinkServices {
 
   }
 
-  async createSmLink(original: string) {
+  async createSmLink({ original, short }: { original: string, short?: string }) {
 
     const { data } = await api.post<SuccessResponse>("links", {
-      original
+      original,
+      short
     })
     return data
 
