@@ -1,12 +1,10 @@
 "use client"
 
 import ModalLayout from "@/components/modals/ModalLayout";
-import { RootState } from "@/store/store-config";
 import { AnimatePresence } from "framer-motion";
-import { FormEvent, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { SubmitEvent, useState } from "react";
+import { useDispatch } from "react-redux";
 import { motion } from "framer-motion";
-import { toggleUpdateUserLinkExpiration } from "@/store/user-modals-slice";
 import { IconAlarm, IconCalendar, IconCheck, IconClockEdit, IconLoader } from "@tabler/icons-react";
 import { toast } from "sonner";
 import { months } from "@/consts";
@@ -14,17 +12,24 @@ import { UserLinkServices } from "@/services/user-link.service";
 import { recordChange } from "@/store/link-changes-slice";
 
 
-export function UpdateUserLinkExpirationModal() {
+interface UpdateUserLinkExpirationModalProps {
+  isOpen: boolean
+  short: string
+  date: string
+  onClose: () => void
+}
+
+export function UpdateUserLinkExpirationModal({ isOpen, short, date, onClose }: UpdateUserLinkExpirationModalProps) {
 
   const [submiting, setSubmiting] = useState(false)
   const [expirationDate, setExpirationDate] = useState("")
   const [expirationHour, setExpirationHour] = useState("")
 
   const dispatch = useDispatch()
-  const { short, isOpen, actually } = useSelector((state: RootState) => state.userModals.expiration.updateUserLinkExpiration)
+  const actually = date
 
 
-  const handleUpdate = async (e: FormEvent) => {
+  const handleUpdate = async (e: SubmitEvent) => {
 
     e.preventDefault()
 
@@ -44,7 +49,7 @@ export function UpdateUserLinkExpirationModal() {
       dispatch(recordChange())
       setExpirationDate("")
       setExpirationHour("")
-      dispatch(toggleUpdateUserLinkExpiration())
+      onClose()
       toast.success(response)
 
 
@@ -68,19 +73,19 @@ export function UpdateUserLinkExpirationModal() {
         {
           isOpen && (
 
-            <motion.section className={`fixed inset-0 z-30 bg-[rgba(0,0,0,0.8)] flex items-center justify-center backdrop-blur-sm
+            <motion.section className={`fixed inset-0 z-30 bg-black/70 flex items-center justify-center backdrop-blur-sm
             ${submiting && "pointer-events-none"}`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => dispatch(toggleUpdateUserLinkExpiration())}>
+              onClick={onClose}>
 
               <motion.form className="w-[90vw] bg-neutral-950 rounded-xl border border-neutral-800 max-w-140
               sm:w-[70vw] lg:w-[50vw]"
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.8, opacity: 0 }}
-                transition={{ duration: 0.2 }}
+                transition={{ duration: 0.1 }}
                 onClick={(e) => e.stopPropagation()}
                 onSubmit={handleUpdate}>
 

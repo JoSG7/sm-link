@@ -14,10 +14,11 @@ export class LinkServices {
 
   }
 
-  async createSmLink(original: string) {
+  async createSmLink({ original, short }: { original: string, short?: string }) {
 
     const { data } = await api.post<SuccessResponse>("links", {
-      original
+      original,
+      short
     })
     return data
 
@@ -37,6 +38,16 @@ export class LinkServices {
       const { data } = await api.post<SuccessResponse>("links/protected", {
         short,
         password
+      })
+      return data
+
+    },
+
+    async updatePassword({ short, currentPassword, newPassword }: { short: string, currentPassword: string, newPassword: string }) {
+
+      const { data } = await api.patch<SuccessResponse>(`links/protected/${short}`, {
+        currentPassword,
+        newPassword
       })
       return data
 

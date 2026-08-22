@@ -1,37 +1,32 @@
 "use client"
 
 import ModalLayout from "@/components/modals/ModalLayout";
-import { RootState } from "@/store/store-config";
 import { AnimatePresence } from "framer-motion";
-import { FormEvent, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { SubmitEvent, useState } from "react";
 import { motion } from "framer-motion";
 import { IconCheck, IconKey, IconLoader, IconLockCheck, IconLockFilled, IconLockPassword } from "@tabler/icons-react";
 import { toast } from "sonner";
-import { UserLinkServices } from "@/services/user-link.service";
-import { recordChange } from "@/store/link-changes-slice";
-import { toggleUpdateUserLinkPassword } from "@/store/user-modals-slice";
+import { LinkServices } from "@/services/link.service";
+import { useRouter } from "next/navigation";
 
+interface UpdatePasswordModalProps {
+  isOpen: boolean
+  short: string
+  onClose: () => void
+}
 
-export function UpdateUserLinkPasswordModal() {
+export function UpdatePasswordModal({ isOpen, short, onClose }: UpdatePasswordModalProps) {
 
   const [submiting, setSubmiting] = useState(false)
   const [currentPassword, setCurrentPassword] = useState("")
   const [newPassword, setNewPassword] = useState("")
   const [confirmNewPassword, setConfirmNewPassword] = useState("")
-  const { isOpen, short } = useSelector((state: RootState) => state.userModals.protected.updateUserLinkPassword)
-  const dispatch = useDispatch()
+  const router = useRouter()
 
 
-  const handleEdit = async (e: FormEvent) => {
+  const handleEdit = async (e: SubmitEvent) => {
 
     e.preventDefault()
-    
-    const data = {
-      short,
-      currentPassword,
-      newPassword,
-    }
     
     if (confirmNewPassword == newPassword) {
 
@@ -39,10 +34,14 @@ export function UpdateUserLinkPasswordModal() {
 
       try {
 
-        const { response } = await new UserLinkServices().protected.updateUserSmLinkPassword(data)
-        toast.success(response)
-        dispatch(recordChange())
-        dispatch(toggleUpdateUserLinkPassword())
+        const { data } = await new LinkServices().protected.updatePassword({
+          short,
+          currentPassword,
+          newPassword,
+        })
+        toast.success(data)
+        onClose()
+        router.refresh()
 
       } catch (e) {
 
@@ -69,15 +68,14 @@ export function UpdateUserLinkPasswordModal() {
         {
           isOpen && (
 
-            <motion.section className={`fixed inset-0 z-30 bg-[rgba(0,0,0,0.8)] flex items-center justify-center backdrop-blur-sm
+            <motion.section className={`fixed inset-0 z-30 bg-black/80 flex items-center justify-center backdrop-blur-sm
             ${submiting && "pointer-events-none"}`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => dispatch(toggleUpdateUserLinkPassword())}>
+              onClick={onClose}>
 
-              <motion.form className="w-[90vw] bg-neutral-950 rounded-xl border border-neutral-800 max-w-140
-              sm:w-[70vw] lg:w-[50vw]"
+              <motion.form className="w-[90vw] p-5 bg-neutral-950 rounded-xl border border-neutral-800 max-w-150 sm:w-[70vw] lg:w-[50vw]"
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.8, opacity: 0 }}
@@ -85,7 +83,7 @@ export function UpdateUserLinkPasswordModal() {
                 onClick={(e) => e.stopPropagation()}
                 onSubmit={handleEdit}>
 
-                <header className="p-4 flex items-center gap-4 ">
+                <header className="pb-4 flex items-center gap-4 ">
                   <div className="p-2 rounded-lg border border-green-500/30 bg-green-500/20">
                     <IconLockFilled className="size-6 text-green-400" />
                   </div>
@@ -96,7 +94,7 @@ export function UpdateUserLinkPasswordModal() {
                   </div>
                 </header>
 
-                <section className="px-4 py-2 flex flex-col gap-4">
+                <section className="py-2 flex flex-col gap-4">
 
                   <article className="flex items-center text-sm">
                     <div className="p-2.5 rounded-s-lg border-1.5 border-e-0 border-neutral-800 bg-neutral-900/80">
@@ -131,8 +129,7 @@ export function UpdateUserLinkPasswordModal() {
                         <IconLockCheck className="size-5" />
                       </div>
 
-                      <input className="grow p-2.5 rounded-e-lg border-1.5 border-neutral-800 bg-neutral-900/80
-                      focus:border-green-600"
+                      <input className="grow p-2.5 rounded-e-lg border-1.5 border-neutral-800 bg-neutral-900/80 focus:border-green-600"
                         type="password"
                         required
                         placeholder="Confirm new password"
@@ -141,9 +138,8 @@ export function UpdateUserLinkPasswordModal() {
                   </div>
                 </section>
 
-                <div className="p-4 flex justify-start">
-                  <button className="py-2 px-4 flex items-center gap-2 text-sm rounded-lg cursor-pointer
-                  disabled:opacity-50 bg-linear-to-b from-green-500 to-green-500/50"
+                <div className="pt-4 flex justify-start">
+                  <button className="py-2 px-4 flex items-center gap-2 text-sm rounded-lg disabled:opacity-50 bg-linear-to-b from-green-500 to-green-500/50"
                     disabled={submiting}>
                     {submiting ? <IconLoader className="size-3 animate-spin" /> : <IconCheck className="size-3" />}
                     Update

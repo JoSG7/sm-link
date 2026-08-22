@@ -22,3 +22,23 @@ export async function DELETE(req: NextRequest, { params }: Props) {
   return NextResponse.json({ data: "Success" }, { status: 200 })
 
 }
+
+
+export async function PATCH(req: NextRequest, { params }: Props) {
+
+  const supabase = await createSupabaseServerClient()
+  const { shortUrl } = await params
+  const { currentPassword, newPassword } = await req.json()
+
+  const { error } = await supabase.rpc("update_link_password", {
+    x_short: shortUrl,
+    x_current_password: currentPassword,
+    x_new_password: newPassword
+  })
+
+  if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+
+  return NextResponse.json({ data: "Success" }, { status: 200 })
+
+
+}

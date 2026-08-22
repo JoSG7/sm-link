@@ -21,6 +21,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Error in Server" }, { status: 500 })
   } 
     
-  return NextResponse.json({ response: "Success" }, { status: 200 })
+  return NextResponse.json({ data: "Success" }, { status: 200 })
 
 }

@@ -10,7 +10,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 
-export function DeleteUserLinkPasswordModal() {
+export function DeletePasswordModal() {
 
   const [submiting, setSubmiting] = useState(false)
   const dispatch = useDispatch()

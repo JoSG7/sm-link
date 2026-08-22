@@ -1,51 +1,52 @@
 "use client"
 
 import ModalLayout from "@/components/modals/ModalLayout"
-import { RootState } from "@/store/store-config"
 import { AnimatePresence } from "framer-motion"
-import { FormEvent, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { SubmitEvent, useState } from "react"
 import { motion } from "framer-motion"
 import { IconCalendar, IconCheck, IconEditCircle, IconLoader, IconLock, IconPaperclip, IconPlus } from "@tabler/icons-react"
-import { UserLinkServices } from "@/services/user-link.service"
-import { recordChange } from "@/store/link-changes-slice"
 import { toast } from "sonner"
-import { toggleCreateUserLink } from "@/store/user-modals-slice"
+import { useRouter } from "next/navigation"
+import { LinkServices } from "@/services/link.service"
 
 
-export function CreateUserLinkModal() {
+interface CreateSmLinkModalProps {
+  isOpen: boolean
+  isAuthenticated: boolean
+  onClose: () => void
+}
+
+export function CreateSmLinkModal({ isOpen, isAuthenticated, onClose }: CreateSmLinkModalProps) {
 
   const [submiting, setSubmiting] = useState(false)
   const [original, setOriginal] = useState("")
   const [short, setShort] = useState("")
   const [password, setPassword] = useState("")
   const [expirationDate, setExpirationDate] = useState("")
-  const { isOpen } = useSelector((state: RootState) => state.userModals.createUserLink)
-  const dispatch = useDispatch()
+  const router = useRouter()
 
-
-  const handleCreate = async (e: FormEvent) => {
+  const handleCreate = async (e: SubmitEvent) => {
 
     e.preventDefault()
 
-    const data = { original, short: short }
-    const service = new UserLinkServices()
+    const payload = { original, short: isAuthenticated ? short : undefined }
+    const service = new LinkServices()
 
     try {
 
       setSubmiting(true)
 
-      const { response } = await service.createUserSmLink(data)
+      const { data } = await service.createSmLink(payload)
 
-      if (!response) return
+      if (!data) return
 
       const extraPromises: Promise<unknown>[] = []
 
       if (password.trim() !== "") {
         extraPromises.push(
-          service.protected.createUserSmLinkPassword(
+          service.protected.createPassword(
             {
-              short: response,
+              short: data,
               password
             }
           )
@@ -57,9 +58,9 @@ export function CreateUserLinkModal() {
         const fullDate = new Date(year, month - 1, day).toISOString()
 
         extraPromises.push(
-          service.expiration.createUserSmLinkExpiration({
-            short: response,
-            expirationDate: fullDate,
+          service.expiration.createExpiration({
+            short: data,
+            expiresAt: fullDate,
           })
         )
       }
@@ -71,9 +72,9 @@ export function CreateUserLinkModal() {
       setShort("")
       setPassword("")
       setExpirationDate("")
-      dispatch(recordChange())
-      dispatch(toggleCreateUserLink())
       toast.success("Success")
+      onClose()
+      router.refresh()
 
     } catch (e) {
 
@@ -91,7 +92,6 @@ export function CreateUserLinkModal() {
 
     <ModalLayout>
       <AnimatePresence>
-
         {
           isOpen && (
             <motion.section className={`fixed inset-0 z-30 bg-[rgba(0,0,0,0.8)] flex items-center justify-center backdrop-blur-sm
@@ -99,18 +99,18 @@ export function CreateUserLinkModal() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => { dispatch(toggleCreateUserLink()) }}>
+              onClick={() => onClose()}>
 
-              <motion.form className="w-[90vw] bg-neutral-950 rounded-xl border border-neutral-800 max-w-[35rem]
+              <motion.form className="w-[90vw] p-6 bg-neutral-950 rounded-2xl border border-neutral-800 max-w-150
               sm:w-[80vw] lg:w-[70vw]"
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.8, opacity: 0 }}
-                transition={{ duration: 0.2 }}
+                transition={{ duration: 0.1 }}
                 onClick={(e) => e.stopPropagation()}
                 onSubmit={handleCreate}>
 
-                <header className="p-4 flex items-center gap-4 ">
+                <header className="pb-4 flex items-center gap-4 ">
                   <div className="p-2 rounded-lg border border-sky-500/30 bg-sky-500/20">
                     <IconPlus className="size-5 text-sky-400" />
                   </div>
@@ -118,7 +118,7 @@ export function CreateUserLinkModal() {
                   <h1 className="font-medium text-lg">Create new SmLink</h1>
                 </header>
 
-                <section className="px-4 py-2 flex flex-col gap-4">
+                <section className="py-2 flex flex-col gap-4">
 
                   <article className="flex items-center text-sm">
                     <div className="p-2.5 rounded-s-lg border-1.5 border-e-0 border-neutral-800 bg-neutral-900/80">
@@ -129,30 +129,32 @@ export function CreateUserLinkModal() {
                     focus:border-sky-600"
                       type="url"
                       required
-                      placeholder="https://example.com/log-url-to-short"
+                      placeholder="https://example.com/long-url-to-short"
                       onChange={(e) => setOriginal(e.currentTarget.value)} />
                   </article>
 
-                  <div className="flex gap-4">
-                    <article className="flex items-center text-sm grow">
-                      <div className="p-2.5 rounded-s-lg border-1.5 border-e-0 border-neutral-800 bg-neutral-900/80">
-                        <IconEditCircle className="size-5" />
+                  {isAuthenticated && (
+                    <div className="flex gap-4">
+                      <article className="flex items-center text-sm grow">
+                        <div className="p-2.5 rounded-s-lg border-1.5 border-e-0 border-neutral-800 bg-neutral-900/80">
+                          <IconEditCircle className="size-5" />
+                        </div>
+
+                        <input className="p-2.5 rounded-e-lg border-1.5 border-neutral-800 bg-neutral-900/80 grow
+                          focus:border-sky-600"
+                          type="text"
+                          maxLength={20}
+                          placeholder="Max 20 characters"
+                          onChange={(e) => setShort(e.currentTarget.value.trim().replace(/\s+/g, ""))} />
+                      </article>
+
+                      <div className="p-2.5 rounded-lg border border-sky-500/30 bg-sky-500/20 text-sm text-sky-400">
+                        Customize the short version
                       </div>
-
-                      <input className="p-2.5 rounded-e-lg border-1.5 border-neutral-800 bg-neutral-900/80 grow
-                      focus:border-sky-600"
-                        type="text"
-                        maxLength={20}
-                        placeholder="Max 20 characters"
-                        onChange={(e) => setShort(e.currentTarget.value.trim().replace(/\s+/g, ""))} />
-                    </article>
-
-                    <div className="p-2.5 rounded-lg border border-sky-500/30 bg-sky-500/20 text-sm text-sky-400">
-                      Customize the short version
                     </div>
-                  </div>
+                  )}
 
-                  <h1 className="font-medium">Set a Password and Expiration (Optional)</h1>
+                  <h1 className="font-medium text-gray-300">Set a Password and Expiration (Optional)</h1>
 
                   <div className="grid grid-cols-2 gap-4">
 
@@ -185,9 +187,9 @@ export function CreateUserLinkModal() {
                   </div>
                 </section>
 
-                <div className="p-4 flex justify-start">
+                <div className="pt-4 flex justify-start">
                   <button className="py-2 px-4 flex items-center gap-2 text-sm rounded-lg cursor-pointer
-                    disabled:opacity-50 bg-gradient-to-b from-sky-500 to-sky-500/50"
+                    disabled:opacity-50 bg-linear-to-b from-sky-500 to-sky-500/50"
                     disabled={submiting}>
                     {submiting ? <IconLoader className="size-3 animate-spin" /> : <IconCheck className="size-3" />}
                     Create
