@@ -3,6 +3,7 @@
 import { IconSearch } from "@tabler/icons-react"
 import { Input } from "@/components/shadcn/input"
 import { CreateButton } from "./CreateButton"
+import { UnclaimedButton } from "./ClaimButton"
 
 type LinkFilter = "all" | "protected" | "expired"
 
@@ -49,7 +50,11 @@ export function LinkFilters({
         </div>
       </div>
 
-      <CreateButton isAuthenticated={isAuthenticated} />
+      <div className="flex gap-4 ">
+        <UnclaimedButton isAuthenticated={isAuthenticated} />
+        <CreateButton isAuthenticated={isAuthenticated} />
+      </div>
+
     </section>
   )
 }

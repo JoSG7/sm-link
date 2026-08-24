@@ -1,6 +1,6 @@
 "use client"
 
-import { IconAlarmPlus, IconKey, IconTrash, IconDots } from "@tabler/icons-react"
+import { IconAlarmPlus, IconKey, IconTrash, IconDots, IconLock } from "@tabler/icons-react"
 import { memo, useEffect, useRef, useState } from "react"
 import {
   DropdownMenu,
@@ -8,8 +8,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/shadcn/dropdown-menu"
-import { CreatePasswordModal } from "../modals/protected/CreatePassword"
-import { UpdatePasswordModal } from "../modals/protected/UpdatePassword"
+import { CreatePasswordModal } from "../modals/password/CreatePassword"
+import { UpdatePasswordModal } from "../modals/password/UpdatePassword"
 import { CreateUserLinkExpirationModal } from "../modals/expiration/CreateExpiration"
 import { UpdateUserLinkExpirationModal } from "../modals/expiration/UpdateExpiration"
 import { DeleteLinkModal } from "../modals/DeleteLink"
@@ -20,10 +20,13 @@ interface LinkActionsProps {
   short: string
   hasPassword: boolean
   expirationDate: string | null
+  isAuthenticated: boolean
 }
 
-function LinkActionsComponent({ short, hasPassword, expirationDate }: LinkActionsProps) {
+function LinkActionsComponent({ short, hasPassword, expirationDate, isAuthenticated }: LinkActionsProps) {
   const hasExpiration = expirationDate !== null
+  const canUpdatePassword = isAuthenticated || !hasPassword
+  const canUpdateExpiration = isAuthenticated || !hasExpiration
   const [activeAction, setActiveAction] = useState<LinkAction | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const closeTimeout = useRef<ReturnType<typeof setTimeout> | null>(null)
@@ -61,22 +64,26 @@ function LinkActionsComponent({ short, hasPassword, expirationDate }: LinkAction
 
         <DropdownMenuContent
           align="end"
-          className="min-w-36 border-neutral-800 bg-neutral-950 p-1 text-neutral-300 shadow-lg data-[state=open]:animate-none data-[state=closed]:animate-none"
+          className="min-w-36 border-neutral-800 bg-neutral-950 p-1 text-neutral-300 shadow-lg"
         >
           <DropdownMenuItem
             className="gap-2 text-neutral-300 hover:bg-neutral-800 hover:text-white focus:bg-neutral-800 focus:text-white"
+            disabled={!canUpdatePassword}
             onSelect={() => openModal("password")}
           >
             <IconKey className="size-4" />
             {hasPassword ? "Update password" : "Password"}
+            {!canUpdatePassword && <IconLock className="ml-auto size-4" />}
           </DropdownMenuItem>
 
           <DropdownMenuItem
             className="gap-2 text-neutral-300 hover:bg-neutral-800 hover:text-white focus:bg-neutral-800 focus:text-white"
+            disabled={!canUpdateExpiration}
             onSelect={() => openModal("expiration")}
           >
             <IconAlarmPlus className="size-4" />
             {hasExpiration ? "Update expiration" : "Expiration"}
+            {!canUpdateExpiration && <IconLock className="ml-auto size-4" />}
           </DropdownMenuItem>
 
           <DropdownMenuItem

@@ -7,9 +7,13 @@ interface SuccessResponse {
 
 export class LinkServices {
 
-  async getSmLinks() {
+  async getSmLinks(isGuest?: boolean) {
 
-    const { data } = await api.get<LinkDetails[]>("links")
+    const { data } = await api.get<LinkDetails[]>("links", {
+      params: {
+        guest: isGuest || false
+      }
+    })
     return data
 
   }
@@ -27,6 +31,13 @@ export class LinkServices {
   async deleteSmLink(short: string) {
 
     const { data } = await api.delete<SuccessResponse>(`links/${short}`)
+    return data
+
+  }
+
+  async claim(linksID: string[]) {
+
+    const { data } = await api.post<SuccessResponse>("links/claim", { linksID })
     return data
 
   }
@@ -73,17 +84,17 @@ export class LinkServices {
   }
 
   expiration = {
-  
-      async createExpiration({ short, expiresAt }: { short: string, expiresAt: string }) {
-  
-        const { data } = await api.post<SuccessResponse>("links/expirations", {
-          short,
-          expiresAt
-        })
-        return data
-  
-      }
-  
+
+    async createExpiration({ short, expiresAt }: { short: string, expiresAt: string }) {
+
+      const { data } = await api.post<SuccessResponse>("links/expirations", {
+        short,
+        expiresAt
+      })
+      return data
+
     }
+
+  }
 
 }

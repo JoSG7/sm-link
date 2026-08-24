@@ -1,4 +1,4 @@
-drop function if exists insert_user_link;
+drop function if exists insert_user_link(x_original, x_short);
 
 create or replace function insert_user_link(
   x_original text,

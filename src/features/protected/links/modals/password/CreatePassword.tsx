@@ -25,7 +25,7 @@ export function CreatePasswordModal({ isOpen, short, onClose }: CreateUserLinkPa
   const handleCreate = async (e: SubmitEvent) => {
 
     e.preventDefault()
-    
+
     if (confirmPassword == password) {
 
       setSubmiting(true)
@@ -62,8 +62,7 @@ export function CreatePasswordModal({ isOpen, short, onClose }: CreateUserLinkPa
         {
           isOpen && (
 
-            <motion.section className={`fixed inset-0 z-30 bg-black/80 flex items-center justify-center backdrop-blur-sm
-            ${submiting && "pointer-events-none"}`}
+            <motion.section className={`fixed inset-0 z-30 bg-black/80 flex items-center justify-center backdrop-blur-sm ${submiting && "pointer-events-none"}`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -73,8 +72,7 @@ export function CreatePasswordModal({ isOpen, short, onClose }: CreateUserLinkPa
                 onClose()
               }}>
 
-              <motion.form className="w-[90vw] p-6 bg-neutral-950 rounded-2xl border border-neutral-800 max-w-150
-              sm:w-[70vw] lg:w-[50vw]"
+              <motion.form className="w-[90vw] p-6 bg-neutral-950 rounded-2xl border border-neutral-800 max-w-150 sm:w-[70vw] lg:w-[50vw]"
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.8, opacity: 0 }}
