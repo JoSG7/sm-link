@@ -61,9 +61,11 @@ export function SmLinkCard({ data }: { data: LinkDetails }) {
 
   return (
 
-    <article className="p-4 rounded-lg border border-graphite whitespace-normal border-l-2 xl:p-5">
+    <article className="relative isolate overflow-hidden rounded-2xl border border-neutral-800/80 bg-neutral-950 p-4 whitespace-normal shadow-[0_12px_40px_rgba(0,0,0,0.18)] xl:p-5">
 
-      <section className="grow flex items-center pb-4 gap-5 lg:gap-7">
+      <div className="pointer-events-none absolute -right-10 -top-10 -z-10 size-36 rounded-full bg-linear-to-br from-blue-500/15 via-green-500/15 to-transparent blur-2xl" />
+
+      <section className="relative flex grow items-center gap-5 pb-4 lg:gap-7">
 
         <div className="flex flex-col grow text-sm ">
 
@@ -80,8 +82,8 @@ export function SmLinkCard({ data }: { data: LinkDetails }) {
           </p>
 
           {/* Creation date */}
-          <p className=" flex gap-1 text-green-300 items-center ">
-            <IconCalendar className="size-5 text-green-500 " />
+          <p className="flex items-center gap-1 text-green-300">
+            <IconCalendar className="size-4 text-green-500" />
             {createdAt}
           </p>
         </div>
@@ -91,20 +93,37 @@ export function SmLinkCard({ data }: { data: LinkDetails }) {
       </section>
 
       {/* Buttons section */}
-      <div className="flex justify-end items-center gap-3 relative">
-        {
-          data.has_user_id && (
-            <div className="absolute left-0 p-2.5 rounded-full border border-neutral-800">
-              <IconUserFilled className="size-4" />
-            </div>
-          )
-        }
-        {
+      <div className="relative flex flex-wrap items-center justify-between gap-3">
+        <div className="flex flex-wrap items-center gap-2 text-xs">
+          {data.expires_at && (
+            <span className={`inline-flex items-center gap-1 rounded-full border px-2.5 py-1 ${data.is_expired ? "border-red-500/30 bg-red-500/10 text-red-300" : "border-amber-500/30 bg-amber-500/10 text-amber-200"}`}>
+              <IconClockCheck className="size-3.5" />
+              {data.is_expired ? "Expired" : "Expires"} {format(new Date(data.expires_at), "MMM d, yyyy")}
+            </span>
+          )}
+
+          {data.has_password && (
+            <span className="inline-flex items-center gap-1 rounded-full border border-blue-500/30 bg-blue-500/10 px-2.5 py-1 text-blue-200">
+              <IconShieldLockFilled className="size-3.5" />
+              Protected
+            </span>
+          )}
+
+          {data.has_user_id && (
+            <span className="inline-flex items-center gap-1 rounded-full border border-purple-500/30 bg-purple-500/10 px-2.5 py-1 text-purple-200">
+              <IconUserFilled className="size-3.5 text-purple-300" />
+              Claimed
+            </span>
+          )}
+        </div>
+
+        <div className="flex items-center justify-end gap-3">
+          {
           actionButtons.map((el, i) => {
 
             if (el.anchor) {
               return (
-                <Link className="p-2 rounded-xl bg-neutral-900 disabled:opacity-50 disabled:cursor-auto"
+                <Link className="rounded-xl border border-transparent bg-neutral-900 p-2 text-neutral-300 transition-colors hover:border-neutral-700 hover:bg-neutral-800 hover:text-white"
                   key={i}
                   href={el.anchor.href}
                   target="_blank"
@@ -115,7 +134,7 @@ export function SmLinkCard({ data }: { data: LinkDetails }) {
             }
 
             return(
-              <button className="p-2 rounded-xl bg-neutral-900 cursor-pointer disabled:opacity-50 disabled:cursor-auto"
+              <button className="cursor-pointer rounded-xl border border-transparent bg-neutral-900 p-2 text-neutral-300 transition-colors hover:border-neutral-700 hover:bg-neutral-800 hover:text-white disabled:cursor-auto disabled:opacity-50"
                 key={i}
                 onClick={el.onClick}
                 disabled={el.disabled}>
@@ -124,7 +143,8 @@ export function SmLinkCard({ data }: { data: LinkDetails }) {
             )
 
           })
-        }
+          }
+        </div>
       </div>
     </article>
   )

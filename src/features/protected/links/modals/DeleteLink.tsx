@@ -58,7 +58,7 @@ export function DeleteLinkModal({ isOpen, short, onClose }: DeleteLinkModalProps
               exit={{ opacity: 0 }}
               onClick={onClose}>
 
-              <motion.form className="w-[90vw] bg-neutral-950 rounded-xl border border-neutral-800 max-w-96 sm:w-[70vw] lg:w-[50vw]"
+              <motion.form className="group relative isolate w-[90vw] p-5 overflow-hidden bg-neutral-950 rounded-xl border border-neutral-800 max-w-96 sm:w-[70vw] lg:w-[50vw]"
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.8, opacity: 0 }}
@@ -66,7 +66,9 @@ export function DeleteLinkModal({ isOpen, short, onClose }: DeleteLinkModalProps
                 onClick={(e) => e.stopPropagation()}
                 onSubmit={handleDelete}>
 
-                <header className="p-5 flex items-center gap-4 border-b border-neutral-800">
+                <div className="pointer-events-none absolute -right-12 -top-12 -z-10 size-25 rounded-full bg-linear-to-br from-red-500/15 via-rose-500/10 to-transparent blur-2xl transition duration-300 group-hover:scale-125" />
+
+                <header className="pb-4 flex items-center gap-4 lg:pb-5">
                   <div className="p-2 rounded-lg border border-red-500/30 bg-red-500/20">
                     <IconTrash className="size-6 text-red-400" />
                   </div>
@@ -77,10 +79,9 @@ export function DeleteLinkModal({ isOpen, short, onClose }: DeleteLinkModalProps
                   </div>
                 </header>
 
-                {/* Buttons section */}
-                <div className="p-5 flex gap-4 items-center text-xs ">
-
-                  <button className="p-2 px-3 flex items-center gap-2 rounded-sm disabled:opacity-30  bg-linear-to-b from-red-500 to-red-600/50"
+                <div className="flex justify-start text-sm">
+                  <button className="py-2 px-4 flex items-center gap-2 rounded-lg disabled:opacity-30 bg-linear-to-b from-red-500 to-red-600/50"
+                    type="submit"
                     disabled={submiting}>
                     {
                       submiting ?

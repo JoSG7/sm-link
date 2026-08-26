@@ -11,7 +11,7 @@ import {
   type SortingState,
   type VisibilityState,
 } from "@tanstack/react-table"
-import { IconChevronLeft, IconChevronRight, IconChevronsLeft, IconChevronsRight, IconCopy, IconSortDescending } from "@tabler/icons-react"
+import { IconChevronLeft, IconChevronRight, IconChevronsLeft, IconChevronsRight, IconClockCheck, IconClockExclamation, IconCopy, IconLink, IconShieldLockFilled, IconSortDescending } from "@tabler/icons-react"
 import { toast } from "sonner"
 import { format } from "date-fns"
 import { Checkbox } from "@/components/shadcn/checkbox"
@@ -20,11 +20,13 @@ import { LinkDetails } from "@/types/global"
 import { LinkFilters } from "./LinkFilters"
 import { LinkActions } from "./LinkActions"
 import { RelativeDate } from "./RelativeDate"
+import { ClaimButton } from "./ClaimButton"
+import { CreateButton } from "./CreateButton"
 
 interface LinksTableProps {
   links: LinkDetails[]
   isAuthenticated: boolean
-} 
+}
 
 export function LinksTable({ links, isAuthenticated }: LinksTableProps) {
   const [sorting, setSorting] = useState<SortingState>([])
@@ -126,11 +128,13 @@ export function LinksTable({ links, isAuthenticated }: LinksTableProps) {
         const expiresAt = row.getValue("expires_at") as string | null
 
         if (!expiresAt) {
-          return <div className="w-max rounded-md border border-neutral-800 px-2 py-1 text-xs text-neutral-300">No expires</div>
+          return <div className="w-max rounded-full border border-neutral-800 px-2.5 py-1 text-xs text-neutral-500">No expiration</div>
         }
 
         return (
-          <p className="flex w-max items-center justify-center gap-1 rounded-md border border-yellow-500/30 bg-yellow-500/20 px-2 py-1 text-xs text-yellow-300">
+          <p className={`flex w-max items-center justify-center gap-1 rounded-full border px-2.5 py-1 text-xs ${row.original.is_expired ? "border-red-500/30 bg-red-500/10 text-red-300" : "border-amber-500/30 bg-amber-500/10 text-amber-200"}`}>
+            <IconClockCheck className="size-3.5" />
+            {row.original.is_expired ? "Expired" : "Expires"}
             {format(new Date(expiresAt), "MMM d, yyyy")}
           </p>
         )
@@ -144,14 +148,24 @@ export function LinksTable({ links, isAuthenticated }: LinksTableProps) {
         const isExpired = row.getValue<boolean>("is_expired")
 
         return (
-          <div className="flex gap-2 text-xs font-medium">
-            <p className={hasPassword
-              ? "rounded-md border border-blue-500/30 bg-blue-500/20 px-2 py-1 text-blue-400"
-              : "rounded-md border border-green-500/30 bg-green-500/20 px-2 py-1 text-green-400"}
-            >
-              {hasPassword ? "Locked" : "Public"}
-            </p>
-            {isExpired && <p className="rounded-md border border-red-500/30 bg-red-500/20 px-2 py-1 text-red-400">Expired</p>}
+          <div className="flex flex-wrap gap-2 text-xs font-medium">
+            {hasPassword ? (
+              <span className="inline-flex items-center gap-1 rounded-full border border-blue-500/30 bg-blue-500/10 px-2.5 py-1 text-blue-200">
+                <IconShieldLockFilled className="size-3.5" />
+                Protected
+              </span>
+            ) : (
+              <span className="inline-flex items-center gap-1 rounded-full border border-green-500/30 bg-green-500/10 px-2.5 py-1 text-green-200">
+                <IconLink className="size-3.5" />
+                Public
+              </span>
+            )}
+            {isExpired && (
+              <span className="inline-flex items-center gap-1 rounded-full border border-red-500/30 bg-red-500/10 px-2.5 py-1 text-red-300">
+                <IconClockExclamation className="size-3.5" />
+                Expired
+              </span>
+            )}
           </div>
         )
       },
@@ -186,13 +200,20 @@ export function LinksTable({ links, isAuthenticated }: LinksTableProps) {
   return (
     <div className="w-full">
 
-      <LinkFilters
-        filter={filter}
-        search={search}
-        onFilterChange={setFilter}
-        onSearchChange={setSearch}
-        isAuthenticated={isAuthenticated}
-      />
+      <section className="mb-5 flex flex-col gap-3 rounded-2xl border border-neutral-800/80 bg-neutral-950 p-3 sm:flex-row sm:items-center sm:justify-between">
+        <LinkFilters
+          filter={filter}
+          search={search}
+          onFilterChange={setFilter}
+          onSearchChange={setSearch}
+          isAuthenticated={isAuthenticated}
+        />
+
+        <div className="flex gap-4 items-center">
+          <ClaimButton isAuthenticated={isAuthenticated} />
+          <CreateButton isAuthenticated={isAuthenticated} />
+        </div>
+      </section>
 
       <div className="overflow-visible rounded-xl border-1.5 border-neutral-800/80 bg-neutral-950">
         <Table>

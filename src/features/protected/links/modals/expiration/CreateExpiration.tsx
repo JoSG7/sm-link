@@ -70,7 +70,7 @@ export function CreateUserLinkExpirationModal({ isOpen, short, onClose }: Create
               exit={{ opacity: 0 }}
               onClick={onClose}>
 
-              <motion.form className="w-[90vw] p-5 bg-neutral-950 rounded-xl border border-neutral-800 max-w-150 sm:w-[70vw] lg:w-[50vw]"
+              <motion.form className="w-[90vw] p-5 bg-neutral-950 rounded-xl border border-neutral-800 max-w-140 sm:w-[70vw] lg:w-[50vw]"
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.8, opacity: 0 }}

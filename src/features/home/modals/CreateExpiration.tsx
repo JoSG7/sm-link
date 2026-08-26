@@ -1,10 +1,9 @@
 "use client"
 
-import { IconCheck, IconLoader2 } from "@tabler/icons-react"
+import { IconAlarmPlus, IconCalendarPlus, IconCheck, IconClockHour3, IconLoader } from "@tabler/icons-react"
 import { AnimatePresence, motion } from "framer-motion"
-import { FormEvent, useState } from "react"
+import { SubmitEvent, useState } from "react"
 import { toast } from "sonner"
-import { DatePicker } from "@/components/ui/DatePicker"
 import ModalLayout from "@/components/modals/ModalLayout"
 import { RootState } from "@/store/store-config"
 import { recordChange } from "@/store/link-changes-slice"
@@ -17,30 +16,25 @@ import { LinkServices } from "@/services/link.service"
 export function CreateLinkExpirationModal() {
 
   const [submiting, setSubmiting] = useState(false)
-  const [expirationDate, setExpirationDate] = useState<Date | undefined>(undefined)
+  const [expirationDate, setExpirationDate] = useState("")
   const [expirationHour, setExpirationHour] = useState("")
 
   const dispatch = useDispatch()
   const { isOpen, shortLink } = useSelector((state: RootState) => state.modals.setExpiration)
 
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = async (e: SubmitEvent) => {
     e.preventDefault()
 
-    if (!expirationDate || expirationHour == "") {
+    if (expirationDate == "" || expirationHour == "") {
 
       toast.error("Please, enter a valid date and hour")
 
     } else if (shortLink) {
 
+      const [year, month, day] = expirationDate.split("-").map(Number)
       const [hour, min] = expirationHour.split(":").map(Number)
-      const fullDate = new Date(
-        expirationDate.getFullYear(),
-        expirationDate.getMonth(),
-        expirationDate.getDate(),
-        hour,
-        min
-      )
+      const fullDate = new Date(year, month - 1, day, hour, min)
 
       setSubmiting(true)
 
@@ -69,76 +63,84 @@ export function CreateLinkExpirationModal() {
       <AnimatePresence>
         {
           isOpen && (
-            <motion.section className={`fixed inset-0 z-30 bg-[rgba(0,0,0,0.8)] flex items-center justify-center
-            ${submiting && "pointer-events-none"}`}
+            <motion.section className={`fixed inset-0 z-30 bg-black/80 flex items-center justify-center ${submiting && "pointer-events-none"}`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => {
-                setExpirationDate(undefined)
+                setExpirationDate("")
                 setExpirationHour("")
                 dispatch(toggleSetExpiration())
               }}>
 
-              <motion.div className="w-[90vw] bg-neutral-950 rounded-xl border border-neutral-800 max-w-xl
+              <motion.form className="w-[90vw] p-5 bg-neutral-950 rounded-xl border border-neutral-800 max-w-140
               sm:w-[70vw] lg:w-[50vw]"
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.8, opacity: 0 }}
                 transition={{ duration: 0.2 }}
-                onClick={(e) => e.stopPropagation()}>
+                onClick={(e) => e.stopPropagation()}
+                onSubmit={handleSubmit}>
 
-                <h1 className="p-4 border-b border-neutral-800 text-sm sm:text-base lg:text-sm">
-                  Set a expiration date for <span className="font-medium">{shortLink}</span>
-                </h1>
+                <header className="pb-4 flex items-center gap-4">
+                  <div className="p-2 rounded-lg border border-yellow-500/30 bg-yellow-500/20">
+                    <IconAlarmPlus className="size-6 text-yellow-400" />
+                  </div>
 
-                <form onSubmit={handleSubmit}>
+                  <div>
+                    <h1 className="font-medium">Add Expiration Date</h1>
+                    <p className="text-xs text-neutral-400">{shortLink}</p>
+                  </div>
+                </header>
 
-                  {/* Date Input Section */}
-                  <section className="p-4 flex flex-col gap-4 border-b border-neutral-800 text-sm ">
+                <section className="py-2 flex flex-col gap-4">
 
-                    {/* Day Picker */}
-                    <DatePicker onChange={(e) => setExpirationDate(e)} />
-
-                    {/* Hour Picker */}
-                    <div className="py-3 px-4 rounded-lg border border-neutral-800 ">
-                      <input type="time" className="w-full text-white bg-transparent"
-                        required
-                        onChange={(e) => {
-                          setExpirationHour(e.currentTarget.value)
-                        }} />
+                  <article className="flex items-center text-sm">
+                    <div className="p-2.5 rounded-s-lg border-1.5 border-e-0 border-neutral-800 bg-neutral-900/80">
+                      <IconCalendarPlus className="size-5" />
                     </div>
 
-                    {/* Final Expiration Date */}
-                    <p className="text-sm text-neutral-400 ">
-                      {expirationDate ?
-                        "Your link will expire on " + expirationDate.toLocaleDateString() +
-                        (expirationHour && " at " + expirationHour)
-                        :
-                        ""
-                      }
+                    <input className="p-2.5 rounded-e-lg border-1.5 border-neutral-800 bg-neutral-900/80
+                    focus:border-amber-400 grow"
+                      type="date"
+                      required
+                      min={new Date().toISOString().split("T")[0]}
+                      max="2026-12-31"
+                      value={expirationDate}
+                      onChange={(e) => setExpirationDate(e.currentTarget.value)} />
+                  </article>
+
+                  <div className="grid grid-cols-2 gap-4">
+                    <article className="flex items-center text-sm">
+                      <div className="p-2.5 rounded-s-lg border-1.5 border-e-0 border-neutral-800 bg-neutral-900/80">
+                        <IconClockHour3 className="size-5" />
+                      </div>
+
+                      <input type="time" className="grow p-2.5 rounded-e-lg border-1.5 border-neutral-800 bg-neutral-900/80
+                        focus:border-amber-400"
+                        required
+                        value={expirationHour}
+                        onChange={(e) => setExpirationHour(e.currentTarget.value)} />
+                    </article>
+
+                    <p className="p-2.5 rounded-lg text-sm text-neutral-300 border-1.5 border-neutral-800 bg-neutral-900/80">
+                      Expires at {expirationDate && expirationHour ? expirationDate + " " + expirationHour : ""}
                     </p>
-                  </section>
-
-                  {/* Buttons Section */}
-                  <div className="p-4 flex gap-4 items-center text-sm ">
-
-                    <button className="p-2 px-3 flex items-center gap-2 rounded-lg bg-sky-600 disabled:opacity-30 
-                    cursor-pointer"
-                      type="button"
-                      disabled={submiting}
-                      onClick={handleSubmit}>
-                      {
-                        submiting ?
-                          <IconLoader2 className="size-4 animate-spin " /> :
-
-                          <IconCheck className="size-4 " />
-                      }
-                      {submiting ? "Creating..." : "Create"}
-                    </button>
                   </div>
-                </form>
-              </motion.div>
+
+                  <p className="p-2.5 rounded-lg text-sm text-yellow-200 border-1.5 border-amber-500/30 bg-amber-500/20">
+                    After the expiration date, this link will no longer be accessible
+                  </p>
+                </section>
+
+                <div className="pt-4 flex justify-start">
+                  <button className="py-2 px-4 flex items-center gap-2 text-sm rounded-lg disabled:opacity-50 bg-linear-to-b from-amber-500 to-amber-500/50"
+                    disabled={submiting}>
+                    {submiting ? <IconLoader className="size-3 animate-spin" /> : <IconCheck className="size-3" />}
+                    Create
+                  </button>
+                </div>
+              </motion.form>
             </motion.section>
           )
         }

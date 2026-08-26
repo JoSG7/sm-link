@@ -17,6 +17,8 @@ export async function signInWithOAuth(provider: Provider) {
 export async function signOut() {
 
   const supabase = createSupabase()
-  await supabase.auth.signOut()
+  const { error } = await supabase.auth.signOut()
+
+  if (error) throw error
 
 }
