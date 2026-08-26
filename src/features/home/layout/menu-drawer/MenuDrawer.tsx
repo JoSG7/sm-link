@@ -84,8 +84,7 @@ export function MenuDrawer() {
       animate={{ opacity: isOpen ? 1 : 0 }}
       transition={{ duration: 0.1 }} >
 
-      <motion.nav className={`max-w-2xl absolute bottom-0 bg-[#080a08] border-neutral-800 overflow-y-auto ${navWidth} 
-      sm:right-0 sm:border-l-[1.5px] lg:border-l`}
+      <motion.nav className={`max-w-2xl absolute bottom-0 bg-[#080a08] border-neutral-800 overflow-y-auto ${navWidth} sm:right-0 sm:border-l-1.5 lg:border-l`}
         layout
         onClick={(e) => e.stopPropagation()}
         initial={false}

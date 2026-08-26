@@ -61,7 +61,7 @@ export function DeleteLinkModal() {
               exit={{ opacity: 0 }}
               onClick={() => dispatch(toggleDeleteLink())}>
 
-              <motion.form className="p-4 w-[90vw] bg-neutral-950 rounded-xl flex flex-col gap-4 border border-neutral-800 max-w-96 xs:p-5 sm:max-w-max "
+              <motion.form className="group relative isolate w-[90vw] p-5 overflow-hidden bg-neutral-950 rounded-xl border border-neutral-800 max-w-96 sm:w-[70vw] lg:w-[50vw]"
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.8, opacity: 0 }}
@@ -69,17 +69,22 @@ export function DeleteLinkModal() {
                 onClick={(e) => e.stopPropagation()}
                 onSubmit={handleDelete}>
 
-                {/* Title */}
-                <h1 className="text-sm sm:text-base flex gap-2 items-center">
-                  <IconAlertHexagon className="size-5 text-red-500" />
-                  <p>
-                    Are you sure to delete <span className="font-medium text-neutral-300"> {shortLink}</span> for ever?
-                  </p>
-                </h1>
+                <div className="pointer-events-none absolute -right-12 -top-12 -z-10 size-25 rounded-full bg-linear-to-br from-red-500/15 via-rose-500/10 to-transparent blur-2xl" />
 
-                {/* Buttons section */}
-                <button className="w-max p-2 px-3 flex items-center gap-2 text-sm rounded-md bg-red-700/50 hover:opacity-80
-                  disabled:opacity-30 cursor-pointer border border-red-700/70"
+                <header className="pb-4 flex items-center gap-4">
+                  <div className="p-2 rounded-lg border border-red-500/30 bg-red-500/20">
+                    <IconAlertHexagon className="size-6 text-red-400" />
+                  </div>
+
+                  <div>
+                    <h1 className="font-medium">Delete link?</h1>
+                    <p className="text-xs text-neutral-400">{shortLink}</p>
+                  </div>
+                </header>
+
+                <div className="pt-4 flex justify-start">
+                  <button className="py-2 px-4 flex items-center gap-2 text-sm rounded-lg bg-linear-to-b from-red-500 to-red-600/50
+                  disabled:opacity-30 cursor-pointer"
                   disabled={submiting}>
 
                   {
@@ -88,9 +93,10 @@ export function DeleteLinkModal() {
                       :
                       <IconTrash className="size-4 " />
                   }
-                  {submiting ? "Deleting..." : "Delete"}
+                    {submiting ? "Deleting..." : "Delete"}
 
-                </button>
+                  </button>
+                </div>
 
               </motion.form>
             </motion.section>

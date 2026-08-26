@@ -7,6 +7,7 @@ import { IconLogout } from "@tabler/icons-react"
 import { useRouter } from "next/navigation"
 import Image from "next/image"
 import Link from "next/link"
+import { toast } from "sonner"
 
 export function UserProfile({ user }: { user: User | null }) {
 
@@ -14,8 +15,20 @@ export function UserProfile({ user }: { user: User | null }) {
 
   const handleLogOut = async () => {
 
-    await signOut()
-    router.replace("/")
+    const logoutPromise = signOut()
+
+    toast.promise(logoutPromise, {
+      loading: "Signing out...",
+      success: "You have been signed out",
+      error: "Unable to sign out",
+    })
+
+    try {
+      await logoutPromise
+      router.replace("/")
+    } catch {
+      // The error state is displayed by toast.promise.
+    }
 
   }
 

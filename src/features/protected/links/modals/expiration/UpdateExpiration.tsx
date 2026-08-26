@@ -80,7 +80,7 @@ export function UpdateUserLinkExpirationModal({ isOpen, short, date, onClose }: 
               exit={{ opacity: 0 }}
               onClick={onClose}>
 
-              <motion.form className="w-[90vw] bg-neutral-950 rounded-xl border border-neutral-800 max-w-140
+              <motion.form className="w-[90vw] p-5 bg-neutral-950 rounded-xl border border-neutral-800 max-w-140
               sm:w-[70vw] lg:w-[50vw]"
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
@@ -89,7 +89,7 @@ export function UpdateUserLinkExpirationModal({ isOpen, short, date, onClose }: 
                 onClick={(e) => e.stopPropagation()}
                 onSubmit={handleUpdate}>
 
-                <header className="p-4 flex items-center gap-4 ">
+                <header className="pb-4 flex items-center gap-4 ">
                   <div className="p-2 rounded-lg border border-yellow-500/30 bg-yellow-500/20">
                     <IconAlarm className="size-6 text-yellow-400" />
                   </div>
@@ -100,7 +100,7 @@ export function UpdateUserLinkExpirationModal({ isOpen, short, date, onClose }: 
                   </div>
                 </header>
 
-                <section className="px-4 py-2 flex flex-col gap-4">
+                <section className="py-2 flex flex-col gap-4">
 
                   <p className="p-2.5 rounded-lg text-sm text-yellow-200 border-1.5 border-amber-500/30 bg-amber-500/20 
                     grow">
@@ -148,8 +148,8 @@ export function UpdateUserLinkExpirationModal({ isOpen, short, date, onClose }: 
                   </div>
                 </section>
 
-                <div className="p-4 flex justify-start">
-                  <button className="py-2 px-4 flex items-center gap-2 text-sm rounded-lg cursor-pointer
+                <div className="pt-4 flex justify-start">
+                  <button className="py-2 px-4 flex items-center gap-2 text-sm rounded-lg
                   disabled:opacity-50 bg-linear-to-b from-amber-500 to-amber-500/50"
                     disabled={submiting}>
                     {submiting ? <IconLoader className="size-3 animate-spin" /> : <IconCheck className="size-3" />}

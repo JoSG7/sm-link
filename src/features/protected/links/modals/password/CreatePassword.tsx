@@ -25,7 +25,7 @@ export function CreatePasswordModal({ isOpen, short, onClose }: CreateUserLinkPa
   const handleCreate = async (e: SubmitEvent) => {
 
     e.preventDefault()
-    
+
     if (confirmPassword == password) {
 
       setSubmiting(true)
@@ -62,8 +62,7 @@ export function CreatePasswordModal({ isOpen, short, onClose }: CreateUserLinkPa
         {
           isOpen && (
 
-            <motion.section className={`fixed inset-0 z-30 bg-black/80 flex items-center justify-center backdrop-blur-sm
-            ${submiting && "pointer-events-none"}`}
+            <motion.section className={`fixed inset-0 z-30 bg-black/80 flex items-center justify-center backdrop-blur-sm ${submiting && "pointer-events-none"}`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -73,8 +72,7 @@ export function CreatePasswordModal({ isOpen, short, onClose }: CreateUserLinkPa
                 onClose()
               }}>
 
-              <motion.form className="w-[90vw] p-6 bg-neutral-950 rounded-2xl border border-neutral-800 max-w-150
-              sm:w-[70vw] lg:w-[50vw]"
+              <motion.form className="w-[90vw] p-5 bg-neutral-950 rounded-xl border border-neutral-800 max-w-150 sm:w-[70vw] lg:w-[50vw]"
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.8, opacity: 0 }}
@@ -95,31 +93,34 @@ export function CreatePasswordModal({ isOpen, short, onClose }: CreateUserLinkPa
 
                 <section className="py-2 flex flex-col gap-4">
 
-                  <article className="flex items-center text-sm grow">
-                    <div className="p-2.5 rounded-s-lg border-1.5 border-e-0 border-neutral-800 bg-neutral-900/80">
-                      <IconKey className="size-5" />
-                    </div>
+                  <div className="flex gap-4">
 
-                    <input className="grow p-2.5 rounded-e-lg border-1.5 border-neutral-800 bg-neutral-900/80
+                    <article className="flex items-center text-sm grow">
+                      <div className="p-2.5 rounded-s-lg border-1.5 border-e-0 border-neutral-800 bg-neutral-900/80">
+                        <IconKey className="size-5" />
+                      </div>
+
+                      <input className="grow p-2.5 rounded-e-lg border-1.5 border-neutral-800 bg-neutral-900/80
                       focus:border-green-600"
-                      type="password"
-                      required
-                      placeholder="New password"
-                      onChange={(e) => setPassword(e.currentTarget.value)} />
-                  </article>
+                        type="password"
+                        required
+                        placeholder="New password"
+                        onChange={(e) => setPassword(e.currentTarget.value)} />
+                    </article>
 
-                  <article className="flex items-center text-sm grow">
-                    <div className="p-2.5 rounded-s-lg border-1.5 border-e-0 border-neutral-800 bg-neutral-900/80">
-                      <IconLockCheck className="size-5" />
-                    </div>
+                    <article className="flex items-center text-sm grow">
+                      <div className="p-2.5 rounded-s-lg border-1.5 border-e-0 border-neutral-800 bg-neutral-900/80">
+                        <IconLockCheck className="size-5" />
+                      </div>
 
-                    <input className="grow p-2.5 rounded-e-lg border-1.5 border-neutral-800 bg-neutral-900/80
+                      <input className="grow p-2.5 rounded-e-lg border-1.5 border-neutral-800 bg-neutral-900/80
                       focus:border-green-600"
-                      type="password"
-                      required
-                      placeholder="Confirm password"
-                      onChange={(e) => setConfirmPassword(e.currentTarget.value)} />
-                  </article>
+                        type="password"
+                        required
+                        placeholder="Confirm new password"
+                        onChange={(e) => setConfirmPassword(e.currentTarget.value)} />
+                    </article>
+                  </div>
 
                   <p className="p-2.5 rounded-lg text-sm text-green-300 border-1.5 border-green-500/30 bg-green-500/20">
                     This link will require a password to open
@@ -128,8 +129,7 @@ export function CreatePasswordModal({ isOpen, short, onClose }: CreateUserLinkPa
                 </section>
 
                 <div className="pt-4 flex justify-start">
-                  <button className="py-2 px-4 flex items-center gap-2 text-sm rounded-lg cursor-pointer
-                  disabled:opacity-50 bg-linear-to-b from-green-500 to-green-500/50"
+                  <button className="py-2 px-4 flex items-center gap-2 text-sm rounded-lg disabled:opacity-50 bg-linear-to-b from-green-500 to-green-500/50"
                     disabled={submiting}>
                     {submiting ? <IconLoader className="size-3 animate-spin" /> : <IconCheck className="size-3" />}
                     Create

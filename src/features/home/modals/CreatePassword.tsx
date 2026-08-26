@@ -59,90 +59,90 @@ export function CreateLinkPasswordModal() {
   return (
     <ModalLayout>
       <AnimatePresence>
-        {
-          isOpen && (
-            <motion.section className={`fixed inset-0 z-30 bg-black/80 flex items-center justify-center
-            ${submiting && "pointer-events-none"}`}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => {
-                setPassword("")
-                setConfirmPassword("")
-                dispatch(toggleSetPassword())
-              }}>
+        {isOpen && (
+          <motion.section
+            className={`fixed inset-0 z-30 flex items-center justify-center bg-black/80 backdrop-blur-sm ${submiting && "pointer-events-none"}`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => {
+              setPassword("")
+              setConfirmPassword("")
+              dispatch(toggleSetPassword())
+            }}
+          >
+            <motion.form
+              className="w-[90vw] rounded-xl border border-neutral-800 bg-neutral-950 p-5 sm:w-[70vw] lg:w-[50vw]"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              onClick={(e) => e.stopPropagation()}
+              onSubmit={handleCreate}
+            >
+              <header className="flex items-center gap-4 pb-4">
+                <div className="rounded-lg border border-green-500/30 bg-green-500/20 p-2">
+                  <IconLockFilled className="size-6 text-green-400" />
+                </div>
 
-              <motion.form className="w-[90vw] bg-neutral-950 rounded-xl border border-neutral-800 max-w-140
-              sm:w-[70vw] lg:w-[50vw]"
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.8, opacity: 0 }}
-                transition={{ duration: 0.2 }}
-                onClick={(e) => e.stopPropagation()}
-                onSubmit={handleCreate}>
+                <div>
+                  <h1 className="font-medium">Add Password</h1>
+                  <p className="text-xs text-neutral-400">{shortLink}</p>
+                </div>
+              </header>
 
-                <header className="p-4 flex items-center gap-4 lg:p-5">
-                  <div className="p-2 rounded-lg border border-green-500/30 bg-green-500/20">
-                    <IconLockFilled className="size-4 text-green-400 lg:size-6" />
-                  </div>
-
-                  <div>
-                    <h1 className="text-sm font-medium lg:text-base">Add Password</h1>
-                    <p className="text-xs text-neutral-400">{shortLink}</p>
-                  </div>
-                </header>
-
-                <section className="p-4 pt-0 flex flex-col gap-4 lg:p-5 lg:pt-0">
-
-                  <article className="flex items-center text-xs grow lg:text-sm">
-                    <div className="p-2.5 rounded-s-lg border-1.5 border-e-0 border-neutral-800 bg-neutral-900/80">
-                      <IconKey className="size-4 lg:size-5" />
+              <section className="flex flex-col gap-4 py-2">
+                <div className="flex gap-4">
+                  <article className="flex grow items-center text-sm">
+                    <div className="rounded-s-lg border-1.5 border-e-0 border-neutral-800 bg-neutral-900/80 p-2.5">
+                      <IconKey className="size-5" />
                     </div>
 
-                    <input className="grow p-2.5 rounded-e-lg border-1.5 border-neutral-800 bg-neutral-900/80
-                      focus:border-green-600" 
+                    <input
+                      className="grow rounded-e-lg border-1.5 border-neutral-800 bg-neutral-900/80 p-2.5 focus:border-green-600"
                       type="password"
                       required
                       placeholder="New password"
-                      onChange={(e) => setPassword(e.currentTarget.value)} />
+                      onChange={(e) => setPassword(e.currentTarget.value)}
+                    />
                   </article>
 
-                  <article className="flex items-center text-xs grow lg:text-sm">
-                    <div className="p-2.5 rounded-s-lg border-1.5 border-e-0 border-neutral-800 bg-neutral-900/80">
-                      <IconLockCheck className="size-4 lg:size-5" />
+                  <article className="flex grow items-center text-sm">
+                    <div className="rounded-s-lg border-1.5 border-e-0 border-neutral-800 bg-neutral-900/80 p-2.5">
+                      <IconLockCheck className="size-5" />
                     </div>
 
-                    <input className="grow p-2.5 rounded-e-lg border-1.5 border-neutral-800 bg-neutral-900/80
-                      focus:border-green-600"
+                    <input
+                      className="grow rounded-e-lg border-1.5 border-neutral-800 bg-neutral-900/80 p-2.5 focus:border-green-600"
                       type="password"
                       required
                       placeholder="Confirm new password"
-                      onChange={(e) => setConfirmPassword(e.currentTarget.value)} />
+                      onChange={(e) => setConfirmPassword(e.currentTarget.value)}
+                    />
                   </article>
+                </div>
 
-                  <div className="flex flex-col gap-4 lg:flex-row-reverse">
-                    <p className="p-2.5 rounded-lg text-xs text-green-300 border-1.5 border-green-500/30 bg-green-500/20
-                    flex-1 lg:text-sm">
-                      This link will require a password to open
-                    </p>
+                <p className="rounded-lg border-1.5 border-green-500/30 bg-green-500/20 p-2.5 text-sm text-green-300">
+                  This link will require a password to open
+                </p>
+              </section>
 
-                    <button className="max-w-max py-2 px-4 flex items-center gap-2 text-xs rounded-lg cursor-pointer
-                    disabled:opacity-50 bg-linear-to-b from-green-500 to-green-500/50 lg:text-sm"
-                      disabled={submiting}>
-                      {submiting ? <IconLoader className="size-4 animate-spin" /> : <IconCheck className="size-4" />}
-                      Create
-                    </button>
-                  </div>
-
-                </section>
-              </motion.form>
-            </motion.section>
-          )
-        }
+              <div className="flex justify-start pt-4">
+                <button
+                  className="flex items-center gap-2 rounded-lg bg-linear-to-b from-green-500 to-green-500/50 px-4 py-2 text-sm disabled:opacity-50"
+                  type="submit"
+                  disabled={submiting}
+                >
+                  {submiting ? <IconLoader className="size-3 animate-spin" /> : <IconCheck className="size-3" />}
+                  Create
+                </button>
+              </div>
+            </motion.form>
+          </motion.section>
+        )}
       </AnimatePresence>
     </ModalLayout>
   )
 }
-
 
 

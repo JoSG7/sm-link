@@ -40,5 +40,4 @@ export async function PATCH(req: NextRequest, { params }: Props) {
 
   return NextResponse.json({ data: "Success" }, { status: 200 })
 
-
 }

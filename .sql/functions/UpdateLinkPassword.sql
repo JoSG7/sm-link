@@ -1,4 +1,4 @@
-drop function if exists update_link_password;
+drop function if exists update_link_password(x_short, x_current_password, x_new_password);
 
 create or replace function update_link_password(
   x_short text,
