@@ -5,14 +5,14 @@ import { ArrowDownToLine } from "lucide-react"
 import { UnclaimedLinksModal } from "../modals/UnclaimedLinks"
 
 
-export function ClaimButton({ isAuthenticated }: { isAuthenticated: boolean }) {
+export function ClaimButton({ isAuthenticated, hasGuestLinks }: { isAuthenticated: boolean, hasGuestLinks: boolean }) {
 
   const [isOpen, setIsOpen] = useState(false)
 
   return (
     <>
       {
-        isAuthenticated && (
+        isAuthenticated && hasGuestLinks && (
           <>
             <button
               type="button"

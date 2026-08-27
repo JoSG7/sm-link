@@ -10,11 +10,13 @@ import {
 } from "@/components/shadcn/dropdown-menu"
 import { CreatePasswordModal } from "../modals/password/CreatePassword"
 import { UpdatePasswordModal } from "../modals/password/UpdatePassword"
-import { CreateUserLinkExpirationModal } from "../modals/expiration/CreateExpiration"
-import { UpdateUserLinkExpirationModal } from "../modals/expiration/UpdateExpiration"
+import { CreateExpirationModal } from "../modals/expiration/CreateExpiration"
+import { UpdateExpirationModal } from "../modals/expiration/UpdateExpiration"
+import { DeleteExpirationModal } from "../modals/expiration/DeleteExpiration"
+import { DeletePasswordModal } from "../modals/password/DeletePassword"
 import { DeleteLinkModal } from "../modals/DeleteLink"
 
-type LinkAction = "password" | "expiration" | "delete"
+type LinkAction = "password" | "expiration" | "delete" | "deletePassword" | "deleteExpiration"
 
 interface LinkActionsProps {
   short: string
@@ -86,6 +88,26 @@ function LinkActionsComponent({ short, hasPassword, expirationDate, isAuthentica
             {!canUpdateExpiration && <IconLock className="ml-auto size-4" />}
           </DropdownMenuItem>
 
+          {hasPassword && (
+            <DropdownMenuItem
+              className="gap-2 text-red-400 hover:bg-red-500/10 hover:text-red-300 focus:bg-red-500/10 focus:text-red-300"
+              onSelect={() => openModal("deletePassword")}
+            >
+              <IconKey className="size-4" />
+              Remove password
+            </DropdownMenuItem>
+          )}
+
+          {hasExpiration && (
+            <DropdownMenuItem
+              className="gap-2 text-red-400 hover:bg-red-500/10 hover:text-red-300 focus:bg-red-500/10 focus:text-red-300"
+              onSelect={() => openModal("deleteExpiration")}
+            >
+              <IconAlarmPlus className="size-4" />
+              Remove expiration
+            </DropdownMenuItem>
+          )}
+
           <DropdownMenuItem
             className="gap-2 text-red-400 hover:bg-red-500/10 hover:text-red-300 focus:bg-red-500/10 focus:text-red-300"
             onSelect={() => openModal("delete")}
@@ -108,7 +130,7 @@ function LinkActionsComponent({ short, hasPassword, expirationDate, isAuthentica
             onClose={closeModal} />
         )}
         {activeAction === "expiration" && hasExpiration && (
-          <UpdateUserLinkExpirationModal
+          <UpdateExpirationModal
             isOpen={isModalOpen}
             short={short}
             date={expirationDate}
@@ -116,7 +138,19 @@ function LinkActionsComponent({ short, hasPassword, expirationDate, isAuthentica
           />
         )}
         {activeAction === "expiration" && !hasExpiration && (
-          <CreateUserLinkExpirationModal
+          <CreateExpirationModal
+            isOpen={isModalOpen}
+            short={short}
+            onClose={closeModal} />
+        )}
+        {activeAction === "deletePassword" && hasPassword && (
+          <DeletePasswordModal
+            isOpen={isModalOpen}
+            short={short}
+            onClose={closeModal} />
+        )}
+        {activeAction === "deleteExpiration" && hasExpiration && (
+          <DeleteExpirationModal
             isOpen={isModalOpen}
             short={short}
             onClose={closeModal} />

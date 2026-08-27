@@ -93,6 +93,22 @@ export class LinkServices {
       })
       return data
 
+    },
+
+    async updateExpiration({ short, expiresAt }: { short: string, expiresAt: string }) {
+
+      const { data } = await api.patch<SuccessResponse>(`links/expirations/${short}`, {
+        expiresAt
+      })
+      return data
+
+    },
+
+    async deleteExpiration(short: string) {
+
+      const { data } = await api.delete<SuccessResponse>(`links/expirations/${short}`)
+      return data
+
     }
 
   }

@@ -6,18 +6,18 @@ interface Props {
   params: Promise<{ shortUrl: string }>
 }
 
-export async function DELETE(req: NextRequest, { params }: Props) {
+export async function DELETE(_req: NextRequest, { params }: Props) {
 
   const supabase = await createSupabaseServerClient()
   const { shortUrl } = await params
 
-  const { data: id, error } = await supabase.from("links").select("id").eq("short", shortUrl)
+  const { data: link, error } = await supabase.from("links").select("id").eq("short", shortUrl).single()
 
-  if (error) return NextResponse.json({ erorr: "Error in server" }, { status: 500 })
+  if (error || !link) return NextResponse.json({ error: "Link not found" }, { status: 404 })
 
-  const { error: e } = await supabase.from("protected_link").delete().eq("link_id", id)
+  const { error: deleteError } = await supabase.from("protected_link").delete().eq("link_id", link.id)
 
-  if (e) return NextResponse.json({ erorr: "Error in server" }, { status: 500 })
+  if (deleteError) return NextResponse.json({ error: "Unable to delete password" }, { status: 500 })
 
   return NextResponse.json({ data: "Success" }, { status: 200 })
 

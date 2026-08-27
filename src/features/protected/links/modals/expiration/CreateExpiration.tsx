@@ -9,13 +9,13 @@ import { toast } from "sonner";
 import { LinkServices } from "@/services/link.service";
 import { useRouter } from "next/navigation";
 
-interface CreateUserLinkExpirationModalProps {
+interface CreateExpirationModalProps {
   isOpen: boolean
   short: string
   onClose: () => void
 }
 
-export function CreateUserLinkExpirationModal({ isOpen, short, onClose }: CreateUserLinkExpirationModalProps) {
+export function CreateExpirationModal({ isOpen, short, onClose }: CreateExpirationModalProps) {
 
   const [submiting, setSubmiting] = useState(false)
   const [expirationDate, setExpirationDate] = useState("")

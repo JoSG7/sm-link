@@ -11,7 +11,7 @@ import {
   type SortingState,
   type VisibilityState,
 } from "@tanstack/react-table"
-import { IconChevronLeft, IconChevronRight, IconChevronsLeft, IconChevronsRight, IconClockCheck, IconClockExclamation, IconCopy, IconLink, IconShieldLockFilled, IconSortDescending } from "@tabler/icons-react"
+import { IconCalendarOff, IconChevronLeft, IconChevronRight, IconChevronsLeft, IconChevronsRight, IconClockCheck, IconClockExclamation, IconCopy, IconLink, IconShieldLockFilled, IconSortDescending, IconUserFilled } from "@tabler/icons-react"
 import { toast } from "sonner"
 import { format } from "date-fns"
 import { Checkbox } from "@/components/shadcn/checkbox"
@@ -77,7 +77,7 @@ export function LinksTable({ links, isAuthenticated }: LinksTableProps) {
       accessorKey: "original",
       header: "Original URL",
       cell: ({ row }) => (
-        <div className="max-w-96 overflow-x-hidden text-nowrap font-medium mask-r-from-90">
+        <div className="max-w-96 overflow-x-hidden line-clamp-1 font-medium mask-r-from-90">
           {row.getValue("original")}
         </div>
       ),
@@ -128,13 +128,18 @@ export function LinksTable({ links, isAuthenticated }: LinksTableProps) {
         const expiresAt = row.getValue("expires_at") as string | null
 
         if (!expiresAt) {
-          return <div className="w-max rounded-full border border-neutral-800 px-2.5 py-1 text-xs text-neutral-500">No expiration</div>
+          return (
+            <div className="inline-flex w-max items-center gap-1 rounded-full border border-neutral-800 px-2.5 py-1 text-xs text-neutral-400">
+              <IconCalendarOff className="size-3.5 text-neutral-500" />
+              No expiration
+            </div>
+          )
         }
 
         return (
           <p className={`flex w-max items-center justify-center gap-1 rounded-full border px-2.5 py-1 text-xs ${row.original.is_expired ? "border-red-500/30 bg-red-500/10 text-red-300" : "border-amber-500/30 bg-amber-500/10 text-amber-200"}`}>
             <IconClockCheck className="size-3.5" />
-            {row.original.is_expired ? "Expired" : "Expires"}
+            {row.original.is_expired ? "Expired " : "Expires "}
             {format(new Date(expiresAt), "MMM d, yyyy")}
           </p>
         )
@@ -146,6 +151,7 @@ export function LinksTable({ links, isAuthenticated }: LinksTableProps) {
       cell: ({ row }) => {
         const hasPassword = row.getValue<boolean>("has_password")
         const isExpired = row.getValue<boolean>("is_expired")
+        const isClaimedGuestLink = !isAuthenticated && row.original.has_user_id
 
         return (
           <div className="flex flex-wrap gap-2 text-xs font-medium">
@@ -164,6 +170,12 @@ export function LinksTable({ links, isAuthenticated }: LinksTableProps) {
               <span className="inline-flex items-center gap-1 rounded-full border border-red-500/30 bg-red-500/10 px-2.5 py-1 text-red-300">
                 <IconClockExclamation className="size-3.5" />
                 Expired
+              </span>
+            )}
+            {isClaimedGuestLink && (
+              <span className="inline-flex items-center gap-1 rounded-full border border-purple-500/30 bg-purple-500/10 px-2.5 py-1 text-purple-200">
+                <IconUserFilled className="size-3.5 text-purple-300" />
+                Claimed
               </span>
             )}
           </div>
@@ -210,12 +222,15 @@ export function LinksTable({ links, isAuthenticated }: LinksTableProps) {
         />
 
         <div className="flex gap-4 items-center">
-          <ClaimButton isAuthenticated={isAuthenticated} />
+          <ClaimButton
+            isAuthenticated={isAuthenticated}
+            hasGuestLinks={links.some(link => !link.has_user_id)}
+          />
           <CreateButton isAuthenticated={isAuthenticated} />
         </div>
       </section>
 
-      <div className="overflow-visible rounded-xl border-1.5 border-neutral-800/80 bg-neutral-950">
+      <div className="overflow-x-auto rounded-xl border-1.5 border-neutral-800/80 bg-neutral-950">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map(headerGroup => (
@@ -230,7 +245,7 @@ export function LinksTable({ links, isAuthenticated }: LinksTableProps) {
           </TableHeader>
           <TableBody>
             {table.getRowModel().rows.length ? table.getRowModel().rows.map(row => (
-              <TableRow className="h-16" key={row.id} data-state={row.getIsSelected() && "selected"}>
+              <TableRow className="h-16 data-[state=selected]:bg-neutral-900" key={row.id} data-state={row.getIsSelected() && "selected"}>
                 {row.getVisibleCells().map(cell => (
                   <TableCell className="px-4" key={cell.id}>
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}

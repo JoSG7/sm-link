@@ -1,20 +1,20 @@
 "use client"
 
-import ModalLayout from "@/components/modals/ModalLayout";
-import { AnimatePresence, motion } from "framer-motion";
-import { SubmitEvent, useState } from "react";
-import { IconCheck, IconLoader, IconTrash } from "@tabler/icons-react";
-import { toast } from "sonner";
-import { LinkServices } from "@/services/link.service";
-import { useRouter } from "next/navigation";
+import ModalLayout from "@/components/modals/ModalLayout"
+import { IconAlarm, IconCheck, IconLoader } from "@tabler/icons-react"
+import { AnimatePresence, motion } from "framer-motion"
+import { SubmitEvent, useState } from "react"
+import { toast } from "sonner"
+import { LinkServices } from "@/services/link.service"
+import { useRouter } from "next/navigation"
 
-interface DeletePasswordModalProps {
+interface DeleteExpirationModalProps {
   isOpen: boolean
   short: string
   onClose: () => void
 }
 
-export function DeletePasswordModal({ isOpen, short, onClose }: DeletePasswordModalProps) {
+export function DeleteExpirationModal({ isOpen, short, onClose }: DeleteExpirationModalProps) {
   const [submiting, setSubmiting] = useState(false)
   const router = useRouter()
 
@@ -23,7 +23,7 @@ export function DeletePasswordModal({ isOpen, short, onClose }: DeletePasswordMo
     setSubmiting(true)
 
     try {
-      const { data } = await new LinkServices().protected.deletePassword(short)
+      const { data } = await new LinkServices().expiration.deleteExpiration(short)
       toast.success(data)
       router.refresh()
       onClose()
@@ -58,10 +58,10 @@ export function DeletePasswordModal({ isOpen, short, onClose }: DeletePasswordMo
 
               <header className="flex items-center gap-4 pb-4">
                 <div className="rounded-lg border border-red-500/30 bg-red-500/20 p-2">
-                  <IconTrash className="size-6 text-red-400" />
+                  <IconAlarm className="size-6 text-red-400" />
                 </div>
                 <div>
-                  <h1 className="font-medium">Remove password?</h1>
+                  <h1 className="font-medium">Remove expiration?</h1>
                   <p className="text-xs text-neutral-400">{short}</p>
                 </div>
               </header>
