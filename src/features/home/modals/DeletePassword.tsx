@@ -12,7 +12,7 @@ import { recordChange } from "@/store/link-changes-slice"
 import { LinkServices } from "@/services/link.service"
 
 
-export function DeleteLinkPasswordModal() {
+export function DeletePasswordModal() {
   const [submiting, setSubmiting] = useState(false)
 
   const dispatch = useDispatch()

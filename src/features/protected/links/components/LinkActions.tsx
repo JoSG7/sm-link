@@ -22,13 +22,15 @@ interface LinkActionsProps {
   short: string
   hasPassword: boolean
   expirationDate: string | null
+  hasUserId: boolean
   isAuthenticated: boolean
 }
 
-function LinkActionsComponent({ short, hasPassword, expirationDate, isAuthenticated }: LinkActionsProps) {
+function LinkActionsComponent({ short, hasPassword, expirationDate, hasUserId, isAuthenticated }: LinkActionsProps) {
   const hasExpiration = expirationDate !== null
-  const canUpdatePassword = isAuthenticated || !hasPassword
-  const canUpdateExpiration = isAuthenticated || !hasExpiration
+  const isClaimedGuestLink = !isAuthenticated && hasUserId
+  const canUpdatePassword = !isClaimedGuestLink && (isAuthenticated || !hasPassword)
+  const canUpdateExpiration = !isClaimedGuestLink && (isAuthenticated || !hasExpiration)
   const [activeAction, setActiveAction] = useState<LinkAction | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const closeTimeout = useRef<ReturnType<typeof setTimeout> | null>(null)
@@ -91,29 +93,35 @@ function LinkActionsComponent({ short, hasPassword, expirationDate, isAuthentica
           {hasPassword && (
             <DropdownMenuItem
               className="gap-2 text-red-400 hover:bg-red-500/10 hover:text-red-300 focus:bg-red-500/10 focus:text-red-300"
+              disabled={isClaimedGuestLink}
               onSelect={() => openModal("deletePassword")}
             >
               <IconKey className="size-4" />
               Remove password
+              {isClaimedGuestLink && <IconLock className="ml-auto size-4" />}
             </DropdownMenuItem>
           )}
 
           {hasExpiration && (
             <DropdownMenuItem
               className="gap-2 text-red-400 hover:bg-red-500/10 hover:text-red-300 focus:bg-red-500/10 focus:text-red-300"
+              disabled={isClaimedGuestLink}
               onSelect={() => openModal("deleteExpiration")}
             >
               <IconAlarmPlus className="size-4" />
               Remove expiration
+              {isClaimedGuestLink && <IconLock className="ml-auto size-4" />}
             </DropdownMenuItem>
           )}
 
           <DropdownMenuItem
             className="gap-2 text-red-400 hover:bg-red-500/10 hover:text-red-300 focus:bg-red-500/10 focus:text-red-300"
+            disabled={isClaimedGuestLink}
             onSelect={() => openModal("delete")}
           >
             <IconTrash className="size-4" />
             Delete
+            {isClaimedGuestLink && <IconLock className="ml-auto size-4" />}
           </DropdownMenuItem>
         </DropdownMenuContent>
 

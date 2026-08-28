@@ -191,6 +191,7 @@ export function LinksTable({ links, isAuthenticated }: LinksTableProps) {
           short={row.original.short}
           hasPassword={row.original.has_password}
           expirationDate={row.original.expires_at}
+          hasUserId={row.original.has_user_id}
           isAuthenticated={isAuthenticated}
         />
       ),

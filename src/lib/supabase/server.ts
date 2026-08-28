@@ -48,19 +48,3 @@ export const createSupabaseServerClient = async () => {
   )
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

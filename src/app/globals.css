@@ -7,7 +7,7 @@
   --breakpoint-xs: 25.75rem;
   --breakpoint-3xl: 118.75rem;
   --breakpoint-4xl: 158.75rem;
-  --color-neutral-850: rgb(11,11,12);
+  --color-neutral-850: rgb(11, 11, 12);
   --border-width-1.5: 1.5px;
 }
 
@@ -79,13 +79,21 @@ button {
 
 
 
+/* background-image: radial-gradient(circle at 52% -12%, #d7ff3f12, #0000 30rem), linear-gradient(#ffffff03 1px, #0000 1px), linear-gradient(90deg, #ffffff03 1px, #0000 1px);
+    background-size: auto, 32px 32px, 32px 32px;
+    background-attachment: fixed; */
 
 
 
+/* box-shadow: 0 24px 70px #00000038, inset 0 1px #ffffff06; */
 
+/* background: linear-gradient(145deg, #ffffff06, #0000 34%), #0e110eeb; */
 
+/* #ffffff1a */
 
-
+.bg-card {
+  background: linear-gradient(145deg, #ffffff06, #0000 34%), #0e110eeb;
+}
 
 
 
