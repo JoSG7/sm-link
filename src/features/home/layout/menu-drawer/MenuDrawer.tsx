@@ -76,15 +76,14 @@ export function MenuDrawer() {
 
   return (
 
-    <motion.section className={`h-screen fixed inset-0 bg-black/70 backdrop-blur-sm z-20
-      ${isOpen ? "pointer-events-auto" : "pointer-events-none"}`}
+    <motion.section className={`h-screen fixed inset-0 bg-black/70 backdrop-blur-sm z-20 ${isOpen ? "pointer-events-auto" : "pointer-events-none"}`}
       layout
       onClick={() => { dispatch(toggleMenuDrawer()) }}
       initial={false}
       animate={{ opacity: isOpen ? 1 : 0 }}
       transition={{ duration: 0.1 }} >
 
-      <motion.nav className={`max-w-2xl absolute bottom-0 bg-[#080a08] border-neutral-800 overflow-y-auto ${navWidth} sm:right-0 sm:border-l-1.5 lg:border-l`}
+      <motion.nav className={`max-w-xl absolute bottom-0 bg-[#080a08] border-neutral-800 overflow-y-auto ${navWidth} border-t-1.5 sm:right-0 sm:border-l-1.5 sm:border-t-0 lg:border-l `}
         layout
         onClick={(e) => e.stopPropagation()}
         initial={false}
@@ -110,11 +109,11 @@ export function MenuDrawer() {
                   </span>
                 </li>,
               content:
-                <div className="px-4 pb-4 flex flex-col gap-4 xl:px-5 xl:pb-5 xl:gap-5">
+                <div className="p-4 pt-0 flex flex-col gap-4 sm:p-5 sm:pt-0 sm:gap-5">
                   {
                     loading ?
                       // Skeleton
-                      <div className="flex flex-col gap-4 xl:gap-5">
+                      <div className="flex flex-col gap-4 sm:gap-5">
                         <LinkCardSkeleton />
                         <LinkCardSkeleton />
                       </div>

@@ -3,31 +3,29 @@
 import ModalLayout from "@/components/modals/ModalLayout";
 import { AnimatePresence } from "framer-motion";
 import { SubmitEvent, useState } from "react";
-import { useDispatch } from "react-redux";
 import { motion } from "framer-motion";
 import { IconAlarm, IconCalendar, IconCheck, IconClockEdit, IconLoader } from "@tabler/icons-react";
 import { toast } from "sonner";
 import { months } from "@/consts";
-import { UserLinkServices } from "@/services/user-link.service";
-import { recordChange } from "@/store/link-changes-slice";
+import { LinkServices } from "@/services/link.service";
+import { useRouter } from "next/navigation";
 
 
-interface UpdateUserLinkExpirationModalProps {
+interface UpdateExpirationModalProps {
   isOpen: boolean
   short: string
   date: string
   onClose: () => void
 }
 
-export function UpdateUserLinkExpirationModal({ isOpen, short, date, onClose }: UpdateUserLinkExpirationModalProps) {
+export function UpdateExpirationModal({ isOpen, short, date, onClose }: UpdateExpirationModalProps) {
 
   const [submiting, setSubmiting] = useState(false)
   const [expirationDate, setExpirationDate] = useState("")
   const [expirationHour, setExpirationHour] = useState("")
 
-  const dispatch = useDispatch()
+  const router = useRouter()
   const actually = date
-
 
   const handleUpdate = async (e: SubmitEvent) => {
 
@@ -41,17 +39,16 @@ export function UpdateUserLinkExpirationModal({ isOpen, short, date, onClose }: 
 
       setSubmiting(true)
 
-      const { response } = await new UserLinkServices().expiration.updateUserSmLinkExpiration({ 
-        short,  
-        newExpirationDate: fullDate.toISOString()
+      const { data } = await new LinkServices().expiration.updateExpiration({
+        short,
+        expiresAt: fullDate.toISOString()
       })
 
-      dispatch(recordChange())
       setExpirationDate("")
       setExpirationHour("")
+      toast.success(data)
+      router.refresh()
       onClose()
-      toast.success(response)
-
 
     } catch (e) {
 

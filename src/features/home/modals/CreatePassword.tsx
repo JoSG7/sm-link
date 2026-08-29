@@ -6,37 +6,35 @@ import { IconCheck, IconKey, IconLoader, IconLockCheck, IconLockFilled } from "@
 import { FormEvent, useState } from "react"
 import { toast } from "sonner"
 import ModalLayout from "@/components/modals/ModalLayout"
-import { useDispatch, useSelector } from "react-redux"
-import { RootState } from "@/store/store-config"
-import { toggleSetPassword } from "@/store/modal-slice"
+import { useDispatch } from "react-redux"
 import { recordChange } from "@/store/link-changes-slice"
 import { LinkServices } from "@/services/link.service"
 
+interface CreatePasswordModalProps {
+  isOpen: boolean
+  short: string
+  onClose: () => void
+}
 
-export function CreateLinkPasswordModal() {
+export function CreatePasswordModal({ isOpen, short, onClose }: CreatePasswordModalProps) {
 
   const [submiting, setSubmiting] = useState(false)
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
-
   const dispatch = useDispatch()
-  const { isOpen, shortLink } = useSelector(
-    (state: RootState) => state.modals.setPassword
-  )
-
 
   const handleCreate = async (e: FormEvent) => {
     e.preventDefault()
 
     if (password != confirmPassword) {
       toast.error("The passwords not match, try again")
-    } else if (shortLink) {
+    } else if (short) {
 
       setSubmiting(true)
 
       try {
 
-        const { data } = await new LinkServices().protected.createPassword({ short: shortLink, password })
+        const { data } = await new LinkServices().protected.createPassword({ short, password })
         setPassword("")
         setConfirmPassword("")
         dispatch(recordChange())
@@ -49,7 +47,7 @@ export function CreateLinkPasswordModal() {
       } finally {
 
         setSubmiting(false)
-        dispatch(toggleSetPassword())
+        onClose()
 
       }
     }
@@ -68,11 +66,11 @@ export function CreateLinkPasswordModal() {
             onClick={() => {
               setPassword("")
               setConfirmPassword("")
-              dispatch(toggleSetPassword())
+              onClose()
             }}
           >
             <motion.form
-              className="w-[90vw] rounded-xl border border-neutral-800 bg-neutral-950 p-5 sm:w-[70vw] lg:w-[50vw]"
+              className="group relative isolate w-[90vw] overflow-hidden rounded-xl border border-neutral-800 bg-neutral-950 p-5 sm:w-[70vw] lg:w-[50vw]"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
@@ -80,6 +78,8 @@ export function CreateLinkPasswordModal() {
               onClick={(e) => e.stopPropagation()}
               onSubmit={handleCreate}
             >
+              <div className="pointer-events-none absolute -right-12 -top-12 -z-10 size-25 rounded-full bg-linear-to-br from-green-500/15 via-emerald-500/10 to-transparent blur-2xl" />
+
               <header className="flex items-center gap-4 pb-4">
                 <div className="rounded-lg border border-green-500/30 bg-green-500/20 p-2">
                   <IconLockFilled className="size-6 text-green-400" />
@@ -87,12 +87,12 @@ export function CreateLinkPasswordModal() {
 
                 <div>
                   <h1 className="font-medium">Add Password</h1>
-                  <p className="text-xs text-neutral-400">{shortLink}</p>
+                  <p className="text-xs text-neutral-400">{short}</p>
                 </div>
               </header>
 
               <section className="flex flex-col gap-4 py-2">
-                <div className="flex gap-4">
+                <div className="flex flex-col gap-4 sm:flex-row">
                   <article className="flex grow items-center text-sm">
                     <div className="rounded-s-lg border-1.5 border-e-0 border-neutral-800 bg-neutral-900/80 p-2.5">
                       <IconKey className="size-5" />

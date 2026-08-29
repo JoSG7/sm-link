@@ -2,7 +2,6 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Lexend } from "next/font/google"
 import { Toaster } from "sonner";
 import type { Metadata } from "next";
-import { ModalsRoot } from "@/components/modals/ModalsRoot";
 import { ReduxProvider } from "@/store/ReduxProvider";
 import { TooltipProvider } from "@/components/shadcn/tooltip";
 import "./globals.css";
@@ -32,7 +31,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <TooltipProvider>
           <ReduxProvider>
             <Toaster richColors />
-            <ModalsRoot />
             {children}
           </ReduxProvider>
         </TooltipProvider>

@@ -5,23 +5,22 @@ import { AnimatePresence, motion } from "framer-motion"
 import { SubmitEvent, useState } from "react"
 import { toast } from "sonner"
 import ModalLayout from "@/components/modals/ModalLayout"
-import { RootState } from "@/store/store-config"
+import { useDispatch } from "react-redux"
 import { recordChange } from "@/store/link-changes-slice"
-import { toggleSetExpiration } from "@/store/modal-slice"
-import { useDispatch, useSelector } from "react-redux"
 import { LinkServices } from "@/services/link.service"
 
+interface CreateExpirationModalProps {
+  isOpen: boolean
+  short: string
+  onClose: () => void
+}
 
-
-export function CreateLinkExpirationModal() {
+export function CreateExpirationModal({ isOpen, short, onClose }: CreateExpirationModalProps) {
 
   const [submiting, setSubmiting] = useState(false)
   const [expirationDate, setExpirationDate] = useState("")
   const [expirationHour, setExpirationHour] = useState("")
-
   const dispatch = useDispatch()
-  const { isOpen, shortLink } = useSelector((state: RootState) => state.modals.setExpiration)
-
 
   const handleSubmit = async (e: SubmitEvent) => {
     e.preventDefault()
@@ -30,7 +29,7 @@ export function CreateLinkExpirationModal() {
 
       toast.error("Please, enter a valid date and hour")
 
-    } else if (shortLink) {
+    } else if (short) {
 
       const [year, month, day] = expirationDate.split("-").map(Number)
       const [hour, min] = expirationHour.split(":").map(Number)
@@ -40,7 +39,7 @@ export function CreateLinkExpirationModal() {
 
       try {
 
-        const { data } = await new LinkServices().expiration.createExpiration({ short: shortLink, expiresAt: fullDate.toISOString() })
+        const { data } = await new LinkServices().expiration.createExpiration({ short, expiresAt: fullDate.toISOString() })
         toast.success(data)
 
       } catch (e) {
@@ -51,7 +50,7 @@ export function CreateLinkExpirationModal() {
 
         setSubmiting(false)
         dispatch(recordChange())
-        dispatch(toggleSetExpiration())
+        onClose()
 
       }
     }
@@ -63,17 +62,17 @@ export function CreateLinkExpirationModal() {
       <AnimatePresence>
         {
           isOpen && (
-            <motion.section className={`fixed inset-0 z-30 bg-black/80 flex items-center justify-center ${submiting && "pointer-events-none"}`}
+            <motion.section className={`fixed inset-0 z-30 bg-black/80 backdrop-blur-sm flex items-center justify-center ${submiting && "pointer-events-none"}`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => {
                 setExpirationDate("")
                 setExpirationHour("")
-                dispatch(toggleSetExpiration())
+                onClose()
               }}>
 
-              <motion.form className="w-[90vw] p-5 bg-neutral-950 rounded-xl border border-neutral-800 max-w-140
+              <motion.form className="group relative isolate w-[90vw] p-5 bg-neutral-950 rounded-xl border border-neutral-800 max-w-140 overflow-hidden
               sm:w-[70vw] lg:w-[50vw]"
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
@@ -82,6 +81,8 @@ export function CreateLinkExpirationModal() {
                 onClick={(e) => e.stopPropagation()}
                 onSubmit={handleSubmit}>
 
+                <div className="pointer-events-none absolute -right-12 -top-12 -z-10 size-25 rounded-full bg-linear-to-br from-amber-500/15 via-yellow-500/10 to-transparent blur-2xl" />
+
                 <header className="pb-4 flex items-center gap-4">
                   <div className="p-2 rounded-lg border border-yellow-500/30 bg-yellow-500/20">
                     <IconAlarmPlus className="size-6 text-yellow-400" />
@@ -89,7 +90,7 @@ export function CreateLinkExpirationModal() {
 
                   <div>
                     <h1 className="font-medium">Add Expiration Date</h1>
-                    <p className="text-xs text-neutral-400">{shortLink}</p>
+                    <p className="text-xs text-neutral-400">{short}</p>
                   </div>
                 </header>
 
@@ -110,7 +111,7 @@ export function CreateLinkExpirationModal() {
                       onChange={(e) => setExpirationDate(e.currentTarget.value)} />
                   </article>
 
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="flex flex-col gap-4 sm:grid sm:grid-cols-2">
                     <article className="flex items-center text-sm">
                       <div className="p-2.5 rounded-s-lg border-1.5 border-e-0 border-neutral-800 bg-neutral-900/80">
                         <IconClockHour3 className="size-5" />

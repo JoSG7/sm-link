@@ -5,35 +5,34 @@ import { AnimatePresence, motion } from "framer-motion"
 import { SubmitEvent, useState } from "react"
 import { toast } from "sonner"
 import ModalLayout from "@/components/modals/ModalLayout"
-import { useDispatch, useSelector } from "react-redux"
-import { RootState } from "@/store/store-config"
+import { useDispatch } from "react-redux"
 import { recordChange } from "@/store/link-changes-slice"
-import { toggleDeleteLink } from "@/store/modal-slice"
 import { LinkServices } from "@/services/link.service"
 
-export function DeleteLinkModal() {
+interface DeleteLinkModalProps {
+  isOpen: boolean
+  short: string
+  onClose: () => void
+}
+
+export function DeleteLinkModal({ isOpen, short, onClose }: DeleteLinkModalProps) {
 
   const [submiting, setSubmiting] = useState(false)
-
   const dispatch = useDispatch()
-  const { shortLink, isOpen } = useSelector(
-    (state: RootState) => state.modals.deleteLink
-  )
-
 
   const handleDelete = async (e: SubmitEvent) => {
 
     e.preventDefault()
 
-    if (shortLink) {
+    if (short) {
 
       setSubmiting(true)
 
       try {
 
-        const { data } = await new LinkServices().deleteSmLink(shortLink)
+        const { data } = await new LinkServices().deleteSmLink(short)
         dispatch(recordChange())
-        dispatch(toggleDeleteLink())
+        onClose()
         toast.success(data)
 
       } catch (e) {
@@ -54,12 +53,12 @@ export function DeleteLinkModal() {
       <AnimatePresence>
         {
           isOpen && (
-            <motion.section className={`fixed inset-0 z-30 bg-black/80 flex items-center justify-center
+            <motion.section className={`fixed inset-0 z-30 bg-black/80 backdrop-blur-sm flex items-center justify-center
             ${submiting && "pointer-events-none"}`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => dispatch(toggleDeleteLink())}>
+              onClick={onClose}>
 
               <motion.form className="group relative isolate w-[90vw] p-5 overflow-hidden bg-neutral-950 rounded-xl border border-neutral-800 max-w-96 sm:w-[70vw] lg:w-[50vw]"
                 initial={{ scale: 0.8, opacity: 0 }}
@@ -78,7 +77,7 @@ export function DeleteLinkModal() {
 
                   <div>
                     <h1 className="font-medium">Delete link?</h1>
-                    <p className="text-xs text-neutral-400">{shortLink}</p>
+                    <p className="text-xs text-neutral-400">{short}</p>
                   </div>
                 </header>
 
