@@ -5,6 +5,10 @@ Para tabla Links
 
 - get_links: Obtiene la informacion del link de acuerdo al RLS.
 
+- get_global_metrics: Devuelve los agregados de analytics de los links del usuario autenticado.
+
+- get_link_metrics: Devuelve el resumen y las distribuciones de un link por su short, incluyendo la serie temporal diaria.
+
 - get_guest_links: Obtiene solo los links del invitado, necesario para el claim, ya que el RLS intercepta get_links y devuelve solo los links del Usuario Autenticado, Security Definer para que RLS no bloquee
 
 - claim_guest_links: Permite claimear los links del guest al user autenticado, esto no borrara los link del guest.

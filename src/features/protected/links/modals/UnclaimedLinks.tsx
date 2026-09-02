@@ -69,7 +69,6 @@ export function UnclaimedLinksModal({ isOpen, onClose }: {
   useEffect(() => {
 
     const fetchGuestLinks = async () => {
-
       try {
 
         const response = await new LinkServices().getSmLinks(true)
@@ -84,7 +83,6 @@ export function UnclaimedLinksModal({ isOpen, onClose }: {
         setLoading(false)
 
       }
-
     }
 
     fetchGuestLinks()

@@ -1,11 +1,11 @@
 "use client"
 
-import { createSupabase } from "@/lib/supabase/client"
 import { IconCheck, IconKey, IconLoader2, IconLockFilled } from "@tabler/icons-react"
 import { motion } from "framer-motion"
 import { SubmitEvent, useState } from "react"
 import { toast } from "sonner"
 import { LinkServices } from "@/services/link.service"
+import { AnalyticsService } from "@/services/analytics.service"
 
 export function AccessLinkForm({ short, linkID }: { short: string, linkID?: string }) {
 
@@ -16,12 +16,15 @@ export function AccessLinkForm({ short, linkID }: { short: string, linkID?: stri
     
     e.preventDefault()
     setSubmiting(true)
-    const supabase = createSupabase()
     
     try {
       
       const { data } = await new LinkServices().protected.validatePassword({ short, password })
-      supabase.rpc("record_monthly_visits", { x_link_id: linkID })
+      if (!data) throw new Error("Wrong Password")
+
+      await new AnalyticsService().recordMetric({
+        linkId: linkID!,
+      })
       window.location.replace(data) 
 
     } catch {

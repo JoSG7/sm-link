@@ -1,11 +1,14 @@
-create policy "Allow users to update expiration on their own links"
-on link_expiration
+drop policy if exists "Allow users to update password on their own links" on protected_link;
+
+create policy "Allow users to update password on their own links"
+on protected_link
 for update
+to authenticated
 using (
   exists (
     select 1
     from links l
-    where l.id = link_expiration.link_id
+    where l.id = protected_link.link_id
     and (
       (
         auth.uid() is not null
@@ -18,7 +21,7 @@ with check (
   exists (
     select 1
     from links l
-    where l.id = link_expiration.link_id
+    where l.id = protected_link.link_id
     and (
       (
         auth.uid() is not null

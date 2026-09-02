@@ -26,9 +26,10 @@ import { CreateButton } from "./CreateButton"
 interface LinksTableProps {
   links: LinkDetails[]
   isAuthenticated: boolean
+  hasGuestLinks: boolean
 }
 
-export function LinksTable({ links, isAuthenticated }: LinksTableProps) {
+export function LinksTable({ links, isAuthenticated, hasGuestLinks }: LinksTableProps) {
   const [sorting, setSorting] = useState<SortingState>([])
   const [filter, setFilter] = useState<"all" | "protected" | "expired">("all")
   const [search, setSearch] = useState("")
@@ -225,7 +226,7 @@ export function LinksTable({ links, isAuthenticated }: LinksTableProps) {
         <div className="flex gap-4 items-center">
           <ClaimButton
             isAuthenticated={isAuthenticated}
-            hasGuestLinks={links.some(link => !link.has_user_id)}
+            hasGuestLinks={hasGuestLinks}
           />
           <CreateButton isAuthenticated={isAuthenticated} />
         </div>
