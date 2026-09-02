@@ -1,4 +1,4 @@
-drop policy if exists "Allow guests and users to view their own links" on public.links;
+drop policy if exists "Allow guests and users to view their own links" on links;
 
 create policy "Allow guests and users to view their own links" on links for 
 select

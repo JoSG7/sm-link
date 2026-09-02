@@ -1,7 +1,7 @@
-drop policy if exists "Allow guests and users to insert a new link, only 7 links per guest" on public.links;
+drop policy if exists "Allow guests and users to insert a new link, only 7 links per guest" on links;
 
 create policy "Allow guests and users to insert a new link, only 7 links per guest "
-on public.links
+on links
 for insert
 to anon, authenticated
 with check (

@@ -1,17 +1,5 @@
+import { AnalyticsOverview } from "@/features/protected/analytics/AnalyticsOverview"
 
-export default function AnalyticsOverview () {
-
-
-  return(
-
-    <section>
-
-      <h1>
-        AnalyticsOverview
-      </h1>
-
-    </section>
-
-  )
-
-} 
+export default function AnalyticsPage() {
+  return <AnalyticsOverview />
+}
