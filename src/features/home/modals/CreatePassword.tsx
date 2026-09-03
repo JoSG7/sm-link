@@ -70,7 +70,7 @@ export function CreatePasswordModal({ isOpen, short, onClose }: CreatePasswordMo
             }}
           >
             <motion.form
-              className="group relative isolate w-[90vw] overflow-hidden rounded-xl border border-neutral-800 bg-neutral-950 p-5 sm:w-[70vw] lg:w-[50vw]"
+              className="group relative isolate w-[90vw] max-w-150 overflow-hidden rounded-xl border border-neutral-800 bg-neutral-950 p-5 sm:w-[70vw] lg:w-[50vw]"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
