@@ -11,15 +11,34 @@ import {
   type ChartConfig,
 } from "@/components/shadcn/chart"
 import { Button } from "@/components/shadcn/button"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/shadcn/select"
 
 interface LinkViews {
+  id: string
   short: string
   original: string
+}
+
+interface VisitMetric {
+  link_id: string
+  visited_at: string
+}
+
+type DateRange = "today" | "yesterday" | "week" | "month"
+
+interface LinkChartView extends LinkViews {
   successful_visits: number
 }
 
 interface GlobalViewsBarChartProps {
-  data: LinkViews[]
+  links: LinkViews[]
+  metrics: VisitMetric[]
 }
 
 const PAGE_SIZE = 7
@@ -64,8 +83,41 @@ function LinkTick({ x, y, payload, links }: {
 }
 
 
-export function GlobalViewsBarChart({ data }: GlobalViewsBarChartProps) {
+export function GlobalViewsBarChart({ links, metrics }: GlobalViewsBarChartProps) {
   const [page, setPage] = useState(0)
+  const [dateRange, setDateRange] = useState<DateRange>("month")
+  const now = new Date()
+  const start = new Date(now)
+
+  if (dateRange === "today") {
+    start.setHours(0, 0, 0, 0)
+  } else if (dateRange === "yesterday") {
+    start.setDate(start.getDate() - 1)
+    start.setHours(0, 0, 0, 0)
+  } else if (dateRange === "week") {
+    start.setDate(start.getDate() - 7)
+  } else {
+    start.setDate(start.getDate() - 30)
+  }
+
+  const end = dateRange === "yesterday"
+    ? new Date(start.getTime() + 24 * 60 * 60 * 1000)
+    : now
+  const visitsByLink = new Map<string, number>()
+
+  for (const metric of metrics) {
+    const visitedAt = new Date(metric.visited_at)
+    if (visitedAt >= start && visitedAt < end) {
+      visitsByLink.set(metric.link_id, (visitsByLink.get(metric.link_id) ?? 0) + 1)
+    }
+  }
+
+  const data: LinkChartView[] = links
+    .map(link => ({
+      ...link,
+      successful_visits: visitsByLink.get(link.id) ?? 0,
+    }))
+    .sort((first, second) => second.successful_visits - first.successful_visits)
   const pageCount = Math.max(1, Math.ceil(data.length / PAGE_SIZE))
   const currentPage = Math.min(page, pageCount - 1)
   const visibleLinks = data.slice(currentPage * PAGE_SIZE, (currentPage + 1) * PAGE_SIZE)
@@ -104,30 +156,51 @@ export function GlobalViewsBarChart({ data }: GlobalViewsBarChartProps) {
         </BarChart>
       </ChartContainer>
 
-      {pageCount > 1 && (
-        <div className="mt-4 flex justify-end gap-2">
-          <Button
-            className="bg-neutral-900 border-neutral-800"
-            aria-label="Previous links"
-            variant="outline"
-            size="icon-sm"
-            disabled={currentPage === 0}
-            onClick={() => setPage(currentPage - 1)}
-          >
-            <IconChevronLeft />
-          </Button>
-          <Button
-            className="bg-neutral-900 border-neutral-800"
-            aria-label="Next links"
-            variant="outline"
-            size="icon-sm"
-            disabled={currentPage === pageCount - 1}
-            onClick={() => setPage(currentPage + 1)}
-          >
-            <IconChevronRight />
-          </Button>
-        </div>
-      )}
+      <div className="mt-5 flex items-center justify-end gap-3">
+        <Select
+          value={dateRange}
+          onValueChange={(value: DateRange) => {
+            setDateRange(value)
+            setPage(0)
+          }}
+        >
+          <SelectTrigger size="sm" className="w-36 border-neutral-800 bg-neutral-900 text-neutral-200">
+            <SelectValue placeholder="Date range" />
+          </SelectTrigger>
+          
+          <SelectContent className="border-neutral-800 bg-neutral-900 text-neutral-200">
+            <SelectItem value="today" className="text-neutral-300 focus:bg-neutral-800 focus:text-green-300">Today</SelectItem>
+            <SelectItem value="yesterday" className="text-neutral-300 focus:bg-neutral-800 focus:text-green-300">Yesterday</SelectItem>
+            <SelectItem value="week" className="text-neutral-300 focus:bg-neutral-800 focus:text-green-300">Last 7 days</SelectItem>
+            <SelectItem value="month" className="text-neutral-300 focus:bg-neutral-800 focus:text-green-300">Last 30 days</SelectItem>
+          </SelectContent>
+        </Select>
+
+        {pageCount > 1 && (
+          <>
+            <Button
+              className="bg-neutral-900 border-neutral-800 size-9"
+              aria-label="Previous links"
+              variant="outline"
+              size="icon-sm"
+              disabled={currentPage === 0}
+              onClick={() => setPage(currentPage - 1)}
+            >
+              <IconChevronLeft />
+            </Button>
+            <Button
+              className="bg-neutral-900 border-neutral-800 size-9"
+              aria-label="Next links"
+              variant="outline"
+              size="icon-sm"
+              disabled={currentPage === pageCount - 1}
+              onClick={() => setPage(currentPage + 1)}
+            >
+              <IconChevronRight />
+            </Button>
+          </>
+        )}
+      </div>
     </article>
   )
 }

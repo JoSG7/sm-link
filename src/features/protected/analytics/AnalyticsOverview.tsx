@@ -28,13 +28,14 @@ export async function AnalyticsOverview() {
   const linkRows = links as LinkDetails[]
   const linkIds = linkRows.map(link => link.id)
 
-  let successfulVisitsByLink: { short: string; original: string; successful_visits: number }[] = []
+  let successfulVisitsByLink: { short: string; original: string; id: string }[] = []
+  let successfulVisitMetrics: { link_id: string; visited_at: string }[] = []
 
   if (linkIds.length) {
 
     const { data: metrics, error: metricsError } = await supabase
       .from("link_metrics")
-      .select("link_id")
+      .select("link_id, visited_at")
       .eq("status", "success")
       .eq("is_bot", false)
       .in("link_id", linkIds)
@@ -43,19 +44,14 @@ export async function AnalyticsOverview() {
       return <p className="py-8 text-red-300">Unable to load analytics.</p>
     }
 
-    const visitsByLink = new Map<string, number>()
-    
-    for (const metric of metrics ?? []) {
-      visitsByLink.set(metric.link_id, (visitsByLink.get(metric.link_id) ?? 0) + 1)
-    }
+    successfulVisitMetrics = metrics ?? []
 
     successfulVisitsByLink = linkRows
       .map(link => ({
         short: link.short,
         original: link.original,
-        successful_visits: visitsByLink.get(link.id) ?? 0,
+        id: link.id,
       }))
-      .sort((first, second) => second.successful_visits - first.successful_visits)
   }
 
   return (
@@ -103,7 +99,9 @@ export async function AnalyticsOverview() {
         />
       </div>
 
-      <GlobalViewsBarChart data={successfulVisitsByLink} />
+      <GlobalViewsBarChart
+        links={successfulVisitsByLink}
+        metrics={successfulVisitMetrics} />
     </section>
   )
 }
