@@ -4,6 +4,7 @@ export type AnalyticsMetricStatus = "success" | "wrong_password" | "expired"
 
 export interface CreateAnalyticsMetricInput {
 	linkId: string
+	status?: AnalyticsMetricStatus
 }
 
 export interface LinkMetric {

@@ -41,7 +41,8 @@ export function SmLinkCard({ data }: { data: LinkDetails }) {
         </div>
 
         {/* Link Logo */}
-        <DomainLogo domain={domain} />
+        <DomainLogo className="size-10 lg:size-15" 
+        domain={domain} />
       </section>
 
       {/* Link Status */}

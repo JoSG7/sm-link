@@ -10,7 +10,7 @@ export function DomainLogo({ domain, className }: { domain: string, className?: 
 
   if (error) {
     return (
-      <IconWorldExclamation className={`size-5 ${className ?? ""}`} />
+      <IconWorldExclamation className={`${className ?? ""}`} />
     )
   }
 
@@ -22,7 +22,7 @@ export function DomainLogo({ domain, className }: { domain: string, className?: 
       height={24}
       quality={75}
       unoptimized
-      className={`size-5 object-contain ${className ?? ""}`}
+      className={`rounded-full object-contain ${className ?? ""}`}
       onError={() => setError(true)}
     />
   )

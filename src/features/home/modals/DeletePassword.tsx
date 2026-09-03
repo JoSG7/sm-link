@@ -5,44 +5,39 @@ import { AnimatePresence, motion } from "framer-motion"
 import { useState } from "react"
 import { toast } from "sonner"
 import ModalLayout from "@/components/modals/ModalLayout"
-import { useDispatch, useSelector } from "react-redux"
-import { RootState } from "@/store/store-config"
-import { toggleDeletePassword } from "@/store/modal-slice"
+import { useDispatch } from "react-redux"
 import { recordChange } from "@/store/link-changes-slice"
 import { LinkServices } from "@/services/link.service"
 
+interface DeletePasswordModalProps {
+  isOpen: boolean
+  short: string
+  onClose: () => void
+}
 
-export function DeletePasswordModal() {
+export function DeletePasswordModal({ isOpen, short, onClose }: DeletePasswordModalProps) {
   const [submiting, setSubmiting] = useState(false)
 
   const dispatch = useDispatch()
-  const { isOpen, shortLink } = useSelector(
-    (state: RootState) => state.modals.deletePassword
-  )
-
 
   const handleDelete = async () => {
+    setSubmiting(true)
 
-    if (shortLink) {
+    try {
 
-      setSubmiting(true)
+      const { data } = await new LinkServices().protected.deletePassword(short)
+      dispatch(recordChange())
+      toast.success(data)
+      onClose()
 
-      try {
+    } catch (e) {
 
-        const { data } = await new LinkServices().protected.deletePassword(shortLink)
-        dispatch(recordChange())
-        dispatch(toggleDeletePassword())
-        toast.success(data)
+      toast.error((e as Error).message)
 
-      } catch (e) {
+    } finally {
 
-        toast.error((e as Error).message)
+      setSubmiting(false)
 
-      } finally {
-
-        setSubmiting(false)
-
-      }
     }
   }
 
@@ -57,7 +52,7 @@ export function DeletePasswordModal() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => dispatch(toggleDeletePassword())}>
+              onClick={onClose}>
 
               <motion.form className="group relative isolate w-[90vw] p-5 overflow-hidden bg-neutral-950 rounded-xl border border-neutral-800 max-w-96 sm:w-[70vw] lg:w-[50vw]"
                 initial={{ scale: 0.8, opacity: 0 }}
@@ -75,7 +70,7 @@ export function DeletePasswordModal() {
 
                   <div>
                     <h1 className="font-medium">Remove password?</h1>
-                    <p className="text-xs text-neutral-400">{shortLink}</p>
+                    <p className="text-xs text-neutral-400">{short}</p>
                   </div>
                 </header>
 

@@ -10,6 +10,11 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "linkId is required" }, { status: 400 })
   }
 
+  const status = body.status ?? "success"
+  if (!["success", "wrong_password", "expired"].includes(status)) {
+    return NextResponse.json({ error: "Invalid metric status" }, { status: 400 })
+  }
+
   const userAgent = request.headers.get("user-agent") || ""
   const metricMetadata = getMetricMetadata(
     userAgent,
@@ -25,7 +30,7 @@ export async function POST(request: NextRequest) {
     x_browser: metricMetadata.browser,
     x_operating_system: metricMetadata.operatingSystem,
     x_referer: metricMetadata.referer,
-    x_status: "success",
+    x_status: status,
     x_is_bot: metricMetadata.isBot,
   })
 

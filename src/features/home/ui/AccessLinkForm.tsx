@@ -11,23 +11,29 @@ export function AccessLinkForm({ short, linkID }: { short: string, linkID?: stri
 
   const [submiting, setSubmiting] = useState(false)
   const [password, setPassword] = useState("")
-  
+
+  if (!linkID) return null
+
   const handleRedirect = async (e: SubmitEvent) => {
-    
+
     e.preventDefault()
     setSubmiting(true)
-    
+
     try {
-      
+
       const { data } = await new LinkServices().protected.validatePassword({ short, password })
-      if (!data) throw new Error("Wrong Password")
 
       await new AnalyticsService().recordMetric({
-        linkId: linkID!,
+        linkId: linkID,
       })
-      window.location.replace(data) 
+      window.location.replace(data)
 
     } catch {
+
+      await new AnalyticsService().recordMetric({
+        linkId: linkID,
+        status: "wrong_password",
+      })
 
       toast.error("Wrong Password")
 
@@ -88,14 +94,14 @@ export function AccessLinkForm({ short, linkID }: { short: string, linkID?: stri
                 className="max-w-max py-2 px-4 flex items-center gap-2 text-xs rounded-lg cursor-pointer disabled:opacity-50 bg-linear-to-b from-green-500 to-green-500/50 lg:text-sm"
                 disabled={submiting}>
 
-              {
-                submiting ?
-                  <IconLoader2 className="size-4 animate-spin" />
-                  :
-                  <IconCheck className="size-4" />
-              }
+                {
+                  submiting ?
+                    <IconLoader2 className="size-4 animate-spin" />
+                    :
+                    <IconCheck className="size-4" />
+                }
 
-              {submiting ? "Validating..." : "Enter"}
+                {submiting ? "Validating..." : "Enter"}
 
               </button>
             </div>

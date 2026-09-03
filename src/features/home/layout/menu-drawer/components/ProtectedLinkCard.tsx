@@ -1,16 +1,17 @@
+"use client"
+
 import { LinkDetails } from "@/types/global";
 import { IconCalendar, IconShieldLockFilled, IconTrashFilled, IconUserFilled } from "@tabler/icons-react";
 import { format } from "date-fns";
-import { DomainLogo } from "../../../../../components/ui/DomainLogo";
-import { useDispatch } from "react-redux";
-import { toggleDeletePassword } from "@/store/modal-slice";
+import { useState } from "react";
+import { DomainLogo } from "@/components/ui/DomainLogo";
+import { DeletePasswordModal } from "@/features/home/modals/DeletePassword";
 
 
 export function ProtectedLinkCard({ data }: { data: LinkDetails }) {
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const url = new URL(data.original)
   const domain = url.hostname
-
-  const dispatch = useDispatch()
 
   if (!data.has_password) return
 
@@ -37,7 +38,8 @@ export function ProtectedLinkCard({ data }: { data: LinkDetails }) {
           </p>
         </div>
 
-        <DomainLogo domain={domain} />
+        <DomainLogo className="size-10 lg:size-15" 
+        domain={domain} />
       </section>
 
       <footer className="flex items-center justify-between gap-3">
@@ -57,11 +59,17 @@ export function ProtectedLinkCard({ data }: { data: LinkDetails }) {
 
         <button className="rounded-xl border border-transparent bg-neutral-900 p-2 text-neutral-300 transition-colors hover:border-red-500/30 hover:bg-red-500/10 hover:text-red-300"
           type="button"
-          onClick={() => dispatch(toggleDeletePassword(data.short))}>
+          onClick={() => setIsModalOpen(true)}>
 
           <IconTrashFilled className="size-4" />
         </button>
       </footer>
+
+      <DeletePasswordModal
+        isOpen={isModalOpen}
+        short={data.short}
+        onClose={() => setIsModalOpen(false)}
+      />
     </article>
   )
 }

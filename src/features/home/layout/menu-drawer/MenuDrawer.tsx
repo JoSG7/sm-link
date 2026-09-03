@@ -138,17 +138,17 @@ export function MenuDrawer() {
                   </p>
                 </li>,
               content:
-                <div className="px-4 pb-4 grid grid-cols-2 gap-4 ">
+                <div className="px-4 pb-4 flex flex-col gap-4 sm:p-5 sm:pt-0 sm:gap-5">
                   {
                     loading ?
-                      <div className="col-span-2 grid grid-cols-2 gap-4 ">
+                      <div className="flex flex-col gap-4 sm:gap-5">
                         <ProtectedLinkCardSkeleton />
                         <ProtectedLinkCardSkeleton />
                       </div>
                       :
                       linkDetails.length > 0 ?
                         linkDetails.filter(element => element.has_password).length == 0 ?
-                          <div className="col-span-2 lg:col-span-3">
+                          <div className="">
                             <EmptyLinks type="protected" />
                           </div>
                           :
@@ -156,7 +156,7 @@ export function MenuDrawer() {
                             <ProtectedLinkCard key={element.id} data={element} />
                           ))
                         :
-                        <div className="col-span-2 lg:col-span-3">
+                        <div className="">
                           <EmptyLinks type="protected" />
                         </div>
                   }
