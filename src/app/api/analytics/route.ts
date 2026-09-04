@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from "next/server"
 
 export async function POST(request: NextRequest) {
   const supabase = await createSupabaseServerClient()
-  const body = await request.json().catch(() => null)
+  const body = await request.json()
 
   if (!body || typeof body.linkId !== "string" || !body.linkId.trim()) {
     return NextResponse.json({ error: "linkId is required" }, { status: 400 })
@@ -22,6 +22,7 @@ export async function POST(request: NextRequest) {
     request.headers.get("x-vercel-ip-country"),
     request.headers.get("referer"),
   )
+
   const { data: metricRecorded, error } = await supabase.rpc("record_link_metric", {
     x_link_id: body.linkId.trim(),
     x_visitor_hash: metricMetadata.visitorHash,
