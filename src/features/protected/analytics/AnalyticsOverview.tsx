@@ -1,6 +1,6 @@
-import { IconActivity, IconChartBar, IconLink, IconUsers } from "@tabler/icons-react"
+import { IconChartBar, IconLink, IconPercentage, IconUsers } from "@tabler/icons-react"
 import { createSupabaseServerClient } from "@/lib/supabase/server"
-import { AnalyticsStatCard } from "./components/AnalyticsStatCard"
+import { AnalyticsStatCard } from "./components/StatCard"
 import { GlobalViewsBarChart } from "./components/GlobalViewsBarChart"
 import { LinkDetails } from "@/types/global"
 
@@ -22,21 +22,20 @@ export async function AnalyticsOverview() {
     successful_visits: 0,
     unique_visitors: 0,
     active_links: 0,
-    average_visits: 0,
+    success_rate: 0,
   }
 
   const linkRows = links as LinkDetails[]
   const linkIds = linkRows.map(link => link.id)
 
-  let successfulVisitsByLink: { short: string; original: string; id: string }[] = []
-  let successfulVisitMetrics: { link_id: string; visited_at: string }[] = []
+  let analyticsLinks: { short: string; original: string; id: string; has_password: boolean; is_expired: boolean }[] = []
+  let analyticsMetrics: { link_id: string; visited_at: string; status: "success" | "wrong_password" | "expired"; device_type: string | null }[] = []
 
   if (linkIds.length) {
 
     const { data: metrics, error: metricsError } = await supabase
       .from("link_metrics")
-      .select("link_id, visited_at")
-      .eq("status", "success")
+      .select("link_id, visited_at, status, device_type")
       .eq("is_bot", false)
       .in("link_id", linkIds)
 
@@ -44,13 +43,15 @@ export async function AnalyticsOverview() {
       return <p className="py-8 text-red-300">Unable to load analytics.</p>
     }
 
-    successfulVisitMetrics = metrics ?? []
+    analyticsMetrics = metrics ?? []
 
-    successfulVisitsByLink = linkRows
+    analyticsLinks = linkRows
       .map(link => ({
         short: link.short,
         original: link.original,
         id: link.id,
+        has_password: link.has_password,
+        is_expired: link.is_expired,
       }))
   }
 
@@ -90,18 +91,19 @@ export async function AnalyticsOverview() {
           glowClass="from-purple-500/10"
         />
         <AnalyticsStatCard
-          title="Average visits"
-          value={overview.average_visits}
-          icon={IconActivity}
+          title="Success rate"
+          value={overview.success_rate}
+          icon={IconPercentage}
           iconClass="bg-amber-500/15 text-amber-300 ring-amber-400/20"
           countClass="text-amber-200"
           glowClass="from-amber-500/10"
+          suffix="%"
         />
       </div>
 
       <GlobalViewsBarChart
-        links={successfulVisitsByLink}
-        metrics={successfulVisitMetrics} />
+        links={analyticsLinks}
+        metrics={analyticsMetrics} />
     </section>
   )
 }
