@@ -17,3 +17,4 @@ export interface LinkDetails {
   has_user_id: boolean
   created_at: string
 }
+

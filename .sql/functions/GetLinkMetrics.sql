@@ -2,6 +2,7 @@ drop function if exists get_link_metrics (text);
 
 create or replace function get_link_metrics (x_short text) returns table (
   total_views bigint,
+	successful_views bigint,
   unique_visitors bigint,
   protected_failed_attempts bigint,
   expired_views bigint,
@@ -10,7 +11,8 @@ create or replace function get_link_metrics (x_short text) returns table (
   operating_system_views jsonb,
   country_views jsonb,
   referer_views jsonb,
-  daily_views jsonb
+	daily_views jsonb,
+	daily_status_views jsonb
 ) security invoker language sql stable as $$
 	with scoped_metrics as (
 		select
@@ -71,9 +73,21 @@ create or replace function get_link_metrics (x_short text) returns table (
 		from valid_views
 		group by visited_at::date
 		order by date
+	),
+	daily_status_counts as (
+		select
+			visited_at::date as date,
+			count(*) filter (where status = 'success')::bigint as success,
+			count(*) filter (where status = 'expired')::bigint as expired,
+			count(*) filter (where status = 'wrong_password')::bigint as wrong_password
+		from scoped_metrics
+		where not is_bot
+		group by visited_at::date
+		order by date
 	)
 	select
-		count(*) filter (where status = 'success' and not is_bot)::bigint as total_views,
+		count(*) filter (where not is_bot)::bigint as total_views,
+		count(*) filter (where status = 'success' and not is_bot)::bigint as successful_views,
 		count(distinct visitor_hash) filter (
 			where status = 'success' and not is_bot and visitor_hash is not null
 		)::bigint as unique_visitors,
@@ -84,7 +98,8 @@ create or replace function get_link_metrics (x_short text) returns table (
 		coalesce((select jsonb_agg(to_jsonb(operating_system_counts)) from operating_system_counts), '[]'::jsonb) as operating_system_views,
 		coalesce((select jsonb_agg(to_jsonb(country_counts)) from country_counts), '[]'::jsonb) as country_views,
 		coalesce((select jsonb_agg(to_jsonb(referer_counts)) from referer_counts), '[]'::jsonb) as referer_views,
-		coalesce((select jsonb_agg(to_jsonb(day_counts)) from day_counts), '[]'::jsonb) as daily_views
+		coalesce((select jsonb_agg(to_jsonb(day_counts) order by date) from day_counts), '[]'::jsonb) as daily_views,
+		coalesce((select jsonb_agg(to_jsonb(daily_status_counts) order by date) from daily_status_counts), '[]'::jsonb) as daily_status_views
 	from scoped_metrics
 $$;
 
