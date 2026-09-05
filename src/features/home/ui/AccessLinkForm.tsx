@@ -23,6 +23,10 @@ export function AccessLinkForm({ short, linkID }: { short: string, linkID?: stri
 
       const { data } = await new LinkServices().protected.validatePassword({ short, password })
 
+      if (!data) {
+        throw new Error("Invalid password")
+      }
+
       await new AnalyticsService().recordMetric({
         linkId: linkID,
       })
@@ -36,11 +40,7 @@ export function AccessLinkForm({ short, linkID }: { short: string, linkID?: stri
       })
 
       toast.error("Wrong Password")
-
-    } finally {
-
       setSubmiting(false)
-
     }
   }
 

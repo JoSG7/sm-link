@@ -13,6 +13,10 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Error in server" }, { status: 500 })
   }
 
+  if (!data) {
+    return NextResponse.json({ error: "Invalid password" }, { status: 401 })
+  }
+
   return NextResponse.json({ data }, { status: 200 })
 
 }

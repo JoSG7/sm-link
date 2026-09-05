@@ -1,24 +1,9 @@
 import { api } from "@/config/axios"
-
-export type AnalyticsMetricStatus = "success" | "wrong_password" | "expired"
+import type { MetricStatus, LinkMetrics } from "@/types/analytics"
 
 export interface CreateAnalyticsMetricInput {
 	linkId: string
-	status?: AnalyticsMetricStatus
-}
-
-export interface LinkMetric {
-	id: number
-	link_id: string
-	visited_at: string
-	visitor_hash: string | null
-	country: string | null
-	device_type: string | null
-	browser: string | null
-	operating_system: string | null
-	referer: string | null
-	status: AnalyticsMetricStatus
-	is_bot: boolean
+	status?: MetricStatus
 }
 
 export interface AnalyticsQuery {
@@ -28,7 +13,7 @@ export interface AnalyticsQuery {
 }
 
 interface AnalyticsResponse {
-	data: LinkMetric[]
+	data: LinkMetrics[]
 }
 
 export class AnalyticsService {

@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts"
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react"
 import { DomainLogo } from "@/components/ui/DomainLogo"
@@ -82,10 +83,15 @@ function LinkTick({ x, y, payload, links }: {
 
   return (
     <foreignObject x={x - 42} y={y + 4} width={84} height={42}>
-      <div className="flex flex-col items-center gap-1 text-[10px] text-neutral-300" title={link.original}>
+      <Link
+        href={`/dashboard/analytics/${encodeURIComponent(link.short)}`}
+        className="flex flex-col items-center gap-1 rounded-sm text-[10px] text-neutral-300 outline-none transition hover:text-white focus-visible:ring-1 focus-visible:ring-green-400"
+        title="Click to see more details about this link"
+        aria-label={`Click to see more details about ${link.short}`}
+      >
         <DomainLogo domain={domain} className="size-5 rounded-full" />
         <span className="max-w-20 truncate">{short}</span>
-      </div>
+      </Link>
     </foreignObject>
   )
 }

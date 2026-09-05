@@ -19,10 +19,6 @@ async function ShortURL({ params }: { params: Promise<{ shortUrl: string }> }) {
 
   if (!link) return <LinkAccessMessage type="not-found" />
 
-  if (link.is_expired) return <LinkIsExpired />
-
-  if (link.has_password) return <AccessLinkForm short={shortUrl} linkID={link.id} />
-
   const requestHeaders = await headers()
   const userAgent = requestHeaders.get("user-agent") || ""
   const metricMetadata = getMetricMetadata(
@@ -31,6 +27,29 @@ async function ShortURL({ params }: { params: Promise<{ shortUrl: string }> }) {
     requestHeaders.get("x-vercel-ip-country"),
     requestHeaders.get("referer"),
   )
+
+  if (link.is_expired) {
+    const { error: metricError } = await supabase.rpc("record_link_metric", {
+      x_link_id: link.id,
+      x_visitor_hash: metricMetadata.visitorHash,
+      x_country: metricMetadata.country,
+      x_device_type: metricMetadata.deviceType,
+      x_browser: metricMetadata.browser,
+      x_operating_system: metricMetadata.operatingSystem,
+      x_referer: metricMetadata.referer,
+      x_status: "expired",
+      x_is_bot: metricMetadata.isBot,
+    })
+
+    if (metricError) {
+      console.error("Could not record expired link metric", metricError)
+    }
+
+    return <LinkIsExpired />
+  }
+
+  if (link.has_password) return <AccessLinkForm short={shortUrl} linkID={link.id} />
+
   const { data: metricRecorded, error: metricError } = await supabase.rpc("record_link_metric", {
     x_link_id: link.id,
     x_visitor_hash: metricMetadata.visitorHash,
