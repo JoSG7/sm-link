@@ -1,7 +1,7 @@
 drop policy if exists "Allow users to update expiration on their own links" on link_expiration;
 
 create policy "Allow users to update expiration on their own links" on link_expiration for update
-to anon, authenticated
+to authenticated
 using (
   exists (
     select 1

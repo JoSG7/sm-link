@@ -26,7 +26,7 @@ export async function LinkAnalyticsOverview({ short }: { short: string }) {
     x_short: short,
   }).single()
 
-  console.log(summary)
+  // console.log(summary)
 
   if (summaryError) return <p className="py-8 text-red-300">Unable to load analytics.</p>
 
@@ -77,6 +77,8 @@ export async function LinkAnalyticsOverview({ short }: { short: string }) {
       </div>
 
       <LinkViewsAreaChart views={dailyViews} />
+
+      {/* Falta mostrar device y browser en wrong_password logs */}
 
       <div className="grid gap-7 lg:grid-cols-2">
         <BrowserRadialChart browsers={analyticsSummary.browser_views} />

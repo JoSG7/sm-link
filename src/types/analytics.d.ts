@@ -17,11 +17,9 @@ export interface LinkMetrics {
 export interface AnalyticsBreakdown {
   name: string | null
   value: number
-}
-
-export interface DailyView {
-  date: string
-  views: number
+  success: number
+  wrong_password: number
+  expired: number
 }
 
 export interface DailyStatusView {
@@ -42,6 +40,5 @@ export interface AnalyticsSummary {
   operating_system_views: AnalyticsBreakdown[]
   country_views: AnalyticsBreakdown[]
   referer_views: AnalyticsBreakdown[]
-  daily_views: DailyView[]
   daily_status_views: DailyStatusView[]
 }

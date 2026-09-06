@@ -18,11 +18,15 @@ const chartConfig = {
 } satisfies ChartConfig
 
 export function BrowserRadialChart({ browsers }: { browsers: AnalyticsBreakdown[] }) {
+	
 	const data = browsers
 		.filter(browser => browser.name && browser.value > 0)
 		.map((browser, index) => ({
 			name: browser.name,
 			value: browser.value,
+			success: browser.success,
+			wrong_password: browser.wrong_password,
+			expired: browser.expired,
 			fill: browserColors[index % browserColors.length],
 		}))
 		.sort((first, second) => second.value - first.value)
@@ -31,10 +35,10 @@ export function BrowserRadialChart({ browsers }: { browsers: AnalyticsBreakdown[
 
 	return (
 		<article className="overflow-hidden rounded-2xl border border-neutral-800/80 bg-neutral-950 shadow-[0_12px_40px_rgba(0,0,0,0.18)]">
-      
+
 			<header className="border-b border-neutral-800/80 p-5 sm:p-6">
 				<h2 className="text-xl font-semibold text-neutral-100">Browsers</h2>
-				<p className="mt-1 text-sm text-neutral-400">Successful visits by browser</p>
+				<p className="mt-1 text-sm text-neutral-400">Visits by browser and status</p>
 			</header>
 
 			{data.length === 0 ? (
@@ -56,15 +60,29 @@ export function BrowserRadialChart({ browsers }: { browsers: AnalyticsBreakdown[
 							<ChartTooltip
 								cursor={false}
 								content={
-									<ChartTooltipContent
-										labelFormatter={(_, payload) => String(payload[0]?.payload?.name ?? "")}
-										formatter={(value) => (
-											<>
-												<span className="text-muted-foreground">Visits</span>
-												<span className="font-mono font-medium text-foreground tabular-nums">{value}</span>
-											</>
-										)}
-									/>
+											<ChartTooltipContent
+												labelFormatter={(_, payload) => String(payload[0]?.payload?.name ?? "")}
+												formatter={(_value, _name, _item, _index, payload) => {
+													const browser = payload as unknown as AnalyticsBreakdown
+
+													return (
+														<div className="grid gap-1">
+															{(browser.success ?? 0) > 0 && <div className="flex items-center justify-between gap-5">
+																<span className="text-muted-foreground">Success</span>
+																<span className="font-mono font-medium text-green-300 tabular-nums">{browser.success}</span>
+															</div>}
+															{(browser.wrong_password ?? 0) > 0 && <div className="flex items-center justify-between gap-5">
+																<span className="text-muted-foreground">Wrong password</span>
+																<span className="font-mono font-medium text-red-300 tabular-nums">{browser.wrong_password}</span>
+															</div>}
+															{(browser.expired ?? 0) > 0 && <div className="flex items-center justify-between gap-5">
+																<span className="text-muted-foreground">Expired</span>
+																<span className="font-mono font-medium text-amber-300 tabular-nums">{browser.expired}</span>
+															</div>}
+														</div>
+													)
+												}}
+											/>
 								}
 							/>
 							<RadialBar dataKey="value" background={{ fill: "#262626" }} cornerRadius={8} />

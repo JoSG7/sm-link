@@ -1,4 +1,4 @@
-drop policy if exists "Allow guests and users to delete their own links" on links
+drop policy if exists "Allow guests and users to delete their own links" on links;
 
 create policy "Allow guests and users to delete their own links" on links for delete 
 to anon, authenticated
