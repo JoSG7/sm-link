@@ -1,5 +1,6 @@
 "use client"
 
+import { useMemo, useState } from "react"
 import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts"
 import {
 	ChartContainer,
@@ -7,8 +8,24 @@ import {
 	ChartTooltipContent,
 	type ChartConfig,
 } from "@/components/shadcn/chart"
+import {
+	Select,
+	SelectContent,
+	SelectItem,
+	SelectTrigger,
+	SelectValue,
+} from "@/components/shadcn/select"
 import { formatAnalyticsDate } from "../../utils/formatDate"
 import { DailyStatusView } from "@/types/analytics"
+
+type DateRange = "week" | "month" | "quarter" | "all"
+
+const dateRangeOptions: Record<DateRange, { label: string }> = {
+	week: { label: "Last 7 days" },
+	month: { label: "Last month" },
+	quarter: { label: "Last 3 months" },
+	all: { label: "All available" },
+}
 
 const chartConfig = {
 	success: {
@@ -26,26 +43,80 @@ const chartConfig = {
 } satisfies ChartConfig
 
 export function LinkViewsAreaChart({ views }: { views: DailyStatusView[] }) {
+	const [dateRange, setDateRange] = useState<DateRange>("month")
 
-	const chartData = views.map(view => ({
+	const dateBounds = useMemo(() => {
+		const today = new Date()
+		today.setHours(0, 0, 0, 0)
+
+		if (dateRange === "week") {
+			const start = new Date(today)
+			start.setDate(start.getDate() - 6)
+			return { start, end: today }
+		}
+
+		if (dateRange === "month") {
+			return {
+				start: new Date(today.getFullYear(), today.getMonth(), 1),
+				end: today,
+			}
+		}
+
+		if (dateRange === "quarter") {
+			return {
+				start: new Date(today.getFullYear(), today.getMonth() - 2, 1),
+				end: today,
+			}
+		}
+
+		const dates = views.map(view => new Date(`${view.date}T00:00:00`)).sort((first, second) => first.getTime() - second.getTime())
+		return dates.length ? { start: dates[0], end: dates[dates.length - 1] } : null
+	}, [dateRange, views])
+
+	const filteredViews = useMemo(() => {
+		if (!dateBounds) return []
+
+		return views.filter(view => {
+			const date = new Date(`${view.date}T00:00:00`)
+			return date >= dateBounds.start && date <= dateBounds.end
+		})
+	}, [dateBounds, views])
+
+	const chartData = filteredViews.map(view => ({
 		...view,
 		label: formatAnalyticsDate(view.date),
 	}))
+
 	const hasSuccess = chartData.some(view => view.success > 0)
 	const hasExpired = chartData.some(view => view.expired > 0)
 	const hasWrongPassword = chartData.some(view => view.wrong_password > 0)
 
 	return (
 		<article className="overflow-hidden rounded-2xl border border-neutral-800/80 bg-neutral-950 shadow-[0_12px_40px_rgba(0,0,0,0.18)]">
+
 			<div className="flex items-start justify-between gap-4 border-b border-neutral-800/80 p-5 sm:p-6">
 				<div>
 					<h2 className="text-xl font-semibold text-neutral-100">Visits over time</h2>
-					<p className="mt-1 text-sm text-neutral-400">Visits by status during the last 30 days</p>
+					<p className="mt-1 text-sm text-neutral-400">Visits by status during {dateRangeOptions[dateRange].label.toLowerCase()}</p>
 				</div>
-				<div className="hidden items-center gap-4 text-sm text-neutral-300 sm:flex">
-					{hasSuccess && <span className="flex items-center gap-2"><span className="size-2.5 rounded-sm bg-green-500" />Success</span>}
-					{hasExpired && <span className="flex items-center gap-2"><span className="size-2.5 rounded-sm bg-amber-500" />Expired</span>}
-					{hasWrongPassword && <span className="flex items-center gap-2"><span className="size-2.5 rounded-sm bg-red-500" />Wrong password</span>}
+				<div className="flex items-center gap-4">
+					<div className="hidden items-center gap-4 text-sm text-neutral-300 sm:flex">
+						{hasSuccess && <span className="flex items-center gap-2"><span className="size-2.5 rounded-sm bg-green-500" />Success</span>}
+						{hasExpired && <span className="flex items-center gap-2"><span className="size-2.5 rounded-sm bg-amber-500" />Expired</span>}
+						{hasWrongPassword && <span className="flex items-center gap-2"><span className="size-2.5 rounded-sm bg-red-500" />Wrong password</span>}
+					</div>
+					<Select value={dateRange} onValueChange={value => setDateRange(value as DateRange)}>
+						<SelectTrigger size="sm" className="w-40 border-neutral-800 bg-neutral-900 text-neutral-200">
+							<SelectValue />
+						</SelectTrigger>
+						<SelectContent className="border-neutral-800 bg-neutral-900 text-neutral-200">
+							{Object.entries(dateRangeOptions).map(([value, option]) => (
+								<SelectItem key={value} value={value} className="text-neutral-300 focus:bg-neutral-800 focus:text-green-300">
+									{option.label}
+								</SelectItem>
+							))}
+						</SelectContent>
+					</Select>
 				</div>
 			</div>
 
@@ -89,17 +160,6 @@ export function LinkViewsAreaChart({ views }: { views: DailyStatusView[] }) {
 							cursor={{ stroke: "#525252", strokeDasharray: "4 4" }}
 							content={<ChartTooltipContent labelFormatter={(_, payload) => payload[0]?.payload?.label} />}
 						/>
-						{hasSuccess &&
-							<Area
-								type="monotone"
-								dataKey="success"
-								stackId="1"
-								stroke="#22c55e"
-								strokeWidth={2}
-								fill="url(#link-success-fill)"
-								dot={false}
-								activeDot={{ r: 4, fill: "#22c55e", stroke: "#dcfce7", strokeWidth: 2 }} />}
-
 						{hasExpired &&
 							<Area type="monotone"
 								dataKey="expired"
@@ -119,6 +179,17 @@ export function LinkViewsAreaChart({ views }: { views: DailyStatusView[] }) {
 								fill="url(#link-wrong-password-fill)"
 								dot={false}
 								activeDot={{ r: 4, fill: "#ef4444", stroke: "#fee2e2", strokeWidth: 2 }} />}
+
+						{hasSuccess &&
+							<Area
+								type="monotone"
+								dataKey="success"
+								stackId="1"
+								stroke="#22c55e"
+								strokeWidth={2}
+								fill="url(#link-success-fill)"
+								dot={false}
+								activeDot={{ r: 4, fill: "#22c55e", stroke: "#dcfce7", strokeWidth: 2 }} />}
 					</AreaChart>
 				</ChartContainer>
 			)}
