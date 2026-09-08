@@ -3,7 +3,7 @@ import { createSupabaseServerClient } from "@/lib/supabase/server"
 import { AnalyticsStatCard } from "../components/StatCard"
 import { LinkViewsAreaChart } from "./components/LinkViewsAreaChart"
 import { AnalyticsLogsTable } from "./components/AnalyticsLogsTable"
-import { BrowserRadialChart } from "./components/BrowserRadialChart"
+import { BrowserPieChart } from "./components/BrowserPieChart"
 import { DeviceBarChart } from "./components/DeviceBarChart"
 import type { AnalyticsSummary } from "@/types/analytics"
 import type { LinkDetails } from "@/types/global"
@@ -81,7 +81,7 @@ export async function LinkAnalyticsOverview({ short }: { short: string }) {
       {/* Falta mostrar device y browser en wrong_password logs */}
 
       <div className="grid gap-7 lg:grid-cols-2">
-        <BrowserRadialChart browsers={analyticsSummary.browser_views} />
+        <BrowserPieChart browsers={analyticsSummary.browser_views} />
         <DeviceBarChart devices={analyticsSummary.device_views} />
       </div>
 

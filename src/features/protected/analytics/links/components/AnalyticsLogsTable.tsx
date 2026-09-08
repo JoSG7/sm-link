@@ -1,5 +1,5 @@
 import { createSupabaseServerClient } from "@/lib/supabase/server"
-import { IconActivity, IconCircleCheck, IconClock, IconLock } from "@tabler/icons-react"
+import { IconCircleCheck, IconClock, IconLock } from "@tabler/icons-react"
 import type { LinkMetrics } from "@/types/analytics"
 import { formatAnalyticsTimestamp } from "../../utils/formatDate"
 
@@ -24,11 +24,8 @@ export async function AnalyticsLogsTable({ linkId }: AnalyticsLogsTableProps) {
 
   if (metrics.length === 0) {
     return (
-      <article className="rounded-2xl border border-neutral-800/80 bg-neutral-950 p-5 shadow-[0_12px_40px_rgba(0,0,0,0.18)] sm:p-7">
+      <article className="rounded-2xl border border-neutral-800/80 bg-neutral-950 p-5 shadow-[0_12px_40px_rgba(0,0,0,0.18)] sm:p-6">
         <div className="flex items-center gap-3">
-          <div className="rounded-xl border border-sky-500/25 bg-sky-500/10 p-2.5 text-sky-300">
-            <IconActivity className="size-5" stroke={1.8} />
-          </div>
           <div>
             <h2 className="text-xl font-semibold text-neutral-100">Visit logs</h2>
             <p className="mt-1 text-sm text-neutral-400">A detailed history of activity for this link.</p>
