@@ -1,5 +1,6 @@
 import { IconChartBar, IconLink, IconPercentage, IconUsers } from "@tabler/icons-react"
 import { createSupabaseServerClient } from "@/lib/supabase/server"
+import { ErrorMessage } from "@/components/ui/ErrorMessage"
 import { AnalyticsStatCard } from "./components/StatCard"
 import { GlobalViewsBarChart } from "./components/GlobalViewsBarChart"
 import { LinkDetails } from "@/types/global"
@@ -15,7 +16,7 @@ export async function AnalyticsOverview() {
   ])
 
   if (error || linksError) {
-    return <p className="py-8 text-red-300">Unable to load analytics.</p>
+    return <ErrorMessage title="Analytics unavailable" description="We couldn't load your global performance data. Please try again in a moment." actionHref="/dashboard/analytics" actionLabel="Try analytics again" />
   }
 
   const overview = data?.[0] ?? {
@@ -40,7 +41,7 @@ export async function AnalyticsOverview() {
       .in("link_id", linkIds)
 
     if (metricsError) {
-      return <p className="py-8 text-red-300">Unable to load analytics.</p>
+      return <ErrorMessage title="Analytics unavailable" description="Your links loaded, but visit data could not be retrieved." actionHref="/dashboard/analytics" actionLabel="Try analytics again" />
     }
 
     analyticsMetrics = metrics ?? []

@@ -1,12 +1,6 @@
 
+import { DashboardOverview } from "@/features/protected/dashboard/DashboardOverview"
 
-async function Dashboard() {
-
-
-  return (
-    <h1>asdsa</h1>
-  )
-
+export default function Dashboard() {
+  return <DashboardOverview />
 }
-
-export default Dashboard
