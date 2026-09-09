@@ -1,5 +1,6 @@
 import { IconChartBar, IconEye, IconLock, IconWorld } from "@tabler/icons-react"
 import { createSupabaseServerClient } from "@/lib/supabase/server"
+import { ErrorMessage } from "@/components/ui/ErrorMessage"
 import { AnalyticsStatCard } from "../components/StatCard"
 import { LinkViewsAreaChart } from "./components/LinkViewsAreaChart"
 import { AnalyticsLogsTable } from "./components/AnalyticsLogsTable"
@@ -19,8 +20,9 @@ export async function LinkAnalyticsOverview({ short }: { short: string }) {
 
   const link = data as LinkDetails | null
 
-  if (error) return <p className="py-8 text-red-300">Unable to load analytics.</p>
-  if (!link) return <p className="py-8 text-red-300">Link not found.</p>
+  if (error) return <ErrorMessage title="Link analytics unavailable" description="We couldn't load this link's analytics right now." actionHref="/dashboard/analytics" actionLabel="Back to analytics" />
+  
+  if (!link) return <ErrorMessage title="Link not found" description="This link may have been deleted or is no longer available." actionHref="/dashboard/links" actionLabel="Back to links" />
 
   const { data: summary, error: summaryError } = await supabase.rpc("get_link_metrics", {
     x_short: short,
@@ -28,7 +30,7 @@ export async function LinkAnalyticsOverview({ short }: { short: string }) {
 
   // console.log(summary)
 
-  if (summaryError) return <p className="py-8 text-red-300">Unable to load analytics.</p>
+  if (summaryError) return <ErrorMessage title="Link analytics unavailable" description="The link was found, but its visit data could not be retrieved." actionHref="/dashboard/analytics" actionLabel="Back to analytics" />
 
   const analyticsSummary = summary as AnalyticsSummary
   
@@ -38,8 +40,7 @@ export async function LinkAnalyticsOverview({ short }: { short: string }) {
   return (
     <section className="flex min-h-screen flex-col gap-7 py-7 xl:py-8">
       <header>
-        <p className="text-sm text-neutral-500">Analytics for link</p>
-        <h1 className="mt-1 text-3xl font-semibold text-neutral-100">/{short}</h1>
+        <h1 className="text-3xl font-semibold text-neutral-100">/{short}</h1>
         <p className="mt-2 max-w-3xl truncate text-neutral-300">{link.original}</p>
       </header>
 

@@ -1,5 +1,6 @@
 import { IconChartBar, IconLink, IconPercentage, IconUsers } from "@tabler/icons-react"
 import { createSupabaseServerClient } from "@/lib/supabase/server"
+import { ErrorMessage } from "@/components/ui/ErrorMessage"
 import { AnalyticsStatCard } from "./components/StatCard"
 import { GlobalViewsBarChart } from "./components/GlobalViewsBarChart"
 import { LinkDetails } from "@/types/global"
@@ -15,7 +16,7 @@ export async function AnalyticsOverview() {
   ])
 
   if (error || linksError) {
-    return <p className="py-8 text-red-300">Unable to load analytics.</p>
+    return <ErrorMessage title="Analytics unavailable" description="We couldn't load your global performance data. Please try again in a moment." actionHref="/dashboard/analytics" actionLabel="Try analytics again" />
   }
 
   const overview = data?.[0] ?? {
@@ -40,7 +41,7 @@ export async function AnalyticsOverview() {
       .in("link_id", linkIds)
 
     if (metricsError) {
-      return <p className="py-8 text-red-300">Unable to load analytics.</p>
+      return <ErrorMessage title="Analytics unavailable" description="Your links loaded, but visit data could not be retrieved." actionHref="/dashboard/analytics" actionLabel="Try analytics again" />
     }
 
     analyticsMetrics = metrics ?? []
@@ -56,15 +57,7 @@ export async function AnalyticsOverview() {
   }
 
   return (
-    <section className="flex min-h-screen flex-col gap-7 md:py-7 xl:py-8">
-      <header>
-        <h1 className="text-3xl font-semibold">
-          <span className="bg-linear-to-r from-green-400 to-sky-500 bg-clip-text text-transparent">SmLinks </span>
-          Analytics
-        </h1>
-        <p className="pt-2 text-neutral-300">A global summary of your link performance</p>
-      </header>
-
+    <div className="flex flex-col gap-7">
       <div className="flex flex-col gap-4 lg:flex-row">
         <AnalyticsStatCard
           title="Successful visits"
@@ -104,6 +97,6 @@ export async function AnalyticsOverview() {
       <GlobalViewsBarChart
         links={analyticsLinks}
         metrics={analyticsMetrics} />
-    </section>
+    </div>
   )
 }

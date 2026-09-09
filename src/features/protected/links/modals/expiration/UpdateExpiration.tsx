@@ -6,7 +6,7 @@ import { SubmitEvent, useState } from "react";
 import { motion } from "framer-motion";
 import { IconAlarm, IconCalendar, IconCheck, IconClockEdit, IconLoader } from "@tabler/icons-react";
 import { toast } from "sonner";
-import { months } from "@/consts";
+import { format } from "date-fns";
 import { LinkServices } from "@/services/link.service";
 import { useRouter } from "next/navigation";
 
@@ -101,10 +101,7 @@ export function UpdateExpirationModal({ isOpen, short, date, onClose }: UpdateEx
 
                   <p className="p-2.5 rounded-lg text-sm text-yellow-200 border-1.5 border-amber-500/30 bg-amber-500/20 
                     grow">
-                    Actually expiration date { 
-                      months[new Date(actually).getMonth()] + " " + new Date(actually).getDate() + " at " + 
-                      new Date(actually).getHours() + ":" + new Date(actually).getMinutes()
-                    }
+                    Actually expiration date {format(new Date(actually), "MMMM d 'at' H:m")}
                   </p>
 
                   <article className="flex items-center text-sm">

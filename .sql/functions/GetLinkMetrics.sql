@@ -69,7 +69,7 @@ create or replace function get_link_metrics (x_short text) returns table (
 	),
 	country_counts as (
 		select country as name, count(*)::bigint as value
-		from valid_views
+		from breakdown_views
 		where country is not null
 		group by country
 		order by value desc, name
@@ -105,7 +105,7 @@ create or replace function get_link_metrics (x_short text) returns table (
 		count(*) filter (where not is_bot)::bigint as total_views,
 		count(*) filter (where status = 'success' and not is_bot)::bigint as successful_views,
 		count(distinct visitor_hash) filter (
-			where status = 'success' and not is_bot and visitor_hash is not null
+			where not is_bot and visitor_hash is not null
 		)::bigint as unique_visitors,
 		count(*) filter (where status = 'wrong_password' and not is_bot)::bigint as protected_failed_attempts,
 		count(*) filter (where status = 'expired' and not is_bot)::bigint as expired_views,
