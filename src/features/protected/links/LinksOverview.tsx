@@ -15,20 +15,7 @@ export async function LinksOverview() {
   const hasGuestLinks = (guestLinks as LinkDetails[] | null)?.some(link => !link.has_user_id) ?? false
 
   return (
-
-    <section className="min-h-screen flex flex-col gap-7 md:py-7 xl:py-8">
-
-      <header>
-        <h1 className="text-3xl font-semibold">
-          <span className="text-transparent bg-clip-text bg-linear-to-r from-green-400 to-sky-500">SmLinks </span>
-          Overview
-        </h1>
-
-        <p className="pt-2 text-neutral-300">
-          Manage and track all your shortened links
-        </p>
-      </header>
-
+    <div className="flex flex-col gap-7">
       <div className="flex flex-col gap-4 lg:flex-row ">
         <StatCard links={links} type="total" />
         <StatCard links={links} type="protected" />
@@ -42,7 +29,7 @@ export async function LinksOverview() {
         hasGuestLinks={hasGuestLinks}
       />
 
-    </section>
+    </div>
 
   )
 }

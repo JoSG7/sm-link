@@ -1,5 +1,4 @@
-import Link from "next/link"
-import { IconArrowUpRight, IconChartBar, IconLink, IconPercentage, IconUsers } from "@tabler/icons-react"
+import { IconChartBar, IconLink, IconPercentage, IconUsers } from "@tabler/icons-react"
 import { createSupabaseServerClient } from "@/lib/supabase/server"
 import { ErrorMessage } from "@/components/ui/ErrorMessage"
 import { AnalyticsStatCard } from "@/features/protected/analytics/components/StatCard"
@@ -21,6 +20,7 @@ type DashboardSummary = {
 }
 
 export async function DashboardOverview() {
+
   const supabase = await createSupabaseServerClient()
   const [{ data: overviewRows, error: overviewError }, { data: links, error: linksError }] = await Promise.all([
     supabase.rpc("get_global_metrics").maybeSingle(),
@@ -51,41 +51,26 @@ export async function DashboardOverview() {
     if (error) {
       return <ErrorMessage title="Dashboard unavailable" description="Your links loaded, but activity data could not be retrieved." actionHref="/dashboard" actionLabel="Try dashboard again" />
     }
-    metrics = data ?? []
+    metrics = data
   }
 
   const visitsByLink = metrics.reduce<Record<string, number>>((counts, metric) => {
     if (metric.status === "success") counts[metric.link_id] = (counts[metric.link_id] ?? 0) + 1
     return counts
   }, {})
+
   const topLinks = [...linkRows]
     .sort((first, second) => (visitsByLink[second.id] ?? 0) - (visitsByLink[first.id] ?? 0))
     .slice(0, 5)
+
   const expiredLinks = linkRows.filter(link => link.is_expired)
   const protectedLinks = linkRows.filter(link => link.has_password)
   const latestMetric = [...metrics].sort((first, second) => new Date(second.visited_at).getTime() - new Date(first.visited_at).getTime())[0]
+  
   const latestLink = latestMetric ? linkRows.find(link => link.id === latestMetric.link_id) ?? null : null
 
   return (
-    <section className="flex min-h-screen flex-col gap-7 md:py-7 xl:py-8">
-      <header className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
-        <div>
-          <h1 className="mt-1 text-3xl font-semibold text-neutral-100">
-            <span className="bg-linear-to-r from-green-400 to-sky-500 bg-clip-text text-transparent">SmLinks </span>
-            Dashboard
-          </h1>
-          <p className="mt-2 text-neutral-400">A quick read on your links and their performance.</p>
-        </div>
-        <div className="flex gap-3">
-          <Link href="/dashboard/links" className="inline-flex items-center gap-2 rounded-lg border border-neutral-800 px-4 py-2 text-sm font-medium text-neutral-200 transition hover:border-neutral-600 hover:bg-neutral-900">
-            Manage links <IconArrowUpRight className="size-4" />
-          </Link>
-          <Link href="/dashboard/analytics" className="inline-flex items-center gap-2 rounded-lg bg-linear-to-r from-green-400 to-sky-500 px-4 py-2 text-sm font-semibold transition hover:from-green-300 hover:to-sky-400">
-            View analytics <IconChartBar className="size-4" />
-          </Link>
-        </div>
-      </header>
-
+    <div className="flex flex-col gap-7">
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <AnalyticsStatCard title="Successful visits" value={overview.successful_visits} icon={IconChartBar} iconClass="bg-green-500/15 text-green-300 ring-green-400/20" countClass="text-green-200" glowClass="from-green-500/10" />
 
@@ -100,6 +85,6 @@ export async function DashboardOverview() {
         <TopLinks links={topLinks} visitsByLink={visitsByLink} />
         <AtAGlance expiredLinks={expiredLinks} protectedLinks={protectedLinks} latestLink={latestLink} latestVisitedAt={latestMetric?.visited_at ?? null} />
       </div>
-    </section>
+    </div>
   )
 }
