@@ -11,7 +11,7 @@ export default function Dashboard() {
     <section className="flex min-h-screen flex-col gap-7 md:py-7 xl:py-8">
       <header className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
         <div>
-          <h1 className="mt-1 text-3xl font-semibold text-neutral-100">
+          <h1 className="text-3xl font-semibold text-neutral-100">
             <span className="bg-linear-to-r from-green-400 to-sky-500 bg-clip-text text-transparent">SmLinks </span>
             Dashboard
           </h1>
