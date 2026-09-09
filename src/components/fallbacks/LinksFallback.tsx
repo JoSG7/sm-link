@@ -8,9 +8,7 @@ export function LinksFallback() {
       <div className="grid gap-4 lg:grid-cols-4">
         {Array.from({ length: 4 }, (_, index) => <SkeletonBlock key={index} className="h-36" />)}
       </div>
-
       <SkeletonBlock className="h-16" />
-
       <SkeletonBlock className="h-120 w-full" />
     </div>
   )
