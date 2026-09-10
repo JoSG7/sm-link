@@ -72,7 +72,7 @@ export async function DashboardOverview() {
   return (
     <div className="flex flex-col gap-7">
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <AnalyticsStatCard title="Successful visits" value={overview.successful_visits} icon={IconChartBar} iconClass="bg-green-500/15 text-green-300 ring-green-400/20" countClass="text-green-200" glowClass="from-green-500/10" />
+        <AnalyticsStatCard title="Total visits" value={metrics.length} icon={IconChartBar} iconClass="bg-green-500/15 text-green-300 ring-green-400/20" countClass="text-green-200" glowClass="from-green-500/10" />
 
         <AnalyticsStatCard title="Unique visitors" value={overview.unique_visitors} icon={IconUsers} iconClass="bg-blue-500/15 text-blue-300 ring-blue-400/20" countClass="text-blue-200" glowClass="from-blue-500/10" />
 

@@ -3,7 +3,7 @@
 import { signOut } from "@/utils/auth/auth-client"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/shadcn/dropdown-menu"
 import { User } from "@supabase/supabase-js"
-import { IconLogout } from "@tabler/icons-react"
+import { IconLogout, IconUserFilled } from "@tabler/icons-react"
 import { useRouter } from "next/navigation"
 import Image from "next/image"
 import Link from "next/link"
@@ -37,7 +37,6 @@ export function UserProfile({ user }: { user: User | null }) {
     <DropdownMenu>
 
       <DropdownMenuTrigger>
-
         {
           user ?
             <Image className="size-9 rounded-full cursor-pointer"
@@ -48,9 +47,10 @@ export function UserProfile({ user }: { user: User | null }) {
               loading="eager"
             />
             :
-            <div className="size-9 rounded-full cursor-pointer bg-neutral-900" />
+            <div className="size-9 rounded-full cursor-pointer bg-neutral-900 flex items-center justify-center border border-neutral-800">
+              <IconUserFilled className="size-5 text-neutral-400" />
+            </div>
         }
-
       </DropdownMenuTrigger>
 
       <DropdownMenuContent className="bg-neutral-900 text-white border border-neutral-800 translate-x-2 -translate-y-4"

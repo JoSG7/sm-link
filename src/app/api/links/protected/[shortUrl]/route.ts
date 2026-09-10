@@ -1,4 +1,5 @@
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { apiError } from "@/utils/api/error-handler";
 import { NextRequest, NextResponse } from "next/server";
 
 
@@ -13,11 +14,11 @@ export async function DELETE(_req: NextRequest, { params }: Props) {
 
   const { data: link, error } = await supabase.from("links").select("id").eq("short", shortUrl).single()
 
-  if (error || !link) return NextResponse.json({ error: "Link not found" }, { status: 404 })
+  if (error || !link) return apiError("Link not found", 404, error)
 
   const { error: deleteError } = await supabase.from("protected_link").delete().eq("link_id", link.id)
 
-  if (deleteError) return NextResponse.json({ error: "Unable to delete password" }, { status: 500 })
+  if (deleteError) return apiError("Unable to delete password", 500, deleteError)
 
   return NextResponse.json({ data: "Success" }, { status: 200 })
 
@@ -36,7 +37,7 @@ export async function PATCH(req: NextRequest, { params }: Props) {
     x_new_password: newPassword
   })
 
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+  if (error) return apiError(error.message, 500, error)
 
   return NextResponse.json({ data: "Success" }, { status: 200 })
 

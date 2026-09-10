@@ -1,5 +1,6 @@
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { getGuestID } from "@/utils/auth/cookies";
+import { apiError } from "@/utils/api/error-handler";
 import { NextRequest, NextResponse } from "next/server";
 
 const createBase64Code = (): string => {
@@ -19,14 +20,14 @@ export async function GET(req: NextRequest) {
 
     const { data, error } = await supabase.rpc("get_guest_links")
 
-    if (error) return NextResponse.json({ error: "Error in Server" }, { status: 500 })
+    if (error) return apiError("Error in server", 500, error)
     return NextResponse.json(data, { status: 200 })
 
   } else {
 
     const { data, error } = await supabase.rpc("get_links")
 
-    if (error) return NextResponse.json({ error: "Error in server" }, { status: 500 })
+    if (error) return apiError("Error in server", 500, error)
     return NextResponse.json(data, { status: 200 })
   }
 }
@@ -42,7 +43,7 @@ export async function POST(req: NextRequest) {
 
   const { data, error } = await supabase.from("links").select("id").eq("original", original).maybeSingle()
 
-  if (error) return NextResponse.json({ error: "Error in server" }, { status: 500 })
+  if (error) return apiError("Error in server", 500, error)
 
   if (data) return NextResponse.json({ error: "You already got a short version of this link" }, { status: 500 })
 
@@ -55,7 +56,7 @@ export async function POST(req: NextRequest) {
       x_short: short || base64code
     })
 
-    if (error) return NextResponse.json({ error: "Error in server" }, { status: 500 })
+    if (error) return apiError("Error in server", 500, error)
 
     return NextResponse.json({ data: short || base64code }, { status: 200 })
 
@@ -68,8 +69,8 @@ export async function POST(req: NextRequest) {
     })
 
     if (error) {
-      if (error.code == '42501') return NextResponse.json({ error: "You have reached the limit of links" }, { status: 500 })
-      return NextResponse.json({ error: "Error in Server" }, { status: 500 })
+      if (error.code == '42501') return apiError("You have reached the limit of links", 500, error)
+      return apiError("Error in server", 500, error)
     }
 
     return NextResponse.json({ data: short || base64code }, { status: 200 })

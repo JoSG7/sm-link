@@ -1,8 +1,10 @@
 import { createSupabaseServerClient } from "@/lib/supabase/server"
 import { getMetricMetadata } from "@/utils/analytics/metric-data"
+import { apiError } from "@/utils/api/error-handler"
 import { NextRequest, NextResponse } from "next/server"
 
 export async function POST(request: NextRequest) {
+
   const supabase = await createSupabaseServerClient()
   const body = await request.json()
 
@@ -36,8 +38,7 @@ export async function POST(request: NextRequest) {
   })
 
   if (error) {
-    console.error(error)
-    return NextResponse.json({ error: "Error in server" }, { status: 500 })
+    return apiError("Error in server", 500, error)
   }
 
   if (!metricRecorded) {
@@ -49,6 +50,7 @@ export async function POST(request: NextRequest) {
 
 
 export async function GET(request: NextRequest) {
+  
   const supabase = await createSupabaseServerClient()
   const { data: claims } = await supabase.auth.getClaims()
 
@@ -58,7 +60,7 @@ export async function GET(request: NextRequest) {
 
   const { data: links, error: linksError } = await supabase.rpc("get_links")
   if (linksError) {
-    return NextResponse.json({ error: "Error in server" }, { status: 500 })
+    return apiError("Error in server", 500, linksError)
   }
 
   const params = request.nextUrl.searchParams
@@ -86,8 +88,7 @@ export async function GET(request: NextRequest) {
 
   const { data, error } = await query
   if (error) {
-    console.error(error)
-    return NextResponse.json({ error: "Error in server" }, { status: 500 })
+    return apiError("Error in server", 500, error)
   }
 
   return NextResponse.json({ data }, { status: 200 })

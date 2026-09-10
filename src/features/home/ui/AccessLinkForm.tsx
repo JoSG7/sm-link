@@ -56,7 +56,7 @@ export function AccessLinkForm({ short, linkID }: { short: string, linkID?: stri
         exit={{ scale: 0.8, opacity: 0 }}
         transition={{ duration: 0.2 }}>
 
-        <div className="pointer-events-none absolute -right-12 -top-12 -z-10 size-40 rounded-full bg-linear-to-br from-green-500/15 via-sky-500/10 to-transparent blur-2xl transition duration-300 group-hover:scale-125" />
+        <div className="pointer-events-none absolute -right-12 -top-12 -z-10 size-40 rounded-full bg-linear-to-br from-sky-500/15 via-green-500/10 to-transparent blur-2xl transition duration-300 group-hover:scale-125" />
 
         <header className="p-4 flex items-center gap-4 lg:p-5">
           <div className="p-2 rounded-lg border border-green-500/30 bg-green-500/20">

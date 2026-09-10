@@ -1,4 +1,5 @@
 import { createSupabaseServerClient } from "@/lib/supabase/server"
+import { apiError } from "@/utils/api/error-handler"
 import { NextRequest, NextResponse } from "next/server"
 
 export async function POST(req: NextRequest) {
@@ -10,7 +11,7 @@ export async function POST(req: NextRequest) {
       x_links_id: linksID
     })
   
-    if(error) return NextResponse.json({ error: error.message }, { status: 403 })
+    if(error) return apiError(error.message, 403, error)
   
     return NextResponse.json({ data: "Success" }, { status: 200 })
   
