@@ -1,4 +1,5 @@
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { apiError } from "@/utils/api/error-handler";
 import { NextRequest, NextResponse } from "next/server";
 
 interface Props {
@@ -12,7 +13,7 @@ export async function DELETE(req: NextRequest, { params }: Props) {
 
   const { error } = await supabase.from("links").delete().eq("short", shortUrl)
 
-  if(error) return NextResponse.json({ error: "Error in server" }, { status: 500 })
+  if(error) return apiError("Error in server", 500, error)
 
   return NextResponse.json({ data: "Success" }, { status: 200 })
 

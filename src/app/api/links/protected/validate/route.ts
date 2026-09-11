@@ -1,4 +1,5 @@
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { apiError } from "@/utils/api/error-handler";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
@@ -9,8 +10,7 @@ export async function POST(req: NextRequest) {
   const { data, error } = await supabase.rpc("validate_link_password", { x_short: short, x_password: password })
 
   if (error) {
-    console.log(error)
-    return NextResponse.json({ error: "Error in server" }, { status: 500 })
+    return apiError("Error in server", 500, error)
   }
 
   if (!data) {

@@ -1,4 +1,5 @@
 import { createSupabaseServerClient } from "@/lib/supabase/server"
+import { apiError } from "@/utils/api/error-handler"
 import { NextRequest, NextResponse } from "next/server"
 
 interface ParamsProps {
@@ -17,7 +18,7 @@ export async function PATCH(request: NextRequest, { params }: ParamsProps) {
     .single()
 
   if (linkError || !link) {
-    return NextResponse.json({ error: "Link not found" }, { status: 404 })
+    return apiError("Link not found", 404, linkError)
   }
 
   const { error: expirationError } = await supabase
@@ -26,7 +27,7 @@ export async function PATCH(request: NextRequest, { params }: ParamsProps) {
     .eq("link_id", link.id)
 
   if (expirationError) {
-    return NextResponse.json({ error: "Unable to update expiration" }, { status: 500 })
+    return apiError("Unable to update expiration", 500, expirationError)
   }
 
   return NextResponse.json({ data: "Success" }, { status: 200 })
@@ -43,7 +44,7 @@ export async function DELETE(_request: NextRequest, { params }: ParamsProps) {
     .single()
 
   if (linkError || !link) {
-    return NextResponse.json({ error: "Link not found" }, { status: 404 })
+    return apiError("Link not found", 404, linkError)
   }
 
   const { error } = await supabase
@@ -52,7 +53,7 @@ export async function DELETE(_request: NextRequest, { params }: ParamsProps) {
     .eq("link_id", link.id)
 
   if (error) {
-    return NextResponse.json({ error: "Unable to delete expiration" }, { status: 500 })
+    return apiError("Unable to delete expiration", 500, error)
   }
 
   return NextResponse.json({ data: "Success" }, { status: 200 })

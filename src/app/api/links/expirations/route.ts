@@ -1,4 +1,5 @@
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { apiError } from "@/utils/api/error-handler";
 import { NextRequest, NextResponse } from "next/server";
 
 
@@ -9,7 +10,7 @@ export async function POST(req: NextRequest) {
 
   const { data, error } = await supabase.from("links").select("id").eq("short", short).single()
 
-  if (error) return NextResponse.json({ error: "Error in server" }, { status: 500 })
+  if (error) return apiError("Error in server", 500, error)
 
   const { error: e } = await supabase.from("link_expiration").insert({
     link_id: data.id,
@@ -17,8 +18,7 @@ export async function POST(req: NextRequest) {
   })
 
   if(e) {
-    console.log(e)
-    return NextResponse.json({ error: "Error in Server" }, { status: 500 })
+    return apiError("Error in server", 500, e)
   } 
     
   return NextResponse.json({ data: "Success" }, { status: 200 })
