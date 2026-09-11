@@ -28,14 +28,15 @@ export async function LinkAnalyticsOverview({ short }: { short: string }) {
     x_short: short,
   }).single()
 
-  // console.log(summary)
+  console.log(summary)
 
   if (summaryError) return <ErrorMessage title="Link analytics unavailable" description="The link was found, but its visit data could not be retrieved." actionHref="/dashboard/analytics" actionLabel="Back to analytics" />
 
   const analyticsSummary = summary as AnalyticsSummary
-  
-  const countries = analyticsSummary.country_views.length
-  const dailyViews = analyticsSummary.daily_status_views
+
+  const countries = Array.isArray(analyticsSummary.country_views) ? analyticsSummary.country_views.length : 0
+
+  const dailyViews = Array.isArray(analyticsSummary.daily_status_views) ? analyticsSummary.daily_status_views : []
 
   return (
     <section className="flex min-h-screen flex-col gap-7 py-7 xl:py-8">
@@ -78,8 +79,6 @@ export async function LinkAnalyticsOverview({ short }: { short: string }) {
       </div>
 
       <LinkViewsAreaChart views={dailyViews} />
-
-      {/* Falta mostrar device y browser en wrong_password logs */}
 
       <div className="grid gap-7 lg:grid-cols-2">
         <BrowserPieChart browsers={analyticsSummary.browser_views} />

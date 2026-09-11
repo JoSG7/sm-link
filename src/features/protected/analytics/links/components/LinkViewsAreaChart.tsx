@@ -1,6 +1,6 @@
 "use client"
 
-import { useMemo, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts"
 import {
 	ChartContainer,
@@ -17,6 +17,7 @@ import {
 } from "@/components/shadcn/select"
 import { formatAnalyticsDate } from "../../utils/formatDate"
 import { DailyStatusView } from "@/types/analytics"
+import { isValid, parseISO } from "date-fns"
 
 type DateRange = "week" | "month" | "quarter" | "all"
 
@@ -44,43 +45,55 @@ const chartConfig = {
 
 export function LinkViewsAreaChart({ views }: { views: DailyStatusView[] }) {
 	const [dateRange, setDateRange] = useState<DateRange>("month")
+	const [today, setToday] = useState<string | null>(null)
+
+	useEffect(() => {
+		setToday(new Date().toISOString().slice(0, 10))
+	}, [])
+
+	const validViews = useMemo(() => {
+		return (views ?? []).filter(view => {
+			return typeof view?.date === "string" && isValid(parseISO(view.date))
+		})
+	}, [views])
 
 	const dateBounds = useMemo(() => {
-		const today = new Date()
-		today.setHours(0, 0, 0, 0)
+		if (!today) return null
+
+		const currentDate = parseISO(today)
 
 		if (dateRange === "week") {
-			const start = new Date(today)
+			const start = new Date(currentDate)
 			start.setDate(start.getDate() - 6)
-			return { start, end: today }
+			return { start, end: currentDate }
 		}
 
 		if (dateRange === "month") {
 			return {
-				start: new Date(today.getFullYear(), today.getMonth(), 1),
-				end: today,
+				start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 1),
+				end: currentDate,
 			}
 		}
 
 		if (dateRange === "quarter") {
 			return {
-				start: new Date(today.getFullYear(), today.getMonth() - 2, 1),
-				end: today,
+				start: new Date(currentDate.getFullYear(), currentDate.getMonth() - 2, 1),
+				end: currentDate,
 			}
 		}
 
-		const dates = views.map(view => new Date(`${view.date}T00:00:00`)).sort((first, second) => first.getTime() - second.getTime())
+		const dates = validViews.map(view => parseISO(view.date)).sort((first, second) => first.getTime() - second.getTime())
 		return dates.length ? { start: dates[0], end: dates[dates.length - 1] } : null
-	}, [dateRange, views])
+	}, [dateRange, today, validViews])
 
 	const filteredViews = useMemo(() => {
 		if (!dateBounds) return []
 
-		return views.filter(view => {
-			const date = new Date(`${view.date}T00:00:00`)
+		return validViews.filter(view => {
+			const date = parseISO(view.date)
 			return date >= dateBounds.start && date <= dateBounds.end
 		})
-	}, [dateBounds, views])
+	}, [dateBounds, validViews])
 
 	const chartData = filteredViews.map(view => ({
 		...view,
