@@ -60,6 +60,7 @@ export function CreatePasswordModal({ isOpen, short, onClose }: CreatePasswordMo
         {isOpen && (
           <motion.section
             className={`fixed inset-0 z-30 flex items-center justify-center bg-black/80 backdrop-blur-sm ${submiting && "pointer-events-none"}`}
+            translate="no"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
