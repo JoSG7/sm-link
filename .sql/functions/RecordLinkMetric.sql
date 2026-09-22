@@ -26,9 +26,38 @@ language plpgsql
 security definer
 set search_path = public
 as $$
+declare
+  link_exists boolean;
 begin
   if x_status not in ('success', 'wrong_password', 'expired') then
     raise exception 'Invalid metric status';
+  end if;
+
+  select exists (
+    select 1
+    from public.links
+    where id = x_link_id
+  )
+  into link_exists;
+
+  if not link_exists then
+    return false;
+  end if;
+
+  if x_visitor_hash is not null then
+    perform pg_advisory_xact_lock(
+      hashtextextended(x_link_id::text || ':' || x_visitor_hash, 0)
+    );
+
+    if exists (
+      select 1
+      from public.link_metrics
+      where link_id = x_link_id
+        and visitor_hash = x_visitor_hash
+        and visited_at > now() - interval '10 seconds'
+    ) then
+      return true;
+    end if;
   end if;
 
   insert into public.link_metrics (
@@ -42,7 +71,7 @@ begin
     status,
     is_bot
   )
-  select
+  values (
     x_link_id,
     x_visitor_hash,
     x_country,
@@ -52,13 +81,9 @@ begin
     x_referer,
     x_status,
     x_is_bot
-  where exists (
-    select 1
-    from public.links
-    where id = x_link_id
   );
 
-  return found;
+  return true;
 end;
 $$;
 
