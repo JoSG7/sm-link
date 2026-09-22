@@ -68,14 +68,14 @@ export function UpdatePasswordModal({ isOpen, short, onClose }: UpdatePasswordMo
         {
           isOpen && (
 
-            <motion.section className={`fixed inset-0 z-30 bg-black/80 flex items-center justify-center backdrop-blur-sm
+            <motion.section className={`fixed inset-0 z-30 flex items-center justify-center bg-black/80 backdrop-blur-sm
             ${submiting && "pointer-events-none"}`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={onClose}>
 
-              <motion.form className="w-[90vw] p-5 bg-neutral-950 rounded-xl border border-neutral-800 max-w-150 sm:w-[70vw] lg:w-[50vw]"
+              <motion.form className="flex w-[90vw] max-h-[90vh] min-h-0 max-w-145 flex-col overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-950 sm:w-[80vw] lg:w-[70vw]"
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.8, opacity: 0 }}
@@ -83,68 +83,65 @@ export function UpdatePasswordModal({ isOpen, short, onClose }: UpdatePasswordMo
                 onClick={(e) => e.stopPropagation()}
                 onSubmit={handleEdit}>
 
-                <header className="pb-4 flex items-center gap-4 ">
-                  <div className="p-2 rounded-lg border border-green-500/30 bg-green-500/20">
-                    <IconLockFilled className="size-6 text-green-400" />
-                  </div>
-
-                  <div>
-                    <h1 className="font-medium">Update Password</h1>
-                    <p className="text-xs text-neutral-400">{short}</p>
-                  </div>
-                </header>
-
-                <section className="py-2 flex flex-col gap-4">
-
-                  <article className="flex items-center text-sm">
-                    <div className="p-2.5 rounded-s-lg border-1.5 border-e-0 border-neutral-800 bg-neutral-900/80">
-                      <IconLockPassword className="size-5" />
+                <header className="flex shrink-0 items-center justify-between gap-4 border-b border-neutral-800 px-5 p-4 sm:py-5 sm:px-6">
+                  <div className="flex min-w-0 items-center gap-4">
+                    <div className="rounded-lg border border-green-500/30 bg-green-500/10 p-2.5">
+                      <IconLockFilled className="size-5 text-green-400" />
                     </div>
 
-                    <input className="grow p-2.5 rounded-e-lg border-1.5 border-neutral-800 bg-neutral-900/80
-                    focus:border-green-600"
-                      type="password"
-                      required
-                      placeholder="Enter the current password"
-                      onChange={(e) => setCurrentPassword(e.currentTarget.value)} />
-                  </article>
+                    <div className="min-w-0">
+                      <p className="text-[11px] font-semibold uppercase tracking-wide text-green-300">Password protection</p>
+                      <h1 className="truncate text-lg font-semibold text-white sm:text-xl">Update password</h1>
+                    </div>
+                  </div>
 
-                  <div className="flex gap-4">
+                  <button type="submit" className="flex shrink-0 items-center gap-2 rounded-lg bg-linear-to-b from-green-500 to-green-500/50 px-3 py-2 text-sm font-semibold text-white disabled:cursor-not-allowed disabled:opacity-50" disabled={submiting}>
+                    {submiting ? <IconLoader className="size-4 animate-spin" /> : <IconCheck className="size-4" />}
+                    <span className="hidden sm:inline">Update</span>
+                  </button>
+                </header>
 
-                    <article className="flex items-center text-sm grow">
-                      <div className="p-2.5 rounded-s-lg border-1.5 border-e-0 border-neutral-800 bg-neutral-900/80">
-                        <IconKey className="size-5" />
-                      </div>
+                <section className="min-h-0 flex-1 overflow-y-auto p-6">
+                  <div className="flex flex-col gap-4">
+                    <div className="pb-1">
+                      <h2 className="text-xs font-semibold uppercase tracking-wide text-neutral-400">PASSWORD DETAILS</h2>
+                      <p className="text-sm text-neutral-500">Replace the password protecting this SmLink.</p>
+                    </div>
 
-                      <input className="grow p-2.5 rounded-e-lg border-1.5 border-neutral-800 bg-neutral-900/80
-                      focus:border-green-600"
+                    <article className="flex items-center rounded-lg border-1.5 border-neutral-800 bg-neutral-900/80 text-sm focus-within:border-green-600">
+                      <IconLockPassword className="ml-3 size-5 text-neutral-500" />
+
+                      <input className="grow bg-transparent p-2.5 outline-none"
                         type="password"
                         required
-                        placeholder="New password"
-                        onChange={(e) => setNewPassword(e.currentTarget.value)} />
+                        placeholder="Enter the current password"
+                        onChange={(e) => setCurrentPassword(e.currentTarget.value)} />
                     </article>
 
-                    <article className="flex items-center text-sm grow">
-                      <div className="p-2.5 rounded-s-lg border-1.5 border-e-0 border-neutral-800 bg-neutral-900/80">
-                        <IconLockCheck className="size-5" />
-                      </div>
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
 
-                      <input className="grow p-2.5 rounded-e-lg border-1.5 border-neutral-800 bg-neutral-900/80 focus:border-green-600"
-                        type="password"
-                        required
-                        placeholder="Confirm new password"
-                        onChange={(e) => setConfirmNewPassword(e.currentTarget.value)} />
-                    </article>
+                      <article className="flex grow items-center rounded-lg border-1.5 border-neutral-800 bg-neutral-900/80 text-sm focus-within:border-green-600">
+                        <IconKey className="ml-3 size-5 text-neutral-500" />
+
+                        <input className="grow bg-transparent p-2.5 outline-none"
+                          type="password"
+                          required
+                          placeholder="New password"
+                          onChange={(e) => setNewPassword(e.currentTarget.value)} />
+                      </article>
+
+                      <article className="flex grow items-center rounded-lg border-1.5 border-neutral-800 bg-neutral-900/80 text-sm focus-within:border-green-600">
+                        <IconLockCheck className="ml-3 size-5 text-neutral-500" />
+
+                        <input className="grow bg-transparent p-2.5 outline-none"
+                          type="password"
+                          required
+                          placeholder="Confirm new password"
+                          onChange={(e) => setConfirmNewPassword(e.currentTarget.value)} />
+                      </article>
+                    </div>
                   </div>
                 </section>
-
-                <div className="pt-4 flex justify-start">
-                  <button className="py-2 px-4 flex items-center gap-2 text-sm rounded-lg disabled:opacity-50 bg-linear-to-b from-green-500 to-green-500/50"
-                    disabled={submiting}>
-                    {submiting ? <IconLoader className="size-3 animate-spin" /> : <IconCheck className="size-3" />}
-                    Update
-                  </button>
-                </div>
               </motion.form>
             </motion.section>
           )
