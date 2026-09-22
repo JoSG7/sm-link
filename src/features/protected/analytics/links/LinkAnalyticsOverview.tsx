@@ -28,7 +28,7 @@ export async function LinkAnalyticsOverview({ short }: { short: string }) {
     x_short: short,
   }).single()
 
-  console.log(summary)
+  // console.log(summary)
 
   if (summaryError) return <ErrorMessage title="Link analytics unavailable" description="The link was found, but its visit data could not be retrieved." actionHref="/dashboard/analytics" actionLabel="Back to analytics" />
 

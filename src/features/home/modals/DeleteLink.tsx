@@ -55,6 +55,7 @@ export function DeleteLinkModal({ isOpen, short, onClose }: DeleteLinkModalProps
           isOpen && (
             <motion.section className={`fixed inset-0 z-30 bg-black/80 backdrop-blur-sm flex items-center justify-center
             ${submiting && "pointer-events-none"}`}
+              translate="no"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}

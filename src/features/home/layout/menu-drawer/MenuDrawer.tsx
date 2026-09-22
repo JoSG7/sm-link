@@ -109,7 +109,7 @@ export function MenuDrawer() {
                   </span>
                 </li>,
               content:
-                <div className="p-4 pt-0 flex flex-col gap-4 sm:p-5 sm:pt-0 sm:gap-5">
+                <div className="p-4 pt-0 flex flex-col gap-4 sm:p-5 sm:pt-0 sm:gap-5" translate="no">
                   {
                     loading ?
                       // Skeleton
@@ -138,7 +138,7 @@ export function MenuDrawer() {
                   </p>
                 </li>,
               content:
-                <div className="px-4 pb-4 flex flex-col gap-4 sm:p-5 sm:pt-0 sm:gap-5">
+                <div className="px-4 pb-4 flex flex-col gap-4 sm:p-5 sm:pt-0 sm:gap-5" translate="no">
                   {
                     loading ?
                       <div className="flex flex-col gap-4 sm:gap-5">

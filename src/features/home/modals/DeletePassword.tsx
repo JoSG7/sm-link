@@ -2,7 +2,7 @@
 
 import { IconAlertHexagon, IconLoader2, IconTrash } from "@tabler/icons-react"
 import { AnimatePresence, motion } from "framer-motion"
-import { useState } from "react"
+import { SubmitEvent, useState } from "react"
 import { toast } from "sonner"
 import ModalLayout from "@/components/modals/ModalLayout"
 import { useDispatch } from "react-redux"
@@ -20,7 +20,9 @@ export function DeletePasswordModal({ isOpen, short, onClose }: DeletePasswordMo
 
   const dispatch = useDispatch()
 
-  const handleDelete = async () => {
+  const handleDelete = async (e: SubmitEvent) => {
+    
+    e.preventDefault()
     setSubmiting(true)
 
     try {
@@ -59,6 +61,7 @@ export function DeletePasswordModal({ isOpen, short, onClose }: DeletePasswordMo
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.8, opacity: 0 }}
                 transition={{ duration: 0.2 }}
+                onSubmit={handleDelete}
                 onClick={(e) => e.stopPropagation()}>
 
                 <div className="pointer-events-none absolute -right-12 -top-12 -z-10 size-25 rounded-full bg-linear-to-br from-red-500/15 via-rose-500/10 to-transparent blur-2xl" />
@@ -77,9 +80,7 @@ export function DeletePasswordModal({ isOpen, short, onClose }: DeletePasswordMo
                 <div className="pt-4 flex justify-start">
                   <button className="py-2 px-4 flex items-center gap-2 text-sm rounded-lg bg-linear-to-b from-red-500 to-red-600/50
                   disabled:opacity-30 cursor-pointer"
-                  onClick={handleDelete}
                   disabled={submiting}>
-
                   {
                     submiting ?
                       <IconLoader2 className="size-4 animate-spin" /> :
