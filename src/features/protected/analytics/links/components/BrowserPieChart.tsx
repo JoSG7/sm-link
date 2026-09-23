@@ -1,6 +1,7 @@
 "use client"
 
 import { Cell, Pie, PieChart } from "recharts"
+import { IconWorld } from "@tabler/icons-react"
 import {
 	ChartContainer,
 	ChartTooltip,
@@ -41,7 +42,13 @@ export function BrowserPieChart({ browsers }: { browsers: AnalyticsBreakdown[] }
 			</header>
 
 			{data.length === 0 ? (
-				<p className="p-8 text-center text-sm text-neutral-400">No browser data available.</p>
+				<div className="flex min-h-64 flex-col items-center justify-center px-6 py-10 text-center">
+					<span className="flex size-11 items-center justify-center rounded-xl bg-neutral-800 text-neutral-500 ring-1 ring-neutral-500/20">
+						<IconWorld className="size-5" />
+					</span>
+					<p className="mt-4 text-base font-medium text-neutral-200">No browser data yet</p>
+					<p className="mt-1 max-w-xs text-sm text-neutral-500">Browser details will appear after this link receives visits.</p>
+				</div>
 			) : (
 				<div className="p-5 sm:p-6">
 					<ChartContainer config={chartConfig} className="relative mx-auto h-64 w-full max-w-88">

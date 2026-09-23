@@ -1,6 +1,7 @@
 "use client"
 
-import { IconAlarmPlus, IconKey, IconTrash, IconDots, IconLock } from "@tabler/icons-react"
+import Link from "next/link"
+import { IconAlarmPlus, IconChartBar, IconKey, IconTrash, IconDots, IconLock } from "@tabler/icons-react"
 import { memo, useEffect, useRef, useState } from "react"
 import {
   DropdownMenu,
@@ -59,7 +60,7 @@ function LinkActionsComponent({ short, hasPassword, expirationDate, hasUserId, i
         <DropdownMenuTrigger asChild>
           <button
             type="button"
-            className="rounded-md p-2 text-neutral-400 hover:bg-neutral-800 hover:text-white"
+            className="cursor-pointer rounded-md p-2 text-neutral-400 hover:bg-neutral-800 hover:text-white"
             aria-label="Link actions"
           >
             <IconDots className="size-5" />
@@ -70,8 +71,18 @@ function LinkActionsComponent({ short, hasPassword, expirationDate, hasUserId, i
           align="end"
           className="min-w-36 border-neutral-800 bg-neutral-950 p-1 text-neutral-300 shadow-lg"
         >
+          <DropdownMenuItem asChild>
+            <Link
+              href={`/dashboard/analytics/${encodeURIComponent(short)}`}
+              className="cursor-pointer gap-2 text-neutral-300 hover:bg-neutral-800 hover:text-white focus:bg-neutral-800 focus:text-white"
+            >
+              <IconChartBar className="size-4" />
+              Analytics
+            </Link>
+          </DropdownMenuItem>
+
           <DropdownMenuItem
-            className="gap-2 text-neutral-300 hover:bg-neutral-800 hover:text-white focus:bg-neutral-800 focus:text-white"
+            className="cursor-pointer gap-2 text-neutral-300 hover:bg-neutral-800 hover:text-white focus:bg-neutral-800 focus:text-white"
             disabled={!canUpdatePassword}
             onSelect={() => openModal("password")}
           >
@@ -81,7 +92,7 @@ function LinkActionsComponent({ short, hasPassword, expirationDate, hasUserId, i
           </DropdownMenuItem>
 
           <DropdownMenuItem
-            className="gap-2 text-neutral-300 hover:bg-neutral-800 hover:text-white focus:bg-neutral-800 focus:text-white"
+            className="cursor-pointer gap-2 text-neutral-300 hover:bg-neutral-800 hover:text-white focus:bg-neutral-800 focus:text-white"
             disabled={!canUpdateExpiration}
             onSelect={() => openModal("expiration")}
           >
@@ -92,7 +103,7 @@ function LinkActionsComponent({ short, hasPassword, expirationDate, hasUserId, i
 
           {hasPassword && (
             <DropdownMenuItem
-              className="gap-2 text-red-400 hover:bg-red-500/10 hover:text-red-300 focus:bg-red-500/10 focus:text-red-300"
+              className="cursor-pointer gap-2 text-red-400 hover:bg-red-500/10 hover:text-red-300 focus:bg-red-500/10 focus:text-red-300"
               disabled={isClaimedGuestLink}
               onSelect={() => openModal("deletePassword")}
             >
@@ -104,7 +115,7 @@ function LinkActionsComponent({ short, hasPassword, expirationDate, hasUserId, i
 
           {hasExpiration && (
             <DropdownMenuItem
-              className="gap-2 text-red-400 hover:bg-red-500/10 hover:text-red-300 focus:bg-red-500/10 focus:text-red-300"
+              className="cursor-pointer gap-2 text-red-400 hover:bg-red-500/10 hover:text-red-300 focus:bg-red-500/10 focus:text-red-300"
               disabled={isClaimedGuestLink}
               onSelect={() => openModal("deleteExpiration")}
             >
@@ -115,7 +126,7 @@ function LinkActionsComponent({ short, hasPassword, expirationDate, hasUserId, i
           )}
 
           <DropdownMenuItem
-            className="gap-2 text-red-400 hover:bg-red-500/10 hover:text-red-300 focus:bg-red-500/10 focus:text-red-300"
+            className="cursor-pointer gap-2 text-red-400 hover:bg-red-500/10 hover:text-red-300 focus:bg-red-500/10 focus:text-red-300"
             disabled={isClaimedGuestLink}
             onSelect={() => openModal("delete")}
           >

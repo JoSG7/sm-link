@@ -12,11 +12,11 @@ export async function LinksOverview() {
     supabase.rpc("get_guest_links"),
   ])
   const links = data as LinkDetails[]
-  const hasGuestLinks = (guestLinks as LinkDetails[] | null)?.some(link => !link.has_user_id) ?? false
+  const guestLinksCount = (guestLinks as LinkDetails[] | null)?.filter(link => !link.has_user_id).length ?? 0
 
   return (
     <div className="flex flex-col gap-7">
-      <div className="flex flex-col gap-4 lg:flex-row ">
+      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <StatCard links={links} type="total" />
         <StatCard links={links} type="protected" />
         <StatCard links={links} type="expiration" />
@@ -26,7 +26,7 @@ export async function LinksOverview() {
       <LinksTable
         links={links}
         isAuthenticated={Boolean(auth)}
-        hasGuestLinks={hasGuestLinks}
+        guestLinksCount={guestLinksCount}
       />
 
     </div>

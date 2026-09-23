@@ -1,5 +1,5 @@
 import { createSupabaseServerClient } from "@/lib/supabase/server"
-import { IconCircleCheck, IconClock, IconLock } from "@tabler/icons-react"
+import { IconCircleCheck, IconClock, IconListDetails, IconLock } from "@tabler/icons-react"
 import type { LinkMetrics } from "@/types/analytics"
 import { formatAnalyticsTimestamp } from "../../utils/formatDate"
 
@@ -24,14 +24,20 @@ export async function AnalyticsLogsTable({ linkId }: AnalyticsLogsTableProps) {
 
   if (metrics.length === 0) {
     return (
-      <article className="rounded-2xl border border-neutral-800/80 bg-neutral-950 p-5 shadow-[0_12px_40px_rgba(0,0,0,0.18)] sm:p-6">
-        <div className="flex items-center gap-3">
+      <article className="overflow-hidden rounded-2xl border border-neutral-800/80 bg-neutral-950 shadow-[0_12px_40px_rgba(0,0,0,0.18)]">
+        <header className="border-b border-neutral-800/80 p-5 sm:p-6">
           <div>
             <h2 className="text-xl font-semibold text-neutral-100">Visit logs</h2>
             <p className="mt-1 text-sm text-neutral-400">A detailed history of activity for this link.</p>
           </div>
+        </header>
+        <div className="flex flex-col items-center justify-center px-6 py-10 text-center">
+          <span className="flex size-11 items-center justify-center rounded-xl bg-neutral-800 text-neutral-500 ring-1 ring-neutral-500/20">
+            <IconListDetails className="size-5" />
+          </span>
+          <p className="mt-4 text-base font-medium text-neutral-200">No visits recorded yet</p>
+          <p className="mt-1 max-w-sm text-sm text-neutral-500">Visit details will appear here when someone opens this link.</p>
         </div>
-        <p className="mt-8 text-center text-sm text-neutral-400">No visits recorded for this link yet.</p>
       </article>
     )
   }

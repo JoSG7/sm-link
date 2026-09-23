@@ -58,7 +58,7 @@ export async function AnalyticsOverview() {
 
   return (
     <div className="flex flex-col gap-7">
-      <div className="flex flex-col gap-4 lg:flex-row">
+      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <AnalyticsStatCard
           title="Successful visits"
           value={overview.successful_visits}
