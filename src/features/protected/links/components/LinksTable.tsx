@@ -11,7 +11,7 @@ import {
   type SortingState,
   type VisibilityState,
 } from "@tanstack/react-table"
-import { IconCalendarOff, IconChevronLeft, IconChevronRight, IconChevronsLeft, IconChevronsRight, IconClockCheck, IconClockExclamation, IconCopy, IconLink, IconShieldLockFilled, IconSortDescending, IconUserFilled } from "@tabler/icons-react"
+import { IconCalendarOff, IconChevronLeft, IconChevronRight, IconChevronsLeft, IconChevronsRight, IconClockCheck, IconClockExclamation, IconCopy, IconDatabaseOff, IconLink, IconShieldLockFilled, IconSortDescending, IconUserFilled } from "@tabler/icons-react"
 import { toast } from "sonner"
 import { format } from "date-fns"
 import { Checkbox } from "@/components/shadcn/checkbox"
@@ -26,10 +26,10 @@ import { CreateButton } from "./CreateButton"
 interface LinksTableProps {
   links: LinkDetails[]
   isAuthenticated: boolean
-  hasGuestLinks: boolean
+  guestLinksCount: number
 }
 
-export function LinksTable({ links, isAuthenticated, hasGuestLinks }: LinksTableProps) {
+export function LinksTable({ links, isAuthenticated, guestLinksCount }: LinksTableProps) {
   const [sorting, setSorting] = useState<SortingState>([])
   const [filter, setFilter] = useState<"all" | "protected" | "expired">("all")
   const [search, setSearch] = useState("")
@@ -38,6 +38,7 @@ export function LinksTable({ links, isAuthenticated, hasGuestLinks }: LinksTable
     is_expired: false,
   })
   const [rowSelection, setRowSelection] = useState({})
+  const hasActiveFilters = filter !== "all" || search.trim().length > 0
 
   const filteredLinks = useMemo(() => {
     const normalizedSearch = search.trim().toLowerCase()
@@ -108,7 +109,7 @@ export function LinksTable({ links, isAuthenticated, hasGuestLinks }: LinksTable
       accessorKey: "created_at",
       header: ({ column }) => (
         <button
-          className="flex cursor-pointer items-center gap-2 hover:text-white"
+          className="flex cursor-pointer uppercase items-center gap-2 hover:text-white"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Created At
@@ -213,55 +214,80 @@ export function LinksTable({ links, isAuthenticated, hasGuestLinks }: LinksTable
 
   return (
     <div className="w-full">
+      <article className="overflow-hidden rounded-2xl border border-neutral-800/80 bg-neutral-950 shadow-[0_12px_40px_rgba(0,0,0,0.18)]">
+        <header className="flex flex-col gap-4 border-b border-neutral-800/80 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
+          <div>
+            <h2 className="text-xl font-semibold text-neutral-100">Links</h2>
+            <p className="mt-1 text-sm text-neutral-400">Manage and monitor your shortened links.</p>
+          </div>
+          <span className="w-fit rounded-full border border-neutral-700 bg-neutral-900 px-3 py-1 text-xs font-semibold text-neutral-300">
+            {filteredLinks.length} {filteredLinks.length === 1 ? "link" : "links"}
+          </span>
+        </header>
 
-      <section className="mb-5 flex flex-col gap-3 rounded-2xl border border-neutral-800/80 bg-neutral-950 p-3 sm:flex-row sm:items-center sm:justify-between">
-        <LinkFilters
-          filter={filter}
-          search={search}
-          onFilterChange={setFilter}
-          onSearchChange={setSearch}
-          isAuthenticated={isAuthenticated}
-        />
-
-        <div className="flex gap-4 items-center">
-          <ClaimButton
+        <section className="flex flex-col gap-3 border-b border-neutral-800/80 p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5">
+          <LinkFilters
+            filter={filter}
+            search={search}
+            onFilterChange={setFilter}
+            onSearchChange={setSearch}
             isAuthenticated={isAuthenticated}
-            hasGuestLinks={hasGuestLinks}
           />
-          <CreateButton isAuthenticated={isAuthenticated} />
-        </div>
-      </section>
 
-      <div className="overflow-x-auto rounded-xl border-1.5 border-neutral-800/80 bg-neutral-950">
-        <Table>
-          <TableHeader>
-            {table.getHeaderGroups().map(headerGroup => (
-              <TableRow className="bg-neutral-900" key={headerGroup.id}>
-                {headerGroup.headers.map(header => (
-                  <TableHead className="h-14 px-4 text-sm text-neutral-300" key={header.id}>
-                    {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
-                  </TableHead>
-                ))}
-              </TableRow>
-            ))}
-          </TableHeader>
-          <TableBody>
-            {table.getRowModel().rows.length ? table.getRowModel().rows.map(row => (
-              <TableRow className="h-16 data-[state=selected]:bg-neutral-900" key={row.id} data-state={row.getIsSelected() && "selected"}>
-                {row.getVisibleCells().map(cell => (
-                  <TableCell className="px-4" key={cell.id}>
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+          <div className="flex items-center gap-4">
+            <ClaimButton
+              isAuthenticated={isAuthenticated}
+              guestLinksCount={guestLinksCount}
+            />
+            <CreateButton isAuthenticated={isAuthenticated} />
+          </div>
+        </section>
+
+        <div className="overflow-x-auto">
+          <Table className="min-w-240 text-left text-sm">
+            <TableHeader className="bg-neutral-900/30 [&_tr]:border-b [&_tr]:border-neutral-800/80">
+              {table.getHeaderGroups().map(headerGroup => (
+                <TableRow key={headerGroup.id}>
+                  {headerGroup.headers.map(header => (
+                    <TableHead className="h-14 px-5 text-xs font-medium uppercase tracking-wide text-neutral-500" key={header.id}>
+                      {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
+                    </TableHead>
+                  ))}
+                </TableRow>
+              ))}
+            </TableHeader>
+            <TableBody className="bg-neutral-950">
+              {table.getRowModel().rows.length ? table.getRowModel().rows.map(row => (
+                <TableRow className="h-20 border-b border-neutral-900 text-neutral-300 transition-colors last:border-0 hover:bg-neutral-900/45 data-[state=selected]:bg-neutral-900" key={row.id} data-state={row.getIsSelected() && "selected"}>
+                  {row.getVisibleCells().map(cell => (
+                    <TableCell className="px-5" key={cell.id}>
+                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              )) : (
+                <TableRow>
+                  <TableCell colSpan={columns.length} className="h-28 whitespace-normal text-center">
+                    <div className="flex flex-col items-center justify-center gap-2 py-10">
+                      <span className="flex size-9 items-center justify-center rounded-lg bg-neutral-800 text-neutral-500 ring-1 ring-neutral-500/20">
+                        <IconDatabaseOff className="size-5" />
+                      </span>
+                      <div>
+                        <p className="text-base font-medium text-neutral-200">
+                          {hasActiveFilters ? "No matching links" : "No links yet"}
+                        </p>
+                        <p className="mt-0.5 text-sm text-neutral-500">
+                          {hasActiveFilters ? "Try adjusting your filters or search." : "Create a shortened link to see it here."}
+                        </p>
+                      </div>
+                    </div>
                   </TableCell>
-                ))}
-              </TableRow>
-            )) : (
-              <TableRow>
-                <TableCell colSpan={columns.length} className="h-24 text-center">No results.</TableCell>
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
-      </div>
+                </TableRow>
+              )}
+            </TableBody>
+          </Table>
+        </div>
+      </article>
 
       <div className="flex items-center justify-end space-x-2 pt-6">
         <div className="flex-1 text-sm text-neutral-400">

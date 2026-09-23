@@ -3,6 +3,10 @@
     "/^pnpm exec tsc --noEmit$/": {
       "approve": true,
       "matchCommandLine": true
+    },
+    "/^pnpm exec eslint src/components/fallbacks/LinksFallback\\.tsx$/": {
+      "approve": true,
+      "matchCommandLine": true
     }
   }
 }

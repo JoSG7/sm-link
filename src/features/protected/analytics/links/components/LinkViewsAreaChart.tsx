@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react"
 import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts"
+import { IconChartLine } from "@tabler/icons-react"
 import {
 	ChartContainer,
 	ChartTooltip,
@@ -134,7 +135,13 @@ export function LinkViewsAreaChart({ views }: { views: DailyStatusView[] }) {
 			</div>
 
 			{chartData.length === 0 ? (
-				<p className="p-8 text-center text-sm text-neutral-400">No visits recorded during this period.</p>
+				<div className="flex min-h-64 flex-col items-center justify-center px-6 py-10 text-center">
+					<span className="flex size-11 items-center justify-center rounded-xl bg-neutral-800 text-neutral-500 ring-1 ring-neutral-500/20">
+						<IconChartLine className="size-5" />
+					</span>
+					<p className="mt-4 text-base font-medium text-neutral-200">No visits in this period</p>
+					<p className="mt-1 max-w-sm text-sm text-neutral-500">Try a wider date range to see activity for this link.</p>
+				</div>
 			) : (
 				<ChartContainer config={chartConfig} className="h-80 w-full aspect-auto p-5 sm:p-7">
 					<AreaChart accessibilityLayer data={chartData} margin={{ top: 12, right: 8, left: -12, bottom: 0 }}>
