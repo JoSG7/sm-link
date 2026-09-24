@@ -8,6 +8,16 @@
   --breakpoint-3xl: 118.75rem;
   --breakpoint-4xl: 158.75rem;
   --color-neutral-850: rgb(11, 11, 12);
+  --color-moss-950: #080a08;
+  --color-moss-900: #0b100c;
+  --color-moss-850: #0f160f;
+  --color-moss-800: #142017;
+  --color-moss-line: #17251a;
+  --color-moss-rule: #18251a;
+  --color-moss-border: #1b2a1e;
+  --color-moss-dim: #59665b;
+  --color-moss-muted: #718074;
+  --color-moss-copy: #9aaa9c;
   --border-width-1.5: 1.5px;
 }
 
