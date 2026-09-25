@@ -22,6 +22,7 @@ import { LinkActions } from "./LinkActions"
 import { RelativeDate } from "./RelativeDate"
 import { ClaimButton } from "./ClaimButton"
 import { CreateButton } from "./CreateButton"
+import { DeleteSelectedLinksModal } from "../modals/DeleteSelectedLinks"
 
 interface LinksTableProps {
   links: LinkDetails[]
@@ -38,6 +39,7 @@ export function LinksTable({ links, isAuthenticated, guestLinksCount }: LinksTab
     is_expired: false,
   })
   const [rowSelection, setRowSelection] = useState({})
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
   const hasActiveFilters = filter !== "all" || search.trim().length > 0
 
   const filteredLinks = useMemo(() => {
@@ -212,6 +214,16 @@ export function LinksTable({ links, isAuthenticated, guestLinksCount }: LinksTab
     getSortedRowModel: getSortedRowModel(),
   })
 
+  const selectedCount = table.getFilteredSelectedRowModel().rows.length
+
+  const selectedShorts = table.getFilteredSelectedRowModel().rows.map(row => row.original.short)
+
+  const handleDeleteSelected = () => {
+    if (selectedShorts.length) {
+      setIsDeleteModalOpen(true)
+    }
+  }
+
   return (
     <div className="w-full">
       <article className="overflow-hidden rounded-2xl border border-neutral-800/80 bg-neutral-950 shadow-[0_12px_40px_rgba(0,0,0,0.18)]">
@@ -232,6 +244,8 @@ export function LinksTable({ links, isAuthenticated, guestLinksCount }: LinksTab
             onFilterChange={setFilter}
             onSearchChange={setSearch}
             isAuthenticated={isAuthenticated}
+            selectedCount={selectedCount}
+            onDeleteSelected={handleDeleteSelected}
           />
 
           <div className="flex items-center gap-4">
@@ -308,6 +322,13 @@ export function LinksTable({ links, isAuthenticated, guestLinksCount }: LinksTab
           </button>
         </div>
       </div>
+
+      <DeleteSelectedLinksModal
+        isOpen={isDeleteModalOpen}
+        shorts={selectedShorts}
+        onClose={() => setIsDeleteModalOpen(false)}
+        onDeleted={() => setRowSelection({})}
+      />
     </div>
   )
 }

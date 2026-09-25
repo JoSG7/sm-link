@@ -1,6 +1,6 @@
 "use client"
 
-import { IconSearch } from "@tabler/icons-react"
+import { IconSearch, IconTrash } from "@tabler/icons-react"
 import { Input } from "@/components/shadcn/input"
 
 type LinkFilter = "all" | "protected" | "expired"
@@ -9,8 +9,10 @@ interface LinkFiltersProps {
   filter: LinkFilter
   search: string
   isAuthenticated: boolean
+  selectedCount?: number
   onFilterChange: (filter: LinkFilter) => void
   onSearchChange: (search: string) => void
+  onDeleteSelected?: () => void
 }
 
 export function LinkFilters({
@@ -18,6 +20,8 @@ export function LinkFilters({
   search,
   onFilterChange,
   onSearchChange,
+  selectedCount = 0,
+  onDeleteSelected,
 }: LinkFiltersProps) {
   return (
 
@@ -49,6 +53,17 @@ export function LinkFilters({
           className="h-10 border-neutral-800 bg-neutral-900/70 pl-9 text-sm text-neutral-100 placeholder:text-neutral-500"
         />
       </div>
+
+      {selectedCount > 0 && onDeleteSelected && (
+        <button
+          type="button"
+          onClick={onDeleteSelected}
+          className="inline-flex h-10 items-center gap-2 rounded-lg border border-red-500/30 bg-red-500/10 px-3 text-sm font-medium text-red-200 transition hover:border-red-400/50 hover:bg-red-500/15 disabled:cursor-not-allowed disabled:opacity-50"
+        >
+          <IconTrash className="size-4" />
+          {`Delete selected (${selectedCount})`}
+        </button>
+      )}
     </div>
 
   )

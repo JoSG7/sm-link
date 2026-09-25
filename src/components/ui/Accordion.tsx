@@ -38,7 +38,7 @@ export function Accordion({ items, buttonClass = "" }: { items: AccordionItem[],
                   animate={{ height: "auto", opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.3, ease: "easeInOut" }}
-                  className="overflow-y-auto max-h-[55vh] lg:max-h-[75vh]"
+                  className="overflow-y-auto max-h-[55vh] scrollbar-none lg:max-h-[75vh]"
                 >
                   {item.content}
                 </motion.div>

@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import { Hero } from "@/features/home/hero/Hero";
+import { DashboardPreview } from "@/features/home/dashboard-preview/DashboardPreview";
 import { HomeNavBar } from "@/features/home/layout/navbar/Navbar";
 import { MenuDrawer } from "@/features/home/layout/menu-drawer/MenuDrawer";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
@@ -11,11 +12,12 @@ export default async function Home() {
 
   if(!data?.claims ) {
     return (
-      <main className="flex flex-col text-white bg-black">
+      <main className="flex flex-col text-white bg-moss-950">
         <HomeNavBar />
         <MenuDrawer />
-        <div className="flex flex-col gap-28 lg:gap-10">
+        <div className="flex flex-col gap-28 lg:gap-0">
           <Hero />
+          <DashboardPreview />
         </div>
       </main>
     )
@@ -26,4 +28,4 @@ export default async function Home() {
 }
 
 
-
+// #020307

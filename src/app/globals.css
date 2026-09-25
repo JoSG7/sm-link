@@ -8,7 +8,18 @@
   --breakpoint-3xl: 118.75rem;
   --breakpoint-4xl: 158.75rem;
   --color-neutral-850: rgb(11, 11, 12);
+  --color-moss-950: #080a08;
+  --color-moss-900: #0b100c;
+  --color-moss-850: #0f160f;
+  --color-moss-800: #142017;
+  --color-moss-line: #17251a;
+  --color-moss-rule: #18251a;
+  --color-moss-border: #1b2a1e;
+  --color-moss-dim: #59665b;
+  --color-moss-muted: #718074;
+  --color-moss-copy: #9aaa9c;
   --border-width-1.5: 1.5px;
+  --shadow-card: 0 24px 70px #00000038, inset 0 1px #ffffff06;
 }
 
 @utility max-w-8xl {
@@ -60,12 +71,35 @@ button:disabled {
   cursor: not-allowed;
 }
 
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #4b4b4b #090909;
+}
+
 ::-webkit-scrollbar {
-  width: 0px;
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #090909;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4b4b4b;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #666;
+}
+
+.scroll-sm {
+  scrollbar-width: thin;
+  scrollbar-color: #4b4b4b transparent;
 }
 
 .scroll-sm::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 .scroll-sm::-webkit-scrollbar-track {
@@ -73,12 +107,16 @@ button:disabled {
 }
 
 .scroll-sm::-webkit-scrollbar-thumb {
-  background-color: transparent;
-  /* border-radius: 999px; */
+  background: #4b4b4b;
 }
 
-.scroll-sm::-webkit-scrollbar-thumb:hover {
-  background-color: #171717;
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
 }
 
 
@@ -98,13 +136,6 @@ button:disabled {
 .bg-card {
   background: linear-gradient(145deg, #ffffff06, #0000 34%), #0e110eeb;
 }
-
-
-
-
-
-
-
 
 
 @theme inline {
