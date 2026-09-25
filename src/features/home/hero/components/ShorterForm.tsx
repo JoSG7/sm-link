@@ -1,17 +1,19 @@
 "use client"
 
-import { IconBolt, IconPaperclip } from "@tabler/icons-react"
+import { IconArrowRight, IconBolt } from "@tabler/icons-react"
 import { SubmitEvent, useState } from "react"
 import { toast } from "sonner"
 import { NewLink } from "./NewLink"
 import { useDispatch } from "react-redux"
 import { recordChange } from "@/store/link-changes-slice"
 import { LinkServices } from "@/services/link.service"
+import { motion } from "framer-motion"
 
 export function ShorterForm() {
 
   const [original, setOriginal] = useState("")
   const [short, setShort] = useState<null | string>(null)
+  const [showForm, setShowForm] = useState(true)
   const [submiting, setSubmiting] = useState(false)
   const dispatch = useDispatch()
 
@@ -25,6 +27,7 @@ export function ShorterForm() {
 
       const { data } = await new LinkServices().createSmLink({ original })
       setShort(data)
+      setShowForm(false)
       dispatch(recordChange())
       toast.success("Succes")
 
@@ -43,61 +46,91 @@ export function ShorterForm() {
 
 
   return (
-    <>
-      <section className="rounded-3xl flex-col justify-center relative
-      lg:p-5 lg:h-full lg:flex lg:bg-neutral-950
-      lg:shadow-[0px_32px_64px_-16px_transparent,0px_16px_32px_-8px_transparent,0px_8px_16px_-4px_transparent,0px_4px_8px_-2px_transparent,0px_-8px_16px_-1px_transparent,0px_2px_4px_-1px_transparent,0px_0px_0px_1px_transparent,inset_0px_0px_0px_1px_rgba(255,255,255,0.1),inset_0px_1px_0px_rgb(255,255,255,0.1)]">
+    <section className="relative flex-1 lg:h-full">
+      <motion.div
+        className={`relative origin-left rounded-2xl border border-[#ffffff1a] shadow-card ${showForm ? "z-10 bg-card" : "z-0 bg-moss-900"}`}
+        animate={showForm ? { x: 0, y: 0, opacity: 1, scale: 1 } : { x: -16, y: 18, opacity: 1, scale: 0.97 }}
+        transition={{ type: "spring", stiffness: 130, damping: 18 }}>
 
-        <div className="absolute -top-5 right-5 hidden py-2 px-4 rounded-full border-1.5 border-neutral-800/70 lg:block bg-neutral-950 text-sm">
-          No log in is required
-        </div>
+        <motion.div
+          animate={{ opacity: showForm ? 1 : 0 }}
+          transition={{ duration: 0.35, delay: showForm ? 0.15 : 0 }}>
 
-        <form className="overflow-hidden "
+          <div className="absolute -top-5 right-5 hidden rounded-full border border-[#ffffff1a] bg-card px-4 py-2 text-xs lg:block">
+            No log in is required
+          </div>
+
+          <header className="flex items-center justify-between border-b border-[#ffffff0d] px-5 py-4.5 lg:px-6">
+
+            <div className="flex items-center gap-3">
+              <span className="inline-flex size-8 items-center justify-center rounded-full border border-green-400/30 bg-green-400/10 font-mono text-xs text-green-300">
+                01
+              </span>
+              <div>
+                <p className="text-base font-medium text-white">Shorten your link</p>
+                <p className="mt-0.5 text-xs text-moss-dim">Create a clean URL in seconds</p>
+              </div>
+            </div>
+
+            {
+              short && showForm &&
+              <button
+                className="flex cursor-pointer items-center gap-2 rounded-lg border border-moss-border bg-moss-850/80 px-3 py-2 text-xs text-moss-copy transition-colors hover:border-green-400 hover:text-white"
+                onClick={() => setShowForm(false)}
+                type="button">
+                <span>View link</span>
+                <IconArrowRight className="size-4" />
+              </button>
+            }
+          </header>
+
+        <form className="p-5 lg:p-6"
           onSubmit={handleSubmit}>
-
-          <label className="hidden pb-4 items-center gap-2 font-medium lg:flex">
-            <IconPaperclip className="size-4" />
+          <label className="mb-3 flex items-center gap-2 text-sm font-medium text-moss-copy">
             Paste a long URL
           </label>
 
-          <section className="flex text-base sm:text-lg lg:text-sm">
+          <section className="flex flex-col gap-3 text-base sm:flex-row sm:text-lg lg:text-sm">
 
-            <article className="flex flex-1">
-              <input className="w-full p-3 text-neutral-200 outline-none rounded-s-lg border-1.5 border-r-0 bg-neutral-900/80
-              border-neutral-800 placeholder:text-neutral-500 focus:border-green-400 "
-                placeholder="https://exmpl.com/long-url"
-                disabled={submiting}
-                autoComplete="off"
-                value={original}
-                type="url"
-                required
-                onChange={(e) => setOriginal(e.currentTarget.value.trim())} />
-            </article>
+            <input className="h-12 min-w-0 flex-1 rounded-lg border border-moss-border bg-moss-850/80 px-4 text-moss-copy outline-none placeholder:text-moss-dim transition-colors focus:border-green-400 focus:ring-2 focus:ring-green-400/20"
+              placeholder="https://example.com/long-url"
+              disabled={submiting}
+              autoComplete="off"
+              value={original}
+              type="url"
+              required
+              onChange={(e) => setOriginal(e.currentTarget.value.trim())} />
 
-            <button className="p-3 px-4 flex gap-1 justify-center items-center rounded-r-lg cursor-pointer
-            bg-linear-to-r from-green-500 to-blue-700 
-            disabled:opacity-30 lg:px-5"
+            <button className="flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-linear-to-r from-green-500 to-blue-700 px-5 font-medium text-white disabled:opacity-30 sm:min-w-32"
               disabled={submiting}>
-
-              <IconBolt className="size-5 xl:size-6 " />
-              <span className="">Short</span>
+              <IconBolt className="size-5" />
+              <span>Shorten</span>
             </button>
-
           </section>
-
-          <NewLink short={short} />
-
         </form>
 
-        <p className="mt-6 text-start text-neutral-300/90 text-xs
-        sm:text-sm sm:text-center lg:block lg:text-xs">
-          By proceeding, you agree to our
-          <span className="text-blue-400"> Terms of Service </span>
-          and
-          <span className="text-blue-400"> Privacy Policy</span>.
-        </p>
+          <p className="border-t border-[#ffffff0d] px-5 py-4.5 text-xs text-neutral-300/80 lg:px-6">
+            By proceeding, you agree to our
+            <span className="text-green-400/70"> Terms of Service </span>
+            and
+            <span className="text-green-400/70"> Privacy Policy</span>.
+          </p>
+        </motion.div>
+      </motion.div>
 
-      </section>
-    </>
+      <motion.div
+        className={`absolute inset-x-0 top-0 origin-left ${showForm ? "z-0 pointer-events-none" : "z-10 pointer-events-auto"}`}
+        initial={{ x: -16, y: 18, opacity: 1, scale: 0.97 }}
+        animate={showForm ? { x: -16, y: 18, opacity: 1, scale: 0.97 } : { x: 0, y: 0, opacity: 1, scale: 1 }}
+        transition={{ type: "spring", stiffness: 130, damping: 18 }}>
+        <NewLink
+          short={short}
+          active={!showForm}
+          onReset={() => {
+            setShowForm(true)
+            setOriginal("")
+          }} />
+      </motion.div>
+    </section>
   )
 }

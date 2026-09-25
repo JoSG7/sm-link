@@ -18,8 +18,7 @@ export function DashboardPreview() {
 
       <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-px bg-[linear-gradient(90deg,transparent_0%,rgba(144,220,160,0.08)_28%,rgba(144,220,160,0.42)_50%,rgba(144,220,160,0.08)_72%,transparent_100%)]" />
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(144,220,160,0.045)_1px,transparent_1px),linear-gradient(90deg,rgba(144,220,160,0.045)_1px,transparent_1px)] bg-size-[44px_44px] opacity-60" />
-      <div className="pointer-events-none absolute -top-40 left-1/2 size-128 -translate-x-1/2 rounded-full bg-green-400/6 blur-[110px]" />
-      <div className="pointer-events-none absolute -right-32 bottom-0 size-96 rounded-full bg-sky-400/4 blur-[100px]" />
+      <div className="pointer-events-none absolute -top-40 left-1/2 size-72 -translate-x-1/2 rounded-full bg-green-400/6 blur-[72px] sm:size-128 sm:blur-[110px]" />
 
       <div className="relative mx-auto max-w-7xl">
         <div className="mx-auto mb-12 max-w-2xl text-center sm:mb-16">

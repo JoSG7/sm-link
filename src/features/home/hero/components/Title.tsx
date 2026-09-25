@@ -1,63 +1,28 @@
 "use client"
 
-import { IconCircleFilled } from "@tabler/icons-react"
-
-
 export function HeroTitle() {
 
   return (
-    <div className="lg:shrink-0 lg:my-auto lg:pb-2 lg:max-w-132 xl:max-w-140">
+    <div className="mb-12 text-left sm:mb-16 lg:my-auto lg:shrink-0 lg:pb-2">
+      <p className="mb-4 inline-flex items-center rounded-full border border-green-400/30 bg-green-400/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-green-300">Smart link sharing</p>
+
       {/* Title */}
-      <h1 className="tracking-tight text-5xl font-normal
-      xs:text-center sm:text-7xl 
-      lg:text-6xl lg:text-start xl:text-title">
+      <h1 className="text-2xl font-normal leading-[1.1] tracking-tight text-white sm:text-[3.25rem]">
         The
-        <span className="text-transparent bg-clip-text bg-linear-to-r from-green-400 to bg-blue-500 lg:hidden">
-          {" Best way "}
-        </span>
-        <span className="hidden text-transparent bg-clip-text bg-linear-to-r from-green-400 to bg-blue-500 lg:inline">
-          {" Smartest way "}
-        </span>
+        <span> Smartest way </span>
         to share your links
       </h1>
 
       {/* Paragraph */}
-      <p className="py-6 text-neutral-300/90 sm:text-lg xs:text-center lg:pb-5 lg:text-start">
+      <p className="mt-3 text-base text-moss-copy sm:text-[1.125rem]">
         <span className="hidden lg:inline">Shorten links in seconds and get instant insights on how your links perform in real time.</span>
         <span className="lg:hidden">Tired of messy URLs? Shorten links in seconds and track their metrics</span>
       </p>
-
-      {/* This section only appears in destokp */}
-      <section className="hidden flex-col text-sm text-neutral-200 lg:block">
-
-        <article className="flex flex-wrap gap-3">
-
-          <div className="flex gap-1.5 items-center ">
-            <IconCircleFilled className="text-purple-400 size-4" />
-            Instant short links
-          </div>
-          |
-          <div className="flex gap-1.5 items-center">
-            <IconCircleFilled className="text-blue-400 size-4" />
-            Custom SmLinks
-          </div>
-          |
-          <div className="flex gap-1.5 items-center">
-            <IconCircleFilled className="text-red-400 size-4" />
-            Pro Settings
-          </div>
-
-        </article>
-
-      </section>
     </div>
   )
 }
 
 
-{/* <button className="relative inline-flex items-center justify-center select-none rounded-2xl disabled:cursor-not-allowed ease-in-out text-white border-2 border-white/5 backdrop-blur-[25px] bg-origin-border bg-[linear-gradient(104deg,rgba(253,253,253,0.05)_5%,rgba(240,240,228,0.1)_100%)] focus-visible:text-black text-base h-12 gap-0 px-5 font-medium">
-          Get Started
-        </button> */}
 
 
 
