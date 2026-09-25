@@ -34,20 +34,21 @@ export function NewLink({ short, active, onReset }: { short: string | null, acti
             <button
               className="flex cursor-pointer items-center gap-2 rounded-lg border border-moss-border bg-moss-850/80 px-3 py-2 text-xs text-moss-copy transition-colors hover:border-green-400 hover:text-white"
               onClick={onReset}
+              aria-label="Back to form"
               type="button">
               <IconArrowLeft className="size-4" />
-              <span>Back to form</span>
+              <span className="hidden sm:inline">Back to form</span>
             </button>
           }
         </header>
 
-        <div className="p-5 lg:p-6">
+        <div className="p-5 sm:p-6">
           <p className="mb-3 flex items-center gap-2 text-sm font-medium text-moss-copy">
             Your shortened link
           </p>
 
-          <div className="flex gap-3 text-base sm:text-lg sm:gap-4 lg:text-sm">
-            <p className="flex h-12 min-w-0 flex-1 items-center overflow-hidden text-nowrap rounded-lg border border-moss-border bg-moss-850/80 px-4 text-moss-copy">
+          <div className="flex flex-col gap-4 text-sm sm:text-lg lg:text-sm">
+            <p className="flex w-full min-w-0 items-center overflow-hidden text-nowrap rounded-lg border border-moss-border bg-moss-850/80 px-3 py-2 text-moss-copy sm:h-12 sm:px-4">
               {
                 short ?
                   <span>sm-link.vercel.app/{short}</span>
@@ -58,7 +59,7 @@ export function NewLink({ short, active, onReset }: { short: string | null, acti
 
             {
               short &&
-              <motion.div className="flex h-12 items-center gap-3 rounded-lg border border-moss-border bg-moss-850/80 px-4"
+              <motion.div className="flex self-start items-center gap-3 rounded-lg border border-moss-border bg-moss-850/80 px-4 py-2 sm:h-12 sm:p-0 sm:px-4 sm:self-end"
                 initial={{ y: 10, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}>
                 <button className="cursor-pointer"

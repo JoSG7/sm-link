@@ -29,7 +29,7 @@ export function SmLinkCard({ data }: { data: LinkDetails }) {
           </p>
 
           {/* Original Link */}
-          <p className="max-h-10.5 mt-1 mb-2 break-all overflow-y-auto text-neutral-200 ">
+          <p className="scrollbar-none max-h-10.5 mt-1 mb-2 break-all overflow-y-auto text-neutral-200 ">
             {data.original}
           </p>
 

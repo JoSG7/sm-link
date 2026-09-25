@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux"
 import { recordChange } from "@/store/link-changes-slice"
 import { LinkServices } from "@/services/link.service"
 import { motion } from "framer-motion"
+import { useScreenSize } from "@/hooks/useScreenSize"
 
 export function ShorterForm() {
 
@@ -16,6 +17,12 @@ export function ShorterForm() {
   const [showForm, setShowForm] = useState(true)
   const [submiting, setSubmiting] = useState(false)
   const dispatch = useDispatch()
+  const width = useScreenSize()
+  const isMobile = width > 0 && width < 640
+
+  const hiddenCardPosition = isMobile
+    ? { x: 5, y: 15, opacity: 1, scale: 0.97 }
+    : { x: -16, y: 18, opacity: 1, scale: 0.97 }
 
 
   const handleSubmit = async (e: SubmitEvent) => {
@@ -48,11 +55,12 @@ export function ShorterForm() {
   return (
     <section className="relative flex-1 lg:h-full">
       <motion.div
-        className={`relative origin-left rounded-2xl border border-[#ffffff1a] shadow-card ${showForm ? "z-10 bg-card" : "z-0 bg-moss-900"}`}
-        animate={showForm ? { x: 0, y: 0, opacity: 1, scale: 1 } : { x: -16, y: 18, opacity: 1, scale: 0.97 }}
+        className={`relative origin-left rounded-2xl border border-[#ffffff1a] shadow-card ${showForm ? "z-10 bg-card" : "pointer-events-none z-0 bg-moss-900"}`}
+        animate={showForm ? { x: 0, y: 0, opacity: 1, scale: 1 } : hiddenCardPosition}
         transition={{ type: "spring", stiffness: 130, damping: 18 }}>
 
         <motion.div
+          aria-hidden={!showForm}
           animate={{ opacity: showForm ? 1 : 0 }}
           transition={{ duration: 0.35, delay: showForm ? 0.15 : 0 }}>
 
@@ -77,37 +85,37 @@ export function ShorterForm() {
               <button
                 className="flex cursor-pointer items-center gap-2 rounded-lg border border-moss-border bg-moss-850/80 px-3 py-2 text-xs text-moss-copy transition-colors hover:border-green-400 hover:text-white"
                 onClick={() => setShowForm(false)}
+                aria-label="View shortened link"
                 type="button">
-                <span>View link</span>
+                <span className="hidden sm:inline">View link</span>
                 <IconArrowRight className="size-4" />
               </button>
             }
           </header>
 
-        <form className="p-5 lg:p-6"
-          onSubmit={handleSubmit}>
-          <label className="mb-3 flex items-center gap-2 text-sm font-medium text-moss-copy">
-            Paste a long URL
-          </label>
+          <form className="p-5 sm:p-6"
+            onSubmit={handleSubmit}>
+            <label className="mb-3 flex items-center gap-2 text-sm font-medium text-moss-copy">
+              Paste a long URL
+            </label>
 
-          <section className="flex flex-col gap-3 text-base sm:flex-row sm:text-lg lg:text-sm">
+            <section className="flex flex-col gap-4 text-sm sm:flex-row sm:text-lg lg:text-sm">
+              <input className="py-2 min-w-0 flex-1 rounded-lg border border-moss-border bg-moss-850/80 px-3 text-moss-copy outline-none placeholder:text-moss-dim transition-colors focus:border-green-400 focus:ring-2 focus:ring-green-400/20 sm:h-12 sm:px-4"
+                placeholder="https://example.com/long-url"
+                disabled={submiting}
+                autoComplete="off"
+                value={original}
+                type="url"
+                required
+                onChange={(e) => setOriginal(e.currentTarget.value.trim())} />
 
-            <input className="h-12 min-w-0 flex-1 rounded-lg border border-moss-border bg-moss-850/80 px-4 text-moss-copy outline-none placeholder:text-moss-dim transition-colors focus:border-green-400 focus:ring-2 focus:ring-green-400/20"
-              placeholder="https://example.com/long-url"
-              disabled={submiting}
-              autoComplete="off"
-              value={original}
-              type="url"
-              required
-              onChange={(e) => setOriginal(e.currentTarget.value.trim())} />
-
-            <button className="flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-linear-to-r from-green-500 to-blue-700 px-5 font-medium text-white disabled:opacity-30 sm:min-w-32"
-              disabled={submiting}>
-              <IconBolt className="size-5" />
-              <span>Shorten</span>
-            </button>
-          </section>
-        </form>
+              <button className="py-2 flex items-center justify-center gap-2 rounded-lg bg-linear-to-r from-green-500 to-blue-700 px-5 font-medium text-white disabled:opacity-30 sm:min-w-32 sm:p-0"
+                disabled={submiting}>
+                <IconBolt className="size-5" />
+                <span>Shorten</span>
+              </button>
+            </section>
+          </form>
 
           <p className="border-t border-[#ffffff0d] px-5 py-4.5 text-xs text-neutral-300/80 lg:px-6">
             By proceeding, you agree to our
@@ -120,8 +128,8 @@ export function ShorterForm() {
 
       <motion.div
         className={`absolute inset-x-0 top-0 origin-left ${showForm ? "z-0 pointer-events-none" : "z-10 pointer-events-auto"}`}
-        initial={{ x: -16, y: 18, opacity: 1, scale: 0.97 }}
-        animate={showForm ? { x: -16, y: 18, opacity: 1, scale: 0.97 } : { x: 0, y: 0, opacity: 1, scale: 1 }}
+        initial={hiddenCardPosition}
+        animate={showForm ? hiddenCardPosition : { x: 0, y: 0, opacity: 1, scale: 1 }}
         transition={{ type: "spring", stiffness: 130, damping: 18 }}>
         <NewLink
           short={short}

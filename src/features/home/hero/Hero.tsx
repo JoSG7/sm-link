@@ -42,29 +42,36 @@ export function Hero() {
   return (
 
     // Layout Content
-    <section className="relative isolate w-full overflow-hidden bg-transparent px-5 py-20 sm:px-6 lg:pt-20 lg:py-30">
+    <section className="relative isolate w-full overflow-hidden bg-transparent px-5 pt-13 pb-20 sm:px-6 lg:pt-8 lg:pb-40">
 
       <SpaceParticles />
 
       <div className="relative mx-auto max-w-7xl">
-        <main className="flex w-full flex-col gap-12 sm:gap-7">
+        <main className="flex w-full flex-col gap-2 sm:gap-7">
 
-          <div className="pointer-events-none absolute -right-66 top-1/2 -z-10 h-160 w-160 -translate-y-1/2 rounded-full border border-green-300/8" />
-          <div className="pointer-events-none absolute -right-50 top-1/2 -z-10 h-128 w-lg -translate-y-1/2 rounded-full border border-sky-300/6" />
+          <div className="pointer-events-none absolute -right-56 top-1/2 -z-10 h-160 w-160 -translate-y-80 rounded-full border border-green-300/8 sm:-translate-y-70" />
+
+          <div className="pointer-events-none absolute -right-40 top-1/2 -z-10 h-128 w-lg -translate-y-64 rounded-full border border-sky-300/6 sm:-translate-y-54" />
+
 
           <HeroTitle />
 
-          <div className="flex flex-1 items-center justify-end gap-15">
+          <div className="flex flex-col-reverse flex-1 items-center justify-end gap-15 sm:flex-row">
 
-            <div className="min-w-120 flex flex-col gap-4">
-              {featureCards.map((feature) => (
-                <FeatureCard
-                  key={feature.title}
-                  icon={feature.icon}
-                  title={feature.title}
-                  description={feature.description}
-                  color={feature.color} />
-              ))}
+            <div className="relative w-full min-w-0 sm:min-w-120">
+
+              <div className="hidden pointer-events-none absolute -left-8 top-1/2 z-0 size-70 -translate-y-1/2 rounded-full border border-green-300/8 sm:block" />
+
+              <div className="relative z-10 flex flex-col gap-4">
+                {featureCards.map((feature) => (
+                  <FeatureCard
+                    key={feature.title}
+                    icon={feature.icon}
+                    title={feature.title}
+                    description={feature.description}
+                    color={feature.color} />
+                ))}
+              </div>
             </div>
 
             <ShorterForm />

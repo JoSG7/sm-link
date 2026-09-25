@@ -110,6 +110,15 @@ html {
   background: #4b4b4b;
 }
 
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
 
 
 /* background-image: radial-gradient(circle at 52% -12%, #d7ff3f12, #0000 30rem), linear-gradient(#ffffff03 1px, #0000 1px), linear-gradient(90deg, #ffffff03 1px, #0000 1px);
@@ -127,13 +136,6 @@ html {
 .bg-card {
   background: linear-gradient(145deg, #ffffff06, #0000 34%), #0e110eeb;
 }
-
-
-
-
-
-
-
 
 
 @theme inline {
