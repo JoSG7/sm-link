@@ -31,37 +31,43 @@ export function DashboardPreview() {
           </p>
         </div>
 
-        <div className="relative overflow-hidden rounded-2xl border border-moss-border bg-moss-900/90 shadow-[0_0_0_1px_rgba(91,220,126,0.02),0_30px_70px_rgba(0,0,0,0.45),0_0_100px_rgba(74,222,128,0.04)]">
-          <div className="border-b border-moss-border">
-            <PreviewNavigation activeView={activeView} onViewChange={setActiveView} />
-            <div className="flex flex-wrap items-center justify-between gap-4 px-4 py-4 sm:px-6">
-              <div>
-                <p className="text-sm font-semibold text-neutral-100 sm:text-base">{activeMeta.title}</p>
-                <p className="mt-1 text-xs text-moss-muted">{activeMeta.description}</p>
-              </div>
-              <Link href="/dashboard" className="hidden items-center gap-2 rounded-lg bg-linear-to-r from-green-400 to-sky-500 px-3 py-2 text-xs font-semibold text-black transition hover:from-green-300 hover:to-sky-400 sm:inline-flex">
-                Open dashboard <IconArrowUpRight className="size-4" />
-              </Link>
-            </div>
-          </div>
+        <div className="relative">
 
-          <div className="flex">
-            <PreviewSidebar activeView={activeView} onViewChange={setActiveView} />
-            <div className="min-w-0 flex-1 p-4 sm:p-6">
-              <AnimatePresence mode="wait" initial={false}>
-                <motion.div
-                  key={activeView}
-                  initial={{ opacity: 0, y: 6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -4 }}
-                  transition={{ duration: 0.2, ease: "easeOut" }}
-                >
-                  <PreviewContent view={activeView} />
-                </motion.div>
-              </AnimatePresence>
+          <Link href="/dashboard" className="absolute right-0 top-0 hidden size-12 items-center justify-center gap-2 rounded-lg bg-linear-to-r from-green-500 to-blue-700 text-sm font-semibold transition hover:from-green-400 hover:to-sky-600 sm:inline-flex lg:w-auto lg:px-4 lg:py-3">
+            <span className="hidden lg:inline">Open dashboard</span> <IconArrowUpRight className="size-5" />
+          </Link>
+
+          <PreviewNavigation activeView={activeView} onViewChange={setActiveView} />
+
+          <div className="overflow-hidden rounded-2xl rounded-t-none border border-[#ffffff1a] bg-card shadow-card sm:rounded-tr-2xl">
+
+            <div className="border-b border-moss-border">
+              <div className="flex flex-wrap items-center justify-between gap-4 px-4 py-4 sm:px-6">
+                <div>
+                  <p className="text-sm font-semibold text-neutral-100 sm:text-base">{activeMeta.title}</p>
+                  <p className="mt-1 text-xs text-moss-muted">{activeMeta.description}</p>
+                </div>
+              </div>
             </div>
+
+            <div className="flex">
+              <PreviewSidebar activeView={activeView} onViewChange={setActiveView} />
+              <div className="min-w-0 flex-1 bg-moss-900 p-4 sm:p-6">
+                <AnimatePresence mode="wait" initial={false}>
+                  <motion.div
+                    key={activeView}
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -4 }}
+                    transition={{ duration: 0.2, ease: "easeOut" }}
+                  >
+                    <PreviewContent view={activeView} />
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+            </div>
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-px bg-[linear-gradient(90deg,transparent_0%,rgba(144,220,160,0.12)_28%,rgba(144,220,160,0.65)_50%,rgba(144,220,160,0.12)_72%,transparent_100%)]" />
           </div>
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-px bg-[linear-gradient(90deg,transparent_0%,rgba(144,220,160,0.12)_28%,rgba(144,220,160,0.65)_50%,rgba(144,220,160,0.12)_72%,transparent_100%)]" />
         </div>
 
         <Link href="/dashboard" className="mx-auto mt-8 flex w-fit items-center gap-2 rounded-lg border border-neutral-700 px-4 py-2.5 text-sm font-medium text-neutral-200 transition hover:border-neutral-500 hover:bg-neutral-900 sm:hidden">
