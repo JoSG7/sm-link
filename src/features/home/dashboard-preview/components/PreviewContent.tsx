@@ -156,17 +156,17 @@ function LinksContent() {
           { label: "With expiration", value: "11", color: "text-amber-200", Icon: IconAlarm, iconClasses: "bg-yellow-500/15 text-yellow-200 ring-yellow-400/20" },
           { label: "Expired", value: "2", color: "text-red-200", Icon: IconClockExclamation, iconClasses: "bg-red-500/15 text-red-300 ring-red-400/20" },
         ].map(({ label, value, color, Icon, iconClasses }) => (
-          <article key={label} className="rounded-xl border border-neutral-800/80 bg-neutral-950 p-4">
+          <article key={label} className="rounded-xl border border-neutral-800/80 bg-neutral-950 p-3 sm:p-4">
             <div className="flex items-start justify-between gap-4">
               <div>
                 <p className="text-xs text-neutral-300">{label}</p>
-                <p className={`mt-3 text-2xl font-semibold ${color}`}>{value}</p>
+                <p className={`mt-2 text-xl font-semibold ${color} sm:mt-3 sm:text-2xl`}>{value}</p>
               </div>
-              <span className={`rounded-xl p-2 ring-1 ${iconClasses}`}>
-                <Icon className="size-5" stroke={1.8} />
+              <span className={`rounded-xl p-1.5 ring-1 sm:p-2 ${iconClasses}`}>
+                <Icon className="size-4 sm:size-5" stroke={1.8} />
               </span>
             </div>
-            <div className="mt-4 h-1 overflow-hidden rounded-full bg-neutral-900">
+            <div className="mt-3 h-1 overflow-hidden rounded-full bg-neutral-900 sm:mt-4">
               <div className={`h-full w-3/5 rounded-full bg-current opacity-70 ${color}`} />
             </div>
           </article>

@@ -4,7 +4,7 @@ import { AnalyticsOverview } from "@/features/protected/analytics/AnalyticsOverv
 
 export default function AnalyticsPage() {
   return (
-    <section className="flex min-h-screen flex-col gap-7 md:py-7 xl:py-8">
+    <section className="flex min-h-screen flex-col gap-7 py-5 md:py-7 xl:py-8">
       <header>
         <h1 className="text-3xl font-semibold">
           <span className="bg-linear-to-r from-green-400 to-sky-500 bg-clip-text text-transparent">SmLinks </span>

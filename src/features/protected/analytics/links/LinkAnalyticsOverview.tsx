@@ -39,7 +39,7 @@ export async function LinkAnalyticsOverview({ short }: { short: string }) {
   const dailyViews = Array.isArray(analyticsSummary.daily_status_views) ? analyticsSummary.daily_status_views : []
 
   return (
-    <section className="flex min-h-screen flex-col gap-7 py-7 xl:py-8">
+    <section className="flex min-h-screen flex-col gap-7 py-5 md:py-7 xl:py-8">
       <header>
         <h1 className="text-3xl font-semibold text-neutral-100">/{short}</h1>
         <p className="mt-2 max-w-3xl truncate text-neutral-300">{link.original}</p>
