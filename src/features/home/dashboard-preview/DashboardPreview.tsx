@@ -52,7 +52,7 @@ export function DashboardPreview() {
 
             <div className="flex">
               <PreviewSidebar activeView={activeView} onViewChange={setActiveView} />
-              <div className="min-w-0 flex-1 bg-moss-900 p-4 sm:p-6">
+              <div className="min-w-0 flex-1 bg-moss-950 p-4 sm:p-6">
                 <AnimatePresence mode="wait" initial={false}>
                   <motion.div
                     key={activeView}

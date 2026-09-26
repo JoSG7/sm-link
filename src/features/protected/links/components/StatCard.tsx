@@ -33,7 +33,7 @@ const statConfig = {
     color: "yellow",
     icon: IconAlarm,
     iconClass: "bg-yellow-500/15 text-yellow-200 ring-yellow-400/20",
-    countClass: "text-yellow-100",
+    countClass: "text-amber-200",
     glowClass: "from-yellow-500/10",
   },
   expired: {

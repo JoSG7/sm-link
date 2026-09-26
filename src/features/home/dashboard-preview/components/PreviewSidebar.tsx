@@ -18,7 +18,7 @@ interface PreviewSidebarProps {
 
 export function PreviewSidebar({ activeView, onViewChange }: PreviewSidebarProps) {
   return (
-    <aside className="hidden w-16 shrink-0 border-r border-neutral-900 bg-neutral-950 p-3 sm:block">
+    <aside className="hidden w-16 shrink-0 border-r border-neutral-800/70 bg-neutral-950 p-3 sm:block">
       <nav aria-label="Dashboard preview sidebar" className="flex flex-col items-center gap-2">
         {sidebarItems.map(({ id, label, icon: Icon }) => (
           <button
