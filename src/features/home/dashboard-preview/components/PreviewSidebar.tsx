@@ -18,7 +18,7 @@ interface PreviewSidebarProps {
 
 export function PreviewSidebar({ activeView, onViewChange }: PreviewSidebarProps) {
   return (
-    <aside className="hidden w-16 shrink-0 border-r border-moss-border bg-moss-850 p-3 sm:block">
+    <aside className="hidden w-16 shrink-0 border-r border-neutral-900 bg-neutral-950 p-3 sm:block">
       <nav aria-label="Dashboard preview sidebar" className="flex flex-col items-center gap-2">
         {sidebarItems.map(({ id, label, icon: Icon }) => (
           <button
@@ -28,7 +28,7 @@ export function PreviewSidebar({ activeView, onViewChange }: PreviewSidebarProps
             aria-label={label}
             aria-current={activeView === id ? "page" : undefined}
             onClick={() => onViewChange(id)}
-            className={`flex size-10 items-center justify-center rounded-lg transition-colors ${activeView === id ? "bg-moss-rule text-green-300" : "text-moss-muted hover:bg-moss-800 hover:text-neutral-200"}`}
+            className={`flex size-10 items-center justify-center rounded-lg transition-colors ${activeView === id ? "text-white" : "text-neutral-300 hover:text-white"}`}
           >
             <Icon className="size-5" />
           </button>
