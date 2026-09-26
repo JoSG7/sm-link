@@ -11,14 +11,14 @@ export const stats = [
   { label: "Total visits", value: "12,480", color: "text-green-300", icon: IconChartBar },
   { label: "Unique visitors", value: "8,214", color: "text-blue-300", icon: IconUsers },
   { label: "Active links", value: "24", color: "text-purple-300", icon: IconLink },
-  { label: "Success rate", value: "98.4%", color: "text-amber-300", icon: IconPercentage },
+  { label: "Success rate", value: "98.4%", color: "text-amber-200", icon: IconPercentage },
 ]
 
 export const analyticsStats = [
   { label: "Successful visits", value: "12,480", color: "text-green-300", icon: IconChartBar },
   { label: "Unique visitors", value: "8,214", color: "text-blue-300", icon: IconUsers },
   { label: "Active links", value: "24", color: "text-purple-300", icon: IconLink },
-  { label: "Success rate", value: "98.4%", color: "text-amber-300", icon: IconPercentage },
+  { label: "Success rate", value: "98.4%", color: "text-amber-200", icon: IconPercentage },
 ]
 
 export const links = [

@@ -14,30 +14,29 @@ interface FeatureCardData {
   color: "blue" | "green"
 }
 
+const featureCards: FeatureCardData[] = [
+  {
+    title: "Global Edge Network",
+    description: "Fast delivery wherever your audience is",
+    icon: <IconWorld className="size-4" />,
+    color: "blue"
+  },
+  {
+    title: "Privacy focused",
+    description: "Keep every link under your control",
+    icon: <IconShieldCheckFilled className="size-4" />,
+    color: "green"
+  },
+  {
+    title: "Real-Time Analytics",
+    description: "See every click as it happens",
+    icon: <IconChartHistogram className="size-4" />,
+    color: "blue"
+  },
+
+]
+
 export function Hero() {
-
-  const featureCards: FeatureCardData[] = [
-    {
-      title: "Global Edge Network",
-      description: "Fast delivery wherever your audience is",
-      icon: <IconWorld className="size-4" />,
-      color: "blue"
-    },
-    {
-      title: "Privacy focused",
-      description: "Keep every link under your control",
-      icon: <IconShieldCheckFilled className="size-4" />,
-      color: "green"
-    },
-    {
-      title: "Real-Time Analytics",
-      description: "See every click as it happens",
-      icon: <IconChartHistogram className="size-4" />,
-      color: "blue"
-    },
-    
-  ]
-
 
   return (
 
@@ -53,12 +52,11 @@ export function Hero() {
 
           <div className="pointer-events-none absolute -right-40 top-1/2 -z-10 h-128 w-lg -translate-y-64 rounded-full border border-sky-300/6 sm:-translate-y-54" />
 
-
           <HeroTitle />
 
-          <div className="flex flex-col-reverse flex-1 items-center justify-end gap-15 sm:flex-row">
+          <div className="flex flex-col-reverse flex-1 items-center justify-end gap-15 lg:flex-row">
 
-            <div className="relative w-full min-w-0 sm:min-w-120">
+            <div className="relative w-full lg:w-max lg:min-w-90 xl:min-w-120">
 
               <div className="hidden pointer-events-none absolute -left-8 top-1/2 z-0 size-70 -translate-y-1/2 rounded-full border border-green-300/8 sm:block" />
 

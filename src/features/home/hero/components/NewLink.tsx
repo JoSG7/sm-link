@@ -13,7 +13,7 @@ export function NewLink({ short, active, onReset }: { short: string | null, acti
 
   return (
     <section className={`flex-1 rounded-2xl border border-[#ffffff12] shadow-card ${active ? "bg-card" : "bg-moss-900"}`}>
-      
+
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: active && short ? 1 : 0 }}
@@ -47,8 +47,8 @@ export function NewLink({ short, active, onReset }: { short: string | null, acti
             Your shortened link
           </p>
 
-          <div className="flex flex-col gap-4 text-sm sm:text-lg lg:text-sm">
-            <p className="flex w-full min-w-0 items-center overflow-hidden text-nowrap rounded-lg border border-moss-border bg-moss-850/80 px-3 py-2 text-moss-copy sm:h-12 sm:px-4">
+          <div className="flex flex-col gap-4 text-sm sm:flex-row sm:items-center lg:text-sm">
+            <p className="flex w-full min-w-0 flex-1 items-center overflow-hidden text-nowrap rounded-lg border border-moss-border bg-moss-850/80 px-3 py-2 text-moss-copy sm:h-12 sm:px-4">
               {
                 short ?
                   <span>sm-link.vercel.app/{short}</span>
@@ -59,7 +59,7 @@ export function NewLink({ short, active, onReset }: { short: string | null, acti
 
             {
               short &&
-              <motion.div className="flex self-start items-center gap-3 rounded-lg border border-moss-border bg-moss-850/80 px-4 py-2 sm:h-12 sm:p-0 sm:px-4 sm:self-end"
+              <motion.div className="flex self-start items-center gap-3 rounded-lg border border-moss-border bg-moss-850/80 px-4 py-2 sm:h-12 sm:self-auto sm:p-0 sm:px-4"
                 initial={{ y: 10, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}>
                 <button className="cursor-pointer"
@@ -78,7 +78,6 @@ export function NewLink({ short, active, onReset }: { short: string | null, acti
               </motion.div>
             }
           </div>
-
         </div>
 
         <p className="border-t border-[#ffffff0d] px-5 py-4.5 text-xs text-neutral-300/80 lg:px-6">

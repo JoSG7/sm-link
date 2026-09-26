@@ -13,7 +13,7 @@ export function HomeNavBar() {
 
   return (
 
-    <header className="h-16 px-4 flex justify-center bg-transparent/70 sticky top-0 left-0 right-0 z-10 backdrop-blur-sm sm:h-18 sm:p-0">
+    <header className="h-16 px-4 flex justify-center bg-transparent/70 sticky top-0 left-0 right-0 z-10 backdrop-blur-sm sm:h-18 sm:px-5">
 
       <div className="flex w-full max-w-7xl items-center justify-end">
 
