@@ -18,7 +18,7 @@ export function ShorterForm() {
   const [submiting, setSubmiting] = useState(false)
   const dispatch = useDispatch()
   const width = useScreenSize()
-  const isMobile = width > 0 && width < 640
+  const isMobile = width > 0 && width < 1024
 
   const hiddenCardPosition = isMobile
     ? { x: 5, y: 15, opacity: 1, scale: 0.97 }
@@ -48,12 +48,11 @@ export function ShorterForm() {
       setOriginal("")
 
     }
-
   }
 
 
   return (
-    <section className="relative flex-1 lg:h-full">
+    <section className="relative w-full lg:h-full">
       <motion.div
         className={`relative origin-left rounded-2xl border border-[#ffffff1a] shadow-card ${showForm ? "z-10 bg-card" : "pointer-events-none z-0 bg-moss-900"}`}
         animate={showForm ? { x: 0, y: 0, opacity: 1, scale: 1 } : hiddenCardPosition}
@@ -99,7 +98,7 @@ export function ShorterForm() {
               Paste a long URL
             </label>
 
-            <section className="flex flex-col gap-4 text-sm sm:flex-row sm:text-lg lg:text-sm">
+            <section className="flex flex-col gap-4 text-sm sm:flex-row lg:text-sm">
               <input className="py-2 min-w-0 flex-1 rounded-lg border border-moss-border bg-moss-850/80 px-3 text-moss-copy outline-none placeholder:text-moss-dim transition-colors focus:border-green-400 focus:ring-2 focus:ring-green-400/20 sm:h-12 sm:px-4"
                 placeholder="https://example.com/long-url"
                 disabled={submiting}

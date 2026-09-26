@@ -25,7 +25,7 @@ export function PreviewNavigation({ activeView, onViewChange }: PreviewNavigatio
           {view.id === "dashboard" && <IconLayoutDashboard className="size-5" />}
           {view.id === "analytics" && <IconChartBar className="size-5" />}
           {view.id === "links" && <IconLink className="size-5" />}
-          {view.label}
+          <span className="hidden sm:inline">{view.label}</span>
         </button>
       ))}
     </nav>
