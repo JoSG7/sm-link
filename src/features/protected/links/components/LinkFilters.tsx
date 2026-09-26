@@ -25,25 +25,25 @@ export function LinkFilters({
 }: LinkFiltersProps) {
   return (
 
-    <div className="flex flex-wrap items-center gap-2">
+    <div className="flex w-full flex-wrap items-center gap-4 sm:w-auto sm:flex-nowrap sm:gap-2">
       {(["all", "protected", "expired"] as const).map(option => (
         <button
           key={option}
           type="button"
           className={option === filter
             ? option === "all"
-              ? "rounded-lg bg-neutral-800 px-3 py-2 text-sm font-medium text-neutral-100 ring-1 ring-neutral-500/20 transition"
+              ? "flex-1 rounded-lg bg-neutral-800 px-3 py-2 text-center text-sm font-medium text-neutral-100 ring-1 ring-neutral-500/20 transition sm:flex-none"
               : option === "protected"
-                ? "rounded-lg bg-blue-500/15 px-3 py-2 text-sm font-medium text-blue-200 ring-1 ring-blue-500/20 transition"
-                : "rounded-lg bg-red-500/15 px-3 py-2 text-sm font-medium text-red-200 ring-1 ring-red-500/20 transition"
-            : "rounded-lg px-3 py-2 text-sm font-medium text-neutral-400 transition hover:bg-neutral-800 hover:text-neutral-100"}
+                ? "flex-1 rounded-lg bg-blue-500/15 px-3 py-2 text-center text-sm font-medium text-blue-200 ring-1 ring-blue-500/20 transition sm:flex-none"
+                : "flex-1 rounded-lg bg-red-500/15 px-3 py-2 text-center text-sm font-medium text-red-200 ring-1 ring-red-500/20 transition sm:flex-none"
+            : "flex-1 rounded-lg px-3 py-2 text-center text-sm font-medium text-neutral-400 transition hover:bg-neutral-800 hover:text-neutral-100 sm:flex-none"}
           onClick={() => onFilterChange(option)}
         >
           {option === "all" ? "All" : option === "protected" ? "Protected" : "Expired"}
         </button>
       ))}
 
-      <div className="relative min-w-52 sm:ml-2 sm:w-64">
+      <div className="relative min-w-0 basis-full sm:ml-2 sm:w-48 sm:basis-auto">
         <IconSearch className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-neutral-500" />
         <Input
           value={search}

@@ -15,7 +15,7 @@ export function TopLinks({ links, visitsByLink }: DashboardTopLinksProps) {
           <h2 className="text-xl font-semibold text-neutral-100">Top links</h2>
           <p className="mt-1 text-sm text-neutral-400">Your most visited links by successful visits</p>
         </div>
-        <Link href="/dashboard/links" className="text-sm font-medium text-green-300 hover:text-green-200">See all</Link>
+        <Link href="/dashboard/links" className="hidden text-sm font-medium text-green-300 hover:text-green-200 sm:block">See all</Link>
       </div>
       {links.length === 0 ? (
         <p className="p-8 text-center text-sm text-neutral-400">Create your first link to see it here.</p>

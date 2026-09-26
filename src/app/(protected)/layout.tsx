@@ -1,4 +1,5 @@
 import { SideBar } from "@/features/protected/layout/sidebar/SideBar";
+import { MobileNav } from "@/features/protected/layout/navbar/MobileNav";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { ReactNode } from "react";
 
@@ -10,11 +11,12 @@ export default async function ProtectedLayout({ children }: { children: ReactNod
 
   return (
 
-    <section className="w-screen min-h-screen flex bg-[#080a08] text-white">
+    <section className="w-screen min-h-screen flex bg-moss-950 text-white">
 
       <SideBar user={user} />
 
-      <main className="max-h-screen grow overflow-y-auto md:px-7 xl:px-">
+      <main className="max-h-screen grow overflow-y-auto px-5 pb-24 md:px-7 sm:pb-0">
+        <MobileNav />
         {children}
       </main>
 

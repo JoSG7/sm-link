@@ -37,7 +37,7 @@ export function SideBar({ user }: { user: User | null }) {
 
   return (
 
-    <aside className="w-16 p-3 py-4 max-h-screen flex flex-col justify-between items-center bg-neutral-950 border-r-2 border-neutral-900">
+    <aside className="hidden w-16 max-h-screen flex-col items-center justify-between border-r-2 border-neutral-900 bg-neutral-950 p-3 py-4 sm:flex">
 
       <section className="overflow-y-auto">
 

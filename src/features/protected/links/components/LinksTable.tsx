@@ -232,12 +232,12 @@ export function LinksTable({ links, isAuthenticated, guestLinksCount }: LinksTab
             <h2 className="text-xl font-semibold text-neutral-100">Links</h2>
             <p className="mt-1 text-sm text-neutral-400">Manage and monitor your shortened links.</p>
           </div>
-          <span className="w-fit rounded-full border border-neutral-700 bg-neutral-900 px-3 py-1 text-xs font-semibold text-neutral-300">
+          <span className="hidden w-fit rounded-full border border-neutral-700 bg-neutral-900 px-3 py-1 text-xs font-semibold text-neutral-300 sm:block">
             {filteredLinks.length} {filteredLinks.length === 1 ? "link" : "links"}
           </span>
         </header>
 
-        <section className="flex flex-col gap-3 border-b border-neutral-800/80 p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5">
+        <section className="flex flex-col gap-4 border-b border-neutral-800/80 p-4 sm:flex-row sm:items-center sm:justify-between sm:gap-3 sm:p-5">
           <LinkFilters
             filter={filter}
             search={search}
@@ -248,7 +248,7 @@ export function LinksTable({ links, isAuthenticated, guestLinksCount }: LinksTab
             onDeleteSelected={handleDeleteSelected}
           />
 
-          <div className="flex items-center gap-4">
+          <div className="flex w-full shrink-0 items-center gap-4 sm:w-auto">
             <ClaimButton
               isAuthenticated={isAuthenticated}
               guestLinksCount={guestLinksCount}
