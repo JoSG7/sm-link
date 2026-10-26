@@ -18,9 +18,7 @@ export function ProtectedLinkCard({ data }: { data: LinkDetails }) {
   const createdAt = format(new Date(data.created_at), "MMMM d")
 
   return (
-    <article className="relative isolate overflow-hidden rounded-2xl border border-neutral-800/80 bg-neutral-950 p-4 whitespace-normal shadow-[0_12px_40px_rgba(0,0,0,0.18)] xl:p-5">
-
-      <div className="pointer-events-none absolute -right-10 -top-10 -z-10 size-36 rounded-full bg-linear-to-br from-blue-500/15 via-purple-500/10 to-transparent blur-2xl" />
+    <article className="relative isolate p-4 overflow-hidden rounded-2xl border border-[#ffffff1a] bg-card shadow-card whitespace-normal xl:p-5">
 
       <section className="flex items-start gap-4 pb-5">
         <div className="flex min-w-0 grow flex-col gap-2">
@@ -57,11 +55,11 @@ export function ProtectedLinkCard({ data }: { data: LinkDetails }) {
           )}
         </div>
 
-        <button className="rounded-xl border border-transparent bg-neutral-900 p-2 text-neutral-300 transition-colors hover:border-red-500/30 hover:bg-red-500/10 hover:text-red-300"
+        <button className="rounded-xl border border-neutral-700/70 bg-neutral-800/70 p-2 text-neutral-300 transition-colors hover:border-red-500/30 hover:bg-red-500/10 hover:text-red-300"
           type="button"
           onClick={() => setIsModalOpen(true)}>
 
-          <IconTrashFilled className="size-4" />
+          <IconTrashFilled className="size-5" />
         </button>
       </footer>
 

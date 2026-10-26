@@ -6,7 +6,7 @@ import { DashboardFallback } from "@/components/fallbacks/DashboardFallback"
 import { DashboardOverview } from "@/features/protected/dashboard/DashboardOverview"
 
 export default function Dashboard() {
-  
+
   return (
     <section className="flex min-h-screen flex-col gap-7 py-5 md:py-7 xl:py-8">
       <header className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">

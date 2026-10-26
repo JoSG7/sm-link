@@ -1,6 +1,6 @@
 "use client"
 
-import { IconArrowLeft, IconCopyPlusFilled, IconExternalLink } from "@tabler/icons-react";
+import { IconArrowLeft, IconCopy, IconExternalLink } from "@tabler/icons-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
@@ -59,21 +59,22 @@ export function NewLink({ short, active, onReset }: { short: string | null, acti
 
             {
               short &&
-              <motion.div className="flex self-start items-center gap-3 rounded-lg border border-moss-border bg-moss-850/80 px-4 py-2 sm:h-12 sm:self-auto sm:p-0 sm:px-4"
+              <motion.div className="flex self-start items-center gap-3 sm:self-auto"
                 initial={{ y: 10, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}>
-                <button className="cursor-pointer"
+                <button className="inline-flex size-10 cursor-pointer items-center justify-center rounded-lg border border-moss-border bg-moss-850/80 text-green-400 transition-colors hover:border-green-400/50 hover:bg-green-400/10 hover:text-green-300"
                   onClick={copyToClipboard}
                   type="button"
                   aria-label="Copy shortened link">
-                  <IconCopyPlusFilled className="size-5 text-green-400" />
+                  <IconCopy className="size-4" />
                 </button>
 
                 <Link
+                  className="inline-flex size-10 items-center justify-center rounded-lg border border-moss-border bg-moss-850/80 text-blue-400 transition-colors hover:border-blue-400/50 hover:bg-blue-400/10 hover:text-blue-300"
                   href={`https://sm-link.vercel.app/${short}`}
                   target="_blank"
                   aria-label="Open shortened link">
-                  <IconExternalLink className="size-5 text-blue-400" />
+                  <IconExternalLink className="size-4" />
                 </Link>
               </motion.div>
             }
