@@ -153,7 +153,7 @@ export function GlobalViewsBarChart({ links, metrics }: GlobalViewsBarChartProps
   const barSize = visibleLinks.length <= 2 ? 96 : undefined
 
   return (
-    <article className="rounded-2xl border border-neutral-800/80 bg-neutral-950 p-5 shadow-[0_12px_40px_rgba(0,0,0,0.18)]">
+    <article className="rounded-2xl border border-neutral-800/80 bg-card p-5 shadow-card">
 
       <div className="mb-5 flex items-start justify-between gap-4">
         <div>

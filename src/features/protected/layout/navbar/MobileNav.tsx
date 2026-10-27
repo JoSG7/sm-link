@@ -42,7 +42,7 @@ export function MobileNav({ user }: { user: User | null }) {
   }
 
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-20 border-t border-white/20 bg-neutral-950/95 p-4.5 px-2.5 backdrop-blur sm:hidden"
+    <nav className="fixed inset-x-0 bottom-0 z-20 border-t border-white/10 bg-neutral-950/95 p-4.5 px-2.5 backdrop-blur sm:hidden"
     aria-label="Mobile navigation">
       <div className="flex items-center gap-2">
         {hasOverflow && (

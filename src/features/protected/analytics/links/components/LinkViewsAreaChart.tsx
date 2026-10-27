@@ -106,7 +106,7 @@ export function LinkViewsAreaChart({ views }: { views: DailyStatusView[] }) {
 	const hasWrongPassword = chartData.some(view => view.wrong_password > 0)
 
 	return (
-		<article className="overflow-hidden rounded-2xl border border-neutral-800/80 bg-neutral-950 shadow-[0_12px_40px_rgba(0,0,0,0.18)]">
+		<article className="overflow-hidden rounded-2xl border border-neutral-800/80 bg-card shadow-card">
 
 			<div className="flex items-start justify-between gap-4 border-b border-neutral-800/80 p-5 sm:p-6">
 				<div>

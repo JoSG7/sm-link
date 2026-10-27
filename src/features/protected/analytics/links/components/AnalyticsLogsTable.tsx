@@ -24,7 +24,7 @@ export async function AnalyticsLogsTable({ linkId }: AnalyticsLogsTableProps) {
 
   if (metrics.length === 0) {
     return (
-      <article className="overflow-hidden rounded-2xl border border-neutral-800/80 bg-neutral-950 shadow-[0_12px_40px_rgba(0,0,0,0.18)]">
+      <article className="overflow-hidden rounded-2xl border border-neutral-800/80 bg-card shadow-card">
         <header className="border-b border-neutral-800/80 p-5 sm:p-6">
           <div>
             <h2 className="text-xl font-semibold text-neutral-100">Visit logs</h2>
@@ -43,7 +43,7 @@ export async function AnalyticsLogsTable({ linkId }: AnalyticsLogsTableProps) {
   }
 
   return (
-    <article className="overflow-hidden rounded-2xl border border-neutral-800/80 bg-neutral-950 shadow-[0_12px_40px_rgba(0,0,0,0.18)]">
+    <article className="overflow-hidden rounded-2xl border border-neutral-800/80 bg-card shadow-card">
 
       <header className="flex flex-col gap-4 border-b border-neutral-800/80 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
         <div className="flex items-center gap-3">

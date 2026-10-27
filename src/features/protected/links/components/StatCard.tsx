@@ -59,7 +59,7 @@ export function StatCard({ links, type,  }: StatCardProps) {
         : links.filter(link => link.is_expired).length
 
   return (
-    <article className="group relative isolate min-h-36 overflow-hidden rounded-2xl border border-neutral-800/80 bg-neutral-950 p-5 shadow-[0_12px_40px_rgba(0,0,0,0.18)] transition duration-300 hover:-translate-y-1 hover:border-neutral-700 flex-1">
+    <article className="group relative isolate min-h-36 overflow-hidden rounded-2xl border border-neutral-800/80 bg-card p-5 shadow-card transition duration-300 hover:-translate-y-1 hover:border-neutral-700 flex-1">
       
       <div className={clsx("pointer-events-none absolute -right-10 -top-10 -z-10 size-36 rounded-full bg-linear-to-br to-transparent blur-2xl transition duration-300 group-hover:scale-125", config.glowClass)} />
 
