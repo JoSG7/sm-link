@@ -13,7 +13,7 @@ interface PreviewNavigationProps {
 
 export function PreviewNavigation({ activeView, onViewChange }: PreviewNavigationProps) {
   return (
-    <nav className="grid w-fit grid-cols-3 bg-card rounded-t-2xl shadow-card border border-b-0 border-[#ffffff1a] "
+    <nav className="grid w-full grid-cols-3 rounded-t-2xl border border-b-0 border-subtle bg-card shadow-card lg:w-fit"
       aria-label="Dashboard preview navigation">
       {previewViews.map((view) => (
         <button

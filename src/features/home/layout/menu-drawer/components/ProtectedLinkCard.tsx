@@ -18,7 +18,7 @@ export function ProtectedLinkCard({ data }: { data: LinkDetails }) {
   const createdAt = format(new Date(data.created_at), "MMMM d")
 
   return (
-    <article className="relative isolate p-4 overflow-hidden rounded-2xl border border-[#ffffff1a] bg-card shadow-card whitespace-normal xl:p-5">
+    <article className="relative isolate p-4 overflow-hidden rounded-2xl border border-subtle bg-card shadow-card whitespace-normal xl:p-5">
 
       <section className="flex items-start gap-4 pb-5">
         <div className="flex min-w-0 grow flex-col gap-2">
@@ -36,7 +36,7 @@ export function ProtectedLinkCard({ data }: { data: LinkDetails }) {
           </p>
         </div>
 
-        <DomainLogo className="size-10 lg:size-15" 
+        <DomainLogo className="size-12 sm:size-17" 
         domain={domain} />
       </section>
 

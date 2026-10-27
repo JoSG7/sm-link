@@ -30,6 +30,10 @@
   border-color: #1c1c1d;
 }
 
+@utility border-subtle {
+  border-color: #ffffff1a;
+}
+
 @utility h-desktop {
   height: calc(100vh - 73px);
 }

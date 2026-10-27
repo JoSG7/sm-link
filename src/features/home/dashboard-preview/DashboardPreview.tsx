@@ -70,7 +70,7 @@ export function DashboardPreview() {
           </div>
         </div>
 
-        <Link href="/dashboard" className="mx-auto mt-8 flex w-fit items-center gap-2 rounded-lg border border-neutral-700 px-4 py-2.5 text-sm font-medium text-neutral-200 transition hover:border-neutral-500 hover:bg-neutral-900 sm:hidden">
+        <Link href="/dashboard" className="mx-auto mt-8 flex w-fit items-center gap-2 rounded-lg bg-linear-to-r from-green-500 to-blue-700 px-4 py-2.5 text-sm font-semibold text-white transition hover:from-green-400 hover:to-sky-600 sm:hidden">
           Open dashboard <IconArrowUpRight className="size-4" />
         </Link>
       </div>

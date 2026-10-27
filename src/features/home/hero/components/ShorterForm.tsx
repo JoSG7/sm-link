@@ -54,7 +54,7 @@ export function ShorterForm() {
   return (
     <section className="relative w-full lg:h-full">
       <motion.div
-        className={`relative origin-left rounded-2xl border border-[#ffffff1a] shadow-card ${showForm ? "z-10 bg-card" : "pointer-events-none z-0 bg-moss-900"}`}
+        className={`relative origin-left rounded-2xl border border-subtle shadow-card ${showForm ? "z-10 bg-card" : "pointer-events-none z-0 bg-moss-900"}`}
         animate={showForm ? { x: 0, y: 0, opacity: 1, scale: 1 } : hiddenCardPosition}
         transition={{ type: "spring", stiffness: 130, damping: 18 }}>
 
@@ -63,11 +63,11 @@ export function ShorterForm() {
           animate={{ opacity: showForm ? 1 : 0 }}
           transition={{ duration: 0.35, delay: showForm ? 0.15 : 0 }}>
 
-          <div className="absolute -top-5 right-5 hidden rounded-full border border-[#ffffff1a] bg-card px-4 py-2 text-xs lg:block">
+          <div className="absolute -top-5 right-5 hidden rounded-full border border-subtle bg-card px-4 py-2 text-xs lg:block">
             No log in is required
           </div>
 
-          <header className="flex items-center justify-between border-b border-[#ffffff0d] px-5 py-4.5 lg:px-6">
+          <header className="flex items-center justify-between border-b border-subtle px-5 py-4.5 lg:px-6">
 
             <div className="flex items-center gap-3">
               <span className="inline-flex size-8 items-center justify-center rounded-full border border-green-400/30 bg-green-400/10 font-mono text-xs text-green-300">
@@ -99,7 +99,7 @@ export function ShorterForm() {
             </label>
 
             <section className="flex flex-col gap-4 text-sm sm:flex-row lg:text-sm">
-              <input className="py-2 min-w-0 flex-1 rounded-lg border border-moss-border bg-moss-850/80 px-3 text-moss-copy outline-none placeholder:text-moss-dim transition-colors focus:border-green-400 focus:ring-2 focus:ring-green-400/20 sm:h-12 sm:px-4"
+              <input className="py-2.5 min-w-0 flex-1 rounded-lg border border-moss-border bg-moss-850/80 px-3 text-moss-copy outline-none placeholder:text-moss-dim transition-colors focus:border-green-400 focus:ring-2 focus:ring-green-400/20 sm:h-12 sm:px-4"
                 placeholder="https://example.com/long-url"
                 disabled={submiting}
                 autoComplete="off"
@@ -108,7 +108,7 @@ export function ShorterForm() {
                 required
                 onChange={(e) => setOriginal(e.currentTarget.value.trim())} />
 
-              <button className="py-2 flex items-center justify-center gap-2 rounded-lg bg-linear-to-r from-green-500 to-blue-700 px-5 font-medium text-white disabled:opacity-30 sm:min-w-32 sm:p-0"
+              <button className="py-2.5 flex items-center justify-center gap-2 rounded-lg bg-linear-to-r from-green-500 to-blue-700 px-5 font-medium text-white disabled:opacity-30 sm:min-w-32 sm:p-0"
                 disabled={submiting}>
                 <IconBolt className="size-5" />
                 <span>Shorten</span>
