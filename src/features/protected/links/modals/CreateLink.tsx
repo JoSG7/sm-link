@@ -117,7 +117,7 @@ export function CreateSmLinkModal({ isOpen, isAuthenticated, onClose }: CreateSm
 
                     <div className="min-w-0">
                       <p className="text-[11px] font-semibold uppercase tracking-wide text-sky-300">Link shortener</p>
-                      <h1 className="truncate text-lg font-semibold text-white sm:text-xl">Create SmLink</h1>
+                      <h1 className="truncate text-lg font-semibold text-white">Create SmLink</h1>
                     </div>
                   </div>
 

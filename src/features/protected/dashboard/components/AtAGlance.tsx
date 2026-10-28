@@ -23,13 +23,13 @@ export function AtAGlance({
   latestVisitedAt,
 }: DashboardAtAGlanceProps) {
   return (
-    <article className="overflow-hidden rounded-2xl border border-neutral-800/80 bg-card shadow-card">
+    <article className="overflow-hidden rounded-2xl border border-subtle bg-card shadow-card">
       <div className="border-b border-neutral-800/80 p-5 sm:p-6">
         <h2 className="text-xl font-semibold text-neutral-100">At a glance</h2>
         <p className="mt-1 text-sm text-neutral-400">Things worth checking today</p>
       </div>
       <div className="grid gap-4 p-5 sm:p-6">
-        <div className="flex items-center gap-3 rounded-xl border border-neutral-800 bg-neutral-900/50 p-4">
+        <div className="flex items-center gap-3 rounded-xl border border-subtle bg-neutral-900/50 p-4">
           <span className="flex size-9 items-center justify-center rounded-lg bg-red-500/10 text-red-300">
             <IconClock className="size-5" />
           </span>
@@ -44,7 +44,7 @@ export function AtAGlance({
             Review
           </Link>
         </div>
-        <div className="flex items-center gap-3 rounded-xl border border-neutral-800 bg-neutral-900/50 p-4">
+        <div className="flex items-center gap-3 rounded-xl border border-subtle bg-neutral-900/50 p-4">
           <span className="flex size-9 items-center justify-center rounded-lg bg-blue-500/10 text-blue-300">
             <IconLink className="size-5" />
           </span>

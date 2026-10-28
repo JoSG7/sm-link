@@ -1,0 +1,30 @@
+drop policy if exists "Allow guests and users to update their own links" on links;
+
+create policy "Allow guests and users to update their own links" on links for update
+to anon, authenticated
+using (
+  (
+    auth.uid () is not null
+    and user_id = auth.uid ()
+  )
+  or (
+    auth.uid () is null
+    and guest_id::text = nullif(
+      current_setting('request.headers', true)::json ->> 'x-guest-id',
+      ''
+    )
+  )
+)
+with check (
+  (
+    auth.uid () is not null
+    and user_id = auth.uid ()
+  )
+  or (
+    auth.uid () is null
+    and guest_id::text = nullif(
+      current_setting('request.headers', true)::json ->> 'x-guest-id',
+      ''
+    )
+  )
+);

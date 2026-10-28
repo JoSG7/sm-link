@@ -24,7 +24,8 @@ export function ClaimButton({ isAuthenticated, guestLinksCount }: { isAuthentica
                 {guestLinksCount > 99 ? "99+" : guestLinksCount}
               </span>
               <UserRoundCheck className="size-4 text-neutral-400" aria-hidden="true" />
-              <span>Claim guest links</span>
+              <span className="sm:hidden">Claim</span>
+              <span className="hidden sm:inline">Claim guest links</span>
               <ArrowDownToLine className="size-4 text-neutral-500 transition-transform duration-200 group-hover:translate-y-0.5" aria-hidden="true" />
             </button>
 

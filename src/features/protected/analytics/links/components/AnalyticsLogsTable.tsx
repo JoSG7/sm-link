@@ -24,7 +24,7 @@ export async function AnalyticsLogsTable({ linkId }: AnalyticsLogsTableProps) {
 
   if (metrics.length === 0) {
     return (
-      <article className="overflow-hidden rounded-2xl border border-neutral-800/80 bg-card shadow-card">
+      <article className="overflow-hidden rounded-2xl border border-subtle bg-card shadow-card">
         <header className="border-b border-neutral-800/80 p-5 sm:p-6">
           <div>
             <h2 className="text-xl font-semibold text-neutral-100">Visit logs</h2>
@@ -43,7 +43,7 @@ export async function AnalyticsLogsTable({ linkId }: AnalyticsLogsTableProps) {
   }
 
   return (
-    <article className="overflow-hidden rounded-2xl border border-neutral-800/80 bg-card shadow-card">
+    <article className="overflow-hidden rounded-2xl border border-subtle bg-card shadow-card">
 
       <header className="flex flex-col gap-4 border-b border-neutral-800/80 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
         <div className="flex items-center gap-3">
@@ -78,7 +78,7 @@ export async function AnalyticsLogsTable({ linkId }: AnalyticsLogsTableProps) {
               const StatusIcon = status.icon
 
               return (
-                <tr key={metric.id} className="border-b border-neutral-900 text-neutral-300 transition-colors last:border-0 hover:bg-neutral-900/45">
+                <tr key={metric.id} className="border-b border-neutral-800/50 text-neutral-300 transition-colors last:border-0 hover:bg-neutral-900/45">
                   <td className="whitespace-nowrap px-5 py-4 text-neutral-200 sm:px-7">{formatAnalyticsTimestamp(metric.visited_at)}</td>
                   <td className="px-5 py-4">
                     <span className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-semibold ${status.className}`}>

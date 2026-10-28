@@ -152,7 +152,7 @@ export function UnclaimedLinksModal({ isOpen, onClose }: {
 
                     <div className="min-w-0">
                       <p className="text-[11px] font-semibold uppercase tracking-wide text-fuchsia-300">Guest links</p>
-                      <h1 className="truncate text-lg font-semibold text-white sm:text-xl">Claim your links</h1>
+                      <h1 className="truncate text-lg font-semibold text-white">Claim your links</h1>
                     </div>
                   </div>
 
