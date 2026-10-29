@@ -22,6 +22,7 @@ type DashboardSummary = {
 export async function DashboardOverview() {
 
   const supabase = await createSupabaseServerClient()
+  
   const [{ data: overviewRows, error: overviewError }, { data: links, error: linksError }] = await Promise.all([
     supabase.rpc("get_global_metrics").maybeSingle(),
     supabase.rpc("get_links"),

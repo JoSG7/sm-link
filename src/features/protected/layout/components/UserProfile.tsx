@@ -9,7 +9,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { toast } from "sonner"
 
-export function UserProfile({ user }: { user: User | null }) {
+export function UserProfile({ user, side = "right" }: { user: User | null; side?: "right" | "top" }) {
 
   const router = useRouter()
 
@@ -53,8 +53,8 @@ export function UserProfile({ user }: { user: User | null }) {
         }
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent className="bg-neutral-900 text-white border border-neutral-800 translate-x-2 -translate-y-4"
-        side="right" align="start">
+      <DropdownMenuContent className={`border border-neutral-800 bg-neutral-900 text-white ${side === "right" ? "translate-x-2 -translate-y-4" : ""}`}
+        side={side} align="start">
 
         <DropdownMenuItem>
           {

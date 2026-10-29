@@ -226,7 +226,7 @@ export function LinksTable({ links, isAuthenticated, guestLinksCount }: LinksTab
 
   return (
     <div className="w-full">
-      <article className="overflow-hidden rounded-2xl border border-neutral-800/80 bg-neutral-950 shadow-[0_12px_40px_rgba(0,0,0,0.18)]">
+      <article className="overflow-hidden rounded-2xl border border-subtle bg-card shadow-card">
         <header className="flex flex-col gap-4 border-b border-neutral-800/80 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
           <div>
             <h2 className="text-xl font-semibold text-neutral-100">Links</h2>

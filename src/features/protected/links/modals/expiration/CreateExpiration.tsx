@@ -86,7 +86,7 @@ export function CreateExpirationModal({ isOpen, short, onClose }: CreateExpirati
 
                     <div className="min-w-0">
                       <p className="text-[11px] font-semibold uppercase tracking-wide text-amber-300">Link expiration</p>
-                      <h1 className="truncate text-lg font-semibold text-white sm:text-xl">Add expiration</h1>
+                      <h1 className="truncate text-lg font-semibold text-white">Add expiration</h1>
                     </div>
                   </div>
 

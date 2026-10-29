@@ -88,7 +88,7 @@ export function CreatePasswordModal({ isOpen, short, onClose }: CreateUserLinkPa
 
                     <div className="min-w-0">
                       <p className="text-[11px] font-semibold uppercase tracking-wide text-green-300">Password protection</p>
-                      <h1 className="truncate text-lg font-semibold text-white sm:text-xl">Add password</h1>
+                      <h1 className="truncate text-lg font-semibold text-white">Add password</h1>
                     </div>
                   </div>
 

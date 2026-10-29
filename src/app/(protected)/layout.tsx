@@ -16,7 +16,7 @@ export default async function ProtectedLayout({ children }: { children: ReactNod
       <SideBar user={user} />
 
       <main className="max-h-screen grow overflow-y-auto px-5 pb-24 md:px-7 sm:pb-0">
-        <MobileNav />
+        <MobileNav user={user} />
         {children}
       </main>
 

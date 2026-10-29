@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { IconAlarmPlus, IconChartBar, IconKey, IconTrash, IconDots, IconLock } from "@tabler/icons-react"
+import { IconAlarmPlus, IconChartBar, IconKey, IconTrash, IconDots, IconLock, IconPencil } from "@tabler/icons-react"
 import { memo, useEffect, useRef, useState } from "react"
 import {
   DropdownMenu,
@@ -16,8 +16,9 @@ import { UpdateExpirationModal } from "../modals/expiration/UpdateExpiration"
 import { DeleteExpirationModal } from "../modals/expiration/DeleteExpiration"
 import { DeletePasswordModal } from "../modals/password/DeletePassword"
 import { DeleteLinkModal } from "../modals/DeleteLink"
+import { UpdateShortModal } from "../modals/UpdateShort"
 
-type LinkAction = "password" | "expiration" | "delete" | "deletePassword" | "deleteExpiration"
+type LinkAction = "short" | "password" | "expiration" | "delete" | "deletePassword" | "deleteExpiration"
 
 interface LinkActionsProps {
   short: string
@@ -30,6 +31,7 @@ interface LinkActionsProps {
 function LinkActionsComponent({ short, hasPassword, expirationDate, hasUserId, isAuthenticated }: LinkActionsProps) {
   const hasExpiration = expirationDate !== null
   const isClaimedGuestLink = !isAuthenticated && hasUserId
+  const canUpdateShort = !isClaimedGuestLink
   const canUpdatePassword = !isClaimedGuestLink && (isAuthenticated || !hasPassword)
   const canUpdateExpiration = !isClaimedGuestLink && (isAuthenticated || !hasExpiration)
   const [activeAction, setActiveAction] = useState<LinkAction | null>(null)
@@ -79,6 +81,16 @@ function LinkActionsComponent({ short, hasPassword, expirationDate, hasUserId, i
               <IconChartBar className="size-4" />
               Analytics
             </Link>
+          </DropdownMenuItem>
+
+          <DropdownMenuItem
+            className="cursor-pointer gap-2 text-neutral-300 hover:bg-neutral-800 hover:text-white focus:bg-neutral-800 focus:text-white"
+            disabled={!canUpdateShort}
+            onSelect={() => openModal("short")}
+          >
+            <IconPencil className="size-4" />
+            Edit short
+            {!canUpdateShort && <IconLock className="ml-auto size-4" />}
           </DropdownMenuItem>
 
           <DropdownMenuItem
@@ -136,6 +148,13 @@ function LinkActionsComponent({ short, hasPassword, expirationDate, hasUserId, i
           </DropdownMenuItem>
         </DropdownMenuContent>
 
+        {activeAction === "short" && (
+          <UpdateShortModal
+            isOpen={isModalOpen}
+            short={short}
+            onClose={closeModal}
+          />
+        )}
         {activeAction === "password" && hasPassword && (
           <UpdatePasswordModal
             isOpen={isModalOpen}

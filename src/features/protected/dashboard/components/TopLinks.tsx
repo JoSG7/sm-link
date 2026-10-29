@@ -9,7 +9,7 @@ type DashboardTopLinksProps = {
 
 export function TopLinks({ links, visitsByLink }: DashboardTopLinksProps) {
   return (
-    <article className="overflow-hidden rounded-2xl border border-neutral-800/80 bg-neutral-950 shadow-[0_12px_40px_rgba(0,0,0,0.18)]">
+    <article className="overflow-hidden rounded-2xl border border-subtle bg-card shadow-card">
       <div className="flex items-center justify-between border-b border-neutral-800/80 p-5 sm:p-6">
         <div>
           <h2 className="text-xl font-semibold text-neutral-100">Top links</h2>

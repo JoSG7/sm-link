@@ -94,20 +94,21 @@ export function MenuDrawer() {
           <Accordion items={[
             {
               title:
-                <li className="p-4 text-lg font-semibold flex justify-between items-center border-neutral-800 cursor-pointer ">
-                  {/* Icon and title */}
-                  <div className="flex gap-2 items-center ">
-                    <IconClockCheck className="size-6 text-green-500 " />
-                    <p>
+                <div className="flex items-center justify-between gap-4 border-moss-border px-5 py-4 text-left">
+                  <div className="flex min-w-0 items-center gap-3">
+                    <span className="flex size-10 shrink-0 items-center justify-center rounded-xl border border-green-400/15 bg-green-400/8">
+                      <IconClockCheck className="size-5 text-green-400" />
+                    </span>
+                    <p className="truncate font-semibold text-white sm:text-lg">
                       <span className="text-green-300">Recent</span> SmLinks
                     </p>
                   </div>
 
-                  {/* Total of links */}
-                  <span className="text-base">
-                    {linkDetails.length}/7
+                  <span aria-label={`${linkDetails.length} de 7 links recientes`} className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-green-400/20 bg-green-400/8 px-3 py-1.5 text-xs font-medium text-green-200">
+                    <span className="text-sm font-bold tabular-nums text-green-300">{linkDetails.length}</span>
+                    <span className="text-green-200/65">de 7</span>
                   </span>
-                </li>,
+                </div>,
               content:
                 <div className="p-4 pt-0 flex flex-col gap-4 sm:p-5 sm:pt-0 sm:gap-5" translate="no">
                   {
@@ -130,13 +131,14 @@ export function MenuDrawer() {
             },
             {
               title:
-                <li className="p-4 text-lg font-semibold flex gap-2 items-center border-t-[1.5px] border-neutral-800 cursor-pointer ">
-                  {/* Icon and title */}
-                  <IconLock className="size-6 text-sky-500 " />
-                  <p>
+                <div className="flex items-center gap-3 border-t border-subtle px-5 py-4 text-left">
+                  <span className="flex size-10 shrink-0 items-center justify-center rounded-xl border border-sky-400/15 bg-sky-400/8">
+                    <IconLock className="size-5 text-sky-400" />
+                  </span>
+                  <p className="text-base font-semibold text-white sm:text-lg">
                     <span className="text-sky-300">Protected</span> SmLinks
                   </p>
-                </li>,
+                </div>,
               content:
                 <div className="px-4 pb-4 flex flex-col gap-4 sm:p-5 sm:pt-0 sm:gap-5" translate="no">
                   {

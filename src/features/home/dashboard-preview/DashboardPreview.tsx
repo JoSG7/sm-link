@@ -17,7 +17,9 @@ export function DashboardPreview() {
     <section className="relative overflow-hidden border-t border-moss-line bg-moss-950 px-5 py-20 sm:px-6 lg:py-28">
 
       <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-px bg-[linear-gradient(90deg,transparent_0%,rgba(144,220,160,0.08)_28%,rgba(144,220,160,0.42)_50%,rgba(144,220,160,0.08)_72%,transparent_100%)]" />
+
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(144,220,160,0.045)_1px,transparent_1px),linear-gradient(90deg,rgba(144,220,160,0.045)_1px,transparent_1px)] bg-size-[44px_44px] opacity-60" />
+      
       <div className="pointer-events-none absolute -top-40 left-1/2 size-72 -translate-x-1/2 rounded-full bg-green-400/6 blur-[72px] sm:size-128 sm:blur-[110px]" />
 
       <div className="relative mx-auto max-w-7xl">
@@ -39,7 +41,7 @@ export function DashboardPreview() {
 
           <PreviewNavigation activeView={activeView} onViewChange={setActiveView} />
 
-          <div className="overflow-hidden rounded-2xl rounded-t-none border border-[#ffffff1a] bg-card shadow-card sm:rounded-tr-2xl">
+          <div className="overflow-hidden rounded-2xl rounded-t-none border border-subtle bg-card shadow-card sm:rounded-tr-2xl">
 
             <div className="border-b border-moss-border">
               <div className="flex flex-wrap items-center justify-between gap-4 px-4 py-4 sm:px-6">
@@ -70,7 +72,7 @@ export function DashboardPreview() {
           </div>
         </div>
 
-        <Link href="/dashboard" className="mx-auto mt-8 flex w-fit items-center gap-2 rounded-lg border border-neutral-700 px-4 py-2.5 text-sm font-medium text-neutral-200 transition hover:border-neutral-500 hover:bg-neutral-900 sm:hidden">
+        <Link href="/dashboard" className="mx-auto mt-8 flex w-fit items-center gap-2 rounded-lg bg-linear-to-r from-green-500 to-blue-700 px-4 py-2.5 text-sm font-semibold text-white transition hover:from-green-400 hover:to-sky-600 sm:hidden">
           Open dashboard <IconArrowUpRight className="size-4" />
         </Link>
       </div>

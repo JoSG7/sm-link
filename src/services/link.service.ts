@@ -35,6 +35,15 @@ export class LinkServices {
 
   }
 
+  async updateSmLink({ short, newShort }: { short: string, newShort: string }) {
+
+    const { data } = await api.patch<SuccessResponse>(`links/${short}`, {
+      newShort
+    })
+    return data
+
+  }
+
   async claim(linksID: string[]) {
 
     const { data } = await api.post<SuccessResponse>("links/claim", { linksID })

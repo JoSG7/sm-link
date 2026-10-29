@@ -93,7 +93,7 @@ export function UpdateExpirationModal({ isOpen, short, date, onClose }: UpdateEx
 
                     <div className="min-w-0">
                       <p className="text-[11px] font-semibold uppercase tracking-wide text-amber-300">Link expiration</p>
-                      <h1 className="truncate text-lg font-semibold text-white sm:text-xl">Update expiration</h1>
+                      <h1 className="truncate text-lg font-semibold text-white">Update expiration</h1>
                     </div>
                   </div>
 

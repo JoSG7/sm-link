@@ -14,9 +14,7 @@ export function SmLinkCard({ data }: { data: LinkDetails }) {
   const createdAt = format(new Date(data.created_at), "MMMM d")
   return (
 
-    <article className="relative p-4 isolate overflow-hidden rounded-2xl border border-[#ffffff1a] whitespace-normal shadow-card bg-card xl:p-5">
-
-      <div className="pointer-events-none absolute -right-10 -top-10 -z-10 size-36 rounded-full bg-linear-to-br from-green-400/10 to-transparent blur-2xl transition duration-300 group-hover:scale-125" />
+    <article className="relative p-4 isolate overflow-hidden rounded-2xl border border-subtle whitespace-normal shadow-card bg-card xl:p-5">
 
       <section className="relative flex grow items-center gap-5 lg:gap-7">
         <div className="flex flex-col grow text-sm ">
@@ -41,7 +39,7 @@ export function SmLinkCard({ data }: { data: LinkDetails }) {
         </div>
 
         {/* Link Logo */}
-        <DomainLogo className="size-10 lg:size-15" 
+        <DomainLogo className="size-12 sm:size-17" 
         domain={domain} />
       </section>
 
