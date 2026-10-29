@@ -89,7 +89,7 @@ function LinkActionsComponent({ short, hasPassword, expirationDate, hasUserId, i
             onSelect={() => openModal("short")}
           >
             <IconPencil className="size-4" />
-            Edit short link
+            Edit short
             {!canUpdateShort && <IconLock className="ml-auto size-4" />}
           </DropdownMenuItem>
 

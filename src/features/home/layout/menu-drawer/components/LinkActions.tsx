@@ -1,20 +1,22 @@
 "use client"
 
-import { IconClockCheck, IconCopy, IconExternalLink, IconShieldLockFilled, IconTrashFilled } from "@tabler/icons-react"
+import { IconClockCheck, IconCopy, IconExternalLink, IconPencil, IconShieldLockFilled, IconTrashFilled } from "@tabler/icons-react"
 import { ReactNode, useEffect, useRef, useState } from "react"
 import { toast } from "sonner"
 import { LinkDetails } from "@/types/global"
 import { CreatePasswordModal } from "@/features/home/modals/CreatePassword"
 import { CreateExpirationModal } from "@/features/home/modals/CreateExpiration"
 import { DeleteLinkModal } from "@/features/home/modals/DeleteLink"
+import { UpdateShortModal } from "@/features/home/modals/UpdateShort"
 
-type LinkAction = "password" | "expiration" | "delete"
+type LinkAction = "update" | "password" | "expiration" | "delete"
 
 interface ActionButton {
   icon: ReactNode
   hoverClassName: string
   onClick?: () => void
   disabled: boolean
+  label?: string
 }
 
 export function LinkActions({ data }: { data: LinkDetails }) {
@@ -46,6 +48,13 @@ export function LinkActions({ data }: { data: LinkDetails }) {
   }
 
   const actionButtons: ActionButton[] = [
+    {
+      icon: <IconPencil className="size-5" />,
+      hoverClassName: "hover:border-sky-400/40 hover:bg-sky-400/15 hover:text-sky-300",
+      onClick: () => openModal("update"),
+      disabled: data.has_user_id,
+      label: "Edit short link"
+    },
     {
       icon: <IconTrashFilled className="size-5" />,
       hoverClassName: "hover:border-red-500/40 hover:bg-red-500/15 hover:text-red-300",
@@ -89,6 +98,8 @@ export function LinkActions({ data }: { data: LinkDetails }) {
               key={index}
               onClick={action.onClick}
               disabled={action.disabled}
+              title={action.label}
+              aria-label={action.label}
             >
               {action.icon}
             </button>
@@ -96,6 +107,13 @@ export function LinkActions({ data }: { data: LinkDetails }) {
         })}
       </div>
 
+      {activeAction === "update" && (
+        <UpdateShortModal
+          isOpen={isModalOpen}
+          short={data.short}
+          onClose={closeModal}
+        />
+      )}
       {activeAction === "password" && (
         <CreatePasswordModal
           isOpen={isModalOpen}

@@ -9,8 +9,7 @@ interface Props {
 export async function PATCH(req: NextRequest, { params }: Props) {
 
   const { shortUrl } = await params
-  const body = await req.json().catch(() => null) as { short?: unknown } | null
-  const newShort = typeof body?.short === "string" ? body.short.trim() : ""
+  const { newShort } = await req.json()
 
   if (!/^[a-zA-Z0-9_-]{1,19}$/.test(newShort)) {
     return apiError("Short link must be 1-19 characters using only letters, numbers, hyphens, or underscores", 400)
@@ -37,6 +36,7 @@ export async function PATCH(req: NextRequest, { params }: Props) {
 
   return NextResponse.json({ data: data.short }, { status: 200 })
 }
+
 
 export async function DELETE(req: NextRequest, { params }: Props) {
 
