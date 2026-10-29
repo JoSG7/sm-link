@@ -131,7 +131,7 @@ export function MenuDrawer() {
             },
             {
               title:
-                <div className="flex items-center gap-3 border-t border-moss-border px-5 py-4 text-left">
+                <div className="flex items-center gap-3 border-t border-subtle px-5 py-4 text-left">
                   <span className="flex size-10 shrink-0 items-center justify-center rounded-xl border border-sky-400/15 bg-sky-400/8">
                     <IconLock className="size-5 text-sky-400" />
                   </span>
